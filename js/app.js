@@ -46,7 +46,7 @@ const hpFillTwo = document.getElementById("hp-fill-two");
 const hpFillUnite = document.getElementById("hp-fill-unite");
 const hpFillAll = document.getElementById("hp-fill-all");
 
-
+const normalAttackDamage = document.getElementById("normalAttack-damage");
 
 // =========================
 // data
@@ -66,7 +66,8 @@ const statusName = {
 const hitCountSelects= {
     one:document.getElementById("damage-hit-one"),
     two:document.getElementById("damage-hit-two"),
-    unite:document.getElementById("damage-hit-unite")
+    unite:document.getElementById("damage-hit-unite"),
+    normalAttack:document.getElementById("normalAttack-hit")
 };
 
 let currentPokemon = pokemonsList[0];
@@ -119,10 +120,11 @@ Object.values(hitCountSelects).forEach(select => {
 
     select.addEventListener("change", () => {
          updateDamageByHitCount();
+         normalAttackDamages();
     })
 })
 
-    
+ 
 
 // =========================
 // init
@@ -134,7 +136,7 @@ createLevelOptions(enemyLevelSelect);
 createPokemonOptions(pokemonSelect);
 createPokemonOptions(pokemonSelectTwo);
 
-
+normalAttackDamages();
 
 
 // =========================
@@ -147,7 +149,9 @@ levelSelect.addEventListener("change", () => {
     console.log(levelSelect.value);
    updateDamageByHitCount();
    
-      
+    normalAttackDamages();
+
+
 });
 
 
@@ -187,8 +191,7 @@ pokemonSelect.addEventListener("change", () => {
     hpFillAll.style.width = "100%";
     hpFillAll.style.backgroundColor = "green";
 
-
-
+   
 
 
     const selectedId = pokemonSelect.value;
@@ -205,6 +208,7 @@ pokemonSelect.addEventListener("change", () => {
     titlePokemonTitle.textContent = selectedId;
 
     updatePlayerUI();
+     normalAttackDamages();
 
 });
 
@@ -764,6 +768,52 @@ function resetDamageDisplay(
     hpBarElement.style.width = "100%";
     hpBarElement.style.backgroundColor = "green";
 }
+
+function normalAttackDamages(){
+    
+    const level =Number(levelSelect.value);
+    const selectPokemon = currentPokemon.id;
+    console.log(selectPokemon);
+    const hitCount = Number(hitCountSelects.normalAttack.value);
+    const atk = currentPokemon.stats[level].attack;
+    const spAtk = currentPokemon.stats[level].spAttack;
+    normalAttackDamage.textContent = "";
+    if(selectPokemon === "Pikachu" ){
+
+        const basicDamageP = 1 * atk;
+        const boostedDamageP = 0.38 * spAtk + 10 * (level - 1) +200;
+
+        const boostedCount = Math.floor(hitCount/3);
+        const basicCount = hitCount - boostedCount;
+        const allNormalDamageP = basicDamageP * basicCount + boostedDamageP * boostedCount;
+        console.log("ピカチュウ" + allNormalDamageP);
+
+        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageP);
+        
+    }if(selectPokemon === "Greninja"){
+         
+        const basicDamageG = 1 * atk;
+        const boostedDamageG = 1.30 * atk;  
+        const boostedCount = Math.floor(hitCount/3);
+        const basicCount = hitCount - boostedCount;
+        const allNormalDamageG = basicDamageG * basicCount + boostedDamageG * boostedCount;
+        console.log("ゲッコウガ" + allNormalDamageG);
+        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
+
+    }if(selectPokemon === "Cinderace"){
+
+        const basicDamage = 1 * atk;
+        const boostedDamage = 1.40 * atk;
+        const boostedCount = Math.floor(hitCount/3);
+        const basicCount= hitCount - boostedCount;
+        const allNormalDamage = basicCount * basicDamage + boostedDamage * boostedCount;
+        console.log("エースバーン" + allNormalDamage);
+        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamage);
+    }
+
+}
+                          
+                        
 // =========================
 // first render
 // =========================

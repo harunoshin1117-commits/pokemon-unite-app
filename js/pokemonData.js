@@ -2,6 +2,18 @@ const pokemonsList = [
     {
         id:"Pikachu",
         name:"ピカチュウ",
+        normalAttack:{
+                        description: "3回目の攻撃は強化攻撃になり、相手をまひさせる",
+                        damage:{
+                            basic: "100% Atk",
+                            boosted: {
+                                formula: "38% SpAtk + 10 * (level - 1) + 200"
+                            }
+                        }
+                       
+                    
+                    },
+
         skill:{
             1:[{
                 name:"電気ショック",
@@ -260,6 +272,7 @@ const pokemonsList = [
     {
         id:"Greninja",
         name:"ゲッコウガ",
+        normalAttack:{},
         skill:{
 
             1:[
@@ -526,7 +539,7 @@ const pokemonsList = [
     {
         id:"Cinderace",
         name:"エースバーン",
-
+        normalAttack:{},
         skill:{
             1:[
                 {
