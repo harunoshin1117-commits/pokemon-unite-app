@@ -35,6 +35,9 @@ const damageTakenPuls = document.getElementById("damage-taken-puls");
 const remainingHpPuls = document.getElementById("remaining-hp-puls");
 const uniteTaken = document.getElementById("unite-taken");
 const remainingHpUnite = document.getElementById("remaining-hp-unite");
+const damageTakenNormalAttack = document.getElementById("damage-taken-normalAttack");
+const remainingHpNormalAttack = document.getElementById("remaining-hp-normalAttack");
+
 
 const allResetBottun = document.getElementById("all-reset-bottun");
 const takenAll = document.getElementById("taken-all");
@@ -45,6 +48,7 @@ const hpFillOne = document.getElementById("hp-fill-one");
 const hpFillTwo = document.getElementById("hp-fill-two");
 const hpFillUnite = document.getElementById("hp-fill-unite");
 const hpFillAll = document.getElementById("hp-fill-all");
+const hpFillNormalAttack = document.getElementById("hp-fill-normalAttack");
 
 const normalAttackDamage = document.getElementById("normalAttack-damage");
 
@@ -120,7 +124,7 @@ Object.values(hitCountSelects).forEach(select => {
 
     select.addEventListener("change", () => {
          updateDamageByHitCount();
-         normalAttackDamages();
+        updateNormalAttack();
     })
 })
 
@@ -136,7 +140,7 @@ createLevelOptions(enemyLevelSelect);
 createPokemonOptions(pokemonSelect);
 createPokemonOptions(pokemonSelectTwo);
 
-normalAttackDamages();
+updateNormalAttack();
 
 
 // =========================
@@ -149,7 +153,7 @@ levelSelect.addEventListener("change", () => {
     console.log(levelSelect.value);
    updateDamageByHitCount();
    
-    normalAttackDamages();
+   updateNormalAttack();
 
 
 });
@@ -208,7 +212,7 @@ pokemonSelect.addEventListener("change", () => {
     titlePokemonTitle.textContent = selectedId;
 
     updatePlayerUI();
-     normalAttackDamages();
+   updateNormalAttack();
 
 });
 
@@ -382,6 +386,8 @@ enemyLevelSelect.addEventListener("change", () => {
     updateEnemyUI();
    
    updateDamageByHitCount();
+   computeNormalAttackFinalDamage();
+   showNormalAttackFinalDamage();
       
    
 });
@@ -403,17 +409,10 @@ pokemonSelectTwo.addEventListener("change", () => {
 
     updateEnemyUI();
 
-    if(selectedSkillOne){
-        showFinalDamage(selectedSkillOne,damageTaken,remainingHp,hpFillOne,Number(hitCountSelects.one.value));
-    }
-    if(selectedSkillTwo){
-        showFinalDamage(selectedSkillTwo,damageTakenPuls,remainingHpPuls,hpFillTwo,Number(hitCountSelects.two.value))
-    }
-    if(selectedSkillThird){
-        showFinalDamage(selectedSkillThird,uniteTaken,remainingHpUnite,hpFillUnite,Number(hitCountSelects.unite.value));
-    }
-     computeFinalDamageAll();
-      
+   updateDamageByHitCount();
+
+     computeNormalAttackFinalDamage();
+     showNormalAttackFinalDamage();
 });
 
 
@@ -645,7 +644,7 @@ function isCategory(selectedMove){
 function computeFinalDamageAll(){
 
    
-
+    const normalAttackDamage = computeNormalAttackFinalDamage();
 
     const damage1 =
         computeFinalDamage(selectedSkillOne,
@@ -663,7 +662,7 @@ function computeFinalDamageAll(){
         ) || 0;
 
     const allDamage =
-        damage1 + damage2 + damage3;
+        damage1 + damage2 + damage3 + normalAttackDamage;
 
     takenAll.textContent =
         `合計ダメージ: ${allDamage}`;
@@ -769,7 +768,7 @@ function resetDamageDisplay(
     hpBarElement.style.backgroundColor = "green";
 }
 
-function normalAttackDamages(){
+function calculateNormalAttackDamage(){
     
     const level =Number(levelSelect.value);
     const selectPokemon = currentPokemon.id;
@@ -777,7 +776,7 @@ function normalAttackDamages(){
     const hitCount = Number(hitCountSelects.normalAttack.value);
     const atk = currentPokemon.stats[level].attack;
     const spAtk = currentPokemon.stats[level].spAttack;
-    normalAttackDamage.textContent = "";
+    
     if(selectPokemon === "Pikachu" ){
 
         const basicDamageP = 1 * atk;
@@ -787,9 +786,12 @@ function normalAttackDamages(){
         const basicCount = hitCount - boostedCount;
         const allNormalDamageP = basicDamageP * basicCount + boostedDamageP * boostedCount;
         console.log("ピカチュウ" + allNormalDamageP);
+        const totalNormalAttackDamage = Math.floor(allNormalDamageP);
 
-        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageP);
-        
+        //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageP);
+
+        return totalNormalAttackDamage;
+
     }if(selectPokemon === "Greninja"){
          
         const basicDamageG = 1 * atk;
@@ -798,7 +800,11 @@ function normalAttackDamages(){
         const basicCount = hitCount - boostedCount;
         const allNormalDamageG = basicDamageG * basicCount + boostedDamageG * boostedCount;
         console.log("ゲッコウガ" + allNormalDamageG);
-        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
+        const totalNormalAttackDamage = Math.floor(allNormalDamageG);
+
+        //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
+
+        return totalNormalAttackDamage;
 
     }if(selectPokemon === "Cinderace"){
 
@@ -808,12 +814,108 @@ function normalAttackDamages(){
         const basicCount= hitCount - boostedCount;
         const allNormalDamage = basicCount * basicDamage + boostedDamage * boostedCount;
         console.log("エースバーン" + allNormalDamage);
-        normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamage);
+        const totalNormalAttackDamage = Math.floor(allNormalDamage);
+
+       // normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamage);
+
+        return totalNormalAttackDamage;
+
+    }
+    return null;
+
+}   
+function showNormalAttackDamage(){
+    const damage = calculateNormalAttackDamage();
+    if(damage == null){
+        normalAttackDamage.textContent = "威力なし";
+        return;
+    }
+    normalAttackDamage.textContent = "威力:" + damage;
+}
+
+function computeNormalAttackFinalDamage(){
+
+
+
+    const rawDamage = calculateNormalAttackDamage();
+    
+        if(rawDamage == null){
+            return null;
+        }
+        const selectPokemon = currentPokemon.id;
+        const enemyLevel = Number(enemyLevelSelect.value);
+        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
+        console.log(enemyPokemonStats);
+
+        let finalDamage;
+        const defense = enemyPokemonStats.defense;
+        const spDefense = enemyPokemonStats.spDefense;
+       
+        
+          if(selectPokemon === "Pikachu"){
+
+        finalDamage =
+            rawDamage *
+            (
+                1 -
+                (
+                    spDefense /
+                    (spDefense + 600)
+                )
+            );
+
+    }else{
+
+        finalDamage =
+            rawDamage *
+            (
+                1 -
+                (
+                    defense /
+                    (defense + 600)
+                )
+            );
     }
 
+
+
+
+      return Math.floor(finalDamage);
+    
 }
-                          
-                        
+
+function showNormalAttackFinalDamage(){
+
+    const finalDamage = computeNormalAttackFinalDamage();
+    console.log(finalDamage);
+    if(finalDamage == null){
+         
+        damageTakenNormalAttack.textContent = "ダメージ: 計算不可";
+
+        remainingHpNormalAttack.textContent = "残りHP: -";
+       // hpFillNormalAttack.style.width = "100%";
+      //  hpFillNormalAttack.style.backgroundColor = "green";
+        return null;
+    }
+
+    const enemyLevel = Number(enemyLevelSelect.value);
+    const enemyHp = enemyPokemon.stats[enemyLevel].hp;
+
+    const hpAfter = Math.max(0,enemyHp - finalDamage);
+    damageTakenNormalAttack.textContent = "ダメージ:" + finalDamage;
+    remainingHpNormalAttack.textContent = "残りHP:" + hpAfter;
+
+     updateHpBar(hpAfter,enemyHp,hpFillNormalAttack);
+    console.log(hpFillNormalAttack);
+    console.log(finalDamage);
+    console.log(hpAfter);
+}
+function updateNormalAttack(){
+    calculateNormalAttackDamage();
+    showNormalAttackDamage();
+    computeNormalAttackFinalDamage();
+    showNormalAttackFinalDamage();
+}
 // =========================
 // first render
 // =========================
