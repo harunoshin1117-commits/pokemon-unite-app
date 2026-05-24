@@ -80,6 +80,7 @@ let selectedSkillOne = null;
 let selectedSkillTwo = null;
 let selectedSkillThird = null;
 let currentSelectedMove = null;
+let currentNormalAttackData = null;
 
 // =========================
 // init function
@@ -123,8 +124,9 @@ Object.values(hitCountSelects).forEach(select => {
     }
 
     select.addEventListener("change", () => {
-         updateDamageByHitCount();
         updateNormalAttack();
+         updateDamageByHitCount();
+        
     })
 })
 
@@ -151,9 +153,10 @@ levelSelect.addEventListener("change", () => {
 
     updatePlayerUI();
     console.log(levelSelect.value);
+     updateNormalAttack();
    updateDamageByHitCount();
    
-   updateNormalAttack();
+  
 
 
 });
@@ -213,6 +216,7 @@ pokemonSelect.addEventListener("change", () => {
 
     updatePlayerUI();
    updateNormalAttack();
+   computeFinalDamageAll();
 
 });
 
@@ -384,10 +388,9 @@ colorChange.forEach(color => {
 enemyLevelSelect.addEventListener("change", () => {
 
     updateEnemyUI();
-   
+   updateNormalAttack();
    updateDamageByHitCount();
-   computeNormalAttackFinalDamage();
-   showNormalAttackFinalDamage();
+   
       
    
 });
@@ -408,11 +411,10 @@ pokemonSelectTwo.addEventListener("change", () => {
     enemyName.textContent = selectedId;
 
     updateEnemyUI();
-
+     updateNormalAttack();
    updateDamageByHitCount();
 
-     computeNormalAttackFinalDamage();
-     showNormalAttackFinalDamage();
+   
 });
 
 
@@ -644,7 +646,7 @@ function isCategory(selectedMove){
 function computeFinalDamageAll(){
 
    
-    const normalAttackDamage = computeNormalAttackFinalDamage();
+    const normalAttackDamage = computeNormalAttackFinalDamage(currentNormalAttackData) || 0;
 
     const damage1 =
         computeFinalDamage(selectedSkillOne,
@@ -782,6 +784,7 @@ function calculateNormalAttackDamage(){
         const basicDamage = 1 * atk;
         const boostedDamage = 0.38 * spAtk + 10 * (level - 1) +200;
         let totalDamage = 0;
+        let criticalCount = 0;
        for(let i = 1;i <= hitCount;i++){
 
             let damage;
@@ -801,7 +804,7 @@ function calculateNormalAttackDamage(){
         const isCritical = Math.random() <critical/100;
         //急所なら二倍（今回だけ）
         if(isCritical){
-
+            criticalCount++;
             damage *= 2
             console.log(damage);
         }
@@ -816,9 +819,10 @@ function calculateNormalAttackDamage(){
       
         const totalNormalAttackDamage = Math.floor(totalDamage);
 
-        //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageP);
 
-        return totalNormalAttackDamage;
+        return {
+            totalDamage: totalNormalAttackDamage,
+            criticalCount: criticalCount};
 
     }if(selectPokemon === "Greninja"){
          
@@ -828,6 +832,7 @@ function calculateNormalAttackDamage(){
 
 
         let totalDamage = 0;
+        let criticalCount = 0;
         for(let i = 1;i <= hitCount;i++){
              
             let damage = 0;
@@ -842,7 +847,7 @@ function calculateNormalAttackDamage(){
                 const isCritical = Math.random() < critical/100;
                 
                 if(isCritical){
-                    
+                    criticalCount++;
                     damage *= 2;
                     console.log(damage);
                 }
@@ -851,47 +856,70 @@ function calculateNormalAttackDamage(){
             console.log(totalDamage + "急所判定実行結果");
         }
       
-
+        
         const totalNormalAttackDamage = Math.floor(totalDamage);
 
         //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
 
-        return totalNormalAttackDamage;
+        return {
+            totalDamage: totalNormalAttackDamage,
+            criticalCount: criticalCount};
 
     }if(selectPokemon === "Cinderace"){
 
         const basicDamage = 1 * atk;
         const boostedDamage = 1.40 * atk;
-        const boostedCount = Math.floor(hitCount/3);
-        const basicCount= hitCount - boostedCount;
-        const allNormalDamage = basicCount * basicDamage + boostedDamage * boostedCount;
-        console.log("エースバーン" + allNormalDamage);
-        const totalNormalAttackDamage = Math.floor(allNormalDamage);
 
-       // normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamage);
+        let totalDamage = 0;
+        let criticalCount = 0;
+        for(let i = 1; i <= hitCount; i++){
 
-        return totalNormalAttackDamage;
+            let damage = 0;
 
-    }
-    return null;
+            if(i%3 === 0){
+                damage = boostedDamage;
+            }else{
+                damage = basicDamage;
+            }
 
-}   
-function showNormalAttackDamage(){
-    const damage = calculateNormalAttackDamage();
-    if(damage == null){
+            if(criticalCheck.checked){
+
+                const isCritical = Math.random() < critical/100;
+
+                if(isCritical){
+                    criticalCount++;
+                    console.log("急所に当たりました");
+                    damage *=2;
+                }
+            }
+            totalDamage += damage;
+
+        }
+    
+    const totalNormalAttackDamage = Math.floor(totalDamage);
+     return {
+            totalDamage: totalNormalAttackDamage,
+            criticalCount: criticalCount};
+    
+    
+
+}}   
+function showNormalAttackDamage(normalAttackData){
+   
+    if(normalAttackData == null){
         normalAttackDamage.textContent = "威力なし";
         return;
     }
-    normalAttackDamage.textContent = "威力:" + damage;
+    normalAttackDamage.textContent = "威力:" + normalAttackData.totalDamage;
 }
 
-function computeNormalAttackFinalDamage(){
+function computeNormalAttackFinalDamage(normalAttackData){
 
 
 
-    const rawDamage = calculateNormalAttackDamage();
     
-        if(rawDamage == null){
+    
+        if(normalAttackData == null){
             return null;
         }
         const selectPokemon = currentPokemon.id;
@@ -907,7 +935,7 @@ function computeNormalAttackFinalDamage(){
           if(selectPokemon === "Pikachu"){
 
         finalDamage =
-            rawDamage *
+            normalAttackData.totalDamage *
             (
                 1 -
                 (
@@ -919,7 +947,7 @@ function computeNormalAttackFinalDamage(){
     }else{
 
         finalDamage =
-            rawDamage *
+           normalAttackData.totalDamage *
             (
                 1 -
                 (
@@ -936,9 +964,9 @@ function computeNormalAttackFinalDamage(){
     
 }
 
-function showNormalAttackFinalDamage(){
+function showNormalAttackFinalDamage(normalAttackData){
 
-    const finalDamage = computeNormalAttackFinalDamage();
+    const finalDamage = computeNormalAttackFinalDamage(normalAttackData);
     console.log(finalDamage);
     if(finalDamage == null){
          
@@ -963,10 +991,40 @@ function showNormalAttackFinalDamage(){
     console.log(hpAfter);
 }
 function updateNormalAttack(){
-    calculateNormalAttackDamage();
-    showNormalAttackDamage();
-    computeNormalAttackFinalDamage();
-    showNormalAttackFinalDamage();
+    currentNormalAttackData = calculateNormalAttackDamage();
+    showNormalAttackDamage(currentNormalAttackData);
+   
+    showNormalAttackFinalDamage(currentNormalAttackData);
+
+     if(
+        currentNormalAttackData &&
+        currentNormalAttackData.criticalCount > 0
+    ){
+        showCriticalPopup(
+            currentNormalAttackData.criticalCount
+        );
+    }
+}
+
+function showCriticalPopup(
+    criticalCount
+){
+
+    const popup =
+        document.getElementById(
+            "critical-popup"
+        );
+
+    popup.textContent =
+        `急所 ${criticalCount}回!`;
+
+    popup.style.animation =
+        "none";
+
+    popup.offsetHeight;
+
+    popup.style.animation =
+        "criticalPopup 1s ease";
 }
 // =========================
 // first render
