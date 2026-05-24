@@ -51,7 +51,7 @@ const hpFillAll = document.getElementById("hp-fill-all");
 const hpFillNormalAttack = document.getElementById("hp-fill-normalAttack");
 
 const normalAttackDamage = document.getElementById("normalAttack-damage");
-
+const criticalCheck = document.getElementById("critical-check");
 // =========================
 // data
 // =========================
@@ -776,17 +776,45 @@ function calculateNormalAttackDamage(){
     const hitCount = Number(hitCountSelects.normalAttack.value);
     const atk = currentPokemon.stats[level].attack;
     const spAtk = currentPokemon.stats[level].spAttack;
-    
+    const critical = currentPokemon.stats[level]. criticalRate;
     if(selectPokemon === "Pikachu" ){
 
-        const basicDamageP = 1 * atk;
-        const boostedDamageP = 0.38 * spAtk + 10 * (level - 1) +200;
+        const basicDamage = 1 * atk;
+        const boostedDamage = 0.38 * spAtk + 10 * (level - 1) +200;
+        let totalDamage = 0;
+       for(let i = 1;i <= hitCount;i++){
 
-        const boostedCount = Math.floor(hitCount/3);
-        const basicCount = hitCount - boostedCount;
-        const allNormalDamageP = basicDamageP * basicCount + boostedDamageP * boostedCount;
-        console.log("ピカチュウ" + allNormalDamageP);
-        const totalNormalAttackDamage = Math.floor(allNormalDamageP);
+            let damage;
+            //　強化攻撃判定
+            if(i%3 === 0){
+                
+                damage = boostedDamage;
+
+            }else{
+
+                damage = basicDamage;
+
+       }
+       if(criticalCheck.checked){
+        console.log("急所判定実行");
+        //急所判定
+        const isCritical = Math.random() <critical/100;
+        //急所なら二倍（今回だけ）
+        if(isCritical){
+
+            damage *= 2
+            console.log(damage);
+        }
+       }
+       
+        totalDamage += damage;
+    }
+        
+        console.log(boostedDamage + "強化通常");
+
+       
+      
+        const totalNormalAttackDamage = Math.floor(totalDamage);
 
         //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageP);
 
@@ -794,13 +822,37 @@ function calculateNormalAttackDamage(){
 
     }if(selectPokemon === "Greninja"){
          
-        const basicDamageG = 1 * atk;
-        const boostedDamageG = 1.30 * atk;  
-        const boostedCount = Math.floor(hitCount/3);
-        const basicCount = hitCount - boostedCount;
-        const allNormalDamageG = basicDamageG * basicCount + boostedDamageG * boostedCount;
-        console.log("ゲッコウガ" + allNormalDamageG);
-        const totalNormalAttackDamage = Math.floor(allNormalDamageG);
+        const basicDamage = 1 * atk;
+        console.log("通常攻撃ダメージ" + basicDamage);
+        const boostedDamage = 1.30 * atk;  
+
+
+        let totalDamage = 0;
+        for(let i = 1;i <= hitCount;i++){
+             
+            let damage = 0;
+            if(i%3 === 0){
+                damage = boostedDamage;
+            }else{
+                damage = basicDamage;
+            }
+
+            if(criticalCheck.checked){
+                
+                const isCritical = Math.random() < critical/100;
+                
+                if(isCritical){
+                    
+                    damage *= 2;
+                    console.log(damage);
+                }
+            }
+            totalDamage += damage;
+            console.log(totalDamage + "急所判定実行結果");
+        }
+      
+
+        const totalNormalAttackDamage = Math.floor(totalDamage);
 
         //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
 
