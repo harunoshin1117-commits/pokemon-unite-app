@@ -1024,7 +1024,7 @@ function showCriticalPopup(
     popup.offsetHeight;
 
     popup.style.animation =
-        "criticalPopup 1s ease";
+        "criticalPopup 2s ease";
 }
 // =========================
 // first render
