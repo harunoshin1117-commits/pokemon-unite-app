@@ -209,8 +209,7 @@ pokemonSelect.addEventListener("change", () => {
 
     );
 
-    console.log(selectedId);
-    console.log(currentPokemon);
+  
 
     titlePokemonTitle.textContent = selectedId;
 
@@ -406,7 +405,7 @@ pokemonSelectTwo.addEventListener("change", () => {
 
     );
 
-    console.log(enemyPokemon);
+    console.log(enemyPokemon + "相手のポケモン選択");
 
     enemyName.textContent = selectedId;
 
@@ -467,7 +466,7 @@ function findMoveByName(skillName){
             }
 
         });
-         console.log(selectedMove);
+         
         return selectedMove;
         
 }
@@ -579,7 +578,7 @@ function computeFinalDamage(selectedMove,hitCount = 1){
 
         const enemyLevel = Number(enemyLevelSelect.value);
         const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        console.log(enemyPokemonStats);
+        console.log(enemyPokemonStats + "相手のポケモンステータス");
 
         let finalDamage;
         const defense = enemyPokemonStats.defense;
@@ -687,7 +686,7 @@ function computeFinalDamageAll(){
 function updateHpBar(currentHp,maxHp,hpBarElement){
 
     const percentage = currentHp / maxHp*100;
-    console.log("パーセントは" + percentage);
+    console.log("hpバーの割合" + percentage);
    hpBarElement.style.width = `${percentage}%`;
 
     if(percentage > 50){
@@ -774,7 +773,7 @@ function calculateNormalAttackDamage(){
     
     const level =Number(levelSelect.value);
     const selectPokemon = currentPokemon.id;
-    console.log(selectPokemon);
+    
     const hitCount = Number(hitCountSelects.normalAttack.value);
     const atk = currentPokemon.stats[level].attack;
     const spAtk = currentPokemon.stats[level].spAttack;
@@ -785,9 +784,11 @@ function calculateNormalAttackDamage(){
         const boostedDamage = 0.38 * spAtk + 10 * (level - 1) +200;
         let totalDamage = 0;
         let criticalCount = 0;
+        let hitDamages = [];
        for(let i = 1;i <= hitCount;i++){
 
             let damage;
+            let isCritical = false;
             //　強化攻撃判定
             if(i%3 === 0){
                 
@@ -801,7 +802,7 @@ function calculateNormalAttackDamage(){
        if(criticalCheck.checked){
         console.log("急所判定実行");
         //急所判定
-        const isCritical = Math.random() <critical/100;
+       isCritical = Math.random() <critical/100;
         //急所なら二倍（今回だけ）
         if(isCritical){
             criticalCount++;
@@ -809,7 +810,11 @@ function calculateNormalAttackDamage(){
             console.log(damage);
         }
        }
-       
+        hitDamages.push({
+            damage:Math.floor(damage),
+            critical: isCritical,
+            boosted:i%3 === 0
+        });
         totalDamage += damage;
     }
         
@@ -822,20 +827,23 @@ function calculateNormalAttackDamage(){
 
         return {
             totalDamage: totalNormalAttackDamage,
-            criticalCount: criticalCount};
+            criticalCount: criticalCount,
+            hitDamages};
 
     }if(selectPokemon === "Greninja"){
          
         const basicDamage = 1 * atk;
-        console.log("通常攻撃ダメージ" + basicDamage);
+
         const boostedDamage = 1.30 * atk;  
 
 
         let totalDamage = 0;
         let criticalCount = 0;
+        let hitDamages = [];
         for(let i = 1;i <= hitCount;i++){
              
             let damage = 0;
+             let isCritical = false;
             if(i%3 === 0){
                 damage = boostedDamage;
             }else{
@@ -844,7 +852,7 @@ function calculateNormalAttackDamage(){
 
             if(criticalCheck.checked){
                 
-                const isCritical = Math.random() < critical/100;
+                 isCritical = Math.random() < critical/100;
                 
                 if(isCritical){
                     criticalCount++;
@@ -852,6 +860,11 @@ function calculateNormalAttackDamage(){
                     console.log(damage);
                 }
             }
+            hitDamages.push({
+                damage:Math.floor(damage),
+                critical:isCritical,
+                boosted:i%3 === 0
+            });
             totalDamage += damage;
             console.log(totalDamage + "急所判定実行結果");
         }
@@ -863,7 +876,8 @@ function calculateNormalAttackDamage(){
 
         return {
             totalDamage: totalNormalAttackDamage,
-            criticalCount: criticalCount};
+            criticalCount: criticalCount,
+            hitDamages};
 
     }if(selectPokemon === "Cinderace"){
 
@@ -872,10 +886,11 @@ function calculateNormalAttackDamage(){
 
         let totalDamage = 0;
         let criticalCount = 0;
+        let hitDamages = [];
         for(let i = 1; i <= hitCount; i++){
 
             let damage = 0;
-
+             let isCritical = false;
             if(i%3 === 0){
                 damage = boostedDamage;
             }else{
@@ -884,7 +899,7 @@ function calculateNormalAttackDamage(){
 
             if(criticalCheck.checked){
 
-                const isCritical = Math.random() < critical/100;
+                 isCritical = Math.random() < critical/100;
 
                 if(isCritical){
                     criticalCount++;
@@ -892,6 +907,11 @@ function calculateNormalAttackDamage(){
                     damage *=2;
                 }
             }
+             hitDamages.push({
+            damage:Math.floor(damage),
+            critical:isCritical,
+            boosted:i%3 === 0
+             });
             totalDamage += damage;
 
         }
@@ -899,7 +919,8 @@ function calculateNormalAttackDamage(){
     const totalNormalAttackDamage = Math.floor(totalDamage);
      return {
             totalDamage: totalNormalAttackDamage,
-            criticalCount: criticalCount};
+            criticalCount: criticalCount,
+            hitDamages};
     
     
 
@@ -925,49 +946,58 @@ function computeNormalAttackFinalDamage(normalAttackData){
         const selectPokemon = currentPokemon.id;
         const enemyLevel = Number(enemyLevelSelect.value);
         const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        console.log(enemyPokemonStats);
+        
 
-        let finalDamage;
+        
+        let totalFinalDamage = 0;
         const defense = enemyPokemonStats.defense;
         const spDefense = enemyPokemonStats.spDefense;
        
         
           if(selectPokemon === "Pikachu"){
+            
+            for(const hitData of normalAttackData.hitDamages){
 
-        finalDamage =
-            normalAttackData.totalDamage *
-            (
-                1 -
-                (
-                    spDefense /
-                    (spDefense + 600)
-                )
-            );
+                const finalDamage = hitData.damage * 
+            
+                                            (
+                                                1 -
+                                                (
+                                                    spDefense /
+                                                    (spDefense + 600)
+                                                )
+                                            );
+           
+            totalFinalDamage += Math.floor(finalDamage);}
 
     }else{
 
-        finalDamage =
-           normalAttackData.totalDamage *
-            (
-                1 -
-                (
-                    defense /
-                    (defense + 600)
-                )
-            );
+        for(const hitData of normalAttackData.hitDamages){
+
+            const finalDamage = hitData.damage * 
+                                            (
+                                                1 -
+                                                (
+                                                    defense /
+                                                    (defense + 600)
+                                                )
+                                            );
+            totalFinalDamage += Math.floor(finalDamage);
+        }
+       
+           
     }
 
 
 
 
-      return Math.floor(finalDamage);
+      return totalFinalDamage;
     
 }
 
 function showNormalAttackFinalDamage(normalAttackData){
 
     const finalDamage = computeNormalAttackFinalDamage(normalAttackData);
-    console.log(finalDamage);
     if(finalDamage == null){
          
         damageTakenNormalAttack.textContent = "ダメージ: 計算不可";
@@ -986,9 +1016,7 @@ function showNormalAttackFinalDamage(normalAttackData){
     remainingHpNormalAttack.textContent = "残りHP:" + hpAfter;
 
      updateHpBar(hpAfter,enemyHp,hpFillNormalAttack);
-    console.log(hpFillNormalAttack);
-    console.log(finalDamage);
-    console.log(hpAfter);
+    
 }
 function updateNormalAttack(){
     currentNormalAttackData = calculateNormalAttackDamage();
@@ -1003,7 +1031,9 @@ function updateNormalAttack(){
         showCriticalPopup(
             currentNormalAttackData.criticalCount
         );
+       
     }
+     showHitDamagesPopup(currentNormalAttackData.hitDamages);
 }
 
 function showCriticalPopup(
@@ -1017,6 +1047,8 @@ function showCriticalPopup(
 
     popup.textContent =
         `急所 ${criticalCount}回!`;
+    
+    
 
     popup.style.animation =
         "none";
@@ -1024,7 +1056,42 @@ function showCriticalPopup(
     popup.offsetHeight;
 
     popup.style.animation =
-        "criticalPopup 2s ease";
+        "criticalPopup 3s ease";
+}
+function showHitDamagesPopup(
+    hitDamages
+){
+    const popup = 
+            document.getElementById("hitDamage-result");
+    
+            popup.innerHTML = "";
+    hitDamages.forEach(hitDamage => {
+
+        
+            const p = document.createElement("p");
+
+            p.classList.add("hit-damage");
+            
+            let text = hitDamage.damage;
+
+            if(hitDamage.critical){
+                text += "急所命中 ";
+            }
+
+            if(hitDamage.boosted){
+                text += "強化通常";
+            }
+            
+            
+            p.textContent =text;
+            popup.appendChild(p);
+             setTimeout(() => {
+
+        p.remove();
+
+    },8000);
+        })
+    
 }
 // =========================
 // first render
