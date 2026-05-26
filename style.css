@@ -83,6 +83,14 @@ body {
     display: flex;
     gap:30px;
 }
+.scopelens { 
+    max-width: 76px;
+    height: auto;
+}
+.muscleBand {
+    max-width: 76px;
+    height: auto;
+}
 
 /* =========================
    pokemon card
@@ -199,13 +207,19 @@ body {
     border:3px solid black;
 }
 .held-item {
-    padding:0 20px;
+    min-width: 100px;
+    min-height: auto;
+    padding:20px;
     border:2px solid black;
     background:#f8f8f8;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     cursor:pointer;
-    font-size:40px;
+    font-size:16px;
    border-radius: 16px;
+}
+.held-item img {
+    max-width: 80px;
+    border-radius: 20px;
 }
 .held-item:hover {
     transform: translateY(-10px);
@@ -349,22 +363,30 @@ body {
 .item-modal {
      width:700px;
     height:500px;
-   
     background:white;
-
     border-radius:20px;
     text-align:center;
     padding:20px;
     display: flex;
-    justify-content: center;
-    gap:100px;
+    flex-direction: column;
+    gap:20px;
+    
+   
+}
+.item-modal-title {
+    display: flex;
+    justify-content: space-around;
+}
+.item-modal-list {
+    display: flex;
+    gap:10px;
 }
 .close-modal {
     font-size:20px;
     height: 30px;
     border:2px solid black;
 }
-.item-modal p {
+.item-modal-title p {
     font-size:20px;
     height: 30px;
 }
@@ -436,7 +458,7 @@ hpバー作成
 #hitDamage-result { 
     position:fixed;
     top:80px;
-    right:400px;
+    right:450px;
     z-index: 999;
     display: flex;
     flex-direction: column;
@@ -453,7 +475,7 @@ hpバー作成
 @keyframes hitDamageFall {
 
     0%{
-        transform:translateY(300px);
+        transform:translateY(200px);
         opacity:0;
     }
     50%{

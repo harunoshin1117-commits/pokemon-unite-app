@@ -52,6 +52,8 @@ const hpFillNormalAttack = document.getElementById("hp-fill-normalAttack");
 
 const normalAttackDamage = document.getElementById("normalAttack-damage");
 const criticalCheck = document.getElementById("critical-check");
+
+const selectItems = document.querySelectorAll(".select-items");
 // =========================
 // data
 // =========================
@@ -81,7 +83,8 @@ let selectedSkillTwo = null;
 let selectedSkillThird = null;
 let currentSelectedMove = null;
 let currentNormalAttackData = null;
-
+let currentHeldItems = [];
+let currentSelectedSlot = null;
 // =========================
 // init function
 // =========================
@@ -344,6 +347,40 @@ unitesMove.addEventListener("click", () => {
 
 allResetBottun.addEventListener("click",() => {
      location.reload();
+})
+
+heldItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        currentSelectedSlot = item;
+        console.log("枠作成");
+    })
+})
+selectItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+       
+           console.log(
+                item.dataset.id
+           );
+           const selectedItem = 
+                heldItemsList.find(
+                    heldItem => {
+
+                        return heldItem.id === item.dataset.id;
+                    }                        
+           )
+           console.log(selectedItem);
+           toggleHeldItem(item.dataset.id);
+           showHeldItem(item.dataset.id,selectedItem);
+           overlay.style.display = "none";
+    })
+})
+
+criticalCheck.addEventListener("click",() => {
+
+    updateNormalAttack();
 })
 // =====================
 // 持ち物選択スペース作成
@@ -1092,6 +1129,49 @@ function showHitDamagesPopup(
     },8000);
         })
     
+}
+
+function toggleHeldItem(
+    itemId
+){
+    if( currentHeldItems.includes(itemId)){
+
+        
+
+        currentHeldItems = 
+            currentHeldItems.filter(
+                id => {
+
+                    return id !== itemId;
+                }
+                
+        );
+    }else{
+
+        currentHeldItems.push(itemId);
+        
+    }
+    console.log(currentHeldItems);
+}
+function showHeldItem(itemId,
+    selectedItem
+){
+    if(currentSelectedSlot.dataset.id === itemId ){
+
+       currentSelectedSlot.innerHTML = "+";
+       currentSelectedSlot.dataset.id = "";
+       currentSelectedSlot.style.padding = "20px";
+       console.log("削除");
+    }else{
+
+        currentSelectedSlot.innerHTML = `${selectedItem.name} <img src= "${selectedItem.image}" class="slot-image">  `;
+       
+        currentSelectedSlot.dataset.id = itemId;
+        currentSelectedSlot.style.padding = "0px";
+
+        
+    }
+    console.log("追加");
 }
 // =========================
 // first render
