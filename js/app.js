@@ -54,6 +54,8 @@ const normalAttackDamage = document.getElementById("normalAttack-damage");
 const criticalCheck = document.getElementById("critical-check");
 
 const selectItems = document.querySelectorAll(".select-items");
+
+const selectPokemonImage = document.getElementById("pokemon-img");
 // =========================
 // data
 // =========================
@@ -216,6 +218,7 @@ pokemonSelect.addEventListener("change", () => {
 
     titlePokemonTitle.textContent = selectedId;
 
+    showSelectPokemonImage();
     updatePlayerUI();
    updateNormalAttack();
    computeFinalDamageAll();
@@ -1101,22 +1104,30 @@ function showHitDamagesPopup(
     const popup = 
             document.getElementById("hitDamage-result");
     
-            popup.innerHTML = "";
+          
     hitDamages.forEach(hitDamage => {
 
-        
-            const p = document.createElement("p");
+        showSingleHitDamagesPopup(hitDamage)
+            
+        })
+    
+}
+function showSingleHitDamagesPopup(hitDamage){
+
+     const popup = 
+            document.getElementById("hitDamage-result");
+    const p = document.createElement("p");
 
             p.classList.add("hit-damage");
             
             let text = hitDamage.damage;
-
-            if(hitDamage.critical){
-                text += "急所命中 ";
-            }
-
             if(hitDamage.boosted){
                 text += "強化通常";
+                p.classList.add("boosted-color");
+                
+            }if(hitDamage.critical){
+                text += "急所命中 ";
+                p.classList.add("critical-color");
             }
             
             
@@ -1126,9 +1137,7 @@ function showHitDamagesPopup(
 
         p.remove();
 
-    },8000);
-        })
-    
+    },5000);
 }
 
 function toggleHeldItem(
@@ -1158,7 +1167,7 @@ function showHeldItem(itemId,
 ){
     if(currentSelectedSlot.dataset.id === itemId ){
 
-       currentSelectedSlot.innerHTML = "+";
+       currentSelectedSlot.innerHTML = "✚";
        currentSelectedSlot.dataset.id = "";
        currentSelectedSlot.style.padding = "20px";
        console.log("削除");
@@ -1172,6 +1181,16 @@ function showHeldItem(itemId,
         
     }
     console.log("追加");
+}
+
+function showSelectPokemonImage(){
+
+   
+    const image = currentPokemon.Image;
+    console.log("img取得");
+    selectPokemonImage.innerHTML = `<img src = "${image}" class="image-pokemon">`
+    
+
 }
 // =========================
 // first render

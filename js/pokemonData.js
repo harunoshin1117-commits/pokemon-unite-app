@@ -2,6 +2,7 @@ const pokemonsList = [
     {
         id:"Pikachu",
         name:"ピカチュウ",
+        Image:"./images/pikachu-image.png",
         normalAttack:{
                         description: "3回目の攻撃は強化攻撃になり、相手をまひさせる",
                         damage:{
@@ -272,6 +273,7 @@ const pokemonsList = [
     {
         id:"Greninja",
         name:"ゲッコウガ",
+        Image:"./images/Greninja-image.png",
         normalAttack:{},
         skill:{
 
@@ -539,6 +541,7 @@ const pokemonsList = [
     {
         id:"Cinderace",
         name:"エースバーン",
+        Image:"./images/Cinderace-image.png",
         normalAttack:{},
         skill:{
             1:[

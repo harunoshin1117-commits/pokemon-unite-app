@@ -89,7 +89,7 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
         
     })
 
-    
+showSelectPokemonImage();
     
 
   function upChangelevelDamage(selectedMove,resultElement){
