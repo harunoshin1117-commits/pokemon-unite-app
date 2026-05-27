@@ -703,7 +703,7 @@ function computeFinalDamageAll(){
         ) || 0;
 
     const allDamage =
-        damage1 + damage2 + damage3 + normalAttackDamage;
+        damage1 + damage2 + damage3 + normalAttackDamage.totalFinalDamage;
 
     takenAll.textContent =
         `合計ダメージ: ${allDamage}`;
@@ -911,7 +911,7 @@ function calculateNormalAttackDamage(){
       
         
         const totalNormalAttackDamage = Math.floor(totalDamage);
-
+        
         //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
 
         return {
@@ -990,6 +990,7 @@ function computeNormalAttackFinalDamage(normalAttackData){
 
         
         let totalFinalDamage = 0;
+        let finalHitDamages = [];
         const defense = enemyPokemonStats.defense;
         const spDefense = enemyPokemonStats.spDefense;
        
@@ -1008,7 +1009,20 @@ function computeNormalAttackFinalDamage(normalAttackData){
                                                 )
                                             );
            
-            totalFinalDamage += Math.floor(finalDamage);}
+           
+    
+            finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
+
+             totalFinalDamage += Math.floor(finalDamage);
+            
+        }
 
     }else{
 
@@ -1022,23 +1036,38 @@ function computeNormalAttackFinalDamage(normalAttackData){
                                                     (defense + 600)
                                                 )
                                             );
+            
+
+             finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
             totalFinalDamage += Math.floor(finalDamage);
         }
        
            
     }
 
+    
+
+    console.log(totalFinalDamage);
 
 
-
-      return totalFinalDamage;
+      return {
+        totalFinalDamage,
+        finalHitDamages};
+            
     
 }
 
 function showNormalAttackFinalDamage(normalAttackData){
 
     const finalDamage = computeNormalAttackFinalDamage(normalAttackData);
-    if(finalDamage == null){
+    if(finalDamage.totalFinalDamage == null){
          
         damageTakenNormalAttack.textContent = "ダメージ: 計算不可";
 
@@ -1051,8 +1080,8 @@ function showNormalAttackFinalDamage(normalAttackData){
     const enemyLevel = Number(enemyLevelSelect.value);
     const enemyHp = enemyPokemon.stats[enemyLevel].hp;
 
-    const hpAfter = Math.max(0,enemyHp - finalDamage);
-    damageTakenNormalAttack.textContent = "ダメージ:" + finalDamage;
+    const hpAfter = Math.max(0,enemyHp - finalDamage.totalFinalDamage);
+    damageTakenNormalAttack.textContent = "ダメージ:" + finalDamage.totalFinalDamage;
     remainingHpNormalAttack.textContent = "残りHP:" + hpAfter;
 
      updateHpBar(hpAfter,enemyHp,hpFillNormalAttack);
