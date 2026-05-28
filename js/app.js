@@ -56,6 +56,8 @@ const criticalCheck = document.getElementById("critical-check");
 const selectItems = document.querySelectorAll(".select-items");
 
 const selectPokemonImage = document.getElementById("pokemon-img");
+
+const attackAction = document.querySelector(".attack-action");
 // =========================
 // data
 // =========================
@@ -87,6 +89,7 @@ let currentSelectedMove = null;
 let currentNormalAttackData = null;
 let currentHeldItems = [];
 let currentSelectedSlot = null;
+let hasAttacked = false;
 // =========================
 // init function
 // =========================
@@ -158,7 +161,7 @@ levelSelect.addEventListener("change", () => {
 
     updatePlayerUI();
     console.log(levelSelect.value);
-     updateNormalAttack();
+    updateNormalAttack();
    updateDamageByHitCount();
    
   
@@ -173,6 +176,7 @@ pokemonSelect.addEventListener("change", () => {
     selectedSkillOne = null;
     selectedSkillTwo = null;
     selectedSkillThird = null;
+    hasAttacked = false;
 
      resetDamageDisplay(
         skillFirstResult,
@@ -197,8 +201,13 @@ pokemonSelect.addEventListener("change", () => {
         remainingHpUnite,
         hpFillUnite
     );
+    
+    damageTakenNormalAttack.textContent = "";
+    remainingHpNormalAttack.textContent = "";
+    hpFillNormalAttack.style.width = "100%";
+    hpFillNormalAttack.style.backgroundColor = "green";
 
-    takenAll.textContent = "合計ダメージ: 0";
+    takenAll.textContent = "";
     remainingHpAll.textContent = "";
     hpFillAll.style.width = "100%";
     hpFillAll.style.backgroundColor = "green";
@@ -221,7 +230,7 @@ pokemonSelect.addEventListener("change", () => {
     showSelectPokemonImage();
     updatePlayerUI();
    updateNormalAttack();
-   computeFinalDamageAll();
+   
 
 });
 
@@ -252,9 +261,9 @@ skillsFirst.forEach(skill => {
                         );
         
             currentSelectedMove = selectedMove;
-            showFinalDamage(currentSelectedMove,damageTaken,remainingHp,hpFillOne,Number(hitCountSelects.one.value));
             
-            computeFinalDamageAll();   
+            
+            
            
                     
                     }else{
@@ -265,7 +274,7 @@ skillsFirst.forEach(skill => {
                         hpFillOne.style.width = "100%";
                         hpFillOne.style.backgroundColor = "green";
                         selectedSkillOne = null;
-                        computeFinalDamageAll();
+                        
                     }
 
      });
@@ -298,9 +307,9 @@ skillsSecond.forEach(skill => {
                     );
 
         currentSelectedMove = selectedMove;
-        showFinalDamage(currentSelectedMove,damageTakenPuls,remainingHpPuls,hpFillTwo,Number(hitCountSelects.two.value));
+        
        
-          computeFinalDamageAll(); 
+          
                 }else{
                     skillSecondResult.textContent = "";
                     skillSecondDamage.textContent = "威力:";
@@ -309,7 +318,7 @@ skillsSecond.forEach(skill => {
                     hpFillTwo.style.width = "100%";
                     hpFillTwo.style.backgroundColor = "green";
                     selectedSkillTwo = null;
-                    computeFinalDamageAll();
+                    
                 }
     });
 
@@ -328,9 +337,9 @@ unitesMove.addEventListener("click", () => {
         calculateDamage(move,Number(levelSelect.value),currentPokemon.stats[Number(levelSelect.value)]);
          showDamage(move,skillThirdDamage,Number(hitCountSelects.unite.value))
          selectedSkillThird = move;
-         showFinalDamage(move,uniteTaken,remainingHpUnite,hpFillUnite,Number(hitCountSelects.unite.value));
+         
        
-        computeFinalDamageAll(); 
+       
          
     }else{
         
@@ -342,7 +351,7 @@ unitesMove.addEventListener("click", () => {
         hpFillUnite.style.width = "100%"
         hpFillUnite.style.backgroundColor = "green";
         selectedSkillThird = null;
-        computeFinalDamageAll();
+        
         
     }
 
@@ -384,6 +393,13 @@ selectItems.forEach(item => {
 criticalCheck.addEventListener("click",() => {
 
     updateNormalAttack();
+})
+
+attackAction.addEventListener("click",() => {
+
+    hasAttacked = true;
+    attackNormalAttack();
+    
 })
 // =====================
 // 持ち物選択スペース作成
@@ -584,96 +600,6 @@ function computeFinalDamageAll(){
 //通常攻撃関数
 // ============================
 
-function computeNormalAttackFinalDamage(normalAttackData){
-
-
-
-    
-    
-        if(normalAttackData == null){
-            return null;
-        }
-        const selectPokemon = currentPokemon.id;
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        
-
-        
-        let totalFinalDamage = 0;
-        let finalHitDamages = [];
-        const defense = enemyPokemonStats.defense;
-        const spDefense = enemyPokemonStats.spDefense;
-       
-        
-          if(selectPokemon === "Pikachu"){
-            
-            for(const hitData of normalAttackData.hitDamages){
-
-                const finalDamage = hitData.damage * 
-            
-                                            (
-                                                1 -
-                                                (
-                                                    spDefense /
-                                                    (spDefense + 600)
-                                                )
-                                            );
-           
-           
-    
-            finalHitDamages.push({
-
-                damage:Math.floor(finalDamage),
-                
-                critical:hitData.critical,
-
-                boosted:hitData.boosted
-            })
-
-             totalFinalDamage += Math.floor(finalDamage);
-            
-        }
-
-    }else{
-
-        for(const hitData of normalAttackData.hitDamages){
-
-            const finalDamage = hitData.damage * 
-                                            (
-                                                1 -
-                                                (
-                                                    defense /
-                                                    (defense + 600)
-                                                )
-                                            );
-            
-
-             finalHitDamages.push({
-
-                damage:Math.floor(finalDamage),
-                
-                critical:hitData.critical,
-
-                boosted:hitData.boosted
-            })
-            totalFinalDamage += Math.floor(finalDamage);
-        }
-       
-           
-    }
-
-    
-
-    console.log(totalFinalDamage);
-
-
-      return {
-        totalFinalDamage,
-        finalHitDamages};
-            
-    
-}
-
 function calculateNormalAttackDamage(){
     
     const level =Number(levelSelect.value);
@@ -828,6 +754,96 @@ function calculateNormalAttackDamage(){
             hitDamages};}
 }   
 
+function computeNormalAttackFinalDamage(normalAttackData){
+
+
+
+    
+    
+        if(normalAttackData == null){
+            return null;
+        }
+        const selectPokemon = currentPokemon.id;
+        const enemyLevel = Number(enemyLevelSelect.value);
+        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
+        
+
+        
+        let totalFinalDamage = 0;
+        let finalHitDamages = [];
+        const defense = enemyPokemonStats.defense;
+        const spDefense = enemyPokemonStats.spDefense;
+       
+        
+          if(selectPokemon === "Pikachu"){
+            
+            for(const hitData of normalAttackData.hitDamages){
+
+                const finalDamage = hitData.damage * 
+            
+                                            (
+                                                1 -
+                                                (
+                                                    spDefense /
+                                                    (spDefense + 600)
+                                                )
+                                            );
+           
+           
+    
+            finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
+
+             totalFinalDamage += Math.floor(finalDamage);
+            
+        }
+
+    }else{
+
+        for(const hitData of normalAttackData.hitDamages){
+
+            const finalDamage = hitData.damage * 
+                                            (
+                                                1 -
+                                                (
+                                                    defense /
+                                                    (defense + 600)
+                                                )
+                                            );
+            
+
+             finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
+            totalFinalDamage += Math.floor(finalDamage);
+        }
+       
+           
+    }
+
+    
+
+    console.log(totalFinalDamage);
+
+
+      return {
+        totalFinalDamage,
+        finalHitDamages};
+            
+    
+}
+
 function showNormalAttackDamage(normalAttackData){
    
     if(normalAttackData == null){
@@ -837,9 +853,9 @@ function showNormalAttackDamage(normalAttackData){
     normalAttackDamage.textContent = "威力:" + normalAttackData.totalDamage;
 }
 
-function showNormalAttackFinalDamage(normalAttackData){
+function showNormalAttackFinalDamage(finalDamageData){
 
-    const finalDamage = computeNormalAttackFinalDamage(normalAttackData);
+    const finalDamage = finalDamageData;
     if(finalDamage.totalFinalDamage == null){
          
         damageTakenNormalAttack.textContent = "ダメージ: 計算不可";
@@ -1059,10 +1075,18 @@ function updateHpBar(currentHp,maxHp,hpBarElement){
 
 function updateNormalAttack(){
     currentNormalAttackData = calculateNormalAttackDamage();
+    
     showNormalAttackDamage(currentNormalAttackData);
    
-    showNormalAttackFinalDamage(currentNormalAttackData);
+    if(hasAttacked){
+        attackNormalAttack();
+    }
 
+    
+}
+function attackNormalAttack(){
+    const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
+    showNormalAttackFinalDamage(finalDamageData);
      if(
         currentNormalAttackData &&
         currentNormalAttackData.criticalCount > 0
@@ -1072,7 +1096,28 @@ function updateNormalAttack(){
         );
        
     }
-     showHitDamagesPopup(currentNormalAttackData.hitDamages);
+    showHitDamagesPopup(finalDamageData.finalHitDamages);
+
+    showFinalDamage(selectedSkillOne,
+            damageTaken,
+            remainingHp,
+            hpFillOne,
+            Number(hitCountSelects.one.value)
+        );
+    showFinalDamage(selectedSkillTwo,
+            damageTakenPuls,
+            remainingHpPuls,
+            hpFillTwo,
+            Number(hitCountSelects.two.value)
+        );
+    showFinalDamage(selectedSkillThird,
+            uniteTaken,
+            remainingHpUnite,
+            hpFillUnite,
+            Number(hitCountSelects.unite.value)
+        );
+    computeFinalDamageAll();
+
 }
 
 function updateDamageByHitCount(){
@@ -1083,12 +1128,7 @@ function updateDamageByHitCount(){
             skillFirstDamage,
             Number(hitCountSelects.one.value));
         
-        showFinalDamage(selectedSkillOne,
-            damageTaken,
-            remainingHp,
-            hpFillOne,
-            Number(hitCountSelects.one.value)
-        );
+        
         }
     if(selectedSkillTwo){
 
@@ -1096,12 +1136,7 @@ function updateDamageByHitCount(){
             skillSecondDamage,
             Number(hitCountSelects.two.value));
 
-        showFinalDamage(selectedSkillTwo,
-            damageTakenPuls,
-            remainingHpPuls,
-            hpFillTwo,
-            Number(hitCountSelects.two.value)
-        );
+        
         }
     if(selectedSkillThird){
 
@@ -1109,14 +1144,12 @@ function updateDamageByHitCount(){
             skillThirdDamage,
             Number(hitCountSelects.unite.value));
 
-        showFinalDamage(selectedSkillThird,
-            uniteTaken,
-            remainingHpUnite,
-            hpFillUnite,
-            Number(hitCountSelects.unite.value)
-        );
+        
     }
-    computeFinalDamageAll();
+    if(hasAttacked){
+        attackNormalAttack();
+    }
+    
 }
 
 
