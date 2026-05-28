@@ -461,6 +461,11 @@ pokemonSelectTwo.addEventListener("change", () => {
 // function(便利な機能)
 //==========================
 
+
+// ===========================
+//  計算関数
+// ===========================
+
 function calculateDamage(selectedMove,attackerLevel,attackerStats){
     
     
@@ -489,125 +494,6 @@ function calculateDamagePuls(selectedMove,attackerLevel,attackerStats){
     return Math.floor(damage);
 }
 
-function findMoveByName(skillName){
-    let selectedMove;
-      Object.values(currentPokemon.skill).forEach(skills => {
-         
-
-            const foundMove = skills.find(move => {
-
-                return move.name === skillName;
-
-            });
-
-            if(foundMove){
-
-                selectedMove = foundMove;
-            }
-
-        });
-         
-        return selectedMove;
-        
-}
-function isPlusMove(move){
-
-    const level = Number(levelSelect.value);
-
-    if(move.upgradeLevel &&
-         move.formulaPlus &&
-          level >= move.upgradeLevel
-
-    ){
-        return true;
-    }
-    return false;
-}
-
-function getRawDamage(selectedMove){
-
-    if(
-        !selectedMove ||
-        !selectedMove.formula
-    ){
-        return null;
-    }
-
-    if(isPlusMove(selectedMove)){
-        return calculateDamagePuls(
-            selectedMove,
-            Number(levelSelect.value),
-            currentPokemon.stats[
-                Number(levelSelect.value)
-            ]
-        );
-    }
-
-    return calculateDamage(
-        selectedMove,
-        Number(levelSelect.value),
-        currentPokemon.stats[
-            Number(levelSelect.value)
-        ]
-    );
-}
-function showDamage(
-    selectedMove,
-    targetElement,
-    hitCount = 1
-){
-    
-    const totalDamage = getTotalDamage(selectedMove,hitCount)
-
-    if(totalDamage === null){
-
-        targetElement.textContent =
-            "威力なし";
-
-        return;
-    }
-
-   
-    targetElement.textContent =
-        `威力: ${totalDamage}`;
-}
-
-function showFinalDamage(
-            selectedMove,
-            damageElement,
-            hpElement,
-            hpBarElement,
-            hitCount = 1
-                        
-){
-
-       const finalDamage = computeFinalDamage(selectedMove,hitCount);
-
-        if(finalDamage === null){
-
-            damageElement.textContent = "ダメージ: 計算不可";
-
-            hpElement.textContent = "残りHP: -";
-            hpBarElement.style.width = "100%";
-            hpBarElement.style.backgroundColor = "green";
-            return;
-        }
-
-
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyHp = enemyPokemon.stats[enemyLevel].hp;
-
-        const hpAfter = Math.max(0,enemyHp - finalDamage);
-
-        damageElement.textContent = `ダメージ: ${finalDamage}`;
-
-        hpElement.textContent = `残りHP: ${hpAfter}`;
-
-       updateHpBar(hpAfter,enemyHp,hpBarElement);
-
-    }
-
-    
 function computeFinalDamage(selectedMove,hitCount = 1){
 
         const rawDamage = getTotalDamage(selectedMove,hitCount)   
@@ -650,37 +536,7 @@ function computeFinalDamage(selectedMove,hitCount = 1){
     
     
         
-    }
-
-
-
-function showSkillResult(
-    resultElement,
-    skillText,
-    selectedMove
-){
-
-    resultElement.textContent = skillText;
-
-    if(isPlusMove(selectedMove)){
-        resultElement.textContent += "+";
-    }
-
-    resultElement.style.backgroundColor =
-        currentPokemon.color;
 }
-
-function isCategory(selectedMove){
-
-    if(
-        selectedMove.category === "physical"
-    ){
-        return true;
-    }
-
-    return false;
-}
-
 
 function computeFinalDamageAll(){
 
@@ -723,90 +579,99 @@ function computeFinalDamageAll(){
    updateHpBar(hpAfter,enemyHp,hpFillAll);
 }
 
-function updateHpBar(currentHp,maxHp,hpBarElement){
 
-    const percentage = currentHp / maxHp*100;
-    console.log("hpバーの割合" + percentage);
-   hpBarElement.style.width = `${percentage}%`;
+// ============================
+//通常攻撃関数
+// ============================
 
-    if(percentage > 50){
-       hpBarElement.style.backgroundColor = "green";
-    }else if(percentage > 20 ){
-       hpBarElement.style.backgroundColor = "orange";
-    }else{
-       hpBarElement.style.backgroundColor = "red";
-    }
-}
-function updateDamageByHitCount(){
+function computeNormalAttackFinalDamage(normalAttackData){
 
-    if(selectedSkillOne){
 
-        showDamage(selectedSkillOne,
-            skillFirstDamage,
-            Number(hitCountSelects.one.value));
-        
-        showFinalDamage(selectedSkillOne,
-            damageTaken,
-            remainingHp,
-            hpFillOne,
-            Number(hitCountSelects.one.value)
-        );
-        }
-    if(selectedSkillTwo){
 
-        showDamage(selectedSkillTwo,
-            skillSecondDamage,
-            Number(hitCountSelects.two.value));
-
-        showFinalDamage(selectedSkillTwo,
-            damageTakenPuls,
-            remainingHpPuls,
-            hpFillTwo,
-            Number(hitCountSelects.two.value)
-        );
-        }
-    if(selectedSkillThird){
-
-        showDamage(selectedSkillThird,
-            skillThirdDamage,
-            Number(hitCountSelects.unite.value));
-
-        showFinalDamage(selectedSkillThird,
-            uniteTaken,
-            remainingHpUnite,
-            hpFillUnite,
-            Number(hitCountSelects.unite.value)
-        );
-    }
-    computeFinalDamageAll();
-    }
-function getTotalDamage(selectedMove,hitCount){
-
-    const rawDamage = getRawDamage(selectedMove);
-
-    if(rawDamage === null){
-        return null;
-    }
-
-    return rawDamage*hitCount;
-}
-
-function resetDamageDisplay(
-    skillResultElement,
-    damageElement,
-    finalDamageElement,
-    remainingHpElement,
-    hpBarElement
-){
-    skillResultElement.textContent = "";
-    skillResultElement.style.backgroundColor = "";
     
-    damageElement.textContent = "威力:";
-    finalDamageElement.textContent = "";
-    remainingHpElement.textContent = "";
+    
+        if(normalAttackData == null){
+            return null;
+        }
+        const selectPokemon = currentPokemon.id;
+        const enemyLevel = Number(enemyLevelSelect.value);
+        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
+        
 
-    hpBarElement.style.width = "100%";
-    hpBarElement.style.backgroundColor = "green";
+        
+        let totalFinalDamage = 0;
+        let finalHitDamages = [];
+        const defense = enemyPokemonStats.defense;
+        const spDefense = enemyPokemonStats.spDefense;
+       
+        
+          if(selectPokemon === "Pikachu"){
+            
+            for(const hitData of normalAttackData.hitDamages){
+
+                const finalDamage = hitData.damage * 
+            
+                                            (
+                                                1 -
+                                                (
+                                                    spDefense /
+                                                    (spDefense + 600)
+                                                )
+                                            );
+           
+           
+    
+            finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
+
+             totalFinalDamage += Math.floor(finalDamage);
+            
+        }
+
+    }else{
+
+        for(const hitData of normalAttackData.hitDamages){
+
+            const finalDamage = hitData.damage * 
+                                            (
+                                                1 -
+                                                (
+                                                    defense /
+                                                    (defense + 600)
+                                                )
+                                            );
+            
+
+             finalHitDamages.push({
+
+                damage:Math.floor(finalDamage),
+                
+                critical:hitData.critical,
+
+                boosted:hitData.boosted
+            })
+            totalFinalDamage += Math.floor(finalDamage);
+        }
+       
+           
+    }
+
+    
+
+    console.log(totalFinalDamage);
+
+
+      return {
+        totalFinalDamage,
+        finalHitDamages};
+            
+    
 }
 
 function calculateNormalAttackDamage(){
@@ -960,11 +825,9 @@ function calculateNormalAttackDamage(){
      return {
             totalDamage: totalNormalAttackDamage,
             criticalCount: criticalCount,
-            hitDamages};
-    
-    
+            hitDamages};}
+}   
 
-}}   
 function showNormalAttackDamage(normalAttackData){
    
     if(normalAttackData == null){
@@ -972,96 +835,6 @@ function showNormalAttackDamage(normalAttackData){
         return;
     }
     normalAttackDamage.textContent = "威力:" + normalAttackData.totalDamage;
-}
-
-function computeNormalAttackFinalDamage(normalAttackData){
-
-
-
-    
-    
-        if(normalAttackData == null){
-            return null;
-        }
-        const selectPokemon = currentPokemon.id;
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        
-
-        
-        let totalFinalDamage = 0;
-        let finalHitDamages = [];
-        const defense = enemyPokemonStats.defense;
-        const spDefense = enemyPokemonStats.spDefense;
-       
-        
-          if(selectPokemon === "Pikachu"){
-            
-            for(const hitData of normalAttackData.hitDamages){
-
-                const finalDamage = hitData.damage * 
-            
-                                            (
-                                                1 -
-                                                (
-                                                    spDefense /
-                                                    (spDefense + 600)
-                                                )
-                                            );
-           
-           
-    
-            finalHitDamages.push({
-
-                damage:Math.floor(finalDamage),
-                
-                critical:hitData.critical,
-
-                boosted:hitData.boosted
-            })
-
-             totalFinalDamage += Math.floor(finalDamage);
-            
-        }
-
-    }else{
-
-        for(const hitData of normalAttackData.hitDamages){
-
-            const finalDamage = hitData.damage * 
-                                            (
-                                                1 -
-                                                (
-                                                    defense /
-                                                    (defense + 600)
-                                                )
-                                            );
-            
-
-             finalHitDamages.push({
-
-                damage:Math.floor(finalDamage),
-                
-                critical:hitData.critical,
-
-                boosted:hitData.boosted
-            })
-            totalFinalDamage += Math.floor(finalDamage);
-        }
-       
-           
-    }
-
-    
-
-    console.log(totalFinalDamage);
-
-
-      return {
-        totalFinalDamage,
-        finalHitDamages};
-            
-    
 }
 
 function showNormalAttackFinalDamage(normalAttackData){
@@ -1087,110 +860,84 @@ function showNormalAttackFinalDamage(normalAttackData){
      updateHpBar(hpAfter,enemyHp,hpFillNormalAttack);
     
 }
-function updateNormalAttack(){
-    currentNormalAttackData = calculateNormalAttackDamage();
-    showNormalAttackDamage(currentNormalAttackData);
+
+
+// ============================
+// show系すべて
+// ============================
+
+function showDamage(
+    selectedMove,
+    targetElement,
+    hitCount = 1
+){
+    
+    const totalDamage = getTotalDamage(selectedMove,hitCount)
+
+    if(totalDamage === null){
+
+        targetElement.textContent =
+            "威力なし";
+
+        return;
+    }
+
    
-    showNormalAttackFinalDamage(currentNormalAttackData);
+    targetElement.textContent =
+        `威力: ${totalDamage}`;
+}
 
-     if(
-        currentNormalAttackData &&
-        currentNormalAttackData.criticalCount > 0
-    ){
-        showCriticalPopup(
-            currentNormalAttackData.criticalCount
-        );
-       
+function showFinalDamage(
+            selectedMove,
+            damageElement,
+            hpElement,
+            hpBarElement,
+            hitCount = 1
+                        
+){
+
+       const finalDamage = computeFinalDamage(selectedMove,hitCount);
+
+        if(finalDamage === null){
+
+            damageElement.textContent = "ダメージ: 計算不可";
+
+            hpElement.textContent = "残りHP: -";
+            hpBarElement.style.width = "100%";
+            hpBarElement.style.backgroundColor = "green";
+            return;
+        }
+
+
+        const enemyLevel = Number(enemyLevelSelect.value);
+        const enemyHp = enemyPokemon.stats[enemyLevel].hp;
+
+        const hpAfter = Math.max(0,enemyHp - finalDamage);
+
+        damageElement.textContent = `ダメージ: ${finalDamage}`;
+
+        hpElement.textContent = `残りHP: ${hpAfter}`;
+
+       updateHpBar(hpAfter,enemyHp,hpBarElement);
+
+}
+
+function showSkillResult(
+    resultElement,
+    skillText,
+    selectedMove
+){
+
+    resultElement.textContent = skillText;
+
+    if(isPlusMove(selectedMove)){
+        resultElement.textContent += "+";
     }
-     showHitDamagesPopup(currentNormalAttackData.hitDamages);
+
+    resultElement.style.backgroundColor =
+        currentPokemon.color;
 }
 
-function showCriticalPopup(
-    criticalCount
-){
-
-    const popup =
-        document.getElementById(
-            "critical-popup"
-        );
-
-    popup.textContent =
-        `急所 ${criticalCount}回!`;
-    
-    
-
-    popup.style.animation =
-        "none";
-
-    popup.offsetHeight;
-
-    popup.style.animation =
-        "criticalPopup 3s ease";
-}
-function showHitDamagesPopup(
-    hitDamages
-){
-    const popup = 
-            document.getElementById("hitDamage-result");
-    
-          
-    hitDamages.forEach(hitDamage => {
-
-        showSingleHitDamagesPopup(hitDamage)
-            
-        })
-    
-}
-function showSingleHitDamagesPopup(hitDamage){
-
-     const popup = 
-            document.getElementById("hitDamage-result");
-    const p = document.createElement("p");
-
-            p.classList.add("hit-damage");
-            
-            let text = hitDamage.damage;
-            if(hitDamage.boosted){
-                text += "強化通常";
-                p.classList.add("boosted-color");
-                
-            }if(hitDamage.critical){
-                text += "急所命中 ";
-                p.classList.add("critical-color");
-            }
-            
-            
-            p.textContent =text;
-            popup.appendChild(p);
-             setTimeout(() => {
-
-        p.remove();
-
-    },5000);
-}
-
-function toggleHeldItem(
-    itemId
-){
-    if( currentHeldItems.includes(itemId)){
-
-        
-
-        currentHeldItems = 
-            currentHeldItems.filter(
-                id => {
-
-                    return id !== itemId;
-                }
-                
-        );
-    }else{
-
-        currentHeldItems.push(itemId);
-        
-    }
-    console.log(currentHeldItems);
-}
 function showHeldItem(itemId,
     selectedItem
 ){
@@ -1221,6 +968,292 @@ function showSelectPokemonImage(){
     
 
 }
+// ============================
+// popup系すべて
+// ============================
+
+function showCriticalPopup(
+    criticalCount
+){
+
+    const popup =
+        document.getElementById(
+            "critical-popup"
+        );
+
+    popup.textContent =
+        `急所 ${criticalCount}回!`;
+    
+    
+
+    popup.style.animation =
+        "none";
+
+    popup.offsetHeight;
+
+    popup.style.animation =
+        "criticalPopup 3s ease";
+}
+
+function showHitDamagesPopup(
+    hitDamages
+){
+    const popup = 
+            document.getElementById("hitDamage-result");
+    
+          
+    hitDamages.forEach(hitDamage => {
+
+        showSingleHitDamagesPopup(hitDamage)
+            
+        })
+    
+}
+
+function showSingleHitDamagesPopup(hitDamage){
+
+     const popup = 
+            document.getElementById("hitDamage-result");
+    const p = document.createElement("p");
+
+            p.classList.add("hit-damage");
+            
+            let text = hitDamage.damage;
+            if(hitDamage.boosted){
+                text += "強化通常";
+                p.classList.add("boosted-color");
+                
+            }if(hitDamage.critical){
+                text += "急所命中 ";
+                p.classList.add("critical-color");
+            }
+            
+            
+            p.textContent =text;
+            popup.appendChild(p);
+             setTimeout(() => {
+
+        p.remove();
+
+    },5000);
+}
+
+// ============================
+// updata系すべて
+// ============================
+
+function updateHpBar(currentHp,maxHp,hpBarElement){
+
+    const percentage = currentHp / maxHp*100;
+    console.log("hpバーの割合" + percentage);
+   hpBarElement.style.width = `${percentage}%`;
+
+    if(percentage > 50){
+       hpBarElement.style.backgroundColor = "green";
+    }else if(percentage > 20 ){
+       hpBarElement.style.backgroundColor = "orange";
+    }else{
+       hpBarElement.style.backgroundColor = "red";
+    }
+}
+
+function updateNormalAttack(){
+    currentNormalAttackData = calculateNormalAttackDamage();
+    showNormalAttackDamage(currentNormalAttackData);
+   
+    showNormalAttackFinalDamage(currentNormalAttackData);
+
+     if(
+        currentNormalAttackData &&
+        currentNormalAttackData.criticalCount > 0
+    ){
+        showCriticalPopup(
+            currentNormalAttackData.criticalCount
+        );
+       
+    }
+     showHitDamagesPopup(currentNormalAttackData.hitDamages);
+}
+
+function updateDamageByHitCount(){
+
+    if(selectedSkillOne){
+
+        showDamage(selectedSkillOne,
+            skillFirstDamage,
+            Number(hitCountSelects.one.value));
+        
+        showFinalDamage(selectedSkillOne,
+            damageTaken,
+            remainingHp,
+            hpFillOne,
+            Number(hitCountSelects.one.value)
+        );
+        }
+    if(selectedSkillTwo){
+
+        showDamage(selectedSkillTwo,
+            skillSecondDamage,
+            Number(hitCountSelects.two.value));
+
+        showFinalDamage(selectedSkillTwo,
+            damageTakenPuls,
+            remainingHpPuls,
+            hpFillTwo,
+            Number(hitCountSelects.two.value)
+        );
+        }
+    if(selectedSkillThird){
+
+        showDamage(selectedSkillThird,
+            skillThirdDamage,
+            Number(hitCountSelects.unite.value));
+
+        showFinalDamage(selectedSkillThird,
+            uniteTaken,
+            remainingHpUnite,
+            hpFillUnite,
+            Number(hitCountSelects.unite.value)
+        );
+    }
+    computeFinalDamageAll();
+}
+
+
+// ============================
+//  helper関数
+// ============================
+
+//return selectedMove
+function findMoveByName(skillName){
+    let selectedMove;
+      Object.values(currentPokemon.skill).forEach(skills => {
+         
+
+            const foundMove = skills.find(move => {
+
+                return move.name === skillName;
+
+            });
+
+            if(foundMove){
+
+                selectedMove = foundMove;
+            }
+
+        });
+         
+        return selectedMove;
+        
+}
+//upグレード技が判別する関数
+function isPlusMove(move){
+
+    const level = Number(levelSelect.value);
+
+    if(move.upgradeLevel &&
+         move.formulaPlus &&
+          level >= move.upgradeLevel
+
+    ){
+        return true;
+    }
+    return false;
+}
+//upグレード技か否かでダメージ計算する関数
+function getRawDamage(selectedMove){
+
+    if(
+        !selectedMove ||
+        !selectedMove.formula
+    ){
+        return null;
+    }
+
+    if(isPlusMove(selectedMove)){
+        return calculateDamagePuls(
+            selectedMove,
+            Number(levelSelect.value),
+            currentPokemon.stats[
+                Number(levelSelect.value)
+            ]
+        );
+    }
+
+    return calculateDamage(
+        selectedMove,
+        Number(levelSelect.value),
+        currentPokemon.stats[
+            Number(levelSelect.value)
+        ]
+    );
+}
+//attackかspAttackか判別する関数
+function isCategory(selectedMove){
+
+    if(
+        selectedMove.category === "physical"
+    ){
+        return true;
+    }
+
+    return false;
+}
+//hit数参照してrawDamageとかける関数
+function getTotalDamage(selectedMove,hitCount){
+
+    const rawDamage = getRawDamage(selectedMove);
+
+    if(rawDamage === null){
+        return null;
+    }
+
+    return rawDamage*hitCount;
+}
+//リセット関数
+function resetDamageDisplay(
+    skillResultElement,
+    damageElement,
+    finalDamageElement,
+    remainingHpElement,
+    hpBarElement
+){
+    skillResultElement.textContent = "";
+    skillResultElement.style.backgroundColor = "";
+    
+    damageElement.textContent = "威力:";
+    finalDamageElement.textContent = "";
+    remainingHpElement.textContent = "";
+
+    hpBarElement.style.width = "100%";
+    hpBarElement.style.backgroundColor = "green";
+}
+//持ち物選択取得関数
+function toggleHeldItem(
+    itemId
+){
+    if( currentHeldItems.includes(itemId)){
+
+        
+
+        currentHeldItems = 
+            currentHeldItems.filter(
+                id => {
+
+                    return id !== itemId;
+                }
+                
+        );
+    }else{
+
+        currentHeldItems.push(itemId);
+        
+    }
+    console.log(currentHeldItems);
+}
+
+
+
 // =========================
 // first render
 // =========================
