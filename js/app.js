@@ -385,6 +385,7 @@ selectItems.forEach(item => {
            )
            console.log(selectedItem);
            toggleHeldItem(item.dataset.id);
+           
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
     })
@@ -397,8 +398,11 @@ criticalCheck.addEventListener("click",() => {
 
 attackAction.addEventListener("click",() => {
 
+
+   
     hasAttacked = true;
     attackNormalAttack();
+    
     
 })
 // =====================
@@ -1282,7 +1286,54 @@ function toggleHeldItem(
     }
     console.log(currentHeldItems);
 }
+//この関数次見たときに分解してね計算前にステータス変更関数、計算中に追加damage追加する関数で
+function applyHeldItems(){
+    const level = Number(levelSelect.value);
+    const status = currentPokemon.stats[level];
+    console.log(status);
+    for(const item of currentHeldItems){
+        for(const [statusName,value] of Object.entries(item.status ||{}) ){
+                status[statusName] += value;
+                console.log("ステータス＋完了");
 
+            }
+
+        for(const [statusName,value] of Object.entries(item.statusEffect || {}) ){
+            status[statusName] *= value;
+            console.log("ステータスup完了");
+        }
+
+        for(const [name,value] of Object.entries(item.effect || {}) ){
+            switch(name){
+                case "criticalPlusDamage":
+                    let totalDamage = 0;
+                    let finalHitDamage =[];
+                    for(const hitDamage of currentNormalAttackData.hitDamages){
+                        let finalDamage = hitDamage.damage;
+                        if(hitDamage.critical){
+                          finalDamage *= 1.12;
+                        }
+                        totalDamage += finalDamage;
+                        console.log(totalDamage);
+
+                        finalHitDamage.push({
+                            damage:Math.floor(finalDamage),
+                            critical:hitDamage.critical,
+                            boosted:hitDamage.boosted
+                        }
+                           
+                        )
+                    }
+                    console.log("effect追加完了");
+                break;
+
+                    
+                    
+
+            }
+        }
+    }
+}
 
 
 // =========================
