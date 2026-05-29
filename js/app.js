@@ -262,7 +262,9 @@ skillsFirst.forEach(skill => {
         
             currentSelectedMove = selectedMove;
             
-            
+            if(hasAttacked){
+                attackNormalAttack();
+            }
             
            
                     
@@ -275,6 +277,10 @@ skillsFirst.forEach(skill => {
                         hpFillOne.style.backgroundColor = "green";
                         selectedSkillOne = null;
                         
+
+                        if(hasAttacked){
+                                attackNormalAttack();
+                        }
                     }
 
      });
