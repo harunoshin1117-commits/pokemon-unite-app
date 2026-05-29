@@ -1146,9 +1146,7 @@ function updateDamageByHitCount(){
 
         
     }
-    if(hasAttacked){
-        attackNormalAttack();
-    }
+   
     
 }
 
