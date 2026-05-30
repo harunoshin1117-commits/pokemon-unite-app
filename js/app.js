@@ -1361,6 +1361,20 @@ function applyHeldItemEffect(damageData){
                     
                     console.log("関数発動完了");
                 break;
+
+                case "muscleBandDamage":
+                
+                damageData.totalFinalDamage = 0;
+                const enemyLevel = Number(enemyLevelSelect.value);
+                let currentEnemyHp = enemyPokemon.stats[enemyLevel].hp;
+                for(const hitData of damageData.finalHitDamages){
+                    const muscleBandDamage = Math.floor(currentEnemyHp * value);
+                    hitData.damage += muscleBandDamage;
+                    currentEnemyHp -= hitData.damage;
+                    damageData.totalFinalDamage += Math.floor(hitData.damage);
+                    console.log("力のハチマキ発動");
+                }
+                break;
             }
         }
     }

@@ -22,9 +22,10 @@ const heldItemsList = [
         },
         effect:{
             //特殊要注意
-            damagePlus:1.03,
-            normalAttackSpeed:"7.5%"
+           muscleBandDamage:0.03,
+            
         },
+        normalAttackSpeed:"7.5%",
        
         image:"./images/muscle-band.png",
         explanation: "通常攻撃時、相手の残りhp依存追加ダメージ"
