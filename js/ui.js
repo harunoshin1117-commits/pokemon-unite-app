@@ -78,12 +78,12 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
   
 
 
-  const currentPokemonStats = currentPokemon.stats[level];
+  const currentPokemonStats = getCurrentStatus();
 
     Object.entries(currentPokemonStats).forEach(([key,value]) =>{
           const p = document.createElement("p");
                 
-            p.textContent = `${statusName[key]}: ${value}`;
+            p.textContent = `${statusName[key]}: ${Math.floor(value)}`;
 
              statsText.appendChild(p);
         

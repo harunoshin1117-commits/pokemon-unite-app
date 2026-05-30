@@ -340,7 +340,7 @@ unitesMove.addEventListener("click", () => {
 
         const move = currentPokemon.skill[9][0];
         console.log(move);
-        calculateDamage(move,Number(levelSelect.value),currentPokemon.stats[Number(levelSelect.value)]);
+        calculateDamage(move,Number(levelSelect.value),getCurrentStatus());
          showDamage(move,skillThirdDamage,Number(hitCountSelects.unite.value))
          selectedSkillThird = move;
          
@@ -394,7 +394,9 @@ selectItems.forEach(item => {
            
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
+           updatePlayerUI();
     })
+    
 })
 
 criticalCheck.addEventListener("click",() => {
@@ -564,10 +566,10 @@ function computeFinalDamage(selectedMove,hitCount = 1){
         
 }
 
-function computeFinalDamageAll(){
+function computeFinalDamageAll(finalDamageData){
 
    
-    const normalAttackDamage = computeNormalAttackFinalDamage(currentNormalAttackData) || 0;
+    
 
     const damage1 =
         computeFinalDamage(selectedSkillOne,
@@ -585,7 +587,7 @@ function computeFinalDamageAll(){
         ) || 0;
 
     const allDamage =
-        damage1 + damage2 + damage3 + normalAttackDamage.totalFinalDamage;
+        damage1 + damage2 + damage3 + finalDamageData.totalFinalDamage;
 
     takenAll.textContent =
         `合計ダメージ: ${allDamage}`;
@@ -616,9 +618,12 @@ function calculateNormalAttackDamage(){
     const selectPokemon = currentPokemon.id;
     
     const hitCount = Number(hitCountSelects.normalAttack.value);
-    const atk = currentPokemon.stats[level].attack;
-    const spAtk = currentPokemon.stats[level].spAttack;
-    const critical = currentPokemon.stats[level]. criticalRate;
+    const status = getCurrentStatus();
+    const atk = status.attack;
+    const spAtk = status.spAttack;
+    const critical = status.criticalRate;
+   
+
     if(selectPokemon === "Pikachu" ){
 
         const basicDamage = 1 * atk;
@@ -1096,6 +1101,8 @@ function updateNormalAttack(){
 }
 function attackNormalAttack(){
     const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
+
+    applyHeldItemEffect(finalDamageData);
     showNormalAttackFinalDamage(finalDamageData);
      if(
         currentNormalAttackData &&
@@ -1126,7 +1133,7 @@ function attackNormalAttack(){
             hpFillUnite,
             Number(hitCountSelects.unite.value)
         );
-    computeFinalDamageAll();
+    computeFinalDamageAll(finalDamageData);
 
 }
 
@@ -1215,18 +1222,14 @@ function getRawDamage(selectedMove){
         return calculateDamagePuls(
             selectedMove,
             Number(levelSelect.value),
-            currentPokemon.stats[
-                Number(levelSelect.value)
-            ]
+            getCurrentStatus()
         );
     }
 
     return calculateDamage(
         selectedMove,
         Number(levelSelect.value),
-        currentPokemon.stats[
-            Number(levelSelect.value)
-        ]
+        getCurrentStatus()
     );
 }
 //attackかspAttackか判別する関数
@@ -1292,56 +1295,89 @@ function toggleHeldItem(
     }
     console.log(currentHeldItems);
 }
-//この関数次見たときに分解してね計算前にステータス変更関数、計算中に追加damage追加する関数で
-function applyHeldItems(){
-    const level = Number(levelSelect.value);
-    const status = currentPokemon.stats[level];
-    console.log(status);
-    for(const item of currentHeldItems){
-        for(const [statusName,value] of Object.entries(item.status ||{}) ){
+
+
+function applyHeldItemStatus(status){
+   // let  status = { ...currentPokemon.stats[level]}; 呼び出すところにこれ書いて5/30;
+    const activeHeldItems = heldItemsList.filter(
+                                    item => {
+
+                                        return currentHeldItems.includes(
+                                            item.id
+                                        );
+                                    }
+    );
+    for(const item of activeHeldItems){
+        for(const [statusName,value] of Object.entries(item.status || {})){
                 status[statusName] += value;
-                console.log("ステータス＋完了");
-
-            }
-
-        for(const [statusName,value] of Object.entries(item.statusEffect || {}) ){
-            status[statusName] *= value;
-            console.log("ステータスup完了");
         }
+    }
+}
 
-        for(const [name,value] of Object.entries(item.effect || {}) ){
+function applyHeldItemStatusEffect(status){
+    
+    const activeHeldItems = heldItemsList.filter(
+                                item => {
+
+                                    return currentHeldItems.includes(
+                                        item.id
+                                    );
+                                }
+    );
+    for(const item of activeHeldItems){
+        for(const [statusName,value] of Object.entries(item.statusEffect || {})){
+                status[statusName] *= value;
+        }
+    }
+}
+
+function applyHeldItemEffect(damageData){
+
+    const activeHeldItems = heldItemsList.filter(
+                                    item => {
+
+                                        return currentHeldItems.includes(
+                                            item.id
+                                        );
+                                    }
+    );
+    for(const item of activeHeldItems){
+        for(const [name,value] of Object.entries(item.effect || {})){
             switch(name){
                 case "criticalPlusDamage":
-                    let totalDamage = 0;
-                    let finalHitDamage =[];
-                    for(const hitDamage of currentNormalAttackData.hitDamages){
-                        let finalDamage = hitDamage.damage;
-                        if(hitDamage.critical){
-                          finalDamage *= 1.12;
-                        }
-                        totalDamage += finalDamage;
-                        console.log(totalDamage);
+                    
+                    damageData.totalFinalDamage = 0;
 
-                        finalHitDamage.push({
-                            damage:Math.floor(finalDamage),
-                            critical:hitDamage.critical,
-                            boosted:hitDamage.boosted
+                    for(const hitData of damageData.finalHitDamages){
+                         console.log(damageData.totalFinalDamage + "計算前");
+                        if(hitData.critical){
+                            hitData.damage *= value;
+                            
                         }
-                           
-                        )
+
+                        damageData.totalFinalDamage += Math.floor(hitData.damage);
+                        console.log(damageData.totalFinalDamage + "計算後" );
                     }
-                    console.log("effect追加完了");
+                    
+                    console.log("関数発動完了");
                 break;
-
-                    
-                    
-
             }
         }
     }
 }
 
+function getCurrentStatus(){
 
+    const level = Number(levelSelect.value);
+    const status = {
+        ...currentPokemon.stats[level]
+    };
+
+    applyHeldItemStatus(status);
+    applyHeldItemStatusEffect(status);
+    console.log(status);
+    return status;
+}
 // =========================
 // first render
 // =========================
