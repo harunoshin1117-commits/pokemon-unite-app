@@ -58,6 +58,7 @@ const selectItems = document.querySelectorAll(".select-items");
 const selectPokemonImage = document.getElementById("pokemon-img");
 
 const attackAction = document.querySelector(".attack-action");
+const resultPopup = document.querySelector(".result-popup");
 // =========================
 // data
 // =========================
@@ -121,7 +122,7 @@ function createPokemonOptions(selectElement){
 }
 Object.values(hitCountSelects).forEach(select => {
 
-    for(let i = 1; i <= 10; i++){
+    for(let i = 0; i <= 10; i++){
 
         const option = document.createElement("option");
 
@@ -177,6 +178,7 @@ pokemonSelect.addEventListener("change", () => {
     selectedSkillTwo = null;
     selectedSkillThird = null;
     hasAttacked = false;
+    resultPopup.style.display = "none";
 
      resetDamageDisplay(
         skillFirstResult,
@@ -314,7 +316,9 @@ skillsSecond.forEach(skill => {
 
         currentSelectedMove = selectedMove;
         
-       
+        if(hasAttacked){
+                attackNormalAttack();
+            }
           
                 }else{
                     skillSecondResult.textContent = "";
@@ -324,6 +328,10 @@ skillsSecond.forEach(skill => {
                     hpFillTwo.style.width = "100%";
                     hpFillTwo.style.backgroundColor = "green";
                     selectedSkillTwo = null;
+
+                if(hasAttacked){
+                attackNormalAttack();
+            }
                     
                 }
     });
@@ -395,6 +403,10 @@ selectItems.forEach(item => {
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
            updatePlayerUI();
+           if(hasAttacked){
+             attackNormalAttack();
+           }
+          
     })
     
 })
@@ -407,11 +419,15 @@ criticalCheck.addEventListener("click",() => {
 attackAction.addEventListener("click",() => {
 
 
-   
+   resultPopup.style.display = "block";
     hasAttacked = true;
     attackNormalAttack();
     
     
+})
+
+resultPopup.addEventListener("click", () => {
+    updataPopup();
 })
 // =====================
 // 持ち物選択スペース作成
@@ -1104,16 +1120,7 @@ function attackNormalAttack(){
 
     applyHeldItemEffect(finalDamageData);
     showNormalAttackFinalDamage(finalDamageData);
-     if(
-        currentNormalAttackData &&
-        currentNormalAttackData.criticalCount > 0
-    ){
-        showCriticalPopup(
-            currentNormalAttackData.criticalCount
-        );
-       
-    }
-    showHitDamagesPopup(finalDamageData.finalHitDamages);
+   
 
     showFinalDamage(selectedSkillOne,
             damageTaken,
@@ -1137,6 +1144,21 @@ function attackNormalAttack(){
 
 }
 
+function updataPopup(){
+    const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
+     applyHeldItemEffect(finalDamageData);
+     if(
+        currentNormalAttackData &&
+        currentNormalAttackData.criticalCount > 0
+    ){
+        showCriticalPopup(
+            currentNormalAttackData.criticalCount
+        );
+       
+    }
+    showHitDamagesPopup(finalDamageData.finalHitDamages);
+
+}
 function updateDamageByHitCount(){
 
     if(selectedSkillOne){
