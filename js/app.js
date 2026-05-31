@@ -120,6 +120,7 @@ function createPokemonOptions(selectElement){
         selectElement.appendChild(option);
     });
 }
+//通常攻撃と攻撃のヒットカウント分けたほうがいいかも
 Object.values(hitCountSelects).forEach(select => {
 
     for(let i = 0; i <= 10; i++){
