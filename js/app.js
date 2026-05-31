@@ -59,6 +59,8 @@ const selectPokemonImage = document.getElementById("pokemon-img");
 
 const attackAction = document.querySelector(".attack-action");
 const resultPopup = document.querySelector(".result-popup");
+const detailPopupOverlay = document.getElementById("detail-popup-overlay");
+const closeDetailPopup = document.getElementById("close-detail-popup");
 // =========================
 // data
 // =========================
@@ -131,6 +133,10 @@ Object.values(hitCountSelects).forEach(select => {
         option.textContent = i + "Hits";
 
         select.appendChild(option);
+    }
+
+    if(select !== hitCountSelects.normalAttack){
+        select.value = 1;
     }
 
     select.addEventListener("change", () => {
@@ -429,6 +435,10 @@ attackAction.addEventListener("click",() => {
 
 resultPopup.addEventListener("click", () => {
     updataPopup();
+})
+
+closeDetailPopup.addEventListener("click", () => {
+    detailPopupOverlay.style.display = "none";
 })
 // =====================
 // 持ち物選択スペース作成
@@ -1048,42 +1058,48 @@ function showHitDamagesPopup(
 ){
     const popup = 
             document.getElementById("hitDamage-result");
-    
-          
-    hitDamages.forEach(hitDamage => {
 
-        showSingleHitDamagesPopup(hitDamage)
+    popup.innerHTML = "";
+           
+    hitDamages.forEach((hitDamage,index) => {
+
+        showSingleHitDamagesPopup(hitDamage,index)
             
         })
     
 }
 
-function showSingleHitDamagesPopup(hitDamage){
+function showSingleHitDamagesPopup(hitDamage,index){
 
      const popup = 
             document.getElementById("hitDamage-result");
-    const p = document.createElement("p");
+    const p = document.createElement("div");
 
             p.classList.add("hit-damage");
             
-            let text = hitDamage.damage;
+            const hitNumber = document.createElement("span");
+            const damage = document.createElement("span");
+            const tags = document.createElement("span");
+
+            hitNumber.textContent = `${index + 1}Hit`;
+            damage.textContent = `ダメージ: ${hitDamage.damage}`;
+
+            let text = "通常";
             if(hitDamage.boosted){
-                text += "強化通常";
+                text = "強化通常";
                 p.classList.add("boosted-color");
                 
             }if(hitDamage.critical){
-                text += "急所命中 ";
+                text += " / 急所命中";
                 p.classList.add("critical-color");
             }
             
             
-            p.textContent =text;
+            tags.textContent = text;
+            p.appendChild(hitNumber);
+            p.appendChild(damage);
+            p.appendChild(tags);
             popup.appendChild(p);
-             setTimeout(() => {
-
-        p.remove();
-
-    },5000);
 }
 
 // ============================
@@ -1148,15 +1164,7 @@ function attackNormalAttack(){
 function updataPopup(){
     const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
      applyHeldItemEffect(finalDamageData);
-     if(
-        currentNormalAttackData &&
-        currentNormalAttackData.criticalCount > 0
-    ){
-        showCriticalPopup(
-            currentNormalAttackData.criticalCount
-        );
-       
-    }
+     detailPopupOverlay.style.display = "flex";
     showHitDamagesPopup(finalDamageData.finalHitDamages);
 
 }
