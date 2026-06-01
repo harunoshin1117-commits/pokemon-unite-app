@@ -1029,7 +1029,7 @@ function showSelectPokemonImage(){
 // ============================
 // popup系すべて
 // ============================
-
+//旧ポップ今使ってない
 function showCriticalPopup(
     criticalCount
 ){
