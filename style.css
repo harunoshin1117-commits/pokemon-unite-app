@@ -659,3 +659,375 @@ img
     border-color: #f43f5e;
     background: #ffe4e6;
 }
+
+/* =========================
+   mobile layout
+========================= */
+@media (max-width: 768px) {
+    body {
+        background: #f5f7fb;
+    }
+
+    .container {
+        max-width: none;
+    }
+
+    .pokemons {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 10px 16px;
+        margin-bottom: 0;
+    }
+
+    .battle-area {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .pokemon,
+    .enemy-pokemon,
+    .damage-result {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        border-radius: 14px;
+        padding: 14px;
+    }
+
+    .main-pokemon-title,
+    .all-reset {
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .item-show {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .held-items-select,
+    .skill-wrapper,
+    .pokemon-result,
+    .stats-text,
+    #enemy-stats-text {
+        min-height: 0;
+    }
+
+    .held-items {
+        gap: 10px;
+        overflow-x: auto;
+        justify-content: flex-start;
+        padding-bottom: 8px;
+    }
+
+    .held-item {
+        min-width: 86px;
+        padding: 12px;
+        flex: 0 0 auto;
+    }
+
+    .stats-title,
+    .skill-name,
+    .enemy-stats > p,
+    .title-pokemon-title,
+    .enemy-name {
+        font-size: 24px;
+    }
+
+    .stats-text p,
+    #enemy-stats-text p {
+        font-size: 16px;
+    }
+
+    .result-buttons {
+        gap: 12px;
+    }
+
+    .result-button {
+        min-width: 0;
+        padding: 16px;
+        font-size: 18px;
+        border-radius: 14px;
+    }
+
+    .damage-result {
+        order: -1;
+    }
+
+    .detail-damage-result {
+        gap: 10px;
+    }
+
+    .detail-damage-result > div {
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .detail-damage-result > div:nth-child(5) {
+        order: -1;
+        border: 2px solid black;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+    }
+
+    .detail-damage-result > div:nth-child(5) p {
+        font-size: 22px;
+    }
+
+    .taken-all,
+    .remaining-hp-all {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .hp-ber {
+        min-width: 0;
+    }
+
+    .item-modal {
+        width: min(92vw, 700px);
+        height: auto;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+
+    .item-modal-list {
+        overflow-x: auto;
+        padding-bottom: 8px;
+    }
+
+    .detail-popup-overlay,
+    .overlay {
+        padding: 14px;
+    }
+
+    .detail-popup {
+        width: 100%;
+        max-height: 82vh;
+        padding: 16px;
+    }
+
+    .detail-popup .hit-damage {
+        grid-template-columns: 52px 1fr;
+        gap: 6px 10px;
+    }
+
+    .detail-popup .hit-damage span:last-child {
+        grid-column: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .held-items-select {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .held-items {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        overflow-x: visible;
+        justify-content: stretch;
+    }
+
+    .held-item {
+        min-width: 0;
+        width: 100%;
+        padding: 10px 6px;
+        font-size: 14px;
+    }
+
+    .held-item img,
+    .slot-image {
+        max-width: 56px;
+    }
+}
+
+/* =========================
+   result visibility and mobile breakdown
+========================= */
+.damage-result {
+    display: none;
+}
+
+.result-breakdown-toggle {
+    display: none;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 12px;
+    background: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .detail-damage-result > .total-damage-card {
+        order: -2;
+        border: 2px solid black;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.14);
+    }
+
+    .detail-damage-result > .total-damage-card p {
+        font-size: 22px;
+    }
+
+    .result-breakdown-toggle {
+        display: block;
+        order: -1;
+    }
+
+    .detail-damage-result:not(.is-open) .result-breakdown-card {
+        display: none;
+    }
+}
+
+/* =========================
+   mobile stats collapse
+========================= */
+.stats-toggle {
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: left;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+
+.enemy-stats-title {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 32px;
+}
+
+@media (min-width: 769px) {
+    .stats-text,
+    #enemy-stats-text {
+        display: block !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-toggle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 2px solid black;
+        border-radius: 12px;
+        background: white;
+        padding: 12px;
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .stats-toggle::after {
+        content: "開く";
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .stats-toggle:has(+ .is-open)::after,
+    .enemy-stats:has(#enemy-stats-text.is-open) .stats-toggle::after {
+        content: "閉じる";
+    }
+
+    .stats-text,
+    #enemy-stats-text {
+        display: none;
+    }
+
+    .stats-text.is-open,
+    #enemy-stats-text.is-open {
+        display: block;
+    }
+}
+
+/* =========================
+   mobile skill compact layout
+========================= */
+@media (max-width: 768px) {
+    .skill-name,
+    .result-tiile {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .skill-wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .skill-one,
+    .skill-two,
+    .unite {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 8px;
+        min-width: 0;
+    }
+
+    .unite {
+        grid-column: 1 / -1;
+    }
+
+    .skill-one p,
+    .skill-two p,
+    .unite p,
+    .result-p {
+        padding: 4px 8px;
+        margin-bottom: 6px;
+        font-size: 10px;
+    }
+
+    .skill-list li {
+        min-height: 28px;
+        padding: 4px 2px;
+        font-size: 14px;
+        line-height: 1.25;
+    }
+
+    .pokemon-result {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        padding: 8px;
+    }
+
+    .pokemon-result > div {
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 8px;
+        min-width: 0;
+    }
+
+    .pokemon-result label,
+    .pokemon-result select,
+    .pokemon-result p {
+        font-size: 13px;
+    }
+
+    .pokemon-result select {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .resurt-p-p {
+        min-height: 28px;
+        padding: 4px 6px;
+    }
+
+    #normalAttack-damage,
+    #skill-first-damage,
+    #skill-second-damage,
+    #skill-third-damage {
+        margin-top: 4px;
+        line-height: 1.25;
+    }
+}

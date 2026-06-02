@@ -1,4 +1,4 @@
-// =========================
+﻿// =========================
 // element
 // =========================
 
@@ -59,8 +59,15 @@ const selectPokemonImage = document.getElementById("pokemon-img");
 
 const attackAction = document.querySelector(".attack-action");
 const resultPopup = document.querySelector(".result-popup");
+const damageResult = document.getElementById("damage-result");
+const detailDamageResult = document.getElementById("detail-damage-result");
+const resultBreakdownToggle = document.getElementById("result-breakdown-toggle");
 const detailPopupOverlay = document.getElementById("detail-popup-overlay");
 const closeDetailPopup = document.getElementById("close-detail-popup");
+const playerStatsToggle = document.getElementById("player-stats-toggle");
+const enemyStatsToggle = document.getElementById("enemy-stats-toggle");
+const statsText = document.getElementById("stats-text");
+const enemyStatsText = document.getElementById("enemy-stats-text");
 // =========================
 // data
 // =========================
@@ -186,6 +193,9 @@ pokemonSelect.addEventListener("change", () => {
     selectedSkillThird = null;
     hasAttacked = false;
     resultPopup.style.display = "none";
+    damageResult.style.display = "none";
+    detailDamageResult.classList.remove("is-open");
+    resultBreakdownToggle.textContent = "内訳を見る";
 
      resetDamageDisplay(
         skillFirstResult,
@@ -426,6 +436,7 @@ criticalCheck.addEventListener("click",() => {
 attackAction.addEventListener("click",() => {
 
 
+   damageResult.style.display = "flex";
    resultPopup.style.display = "block";
     hasAttacked = true;
     attackNormalAttack();
@@ -440,6 +451,21 @@ resultPopup.addEventListener("click", () => {
 closeDetailPopup.addEventListener("click", () => {
     detailPopupOverlay.style.display = "none";
 })
+
+resultBreakdownToggle.addEventListener("click", () => {
+    detailDamageResult.classList.toggle("is-open");
+    resultBreakdownToggle.textContent = detailDamageResult.classList.contains("is-open")
+        ? "内訳を閉じる"
+        : "内訳を見る";
+})
+playerStatsToggle.addEventListener("click", () => {
+    statsText.classList.toggle("is-open");
+})
+
+enemyStatsToggle.addEventListener("click", () => {
+    enemyStatsText.classList.toggle("is-open");
+})
+
 // =====================
 // 持ち物選択スペース作成
 //======================
@@ -1429,3 +1455,8 @@ function getCurrentStatus(){
 
 updatePlayerUI();
 updateEnemyUI();
+
+
+
+
+
