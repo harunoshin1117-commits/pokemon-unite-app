@@ -440,6 +440,10 @@ attackAction.addEventListener("click",() => {
    resultPopup.style.display = "block";
     hasAttacked = true;
     attackNormalAttack();
+    damageResult.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
     
     
 })
@@ -1455,6 +1459,8 @@ function getCurrentStatus(){
 
 updatePlayerUI();
 updateEnemyUI();
+
+
 
 
 
