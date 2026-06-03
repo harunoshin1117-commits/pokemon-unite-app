@@ -23,7 +23,7 @@ const pokemonsList = [
                     scaling:"spAttack",
                     ratio:0.75,
                     levelScaling:21,
-                    bassDamage:390
+                    baseDamage:390
                 } },
                {
                 name:"エレキネット",
@@ -32,7 +32,7 @@ const pokemonsList = [
                     scaling:"spAttack",
                     ratio:0.36,
                     levelScaling:11,
-                    bassDamage:350
+                    baseDamage:350
                 }
                }],
             4:[{
@@ -43,13 +43,13 @@ const pokemonsList = [
                     scaling:"spAttack",
                     ratio:0.80,
                     levelScaling:24,
-                    bassDamage:420
+                    baseDamage:420
                 },
                 formulaPlus:{
                     scaling:"spAttack",
                     ratio:0.86,
                     levelScaling:28,
-                    bassDamage:480
+                    baseDamage:480
                 },
                 upgradeLevel:11
                 },
@@ -60,13 +60,13 @@ const pokemonsList = [
                         scaling:"spAttack",
                         ratio:0.209,
                         levelScaling:5,
-                        bassDamage:218
+                        baseDamage:218
                     },
                     formulaPlus:{
                          scaling:"spAttack",
                         ratio:0.209,
                         levelScaling:5,
-                        bassDamage:218
+                        baseDamage:218
                     },
                     upgradeLevel:11
                 }],
@@ -78,12 +78,12 @@ const pokemonsList = [
                     scaling:"spAttack",
                     ratio:0.15,
                     levelScaling:3,
-                    bassDamage:150
+                    baseDamage:150
                 },formulaPlus:{
                      scaling:"spAttack",
                     ratio:0.15,
                     levelScaling:3,
-                    bassDamage:150
+                    baseDamage:150
                 },
                 upgradeLevel:13
              },
@@ -94,13 +94,13 @@ const pokemonsList = [
                         scaling:"spAttack",
                         ratio:0.50,
                         levelScaling:12,
-                        bassDamage:500
+                        baseDamage:500
                     },
                     formulaPlus:{
                         scaling:"spAttack",
                         ratio:0.59,
                         levelScaling:14,
-                        bassDamage:600
+                        baseDamage:600
                     },
                     upgradeLevel:13
                 }],
@@ -111,7 +111,7 @@ const pokemonsList = [
                     scaling:"spAttack",
                     ratio:0.451,
                     levelScaling:9,
-                    bassDamage:450
+                    baseDamage:450
                 }
             }]
         },
@@ -286,7 +286,7 @@ const pokemonsList = [
                     scaling:"attack",
                     ratio:1.13,
                     levelScaling:7,
-                    bassDamage:208
+                    baseDamage:208
                 }
                 },
 
@@ -324,20 +324,20 @@ const pokemonsList = [
                     scaling:"attack",
                     ratio:1.35,
                     levelScaling:8,
-                    bassDamage:210
+                    baseDamage:210
                 },
 
                 healingFormula:{
                     scaling:"attack",
                     ratio:0.15,
                     levelScaling:2,
-                    bassDamage:25
+                    baseDamage:25
                 },
                 formulaPlus:{
                     scaling:"attack",
                     ratio:1.35,
                     levelScaling:8,
-                    bassDamage:210
+                    baseDamage:210
                 },
                 upgradeLevel:13
                 },
@@ -350,34 +350,34 @@ const pokemonsList = [
                     scaling:"attack",
                     ratio:1.80,
                     levelScaling:8,
-                    bassDamage:330
+                    baseDamage:330
                 },
 
                 bonusFormula:{
                     scaling:"attack",
                     ratio:0.90,
                     levelScaling:4,
-                    bassDamage:165
+                    baseDamage:165
                 },
 
                 healingFormula:{
                     scaling:"attack",
                     ratio:0.41,
                     levelScaling:5,
-                    bassDamage:75
+                    baseDamage:75
                 },
 
                 healingFormulaPlus:{
                     scaling:"attack",
                     ratio:0.49,
                     levelScaling:6,
-                    bassDamage:138
+                    baseDamage:138
                 },
                 formulaPlus:{
                     scaling:"attack",
                     ratio:1.35,
                     levelScaling:8,
-                    bassDamage:210
+                    baseDamage:210
                 },
                 upgradeLevel:13
                 }
@@ -392,7 +392,7 @@ const pokemonsList = [
                     scaling:"attack",
                     ratio:2.20,
                     levelScaling:11,
-                    bassDamage:420
+                    baseDamage:420
                 }
                 }
             ]
@@ -552,7 +552,7 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:1.15,
                         levelScaling:8,
-                        bassDamage:155
+                        baseDamage:155
                     }
                 },
 
@@ -563,7 +563,7 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:0.36,
                         levelScaling:3,
-                        bassDamage:100
+                        baseDamage:100
                     }
                 }
             ],
@@ -578,14 +578,14 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:3.45,
                         levelScaling:32,
-                        bassDamage:820
+                        baseDamage:820
                     },
 
                     formulaPlus:{
                         scaling:"attack",
                         ratio:3.45,
                         levelScaling:32,
-                        bassDamage:820
+                        baseDamage:820
                     },
 
                     upgradeLevel:11
@@ -599,14 +599,14 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:0.48,
                         levelScaling:4,
-                        bassDamage:120
+                        baseDamage:120
                     },
 
                     formulaPlus:{
                         scaling:"attack",
                         ratio:0.48,
                         levelScaling:4,
-                        bassDamage:120
+                        baseDamage:120
                     },
 
                     upgradeLevel:11
@@ -623,14 +623,14 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:0.47,
                         levelScaling:3,
-                        bassDamage:130
+                        baseDamage:130
                     },
 
                     formulaPlus:{
                         scaling:"attack",
                         ratio:0.47,
                         levelScaling:3,
-                        bassDamage:130
+                        baseDamage:130
                     },
 
                     upgradeLevel:13
@@ -654,7 +654,7 @@ const pokemonsList = [
                         scaling:"attack",
                         ratio:2.47,
                         levelScaling:14,
-                        bassDamage:670
+                        baseDamage:670
                     }
                 }
             ]

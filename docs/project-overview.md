@@ -283,13 +283,13 @@ JavaScriptは以下の順番で読み込まれます。
 6. `damageResult.scrollIntoView()` で計算結果エリアを画面上部へ移動する。
 7. 通常攻撃、技1、技2、ユナイト技、合計ダメージを表示する。
 
-現在、自動スクロールは攻撃ボタン押下時だけ発生します。技選択、ヒット数変更、急所ON/OFF、持ち物変更では発生しません。
+現在、自動スクロールは攻撃ボタン押下時だけ発生します。技選択、ヒット数変更、急所ON/OFF、持ち物変更では発生しません。攻撃後にユナイト技を選択・解除した場合も、技1・技2と同じように再計算され、結果表示とHPバーが更新されます。 攻撃後の再計算判定は `rerenderAfterAttack()` にまとめています。
 
 ### 計算結果表示
 
-攻撃前は `damage-result` が非表示です。
+PCでは `damage-result` を常時表示します。スマホでは攻撃前は `damage-result` が非表示です。
 
-攻撃後は以下の表示になります。
+攻撃後は、PC/スマホともJSが数値とHPバーを更新します。スマホではこのタイミングで `damage-result` も表示されます。
 
 - 計算結果ヘッダー
   - 左: `計算結果`
@@ -302,7 +302,7 @@ JavaScriptは以下の順番で読み込まれます。
 ### 詳細表示
 
 1. 計算結果右上の `詳細表示` ボタンを押す。
-2. `updataPopup()` が実行される。
+2. `updatePopup()` が実行される。
 3. 通常攻撃の最終ダメージデータを再計算する。
 4. `showHitDamagesPopup()` が1ヒットごとの詳細を表示する。
 5. `detail-popup-overlay` が表示され、背景がぼかされる。
@@ -360,9 +360,9 @@ JavaScriptは以下の順番で読み込まれます。
 - `calculateDamage(selectedMove, attackerLevel, attackerStats)`
   - 通常技の基礎威力を計算します。
 
-- `calculateDamagePuls(selectedMove, attackerLevel, attackerStats)`
+- `calculateDamagePlus(selectedMove, attackerLevel, attackerStats)`
   - アップグレード後の技威力を計算します。
-  - 関数名は `Plus` のタイポと思われます。
+  - 旧名 `calculateDamagePuls` から修正済みです。
 
 - `isPlusMove(move)`
   - 現在レベルでアップグレード技として扱うか判定します。
@@ -391,6 +391,11 @@ JavaScriptは以下の順番で読み込まれます。
 - `showNormalAttackFinalDamage(finalDamageData)`
   - 通常攻撃の最終ダメージ、残りHP、HPバーを表示します。
 
+### 攻撃後の再描画
+
+- `rerenderAfterAttack()`
+  - `hasAttacked` が `true` の場合だけ `attackNormalAttack()` を呼びます。
+  - 技1、技2、ユナイト技、持ち物、ヒット数変更後の再計算入口を統一します。
 ### 結果表示
 
 - `attackNormalAttack()`
@@ -492,24 +497,29 @@ JavaScriptは以下の順番で読み込まれます。
 
 ### 命名のタイポ・表記揺れ
 
-以下は将来的に整理したい箇所です。
+2026-06-03に対応済みです。HTML/CSS/JS/データ定義で参照されていた以下の名前を、意味を変えずに表記だけ統一しました。
 
 - `calculateDamagePuls` → `calculateDamagePlus`
 - `updataPopup` → `updatePopup`
 - `all-reset-bottun` → `all-reset-button`
-- `damageTakenPuls` → `damageTakenPlus` または `damageTakenTwo`
+- `damageTakenPuls` → `damageTakenPlus`
+- `remainingHpPuls` → `remainingHpPlus`
+- `damage-taken-puls` → `damage-taken-plus`
+- `remaining-hp-puls` → `remaining-hp-plus`
 - `bassDamage` → `baseDamage`
 - `resurt-p-p` → `result-p-p`
 
-ただし既存HTML/CSS/JSにまたがるため、変更するなら一括で慎重に行う必要があります。
+UI表示や計算式の内容は変えず、参照名だけを一括でそろえています。
 
 ### HTMLのid重複
 
-`hp-ber` が複数箇所で同じ `id` として使われています。HTMLでは `id` はページ内で一意であるべきです。共通スタイル用ならクラスに変更した方がよいです。
+2026-06-03に対応済みです。`index.html` のHPバー5箇所から重複していた `id="hp-ber"` を削除し、共通スタイルは既存の `class="hp-ber"` に統一しました。あわせて `js/app.js` の未使用だった `hpBer` のDOM取得も削除しました。
 
 ### CSSが追記型になっている
 
 スマホ対応を段階的に追加したため、`style.css` の後半に上書きCSSが増えています。機能としては動きますが、長期的には以下のように整理すると見通しが良くなります。
+
+2026-06-03に一部対応済みです。未使用だった `.select-pokemons`、`.critical-boosted-color`、`.normal-color` と、古い落下アニメーション用の `.hit-damage` / `@keyframes hitDamageFall` と、前側に重複していた `.boosted-color` / `.critical-color` を削除しました。PCで最終ダメージリザルトを常時表示する方針があるため、`.damage-result` の表示制御は今回は整理対象から外しています。あわせてスマホ持ち物CSSを整理済みです。前側の横スクロール設計を削除し、後ろ側の3列グリッド設計へ `.held-items-select` / `.held-items` / `.held-item` / `.slot-image` のスマホ指定を集約しました。 続けて、スマホ基本レイアウトとスマホ持ち物グリッドのCSSブロックが分かるようにコメント見出しを整理しました。 さらに、結果表示・内訳折りたたみ・詳細表示ボタンのCSSを `mobile result display` 周辺にまとめ、結果表示まわりを追いやすくしました。PCでは計算結果エリアを常時表示し、スマホでは攻撃前だけ非表示になるように表示方針を分けました。
 
 - base layout
 - components
@@ -523,7 +533,7 @@ JavaScriptは以下の順番で読み込まれます。
 
 ### デバッグログ
 
-`console.log()` が多く残っています。公開版ではデバッグフラグで制御するか、不要なものは削除するとよいです。
+2026-06-03に対応済みです。`js/app.js` に残っていた開発中の `console.log()` は削除し、公開版のコンソール出力を整理しました。
 
 ### リセット処理
 

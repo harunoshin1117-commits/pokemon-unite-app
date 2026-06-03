@@ -23,8 +23,8 @@ function updatePlayerUI(){
   statsText.innerHTML = "";
   damageTaken.textContent = "";
   remainingHp.textContent = "";
-  damageTakenPuls.textContent = "";
-  remainingHpPuls.textContent = "";
+  damageTakenPlus.textContent = "";
+  remainingHpPlus.textContent = "";
   uniteTaken.textContent = "";
   remainingHpUnite.textContent = "";
   

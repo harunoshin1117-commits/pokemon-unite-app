@@ -31,10 +31,6 @@ body {
     gap:20px;
 }
 
-.select-pokemons{
-    display:flex;
-    gap:50px;
-}
 .main-pokemon-title {
     display: flex;
     gap:100px;
@@ -251,7 +247,7 @@ body {
     letter-spacing:2px;
     font-weight:bold;
 }
-.all-reset-bottun{
+.all-reset-button{
     box-shadow: 0 2px black;
     transition: all 0.2s;
     background: #ef4444;
@@ -263,10 +259,10 @@ body {
     font-weight: bold;
     
 }
-.all-reset-bottun:hover {
+.all-reset-button:hover {
     opacity: 0.6;
 }
-.all-reset-bottun:active {
+.all-reset-button:active {
     opacity: 1;
     box-shadow: none;
     transform: translateY(2px);
@@ -297,7 +293,7 @@ body {
     font-size:18px;
     font-weight:bold;
 }
-.resurt-p-p {
+.result-p-p {
    min-height: 40px;
    padding:8px 12px;
    border-radius: 8px;
@@ -441,15 +437,6 @@ body {
     font-weight: bold;
 }
 
-.boosted-color {
-    background: #fff4c2;
-}
-
-.critical-color {
-    border-color: #f43f5e;
-    background: #ffe4e6;
-}
-
 
 /*==========================
 ここに持ち物一覧のクラスすべて書く
@@ -577,44 +564,11 @@ hpバー作成
     gap:8px;
     
 }
-.hit-damage{
-    animation:hitDamageFall 5s ease;
-    color:white;
-    font-size:24px;
-    font-weight: bold;
-    border: 2px solid whitesmoke;
-    border-radius: 20px;
-    pointer-events: none;
-    background-color: black;
-    padding-left: 5px;
-}
-
-@keyframes hitDamageFall {
-
-    0%{
-        transform:translateY(0px);
-        opacity:0;
-    }
-    50%{
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(200px);
-        opacity:1;
-    }
-}
 .critical-color {
     color:red;
 }
 .boosted-color {
     color:rgb(170, 182, 250);
-}
-.critical-boosted-color {
-     color:#9359de
-}
-.normal-color {
-    color:white;
 }
 /*
 img
@@ -661,7 +615,7 @@ img
 }
 
 /* =========================
-   mobile layout
+   mobile base layout
 ========================= */
 @media (max-width: 768px) {
     body {
@@ -706,25 +660,11 @@ img
         gap: 12px;
     }
 
-    .held-items-select,
     .skill-wrapper,
     .pokemon-result,
     .stats-text,
     #enemy-stats-text {
         min-height: 0;
-    }
-
-    .held-items {
-        gap: 10px;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding-bottom: 8px;
-    }
-
-    .held-item {
-        min-width: 86px;
-        padding: 12px;
-        flex: 0 0 auto;
     }
 
     .stats-title,
@@ -820,8 +760,12 @@ img
     }
 }
 
+/* =========================
+   mobile held items grid
+========================= */
 @media (max-width: 768px) {
     .held-items-select {
+        min-height: 0;
         width: 100%;
         max-width: 100%;
         overflow: hidden;
@@ -849,10 +793,40 @@ img
 }
 
 /* =========================
-   result visibility and mobile breakdown
+   result header action
 ========================= */
-.damage-result {
-    display: none;
+.damage-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.damage-result-header p {
+    margin-bottom: 0;
+}
+
+.damage-result-header .result-popup {
+    width: auto;
+    min-width: 0;
+    padding: 10px 14px;
+    font-size: 14px;
+    border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .damage-result-header .result-popup {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+}
+/* =========================
+   mobile result display
+========================= */
+@media (max-width: 768px) {
+    .damage-result {
+        display: none;
+    }
 }
 
 .result-breakdown-toggle {
@@ -1023,7 +997,7 @@ img
         max-width: 100%;
     }
 
-    .resurt-p-p {
+    .result-p-p {
         min-height: 28px;
         padding: 4px 6px;
     }
@@ -1037,31 +1011,3 @@ img
     }
 }
 
-/* =========================
-   result header action
-========================= */
-.damage-result-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.damage-result-header p {
-    margin-bottom: 0;
-}
-
-.damage-result-header .result-popup {
-    width: auto;
-    min-width: 0;
-    padding: 10px 14px;
-    font-size: 14px;
-    border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-    .damage-result-header .result-popup {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-}

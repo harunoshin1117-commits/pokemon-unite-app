@@ -31,19 +31,18 @@ const closeModal = document.getElementById("close-modal");
 
 const damageTaken = document.getElementById("damage-taken");
 const remainingHp = document.getElementById("remaining-hp");
-const damageTakenPuls = document.getElementById("damage-taken-puls");
-const remainingHpPuls = document.getElementById("remaining-hp-puls");
+const damageTakenPlus = document.getElementById("damage-taken-plus");
+const remainingHpPlus = document.getElementById("remaining-hp-plus");
 const uniteTaken = document.getElementById("unite-taken");
 const remainingHpUnite = document.getElementById("remaining-hp-unite");
 const damageTakenNormalAttack = document.getElementById("damage-taken-normalAttack");
 const remainingHpNormalAttack = document.getElementById("remaining-hp-normalAttack");
 
 
-const allResetBottun = document.getElementById("all-reset-bottun");
+const allResetButton = document.getElementById("all-reset-button");
 const takenAll = document.getElementById("taken-all");
 const remainingHpAll = document.getElementById("remaining-hp-all");
 
-const hpBer = document.getElementById("hp-ber");
 const hpFillOne = document.getElementById("hp-fill-one");
 const hpFillTwo = document.getElementById("hp-fill-two");
 const hpFillUnite = document.getElementById("hp-fill-unite");
@@ -175,7 +174,6 @@ updateNormalAttack();
 levelSelect.addEventListener("change", () => {
 
     updatePlayerUI();
-    console.log(levelSelect.value);
     updateNormalAttack();
    updateDamageByHitCount();
    
@@ -208,8 +206,8 @@ pokemonSelect.addEventListener("change", () => {
     resetDamageDisplay(
         skillSecondResult,
         skillSecondDamage,
-        damageTakenPuls,
-        remainingHpPuls,
+        damageTakenPlus,
+        remainingHpPlus,
         hpFillTwo
     );
 
@@ -269,7 +267,6 @@ skillsFirst.forEach(skill => {
 
             const selectedMove = findMoveByName(skillName);
             selectedSkillOne = selectedMove;
-            console.log(selectedMove);
         
         
             showDamage(selectedMove,skillFirstDamage,Number(hitCountSelects.one.value));
@@ -280,10 +277,7 @@ skillsFirst.forEach(skill => {
                         );
         
             currentSelectedMove = selectedMove;
-            
-            if(hasAttacked){
-                attackNormalAttack();
-            }
+            rerenderAfterAttack();
             
            
                     
@@ -295,11 +289,7 @@ skillsFirst.forEach(skill => {
                         hpFillOne.style.width = "100%";
                         hpFillOne.style.backgroundColor = "green";
                         selectedSkillOne = null;
-                        
-
-                        if(hasAttacked){
-                                attackNormalAttack();
-                        }
+            rerenderAfterAttack();
                     }
 
      });
@@ -321,7 +311,6 @@ skillsSecond.forEach(skill => {
        
         const selectedMove = findMoveByName(skillName);
         selectedSkillTwo = selectedMove;
-        console.log(selectedMove);
 
 
         showDamage(selectedMove,skillSecondDamage,Number(hitCountSelects.two.value));
@@ -332,23 +321,17 @@ skillsSecond.forEach(skill => {
                     );
 
         currentSelectedMove = selectedMove;
-        
-        if(hasAttacked){
-                attackNormalAttack();
-            }
+            rerenderAfterAttack();
           
                 }else{
                     skillSecondResult.textContent = "";
                     skillSecondDamage.textContent = "威力:";
-                    damageTakenPuls.textContent = "";
-                    remainingHpPuls.textContent = "";
+                    damageTakenPlus.textContent = "";
+                    remainingHpPlus.textContent = "";
                     hpFillTwo.style.width = "100%";
                     hpFillTwo.style.backgroundColor = "green";
                     selectedSkillTwo = null;
-
-                if(hasAttacked){
-                attackNormalAttack();
-            }
+            rerenderAfterAttack();
                     
                 }
     });
@@ -364,31 +347,25 @@ unitesMove.addEventListener("click", () => {
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = currentPokemon.skill[9][0];
-        console.log(move);
         calculateDamage(move,Number(levelSelect.value),getCurrentStatus());
-         showDamage(move,skillThirdDamage,Number(hitCountSelects.unite.value))
-         selectedSkillThird = move;
-         
-       
-       
-         
+        showDamage(move,skillThirdDamage,Number(hitCountSelects.unite.value));
+        selectedSkillThird = move;
+            rerenderAfterAttack();
     }else{
         
         skillThirdResult.textContent = "";
         skillThirdDamage.textContent = "威力:";
         uniteTaken.textContent = "";
         remainingHpUnite.textContent = "";
-        console.log("ユナイト技選択なし");
-        hpFillUnite.style.width = "100%"
+        hpFillUnite.style.width = "100%";
         hpFillUnite.style.backgroundColor = "green";
         selectedSkillThird = null;
-        
-        
+            rerenderAfterAttack();
     }
 
 });
 
-allResetBottun.addEventListener("click",() => {
+allResetButton.addEventListener("click",() => {
      location.reload();
 })
 
@@ -397,16 +374,12 @@ heldItems.forEach(item => {
     item.addEventListener("click", () => {
 
         currentSelectedSlot = item;
-        console.log("枠作成");
     })
 })
 selectItems.forEach(item => {
 
     item.addEventListener("click", () => {
        
-           console.log(
-                item.dataset.id
-           );
            const selectedItem = 
                 heldItemsList.find(
                     heldItem => {
@@ -414,15 +387,12 @@ selectItems.forEach(item => {
                         return heldItem.id === item.dataset.id;
                     }                        
            )
-           console.log(selectedItem);
            toggleHeldItem(item.dataset.id);
            
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
            updatePlayerUI();
-           if(hasAttacked){
-             attackNormalAttack();
-           }
+            rerenderAfterAttack();
           
     })
     
@@ -449,7 +419,7 @@ attackAction.addEventListener("click",() => {
 })
 
 resultPopup.addEventListener("click", () => {
-    updataPopup();
+    updatePopup();
 })
 
 closeDetailPopup.addEventListener("click", () => {
@@ -530,7 +500,6 @@ pokemonSelectTwo.addEventListener("change", () => {
 
     );
 
-    console.log(enemyPokemon + "相手のポケモン選択");
 
     enemyName.textContent = selectedId;
 
@@ -558,24 +527,21 @@ function calculateDamage(selectedMove,attackerLevel,attackerStats){
     
     const scalingStat = attackerStats[formula.scaling];
 
-    const damage =scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.bassDamage;
+    const damage =scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.baseDamage;
       
     
     const result =  Math.floor(damage);
-    console.log(result);
     return Math.floor(damage);
 }
 
-function calculateDamagePuls(selectedMove,attackerLevel,attackerStats){
+function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
     
     const formula = selectedMove.formulaPlus;
-    console.log(formula);
     const scalingStat = attackerStats[formula.scaling];
 
-    const damage = scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.bassDamage;
+    const damage = scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.baseDamage;
     
     const result =  Math.floor(damage);
-    console.log(result);
     return Math.floor(damage);
 }
 
@@ -589,7 +555,6 @@ function computeFinalDamage(selectedMove,hitCount = 1){
 
         const enemyLevel = Number(enemyLevelSelect.value);
         const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        console.log(enemyPokemonStats + "相手のポケモンステータス");
 
         let finalDamage;
         const defense = enemyPokemonStats.defense;
@@ -703,14 +668,12 @@ function calculateNormalAttackDamage(){
 
        }
        if(criticalCheck.checked){
-        console.log("急所判定実行");
         //急所判定
        isCritical = Math.random() <critical/100;
         //急所なら二倍（今回だけ）
         if(isCritical){
             criticalCount++;
             damage *= 2
-            console.log(damage);
         }
        }
         hitDamages.push({
@@ -721,7 +684,6 @@ function calculateNormalAttackDamage(){
         totalDamage += damage;
     }
         
-        console.log(boostedDamage + "強化通常");
 
        
       
@@ -760,7 +722,6 @@ function calculateNormalAttackDamage(){
                 if(isCritical){
                     criticalCount++;
                     damage *= 2;
-                    console.log(damage);
                 }
             }
             hitDamages.push({
@@ -769,7 +730,6 @@ function calculateNormalAttackDamage(){
                 boosted:i%3 === 0
             });
             totalDamage += damage;
-            console.log(totalDamage + "急所判定実行結果");
         }
       
         
@@ -806,7 +766,6 @@ function calculateNormalAttackDamage(){
 
                 if(isCritical){
                     criticalCount++;
-                    console.log("急所に当たりました");
                     damage *=2;
                 }
             }
@@ -906,7 +865,6 @@ function computeNormalAttackFinalDamage(normalAttackData){
 
     
 
-    console.log(totalFinalDamage);
 
 
       return {
@@ -1034,7 +992,6 @@ function showHeldItem(itemId,
        currentSelectedSlot.innerHTML = "✚";
        currentSelectedSlot.dataset.id = "";
        currentSelectedSlot.style.padding = "20px";
-       console.log("削除");
     }else{
 
         currentSelectedSlot.innerHTML = `${selectedItem.name} <img src= "${selectedItem.image}" class="slot-image">  `;
@@ -1044,14 +1001,12 @@ function showHeldItem(itemId,
 
         
     }
-    console.log("追加");
 }
 
 function showSelectPokemonImage(){
 
    
     const image = currentPokemon.Image;
-    console.log("img取得");
     selectPokemonImage.innerHTML = `<img src = "${image}" class="image-pokemon">`
     
 
@@ -1133,13 +1088,12 @@ function showSingleHitDamagesPopup(hitDamage,index){
 }
 
 // ============================
-// updata系すべて
+// update系すべて
 // ============================
 
 function updateHpBar(currentHp,maxHp,hpBarElement){
 
     const percentage = currentHp / maxHp*100;
-    console.log("hpバーの割合" + percentage);
    hpBarElement.style.width = `${percentage}%`;
 
     if(percentage > 50){
@@ -1155,12 +1109,14 @@ function updateNormalAttack(){
     currentNormalAttackData = calculateNormalAttackDamage();
     
     showNormalAttackDamage(currentNormalAttackData);
-   
+            rerenderAfterAttack();
+
+    
+}
+function rerenderAfterAttack(){
     if(hasAttacked){
         attackNormalAttack();
     }
-
-    
 }
 function attackNormalAttack(){
     const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
@@ -1176,8 +1132,8 @@ function attackNormalAttack(){
             Number(hitCountSelects.one.value)
         );
     showFinalDamage(selectedSkillTwo,
-            damageTakenPuls,
-            remainingHpPuls,
+            damageTakenPlus,
+            remainingHpPlus,
             hpFillTwo,
             Number(hitCountSelects.two.value)
         );
@@ -1191,7 +1147,7 @@ function attackNormalAttack(){
 
 }
 
-function updataPopup(){
+function updatePopup(){
     const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
      applyHeldItemEffect(finalDamageData);
      detailPopupOverlay.style.display = "flex";
@@ -1280,7 +1236,7 @@ function getRawDamage(selectedMove){
     }
 
     if(isPlusMove(selectedMove)){
-        return calculateDamagePuls(
+        return calculateDamagePlus(
             selectedMove,
             Number(levelSelect.value),
             getCurrentStatus()
@@ -1354,7 +1310,6 @@ function toggleHeldItem(
         currentHeldItems.push(itemId);
         
     }
-    console.log(currentHeldItems);
 }
 
 
@@ -1410,17 +1365,14 @@ function applyHeldItemEffect(damageData){
                     damageData.totalFinalDamage = 0;
 
                     for(const hitData of damageData.finalHitDamages){
-                         console.log(damageData.totalFinalDamage + "計算前");
                         if(hitData.critical){
                             hitData.damage *= value;
                             
                         }
 
                         damageData.totalFinalDamage += Math.floor(hitData.damage);
-                        console.log(damageData.totalFinalDamage + "計算後" );
                     }
                     
-                    console.log("関数発動完了");
                 break;
 
                 case "muscleBandDamage":
@@ -1433,7 +1385,6 @@ function applyHeldItemEffect(damageData){
                     hitData.damage += muscleBandDamage;
                     currentEnemyHp -= hitData.damage;
                     damageData.totalFinalDamage += Math.floor(hitData.damage);
-                    console.log("力のハチマキ発動");
                 }
                 break;
             }
@@ -1450,7 +1401,6 @@ function getCurrentStatus(){
 
     applyHeldItemStatus(status);
     applyHeldItemStatusEffect(status);
-    console.log(status);
     return status;
 }
 // =========================
