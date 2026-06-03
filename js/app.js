@@ -1,5 +1,5 @@
 ﻿// =========================
-// element
+// DOM elements
 // =========================
 
 const levelSelect = document.getElementById("level");
@@ -68,7 +68,7 @@ const enemyStatsToggle = document.getElementById("enemy-stats-toggle");
 const statsText = document.getElementById("stats-text");
 const enemyStatsText = document.getElementById("enemy-stats-text");
 // =========================
-// data
+// State and config
 // =========================
 
 const statusName = {
@@ -100,7 +100,7 @@ let currentHeldItems = [];
 let currentSelectedSlot = null;
 let hasAttacked = false;
 // =========================
-// init function
+// Option creation functions
 // =========================
 
 function createLevelOptions(selectElement){
@@ -155,7 +155,7 @@ Object.values(hitCountSelects).forEach(select => {
  
 
 // =========================
-// init
+// Initial setup
 // =========================
 
 createLevelOptions(levelSelect);
@@ -168,7 +168,7 @@ updateNormalAttack();
 
 
 // =========================
-// player event
+// Player and result events
 // =========================
 
 levelSelect.addEventListener("change", () => {
@@ -253,106 +253,68 @@ pokemonSelect.addEventListener("change", () => {
 
 
 // =========================
-// skill click event
+// Move selection events
 // =========================
 
 skillsFirst.forEach(skill => {
-
-        skill.addEventListener("click", () => {
-        
-            if(skillFirstResult.textContent ==="" || skillFirstResult.textContent !== skill.textContent ){
-
-            const skillName =skill.textContent.replace("+","");
-           
-
+    skill.addEventListener("click", () => {
+        if(skillFirstResult.textContent === "" || skillFirstResult.textContent !== skill.textContent){
+            const skillName = skill.textContent.replace("+", "");
             const selectedMove = findMoveByName(skillName);
+
             selectedSkillOne = selectedMove;
-        
-        
-            showDamage(selectedMove,skillFirstDamage,Number(hitCountSelects.one.value));
-        
-            showSkillResult(skillFirstResult,
-                            selectedMove.name,
-                            selectedMove
-                        );
-        
+            showDamage(selectedMove, skillFirstDamage, Number(hitCountSelects.one.value));
+            showSkillResult(skillFirstResult, selectedMove.name, selectedMove);
             currentSelectedMove = selectedMove;
             rerenderAfterAttack();
-            
-           
-                    
-                    }else{
-                        skillFirstResult.textContent = "";
-                        skillFirstDamage.textContent = "威力:";
-                        damageTaken.textContent = "";
-                        remainingHp.textContent = "";
-                        hpFillOne.style.width = "100%";
-                        hpFillOne.style.backgroundColor = "green";
-                        selectedSkillOne = null;
+        }else{
+            skillFirstResult.textContent = "";
+            skillFirstDamage.textContent = "威力:";
+            damageTaken.textContent = "";
+            remainingHp.textContent = "";
+            hpFillOne.style.width = "100%";
+            hpFillOne.style.backgroundColor = "green";
+            selectedSkillOne = null;
             rerenderAfterAttack();
-                    }
-
-     });
-   
-
+        }
+    });
 });
-
 
 skillsSecond.forEach(skill => {
-
     skill.addEventListener("click", () => {
+        if(skillSecondResult.textContent === "" || skillSecondResult.textContent !== skill.textContent){
+            const skillName = skill.textContent.replace("+", "");
+            const selectedMove = findMoveByName(skillName);
 
-      
-
-        if(skillSecondResult.textContent ==="" || skillSecondResult.textContent !== skill.textContent){
-
-        const skillName =skill.textContent.replace("+","");
-       
-       
-        const selectedMove = findMoveByName(skillName);
-        selectedSkillTwo = selectedMove;
-
-
-        showDamage(selectedMove,skillSecondDamage,Number(hitCountSelects.two.value));
-
-        showSkillResult(skillSecondResult,
-                        selectedMove.name,
-                        selectedMove
-                    );
-
-        currentSelectedMove = selectedMove;
+            selectedSkillTwo = selectedMove;
+            showDamage(selectedMove, skillSecondDamage, Number(hitCountSelects.two.value));
+            showSkillResult(skillSecondResult, selectedMove.name, selectedMove);
+            currentSelectedMove = selectedMove;
             rerenderAfterAttack();
-          
-                }else{
-                    skillSecondResult.textContent = "";
-                    skillSecondDamage.textContent = "威力:";
-                    damageTakenPlus.textContent = "";
-                    remainingHpPlus.textContent = "";
-                    hpFillTwo.style.width = "100%";
-                    hpFillTwo.style.backgroundColor = "green";
-                    selectedSkillTwo = null;
+        }else{
+            skillSecondResult.textContent = "";
+            skillSecondDamage.textContent = "威力:";
+            damageTakenPlus.textContent = "";
+            remainingHpPlus.textContent = "";
+            hpFillTwo.style.width = "100%";
+            hpFillTwo.style.backgroundColor = "green";
+            selectedSkillTwo = null;
             rerenderAfterAttack();
-                    
-                }
+        }
     });
-
 });
 
-
 unitesMove.addEventListener("click", () => {
-
     if(skillThirdResult.textContent === ""){
-
         skillThirdResult.textContent = unitesMove.textContent;
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = currentPokemon.skill[9][0];
-        calculateDamage(move,Number(levelSelect.value),getCurrentStatus());
-        showDamage(move,skillThirdDamage,Number(hitCountSelects.unite.value));
+        calculateDamage(move, Number(levelSelect.value), getCurrentStatus());
+        showDamage(move, skillThirdDamage, Number(hitCountSelects.unite.value));
         selectedSkillThird = move;
-            rerenderAfterAttack();
+        rerenderAfterAttack();
     }else{
-        
         skillThirdResult.textContent = "";
         skillThirdDamage.textContent = "威力:";
         uniteTaken.textContent = "";
@@ -360,11 +322,9 @@ unitesMove.addEventListener("click", () => {
         hpFillUnite.style.width = "100%";
         hpFillUnite.style.backgroundColor = "green";
         selectedSkillThird = null;
-            rerenderAfterAttack();
+        rerenderAfterAttack();
     }
-
 });
-
 allResetButton.addEventListener("click",() => {
      location.reload();
 })
@@ -441,7 +401,7 @@ enemyStatsToggle.addEventListener("click", () => {
 })
 
 // =====================
-// 持ち物選択スペース作成
+// Held item modal events
 //======================
 
 heldItems.forEach(heldItem => {
@@ -455,7 +415,7 @@ closeModal.addEventListener("click", () => {
 })
 
 // =========================
-// hover color
+// Hover color sync
 // =========================
 
 colorChange.forEach(color => {
@@ -476,7 +436,7 @@ colorChange.forEach(color => {
 
 
 // =========================
-// enemy event
+// Enemy events
 // =========================
 
 enemyLevelSelect.addEventListener("change", () => {
@@ -512,12 +472,12 @@ pokemonSelectTwo.addEventListener("change", () => {
 
 
 //==========================
-// function(便利な機能)
+// Function groups
 //==========================
 
 
 // ===========================
-//  計算関数
+// Move damage calculation
 // ===========================
 
 function calculateDamage(selectedMove,attackerLevel,attackerStats){
@@ -528,9 +488,6 @@ function calculateDamage(selectedMove,attackerLevel,attackerStats){
     const scalingStat = attackerStats[formula.scaling];
 
     const damage =scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.baseDamage;
-      
-    
-    const result =  Math.floor(damage);
     return Math.floor(damage);
 }
 
@@ -540,8 +497,6 @@ function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
     const scalingStat = attackerStats[formula.scaling];
 
     const damage = scalingStat * formula.ratio + formula.levelScaling * (attackerLevel-1) + formula.baseDamage;
-    
-    const result =  Math.floor(damage);
     return Math.floor(damage);
 }
 
@@ -631,7 +586,7 @@ function computeFinalDamageAll(finalDamageData){
 
 
 // ============================
-//通常攻撃関数
+// Normal attack calculation
 // ============================
 
 function calculateNormalAttackDamage(){
@@ -909,7 +864,7 @@ function showNormalAttackFinalDamage(finalDamageData){
 
 
 // ============================
-// show系すべて
+// Render/display functions
 // ============================
 
 function showDamage(
@@ -976,7 +931,7 @@ function showSkillResult(
 
     resultElement.textContent = skillText;
 
-    if(isPlusMove(selectedMove)){
+    if(isPlusMove(selectedMove, Number(levelSelect.value))){
         resultElement.textContent += "+";
     }
 
@@ -1012,7 +967,7 @@ function showSelectPokemonImage(){
 
 }
 // ============================
-// popup系すべて
+// Popup functions
 // ============================
 //旧ポップ今使ってない
 function showCriticalPopup(
@@ -1088,7 +1043,7 @@ function showSingleHitDamagesPopup(hitDamage,index){
 }
 
 // ============================
-// update系すべて
+// Update and rerender functions
 // ============================
 
 function updateHpBar(currentHp,maxHp,hpBarElement){
@@ -1107,11 +1062,8 @@ function updateHpBar(currentHp,maxHp,hpBarElement){
 
 function updateNormalAttack(){
     currentNormalAttackData = calculateNormalAttackDamage();
-    
     showNormalAttackDamage(currentNormalAttackData);
-            rerenderAfterAttack();
-
-    
+    rerenderAfterAttack();
 }
 function rerenderAfterAttack(){
     if(hasAttacked){
@@ -1186,7 +1138,7 @@ function updateDamageByHitCount(){
 
 
 // ============================
-//  helper関数
+// Helper functions
 // ============================
 
 //return selectedMove
@@ -1212,14 +1164,11 @@ function findMoveByName(skillName){
         
 }
 //upグレード技が判別する関数
-function isPlusMove(move){
-
-    const level = Number(levelSelect.value);
-
-    if(move.upgradeLevel &&
-         move.formulaPlus &&
-          level >= move.upgradeLevel
-
+function isPlusMove(move, level){
+    if(
+        move.upgradeLevel &&
+        move.formulaPlus &&
+        level >= move.upgradeLevel
     ){
         return true;
     }
@@ -1235,7 +1184,7 @@ function getRawDamage(selectedMove){
         return null;
     }
 
-    if(isPlusMove(selectedMove)){
+    if(isPlusMove(selectedMove, Number(levelSelect.value))){
         return calculateDamagePlus(
             selectedMove,
             Number(levelSelect.value),
@@ -1404,15 +1353,11 @@ function getCurrentStatus(){
     return status;
 }
 // =========================
-// first render
+// First render
 // =========================
 
 updatePlayerUI();
 updateEnemyUI();
-
-
-
-
 
 
 

@@ -212,6 +212,7 @@ JavaScriptは以下の順番で読み込まれます。
 - 通常攻撃詳細表示
 - 攻撃後の計算結果への自動スクロール
 - 通常攻撃、技、合計ダメージの計算
+- ES Modules化に向けた機能別見出し整理（DOM、状態、イベント、計算、表示、ポップアップ、再描画、ヘルパー）
 
 ---
 
@@ -364,8 +365,9 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
   - アップグレード後の技威力を計算します。
   - 旧名 `calculateDamagePuls` から修正済みです。
 
-- `isPlusMove(move)`
-  - 現在レベルでアップグレード技として扱うか判定します。
+- `isPlusMove(move, level)`
+  - 渡されたレベルでアップグレード技として扱うか判定します。
+  - 2026-06-03に `levelSelect.value` の直接参照をやめ、DOM依存を減らしました。
 
 - `getRawDamage(selectedMove)`
   - 通常式とアップグレード式を切り替えて、技の基礎威力を返します。
@@ -471,6 +473,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### app.js の責務が大きい
 
+2026-06-03に、将来の分割準備として `js/app.js` のコメント見出しを `project-overview.md` の分類に寄せました。技選択イベント周辺のインデントも整理済みです。現時点ではファイル分割とES Modules化は未実施です。
+
 `app.js` に以下が集中しています。
 
 - DOM取得
@@ -490,6 +494,110 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 ### 計算ロジックとDOM参照が結合している
 
 `computeFinalDamage()` や `getCurrentStatus()` などは、内部でDOMの値を直接参照しています。テストしやすくするなら、計算関数は引数だけで計算できる純粋関数に近づけるのが望ましいです。
+
+
+### 計算系切り出し候補
+
+2026-06-03時点では、実際のファイル分割はまだ行わず、`js/app.js` 内の計算系関数を切り出し候補として分類しています。
+
+#### すぐ切り出しやすい候補
+
+以下はDOM参照が少なく、引数中心で動かしやすいため、最初の切り出し候補です。
+
+- `calculateDamage(selectedMove, attackerLevel, attackerStats)`
+  - 技の通常威力を計算します。
+  - `selectedMove.formula` と引数のステータスだけで計算できるため、`damageCalculator.js` に移しやすいです。
+
+- `calculateDamagePlus(selectedMove, attackerLevel, attackerStats)`
+  - アップグレード後の技威力を計算します。
+  - `calculateDamage()` と同じ構造なので、同じモジュールへまとめやすいです。
+
+- `isCategory(selectedMove)`
+  - 物理技かどうかを判定します。
+  - DOMに依存していないため、計算補助関数として移しやすいです。
+
+#### 引数化してから切り出す候補
+
+以下は計算処理ですが、現在はDOMやグローバル状態を直接参照しています。先に必要な値を引数で受け取る形へ変えると、安全に切り出せます。
+
+- `isPlusMove(move, level)`
+  - 2026-06-03に `levelSelect.value` の直接参照をやめ、呼び出し側から `level` を受け取る形へ変更済みです。
+  - DOM依存が減ったため、計算補助関数として切り出しやすくなりました。
+
+- `getRawDamage(selectedMove)`
+  - 現在は `levelSelect.value` と `getCurrentStatus()` を内部で参照しています。
+  - `getRawDamage(selectedMove, level, status)` にすると、技威力計算として分離できます。
+
+- `getTotalDamage(selectedMove, hitCount)`
+  - 現在は `getRawDamage()` 経由でDOM・状態に依存しています。
+  - `getTotalDamage(rawDamage, hitCount)` のようにすると、単純な倍率計算として分離できます。
+
+- `computeFinalDamage(selectedMove, hitCount)`
+  - 現在は相手レベル、相手ステータス、選択技、ヒット数を内部から取得しています。
+  - `computeFinalDamage(rawDamage, selectedMove, enemyStats)` または `computeFinalDamage(rawDamage, category, enemyStats)` にすると切り出しやすいです。
+
+- `calculateNormalAttackDamage()`
+  - 現在は `currentPokemon`、`levelSelect`、`hitCountSelects`、`criticalCheck`、`getCurrentStatus()`、`Math.random()` に依存しています。
+  - `calculateNormalAttackDamage({ pokemonId, level, hitCount, status, criticalEnabled, random })` のように引数化すると、通常攻撃計算を分離できます。
+
+- `computeNormalAttackFinalDamage(normalAttackData)`
+  - 現在は `currentPokemon`、`enemyLevelSelect`、`enemyPokemon` に依存しています。
+  - `computeNormalAttackFinalDamage(normalAttackData, pokemonId, enemyStats)` にすると分離できます。
+
+- `applyHeldItemStatus(status)` / `applyHeldItemStatusEffect(status)`
+  - 現在は `heldItemsList` と `currentHeldItems` を内部で参照しています。
+  - `applyHeldItemStatus(status, activeHeldItems)` のようにすると `heldItemService.js` へ移しやすいです。
+
+- `applyHeldItemEffect(damageData)`
+  - 現在は `heldItemsList`、`currentHeldItems`、`enemyLevelSelect`、`enemyPokemon` に依存しています。
+  - `applyHeldItemEffect(damageData, activeHeldItems, enemyHp)` にすると、通常攻撃への持ち物効果として分離できます。
+
+- `getCurrentStatus()`
+  - 現在は `levelSelect`、`currentPokemon`、持ち物補正関数に依存しています。
+  - `getCurrentStatus(baseStats, activeHeldItems)` に近づけると、ステータス計算として分離できます。
+
+#### まだ切り出さない方がよい候補
+
+以下は計算だけでなく表示更新や画面状態変更も担当しているため、今すぐ計算モジュールへ移すと壊れやすいです。
+
+- `computeFinalDamageAll(finalDamageData)`
+  - 合計ダメージ計算だけでなく、`takenAll`、`remainingHpAll`、`hpFillAll` を直接更新しています。
+  - 先に「合計値を返す関数」と「表示する関数」に分ける必要があります。
+
+- `attackNormalAttack()`
+  - 通常攻撃、持ち物効果、技1、技2、ユナイト技、合計表示をまとめて呼び出す実行役です。
+  - 分割後も `app.js` 側に残す調整役として扱うのが安全です。
+
+- `showDamage()` / `showFinalDamage()` / `showNormalAttackDamage()` / `showNormalAttackFinalDamage()`
+  - DOM表示を担当しているため、計算モジュールではなく表示系モジュールの候補です。
+
+- `updateNormalAttack()` / `rerenderAfterAttack()` / `updateDamageByHitCount()`
+  - 状態更新と表示再描画の入口なので、計算系としては切り出さず、分割後の呼び出し側に残すのが安全です。
+
+#### 推奨する次の実装順
+
+1. `calculateDamage()` と `calculateDamagePlus()` を同じ形に整理する。
+2. `isPlusMove(move, level)` は対応済み。次は `getRawDamage(selectedMove, level, status)` へ進む。
+3. `getRawDamage(selectedMove, level, status)` へ引数化する。
+4. `getTotalDamage(rawDamage, hitCount)` のように単純化する。
+5. 通常攻撃計算は最後に回し、先に引数設計を固める。
+
+この順番なら、表示UIをほぼ触らずに計算系の分離準備を進められます。
+
+
+### 次回再開時にやること
+
+2026-06-03時点では、利用制限を考慮してここで作業を止めています。次に再開する場合は、コード分割そのものではなく、まず `getRawDamage()` のDOM依存を減らす小さな変更から進めるのが安全です。
+
+次回の最優先作業は以下です。
+
+1. `getRawDamage(selectedMove)` を `getRawDamage(selectedMove, level, status)` に変更する。
+2. `getRawDamage()` 内の `Number(levelSelect.value)` と `getCurrentStatus()` の直接参照をなくす。
+3. `getTotalDamage()` や `computeFinalDamage()` など、`getRawDamage()` を呼ぶ側で `level` と `status` を渡す。
+4. UI表示や計算式は変えず、DOM依存を外側へ寄せるだけにする。
+5. 変更後は `node --check js/app.js` と、技1・技2・ユナイト技の威力表示だけ確認する。
+
+この変更の目的は、`isPlusMove(move, level)` と同じ考え方で、技ダメージ計算を引数中心の形へ近づけることです。ここまでできると、次の段階で `calculateDamage()`、`calculateDamagePlus()`、`isPlusMove()`、`getRawDamage()` を `damageCalculator.js` へ切り出す準備が整います。
 
 ### 通常攻撃ロジックがポケモンごとに重複している
 
@@ -519,7 +627,7 @@ UI表示や計算式の内容は変えず、参照名だけを一括でそろえ
 
 スマホ対応を段階的に追加したため、`style.css` の後半に上書きCSSが増えています。機能としては動きますが、長期的には以下のように整理すると見通しが良くなります。
 
-2026-06-03に一部対応済みです。未使用だった `.select-pokemons`、`.critical-boosted-color`、`.normal-color` と、古い落下アニメーション用の `.hit-damage` / `@keyframes hitDamageFall` と、前側に重複していた `.boosted-color` / `.critical-color` を削除しました。PCで最終ダメージリザルトを常時表示する方針があるため、`.damage-result` の表示制御は今回は整理対象から外しています。あわせてスマホ持ち物CSSを整理済みです。前側の横スクロール設計を削除し、後ろ側の3列グリッド設計へ `.held-items-select` / `.held-items` / `.held-item` / `.slot-image` のスマホ指定を集約しました。 続けて、スマホ基本レイアウトとスマホ持ち物グリッドのCSSブロックが分かるようにコメント見出しを整理しました。 さらに、結果表示・内訳折りたたみ・詳細表示ボタンのCSSを `mobile result display` 周辺にまとめ、結果表示まわりを追いやすくしました。PCでは計算結果エリアを常時表示し、スマホでは攻撃前だけ非表示になるように表示方針を分けました。
+2026-06-03に一部対応済みです。未使用だった `.select-pokemons`、`.critical-boosted-color`、`.normal-color` と、古い落下アニメーション用の `.hit-damage` / `@keyframes hitDamageFall` と、前側に重複していた `.boosted-color` / `.critical-color` を削除しました。PCで最終ダメージリザルトを常時表示する方針があるため、`.damage-result` の表示制御は今回は整理対象から外しています。あわせてスマホ持ち物CSSを整理済みです。前側の横スクロール設計を削除し、後ろ側の3列グリッド設計へ `.held-items-select` / `.held-items` / `.held-item` / `.slot-image` のスマホ指定を集約しました。 続けて、スマホ基本レイアウトとスマホ持ち物グリッドのCSSブロックが分かるようにコメント見出しを整理しました。 さらに、結果表示・内訳折りたたみ・詳細表示ボタンのCSSを `mobile result display` 周辺にまとめ、結果表示まわりを追いやすくしました。PCでは計算結果エリアを常時表示し、スマホでは攻撃前だけ非表示になるように表示方針を分けました。 2026-06-03に、通常攻撃詳細は `.detail-popup` 内の `#hitDamage-result` へ表示する設計になっていることを確認し、旧ポップアップ用の `#hitDamage-result { position: fixed; top/right/z-index... }` は削除済みです。あわせて `.detail-popup #hitDamage-result` から `position: static` と `z-index: auto` の打ち消し指定も不要になったため削除済みです。さらに、JSで生成される `.hit-damage` の共通スタイルは残し、`.detail-popup .hit-damage` は詳細ポップアップ内だけに必要な差分指定へ整理済みです。スマホ結果表示では、順番依存だった `.detail-damage-result > div:nth-child(5)` の指定を削除し、既存の `.total-damage-card` 指定へ寄せました。`order: -2` は `.total-damage-card` 側に残しているため、合計ダメージを先頭寄りに見せる表示は維持しています。
 
 - base layout
 - components
@@ -724,3 +832,4 @@ DOMに依存しない純粋な計算関数を置きます。
 12. 持ち物3枠をスマホ幅に収める調整
 
 現時点の次の改善候補は、持ち物選択エリアの折りたたみまたはモーダル中心化です。
+
