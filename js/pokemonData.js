@@ -1,4 +1,4 @@
-const pokemonsList = [
+export const pokemonsList = [
     {
         id:"Pikachu",
         name:"ピカチュウ",

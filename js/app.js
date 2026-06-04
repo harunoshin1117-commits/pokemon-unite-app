@@ -2,6 +2,36 @@
 // DOM elements
 // =========================
 
+import { pokemonsList } from "./pokemonData.js";
+import { heldItemsList } from "./helditemData.js";
+import {
+    calculateDamage,
+    calculateNormalAttackDamage,
+    computeNormalAttackFinalDamage
+} from "./damageCalculator.js";
+import {
+    applyHeldItemEffect,
+    getActiveHeldItems,
+    getCurrentStatus,
+    toggleHeldItem
+} from "./heldItemService.js";
+import {
+    computeFinalDamageAll as renderFinalDamageAll,
+    resetDamageDisplay,
+    showDamage as renderDamage,
+    showFinalDamage as renderFinalDamage,
+    showHeldItem as renderHeldItem,
+    showHitDamagesPopup,
+    showNormalAttackDamage as renderNormalAttackDamage,
+    showNormalAttackFinalDamage as renderNormalAttackFinalDamage,
+    showSelectPokemonImage as renderSelectPokemonImage,
+    showSkillResult as renderSkillResult
+} from "./resultRenderer.js";
+import {
+    updateEnemyUI as renderEnemyUI,
+    updatePlayerUI as renderPlayerUI
+} from "./ui.js";
+
 const levelSelect = document.getElementById("level");
 const pokemonSelect = document.getElementById("pokemon-select");
 
@@ -300,7 +330,7 @@ unitesMove.addEventListener("click", () => {
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = currentPokemon.skill[9][0];
-        calculateDamage(move, Number(levelSelect.value), getCurrentStatus());
+        calculateDamage(move, Number(levelSelect.value), getCurrentPlayerStatus());
         showDamage(move, skillThirdDamage, Number(hitCountSelects.unite.value));
         selectedSkillThird = move;
         rerenderAfterAttack();
@@ -337,7 +367,7 @@ selectItems.forEach(item => {
                         return heldItem.id === item.dataset.id;
                     }                        
            )
-           toggleHeldItem(item.dataset.id);
+           currentHeldItems = toggleHeldItem(currentHeldItems, item.dataset.id);
            
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
@@ -472,7 +502,13 @@ function resetDamageResultVisibility(){
     }
 }
 function updateNormalAttack(){
-    currentNormalAttackData = calculateNormalAttackDamage();
+    currentNormalAttackData = calculateNormalAttackDamage({
+        level: Number(levelSelect.value),
+        pokemonId: currentPokemon.id,
+        hitCount: Number(hitCountSelects.normalAttack.value),
+        status: getCurrentPlayerStatus(),
+        criticalEnabled: criticalCheck.checked
+    });
     showNormalAttackDamage(currentNormalAttackData);
     rerenderAfterAttack();
 }
@@ -482,9 +518,17 @@ function rerenderAfterAttack(){
     }
 }
 function attackNormalAttack(){
-    const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
+    const finalDamageData = computeNormalAttackFinalDamage(
+        currentNormalAttackData,
+        currentPokemon.id,
+        getEnemyStats()
+    );
 
-    applyHeldItemEffect(finalDamageData);
+    applyHeldItemEffect(
+        finalDamageData,
+        getActiveHeldItemsForCurrentSelection(),
+        getEnemyHp()
+    );
     showNormalAttackFinalDamage(finalDamageData);
    
 
@@ -511,8 +555,16 @@ function attackNormalAttack(){
 }
 
 function updatePopup(){
-    const finalDamageData = computeNormalAttackFinalDamage(currentNormalAttackData);
-     applyHeldItemEffect(finalDamageData);
+    const finalDamageData = computeNormalAttackFinalDamage(
+        currentNormalAttackData,
+        currentPokemon.id,
+        getEnemyStats()
+    );
+     applyHeldItemEffect(
+        finalDamageData,
+        getActiveHeldItemsForCurrentSelection(),
+        getEnemyHp()
+    );
      detailPopupOverlay.style.display = "flex";
     showHitDamagesPopup(finalDamageData.finalHitDamages);
 
@@ -573,6 +625,136 @@ function findMoveByName(skillName){
         return selectedMove;
         
 }
+
+function getActiveHeldItemsForCurrentSelection(){
+    return getActiveHeldItems(heldItemsList, currentHeldItems);
+}
+
+function getCurrentPlayerStatus(){
+    return getCurrentStatus(
+        currentPokemon.stats[Number(levelSelect.value)],
+        getActiveHeldItemsForCurrentSelection()
+    );
+}
+
+function getEnemyStats(){
+    return enemyPokemon.stats[Number(enemyLevelSelect.value)];
+}
+
+function getEnemyHp(){
+    return getEnemyStats().hp;
+}
+
+function updatePlayerUI(){
+    renderPlayerUI({
+        level: Number(levelSelect.value),
+        currentPokemon,
+        currentPokemonStats: getCurrentPlayerStatus(),
+        statusName,
+        selectedSkillOne,
+        selectedSkillTwo,
+        skillFirstResult,
+        skillSecondResult,
+        damageTaken,
+        remainingHp,
+        damageTakenPlus,
+        remainingHpPlus,
+        uniteTaken,
+        remainingHpUnite,
+        selectPokemonImage,
+        updateDamageByHitCount
+    });
+}
+
+function updateEnemyUI(){
+    renderEnemyUI({
+        enemyLevel: Number(enemyLevelSelect.value),
+        enemyPokemon,
+        statusName
+    });
+}
+
+function showNormalAttackDamage(normalAttackData){
+    renderNormalAttackDamage(normalAttackData, normalAttackDamage);
+}
+
+function showNormalAttackFinalDamage(finalDamageData){
+    renderNormalAttackFinalDamage(finalDamageData, {
+        damageTakenNormalAttack,
+        remainingHpNormalAttack,
+        hpFillNormalAttack,
+        enemyHp: getEnemyHp()
+    });
+}
+
+function showDamage(selectedMove, targetElement, hitCount = 1){
+    renderDamage(
+        selectedMove,
+        targetElement,
+        hitCount,
+        Number(levelSelect.value),
+        getCurrentPlayerStatus()
+    );
+}
+
+function showFinalDamage(
+    selectedMove,
+    damageElement,
+    hpElement,
+    hpBarElement,
+    hitCount = 1
+){
+    renderFinalDamage(
+        selectedMove,
+        damageElement,
+        hpElement,
+        hpBarElement,
+        hitCount,
+        Number(levelSelect.value),
+        getCurrentPlayerStatus(),
+        getEnemyStats(),
+        getEnemyHp()
+    );
+}
+
+function showSkillResult(resultElement, skillText, selectedMove){
+    renderSkillResult(
+        resultElement,
+        skillText,
+        selectedMove,
+        Number(levelSelect.value),
+        currentPokemon.color
+    );
+}
+
+function showHeldItem(itemId, selectedItem){
+    renderHeldItem(itemId, selectedItem, currentSelectedSlot);
+}
+
+function showSelectPokemonImage(){
+    renderSelectPokemonImage(currentPokemon, selectPokemonImage);
+}
+
+function computeFinalDamageAll(finalDamageData){
+    renderFinalDamageAll(finalDamageData, {
+        selectedSkillOne,
+        selectedSkillTwo,
+        selectedSkillThird,
+        hitCounts: {
+            one: Number(hitCountSelects.one.value),
+            two: Number(hitCountSelects.two.value),
+            unite: Number(hitCountSelects.unite.value)
+        },
+        attackerLevel: Number(levelSelect.value),
+        attackerStatus: getCurrentPlayerStatus(),
+        enemyStats: getEnemyStats(),
+        enemyHp: getEnemyHp(),
+        takenAll,
+        remainingHpAll,
+        hpFillAll
+    });
+}
+
 // =========================
 // First render
 // =========================

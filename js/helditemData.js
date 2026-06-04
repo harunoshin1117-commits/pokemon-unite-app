@@ -1,4 +1,4 @@
-const heldItemsList = [
+export const heldItemsList = [
 //レベル30固定
 
     {

@@ -1,45 +1,37 @@
 // =========================
-
 // Held item helpers
-
 // =========================
 
 // currentHeldItems はID配列のまま扱い、IDから持ち物オブジェクトへの変換方法は変えない。
 
-
-
-function toggleHeldItem(
+export function toggleHeldItem(
+    selectedItemIds,
     itemId
 ){
-    if( currentHeldItems.includes(itemId)){
+    if(selectedItemIds.includes(itemId)){
+        return selectedItemIds.filter(
+            id => {
 
-        
-
-        currentHeldItems = 
-            currentHeldItems.filter(
-                id => {
-
-                    return id !== itemId;
-                }
-                
+                return id !== itemId;
+            }
         );
-    }else{
-
-        currentHeldItems.push(itemId);
-        
     }
+
+    return [...selectedItemIds, itemId];
 }
 
-function applyHeldItemStatus(status){
-   // let  status = { ...currentPokemon.stats[level]}; 呼び出すところにこれ書いて5/30;
-    const activeHeldItems = heldItemsList.filter(
-                                    item => {
+export function getActiveHeldItems(allHeldItems, selectedItemIds){
+    return allHeldItems.filter(
+        item => {
 
-                                        return currentHeldItems.includes(
-                                            item.id
-                                        );
-                                    }
+            return selectedItemIds.includes(
+                item.id
+            );
+        }
     );
+}
+
+export function applyHeldItemStatus(status, activeHeldItems){
     for(const item of activeHeldItems){
         for(const [statusName,value] of Object.entries(item.status || {})){
                 status[statusName] += value;
@@ -47,16 +39,7 @@ function applyHeldItemStatus(status){
     }
 }
 
-function applyHeldItemStatusEffect(status){
-    
-    const activeHeldItems = heldItemsList.filter(
-                                item => {
-
-                                    return currentHeldItems.includes(
-                                        item.id
-                                    );
-                                }
-    );
+export function applyHeldItemStatusEffect(status, activeHeldItems){
     for(const item of activeHeldItems){
         for(const [statusName,value] of Object.entries(item.statusEffect || {})){
                 status[statusName] *= value;
@@ -64,16 +47,7 @@ function applyHeldItemStatusEffect(status){
     }
 }
 
-function applyHeldItemEffect(damageData){
-
-    const activeHeldItems = heldItemsList.filter(
-                                    item => {
-
-                                        return currentHeldItems.includes(
-                                            item.id
-                                        );
-                                    }
-    );
+export function applyHeldItemEffect(damageData, activeHeldItems, enemyHp){
     for(const item of activeHeldItems){
         for(const [name,value] of Object.entries(item.effect || {})){
             switch(name){
@@ -95,8 +69,7 @@ function applyHeldItemEffect(damageData){
                 case "muscleBandDamage":
                 
                 damageData.totalFinalDamage = 0;
-                const enemyLevel = Number(enemyLevelSelect.value);
-                let currentEnemyHp = enemyPokemon.stats[enemyLevel].hp;
+                let currentEnemyHp = enemyHp;
                 for(const hitData of damageData.finalHitDamages){
                     const muscleBandDamage = Math.floor(currentEnemyHp * value);
                     hitData.damage += muscleBandDamage;
@@ -109,15 +82,12 @@ function applyHeldItemEffect(damageData){
     }
 }
 
-function getCurrentStatus(){
-
-    const level = Number(levelSelect.value);
+export function getCurrentStatus(baseStats, activeHeldItems){
     const status = {
-        ...currentPokemon.stats[level]
+        ...baseStats
     };
 
-    applyHeldItemStatus(status);
-    applyHeldItemStatusEffect(status);
+    applyHeldItemStatus(status, activeHeldItems);
+    applyHeldItemStatusEffect(status, activeHeldItems);
     return status;
 }
-

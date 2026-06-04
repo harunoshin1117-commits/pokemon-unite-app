@@ -1,5 +1,27 @@
-function updatePlayerUI(){
-         const level = Number(levelSelect.value);
+import {
+    showSelectPokemonImage,
+    showSkillResult
+} from "./resultRenderer.js";
+
+export function updatePlayerUI(context){
+    const {
+        level,
+        currentPokemon,
+        currentPokemonStats,
+        statusName,
+        selectedSkillOne,
+        selectedSkillTwo,
+        skillFirstResult,
+        skillSecondResult,
+        damageTaken,
+        remainingHp,
+        damageTakenPlus,
+        remainingHpPlus,
+        uniteTaken,
+        remainingHpUnite,
+        selectPokemonImage,
+        updateDamageByHitCount
+    } = context;
 
   const skillFirstOne = document.getElementById("skill-first-one");
   const skillSecondOne = document.getElementById("skill-second-one");
@@ -78,8 +100,6 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
   
 
 
-  const currentPokemonStats = getCurrentStatus();
-
     Object.entries(currentPokemonStats).forEach(([key,value]) =>{
           const p = document.createElement("p");
                 
@@ -89,7 +109,7 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
         
     })
 
-showSelectPokemonImage();
+showSelectPokemonImage(currentPokemon, selectPokemonImage);
     
 
   function upChangelevelDamage(selectedMove,resultElement){
@@ -99,7 +119,9 @@ showSelectPokemonImage();
         showSkillResult(
             resultElement,
             selectedMove.name,
-            selectedMove
+            selectedMove,
+            level,
+            currentPokemon.color
             
         )
     }
@@ -125,19 +147,12 @@ updateDamageByHitCount();
   
 }
 
-
-
-   
-
-
-
-
-
-
-
-function updateEnemyUI(){
-    const enemyLevel = Number(enemyLevelSelect.value);
-
+export function updateEnemyUI(context){
+    const {
+        enemyLevel,
+        enemyPokemon,
+        statusName
+    } = context;
 
   const enemyStatsText = document.getElementById("enemy-stats-text");
   enemyStatsText.innerHTML = "";

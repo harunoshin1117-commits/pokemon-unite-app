@@ -1,31 +1,55 @@
+import {
+    computeFinalDamage,
+    getTotalDamage,
+    isPlusMove
+} from "./damageCalculator.js";
+
 // =========================
-
 // Result rendering helpers
-
 // =========================
 
 // DOM表示とHPバー更新を担当し、UI構造や表示文言は変えない。
 
-
-
-function computeFinalDamageAll(finalDamageData){
-
-   
-    
+export function computeFinalDamageAll(finalDamageData, context){
+    const {
+        selectedSkillOne,
+        selectedSkillTwo,
+        selectedSkillThird,
+        hitCounts,
+        attackerLevel,
+        attackerStatus,
+        enemyStats,
+        enemyHp,
+        takenAll,
+        remainingHpAll,
+        hpFillAll
+    } = context;
 
     const damage1 =
-        computeFinalDamage(selectedSkillOne,
-            Number(hitCountSelects.one.value)
+        computeFinalDamage(
+            selectedSkillOne,
+            hitCounts.one,
+            attackerLevel,
+            attackerStatus,
+            enemyStats
         ) || 0;
 
     const damage2 =
-        computeFinalDamage(selectedSkillTwo,
-            Number(hitCountSelects.two.value)
+        computeFinalDamage(
+            selectedSkillTwo,
+            hitCounts.two,
+            attackerLevel,
+            attackerStatus,
+            enemyStats
         ) || 0;
 
     const damage3 =
-        computeFinalDamage(selectedSkillThird,
-            Number(hitCountSelects.unite.value)
+        computeFinalDamage(
+            selectedSkillThird,
+            hitCounts.unite,
+            attackerLevel,
+            attackerStatus,
+            enemyStats
         ) || 0;
 
     const allDamage =
@@ -33,12 +57,6 @@ function computeFinalDamageAll(finalDamageData){
 
     takenAll.textContent =
         `合計ダメージ: ${allDamage}`;
-
-    const enemyLevel =
-        Number(enemyLevelSelect.value);
-
-    const enemyHp =
-        enemyPokemon.stats[enemyLevel].hp;
 
     const hpAfter =
         Math.max(0, enemyHp - allDamage);
@@ -49,7 +67,7 @@ function computeFinalDamageAll(finalDamageData){
    updateHpBar(hpAfter,enemyHp,hpFillAll);
 }
 
-function showNormalAttackDamage(normalAttackData){
+export function showNormalAttackDamage(normalAttackData, normalAttackDamage){
    
     if(normalAttackData == null){
         normalAttackDamage.textContent = "威力なし";
@@ -58,7 +76,13 @@ function showNormalAttackDamage(normalAttackData){
     normalAttackDamage.textContent = "威力:" + normalAttackData.totalDamage;
 }
 
-function showNormalAttackFinalDamage(finalDamageData){
+export function showNormalAttackFinalDamage(finalDamageData, context){
+    const {
+        damageTakenNormalAttack,
+        remainingHpNormalAttack,
+        hpFillNormalAttack,
+        enemyHp
+    } = context;
 
     const finalDamage = finalDamageData;
     if(finalDamage.totalFinalDamage == null){
@@ -66,13 +90,8 @@ function showNormalAttackFinalDamage(finalDamageData){
         damageTakenNormalAttack.textContent = "ダメージ: 計算不可";
 
         remainingHpNormalAttack.textContent = "残りHP: -";
-       // hpFillNormalAttack.style.width = "100%";
-      //  hpFillNormalAttack.style.backgroundColor = "green";
         return null;
     }
-
-    const enemyLevel = Number(enemyLevelSelect.value);
-    const enemyHp = enemyPokemon.stats[enemyLevel].hp;
 
     const hpAfter = Math.max(0,enemyHp - finalDamage.totalFinalDamage);
     damageTakenNormalAttack.textContent = "ダメージ:" + finalDamage.totalFinalDamage;
@@ -82,13 +101,20 @@ function showNormalAttackFinalDamage(finalDamageData){
     
 }
 
-function showDamage(
+export function showDamage(
     selectedMove,
     targetElement,
-    hitCount = 1
+    hitCount = 1,
+    attackerLevel,
+    attackerStatus
 ){
     
-    const totalDamage = getTotalDamage(selectedMove,hitCount)
+    const totalDamage = getTotalDamage(
+        selectedMove,
+        hitCount,
+        attackerLevel,
+        attackerStatus
+    )
 
     if(totalDamage === null){
 
@@ -103,16 +129,26 @@ function showDamage(
         `威力: ${totalDamage}`;
 }
 
-function showFinalDamage(
+export function showFinalDamage(
             selectedMove,
             damageElement,
             hpElement,
             hpBarElement,
-            hitCount = 1
+            hitCount = 1,
+            attackerLevel,
+            attackerStatus,
+            enemyStats,
+            enemyHp
                         
 ){
 
-       const finalDamage = computeFinalDamage(selectedMove,hitCount);
+       const finalDamage = computeFinalDamage(
+            selectedMove,
+            hitCount,
+            attackerLevel,
+            attackerStatus,
+            enemyStats
+        );
 
         if(finalDamage === null){
 
@@ -124,10 +160,6 @@ function showFinalDamage(
             return;
         }
 
-
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyHp = enemyPokemon.stats[enemyLevel].hp;
-
         const hpAfter = Math.max(0,enemyHp - finalDamage);
 
         damageElement.textContent = `ダメージ: ${finalDamage}`;
@@ -138,24 +170,27 @@ function showFinalDamage(
 
 }
 
-function showSkillResult(
+export function showSkillResult(
     resultElement,
     skillText,
-    selectedMove
+    selectedMove,
+    level,
+    pokemonColor
 ){
 
     resultElement.textContent = skillText;
 
-    if(isPlusMove(selectedMove, Number(levelSelect.value))){
+    if(isPlusMove(selectedMove, level)){
         resultElement.textContent += "+";
     }
 
     resultElement.style.backgroundColor =
-        currentPokemon.color;
+        pokemonColor;
 }
 
-function showHeldItem(itemId,
-    selectedItem
+export function showHeldItem(itemId,
+    selectedItem,
+    currentSelectedSlot
 ){
     if(currentSelectedSlot.dataset.id === itemId ){
 
@@ -173,7 +208,7 @@ function showHeldItem(itemId,
     }
 }
 
-function showSelectPokemonImage(){
+export function showSelectPokemonImage(currentPokemon, selectPokemonImage){
 
    
     const image = currentPokemon.Image;
@@ -182,7 +217,7 @@ function showSelectPokemonImage(){
 
 }
 
-function showHitDamagesPopup(
+export function showHitDamagesPopup(
     hitDamages
 ){
     const popup = 
@@ -231,7 +266,7 @@ function showSingleHitDamagesPopup(hitDamage,index){
             popup.appendChild(p);
 }
 
-function updateHpBar(currentHp,maxHp,hpBarElement){
+export function updateHpBar(currentHp,maxHp,hpBarElement){
 
     const percentage = currentHp / maxHp*100;
    hpBarElement.style.width = `${percentage}%`;
@@ -245,7 +280,7 @@ function updateHpBar(currentHp,maxHp,hpBarElement){
     }
 }
 
-function resetDamageDisplay(
+export function resetDamageDisplay(
     skillResultElement,
     damageElement,
     finalDamageElement,

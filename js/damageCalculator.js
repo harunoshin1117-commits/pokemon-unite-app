@@ -1,14 +1,8 @@
 // =========================
-
 // Damage calculation helpers
-
 // =========================
 
-// 通常scriptとして読み込み、既存のグローバル状態参照と計算結果は維持する。
-
-
-
-function calculateDamage(selectedMove,attackerLevel,attackerStats){
+export function calculateDamage(selectedMove,attackerLevel,attackerStats){
     
     
     const formula = selectedMove.formula;
@@ -19,7 +13,7 @@ function calculateDamage(selectedMove,attackerLevel,attackerStats){
     return Math.floor(damage);
 }
 
-function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
+export function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
     
     const formula = selectedMove.formulaPlus;
     const scalingStat = attackerStats[formula.scaling];
@@ -28,16 +22,24 @@ function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
     return Math.floor(damage);
 }
 
-function computeFinalDamage(selectedMove,hitCount = 1){
+export function computeFinalDamage(
+    selectedMove,
+    hitCount = 1,
+    attackerLevel,
+    attackerStats,
+    enemyPokemonStats
+){
 
-        const rawDamage = getTotalDamage(selectedMove,hitCount)   
+        const rawDamage = getTotalDamage(
+            selectedMove,
+            hitCount,
+            attackerLevel,
+            attackerStats
+        )   
     
         if(rawDamage === null){
             return null;
         }
-
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
 
         let finalDamage;
         const defense = enemyPokemonStats.defense;
@@ -71,19 +73,21 @@ function computeFinalDamage(selectedMove,hitCount = 1){
         
 }
 
-function calculateNormalAttackDamage(){
+export function calculateNormalAttackDamage({
+    level,
+    pokemonId,
+    hitCount,
+    status,
+    criticalEnabled,
+    random = Math.random
+}){
     
-    const level =Number(levelSelect.value);
-    const selectPokemon = currentPokemon.id;
-    
-    const hitCount = Number(hitCountSelects.normalAttack.value);
-    const status = getCurrentStatus();
     const atk = status.attack;
     const spAtk = status.spAttack;
     const critical = status.criticalRate;
    
 
-    if(selectPokemon === "Pikachu" ){
+    if(pokemonId === "Pikachu" ){
 
         const basicDamage = 1 * atk;
         const boostedDamage = 0.38 * spAtk + 10 * (level - 1) +200;
@@ -104,9 +108,9 @@ function calculateNormalAttackDamage(){
                 damage = basicDamage;
 
        }
-       if(criticalCheck.checked){
+       if(criticalEnabled){
         //急所判定
-       isCritical = Math.random() <critical/100;
+       isCritical = random() <critical/100;
         //急所なら二倍（今回だけ）
         if(isCritical){
             criticalCount++;
@@ -132,7 +136,7 @@ function calculateNormalAttackDamage(){
             criticalCount: criticalCount,
             hitDamages};
 
-    }if(selectPokemon === "Greninja"){
+    }if(pokemonId === "Greninja"){
          
         const basicDamage = 1 * atk;
 
@@ -152,9 +156,9 @@ function calculateNormalAttackDamage(){
                 damage = basicDamage;
             }
 
-            if(criticalCheck.checked){
+            if(criticalEnabled){
                 
-                 isCritical = Math.random() < critical/100;
+                 isCritical = random() < critical/100;
                 
                 if(isCritical){
                     criticalCount++;
@@ -172,14 +176,12 @@ function calculateNormalAttackDamage(){
         
         const totalNormalAttackDamage = Math.floor(totalDamage);
         
-        //normalAttackDamage.textContent = "威力:" + Math.floor(allNormalDamageG);
-
         return {
             totalDamage: totalNormalAttackDamage,
             criticalCount: criticalCount,
             hitDamages};
 
-    }if(selectPokemon === "Cinderace"){
+    }if(pokemonId === "Cinderace"){
 
         const basicDamage = 1 * atk;
         const boostedDamage = 1.40 * atk;
@@ -197,9 +199,9 @@ function calculateNormalAttackDamage(){
                 damage = basicDamage;
             }
 
-            if(criticalCheck.checked){
+            if(criticalEnabled){
 
-                 isCritical = Math.random() < critical/100;
+                 isCritical = random() < critical/100;
 
                 if(isCritical){
                     criticalCount++;
@@ -222,7 +224,7 @@ function calculateNormalAttackDamage(){
             hitDamages};}
 }
 
-function computeNormalAttackFinalDamage(normalAttackData){
+export function computeNormalAttackFinalDamage(normalAttackData, pokemonId, enemyPokemonStats){
 
 
 
@@ -231,10 +233,6 @@ function computeNormalAttackFinalDamage(normalAttackData){
         if(normalAttackData == null){
             return null;
         }
-        const selectPokemon = currentPokemon.id;
-        const enemyLevel = Number(enemyLevelSelect.value);
-        const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
-        
 
         
         let totalFinalDamage = 0;
@@ -243,7 +241,7 @@ function computeNormalAttackFinalDamage(normalAttackData){
         const spDefense = enemyPokemonStats.spDefense;
        
         
-          if(selectPokemon === "Pikachu"){
+          if(pokemonId === "Pikachu"){
             
             for(const hitData of normalAttackData.hitDamages){
 
@@ -311,7 +309,7 @@ function computeNormalAttackFinalDamage(normalAttackData){
     
 }
 
-function isPlusMove(move, level){
+export function isPlusMove(move, level){
     if(
         move.upgradeLevel &&
         move.formulaPlus &&
@@ -322,7 +320,7 @@ function isPlusMove(move, level){
     return false;
 }
 
-function getRawDamage(selectedMove){
+export function getRawDamage(selectedMove, level, status){
 
     if(
         !selectedMove ||
@@ -331,22 +329,22 @@ function getRawDamage(selectedMove){
         return null;
     }
 
-    if(isPlusMove(selectedMove, Number(levelSelect.value))){
+    if(isPlusMove(selectedMove, level)){
         return calculateDamagePlus(
             selectedMove,
-            Number(levelSelect.value),
-            getCurrentStatus()
+            level,
+            status
         );
     }
 
     return calculateDamage(
         selectedMove,
-        Number(levelSelect.value),
-        getCurrentStatus()
+        level,
+        status
     );
 }
 
-function isCategory(selectedMove){
+export function isCategory(selectedMove){
 
     if(
         selectedMove.category === "physical"
@@ -357,9 +355,9 @@ function isCategory(selectedMove){
     return false;
 }
 
-function getTotalDamage(selectedMove,hitCount){
+export function getTotalDamage(selectedMove,hitCount,level,status){
 
-    const rawDamage = getRawDamage(selectedMove);
+    const rawDamage = getRawDamage(selectedMove,level,status);
 
     if(rawDamage === null){
         return null;
@@ -367,4 +365,3 @@ function getTotalDamage(selectedMove,hitCount){
 
     return rawDamage*hitCount;
 }
-
