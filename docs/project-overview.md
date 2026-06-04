@@ -39,8 +39,11 @@
 │  └─ wise-glasses.png
 ├─ js/
 │  ├─ app.js
+│  ├─ damageCalculator.js
+│  ├─ heldItemService.js
 │  ├─ helditemData.js
 │  ├─ pokemonData.js
+│  ├─ resultRenderer.js
 │  └─ ui.js
 ├─ index.html
 ├─ README.md
@@ -87,10 +90,13 @@ JavaScriptは以下の順番で読み込まれます。
 <script src="./js/pokemonData.js"></script>
 <script src="./js/helditemData.js"></script>
 <script src="./js/ui.js"></script>
+<script src="./js/damageCalculator.js"></script>
+<script src="./js/heldItemService.js"></script>
+<script src="./js/resultRenderer.js"></script>
 <script src="./js/app.js"></script>
 ```
 
-この順番に依存しています。`ui.js` と `app.js` は、先に読み込まれる `pokemonsList` と `heldItemsList` を前提に動作します。
+この順番に依存しています。`ui.js`、`damageCalculator.js`、`heldItemService.js`、`resultRenderer.js`、`app.js` は、先に読み込まれる `pokemonsList` と `heldItemsList` を前提に動作します。現時点ではES Modules化せず、通常scriptのグローバル関数として責務分割しています。
 
 ### style.css
 
@@ -190,11 +196,56 @@ JavaScriptは以下の順番で読み込まれます。
 - `updateEnemyUI()`
   - 防御側ポケモンのステータス表示を更新します。
 
-`ui.js` は `app.js` 側のグローバル変数や関数に依存しています。
+`ui.js` は `app.js` 側のグローバル状態と、分割後の `heldItemService.js` / `resultRenderer.js` の関数にも依存しています。現時点では通常scriptの読み込み順で解決しています。
+
+### js/damageCalculator.js
+
+技ダメージ、通常攻撃、最終ダメージに関係する計算補助関数を定義します。
+
+主な責務は以下です。
+
+- `calculateDamage()` / `calculateDamagePlus()` による技の基礎威力計算
+- `isPlusMove()` によるアップグレード技判定
+- `getRawDamage()` / `getTotalDamage()` による技威力取得
+- `computeFinalDamage()` による防御・特防補正後ダメージ計算
+- `calculateNormalAttackDamage()` による通常攻撃のヒット別基礎ダメージ計算
+- `computeNormalAttackFinalDamage()` による通常攻撃の防御・特防補正後ダメージ計算
+
+現時点では挙動維持を優先し、DOM参照やグローバル状態参照は残しています。計算結果は分割前と同じにする方針です。
+
+### js/heldItemService.js
+
+持ち物選択状態と持ち物効果を扱います。
+
+主な責務は以下です。
+
+- `toggleHeldItem()` による `currentHeldItems` 更新
+- `applyHeldItemStatus()` によるステータス加算
+- `applyHeldItemStatusEffect()` によるステータス倍率補正
+- `applyHeldItemEffect()` による通常攻撃への追加効果適用
+- `getCurrentStatus()` による現在ステータス取得
+
+`currentHeldItems` はこれまで通り持ち物ID配列です。IDから持ち物オブジェクトへの変換は `heldItemsList.filter(item => currentHeldItems.includes(item.id))` の形を維持しています。`scopeLens` の `criticalPlusDamage`、`muscleBand` の `muscleBandDamage`、`wiseGlasses` の `statusEffect` の処理順も変更していません。
+
+### js/resultRenderer.js
+
+計算結果、HPバー、通常攻撃詳細ポップアップなどのDOM表示を担当します。
+
+主な責務は以下です。
+
+- `showDamage()` / `showFinalDamage()` による技の威力・最終ダメージ表示
+- `showNormalAttackDamage()` / `showNormalAttackFinalDamage()` による通常攻撃表示
+- `computeFinalDamageAll()` による合計ダメージ表示
+- `updateHpBar()` によるHPバー更新
+- `showSkillResult()` / `showHeldItem()` / `showSelectPokemonImage()` による選択状態表示
+- `showHitDamagesPopup()` / `showSingleHitDamagesPopup()` による詳細ポップアップ表示
+- `resetDamageDisplay()` による表示リセット
+
+UI構造、表示文言、CSSは変更していません。
 
 ### js/app.js
 
-アプリの中心ロジックです。DOM取得、状態管理、イベント登録、ダメージ計算、持ち物効果、表示更新をまとめて担当しています。
+アプリの状態管理とイベント登録の中心です。分割後は、計算・持ち物効果・表示関数を各ファイルへ移し、`app.js` は画面操作の流れをまとめる役割に寄せています。
 
 主な責務は以下です。
 
@@ -206,13 +257,12 @@ JavaScriptは以下の順番で読み込まれます。
 - 技クリックイベント
 - 持ち物選択イベント
 - 攻撃ボタンイベント
-- 計算結果表示
 - 結果内訳折りたたみ
 - ステータス折りたたみ
-- 通常攻撃詳細表示
 - 攻撃後の計算結果への自動スクロール
-- 通常攻撃、技、合計ダメージの計算
-- ES Modules化に向けた機能別見出し整理（DOM、状態、イベント、計算、表示、ポップアップ、再描画、ヘルパー）
+- `updateNormalAttack()` / `rerenderAfterAttack()` / `attackNormalAttack()` による再計算の入口管理
+
+`updateNormalAttack()` と `attackNormalAttack()` は循環参照に近い再描画フローを持つため、今回の分割では `app.js` 側に残しています。
 
 ---
 
@@ -231,14 +281,14 @@ JavaScriptは以下の順番で読み込まれます。
 9. 通常攻撃以外の技ヒット数は初期値 `1Hits` にする。
 10. `updateNormalAttack()` で通常攻撃威力を初期計算する。
 11. `updatePlayerUI()` と `updateEnemyUI()` で初期描画する。
-12. 計算結果エリアは初期状態では非表示。
+12. 計算結果エリアはPCでは常時表示、スマホ幅では攻撃前に非表示。
 
 ### 攻撃側ポケモン変更
 
 1. `pokemon-select` の変更イベントが発火する。
 2. `currentPokemon` を `pokemonsList` から再取得する。
 3. 選択済み技、ダメージ表示、HPバー、合計ダメージをリセットする。
-4. 計算結果エリアを非表示に戻す。
+4. 計算結果エリアはPCでは常時表示に戻し、スマホ幅では非表示に戻す。
 5. 結果内訳の開閉状態を閉じる。
 6. 攻撃側画像を更新する。
 7. 攻撃側ステータスと技リストを更新する。
@@ -286,9 +336,24 @@ JavaScriptは以下の順番で読み込まれます。
 
 現在、自動スクロールは攻撃ボタン押下時だけ発生します。技選択、ヒット数変更、急所ON/OFF、持ち物変更では発生しません。攻撃後にユナイト技を選択・解除した場合も、技1・技2と同じように再計算され、結果表示とHPバーが更新されます。 攻撃後の再計算判定は `rerenderAfterAttack()` にまとめています。
 
+### 責務分割後の呼び出し関係
+
+2026-06-04に、保守性向上の実験として通常scriptのまま責務分割しました。
+
+- `app.js`
+  - ユーザー操作、状態更新、再計算入口を担当します。
+- `damageCalculator.js`
+  - `app.js` から呼ばれて、技・通常攻撃・防御補正後ダメージを返します。
+- `heldItemService.js`
+  - `getCurrentStatus()` と `applyHeldItemEffect()` を通じて、持ち物補正を適用します。
+- `resultRenderer.js`
+  - 計算結果をDOMへ表示し、HPバーや詳細ポップアップを更新します。
+
+`updateNormalAttack()` は `calculateNormalAttackDamage()` と `showNormalAttackDamage()` を呼び、攻撃済みなら `rerenderAfterAttack()` 経由で `attackNormalAttack()` を呼びます。この循環に近い再描画フローは挙動維持のため `app.js` に残しています。
+
 ### 計算結果表示
 
-PCでは `damage-result` を常時表示します。スマホでは攻撃前は `damage-result` が非表示です。
+PCでは `damage-result` を常時表示します。スマホでは攻撃前は `damage-result` が非表示です。攻撃側ポケモン変更時もこの方針を維持するため、PCでは `damageResult` のインライン `display` を空に戻し、スマホ幅だけ `display: none` にします。
 
 攻撃後は、PC/スマホともJSが数値とHPバーを更新します。スマホではこのタイミングで `damage-result` も表示されます。
 
@@ -469,11 +534,32 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ---
 
+## 動作確認チェックリスト
+
+責務分割後は、以下を確認します。
+
+- `node --check js/app.js`
+- `node --check js/damageCalculator.js`
+- `node --check js/heldItemService.js`
+- `node --check js/resultRenderer.js`
+- 画面を開いたときにコンソールエラーが出ない
+- 攻撃ボタンで通常攻撃・技1・技2・ユナイト技・合計ダメージが表示される
+- 詳細表示ボタンで通常攻撃1ヒットごとの情報が表示される
+- ピントレンズ、力のハチマキ、物知り眼鏡を選んでもエラーが出ない
+- レベル変更後に技の `+` 表示と威力表示が維持される
+- スマホ幅で合計ダメージ優先表示と内訳折りたたみが維持される
+
+今回の自動確認では、4つのJSファイルの `node --check` を実行済みです。ブラウザ上の操作確認は上記チェックリストに沿って行います。
+
+2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。HTML/CSSに残る `critical-popup` は旧UI構造として残し、表示や計算結果には影響しない範囲に絞っています。
+
+---
+
 ## 5. 改善点
 
 ### app.js の責務が大きい
 
-2026-06-03に、将来の分割準備として `js/app.js` のコメント見出しを `project-overview.md` の分類に寄せました。技選択イベント周辺のインデントも整理済みです。現時点ではファイル分割とES Modules化は未実施です。
+2026-06-03に、将来の分割準備として `js/app.js` のコメント見出しを `project-overview.md` の分類に寄せました。2026-06-04に、ES Modules化はまだ行わず、通常scriptのまま `damageCalculator.js` / `heldItemService.js` / `resultRenderer.js` へ責務分割しました。
 
 `app.js` に以下が集中しています。
 
@@ -498,7 +584,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### 計算系切り出し候補
 
-2026-06-03時点では、実際のファイル分割はまだ行わず、`js/app.js` 内の計算系関数を切り出し候補として分類しています。
+2026-06-03時点で切り出し候補を分類し、2026-06-04に通常scriptのまま `damageCalculator.js` へ一部切り出しました。挙動維持を優先しているため、DOM参照やグローバル状態参照の完全解消は今後の課題です。
 
 #### すぐ切り出しやすい候補
 
@@ -577,8 +663,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 #### 推奨する次の実装順
 
 1. `calculateDamage()` と `calculateDamagePlus()` を同じ形に整理する。
-2. `isPlusMove(move, level)` は対応済み。次は `getRawDamage(selectedMove, level, status)` へ進む。
-3. `getRawDamage(selectedMove, level, status)` へ引数化する。
+2. `isPlusMove(move, level)` は対応済み。
+3. 2026-06-04に通常scriptのまま計算系関数を `damageCalculator.js` へ移動済み。次は `getRawDamage(selectedMove, level, status)` へ引数化する。
 4. `getTotalDamage(rawDamage, hitCount)` のように単純化する。
 5. 通常攻撃計算は最後に回し、先に引数設計を固める。
 
@@ -597,7 +683,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 4. UI表示や計算式は変えず、DOM依存を外側へ寄せるだけにする。
 5. 変更後は `node --check js/app.js` と、技1・技2・ユナイト技の威力表示だけ確認する。
 
-この変更の目的は、`isPlusMove(move, level)` と同じ考え方で、技ダメージ計算を引数中心の形へ近づけることです。ここまでできると、次の段階で `calculateDamage()`、`calculateDamagePlus()`、`isPlusMove()`、`getRawDamage()` を `damageCalculator.js` へ切り出す準備が整います。
+この変更の目的は、`isPlusMove(move, level)` と同じ考え方で、技ダメージ計算を引数中心の形へ近づけることです。ここまでできると、次の段階で `getRawDamage()` のDOM依存をさらに減らし、将来のES Modules化に進みやすくなります。
 
 ### 通常攻撃ロジックがポケモンごとに重複している
 
