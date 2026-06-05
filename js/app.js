@@ -31,6 +31,19 @@ import {
     updatePlayerUI as renderPlayerUI
 } from "./ui.js";
 import {
+    createHitCountOptions,
+    createLevelOptions,
+    createPokemonOptions
+} from "./selectOptions.js";
+import {
+    getEnemyStats as selectEnemyStats,
+    findPokemonById,
+    findMoveByName,
+    getHpFromStats,
+    getPokemonStatsAtLevel,
+    getUniteMove
+} from "./appSelectors.js";
+import {
     allResetButton,
     attackAction,
     closeDetailPopup,
@@ -108,71 +121,25 @@ let currentHeldItems = [];
 let currentSelectedSlot = null;
 let hasAttacked = false;
 // =========================
-// Option creation functions
-// =========================
-
-function createLevelOptions(selectElement){
-
-    for(let i = 1; i <= 15; i++){
-
-        const option = document.createElement("option");
-
-        option.value = i;
-        option.textContent = i + ".lv";
-
-        selectElement.appendChild(option);
-    }
-}
-
-function createPokemonOptions(selectElement){
-
-    pokemonsList.forEach(pokemon => {
-
-        const option = document.createElement("option");
-
-        option.value = pokemon.id;
-        option.textContent = pokemon.name;
-
-        selectElement.appendChild(option);
-    });
-}
-//通常攻撃と攻撃のヒットカウント分けたほうがいいかも
-Object.values(hitCountSelects).forEach(select => {
-
-    for(let i = 0; i <= 10; i++){
-
-        const option = document.createElement("option");
-
-        option.value = i;
-        option.textContent = i + "Hits";
-
-        select.appendChild(option);
-    }
-
-    if(select !== hitCountSelects.normalAttack){
-        select.value = 1;
-    }
-
-    select.addEventListener("change", () => {
-        updateNormalAttack();
-         updateDamageByHitCount();
-        
-    })
-})
-
- 
-
-// =========================
 // Initial setup
 // =========================
 
 createLevelOptions(levelSelect);
 createLevelOptions(enemyLevelSelect);
 
-createPokemonOptions(pokemonSelect);
-createPokemonOptions(pokemonSelectTwo);
+createPokemonOptions(pokemonSelect, pokemonsList);
+createPokemonOptions(pokemonSelectTwo, pokemonsList);
+createHitCountOptions(hitCountSelects);
 
 updateNormalAttack();
+
+Object.values(hitCountSelects).forEach(select => {
+    select.addEventListener("change", () => {
+        updateNormalAttack();
+         updateDamageByHitCount();
+        
+    })
+})
 
 // =========================
 // Player and result events
@@ -238,11 +205,7 @@ pokemonSelect.addEventListener("change", () => {
 
     const selectedId = pokemonSelect.value;
 
-    currentPokemon = pokemonsList.find(
-
-        pokemon => pokemon.id === selectedId
-
-    );
+    currentPokemon = findPokemonById(pokemonsList, selectedId);
 
   
 
@@ -263,7 +226,7 @@ skillsFirst.forEach(skill => {
     skill.addEventListener("click", () => {
         if(skillFirstResult.textContent === "" || skillFirstResult.textContent !== skill.textContent){
             const skillName = skill.textContent.replace("+", "");
-            const selectedMove = findMoveByName(skillName);
+            const selectedMove = findMoveByName(currentPokemon, skillName);
 
             selectedSkillOne = selectedMove;
             showDamage(selectedMove, skillFirstDamage, Number(hitCountSelects.one.value));
@@ -286,7 +249,7 @@ skillsSecond.forEach(skill => {
     skill.addEventListener("click", () => {
         if(skillSecondResult.textContent === "" || skillSecondResult.textContent !== skill.textContent){
             const skillName = skill.textContent.replace("+", "");
-            const selectedMove = findMoveByName(skillName);
+            const selectedMove = findMoveByName(currentPokemon, skillName);
 
             selectedSkillTwo = selectedMove;
             showDamage(selectedMove, skillSecondDamage, Number(hitCountSelects.two.value));
@@ -310,7 +273,7 @@ unitesMove.addEventListener("click", () => {
         skillThirdResult.textContent = unitesMove.textContent;
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
-        const move = currentPokemon.skill[9][0];
+        const move = getUniteMove(currentPokemon);
         showDamage(move, skillThirdDamage, Number(hitCountSelects.unite.value));
         selectedSkillThird = move;
         rerenderAfterAttack();
@@ -451,11 +414,7 @@ pokemonSelectTwo.addEventListener("change", () => {
 
     const selectedId = pokemonSelectTwo.value;
 
-    enemyPokemon = pokemonsList.find(
-
-        pokemon => pokemon.id === selectedId
-
-    );
+    enemyPokemon = findPokemonById(pokemonsList, selectedId);
 
     enemyName.textContent = selectedId;
 
@@ -583,46 +542,28 @@ function updateDamageByHitCount(){
 // Helper functions
 // ============================
 
-//return selectedMove
-function findMoveByName(skillName){
-    let selectedMove;
-      Object.values(currentPokemon.skill).forEach(skills => {
-         
-
-            const foundMove = skills.find(move => {
-
-                return move.name === skillName;
-
-            });
-
-            if(foundMove){
-
-                selectedMove = foundMove;
-            }
-
-        });
-         
-        return selectedMove;
-        
-}
-
 function getActiveHeldItemsForCurrentSelection(){
     return getActiveHeldItems(heldItemsList, currentHeldItems);
 }
 
 function getCurrentPlayerStatus(){
+    const level = Number(levelSelect.value);
+    const baseStats = getPokemonStatsAtLevel(currentPokemon, level);
+
     return getCurrentStatus(
-        currentPokemon.stats[Number(levelSelect.value)],
+        baseStats,
         getActiveHeldItemsForCurrentSelection()
     );
 }
 
 function getEnemyStats(){
-    return enemyPokemon.stats[Number(enemyLevelSelect.value)];
+    const enemyLevel = Number(enemyLevelSelect.value);
+
+    return selectEnemyStats(enemyPokemon, enemyLevel);
 }
 
 function getEnemyHp(){
-    return getEnemyStats().hp;
+    return getHpFromStats(getEnemyStats());
 }
 
 function updatePlayerUI(){

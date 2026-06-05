@@ -39,12 +39,14 @@
 │  └─ wise-glasses.png
 ├─ js/
 │  ├─ app.js
+│  ├─ appSelectors.js
 │  ├─ damageCalculator.js
 │  ├─ domElements.js
 │  ├─ heldItemService.js
 │  ├─ helditemData.js
 │  ├─ pokemonData.js
 │  ├─ resultRenderer.js
+│  ├─ selectOptions.js
 │  └─ ui.js
 ├─ index.html
 ├─ README.md
@@ -96,12 +98,14 @@ JavaScriptはES Modulesとして読み込まれます。
 現在の主な依存方向は以下です。
 
 - `app.js`
+  - `appSelectors.js`
   - `pokemonData.js`
   - `helditemData.js`
   - `damageCalculator.js`
   - `domElements.js`
   - `heldItemService.js`
   - `resultRenderer.js`
+  - `selectOptions.js`
   - `ui.js`
 - `ui.js`
   - `resultRenderer.js`
@@ -195,6 +199,16 @@ JavaScriptはES Modulesとして読み込まれます。
 
 `status` はステータス加算、`statusEffect` は倍率補正、`effect` はダメージ計算時の追加効果を表します。
 
+### js/appSelectors.js
+
+現在のアプリ状態から必要な値を取り出すための補助関数を `export` します。
+
+2026-06-05時点では、`findMoveByName(pokemon, skillName)`、`getPokemonStatsAtLevel(pokemon, level)`、`getEnemyStats(enemyPokemon, enemyLevel)`、`getHpFromStats(stats)`、`getUniteMove(pokemon)`、`findPokemonById(pokemonsList, pokemonId)` を切り出しています。どれもDOMを直接参照せず、呼び出し側から必要な値を受け取ります。
+
+`getEnemyStats()` は `appSelectors.js` 側へ追加しましたが、`app.js` 側の同名ラッパー関数は残しています。`enemyLevelSelect.value` の読み取りは `app.js` 側に残し、import時に `selectEnemyStats` という別名を付けて呼び出すことで、既存の呼び出し元を変えずに移行しています。
+
+`getHpFromStats()` は防御側HP取得、`getUniteMove()` はユナイト技取得、`findPokemonById()` は攻撃側・防御側ポケモン選択時のID検索に使います。
+
 ### js/ui.js
 
 画面更新用の関数を `export` します。
@@ -251,6 +265,19 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 
 イベント処理、状態管理、計算関数、UI表示関数は持たず、DOM参照を提供するだけのファイルです。2026-06-05にES Modules化後の追加分割として作成しました。
 
+### js/selectOptions.js
+
+セレクトボックスの選択肢生成関数を `export` します。
+
+主な責務は以下です。
+
+- `createLevelOptions()` によるレベル選択肢生成
+- `createPokemonOptions()` によるポケモン選択肢生成
+- `createHitCountOptions()` によるヒット数選択肢生成
+- 通常攻撃以外のヒット数初期値を `1Hits` に設定する
+
+`change` イベント登録や再計算処理は持たず、option生成だけを担当します。ヒット数変更時の `updateNormalAttack()` / `updateDamageByHitCount()` 呼び出しは、状態管理と再計算に近いため `app.js` 側に残しています。2026-06-05に作成しました。
+
 ### js/resultRenderer.js
 
 計算結果、HPバー、通常攻撃詳細ポップアップなどのDOM表示関数を `export` します。
@@ -274,10 +301,11 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 主な責務は以下です。
 
 - `domElements.js` からDOM参照を受け取る
+- `appSelectors.js` を使って現在ポケモンから技データを探す
 - 現在選択中の攻撃側・防御側ポケモン管理
 - 選択済み技の管理
 - 持ち物選択状態の管理
-- レベル選択肢、ポケモン選択肢、ヒット数選択肢の生成
+- `selectOptions.js` を使ったレベル選択肢、ポケモン選択肢、ヒット数選択肢の初期生成
 - 技クリックイベント
 - 持ち物選択イベント
 - 攻撃ボタンイベント
@@ -299,9 +327,9 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 3. `domElements.js` が画面上のDOM要素参照を取得して `export` する。
 4. `ui.js` が `updatePlayerUI()`、`updateEnemyUI()` を定義する。
 5. `currentPokemon` と `enemyPokemon` に初期ポケモンを設定する。
-6. `createLevelOptions()` でレベル選択肢を作る。
-7. `createPokemonOptions()` でポケモン選択肢を作る。
-8. ヒット数選択肢を作る。
+6. `selectOptions.js` の `createLevelOptions()` でレベル選択肢を作る。
+7. `selectOptions.js` の `createPokemonOptions()` でポケモン選択肢を作る。
+8. `selectOptions.js` の `createHitCountOptions()` でヒット数選択肢を作る。
 9. 通常攻撃以外の技ヒット数は初期値 `1Hits` にする。
 10. `updateNormalAttack()` で通常攻撃威力を初期計算する。
 11. `updatePlayerUI()` と `updateEnemyUI()` で初期描画する。
@@ -331,7 +359,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 1. 技リストの技をクリックする。
 2. 技名から `+` を取り除く。
-3. `findMoveByName()` で現在のポケモンの技データを探す。
+3. `appSelectors.js` の `findMoveByName(currentPokemon, skillName)` で現在のポケモンの技データを探す。
 4. 技セットに応じて `selectedSkillOne`、`selectedSkillTwo`、`selectedSkillThird` に保存する。
 5. `showDamage()` で威力を表示する。
 6. `showSkillResult()` で選んだ技欄へ反映する。
@@ -366,8 +394,12 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 - `app.js`
   - ユーザー操作、状態更新、再計算入口を担当します。
+- `appSelectors.js`
+  - 現在状態から必要な値を取り出す補助関数を担当します。まず技名から技データを探す `findMoveByName()` を切り出しています。
 - `domElements.js`
   - `app.js` が利用するDOM参照をまとめて提供します。
+- `selectOptions.js`
+  - レベル、ポケモン、ヒット数のoption生成を担当します。変更イベントは持ちません。
 - `damageCalculator.js`
   - `app.js` から呼ばれて、技・通常攻撃・防御補正後ダメージを返します。
 - `heldItemService.js`
@@ -546,8 +578,23 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### ヘルパー
 
-- `findMoveByName(skillName)`
-  - 現在のポケモンの技一覧から技名に一致する技データを探します。
+- `findMoveByName(pokemon, skillName)`
+  - 対象ポケモンの技一覧から技名に一致する技データを探します。2026-06-05に `appSelectors.js` へ切り出し、`currentPokemon` 直接参照をなくしました。
+
+- `getPokemonStatsAtLevel(pokemon, level)`
+  - 対象ポケモンの指定レベルのステータスを返します。2026-06-05に `appSelectors.js` へ追加し、`currentPokemon.stats[...]` / `enemyPokemon.stats[...]` の直接参照を `app.js` の値取得ラッパー内から減らしました。
+
+- `getEnemyStats(enemyPokemon, enemyLevel)`
+  - 防御側ポケモンと防御側レベルからステータスを返します。2026-06-05に `appSelectors.js` へ追加し、`app.js` 側では `selectEnemyStats` として import して既存の `getEnemyStats()` ラッパー内から呼び出しています。
+
+- `getHpFromStats(stats)`
+  - 渡されたステータスからHPを返します。2026-06-05に `appSelectors.js` へ追加し、`app.js` 側の `getEnemyHp()` ラッパー内で使います。
+
+- `getUniteMove(pokemon)`
+  - 対象ポケモンのユナイト技を返します。2026-06-05に `appSelectors.js` へ追加し、`currentPokemon.skill[9][0]` の直接参照を `app.js` から減らしました。
+
+- `findPokemonById(pokemonsList, pokemonId)`
+  - ポケモン一覧からIDに一致するポケモンを返します。2026-06-05に `appSelectors.js` へ追加し、攻撃側・防御側ポケモン変更時の検索処理を共通化しました。
 
 - `isCategory(selectedMove)`
   - 技が物理か特殊かを判定します。
@@ -565,7 +612,9 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 責務分割後は、以下を確認します。
 
 - `node --check js/app.js`
+- `node --check js/appSelectors.js`
 - `node --check js/domElements.js`
+- `node --check js/selectOptions.js`
 - `node --check js/damageCalculator.js`
 - `node --check js/heldItemService.js`
 - `node --check js/resultRenderer.js`
@@ -591,6 +640,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 `app.js` にはまだ以下が集中しています。
 
 - DOM参照を使った画面制御
+- セレクトボックス変更時の再計算イベント
 - 状態管理
 - イベント登録
 - 計算ロジック
