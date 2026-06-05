@@ -10,7 +10,7 @@ import {
 
 // DOM表示とHPバー更新を担当し、UI構造や表示文言は変えない。
 
-export function computeFinalDamageAll(finalDamageData, context){
+export function renderFinalDamageAll(finalDamageData, context){
     const {
         selectedSkillOne,
         selectedSkillTwo,

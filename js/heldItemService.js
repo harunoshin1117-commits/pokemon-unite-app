@@ -48,38 +48,52 @@ export function applyHeldItemStatusEffect(status, activeHeldItems){
 }
 
 export function applyHeldItemEffect(damageData, activeHeldItems, enemyHp){
+    const adjustedDamageData = {
+        ...damageData,
+        finalHitDamages: damageData.finalHitDamages.map(
+            hitData => {
+
+                return {
+                    ...hitData
+                };
+            }
+        )
+    };
+
     for(const item of activeHeldItems){
         for(const [name,value] of Object.entries(item.effect || {})){
             switch(name){
                 case "criticalPlusDamage":
                     
-                    damageData.totalFinalDamage = 0;
+                    adjustedDamageData.totalFinalDamage = 0;
 
-                    for(const hitData of damageData.finalHitDamages){
+                    for(const hitData of adjustedDamageData.finalHitDamages){
                         if(hitData.critical){
                             hitData.damage *= value;
                             
                         }
 
-                        damageData.totalFinalDamage += Math.floor(hitData.damage);
+                        adjustedDamageData.totalFinalDamage += Math.floor(hitData.damage);
                     }
                     
                 break;
 
                 case "muscleBandDamage":
                 
-                damageData.totalFinalDamage = 0;
+                adjustedDamageData.totalFinalDamage = 0;
                 let currentEnemyHp = enemyHp;
-                for(const hitData of damageData.finalHitDamages){
+                for(const hitData of adjustedDamageData.finalHitDamages){
                     const muscleBandDamage = Math.floor(currentEnemyHp * value);
                     hitData.damage += muscleBandDamage;
                     currentEnemyHp -= hitData.damage;
-                    damageData.totalFinalDamage += Math.floor(hitData.damage);
+                    adjustedDamageData.totalFinalDamage += Math.floor(hitData.damage);
                 }
                 break;
             }
         }
     }
+
+    return adjustedDamageData;
 }
 
 export function getCurrentStatus(baseStats, activeHeldItems){

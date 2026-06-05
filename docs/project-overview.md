@@ -40,6 +40,7 @@
 ├─ js/
 │  ├─ app.js
 │  ├─ damageCalculator.js
+│  ├─ domElements.js
 │  ├─ heldItemService.js
 │  ├─ helditemData.js
 │  ├─ pokemonData.js
@@ -98,6 +99,7 @@ JavaScriptはES Modulesとして読み込まれます。
   - `pokemonData.js`
   - `helditemData.js`
   - `damageCalculator.js`
+  - `domElements.js`
   - `heldItemService.js`
   - `resultRenderer.js`
   - `ui.js`
@@ -237,6 +239,18 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 
 `currentHeldItems` はこれまで通り `app.js` 側で持ち物ID配列として管理します。IDから持ち物オブジェクトへの変換は `getActiveHeldItems(heldItemsList, currentHeldItems)` で行います。`scopeLens` の `criticalPlusDamage`、`muscleBand` の `muscleBandDamage`、`wiseGlasses` の `statusEffect` の処理順も変更していません。
 
+### js/domElements.js
+
+画面上のDOM要素取得をまとめて `export` します。
+
+主な責務は以下です。
+
+- レベル選択、ポケモン選択、技表示、持ち物、計算結果、詳細ポップアップなどのDOM参照を取得する
+- 技1、技2、ユナイト技、通常攻撃のヒット数セレクトを `hitCountSelects` としてまとめる
+- `app.js` の先頭に集中していた `document.getElementById()` / `document.querySelector()` を分離する
+
+イベント処理、状態管理、計算関数、UI表示関数は持たず、DOM参照を提供するだけのファイルです。2026-06-05にES Modules化後の追加分割として作成しました。
+
 ### js/resultRenderer.js
 
 計算結果、HPバー、通常攻撃詳細ポップアップなどのDOM表示関数を `export` します。
@@ -245,7 +259,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 
 - `showDamage()` / `showFinalDamage()` による技の威力・最終ダメージ表示
 - `showNormalAttackDamage()` / `showNormalAttackFinalDamage()` による通常攻撃表示
-- `computeFinalDamageAll()` による合計ダメージ表示
+- `renderFinalDamageAll()` による合計ダメージ表示
 - `updateHpBar()` によるHPバー更新
 - `showSkillResult()` / `showHeldItem()` / `showSelectPokemonImage()` による選択状態表示
 - `showHitDamagesPopup()` / `showSingleHitDamagesPopup()` による詳細ポップアップ表示
@@ -259,7 +273,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 主な責務は以下です。
 
-- DOM要素の取得
+- `domElements.js` からDOM参照を受け取る
 - 現在選択中の攻撃側・防御側ポケモン管理
 - 選択済み技の管理
 - 持ち物選択状態の管理
@@ -282,8 +296,8 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 1. `pokemonData.js` が `pokemonsList` を定義する。
 2. `helditemData.js` が `heldItemsList` を定義する。
-3. `ui.js` が `updatePlayerUI()`、`updateEnemyUI()` を定義する。
-4. `app.js` がDOM要素を取得する。
+3. `domElements.js` が画面上のDOM要素参照を取得して `export` する。
+4. `ui.js` が `updatePlayerUI()`、`updateEnemyUI()` を定義する。
 5. `currentPokemon` と `enemyPokemon` に初期ポケモンを設定する。
 6. `createLevelOptions()` でレベル選択肢を作る。
 7. `createPokemonOptions()` でポケモン選択肢を作る。
@@ -352,6 +366,8 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 - `app.js`
   - ユーザー操作、状態更新、再計算入口を担当します。
+- `domElements.js`
+  - `app.js` が利用するDOM参照をまとめて提供します。
 - `damageCalculator.js`
   - `app.js` から呼ばれて、技・通常攻撃・防御補正後ダメージを返します。
 - `heldItemService.js`
@@ -485,8 +501,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `showFinalDamage(selectedMove, damageElement, hpElement, hpBarElement, hitCount)`
   - 技の最終ダメージ、残りHP、HPバーを更新します。
 
-- `computeFinalDamageAll(finalDamageData)`
-  - 通常攻撃、技1、技2、ユナイト技の合計ダメージを計算します。
+- `renderTotalDamageResult(finalDamageData)`
+  - 通常攻撃、技1、技2、ユナイト技の合計ダメージ表示を更新します。
 
 - `showHitDamagesPopup(hitDamages)`
   - 通常攻撃の1ヒットごとの詳細を描画します。
@@ -513,7 +529,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### 持ち物
 
-- `toggleHeldItem(itemId)`
+- `toggleHeldItem(currentHeldItems, itemId)`
   - 持ち物の選択・解除を切り替えます。
 
 - `showHeldItem(itemId, selectedItem)`
@@ -525,8 +541,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `applyHeldItemStatusEffect(status)`
   - 持ち物によるステータス倍率補正を適用します。
 
-- `applyHeldItemEffect(damageData)`
-  - 持ち物によるダメージ補正や追加ダメージを適用します。
+- `applyHeldItemEffect(damageData, activeHeldItems, enemyHp)`
+  - 持ち物によるダメージ補正や追加ダメージを、コピーしたダメージデータへ適用して返します。
 
 ### ヘルパー
 
@@ -549,6 +565,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 責務分割後は、以下を確認します。
 
 - `node --check js/app.js`
+- `node --check js/domElements.js`
 - `node --check js/damageCalculator.js`
 - `node --check js/heldItemService.js`
 - `node --check js/resultRenderer.js`
@@ -571,9 +588,9 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 2026-06-03に、将来の分割準備として `js/app.js` のコメント見出しを `project-overview.md` の分類に寄せました。2026-06-04に、ES Modules化はまだ行わず、通常scriptのまま `damageCalculator.js` / `heldItemService.js` / `resultRenderer.js` へ責務分割しました。
 
-`app.js` に以下が集中しています。
+`app.js` にはまだ以下が集中しています。
 
-- DOM取得
+- DOM参照を使った画面制御
 - 状態管理
 - イベント登録
 - 計算ロジック
@@ -604,7 +621,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
   - `calculateNormalAttackDamage()`。2026-06-04に攻撃側ポケモンID、レベル、ヒット数、急所ON/OFF、現在ステータスを引数化済みです。
   - `computeNormalAttackFinalDamage()`。2026-06-04に攻撃側ポケモンIDと防御側ステータスを引数化済みです。
   - `getCurrentStatus()`。2026-06-04に基礎ステータスと選択中持ち物オブジェクトを引数化済みです。
-  - `applyHeldItemEffect()`。2026-06-04に選択中持ち物オブジェクトと防御側HPを引数化済みです。
+  - `applyHeldItemEffect()`。2026-06-04に選択中持ち物オブジェクトと防御側HPを引数化済みです。ES Modules化後レビューで、元の `damageData` を直接変更せず、コピーへ効果を適用して返す形に変更済みです。
 - app.js 側で取得して渡す値
   - 攻撃側レベル
   - 防御側ステータス
@@ -668,8 +685,9 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `applyHeldItemStatus(status)` / `applyHeldItemStatusEffect(status)`
   - 2026-06-04に `activeHeldItems` を引数で受け取る形へ変更済みです。
 
-- `applyHeldItemEffect(damageData)`
-  - 2026-06-04に `applyHeldItemEffect(damageData, activeHeldItems, enemyHp)` へ変更済みです。
+- `applyHeldItemEffect(damageData, activeHeldItems, enemyHp)`
+  - 2026-06-04に引数化済みです。
+  - 2026-06-04のES Modules化後レビューで、同じ `damageData` に複数回適用しても元データへ重ねがけしないよう、コピーへ効果を適用して返す形に変更済みです。
 
 - `getCurrentStatus()`
   - 2026-06-04に `getCurrentStatus(baseStats, activeHeldItems)` へ変更済みです。
@@ -678,9 +696,10 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 以下は計算だけでなく表示更新や画面状態変更も担当しているため、今すぐ計算モジュールへ移すと壊れやすいです。
 
-- `computeFinalDamageAll(finalDamageData)`
+- `renderFinalDamageAll(finalDamageData, context)`
   - 合計ダメージ計算だけでなく、`takenAll`、`remainingHpAll`、`hpFillAll` を直接更新しています。
-  - 先に「合計値を返す関数」と「表示する関数」に分ける必要があります。
+  - 実態に合わせて、旧名 `computeFinalDamageAll()` から表示寄りの名前へ変更済みです。
+  - さらに進めるなら「合計値を返す関数」と「表示する関数」に分ける必要があります。
 
 - `attackNormalAttack()`
   - 通常攻撃、持ち物効果、技1、技2、ユナイト技、合計表示をまとめて呼び出す実行役です。

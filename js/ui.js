@@ -52,7 +52,6 @@ export function updatePlayerUI(context){
   
 
 
-let skillUpgradeCount = 0;
 Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
     const skillLv = Number(skillLevel);
     

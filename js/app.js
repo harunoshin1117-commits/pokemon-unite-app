@@ -1,11 +1,10 @@
 ﻿// =========================
-// DOM elements
+// Imports
 // =========================
 
 import { pokemonsList } from "./pokemonData.js";
 import { heldItemsList } from "./helditemData.js";
 import {
-    calculateDamage,
     calculateNormalAttackDamage,
     computeNormalAttackFinalDamage
 } from "./damageCalculator.js";
@@ -16,7 +15,7 @@ import {
     toggleHeldItem
 } from "./heldItemService.js";
 import {
-    computeFinalDamageAll as renderFinalDamageAll,
+    renderFinalDamageAll,
     resetDamageDisplay,
     showDamage as renderDamage,
     showFinalDamage as renderFinalDamage,
@@ -31,70 +30,59 @@ import {
     updateEnemyUI as renderEnemyUI,
     updatePlayerUI as renderPlayerUI
 } from "./ui.js";
-
-const levelSelect = document.getElementById("level");
-const pokemonSelect = document.getElementById("pokemon-select");
-
-const skillFirstResult = document.getElementById("skill-first-result");
-const skillSecondResult = document.getElementById("skill-second-result");
-const skillThirdResult = document.getElementById("skill-third-result");
-
-const skillsFirst = document.querySelectorAll("#skill-one li");
-const skillsSecond = document.querySelectorAll("#skill-two li");
-const unitesMove = document.getElementById("unite-move");
-
-const titlePokemonTitle = document.querySelector(".title-pokemon-title");
-
-const enemyLevelSelect = document.getElementById("enemy-level");
-const pokemonSelectTwo = document.getElementById("pokemon-select-two");
-const enemyName = document.getElementById("enemy-name");
-
-const colorChange = document.querySelectorAll(".color-change");
-const skillFirstDamage = document.getElementById("skill-first-damage");
-const skillSecondDamage = document.getElementById("skill-second-damage");
-const skillThirdDamage = document.getElementById("skill-third-damage");
-
-const overlay =  document.querySelector(".overlay");
-const heldItems = document.querySelectorAll(".held-item");
-const closeModal = document.getElementById("close-modal");
-
-const damageTaken = document.getElementById("damage-taken");
-const remainingHp = document.getElementById("remaining-hp");
-const damageTakenPlus = document.getElementById("damage-taken-plus");
-const remainingHpPlus = document.getElementById("remaining-hp-plus");
-const uniteTaken = document.getElementById("unite-taken");
-const remainingHpUnite = document.getElementById("remaining-hp-unite");
-const damageTakenNormalAttack = document.getElementById("damage-taken-normalAttack");
-const remainingHpNormalAttack = document.getElementById("remaining-hp-normalAttack");
-
-const allResetButton = document.getElementById("all-reset-button");
-const takenAll = document.getElementById("taken-all");
-const remainingHpAll = document.getElementById("remaining-hp-all");
-
-const hpFillOne = document.getElementById("hp-fill-one");
-const hpFillTwo = document.getElementById("hp-fill-two");
-const hpFillUnite = document.getElementById("hp-fill-unite");
-const hpFillAll = document.getElementById("hp-fill-all");
-const hpFillNormalAttack = document.getElementById("hp-fill-normalAttack");
-
-const normalAttackDamage = document.getElementById("normalAttack-damage");
-const criticalCheck = document.getElementById("critical-check");
-
-const selectItems = document.querySelectorAll(".select-items");
-
-const selectPokemonImage = document.getElementById("pokemon-img");
-
-const attackAction = document.querySelector(".attack-action");
-const resultPopup = document.querySelector(".result-popup");
-const damageResult = document.getElementById("damage-result");
-const detailDamageResult = document.getElementById("detail-damage-result");
-const resultBreakdownToggle = document.getElementById("result-breakdown-toggle");
-const detailPopupOverlay = document.getElementById("detail-popup-overlay");
-const closeDetailPopup = document.getElementById("close-detail-popup");
-const playerStatsToggle = document.getElementById("player-stats-toggle");
-const enemyStatsToggle = document.getElementById("enemy-stats-toggle");
-const statsText = document.getElementById("stats-text");
-const enemyStatsText = document.getElementById("enemy-stats-text");
+import {
+    allResetButton,
+    attackAction,
+    closeDetailPopup,
+    closeModal,
+    colorChange,
+    criticalCheck,
+    damageResult,
+    damageTaken,
+    damageTakenNormalAttack,
+    damageTakenPlus,
+    detailDamageResult,
+    detailPopupOverlay,
+    enemyLevelSelect,
+    enemyName,
+    enemyStatsText,
+    enemyStatsToggle,
+    heldItems,
+    hitCountSelects,
+    hpFillAll,
+    hpFillNormalAttack,
+    hpFillOne,
+    hpFillTwo,
+    hpFillUnite,
+    levelSelect,
+    normalAttackDamage,
+    overlay,
+    playerStatsToggle,
+    pokemonSelect,
+    pokemonSelectTwo,
+    remainingHp,
+    remainingHpAll,
+    remainingHpNormalAttack,
+    remainingHpPlus,
+    remainingHpUnite,
+    resultBreakdownToggle,
+    resultPopup,
+    selectItems,
+    selectPokemonImage,
+    skillFirstDamage,
+    skillFirstResult,
+    skillSecondDamage,
+    skillSecondResult,
+    skillThirdDamage,
+    skillThirdResult,
+    skillsFirst,
+    skillsSecond,
+    statsText,
+    takenAll,
+    titlePokemonTitle,
+    uniteTaken,
+    unitesMove
+} from "./domElements.js";
 // =========================
 // State and config
 // =========================
@@ -108,13 +96,6 @@ const statusName = {
     criticalRate:"急所率",
     cooldownReduction:"CT短縮",
     lifeSteal:"ライフスティール"
-};
-
-const hitCountSelects= {
-    one:document.getElementById("damage-hit-one"),
-    two:document.getElementById("damage-hit-two"),
-    unite:document.getElementById("damage-hit-unite"),
-    normalAttack:document.getElementById("normalAttack-hit")
 };
 
 let currentPokemon = pokemonsList[0];
@@ -330,7 +311,6 @@ unitesMove.addEventListener("click", () => {
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = currentPokemon.skill[9][0];
-        calculateDamage(move, Number(levelSelect.value), getCurrentPlayerStatus());
         showDamage(move, skillThirdDamage, Number(hitCountSelects.unite.value));
         selectedSkillThird = move;
         rerenderAfterAttack();
@@ -518,13 +498,13 @@ function rerenderAfterAttack(){
     }
 }
 function attackNormalAttack(){
-    const finalDamageData = computeNormalAttackFinalDamage(
+    let finalDamageData = computeNormalAttackFinalDamage(
         currentNormalAttackData,
         currentPokemon.id,
         getEnemyStats()
     );
 
-    applyHeldItemEffect(
+    finalDamageData = applyHeldItemEffect(
         finalDamageData,
         getActiveHeldItemsForCurrentSelection(),
         getEnemyHp()
@@ -550,17 +530,17 @@ function attackNormalAttack(){
             hpFillUnite,
             Number(hitCountSelects.unite.value)
         );
-    computeFinalDamageAll(finalDamageData);
+    renderTotalDamageResult(finalDamageData);
 
 }
 
 function updatePopup(){
-    const finalDamageData = computeNormalAttackFinalDamage(
+    let finalDamageData = computeNormalAttackFinalDamage(
         currentNormalAttackData,
         currentPokemon.id,
         getEnemyStats()
     );
-     applyHeldItemEffect(
+     finalDamageData = applyHeldItemEffect(
         finalDamageData,
         getActiveHeldItemsForCurrentSelection(),
         getEnemyHp()
@@ -735,7 +715,7 @@ function showSelectPokemonImage(){
     renderSelectPokemonImage(currentPokemon, selectPokemonImage);
 }
 
-function computeFinalDamageAll(finalDamageData){
+function renderTotalDamageResult(finalDamageData){
     renderFinalDamageAll(finalDamageData, {
         selectedSkillOne,
         selectedSkillTwo,
