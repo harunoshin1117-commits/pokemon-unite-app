@@ -82,12 +82,18 @@ import {
     resultPopup,
     selectItems,
     selectPokemonImage,
+    skillFirstOne,
     skillFirstDamage,
     skillFirstResult,
+    skillFirstTwo,
+    skillSecondOne,
     skillSecondDamage,
     skillSecondResult,
+    skillSecondTwo,
+    skillThirdOne,
     skillThirdDamage,
     skillThirdResult,
+    skillThirdTwo,
     skillsFirst,
     skillsSecond,
     statsText,
@@ -574,8 +580,16 @@ function updatePlayerUI(){
         statusName,
         selectedSkillOne,
         selectedSkillTwo,
+        skillFirstOne,
         skillFirstResult,
+        skillFirstTwo,
+        skillSecondOne,
         skillSecondResult,
+        skillSecondTwo,
+        skillThirdOne,
+        skillThirdTwo,
+        uniteMove: unitesMove,
+        statsText,
         damageTaken,
         remainingHp,
         damageTakenPlus,
@@ -591,7 +605,8 @@ function updateEnemyUI(){
     renderEnemyUI({
         enemyLevel: Number(enemyLevelSelect.value),
         enemyPokemon,
-        statusName
+        statusName,
+        enemyStatsText
     });
 }
 

@@ -1,5 +1,7 @@
 ﻿# Pokemon Unite App Project Overview
 
+最終更新日: 2026-06-07
+
 ## 概要
 
 このリポジトリは、ポケモンユナイトのダメージ計算を行う静的Webアプリです。フレームワークやビルドツールは使わず、`index.html`、`style.css`、複数のJavaScriptファイルだけで構成されています。
@@ -203,11 +205,13 @@ JavaScriptはES Modulesとして読み込まれます。
 
 現在のアプリ状態から必要な値を取り出すための補助関数を `export` します。
 
-2026-06-05時点では、`findMoveByName(pokemon, skillName)`、`getPokemonStatsAtLevel(pokemon, level)`、`getEnemyStats(enemyPokemon, enemyLevel)`、`getHpFromStats(stats)`、`getUniteMove(pokemon)`、`findPokemonById(pokemonsList, pokemonId)` を切り出しています。どれもDOMを直接参照せず、呼び出し側から必要な値を受け取ります。
+現在は、`findMoveByName(pokemon, skillName)`、`getPokemonStatsAtLevel(pokemon, level)`、`getEnemyStats(enemyPokemon, enemyLevel)`、`getHpFromStats(stats)`、`getUniteMove(pokemon)`、`findPokemonById(pokemonsList, pokemonId)` を切り出しています。どれもDOMを直接参照せず、呼び出し側から必要な値を受け取ります。
 
 `getEnemyStats()` は `appSelectors.js` 側へ追加しましたが、`app.js` 側の同名ラッパー関数は残しています。`enemyLevelSelect.value` の読み取りは `app.js` 側に残し、import時に `selectEnemyStats` という別名を付けて呼び出すことで、既存の呼び出し元を変えずに移行しています。
 
 `getHpFromStats()` は防御側HP取得、`getUniteMove()` はユナイト技取得、`findPokemonById()` は攻撃側・防御側ポケモン選択時のID検索に使います。
+
+状態取得関数の追加移行は当面行いません。`app.js` に残る `getEnemyStats()`、`getEnemyHp()`、`getCurrentPlayerStatus()`、`getActiveHeldItemsForCurrentSelection()` は、DOM値や現在状態と既存サービスをつなぐ小さなラッパーとして維持します。新機能や状態管理変更によって重複や責務上の問題が生じた場合に、必要な範囲だけ再検討します。
 
 ### js/ui.js
 
@@ -223,6 +227,8 @@ JavaScriptはES Modulesとして読み込まれます。
   - 防御側ポケモンのステータス表示を更新します。
 
 `ui.js` は `app.js` から渡される状態を使って表示を更新します。画像表示や選択済み技表示には `resultRenderer.js` の関数を `import` しています。
+
+技表示欄、ユナイト技欄、攻撃側・防御側ステータス欄のDOM参照も、`app.js` からcontext経由で受け取ります。`ui.js` に直接の `document.getElementById()` は残っていません。ステータス行の生成には `document.createElement()` を使います。
 
 ### js/damageCalculator.js
 
@@ -263,7 +269,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 - 技1、技2、ユナイト技、通常攻撃のヒット数セレクトを `hitCountSelects` としてまとめる
 - `app.js` の先頭に集中していた `document.getElementById()` / `document.querySelector()` を分離する
 
-イベント処理、状態管理、計算関数、UI表示関数は持たず、DOM参照を提供するだけのファイルです。2026-06-05にES Modules化後の追加分割として作成しました。
+イベント処理、状態管理、計算関数、UI表示関数は持たず、DOM参照を提供するだけのファイルです。
 
 ### js/selectOptions.js
 
@@ -276,7 +282,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 - `createHitCountOptions()` によるヒット数選択肢生成
 - 通常攻撃以外のヒット数初期値を `1Hits` に設定する
 
-`change` イベント登録や再計算処理は持たず、option生成だけを担当します。ヒット数変更時の `updateNormalAttack()` / `updateDamageByHitCount()` 呼び出しは、状態管理と再計算に近いため `app.js` 側に残しています。2026-06-05に作成しました。
+`change` イベント登録や再計算処理は持たず、option生成だけを担当します。ヒット数変更時の `updateNormalAttack()` / `updateDamageByHitCount()` 呼び出しは、状態管理と再計算に近いため `app.js` 側に残しています。
 
 ### js/resultRenderer.js
 
@@ -293,6 +299,8 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 - `resetDamageDisplay()` による表示リセット
 
 `damageCalculator.js` の関数を `import` して表示用の計算を行う箇所があります。UI構造、表示文言、CSSは変更していません。
+
+`showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。DOM参照の完全な集約は未完了ですが、次回は影響範囲を小さくするため、先に `ui.js` の直接DOM取得だけを整理します。
 
 ### js/app.js
 
@@ -314,7 +322,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 - 攻撃後の計算結果への自動スクロール
 - `updateNormalAttack()` / `rerenderAfterAttack()` / `attackNormalAttack()` による再計算の入口管理
 
-`updateNormalAttack()` と `attackNormalAttack()` は循環参照に近い再描画フローを持つため、今回の分割では `app.js` 側に残しています。
+`updateNormalAttack()` と `attackNormalAttack()` は循環参照に近い再描画フローを持つため、挙動維持を優先して `app.js` 側に置いています。
 
 ---
 
@@ -386,16 +394,16 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 6. `damageResult.scrollIntoView()` で計算結果エリアを画面上部へ移動する。
 7. 通常攻撃、技1、技2、ユナイト技、合計ダメージを表示する。
 
-現在、自動スクロールは攻撃ボタン押下時だけ発生します。技選択、ヒット数変更、急所ON/OFF、持ち物変更では発生しません。攻撃後にユナイト技を選択・解除した場合も、技1・技2と同じように再計算され、結果表示とHPバーが更新されます。 攻撃後の再計算判定は `rerenderAfterAttack()` にまとめています。
+現在、自動スクロールは攻撃ボタン押下時だけ発生します。技選択、ヒット数変更、急所ON/OFF、持ち物変更では発生しません。攻撃後にユナイト技を選択・解除した場合も、技1・技2と同じように再計算され、結果表示とHPバーが更新されます。攻撃後の再計算判定は `rerenderAfterAttack()` にまとめています。
 
 ### 責務分割後の呼び出し関係
 
-2026-06-04に、保守性向上の実験として通常scriptのまま責務分割しました。
+現在はES Modulesで責務を分割し、`app.js` を入口として各モジュールを `import` する構成です。
 
 - `app.js`
   - ユーザー操作、状態更新、再計算入口を担当します。
 - `appSelectors.js`
-  - 現在状態から必要な値を取り出す補助関数を担当します。まず技名から技データを探す `findMoveByName()` を切り出しています。
+  - DOMに依存せず、渡されたデータから技、ステータス、HP、ポケモンを取得する補助関数を担当します。
 - `domElements.js`
   - `app.js` が利用するDOM参照をまとめて提供します。
 - `selectOptions.js`
@@ -407,7 +415,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 - `resultRenderer.js`
   - 計算結果をDOMへ表示し、HPバーや詳細ポップアップを更新します。
 
-`updateNormalAttack()` は `calculateNormalAttackDamage()` と `showNormalAttackDamage()` を呼び、攻撃済みなら `rerenderAfterAttack()` 経由で `attackNormalAttack()` を呼びます。この循環に近い再描画フローは挙動維持のため `app.js` に残しています。
+`updateNormalAttack()` は `calculateNormalAttackDamage()` と `showNormalAttackDamage()` を呼び、攻撃済みなら `rerenderAfterAttack()` 経由で `attackNormalAttack()` を呼びます。この循環に近い再描画フローは挙動維持のため `app.js` に置いています。
 
 ### 計算結果表示
 
@@ -462,8 +470,12 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `createLevelOptions(selectElement)`
   - レベル1から15までの選択肢を生成します。
 
-- `createPokemonOptions(selectElement)`
+- `createPokemonOptions(selectElement, pokemonsList)`
   - `pokemonsList` からポケモン選択肢を生成します。
+
+- `createHitCountOptions(hitCountSelects)`
+  - 通常攻撃、技1、技2、ユナイト技のヒット数選択肢を生成します。
+  - 通常攻撃以外の初期値を1Hitに設定します。
 
 ### UI更新系
 
@@ -490,24 +502,24 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 - `isPlusMove(move, level)`
   - 渡されたレベルでアップグレード技として扱うか判定します。
-  - 2026-06-03に `levelSelect.value` の直接参照をやめ、DOM依存を減らしました。
+  - DOMを直接参照せず、レベルを引数で受け取ります。
 
-- `getRawDamage(selectedMove)`
+- `getRawDamage(selectedMove, level, status)`
   - 通常式とアップグレード式を切り替えて、技の基礎威力を返します。
 
-- `getTotalDamage(selectedMove, hitCount)`
+- `getTotalDamage(selectedMove, hitCount, level, status)`
   - 技の基礎威力にヒット数を掛けます。
 
-- `computeFinalDamage(selectedMove, hitCount = 1)`
+- `computeFinalDamage(selectedMove, hitCount = 1, attackerLevel, attackerStats, enemyPokemonStats)`
   - 相手の防御または特防を考慮して、技の最終ダメージを返します。
 
 ### 通常攻撃計算
 
-- `calculateNormalAttackDamage()`
+- `calculateNormalAttackDamage({ level, pokemonId, hitCount, status, criticalEnabled, random })`
   - ポケモン別に通常攻撃と強化通常攻撃を計算します。
   - 各ヒットごとに `damage`、`critical`、`boosted` を持つデータを生成します。
 
-- `computeNormalAttackFinalDamage(normalAttackData)`
+- `computeNormalAttackFinalDamage(normalAttackData, pokemonId, enemyPokemonStats)`
   - 通常攻撃の各ヒットに防御または特防を適用して最終ダメージに変換します。
 
 - `showNormalAttackDamage(normalAttackData)`
@@ -521,17 +533,20 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `rerenderAfterAttack()`
   - `hasAttacked` が `true` の場合だけ `attackNormalAttack()` を呼びます。
   - 技1、技2、ユナイト技、持ち物、ヒット数変更後の再計算入口を統一します。
+
 ### 結果表示
 
 - `attackNormalAttack()`
   - 攻撃時の中心処理です。
   - 通常攻撃、技1、技2、ユナイト技、合計ダメージをまとめて更新します。
 
-- `showDamage(selectedMove, targetElement, hitCount)`
+- `showDamage(selectedMove, targetElement, hitCount = 1)`
   - 選択中の技威力を表示します。
+  - `app.js` のラッパーが攻撃側レベルと補正後ステータスを `resultRenderer.js` へ渡します。
 
-- `showFinalDamage(selectedMove, damageElement, hpElement, hpBarElement, hitCount)`
+- `showFinalDamage(selectedMove, damageElement, hpElement, hpBarElement, hitCount = 1)`
   - 技の最終ダメージ、残りHP、HPバーを更新します。
+  - `app.js` のラッパーが攻撃側・防御側の計算用データを `resultRenderer.js` へ渡します。
 
 - `renderTotalDamageResult(finalDamageData)`
   - 通常攻撃、技1、技2、ユナイト技の合計ダメージ表示を更新します。
@@ -540,7 +555,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
   - 通常攻撃の1ヒットごとの詳細を描画します。
 
 - `showSingleHitDamagesPopup(hitDamage, index)`
-  - 1ヒット分の詳細行を作ります。
+  - `resultRenderer.js` 内部で1ヒット分の詳細行を作ります。
 
 ### 折りたたみ・表示制御
 
@@ -561,16 +576,16 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### 持ち物
 
-- `toggleHeldItem(currentHeldItems, itemId)`
+- `toggleHeldItem(selectedItemIds, itemId)`
   - 持ち物の選択・解除を切り替えます。
 
 - `showHeldItem(itemId, selectedItem)`
   - 持ち物枠の表示を更新します。
 
-- `applyHeldItemStatus(status)`
+- `applyHeldItemStatus(status, activeHeldItems)`
   - 持ち物によるステータス加算を適用します。
 
-- `applyHeldItemStatusEffect(status)`
+- `applyHeldItemStatusEffect(status, activeHeldItems)`
   - 持ち物によるステータス倍率補正を適用します。
 
 - `applyHeldItemEffect(damageData, activeHeldItems, enemyHp)`
@@ -579,28 +594,29 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 ### ヘルパー
 
 - `findMoveByName(pokemon, skillName)`
-  - 対象ポケモンの技一覧から技名に一致する技データを探します。2026-06-05に `appSelectors.js` へ切り出し、`currentPokemon` 直接参照をなくしました。
+  - 対象ポケモンの技一覧から技名に一致する技データを探します。
 
 - `getPokemonStatsAtLevel(pokemon, level)`
-  - 対象ポケモンの指定レベルのステータスを返します。2026-06-05に `appSelectors.js` へ追加し、`currentPokemon.stats[...]` / `enemyPokemon.stats[...]` の直接参照を `app.js` の値取得ラッパー内から減らしました。
+  - 対象ポケモンの指定レベルのステータスを返します。
 
 - `getEnemyStats(enemyPokemon, enemyLevel)`
-  - 防御側ポケモンと防御側レベルからステータスを返します。2026-06-05に `appSelectors.js` へ追加し、`app.js` 側では `selectEnemyStats` として import して既存の `getEnemyStats()` ラッパー内から呼び出しています。
+  - 防御側ポケモンと防御側レベルからステータスを返します。
+  - `app.js` 側では `selectEnemyStats` という名前でimportし、同名ラッパーから呼び出します。
 
 - `getHpFromStats(stats)`
-  - 渡されたステータスからHPを返します。2026-06-05に `appSelectors.js` へ追加し、`app.js` 側の `getEnemyHp()` ラッパー内で使います。
+  - 渡されたステータスからHPを返します。
 
 - `getUniteMove(pokemon)`
-  - 対象ポケモンのユナイト技を返します。2026-06-05に `appSelectors.js` へ追加し、`currentPokemon.skill[9][0]` の直接参照を `app.js` から減らしました。
+  - 対象ポケモンのユナイト技を返します。
 
 - `findPokemonById(pokemonsList, pokemonId)`
-  - ポケモン一覧からIDに一致するポケモンを返します。2026-06-05に `appSelectors.js` へ追加し、攻撃側・防御側ポケモン変更時の検索処理を共通化しました。
+  - ポケモン一覧からIDに一致するポケモンを返します。
 
 - `isCategory(selectedMove)`
   - 技が物理か特殊かを判定します。
 
-- `getCurrentStatus()`
-  - 現在レベルのステータスに持ち物補正を適用して返します。
+- `getCurrentStatus(baseStats, activeHeldItems)`
+  - 基礎ステータスと選択中持ち物を受け取り、持ち物補正後のステータスを返します。
 
 - `resetDamageDisplay(...)`
   - 選択済み技やダメージ表示をリセットします。
@@ -609,7 +625,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ## 動作確認チェックリスト
 
-責務分割後は、以下を確認します。
+JavaScriptの責務や依存関係を変更した場合は、以下を確認します。
 
 - `node --check js/app.js`
 - `node --check js/appSelectors.js`
@@ -625,7 +641,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - レベル変更後に技の `+` 表示と威力表示が維持される
 - スマホ幅で合計ダメージ優先表示と内訳折りたたみが維持される
 
-現在のJavaScriptは10ファイル構成です。構成変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は上記チェックリストに沿って行います。
+現在のJavaScriptは10ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
 
 2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。その後、未使用だったHTMLの `critical-popup` とCSSの旧急所ポップアップ表示・アニメーションも削除しました。現在使っている通常攻撃詳細表示の `critical-color` は残しています。
 
@@ -644,19 +660,21 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - 計算・表示モジュールの呼び出し調整
 - スマホUI用の開閉処理
 
-次は、状態更新を伴わないUI開閉イベントから小さく分離するのが安全です。技選択、持ち物選択、攻撃ボタン、`change` イベントは再計算や状態更新に強く依存するため、まだ `app.js` に残します。
+`ui.js` のDOM参照整理が完了した後は、状態更新を伴わないUI開閉イベントから小さく分離するのが安全です。技選択、持ち物選択、攻撃ボタン、`change` イベントは再計算や状態更新に強く依存するため、引き続き `app.js` に残します。
 
-### ui.js にDOM取得が残っている
+### 状態取得関数は現状維持
 
-`ui.js` の `updatePlayerUI()` と `updateEnemyUI()` は、技欄やステータス欄を `document.getElementById()` で直接取得しています。
+`appSelectors.js` への主要な値取得処理の分離は完了とします。`app.js` に残る状態取得ラッパーは、現在のDOM値や選択状態を既存モジュールへ渡す役割があるため、現時点では移行しません。
 
-次は対象DOMを `domElements.js` へ追加し、`app.js` から `ui.js` の context に渡す形へ変更すると、DOM取得場所をさらに統一できます。
+今後、状態オブジェクトの導入、保存機能、同じ取得処理の重複など具体的な必要性が生じた場合に限り、移行先と計算結果への影響を確認して個別に整理します。
 
 ### resultRenderer.js に計算処理が残っている
 
 `resultRenderer.js` の `showDamage()`、`showFinalDamage()`、`renderFinalDamageAll()` は、表示だけでなく `getTotalDamage()` や `computeFinalDamage()` も呼び出しています。
 
 将来的には `app.js` 側で計算結果を作り、`resultRenderer.js` は渡された値をDOMへ描画するだけにすると責務が明確になります。合計ダメージ表示も同じ方針で、計算関数と描画関数に分ける必要があります。
+
+また、`showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。計算と描画の分離を進める際に、DOM参照も `domElements.js` またはcontext引数へ寄せる候補です。
 
 ### 通常攻撃ロジックがポケモンごとに重複している
 
@@ -690,24 +708,21 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### 推奨する次の実装順
 
-1. `ui.js` の直接DOM取得を `domElements.js` と context引数へ寄せる。
-2. 状態更新を伴わないUI開閉イベントだけを `uiEvents.js` へ分離する。
-3. `resultRenderer.js` の計算呼び出しとDOM描画を小さく分ける。
-4. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
-5. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
-6. 通常攻撃ロジックのデータ駆動化を検討する。
+1. 状態更新を伴わないUI開閉イベントだけを `uiEvents.js` へ分離する。
+2. `resultRenderer.js` の計算呼び出しとDOM描画を小さく分ける。
+3. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
+4. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
+5. 通常攻撃ロジックのデータ駆動化を検討する。
+
+状態取得関数の追加移行は、この順序には含めません。上記作業や新機能で必要になった場合だけ実施します。
 
 ### 次回再開時にやること
 
-次回は、`ui.js` に残る直接DOM取得の整理から再開します。
+次回は、状態更新を伴わないUI開閉イベントの分離候補を洗い出します。
 
-1. `updatePlayerUI()` 内で取得している技欄、ユナイト技欄、攻撃側ステータス欄を洗い出す。
-2. `updateEnemyUI()` 内の防御側ステータス欄も含め、対象DOMを `domElements.js` に追加する。
-3. `app.js` から `ui.js` の contextへDOM参照を渡す。
-4. `ui.js` から対象の `document.getElementById()` を削除する。
-5. レベル変更、ポケモン変更、技の習得表示、攻撃側・防御側ステータス表示が変わらないことを確認する。
+対象候補は、結果内訳、攻撃側ステータス、防御側ステータス、詳細ポップアップ、持ち物モーダルの開閉です。技選択、持ち物選択、攻撃ボタン、セレクトボックスの `change` イベントは状態更新や再計算に関係するため、対象に含めません。
 
-この作業ではイベント処理、状態管理、計算式、UIの見た目は変更しません。
+実装前に各イベントが参照するDOMと関数を確認し、`uiEvents.js` へ移しても循環参照が発生しない最小単位を決めます。イベント処理の分離だけを行い、状態管理、計算式、UIの見た目は変更しません。
 
 ---
 
@@ -881,6 +896,8 @@ DOMに依存しない純粋な計算関数を置きます。
 - `domElements.js` を追加し、`app.js` 先頭のDOM取得を分離しました。
 - `selectOptions.js` を追加し、レベル、ポケモン、ヒット数のoption生成を分離しました。ヒット数の `change` イベントは `app.js` に残しています。
 - `appSelectors.js` を追加し、DOMに依存しない値取得処理を分離しました。
+- 技表示欄6個を `domElements.js` に追加し、ユナイト技欄と攻撃側・防御側ステータス欄を含むDOM参照を、`app.js` からcontext経由で `ui.js` に渡す形へ統一しました。
+- `ui.js` から直接の `document.getElementById()` を削除しました。
 
 現在の `appSelectors.js` には以下があります。
 

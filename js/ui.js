@@ -11,8 +11,16 @@ export function updatePlayerUI(context){
         statusName,
         selectedSkillOne,
         selectedSkillTwo,
+        skillFirstOne,
         skillFirstResult,
+        skillFirstTwo,
+        skillSecondOne,
         skillSecondResult,
+        skillSecondTwo,
+        skillThirdOne,
+        skillThirdTwo,
+        uniteMove,
+        statsText,
         damageTaken,
         remainingHp,
         damageTakenPlus,
@@ -22,15 +30,6 @@ export function updatePlayerUI(context){
         selectPokemonImage,
         updateDamageByHitCount
     } = context;
-
-  const skillFirstOne = document.getElementById("skill-first-one");
-  const skillSecondOne = document.getElementById("skill-second-one");
-  const skillThirdOne = document.getElementById("skill-third-one");
-  const skillFirstTwo = document.getElementById("skill-first-two");
-  const skillSecondTwo = document.getElementById("skill-second-two");
-  const skillThirdTwo = document.getElementById("skill-third-two");
-  const uniteMove = document.getElementById("unite-move");
-    const statsText = document.getElementById("stats-text");
 
   // リセット
   skillFirstOne.textContent = "";
@@ -150,10 +149,10 @@ export function updateEnemyUI(context){
     const {
         enemyLevel,
         enemyPokemon,
-        statusName
+        statusName,
+        enemyStatsText
     } = context;
 
-  const enemyStatsText = document.getElementById("enemy-stats-text");
   enemyStatsText.innerHTML = "";
   const enemyPokemonStats = enemyPokemon.stats[enemyLevel];
     Object.entries(enemyPokemonStats).forEach(([key,value]) => {

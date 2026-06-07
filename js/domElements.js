@@ -5,6 +5,13 @@ export const skillFirstResult = document.getElementById("skill-first-result");
 export const skillSecondResult = document.getElementById("skill-second-result");
 export const skillThirdResult = document.getElementById("skill-third-result");
 
+export const skillFirstOne = document.getElementById("skill-first-one");
+export const skillSecondOne = document.getElementById("skill-second-one");
+export const skillThirdOne = document.getElementById("skill-third-one");
+export const skillFirstTwo = document.getElementById("skill-first-two");
+export const skillSecondTwo = document.getElementById("skill-second-two");
+export const skillThirdTwo = document.getElementById("skill-third-two");
+
 export const skillsFirst = document.querySelectorAll("#skill-one li");
 export const skillsSecond = document.querySelectorAll("#skill-two li");
 export const unitesMove = document.getElementById("unite-move");
