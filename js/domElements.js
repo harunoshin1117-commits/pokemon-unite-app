@@ -14,7 +14,7 @@ export const skillThirdTwo = document.getElementById("skill-third-two");
 
 export const skillsFirst = document.querySelectorAll("#skill-one li");
 export const skillsSecond = document.querySelectorAll("#skill-two li");
-export const unitesMove = document.getElementById("unite-move");
+export const uniteMove = document.getElementById("unite-move");
 
 export const titlePokemonTitle = document.querySelector(".title-pokemon-title");
 

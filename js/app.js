@@ -35,6 +35,7 @@ import {
     createLevelOptions,
     createPokemonOptions
 } from "./selectOptions.js";
+import { bindUiEvents } from "./uiEvents.js";
 import {
     getEnemyStats as selectEnemyStats,
     findPokemonById,
@@ -100,7 +101,7 @@ import {
     takenAll,
     titlePokemonTitle,
     uniteTaken,
-    unitesMove
+    uniteMove
 } from "./domElements.js";
 // =========================
 // State and config
@@ -274,9 +275,9 @@ skillsSecond.forEach(skill => {
     });
 });
 
-unitesMove.addEventListener("click", () => {
+uniteMove.addEventListener("click", () => {
     if(skillThirdResult.textContent === ""){
-        skillThirdResult.textContent = unitesMove.textContent;
+        skillThirdResult.textContent = uniteMove.textContent;
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = getUniteMove(currentPokemon);
@@ -350,37 +351,19 @@ resultPopup.addEventListener("click", () => {
     updatePopup();
 })
 
-closeDetailPopup.addEventListener("click", () => {
-    detailPopupOverlay.style.display = "none";
-})
-
-resultBreakdownToggle.addEventListener("click", () => {
-    detailDamageResult.classList.toggle("is-open");
-    resultBreakdownToggle.textContent = detailDamageResult.classList.contains("is-open")
-        ? "内訳を閉じる"
-        : "内訳を見る";
-})
-playerStatsToggle.addEventListener("click", () => {
-    statsText.classList.toggle("is-open");
-})
-
-enemyStatsToggle.addEventListener("click", () => {
-    enemyStatsText.classList.toggle("is-open");
-})
-
-// =====================
-// Held item modal events
-//======================
-
-heldItems.forEach(heldItem => {
-    heldItem.addEventListener("click", () => {
-        overlay.style.display = "flex";
-    })
+bindUiEvents({
+    closeDetailPopup,
+    detailPopupOverlay,
+    resultBreakdownToggle,
+    detailDamageResult,
+    playerStatsToggle,
+    statsText,
+    enemyStatsToggle,
+    enemyStatsText,
+    heldItems,
+    overlay,
+    closeModal
 });
-
-closeModal.addEventListener("click", () => {
-    overlay.style.display = "none";
-})
 
 // =========================
 // Hover color sync
@@ -588,7 +571,7 @@ function updatePlayerUI(){
         skillSecondTwo,
         skillThirdOne,
         skillThirdTwo,
-        uniteMove: unitesMove,
+        uniteMove,
         statsText,
         damageTaken,
         remainingHp,

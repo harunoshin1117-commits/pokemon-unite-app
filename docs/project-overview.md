@@ -49,7 +49,8 @@
 │  ├─ pokemonData.js
 │  ├─ resultRenderer.js
 │  ├─ selectOptions.js
-│  └─ ui.js
+│  ├─ ui.js
+│  └─ uiEvents.js
 ├─ index.html
 ├─ README.md
 └─ style.css
@@ -109,6 +110,7 @@ JavaScriptはES Modulesとして読み込まれます。
   - `resultRenderer.js`
   - `selectOptions.js`
   - `ui.js`
+  - `uiEvents.js`
 - `ui.js`
   - `resultRenderer.js`
 - `resultRenderer.js`
@@ -230,6 +232,20 @@ JavaScriptはES Modulesとして読み込まれます。
 
 技表示欄、ユナイト技欄、攻撃側・防御側ステータス欄のDOM参照も、`app.js` からcontext経由で受け取ります。`ui.js` に直接の `document.getElementById()` は残っていません。ステータス行の生成には `document.createElement()` を使います。
 
+### js/uiEvents.js
+
+状態更新や再計算を伴わないUI開閉イベントを登録します。
+
+主な責務は以下です。
+
+- 計算結果内訳の開閉とボタン文言更新
+- 攻撃側ステータスの開閉
+- 防御側ステータスの開閉
+- 通常攻撃詳細ポップアップを閉じる処理
+- 持ち物モーダルの表示・非表示
+
+`bindUiEvents(context)` が必要なDOM参照を引数で受け取り、初期化時に1回だけイベントを登録します。技選択、持ち物選択、攻撃ボタン、詳細ポップアップを開く処理、セレクトボックスの `change` イベントは状態更新や再計算に関係するため、`app.js` に残しています。
+
 ### js/damageCalculator.js
 
 技ダメージ、通常攻撃、最終ダメージに関係する計算補助関数を `export` します。
@@ -300,7 +316,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 
 `damageCalculator.js` の関数を `import` して表示用の計算を行う箇所があります。UI構造、表示文言、CSSは変更していません。
 
-`showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。DOM参照の完全な集約は未完了ですが、次回は影響範囲を小さくするため、先に `ui.js` の直接DOM取得だけを整理します。
+`showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。DOM参照の完全な集約は未完了であり、`resultRenderer.js` の計算と描画を整理する際の確認対象です。
 
 ### js/app.js
 
@@ -317,8 +333,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 - 技クリックイベント
 - 持ち物選択イベント
 - 攻撃ボタンイベント
-- 結果内訳折りたたみ
-- ステータス折りたたみ
+- 状態更新や再計算を伴うイベント登録
 - 攻撃後の計算結果への自動スクロール
 - `updateNormalAttack()` / `rerenderAfterAttack()` / `attackNormalAttack()` による再計算の入口管理
 
@@ -338,10 +353,11 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 6. `selectOptions.js` の `createLevelOptions()` でレベル選択肢を作る。
 7. `selectOptions.js` の `createPokemonOptions()` でポケモン選択肢を作る。
 8. `selectOptions.js` の `createHitCountOptions()` でヒット数選択肢を作る。
-9. 通常攻撃以外の技ヒット数は初期値 `1Hits` にする。
-10. `updateNormalAttack()` で通常攻撃威力を初期計算する。
-11. `updatePlayerUI()` と `updateEnemyUI()` で初期描画する。
-12. 計算結果エリアはPCでは常時表示、スマホ幅では攻撃前に非表示。
+9. `uiEvents.js` の `bindUiEvents()` で状態非依存のUI開閉イベントを登録する。
+10. 通常攻撃以外の技ヒット数は初期値 `1Hits` にする。
+11. `updateNormalAttack()` で通常攻撃威力を初期計算する。
+12. `updatePlayerUI()` と `updateEnemyUI()` で初期描画する。
+13. 計算結果エリアはPCでは常時表示、スマホ幅では攻撃前に非表示。
 
 ### 攻撃側ポケモン変更
 
@@ -414,6 +430,8 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
   - `getCurrentStatus()` と `applyHeldItemEffect()` を通じて、持ち物補正を適用します。
 - `resultRenderer.js`
   - 計算結果をDOMへ表示し、HPバーや詳細ポップアップを更新します。
+- `uiEvents.js`
+  - 状態更新や再計算を伴わないUI開閉イベントを登録します。
 
 `updateNormalAttack()` は `calculateNormalAttackDamage()` と `showNormalAttackDamage()` を呼び、攻撃済みなら `rerenderAfterAttack()` 経由で `attackNormalAttack()` を呼びます。この循環に近い再描画フローは挙動維持のため `app.js` に置いています。
 
@@ -559,20 +577,13 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 ### 折りたたみ・表示制御
 
-- `resultBreakdownToggle.addEventListener("click", ...)`
-  - 計算結果の内訳カードを開閉します。
-
-- `playerStatsToggle.addEventListener("click", ...)`
-  - 攻撃側ステータスを開閉します。
-
-- `enemyStatsToggle.addEventListener("click", ...)`
-  - 相手ステータスを開閉します。
+- `bindUiEvents(context)`
+  - 状態更新や再計算を伴わないUI開閉イベントをまとめて登録します。
+  - 計算結果内訳、攻撃側・防御側ステータス、詳細ポップアップを閉じる処理、持ち物モーダルの開閉を担当します。
 
 - `resultPopup.addEventListener("click", ...)`
   - 通常攻撃詳細ポップアップを表示します。
-
-- `closeDetailPopup.addEventListener("click", ...)`
-  - 通常攻撃詳細ポップアップを閉じます。
+  - `updatePopup()` で再計算を行うため、`app.js` に残しています。
 
 ### 持ち物
 
@@ -634,6 +645,7 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - `node --check js/damageCalculator.js`
 - `node --check js/heldItemService.js`
 - `node --check js/resultRenderer.js`
+- `node --check js/uiEvents.js`
 - 画面を開いたときにコンソールエラーが出ない
 - 攻撃ボタンで通常攻撃・技1・技2・ユナイト技・合計ダメージが表示される
 - 詳細表示ボタンで通常攻撃1ヒットごとの情報が表示される
@@ -641,7 +653,7 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - レベル変更後に技の `+` 表示と威力表示が維持される
 - スマホ幅で合計ダメージ優先表示と内訳折りたたみが維持される
 
-現在のJavaScriptは10ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
+現在のJavaScriptは11ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
 
 2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。その後、未使用だったHTMLの `critical-popup` とCSSの旧急所ポップアップ表示・アニメーションも削除しました。現在使っている通常攻撃詳細表示の `critical-color` は残しています。
 
@@ -658,9 +670,8 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - 状態管理
 - イベント登録
 - 計算・表示モジュールの呼び出し調整
-- スマホUI用の開閉処理
 
-`ui.js` のDOM参照整理が完了した後は、状態更新を伴わないUI開閉イベントから小さく分離するのが安全です。技選択、持ち物選択、攻撃ボタン、`change` イベントは再計算や状態更新に強く依存するため、引き続き `app.js` に残します。
+状態更新を伴わないUI開閉イベントは `uiEvents.js` へ分離済みです。技選択、持ち物選択、攻撃ボタン、詳細ポップアップを開く処理、`change` イベントは再計算や状態更新に強く依存するため、引き続き `app.js` に残します。
 
 ### 状態取得関数は現状維持
 
@@ -708,21 +719,20 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 
 ### 推奨する次の実装順
 
-1. 状態更新を伴わないUI開閉イベントだけを `uiEvents.js` へ分離する。
-2. `resultRenderer.js` の計算呼び出しとDOM描画を小さく分ける。
-3. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
-4. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
-5. 通常攻撃ロジックのデータ駆動化を検討する。
+1. `resultRenderer.js` の計算呼び出しとDOM描画を小さく分ける。
+2. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
+3. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
+4. 通常攻撃ロジックのデータ駆動化を検討する。
 
 状態取得関数の追加移行は、この順序には含めません。上記作業や新機能で必要になった場合だけ実施します。
 
 ### 次回再開時にやること
 
-次回は、状態更新を伴わないUI開閉イベントの分離候補を洗い出します。
+次回は、`resultRenderer.js` に残る計算処理とDOM描画の分離候補を洗い出します。
 
-対象候補は、結果内訳、攻撃側ステータス、防御側ステータス、詳細ポップアップ、持ち物モーダルの開閉です。技選択、持ち物選択、攻撃ボタン、セレクトボックスの `change` イベントは状態更新や再計算に関係するため、対象に含めません。
+対象は `showDamage()`、`showFinalDamage()`、`renderFinalDamageAll()` と、それらが呼び出す `getTotalDamage()` / `computeFinalDamage()` です。あわせて、`showHitDamagesPopup()` に残る `hitDamage-result` の直接DOM取得も確認します。
 
-実装前に各イベントが参照するDOMと関数を確認し、`uiEvents.js` へ移しても循環参照が発生しない最小単位を決めます。イベント処理の分離だけを行い、状態管理、計算式、UIの見た目は変更しません。
+実装前に、`app.js` 側で生成する計算結果の形、既存の表示関数へ渡す値、合計ダメージとHPバー更新への影響を整理します。計算式、丸め順、表示文言、UIの見た目は変更しません。
 
 ---
 
@@ -898,6 +908,8 @@ DOMに依存しない純粋な計算関数を置きます。
 - `appSelectors.js` を追加し、DOMに依存しない値取得処理を分離しました。
 - 技表示欄6個を `domElements.js` に追加し、ユナイト技欄と攻撃側・防御側ステータス欄を含むDOM参照を、`app.js` からcontext経由で `ui.js` に渡す形へ統一しました。
 - `ui.js` から直接の `document.getElementById()` を削除しました。
+- `uiEvents.js` を追加し、計算結果内訳、攻撃側・防御側ステータス、詳細ポップアップを閉じる処理、持ち物モーダルの開閉イベントを `app.js` から分離しました。
+- `uiEvents.js` のイベント登録は `bindUiEvents(context)` にまとめ、状態更新や再計算を伴うイベントは `app.js` に残しました。
 
 現在の `appSelectors.js` には以下があります。
 
