@@ -306,7 +306,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 
 主な責務は以下です。
 
-- `showDamage()` / `showFinalDamage()` による技の威力・最終ダメージ表示
+- `renderMoveRawDamage()` / `renderMoveFinalDamage()` による計算済み技ダメージデータの描画
 - `showNormalAttackDamage()` / `showNormalAttackFinalDamage()` による通常攻撃表示
 - `renderFinalDamageAll()` による合計ダメージ表示
 - `updateHpBar()` によるHPバー更新
@@ -314,7 +314,9 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 - `showHitDamagesPopup()` / `showSingleHitDamagesPopup()` による詳細ポップアップ表示
 - `resetDamageDisplay()` による表示リセット
 
-`damageCalculator.js` の関数を `import` して表示用の計算を行う箇所があります。UI構造、表示文言、CSSは変更していません。
+`showSkillResult()` のアップグレード表示判定で `damageCalculator.js` の `isPlusMove()` を `import` しています。技ダメージ計算は `app.js` 側で行い、`resultRenderer.js` は渡された計算済みデータをDOMへ描画します。UI構造、表示文言、CSSは変更していません。
+
+技1・技2・ユナイト技は、`app.js` の `buildMoveDamageData()` で `rawDamage`、`finalDamage`、`hpAfter`、`enemyHp` を持つ計算済みデータを作り、`resultRenderer.js` の `renderMoveRawDamage()` / `renderMoveFinalDamage()` で描画します。未選択時は早期returnで `rawDamage`、`finalDamage`、`hpAfter` を `null` にし、既存の未選択表示を維持します。
 
 `showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。DOM参照の完全な集約は未完了であり、`resultRenderer.js` の計算と描画を整理する際の確認対象です。
 
@@ -385,7 +387,7 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 2. 技名から `+` を取り除く。
 3. `appSelectors.js` の `findMoveByName(currentPokemon, skillName)` で現在のポケモンの技データを探す。
 4. 技セットに応じて `selectedSkillOne`、`selectedSkillTwo`、`selectedSkillThird` に保存する。
-5. `showDamage()` で威力を表示する。
+5. `buildMoveDamageData()` で計算済みデータを作り、`renderMoveRawDamage()` で威力を表示する。
 6. `showSkillResult()` で選んだ技欄へ反映する。
 7. すでに攻撃済みなら再計算する。
 8. 技選択だけでは画面上部への自動スクロールはしない。
@@ -558,13 +560,13 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
   - 攻撃時の中心処理です。
   - 通常攻撃、技1、技2、ユナイト技、合計ダメージをまとめて更新します。
 
-- `showDamage(selectedMove, targetElement, hitCount = 1)`
-  - 選択中の技威力を表示します。
-  - `app.js` のラッパーが攻撃側レベルと補正後ステータスを `resultRenderer.js` へ渡します。
+- `renderMoveRawDamage(targetElement, moveDamageData)`
+  - 計算済み技ダメージデータから技の威力表示を更新します。
+  - 現在は技1・技2・ユナイト技で使います。
 
-- `showFinalDamage(selectedMove, damageElement, hpElement, hpBarElement, hitCount = 1)`
-  - 技の最終ダメージ、残りHP、HPバーを更新します。
-  - `app.js` のラッパーが攻撃側・防御側の計算用データを `resultRenderer.js` へ渡します。
+- `renderMoveFinalDamage(damageElement, hpElement, hpBarElement, moveDamageData)`
+  - 計算済み技ダメージデータから最終ダメージ、残りHP、HPバーを更新します。
+  - 現在は技1・技2・ユナイト技で使います。
 
 - `renderTotalDamageResult(finalDamageData)`
   - 通常攻撃、技1、技2、ユナイト技の合計ダメージ表示を更新します。
@@ -679,11 +681,11 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 
 今後、状態オブジェクトの導入、保存機能、同じ取得処理の重複など具体的な必要性が生じた場合に限り、移行先と計算結果への影響を確認して個別に整理します。
 
-### resultRenderer.js に計算処理が残っている
+### resultRenderer.js の残タスク
 
-`resultRenderer.js` の `showDamage()`、`showFinalDamage()`、`renderFinalDamageAll()` は、表示だけでなく `getTotalDamage()` や `computeFinalDamage()` も呼び出しています。
+技1・技2・ユナイト技の個別表示は、`app.js` 側で `buildMoveDamageData()` を使って計算済みデータを作り、`resultRenderer.js` は渡されたデータを描画する形へ移行済みです。
 
-将来的には `app.js` 側で計算結果を作り、`resultRenderer.js` は渡された値をDOMへ描画するだけにすると責務が明確になります。合計ダメージ表示も同じ方針で、計算関数と描画関数に分ける必要があります。
+合計表示の `renderFinalDamageAll()` も、通常攻撃の最終ダメージデータと、技1・技2・ユナイト技の計算済みデータを受け取って足し算する形へ移行済みです。
 
 また、`showHitDamagesPopup()` は `hitDamage-result` を直接取得しています。計算と描画の分離を進める際に、DOM参照も `domElements.js` またはcontext引数へ寄せる候補です。
 
@@ -719,20 +721,17 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 
 ### 推奨する次の実装順
 
-1. `resultRenderer.js` の計算呼び出しとDOM描画を小さく分ける。
-2. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
-3. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
-4. 通常攻撃ロジックのデータ駆動化を検討する。
+1. オールリセットを `location.reload()` から明示的な状態初期化へ変更する。
+2. `currentPokemon`、選択技、持ち物などの状態を1つの状態オブジェクトへまとめる。
+3. 通常攻撃ロジックのデータ駆動化を検討する。
 
 状態取得関数の追加移行は、この順序には含めません。上記作業や新機能で必要になった場合だけ実施します。
 
 ### 次回再開時にやること
 
-次回は、`resultRenderer.js` に残る計算処理とDOM描画の分離候補を洗い出します。
+次回は、オールリセットを `location.reload()` から明示的な状態初期化へ変更する候補を洗い出します。
 
-対象は `showDamage()`、`showFinalDamage()`、`renderFinalDamageAll()` と、それらが呼び出す `getTotalDamage()` / `computeFinalDamage()` です。あわせて、`showHitDamagesPopup()` に残る `hitDamage-result` の直接DOM取得も確認します。
-
-実装前に、`app.js` 側で生成する計算結果の形、既存の表示関数へ渡す値、合計ダメージとHPバー更新への影響を整理します。計算式、丸め順、表示文言、UIの見た目は変更しません。
+対象は、攻撃側・防御側ポケモン、レベル、選択技、持ち物、ヒット数、急所、計算結果表示、HPバー、開閉状態の初期化です。実装前に影響範囲を確認し、計算式、丸め順、表示文言、UIの見た目は変更しません。
 
 ---
 
@@ -910,6 +909,10 @@ DOMに依存しない純粋な計算関数を置きます。
 - `ui.js` から直接の `document.getElementById()` を削除しました。
 - `uiEvents.js` を追加し、計算結果内訳、攻撃側・防御側ステータス、詳細ポップアップを閉じる処理、持ち物モーダルの開閉イベントを `app.js` から分離しました。
 - `uiEvents.js` のイベント登録は `bindUiEvents(context)` にまとめ、状態更新や再計算を伴うイベントは `app.js` に残しました。
+- 技1・技2・ユナイト技の威力表示と最終ダメージ表示を、`buildMoveDamageData()` で作った計算済みデータ経由へ移行しました。
+- `resultRenderer.js` に `renderMoveRawDamage()` と `renderMoveFinalDamage()` を追加し、個別表示では `getTotalDamage()` / `computeFinalDamage()` を描画関数内で呼ばない形にしました。
+- 合計ダメージ表示も、通常攻撃の最終ダメージデータと技1・技2・ユナイト技の計算済みデータを足し算する形へ変更しました。
+- 未使用になった `resultRenderer.js` の `showDamage()` / `showFinalDamage()` と、それらに紐づく `getTotalDamage()` / `computeFinalDamage()` importを削除しました。
 
 現在の `appSelectors.js` には以下があります。
 

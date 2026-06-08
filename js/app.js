@@ -5,8 +5,10 @@
 import { pokemonsList } from "./pokemonData.js";
 import { heldItemsList } from "./helditemData.js";
 import {
+    computeFinalDamage,
     calculateNormalAttackDamage,
-    computeNormalAttackFinalDamage
+    computeNormalAttackFinalDamage,
+    getTotalDamage
 } from "./damageCalculator.js";
 import {
     applyHeldItemEffect,
@@ -16,9 +18,9 @@ import {
 } from "./heldItemService.js";
 import {
     renderFinalDamageAll,
+    renderMoveFinalDamage,
+    renderMoveRawDamage,
     resetDamageDisplay,
-    showDamage as renderDamage,
-    showFinalDamage as renderFinalDamage,
     showHeldItem as renderHeldItem,
     showHitDamagesPopup,
     showNormalAttackDamage as renderNormalAttackDamage,
@@ -236,7 +238,7 @@ skillsFirst.forEach(skill => {
             const selectedMove = findMoveByName(currentPokemon, skillName);
 
             selectedSkillOne = selectedMove;
-            showDamage(selectedMove, skillFirstDamage, Number(hitCountSelects.one.value));
+            renderSkillOneRawDamage();
             showSkillResult(skillFirstResult, selectedMove.name, selectedMove);
             rerenderAfterAttack();
         }else{
@@ -259,7 +261,7 @@ skillsSecond.forEach(skill => {
             const selectedMove = findMoveByName(currentPokemon, skillName);
 
             selectedSkillTwo = selectedMove;
-            showDamage(selectedMove, skillSecondDamage, Number(hitCountSelects.two.value));
+            renderSkillTwoRawDamage();
             showSkillResult(skillSecondResult, selectedMove.name, selectedMove);
             rerenderAfterAttack();
         }else{
@@ -281,8 +283,8 @@ uniteMove.addEventListener("click", () => {
         skillThirdResult.style.backgroundColor = currentPokemon.color;
 
         const move = getUniteMove(currentPokemon);
-        showDamage(move, skillThirdDamage, Number(hitCountSelects.unite.value));
         selectedSkillThird = move;
+        renderSkillThirdRawDamage();
         rerenderAfterAttack();
     }else{
         skillThirdResult.textContent = "";
@@ -459,26 +461,47 @@ function attackNormalAttack(){
     );
     showNormalAttackFinalDamage(finalDamageData);
    
+    const skillOneDamageData = buildMoveDamageData(
+        selectedSkillOne,
+        Number(hitCountSelects.one.value)
+    );
 
-    showFinalDamage(selectedSkillOne,
-            damageTaken,
-            remainingHp,
-            hpFillOne,
-            Number(hitCountSelects.one.value)
-        );
-    showFinalDamage(selectedSkillTwo,
-            damageTakenPlus,
-            remainingHpPlus,
-            hpFillTwo,
-            Number(hitCountSelects.two.value)
-        );
-    showFinalDamage(selectedSkillThird,
-            uniteTaken,
-            remainingHpUnite,
-            hpFillUnite,
-            Number(hitCountSelects.unite.value)
-        );
-    renderTotalDamageResult(finalDamageData);
+    const skillTwoDamageData = buildMoveDamageData(
+        selectedSkillTwo,
+        Number(hitCountSelects.two.value)
+    );
+
+    const uniteDamageData = buildMoveDamageData(
+        selectedSkillThird,
+        Number(hitCountSelects.unite.value)
+    );
+
+    renderMoveFinalDamage(
+        damageTaken,
+        remainingHp,
+        hpFillOne,
+        skillOneDamageData
+    );
+    renderMoveFinalDamage(
+        damageTakenPlus,
+        remainingHpPlus,
+        hpFillTwo,
+        skillTwoDamageData
+    );
+    renderMoveFinalDamage(
+        uniteTaken,
+        remainingHpUnite,
+        hpFillUnite,
+        uniteDamageData
+    );
+    renderTotalDamageResult(
+        finalDamageData,
+        {
+            skillOne: skillOneDamageData,
+            skillTwo: skillTwoDamageData,
+            unite: uniteDamageData
+        }
+    );
 
 }
 
@@ -501,27 +524,18 @@ function updateDamageByHitCount(){
 
     if(selectedSkillOne){
 
-        showDamage(selectedSkillOne,
-            skillFirstDamage,
-            Number(hitCountSelects.one.value));
-        
-        
+        renderSkillOneRawDamage();
+
         }
     if(selectedSkillTwo){
 
-        showDamage(selectedSkillTwo,
-            skillSecondDamage,
-            Number(hitCountSelects.two.value));
+        renderSkillTwoRawDamage();
 
-        
         }
     if(selectedSkillThird){
 
-        showDamage(selectedSkillThird,
-            skillThirdDamage,
-            Number(hitCountSelects.unite.value));
+        renderSkillThirdRawDamage();
 
-        
     }
    
     
@@ -553,6 +567,80 @@ function getEnemyStats(){
 
 function getEnemyHp(){
     return getHpFromStats(getEnemyStats());
+}
+
+function buildMoveDamageData(selectedMove, hitCount){
+    if(!selectedMove){
+        return {
+            selectedMove: null,
+            hitCount,
+            rawDamage: null,
+            finalDamage: null,
+            hpAfter: null,
+            enemyHp: null
+        };
+    }
+
+    const level = Number(levelSelect.value);
+    const attackerStatus = getCurrentPlayerStatus();
+    const enemyStats = getEnemyStats();
+    const enemyHp = getEnemyHp();
+
+    const rawDamage = getTotalDamage(
+        selectedMove,
+        hitCount,
+        level,
+        attackerStatus
+    );
+
+    const finalDamage = computeFinalDamage(
+        selectedMove,
+        hitCount,
+        level,
+        attackerStatus,
+        enemyStats
+    );
+
+    return {
+        selectedMove,
+        hitCount,
+        rawDamage,
+        finalDamage,
+        hpAfter: finalDamage === null
+            ? null
+            : Math.max(0, enemyHp - finalDamage),
+        enemyHp
+    };
+}
+
+function renderSkillOneRawDamage(){
+    renderMoveRawDamage(
+        skillFirstDamage,
+        buildMoveDamageData(
+            selectedSkillOne,
+            Number(hitCountSelects.one.value)
+        )
+    );
+}
+
+function renderSkillTwoRawDamage(){
+    renderMoveRawDamage(
+        skillSecondDamage,
+        buildMoveDamageData(
+            selectedSkillTwo,
+            Number(hitCountSelects.two.value)
+        )
+    );
+}
+
+function renderSkillThirdRawDamage(){
+    renderMoveRawDamage(
+        skillThirdDamage,
+        buildMoveDamageData(
+            selectedSkillThird,
+            Number(hitCountSelects.unite.value)
+        )
+    );
 }
 
 function updatePlayerUI(){
@@ -606,36 +694,6 @@ function showNormalAttackFinalDamage(finalDamageData){
     });
 }
 
-function showDamage(selectedMove, targetElement, hitCount = 1){
-    renderDamage(
-        selectedMove,
-        targetElement,
-        hitCount,
-        Number(levelSelect.value),
-        getCurrentPlayerStatus()
-    );
-}
-
-function showFinalDamage(
-    selectedMove,
-    damageElement,
-    hpElement,
-    hpBarElement,
-    hitCount = 1
-){
-    renderFinalDamage(
-        selectedMove,
-        damageElement,
-        hpElement,
-        hpBarElement,
-        hitCount,
-        Number(levelSelect.value),
-        getCurrentPlayerStatus(),
-        getEnemyStats(),
-        getEnemyHp()
-    );
-}
-
 function showSkillResult(resultElement, skillText, selectedMove){
     renderSkillResult(
         resultElement,
@@ -654,19 +712,9 @@ function showSelectPokemonImage(){
     renderSelectPokemonImage(currentPokemon, selectPokemonImage);
 }
 
-function renderTotalDamageResult(finalDamageData){
+function renderTotalDamageResult(finalDamageData, moveDamageData){
     renderFinalDamageAll(finalDamageData, {
-        selectedSkillOne,
-        selectedSkillTwo,
-        selectedSkillThird,
-        hitCounts: {
-            one: Number(hitCountSelects.one.value),
-            two: Number(hitCountSelects.two.value),
-            unite: Number(hitCountSelects.unite.value)
-        },
-        attackerLevel: Number(levelSelect.value),
-        attackerStatus: getCurrentPlayerStatus(),
-        enemyStats: getEnemyStats(),
+        moveDamageData,
         enemyHp: getEnemyHp(),
         takenAll,
         remainingHpAll,

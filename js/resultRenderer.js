@@ -1,6 +1,4 @@
 import {
-    computeFinalDamage,
-    getTotalDamage,
     isPlusMove
 } from "./damageCalculator.js";
 
@@ -12,45 +10,16 @@ import {
 
 export function renderFinalDamageAll(finalDamageData, context){
     const {
-        selectedSkillOne,
-        selectedSkillTwo,
-        selectedSkillThird,
-        hitCounts,
-        attackerLevel,
-        attackerStatus,
-        enemyStats,
+        moveDamageData,
         enemyHp,
         takenAll,
         remainingHpAll,
         hpFillAll
     } = context;
 
-    const damage1 =
-        computeFinalDamage(
-            selectedSkillOne,
-            hitCounts.one,
-            attackerLevel,
-            attackerStatus,
-            enemyStats
-        ) || 0;
-
-    const damage2 =
-        computeFinalDamage(
-            selectedSkillTwo,
-            hitCounts.two,
-            attackerLevel,
-            attackerStatus,
-            enemyStats
-        ) || 0;
-
-    const damage3 =
-        computeFinalDamage(
-            selectedSkillThird,
-            hitCounts.unite,
-            attackerLevel,
-            attackerStatus,
-            enemyStats
-        ) || 0;
+    const damage1 = moveDamageData.skillOne.finalDamage || 0;
+    const damage2 = moveDamageData.skillTwo.finalDamage || 0;
+    const damage3 = moveDamageData.unite.finalDamage || 0;
 
     const allDamage =
         damage1 + damage2 + damage3 + finalDamageData.totalFinalDamage;
@@ -101,73 +70,44 @@ export function showNormalAttackFinalDamage(finalDamageData, context){
     
 }
 
-export function showDamage(
-    selectedMove,
-    targetElement,
-    hitCount = 1,
-    attackerLevel,
-    attackerStatus
-){
-    
-    const totalDamage = getTotalDamage(
-        selectedMove,
-        hitCount,
-        attackerLevel,
-        attackerStatus
-    )
-
-    if(totalDamage === null){
-
+export function renderMoveRawDamage(targetElement, moveDamageData){
+    if(moveDamageData.rawDamage === null){
         targetElement.textContent =
             "威力なし";
 
         return;
     }
 
-   
     targetElement.textContent =
-        `威力: ${totalDamage}`;
+        `威力: ${moveDamageData.rawDamage}`;
 }
 
-export function showFinalDamage(
-            selectedMove,
-            damageElement,
-            hpElement,
-            hpBarElement,
-            hitCount = 1,
-            attackerLevel,
-            attackerStatus,
-            enemyStats,
-            enemyHp
-                        
+export function renderMoveFinalDamage(
+    damageElement,
+    hpElement,
+    hpBarElement,
+    moveDamageData
 ){
+    if(moveDamageData.finalDamage === null){
+        damageElement.textContent = "ダメージ: 計算不可";
 
-       const finalDamage = computeFinalDamage(
-            selectedMove,
-            hitCount,
-            attackerLevel,
-            attackerStatus,
-            enemyStats
-        );
+        hpElement.textContent = "残りHP: -";
+        hpBarElement.style.width = "100%";
+        hpBarElement.style.backgroundColor = "green";
+        return;
+    }
 
-        if(finalDamage === null){
+    damageElement.textContent =
+        `ダメージ: ${moveDamageData.finalDamage}`;
 
-            damageElement.textContent = "ダメージ: 計算不可";
+    hpElement.textContent =
+        `残りHP: ${moveDamageData.hpAfter}`;
 
-            hpElement.textContent = "残りHP: -";
-            hpBarElement.style.width = "100%";
-            hpBarElement.style.backgroundColor = "green";
-            return;
-        }
-
-        const hpAfter = Math.max(0,enemyHp - finalDamage);
-
-        damageElement.textContent = `ダメージ: ${finalDamage}`;
-
-        hpElement.textContent = `残りHP: ${hpAfter}`;
-
-       updateHpBar(hpAfter,enemyHp,hpBarElement);
-
+    updateHpBar(
+        moveDamageData.hpAfter,
+        moveDamageData.enemyHp,
+        hpBarElement
+    );
 }
 
 export function showSkillResult(
