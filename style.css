@@ -82,6 +82,86 @@ body {
     display: flex;
     gap:30px;
 }
+.build-storage {
+    margin-top: 16px;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background: white;
+}
+.build-storage-title {
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.build-storage-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+}
+.build-storage-row input,
+.build-storage-row select {
+    min-width: 180px;
+    padding: 6px;
+}
+.build-storage-row button {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+.build-storage-message {
+    min-height: 1.2em;
+    margin-top: 8px;
+}
+.build-details-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+.build-details-modal {
+    width: min(560px, 100%);
+    max-height: 80vh;
+    overflow-y: auto;
+    background: white;
+    border: 3px solid black;
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.22);
+    padding: 20px;
+}
+.build-details-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.build-details-title p {
+    font-size: 22px;
+    font-weight: bold;
+}
+.build-details-title button {
+    border: 2px solid black;
+    border-radius: 10px;
+    background: white;
+    padding: 8px 14px;
+    cursor: pointer;
+}
+.build-details-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.build-details-content p {
+    overflow-wrap: anywhere;
+    border-bottom: 1px solid #ccc;
+    padding: 6px 0;
+}
 .image-held-items { 
     max-width: 76px;
     width: 100%;
@@ -596,6 +676,16 @@ img
         justify-content: space-between;
     }
 
+    .build-storage-row {
+        flex-wrap: wrap;
+    }
+
+    .build-storage-row input,
+    .build-storage-row select {
+        min-width: 0;
+        flex: 1 1 180px;
+    }
+
     .item-show {
         flex-direction: column;
         gap: 12px;
@@ -670,11 +760,13 @@ img
     }
 
     .detail-popup-overlay,
+    .build-details-overlay,
     .overlay {
         padding: 14px;
     }
 
-    .detail-popup {
+    .detail-popup,
+    .build-details-modal {
         width: 100%;
         max-height: 82vh;
         padding: 16px;

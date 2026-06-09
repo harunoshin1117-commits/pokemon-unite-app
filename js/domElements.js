@@ -41,6 +41,16 @@ export const damageTakenNormalAttack = document.getElementById("damage-taken-nor
 export const remainingHpNormalAttack = document.getElementById("remaining-hp-normalAttack");
 
 export const allResetButton = document.getElementById("all-reset-button");
+export const buildNameInput = document.getElementById("build-name");
+export const saveBuildButton = document.getElementById("save-build-button");
+export const savedBuildSelect = document.getElementById("saved-build-select");
+export const showBuildDetailsButton = document.getElementById("show-build-details-button");
+export const loadBuildButton = document.getElementById("load-build-button");
+export const deleteBuildButton = document.getElementById("delete-build-button");
+export const buildStorageMessage = document.getElementById("build-storage-message");
+export const buildDetailsOverlay = document.getElementById("build-details-overlay");
+export const buildDetailsContent = document.getElementById("build-details-content");
+export const closeBuildDetails = document.getElementById("close-build-details");
 export const takenAll = document.getElementById("taken-all");
 export const remainingHpAll = document.getElementById("remaining-hp-all");
 
@@ -52,6 +62,7 @@ export const hpFillNormalAttack = document.getElementById("hp-fill-normalAttack"
 
 export const normalAttackDamage = document.getElementById("normalAttack-damage");
 export const criticalCheck = document.getElementById("critical-check");
+export const criticalPatternLock = document.getElementById("critical-pattern-lock");
 
 export const selectItems = document.querySelectorAll(".select-items");
 
@@ -63,6 +74,7 @@ export const damageResult = document.getElementById("damage-result");
 export const detailDamageResult = document.getElementById("detail-damage-result");
 export const resultBreakdownToggle = document.getElementById("result-breakdown-toggle");
 export const detailPopupOverlay = document.getElementById("detail-popup-overlay");
+export const hitDamageResult = document.getElementById("hitDamage-result");
 export const closeDetailPopup = document.getElementById("close-detail-popup");
 export const playerStatsToggle = document.getElementById("player-stats-toggle");
 export const enemyStatsToggle = document.getElementById("enemy-stats-toggle");

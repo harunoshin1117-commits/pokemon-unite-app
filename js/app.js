@@ -39,6 +39,12 @@ import {
 } from "./selectOptions.js";
 import { bindUiEvents } from "./uiEvents.js";
 import {
+    deleteBuild,
+    getSavedBuilds,
+    loadBuild,
+    saveBuild
+} from "./buildStorage.js";
+import {
     getEnemyStats as selectEnemyStats,
     findPokemonById,
     findMoveByName,
@@ -49,21 +55,29 @@ import {
 import {
     allResetButton,
     attackAction,
+    buildNameInput,
+    buildDetailsContent,
+    buildDetailsOverlay,
+    buildStorageMessage,
     closeDetailPopup,
+    closeBuildDetails,
     closeModal,
     colorChange,
     criticalCheck,
+    criticalPatternLock,
     damageResult,
     damageTaken,
     damageTakenNormalAttack,
     damageTakenPlus,
     detailDamageResult,
     detailPopupOverlay,
+    deleteBuildButton,
     enemyLevelSelect,
     enemyName,
     enemyStatsText,
     enemyStatsToggle,
     heldItems,
+    hitDamageResult,
     hitCountSelects,
     hpFillAll,
     hpFillNormalAttack,
@@ -71,6 +85,7 @@ import {
     hpFillTwo,
     hpFillUnite,
     levelSelect,
+    loadBuildButton,
     normalAttackDamage,
     overlay,
     playerStatsToggle,
@@ -83,6 +98,9 @@ import {
     remainingHpUnite,
     resultBreakdownToggle,
     resultPopup,
+    saveBuildButton,
+    savedBuildSelect,
+    showBuildDetailsButton,
     selectItems,
     selectPokemonImage,
     skillFirstOne,
@@ -129,6 +147,8 @@ let currentNormalAttackData = null;
 let currentHeldItems = [];
 let currentSelectedSlot = null;
 let hasAttacked = false;
+let lockedNormalAttackCriticalPattern = null;
+const NORMAL_ATTACK_CALCULATION_VERSION = 1;
 // =========================
 // Initial setup
 // =========================
@@ -144,6 +164,10 @@ updateNormalAttack();
 
 Object.values(hitCountSelects).forEach(select => {
     select.addEventListener("change", () => {
+        if(select === hitCountSelects.normalAttack){
+            releaseNormalAttackCriticalLock();
+        }
+
         updateNormalAttack();
          updateDamageByHitCount();
         
@@ -165,7 +189,7 @@ levelSelect.addEventListener("change", () => {
 });
 
 pokemonSelect.addEventListener("change", () => {
-
+    releaseNormalAttackCriticalLock();
    
     selectedSkillOne = null;
     selectedSkillTwo = null;
@@ -243,6 +267,7 @@ skillsFirst.forEach(skill => {
             rerenderAfterAttack();
         }else{
             skillFirstResult.textContent = "";
+            skillFirstResult.style.backgroundColor = "white";
             skillFirstDamage.textContent = "威力:";
             damageTaken.textContent = "";
             remainingHp.textContent = "";
@@ -266,6 +291,7 @@ skillsSecond.forEach(skill => {
             rerenderAfterAttack();
         }else{
             skillSecondResult.textContent = "";
+            skillSecondResult.style.backgroundColor = "white";
             skillSecondDamage.textContent = "威力:";
             damageTakenPlus.textContent = "";
             remainingHpPlus.textContent = "";
@@ -288,6 +314,7 @@ uniteMove.addEventListener("click", () => {
         rerenderAfterAttack();
     }else{
         skillThirdResult.textContent = "";
+        skillThirdResult.style.backgroundColor = "white";
         skillThirdDamage.textContent = "威力:";
         uniteTaken.textContent = "";
         remainingHpUnite.textContent = "";
@@ -298,8 +325,83 @@ uniteMove.addEventListener("click", () => {
     }
 });
 allResetButton.addEventListener("click",() => {
-     location.reload();
+    resetAppState();
 })
+
+saveBuildButton.addEventListener("click", () => {
+    const buildName = buildNameInput.value.trim();
+
+    if(!buildName){
+        buildStorageMessage.textContent = "保存名を入力してください";
+        return;
+    }
+
+    try{
+        const savedBuild = saveBuild(
+            buildName,
+            getCurrentBuildState()
+        );
+
+        buildNameInput.value = "";
+        renderSavedBuilds(savedBuild.id);
+        buildStorageMessage.textContent =
+            `「${savedBuild.name}」を保存しました`;
+    }catch{
+        buildStorageMessage.textContent =
+            "ビルドを保存できませんでした";
+    }
+});
+
+loadBuildButton.addEventListener("click", () => {
+    const savedBuild = loadBuild(savedBuildSelect.value);
+
+    if(!savedBuild){
+        buildStorageMessage.textContent =
+            "読み込むビルドを選択してください";
+        return;
+    }
+
+    applyBuildState(savedBuild.buildState);
+    buildStorageMessage.textContent =
+        `「${savedBuild.name}」を読み込みました`;
+});
+
+showBuildDetailsButton.addEventListener("click", () => {
+    const savedBuild = loadBuild(savedBuildSelect.value);
+
+    if(!savedBuild){
+        buildStorageMessage.textContent =
+            "内容を表示するビルドを選択してください";
+        return;
+    }
+
+    renderBuildDetails(savedBuild);
+    buildDetailsOverlay.style.display = "flex";
+});
+
+closeBuildDetails.addEventListener("click", () => {
+    buildDetailsOverlay.style.display = "none";
+});
+
+deleteBuildButton.addEventListener("click", () => {
+    const savedBuild = loadBuild(savedBuildSelect.value);
+
+    if(!savedBuild){
+        buildStorageMessage.textContent =
+            "削除するビルドを選択してください";
+        return;
+    }
+
+    try{
+        deleteBuild(savedBuild.id);
+        renderSavedBuilds();
+        buildStorageMessage.textContent =
+            `「${savedBuild.name}」を削除しました`;
+    }catch{
+        buildStorageMessage.textContent =
+            "ビルドを削除できませんでした";
+    }
+});
 
 heldItems.forEach(item => {
 
@@ -324,16 +426,29 @@ selectItems.forEach(item => {
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
            updatePlayerUI();
-            rerenderAfterAttack();
+           updateNormalAttack();
           
     })
     
 })
 
 criticalCheck.addEventListener("click",() => {
-
+    releaseNormalAttackCriticalLock();
     updateNormalAttack();
 })
+
+criticalPatternLock.addEventListener("change", () => {
+    if(criticalPatternLock.checked){
+        lockedNormalAttackCriticalPattern =
+            currentNormalAttackData?.hitDamages.map(
+                hitData => hitData.critical
+            ) || [];
+        return;
+    }
+
+    lockedNormalAttackCriticalPattern = null;
+    updateNormalAttack();
+});
 
 attackAction.addEventListener("click",() => {
 
@@ -392,28 +507,18 @@ colorChange.forEach(color => {
 // =========================
 
 enemyLevelSelect.addEventListener("change", () => {
-
     updateEnemyUI();
-   updateNormalAttack();
-   updateDamageByHitCount();
-   
-      
-   
+    rerenderAfterAttack();
 });
 
 pokemonSelectTwo.addEventListener("change", () => {
-
     const selectedId = pokemonSelectTwo.value;
 
     enemyPokemon = findPokemonById(pokemonsList, selectedId);
-
     enemyName.textContent = selectedId;
 
     updateEnemyUI();
-     updateNormalAttack();
-   updateDamageByHitCount();
-
-   
+    rerenderAfterAttack();
 });
 
 //==========================
@@ -424,6 +529,100 @@ pokemonSelectTwo.addEventListener("change", () => {
 // Update and rerender functions
 // ============================
 
+function renderSavedBuilds(selectedBuildId = ""){
+    const savedBuilds = getSavedBuilds();
+
+    savedBuildSelect.innerHTML = "";
+
+    if(savedBuilds.length === 0){
+        const emptyOption = document.createElement("option");
+        emptyOption.value = "";
+        emptyOption.textContent = "保存済みビルドなし";
+        savedBuildSelect.append(emptyOption);
+        savedBuildSelect.disabled = true;
+        showBuildDetailsButton.disabled = true;
+        loadBuildButton.disabled = true;
+        deleteBuildButton.disabled = true;
+        return;
+    }
+
+    savedBuilds.forEach(savedBuild => {
+        const option = document.createElement("option");
+        option.value = savedBuild.id;
+        option.textContent = savedBuild.name;
+        savedBuildSelect.append(option);
+    });
+
+    savedBuildSelect.disabled = false;
+    showBuildDetailsButton.disabled = false;
+    loadBuildButton.disabled = false;
+    deleteBuildButton.disabled = false;
+
+    if(
+        selectedBuildId &&
+        savedBuilds.some(savedBuild => savedBuild.id === selectedBuildId)
+    ){
+        savedBuildSelect.value = selectedBuildId;
+    }
+}
+
+function renderBuildDetails(savedBuild){
+    const buildState = savedBuild.buildState;
+    const attacker = buildState.attacker || {};
+    const hitCounts = buildState.hitCounts || {};
+    const calculationState = buildState.calculationState || {};
+    const normalAttackData =
+        calculationState.normalAttackData || {};
+    const heldItemSlots = Array.isArray(attacker.heldItemSlots)
+        ? attacker.heldItemSlots
+        : [];
+    const criticalPattern = Array.isArray(
+        normalAttackData.hitDamages
+    )
+        ? normalAttackData.hitDamages.map(
+            hitData => hitData.critical
+        )
+        : [];
+    const details = [
+        ["name", savedBuild.name],
+        ["id", savedBuild.id],
+        ["version", buildState.version],
+        ["pokemonId", attacker.pokemonId],
+        ["level", attacker.level],
+        ["skillOneName", attacker.skillOneName],
+        ["skillTwoName", attacker.skillTwoName],
+        ["uniteMoveName", attacker.uniteMoveName],
+        ["heldItemSlots", heldItemSlots.join(", ")],
+        ["normalAttackHits", hitCounts.normalAttack],
+        ["skillOneHits", hitCounts.skillOne],
+        ["skillTwoHits", hitCounts.skillTwo],
+        ["uniteHits", hitCounts.unite],
+        ["criticalEnabled", buildState.criticalEnabled],
+        [
+            "normalAttackCriticalLocked",
+            calculationState.normalAttackCriticalLocked
+        ],
+        [
+            "normalAttackCalculationVersion",
+            normalAttackData.calculationVersion
+        ],
+        ["normalAttackTotalDamage", normalAttackData.totalDamage],
+        ["criticalCount", normalAttackData.criticalCount],
+        ["criticalPattern", criticalPattern.join(", ")],
+        ["hasAttacked", calculationState.hasAttacked],
+        ["createdAt", savedBuild.createdAt],
+        ["updatedAt", savedBuild.updatedAt]
+    ];
+
+    buildDetailsContent.replaceChildren();
+
+    details.forEach(([label, value]) => {
+        const row = document.createElement("p");
+        row.textContent = `${label}: ${value ?? "null"}`;
+        buildDetailsContent.append(row);
+    });
+}
+
 function resetDamageResultVisibility(){
     if(window.matchMedia("(max-width: 768px)").matches){
         damageResult.style.display = "none";
@@ -431,16 +630,366 @@ function resetDamageResultVisibility(){
         damageResult.style.display = "";
     }
 }
+
+function resetAppState(){
+    hasAttacked = false;
+    lockedNormalAttackCriticalPattern = null;
+
+    currentPokemon = pokemonsList[0];
+    enemyPokemon = pokemonsList[0];
+    selectedSkillOne = null;
+    selectedSkillTwo = null;
+    selectedSkillThird = null;
+    currentNormalAttackData = null;
+    currentHeldItems = [];
+    currentSelectedSlot = null;
+
+    pokemonSelect.value = currentPokemon.id;
+    pokemonSelectTwo.value = enemyPokemon.id;
+    levelSelect.value = "1";
+    enemyLevelSelect.value = "1";
+    hitCountSelects.normalAttack.value = "0";
+    hitCountSelects.one.value = "1";
+    hitCountSelects.two.value = "1";
+    hitCountSelects.unite.value = "1";
+    criticalCheck.checked = false;
+    criticalPatternLock.checked = false;
+
+    heldItems.forEach(item => {
+        item.textContent = "✚";
+        item.dataset.id = "";
+        item.style.padding = "20px";
+    });
+
+    resetDamageDisplay(
+        skillFirstResult,
+        skillFirstDamage,
+        damageTaken,
+        remainingHp,
+        hpFillOne
+    );
+    resetDamageDisplay(
+        skillSecondResult,
+        skillSecondDamage,
+        damageTakenPlus,
+        remainingHpPlus,
+        hpFillTwo
+    );
+    resetDamageDisplay(
+        skillThirdResult,
+        skillThirdDamage,
+        uniteTaken,
+        remainingHpUnite,
+        hpFillUnite
+    );
+
+    skillFirstResult.style.backgroundColor = "white";
+    skillSecondResult.style.backgroundColor = "white";
+    skillThirdResult.style.backgroundColor = "white";
+
+    damageTakenNormalAttack.textContent = "";
+    remainingHpNormalAttack.textContent = "";
+    hpFillNormalAttack.style.width = "100%";
+    hpFillNormalAttack.style.backgroundColor = "green";
+
+    takenAll.textContent = "";
+    remainingHpAll.textContent = "";
+    hpFillAll.style.width = "100%";
+    hpFillAll.style.backgroundColor = "green";
+
+    detailDamageResult.classList.remove("is-open");
+    statsText.classList.remove("is-open");
+    enemyStatsText.classList.remove("is-open");
+    resultBreakdownToggle.textContent = "内訳を見る";
+
+    detailPopupOverlay.style.display = "none";
+    buildDetailsOverlay.style.display = "none";
+    hitDamageResult.innerHTML = "";
+    overlay.style.display = "none";
+    resultPopup.style.display = "none";
+
+    titlePokemonTitle.textContent = currentPokemon.id;
+    enemyName.textContent = enemyPokemon.id;
+    showSelectPokemonImage();
+    updatePlayerUI();
+    updateEnemyUI();
+    updateNormalAttack();
+    resetDamageResultVisibility();
+}
+
+function cloneNormalAttackData(normalAttackData){
+    if(!normalAttackData){
+        return null;
+    }
+
+    return {
+        totalDamage: normalAttackData.totalDamage,
+        criticalCount: normalAttackData.criticalCount,
+        hitDamages: normalAttackData.hitDamages.map(hitData => ({
+            damage: hitData.damage,
+            critical: hitData.critical,
+            boosted: hitData.boosted
+        }))
+    };
+}
+
+function getValidNormalAttackData(
+    normalAttackData,
+    expectedHitCount,
+    criticalEnabled
+){
+    if(
+        !normalAttackData ||
+        typeof normalAttackData !== "object" ||
+        normalAttackData.calculationVersion !==
+            NORMAL_ATTACK_CALCULATION_VERSION ||
+        !Number.isInteger(normalAttackData.totalDamage) ||
+        normalAttackData.totalDamage < 0 ||
+        !Number.isInteger(normalAttackData.criticalCount) ||
+        normalAttackData.criticalCount < 0 ||
+        !Array.isArray(normalAttackData.hitDamages) ||
+        normalAttackData.hitDamages.length !== expectedHitCount
+    ){
+        return null;
+    }
+
+    const hitDamagesAreValid = normalAttackData.hitDamages.every(
+        hitData =>
+            hitData &&
+            typeof hitData === "object" &&
+            Number.isInteger(hitData.damage) &&
+            hitData.damage >= 0 &&
+            typeof hitData.critical === "boolean" &&
+            typeof hitData.boosted === "boolean"
+    );
+
+    if(!hitDamagesAreValid){
+        return null;
+    }
+
+    const criticalCount = normalAttackData.hitDamages.filter(
+        hitData => hitData.critical
+    ).length;
+    const hitDamageTotal = normalAttackData.hitDamages.reduce(
+        (total, hitData) => total + hitData.damage,
+        0
+    );
+    const roundingDifference =
+        normalAttackData.totalDamage - hitDamageTotal;
+
+    if(
+        normalAttackData.criticalCount !== criticalCount ||
+        (!criticalEnabled && criticalCount > 0) ||
+        roundingDifference < 0 ||
+        roundingDifference > Math.max(0, expectedHitCount - 1)
+    ){
+        return null;
+    }
+
+    return cloneNormalAttackData(normalAttackData);
+}
+
+export function getCurrentBuildState(){
+    return {
+        version: 2,
+        attacker: {
+            pokemonId: currentPokemon.id,
+            level: Number(levelSelect.value),
+            skillOneName: selectedSkillOne?.name ?? null,
+            skillTwoName: selectedSkillTwo?.name ?? null,
+            uniteMoveName: selectedSkillThird?.name ?? null,
+            heldItemSlots: Array.from(
+                heldItems,
+                item => item.dataset.id || null
+            )
+        },
+        hitCounts: {
+            normalAttack: Number(hitCountSelects.normalAttack.value),
+            skillOne: Number(hitCountSelects.one.value),
+            skillTwo: Number(hitCountSelects.two.value),
+            unite: Number(hitCountSelects.unite.value)
+        },
+        criticalEnabled: criticalCheck.checked,
+        calculationState: {
+            normalAttackData: currentNormalAttackData
+                ? {
+                    calculationVersion:
+                        NORMAL_ATTACK_CALCULATION_VERSION,
+                    ...cloneNormalAttackData(currentNormalAttackData)
+                }
+                : null,
+            normalAttackCriticalLocked:
+                criticalPatternLock.checked,
+            hasAttacked
+        }
+    };
+}
+
+export function applyBuildState(build){
+    const normalizeInteger = (value, min, max, fallback) => {
+        const number = Number(value);
+
+        if(!Number.isInteger(number)){
+            return fallback;
+        }
+
+        return Math.min(max, Math.max(min, number));
+    };
+
+    const preservedEnemyPokemon = enemyPokemon;
+    const preservedEnemyLevel = enemyLevelSelect.value;
+
+    resetAppState();
+
+    enemyPokemon = preservedEnemyPokemon;
+    pokemonSelectTwo.value = enemyPokemon.id;
+    enemyLevelSelect.value = preservedEnemyLevel;
+    enemyName.textContent = enemyPokemon.id;
+    updateEnemyUI();
+
+    if(
+        !build ||
+        typeof build !== "object" ||
+        ![1, 2].includes(build.version)
+    ){
+        return getCurrentBuildState();
+    }
+
+    currentPokemon =
+        findPokemonById(pokemonsList, build.attacker?.pokemonId) ||
+        pokemonsList[0];
+
+    pokemonSelect.value = currentPokemon.id;
+    levelSelect.value = String(
+        normalizeInteger(build.attacker?.level, 1, 15, 1)
+    );
+
+    hitCountSelects.normalAttack.value = String(
+        normalizeInteger(build.hitCounts?.normalAttack, 0, 10, 0)
+    );
+    hitCountSelects.one.value = String(
+        normalizeInteger(build.hitCounts?.skillOne, 0, 10, 1)
+    );
+    hitCountSelects.two.value = String(
+        normalizeInteger(build.hitCounts?.skillTwo, 0, 10, 1)
+    );
+    hitCountSelects.unite.value = String(
+        normalizeInteger(build.hitCounts?.unite, 0, 10, 1)
+    );
+    criticalCheck.checked = build.criticalEnabled === true;
+
+    selectedSkillOne = build.attacker?.skillOneName
+        ? findMoveByName(currentPokemon, build.attacker.skillOneName)
+        : null;
+    selectedSkillTwo = build.attacker?.skillTwoName
+        ? findMoveByName(currentPokemon, build.attacker.skillTwoName)
+        : null;
+    selectedSkillThird = build.attacker?.uniteMoveName
+        ? findMoveByName(currentPokemon, build.attacker.uniteMoveName)
+        : null;
+
+    const restoredHeldItemIds = new Set();
+    const heldItemSlots = Array.isArray(build.attacker?.heldItemSlots)
+        ? build.attacker.heldItemSlots
+        : [];
+
+    heldItems.forEach((slot, index) => {
+        const itemId = heldItemSlots[index];
+        const selectedItem = heldItemsList.find(
+            item => item.id === itemId
+        );
+
+        if(!selectedItem || restoredHeldItemIds.has(itemId)){
+            return;
+        }
+
+        restoredHeldItemIds.add(itemId);
+        currentSelectedSlot = slot;
+        showHeldItem(itemId, selectedItem);
+    });
+
+    currentHeldItems = [...restoredHeldItemIds];
+    currentSelectedSlot = null;
+
+    titlePokemonTitle.textContent = currentPokemon.id;
+    enemyName.textContent = enemyPokemon.id;
+    showSelectPokemonImage();
+    updatePlayerUI();
+    updateEnemyUI();
+
+    if(selectedSkillThird){
+        showSkillResult(
+            skillThirdResult,
+            selectedSkillThird.name,
+            selectedSkillThird
+        );
+    }
+
+    const normalAttackHitCount = Number(
+        hitCountSelects.normalAttack.value
+    );
+    const savedNormalAttackData = getValidNormalAttackData(
+        build.calculationState?.normalAttackData,
+        normalAttackHitCount,
+        criticalCheck.checked
+    );
+    const shouldLockCriticalPattern =
+        build.calculationState?.normalAttackCriticalLocked !==
+            false;
+
+    hasAttacked = build.calculationState?.hasAttacked === true;
+
+    if(savedNormalAttackData){
+        currentNormalAttackData = savedNormalAttackData;
+        showNormalAttackDamage(currentNormalAttackData);
+
+        if(hasAttacked){
+            damageResult.style.display = "flex";
+            resultPopup.style.display = "block";
+            attackNormalAttack();
+        }else{
+            resetDamageResultVisibility();
+        }
+    }else{
+        updateNormalAttack();
+
+        if(hasAttacked){
+            damageResult.style.display = "flex";
+            resultPopup.style.display = "block";
+        }else{
+            resetDamageResultVisibility();
+        }
+    }
+
+    if(shouldLockCriticalPattern){
+        lockedNormalAttackCriticalPattern =
+            currentNormalAttackData?.hitDamages.map(
+                hitData => hitData.critical
+            ) || [];
+        criticalPatternLock.checked = true;
+    }else{
+        lockedNormalAttackCriticalPattern = null;
+        criticalPatternLock.checked = false;
+    }
+
+    return getCurrentBuildState();
+}
+
 function updateNormalAttack(){
     currentNormalAttackData = calculateNormalAttackDamage({
         level: Number(levelSelect.value),
         pokemonId: currentPokemon.id,
         hitCount: Number(hitCountSelects.normalAttack.value),
         status: getCurrentPlayerStatus(),
-        criticalEnabled: criticalCheck.checked
+        criticalEnabled: criticalCheck.checked,
+        criticalPattern: lockedNormalAttackCriticalPattern
     });
     showNormalAttackDamage(currentNormalAttackData);
     rerenderAfterAttack();
+}
+function releaseNormalAttackCriticalLock(){
+    lockedNormalAttackCriticalPattern = null;
+    criticalPatternLock.checked = false;
 }
 function rerenderAfterAttack(){
     if(hasAttacked){
@@ -728,6 +1277,4 @@ function renderTotalDamageResult(finalDamageData, moveDamageData){
 
 updatePlayerUI();
 updateEnemyUI();
-
-
-
+renderSavedBuilds();

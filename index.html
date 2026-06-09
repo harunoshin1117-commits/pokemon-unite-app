@@ -46,6 +46,23 @@
                             </div>
                         </div>
 
+                        <section class="build-storage" aria-labelledby="build-storage-title">
+                            <p id="build-storage-title" class="build-storage-title">ビルド保存</p>
+                            <div class="build-storage-row">
+                                <label for="build-name">保存名</label>
+                                <input id="build-name" type="text" maxlength="50">
+                                <button id="save-build-button" type="button">保存</button>
+                            </div>
+                            <div class="build-storage-row">
+                                <label for="saved-build-select">保存済みビルド</label>
+                                <select id="saved-build-select"></select>
+                                <button id="show-build-details-button" type="button">内容を見る</button>
+                                <button id="load-build-button" type="button">読み込み</button>
+                                <button id="delete-build-button" type="button">削除</button>
+                            </div>
+                            <p id="build-storage-message" class="build-storage-message" aria-live="polite"></p>
+                        </section>
+
                         <div>
                             <h1 id="pokemontitle" class="title-pokemon-title">Pikachu</h1>
                         </div>
@@ -104,6 +121,10 @@
                                                 <label >
                                                     <input type="checkbox" id="critical-check">
                                                     急所
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" id="critical-pattern-lock">
+                                                    急所結果を固定
                                                 </label>
                                                 <label for="normalAttack-hit">Hit数</label>
                                                 <select name="" id="normalAttack-hit"></select>
@@ -234,6 +255,16 @@
                 </div>
         </div>
 
+    </div>
+
+    <div id="build-details-overlay" class="build-details-overlay">
+        <div class="build-details-modal" role="dialog" aria-modal="true" aria-labelledby="build-details-title">
+            <div class="build-details-title">
+                <p id="build-details-title">保存ビルドの内容</p>
+                <button id="close-build-details" type="button">閉じる</button>
+            </div>
+            <div id="build-details-content" class="build-details-content"></div>
+        </div>
     </div>
 
     <div class="overlay">

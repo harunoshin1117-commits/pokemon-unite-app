@@ -79,6 +79,7 @@ export function calculateNormalAttackDamage({
     hitCount,
     status,
     criticalEnabled,
+    criticalPattern = null,
     random = Math.random
 }){
     
@@ -110,7 +111,9 @@ export function calculateNormalAttackDamage({
        }
        if(criticalEnabled){
         //急所判定
-       isCritical = random() <critical/100;
+       isCritical = Array.isArray(criticalPattern)
+            ? criticalPattern[i - 1] === true
+            : random() <critical/100;
         //急所なら二倍（今回だけ）
         if(isCritical){
             criticalCount++;
@@ -158,7 +161,9 @@ export function calculateNormalAttackDamage({
 
             if(criticalEnabled){
                 
-                 isCritical = random() < critical/100;
+                 isCritical = Array.isArray(criticalPattern)
+                    ? criticalPattern[i - 1] === true
+                    : random() < critical/100;
                 
                 if(isCritical){
                     criticalCount++;
@@ -201,7 +206,9 @@ export function calculateNormalAttackDamage({
 
             if(criticalEnabled){
 
-                 isCritical = random() < critical/100;
+                 isCritical = Array.isArray(criticalPattern)
+                    ? criticalPattern[i - 1] === true
+                    : random() < critical/100;
 
                 if(isCritical){
                     criticalCount++;
