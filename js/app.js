@@ -576,42 +576,20 @@ function renderBuildDetails(savedBuild){
     const heldItemSlots = Array.isArray(attacker.heldItemSlots)
         ? attacker.heldItemSlots
         : [];
-    const criticalPattern = Array.isArray(
-        normalAttackData.hitDamages
-    )
-        ? normalAttackData.hitDamages.map(
-            hitData => hitData.critical
-        )
-        : [];
     const details = [
-        ["name", savedBuild.name],
-        ["id", savedBuild.id],
-        ["version", buildState.version],
-        ["pokemonId", attacker.pokemonId],
-        ["level", attacker.level],
-        ["skillOneName", attacker.skillOneName],
-        ["skillTwoName", attacker.skillTwoName],
-        ["uniteMoveName", attacker.uniteMoveName],
-        ["heldItemSlots", heldItemSlots.join(", ")],
-        ["normalAttackHits", hitCounts.normalAttack],
-        ["skillOneHits", hitCounts.skillOne],
-        ["skillTwoHits", hitCounts.skillTwo],
-        ["uniteHits", hitCounts.unite],
-        ["criticalEnabled", buildState.criticalEnabled],
-        [
-            "normalAttackCriticalLocked",
-            calculationState.normalAttackCriticalLocked
-        ],
-        [
-            "normalAttackCalculationVersion",
-            normalAttackData.calculationVersion
-        ],
-        ["normalAttackTotalDamage", normalAttackData.totalDamage],
-        ["criticalCount", normalAttackData.criticalCount],
-        ["criticalPattern", criticalPattern.join(", ")],
-        ["hasAttacked", calculationState.hasAttacked],
-        ["createdAt", savedBuild.createdAt],
-        ["updatedAt", savedBuild.updatedAt]
+        ["名前", savedBuild.name],
+        ["ポケモン名前", attacker.pokemonId],
+        ["レベル", attacker.level],
+        ["技セット1", attacker.skillOneName],
+        ["技セット2", attacker.skillTwoName],
+        ["ユナイト技", attacker.uniteMoveName],
+        ["持ち物", heldItemSlots.join(", ")],
+        ["通常攻撃ヒット数", hitCounts.normalAttack],
+        ["技セット1ヒット数", hitCounts.skillOne],
+        ["技セット2ヒット数", hitCounts.skillTwo],
+        ["ユナイト技ヒット数", hitCounts.unite],
+        ["通常攻撃合計ダメージ", normalAttackData.totalDamage],
+        ["急所回数", normalAttackData.criticalCount]
     ];
 
     buildDetailsContent.replaceChildren();
