@@ -39,6 +39,7 @@ import {
 } from "./selectOptions.js";
 import { bindUiEvents } from "./uiEvents.js";
 import {
+    BUILD_STATE_VERSION,
     deleteBuild,
     getSavedBuilds,
     loadBuild,
@@ -769,7 +770,7 @@ function getValidNormalAttackData(
 
 export function getCurrentBuildState(){
     return {
-        version: 2,
+        version: BUILD_STATE_VERSION,
         attacker: {
             pokemonId: currentPokemon.id,
             level: Number(levelSelect.value),
@@ -804,6 +805,14 @@ export function getCurrentBuildState(){
 }
 
 export function applyBuildState(build){
+    if(
+        !build ||
+        typeof build !== "object" ||
+        build.version !== BUILD_STATE_VERSION
+    ){
+        return getCurrentBuildState();
+    }
+
     const normalizeInteger = (value, min, max, fallback) => {
         const number = Number(value);
 
@@ -824,14 +833,6 @@ export function applyBuildState(build){
     enemyLevelSelect.value = preservedEnemyLevel;
     enemyName.textContent = enemyPokemon.id;
     updateEnemyUI();
-
-    if(
-        !build ||
-        typeof build !== "object" ||
-        ![1, 2].includes(build.version)
-    ){
-        return getCurrentBuildState();
-    }
 
     currentPokemon =
         findPokemonById(pokemonsList, build.attacker?.pokemonId) ||

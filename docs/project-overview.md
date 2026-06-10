@@ -1,6 +1,6 @@
 ﻿# Pokemon Unite App Project Overview
 
-最終更新日: 2026-06-09
+最終更新日: 2026-06-10
 
 ## 概要
 
@@ -55,12 +55,16 @@
 │  ├─ selectOptions.js
 │  ├─ ui.js
 │  └─ uiEvents.js
+├─ tests/
+│  ├─ buildStorage.test.js
+│  └─ damageCalculator.test.js
 ├─ index.html
+├─ package.json
 ├─ README.md
 └─ style.css
 ```
 
-`.git/` はGit管理用フォルダです。アプリ本体は `index.html`、`style.css`、`js/`、`images/` で構成されています。
+`.git/` はGit管理用フォルダです。アプリ本体は `index.html`、`style.css`、`js/`、`images/` で構成されています。`package.json` と `tests/` はNode標準テストの設定とテストコードです。
 
 ---
 
@@ -709,8 +713,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `applyBuildState(build)`
   - `getCurrentBuildState()` と同じ形式の状態を受け取り、内部状態と画面へ復元します。
   - 読み込み前に選択されていた防御側ポケモンと防御側レベルを維持します。
-  - 旧 `version: 1` も読み込めますが、保存されている防御側情報は使用しません。
-  - 復元前に `resetAppState()` を実行し、バージョン、ID、技名、数値、通常攻撃データを検証・補正した後、既存の更新処理で再描画します。
+  - 現行の保存バージョンであることを `resetAppState()` より前に確認し、無効なデータでは現在の画面と内部状態を変更しません。
+  - 有効な保存バージョンでは `resetAppState()` を実行し、ID、技名、数値、通常攻撃データを検証・補正した後、既存の更新処理で再描画します。
   - 対応する `calculationVersion` の通常攻撃データがある場合は急所判定を再実行せず、保存済みの各ヒット情報から結果を復元します。
   - `normalAttackCriticalLocked` を参照して固定チェックと内部の固定パターンを復元します。項目がない既存データは固定ONとして扱います。
   - 保存済み通常攻撃データが使用できない場合も、通常攻撃を再生成した後、その各ヒットを使って保存時の固定ON/OFFを復元します。
@@ -721,6 +725,7 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 
 JavaScriptの責務や依存関係を変更した場合は、以下を確認します。
 
+- `node --test`
 - `node --check js/app.js`
 - `node --check js/appSelectors.js`
 - `node --check js/domElements.js`
@@ -737,6 +742,8 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - スマホ幅で合計ダメージ優先表示と内訳折りたたみが維持される
 
 現在のJavaScriptは12ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
+
+Node標準のテスト機能を使うため、外部ライブラリは追加していません。`tests/buildStorage.test.js` では複数保存、読み込み、削除、旧バージョン除外、壊れたJSONを確認します。`tests/damageCalculator.test.js` では通常攻撃の急所パターン固定、攻撃力変更後の急所位置維持、乱数利用、急所OFF、急所回数を確認します。
 
 2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。その後、未使用だったHTMLの `critical-popup` とCSSの旧急所ポップアップ表示・アニメーションも削除しました。現在使っている通常攻撃詳細表示の `critical-color` は残しています。
 
@@ -951,6 +958,8 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - `loadBuild(buildId)`
 
 現在は `localStorage` の保存ビルド配列を使います。各レコードは `id`、`name`、`buildState`、`createdAt`、`updatedAt` を持ちます。
+
+保存形式の現行バージョンは `buildStorage.js` の `BUILD_STATE_VERSION` で一元管理します。`getSavedBuilds()` は現行バージョン以外の保存レコードを一覧から除外し、除外が発生した場合は有効なレコードだけを `localStorage` へ保存し直します。開発中は古い保存形式の移行処理を持たず、現行形式だけを読み込み対象とします。
 
 #### js/services/damageCalculator.js
 

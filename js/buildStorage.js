@@ -1,4 +1,5 @@
 const SAVED_BUILDS_STORAGE_KEY = "pokemon-unite-saved-builds";
+export const BUILD_STATE_VERSION = 2;
 
 function isSavedBuild(savedBuild){
     return (
@@ -8,6 +9,7 @@ function isSavedBuild(savedBuild){
         typeof savedBuild.name === "string" &&
         savedBuild.buildState &&
         typeof savedBuild.buildState === "object" &&
+        savedBuild.buildState.version === BUILD_STATE_VERSION &&
         typeof savedBuild.createdAt === "string" &&
         typeof savedBuild.updatedAt === "string"
     );
@@ -36,9 +38,20 @@ export function getSavedBuilds(){
 
         const savedBuilds = JSON.parse(savedBuildsJson);
 
-        return Array.isArray(savedBuilds)
-            ? savedBuilds.filter(isSavedBuild)
-            : [];
+        if(!Array.isArray(savedBuilds)){
+            return [];
+        }
+
+        const currentSavedBuilds = savedBuilds.filter(isSavedBuild);
+
+        if(currentSavedBuilds.length !== savedBuilds.length){
+            localStorage.setItem(
+                SAVED_BUILDS_STORAGE_KEY,
+                JSON.stringify(currentSavedBuilds)
+            );
+        }
+
+        return currentSavedBuilds;
     }catch{
         return [];
     }
