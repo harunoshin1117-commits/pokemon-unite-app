@@ -51,6 +51,9 @@ export const buildStorageMessage = document.getElementById("build-storage-messag
 export const buildDetailsOverlay = document.getElementById("build-details-overlay");
 export const buildDetailsContent = document.getElementById("build-details-content");
 export const closeBuildDetails = document.getElementById("close-build-details");
+export const mobileTabButtons = document.querySelectorAll(".mobile-tab-button");
+export const mobileTabPanels = document.querySelectorAll(".mobile-tab-panel");
+export const mobileTabContainers = document.querySelectorAll(".mobile-tab-container");
 export const takenAll = document.getElementById("taken-all");
 export const remainingHpAll = document.getElementById("remaining-hp-all");
 

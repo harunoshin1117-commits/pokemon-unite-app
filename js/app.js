@@ -38,6 +38,7 @@ import {
     createPokemonOptions
 } from "./selectOptions.js";
 import { bindUiEvents } from "./uiEvents.js";
+import { bindMobileTabs } from "./mobileTabs.js";
 import {
     deleteBuild,
     getSavedBuilds,
@@ -97,6 +98,9 @@ import {
     hpFillUnite,
     levelSelect,
     loadBuildButton,
+    mobileTabButtons,
+    mobileTabContainers,
+    mobileTabPanels,
     normalAttackDamage,
     overlay,
     playerStatsToggle,
@@ -159,6 +163,7 @@ let currentHeldItems = [];
 let currentSelectedSlot = null;
 let hasAttacked = false;
 let lockedNormalAttackCriticalPattern = null;
+const mobileQuery = window.matchMedia("(max-width: 768px)");
 // =========================
 // Initial setup
 // =========================
@@ -359,6 +364,13 @@ bindBuildEvents({
     renderBuildDetails
 });
 
+const activateMobileTab = bindMobileTabs({
+    tabButtons: mobileTabButtons,
+    tabPanels: mobileTabPanels,
+    tabContainers: mobileTabContainers,
+    mobileQuery
+});
+
 heldItems.forEach(item => {
 
     item.addEventListener("click", () => {
@@ -412,6 +424,7 @@ attackAction.addEventListener("click",() => {
    resultPopup.style.display = "block";
     hasAttacked = true;
     attackNormalAttack();
+    activateMobileTab("result");
     damageResult.scrollIntoView({
         behavior: "smooth",
         block: "start"

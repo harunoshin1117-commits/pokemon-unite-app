@@ -13,9 +13,9 @@
                
             
                 <div class="battle-area">
-                    <div class="pokemon" id="pokemon">
+                    <div class="pokemon mobile-tab-container is-mobile-tab-active" id="pokemon" data-mobile-tab-container="attacker details">
 
-                        <div class="main-pokemon-title">
+                        <div class="main-pokemon-title mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                             <div >
                                 <div class="all-reset" id="all-reset">
                                     <p class="select-font">攻撃側のポケモン選択</p>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
 
-                        <section class="build-storage" aria-labelledby="build-storage-title">
+                        <section class="build-storage mobile-tab-panel" data-mobile-tab-panel="details" aria-labelledby="build-storage-title">
                             <p id="build-storage-title" class="build-storage-title">ビルド保存</p>
                             <div class="build-storage-row">
                                 <label for="build-name">保存名</label>
@@ -64,23 +64,23 @@
                             <p id="build-storage-message" class="build-storage-message" aria-live="polite"></p>
                         </section>
 
-                        <div>
+                        <div class="mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                             <h1 id="pokemontitle" class="title-pokemon-title">Pikachu</h1>
                         </div>
                         
                         <div class="pokemon-items" id="pokemon-items">
-                            <div>
+                            <div class="mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                 <label for="level">レベル</label>
                                 <select name="" id="level"></select>
                             </div>
                             <div class="item-show">
-                                <div class="stats-area">
+                                <div class="stats-area mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                     <button id="player-stats-toggle" class="stats-title stats-toggle" type="button">ステータス</button>
                                     <div class="stats-text" id="stats-text">
                     
                                     </div>
                                 </div>
-                                <div class="skills-area">
+                                <div class="skills-area mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                     <p class="skill-name">覚える技</p>
                     
                                         <div class="skill-wrapper">
@@ -113,7 +113,7 @@
                     
                                         </div>
                                 </div>
-                                <div>
+                                <div class="attacker-selected-moves mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                     <p class="result-tiile">選んだ技</p>
                                     <div id="pokemon-result" class="pokemon-result">
                                         
@@ -159,7 +159,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="result-buttons">
+                                <div class="result-buttons mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                     <button class="attack-action result-button">攻  撃</button>
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
 
 
 
-                    <div id="enemy-pokemon" class="enemy-pokemon">
+                    <div id="enemy-pokemon" class="enemy-pokemon mobile-tab-panel" data-mobile-tab-panel="defender">
                         <div id="enemy-title" class="enemy-title">
                     
                             <p>攻撃受ける側のポケモン選択</p>
@@ -188,22 +188,12 @@
                             <button id="enemy-stats-toggle" class="enemy-stats-title stats-toggle" type="button">相手のステータス</button>
                             <div id="enemy-stats-text"></div>
                         </div>
-                        
-                        <div id="detail-popup-overlay" class="detail-popup-overlay">
-                            <div class="detail-popup">
-                                <div class="detail-popup-title">
-                                    <p>通常攻撃の詳細</p>
-                                    <button id="close-detail-popup" class="close-detail-popup" type="button">閉じる</button>
-                                </div>
-                                <div id="hitDamage-result" class="hit-damage-result"></div>
-                            </div>
-                        </div>
                     </div>
                                 
                             
                 </div>
 
-                <div class="damage-result" id="damage-result">
+                <div class="damage-result mobile-tab-panel" id="damage-result" data-mobile-tab-panel="result">
                     <div class="damage-result-header">
                         <p>計算結果</p>
                         <button class="result-popup result-button">詳細表示</button>
@@ -256,6 +246,23 @@
                 </div>
         </div>
 
+    </div>
+
+    <nav class="mobile-bottom-tabs" aria-label="画面切り替え">
+        <button class="mobile-tab-button is-active" type="button" data-mobile-tab="attacker" aria-selected="true">攻撃側</button>
+        <button class="mobile-tab-button" type="button" data-mobile-tab="defender" aria-selected="false">受ける側</button>
+        <button class="mobile-tab-button" type="button" data-mobile-tab="details" aria-selected="false">詳細</button>
+        <button class="mobile-tab-button" type="button" data-mobile-tab="result" aria-selected="false">結果</button>
+    </nav>
+
+    <div id="detail-popup-overlay" class="detail-popup-overlay">
+        <div class="detail-popup">
+            <div class="detail-popup-title">
+                <p>通常攻撃の詳細</p>
+                <button id="close-detail-popup" class="close-detail-popup" type="button">閉じる</button>
+            </div>
+            <div id="hitDamage-result" class="hit-damage-result"></div>
+        </div>
     </div>
 
     <div id="build-details-overlay" class="build-details-overlay">

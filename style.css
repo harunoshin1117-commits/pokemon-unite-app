@@ -687,8 +687,37 @@ img
     }
 
     .item-show {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
+    }
+
+    .stats-area,
+    .skills-area,
+    .attacker-selected-moves,
+    .result-buttons {
+        min-width: 0;
+    }
+
+    .stats-area {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .result-buttons {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: start;
+    }
+
+    .skills-area {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .attacker-selected-moves {
+        grid-column: 2;
+        grid-row: 2;
     }
 
     .skill-wrapper,
@@ -696,6 +725,10 @@ img
     .stats-text,
     #enemy-stats-text {
         min-height: 0;
+    }
+
+    .stats-text {
+        min-width: 0;
     }
 
     .stats-title,
@@ -779,6 +812,60 @@ img
 
     .detail-popup .hit-damage span:last-child {
         grid-column: 2;
+    }
+}
+
+/* =========================
+   mobile bottom tabs
+========================= */
+.mobile-bottom-tabs {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 76px;
+    }
+
+    .mobile-tab-panel:not(.is-mobile-tab-active),
+    .mobile-tab-container:not(.is-mobile-tab-active) {
+        display: none !important;
+    }
+
+    .damage-result.is-mobile-tab-active {
+        display: flex !important;
+    }
+
+    .mobile-bottom-tabs {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 15;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 4px;
+        padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+        border-top: 2px solid black;
+        background: white;
+        box-shadow: 0 -4px 14px rgba(0,0,0,0.12);
+    }
+
+    .mobile-tab-button {
+        min-width: 0;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        background: transparent;
+        padding: 10px 4px;
+        color: black;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .mobile-tab-button.is-active {
+        border-color: black;
+        background: #f2f2f2;
     }
 }
 
