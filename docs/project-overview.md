@@ -1,6 +1,6 @@
 ﻿# Pokemon Unite App Project Overview
 
-最終更新日: 2026-06-10
+最終更新日: 2026-06-11
 
 ## 概要
 
@@ -45,7 +45,11 @@
 ├─ js/
 │  ├─ app.js
 │  ├─ appSelectors.js
-│  ├─ buildStorage.js
+│  ├─ build/
+│  │  ├─ buildController.js
+│  │  ├─ buildRenderer.js
+│  │  ├─ buildState.js
+│  │  └─ buildStorage.js
 │  ├─ damageCalculator.js
 │  ├─ domElements.js
 │  ├─ heldItemService.js
@@ -56,6 +60,9 @@
 │  ├─ ui.js
 │  └─ uiEvents.js
 ├─ tests/
+│  ├─ buildController.test.js
+│  ├─ buildRenderer.test.js
+│  ├─ buildState.test.js
 │  ├─ buildStorage.test.js
 │  └─ damageCalculator.test.js
 ├─ index.html
@@ -112,7 +119,10 @@ JavaScriptはES Modulesとして読み込まれます。
 
 - `app.js`
   - `appSelectors.js`
-  - `buildStorage.js`
+  - `build/buildController.js`
+  - `build/buildRenderer.js`
+  - `build/buildState.js`
+  - `build/buildStorage.js`
   - `pokemonData.js`
   - `helditemData.js`
   - `damageCalculator.js`
@@ -129,7 +139,7 @@ JavaScriptはES Modulesとして読み込まれます。
 
 `damageCalculator.js` と `heldItemService.js` は他ファイルを `import` しないため、循環参照は発生していません。
 
-`buildStorage.js` も他ファイルを `import` せず、`localStorage` 内の保存ビルド配列だけを管理します。
+`build/buildStorage.js` は `build/buildState.js` の保存形式バージョンだけを参照し、`localStorage` 内の保存ビルド配列を管理します。
 
 ### style.css
 
@@ -228,7 +238,7 @@ JavaScriptはES Modulesとして読み込まれます。
 
 状態取得関数の追加移行は当面行いません。`app.js` に残る `getEnemyStats()`、`getEnemyHp()`、`getCurrentPlayerStatus()`、`getActiveHeldItemsForCurrentSelection()` は、DOM値や現在状態と既存サービスをつなぐ小さなラッパーとして維持します。新機能や状態管理変更によって重複や責務上の問題が生じた場合に、必要な範囲だけ再検討します。
 
-### js/buildStorage.js
+### js/build/buildStorage.js
 
 複数の保存ビルドを `localStorage` 内の1つの配列として管理します。
 
@@ -250,6 +260,55 @@ JavaScriptはES Modulesとして読み込まれます。
 保存配列が存在しない場合、JSONが壊れている場合、必須項目が不足したレコードが含まれる場合は、安全に空配列または有効なレコードだけを返します。
 
 保存一覧で選択中のレコードは、`内容を見る` ボタンからモーダル表示できます。名前、攻撃側ポケモン、レベル、技セット1・2、ユナイト技、持ち物、各攻撃のヒット数、通常攻撃合計ダメージ、急所回数を日本語の `ラベル: 値` 形式で表示します。
+
+### js/build/buildRenderer.js
+
+保存機能のDOM描画を担当します。`localStorage` は直接参照せず、呼び出し側から保存データとDOM参照を受け取ります。
+
+- `renderSavedBuilds(savedBuilds, context)`
+  - 保存一覧のoption生成、選択状態の維持、関連ボタンの有効・無効を更新します。
+- `renderBuildDetails(savedBuild, buildDetailsContent)`
+  - 選択した保存レコードを、日本語の `ラベル: 値` 形式で内容確認モーダルへ描画します。
+
+保存一覧と詳細内容の描画関数は、保存データとDOM参照を受け取るだけです。保存データの取得とイベントからの呼び出しは `buildController.js` が担当し、`app.js` は必要な依存関係を `context` として渡します。
+
+### js/build/buildController.js
+
+保存機能のイベント登録と処理の流れを担当します。`bindBuildEvents(context)` が保存用DOM、状態取得・復元関数、ストレージ関数、描画関数をすべて `context` から受け取ります。
+
+- 保存名の確認と現在状態の保存
+- 保存済みビルドの読み込み
+- 保存内容モーダルの表示・非表示
+- 保存済みビルドの削除
+- 初期表示と保存・削除後の一覧再描画
+
+`buildController.js` は `app.js`、`domElements.js`、`buildStorage.js`、`buildRenderer.js` を直接 `import` しません。依存関係を引数で明示することで、偽物のDOMと関数を使ったイベント単体テストを可能にしています。
+
+### js/build/buildState.js
+
+保存形式の生成と通常攻撃データの複製を担当します。
+
+- `createBuildState(sourceState)`
+  - `app.js` が集めた現在状態を、`version`付きの保存形式へ変換します。
+  - 持ち物スロット、ヒット数、通常攻撃の各ヒット情報を新しいオブジェクト・配列として複製します。
+- `cloneNormalAttackData(normalAttackData)`
+  - 急所結果を含む通常攻撃データを複製します。
+- `normalizeInteger(value, min, max, fallback)`
+  - レベルやヒット数を整数へ変換し、指定範囲へ補正します。整数にできない値では既定値を返します。
+- `getValidNormalAttackData(normalAttackData, expectedHitCount, criticalEnabled)`
+  - 計算バージョン、合計ダメージ、急所回数、各ヒット情報を検証し、有効な場合だけ複製して返します。
+  - 無効な通常攻撃データは `null` とし、読み込み時に現在の計算処理で再生成します。
+- `isValidBuildState(buildState)`
+  - 保存形式バージョン、攻撃側、ヒット数、持ち物スロット、急所設定、計算状態などの必須構造を検証します。
+  - 復元前、保存前、保存一覧取得時に共通利用します。
+- `BUILD_STATE_VERSION`
+  - 現在の保存形式バージョンです。
+- `NORMAL_ATTACK_CALCULATION_VERSION`
+  - 通常攻撃スナップショットの計算バージョンです。
+
+`getCurrentBuildState()` は引き続き `app.js` に残し、DOMと内部状態から現在値を集めます。保存形式への変換、バージョン付与、複製は `createBuildState()` が担当します。
+
+`applyBuildState()` は `isValidBuildState()` をリセット前に実行します。必須構造が壊れたデータでは現在状態を維持し、範囲外の数値は `normalizeInteger()` で補正します。通常攻撃データだけが無効な場合はビルド全体を拒否せず、`getValidNormalAttackData()` が `null` を返して通常攻撃を再計算します。
 
 ### js/ui.js
 
@@ -638,10 +697,6 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
 - `showSingleHitDamagesPopup(hitDamage, index)`
   - `resultRenderer.js` 内部で1ヒット分の詳細行を作ります。
 
-- `renderBuildDetails(savedBuild)`
-  - 選択した保存レコードを、保存ビルド内容確認モーダルへ `level: 10` のような1行形式で描画します。
-  - 保存名などの文字列は `textContent` で表示し、HTMLとして解釈しません。
-
 ### 折りたたみ・表示制御
 
 - `bindUiEvents(context)`
@@ -704,7 +759,8 @@ PCでは `damage-result` を常時表示します。スマホでは攻撃前は 
   - 初期ポケモンとステータスを再描画し、通常攻撃データを初期条件で作り直します。
 
 - `getCurrentBuildState()`
-  - 現在の攻撃側ポケモン、レベル、技、持ち物スロット、攻撃回数、急所設定を `version: 2` のプレーンオブジェクトとして返します。
+  - 現在の攻撃側ポケモン、レベル、技、持ち物スロット、攻撃回数、急所設定をDOMと内部状態から集めます。
+  - 集めた値を `build/buildState.js` の `createBuildState()` に渡し、`version: 2` のプレーンオブジェクトとして返します。
   - 防御側ポケモンと防御側レベルは保存対象に含めません。
   - 急所判定済みの通常攻撃データと攻撃済み状態も `calculationState` にコピーして含めます。通常攻撃データには `calculationVersion: 1` を付けます。
   - `normalAttackCriticalLocked` に急所結果固定のON/OFFを保存します。
@@ -741,9 +797,15 @@ JavaScriptの責務や依存関係を変更した場合は、以下を確認し�
 - レベル変更後に技の `+` 表示と威力表示が維持される
 - スマホ幅で合計ダメージ優先表示と内訳折りたたみが維持される
 
-現在のJavaScriptは12ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
+現在のアプリ用JavaScriptは15ファイル構成です。変更後は、変更対象と依存先の `node --check` を実行し、ブラウザ上の操作確認は影響範囲に応じて上記チェックリストから選びます。
 
 Node標準のテスト機能を使うため、外部ライブラリは追加していません。`tests/buildStorage.test.js` では複数保存、読み込み、削除、旧バージョン除外、壊れたJSONを確認します。`tests/damageCalculator.test.js` では通常攻撃の急所パターン固定、攻撃力変更後の急所位置維持、乱数利用、急所OFF、急所回数を確認します。
+
+`tests/buildRenderer.test.js` では保存データがない場合の操作無効化、保存一覧と選択状態、保存内容の日本語表示項目を確認します。
+
+`tests/buildController.test.js` では初期一覧描画、保存、読み込み、内容表示とモーダル開閉、削除イベントを確認します。
+
+`tests/buildState.test.js` では現在状態から保存形式への変換、データ複製、整数補正、通常攻撃データ検証、保存データ全体の必須構造検証を確認します。
 
 2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。その後、未使用だったHTMLの `critical-popup` とCSSの旧急所ポップアップ表示・アニメーションも削除しました。現在使っている通常攻撃詳細表示の `critical-color` は残しています。
 
@@ -898,90 +960,21 @@ Node標準のテスト機能を使うため、外部ライブラリは追加し�
 
 この形式は `getCurrentBuildState()` と `applyBuildState()` で取得・復元できます。防御側は保存せず、読み込み時点で画面に選択されている防御側を維持します。通常攻撃の最終ダメージは保存せず、急所判定済みの各ヒット情報と現在の防御側・持ち物設定から再計算します。未対応または欠落した `calculationVersion` の通常攻撃データは使用せず、現在の計算処理で再計算します。
 
-### 推奨フォルダ構成
+### 保存機能の現在の構成
 
-保存機能を入れるなら、段階的に以下のような構成へ移行するのがおすすめです。
+保存機能は `js/build/` にまとめています。
 
 ```text
-ポケモンユナイト/
-├─ index.html
-├─ style.css
-├─ images/
-├─ js/
-│  ├─ app.js
-│  ├─ data/
-│  │  ├─ pokemonData.js
-│  │  └─ helditemData.js
-│  ├─ state/
-│  │  └─ battleState.js
-│  ├─ services/
-│  │  ├─ damageCalculator.js
-│  │  ├─ heldItemService.js
-│  │  └─ buildStorage.js
-│  ├─ ui/
-│  │  ├─ renderPlayer.js
-│  │  ├─ renderEnemy.js
-│  │  ├─ renderResults.js
-│  │  └─ renderBuilds.js
-│  └─ events/
-│     └─ bindEvents.js
-└─ docs/
-   └─ project-overview.md
+js/build/
+├─ buildController.js
+├─ buildRenderer.js
+├─ buildState.js
+└─ buildStorage.js
 ```
 
-### 各モジュールの役割案
+`app.js` は現在値の収集と画面への復元、`buildState.js` は保存形式の生成・複製、`buildStorage.js` は永続化、`buildRenderer.js` は描画、`buildController.js` はイベント連携を担当します。
 
-#### js/state/battleState.js
-
-現在の選択状態を1つのオブジェクトとして管理します。
-
-- 攻撃側ポケモン
-- 攻撃側レベル
-- 防御側ポケモン
-- 防御側レベル
-- 選択中の技
-- ヒット数
-- 持ち物
-- 急所ON/OFF
-- 結果内訳の開閉状態
-- ステータスの開閉状態
-
-#### js/buildStorage.js
-
-ビルドの保存、取得、更新、削除を担当します。
-
-現在の関数:
-
-- `getSavedBuilds()`
-- `saveBuild(name, buildState)`
-- `deleteBuild(buildId)`
-- `loadBuild(buildId)`
-
-現在は `localStorage` の保存ビルド配列を使います。各レコードは `id`、`name`、`buildState`、`createdAt`、`updatedAt` を持ちます。
-
-保存形式の現行バージョンは `buildStorage.js` の `BUILD_STATE_VERSION` で一元管理します。`getSavedBuilds()` は現行バージョン以外の保存レコードを一覧から除外し、除外が発生した場合は有効なレコードだけを `localStorage` へ保存し直します。開発中は古い保存形式の移行処理を持たず、現行形式だけを読み込み対象とします。
-
-#### js/services/damageCalculator.js
-
-DOMに依存しない純粋な計算関数を置きます。
-
-- 通常攻撃計算
-- 技ダメージ計算
-- 防御・特防補正
-- 持ち物込みの最終ダメージ
-- 合計ダメージ
-
-#### js/services/heldItemService.js
-
-持ち物によるステータス加算、倍率補正、ダメージ追加効果を担当します。
-
-#### js/ui/renderResults.js
-
-計算結果、合計ダメージ、内訳カード、詳細表示ボタン、詳細ポップアップを描画します。
-
-#### js/ui/renderBuilds.js
-
-保存済みビルド一覧、保存ボタン、読み込みボタン、削除ボタンなどを描画します。
+保存形式の現行バージョンは `buildState.js` の `BUILD_STATE_VERSION` で一元管理します。`getSavedBuilds()` は現行バージョン以外の保存レコードを一覧から除外し、除外が発生した場合は有効なレコードだけを `localStorage` へ保存し直します。
 
 ### UI追加案
 
@@ -1012,11 +1005,11 @@ DOMに依存しない純粋な計算関数を置きます。
 ### 推奨実装順
 
 1. `getCurrentBuildState()` で現在の選択状態を取得する。実装・往復確認済み。
-2. `applyBuildState(build)` で画面と内部状態を復元する。実装・往復確認済み。
-3. `localStorage` 用の `buildStorage.js` を作る。実装済み。
-4. 保存処理単体で複数保存、取得、削除を確認する。
-5. 保存、読み込み、削除の最小UIを追加する。実装済み。
-6. 保存形式変更が必要になった時点でバージョン移行処理を追加する。
+2. `createBuildState()` で保存形式への変換と複製を行う。実装・テスト済み。
+3. `applyBuildState(build)` で画面と内部状態を復元する。実装・往復確認済み。
+4. `buildStorage.js` で複数保存、取得、削除を行う。実装・テスト済み。
+5. `buildRenderer.js` と `buildController.js` で保存UIを管理する。実装・テスト済み。
+6. 保存データの検証・補正を段階的に `buildState.js` へ集約する。
 
 ---
 
@@ -1067,6 +1060,9 @@ DOMに依存しない純粋な計算関数を置きます。
 - 保存形式を `version: 2` に更新し、防御側ポケモンと防御側レベルを保存対象から外しました。
 - ビルド読み込み時は現在の防御側を維持し、防御側変更時も急所判定済み通常攻撃データを再抽選しないようにしました。
 - 保存機能欄へ `内容を見る` ボタンと保存ビルド内容確認モーダルを追加し、選択中ビルドの各項目を `label: value` 形式で確認できるようにしました。
+- 保存関連の `buildController.js`、`buildRenderer.js`、`buildStorage.js` を `js/build/` へ移動しました。
+- `js/build/buildState.js` を追加し、保存形式と通常攻撃計算のバージョン、通常攻撃データの複製、`createBuildState()` による保存形式生成をまとめました。
+- `getCurrentBuildState()` はDOMと内部状態から値を集め、保存形式への変換と複製を `createBuildState()` に任せる形へ変更しました。
 
 現在の `appSelectors.js` には以下があります。
 

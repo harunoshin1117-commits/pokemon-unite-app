@@ -1,5 +1,6 @@
+import { isValidBuildState } from "./buildState.js";
+
 const SAVED_BUILDS_STORAGE_KEY = "pokemon-unite-saved-builds";
-export const BUILD_STATE_VERSION = 2;
 
 function isSavedBuild(savedBuild){
     return (
@@ -7,9 +8,7 @@ function isSavedBuild(savedBuild){
         typeof savedBuild === "object" &&
         typeof savedBuild.id === "string" &&
         typeof savedBuild.name === "string" &&
-        savedBuild.buildState &&
-        typeof savedBuild.buildState === "object" &&
-        savedBuild.buildState.version === BUILD_STATE_VERSION &&
+        isValidBuildState(savedBuild.buildState) &&
         typeof savedBuild.createdAt === "string" &&
         typeof savedBuild.updatedAt === "string"
     );
@@ -58,6 +57,10 @@ export function getSavedBuilds(){
 }
 
 export function saveBuild(name, buildState){
+    if(!isValidBuildState(buildState)){
+        throw new TypeError("Invalid build state");
+    }
+
     const savedBuilds = getSavedBuilds();
     const now = new Date().toISOString();
     const savedBuild = {

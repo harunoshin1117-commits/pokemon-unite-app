@@ -39,12 +39,22 @@ import {
 } from "./selectOptions.js";
 import { bindUiEvents } from "./uiEvents.js";
 import {
-    BUILD_STATE_VERSION,
     deleteBuild,
     getSavedBuilds,
     loadBuild,
     saveBuild
-} from "./buildStorage.js";
+} from "./build/buildStorage.js";
+import {
+    renderBuildDetails,
+    renderSavedBuilds
+} from "./build/buildRenderer.js";
+import { bindBuildEvents } from "./build/buildController.js";
+import {
+    createBuildState,
+    getValidNormalAttackData,
+    isValidBuildState,
+    normalizeInteger
+} from "./build/buildState.js";
 import {
     getEnemyStats as selectEnemyStats,
     findPokemonById,
@@ -149,7 +159,6 @@ let currentHeldItems = [];
 let currentSelectedSlot = null;
 let hasAttacked = false;
 let lockedNormalAttackCriticalPattern = null;
-const NORMAL_ATTACK_CALCULATION_VERSION = 1;
 // =========================
 // Initial setup
 // =========================
@@ -329,79 +338,25 @@ allResetButton.addEventListener("click",() => {
     resetAppState();
 })
 
-saveBuildButton.addEventListener("click", () => {
-    const buildName = buildNameInput.value.trim();
-
-    if(!buildName){
-        buildStorageMessage.textContent = "保存名を入力してください";
-        return;
-    }
-
-    try{
-        const savedBuild = saveBuild(
-            buildName,
-            getCurrentBuildState()
-        );
-
-        buildNameInput.value = "";
-        renderSavedBuilds(savedBuild.id);
-        buildStorageMessage.textContent =
-            `「${savedBuild.name}」を保存しました`;
-    }catch{
-        buildStorageMessage.textContent =
-            "ビルドを保存できませんでした";
-    }
-});
-
-loadBuildButton.addEventListener("click", () => {
-    const savedBuild = loadBuild(savedBuildSelect.value);
-
-    if(!savedBuild){
-        buildStorageMessage.textContent =
-            "読み込むビルドを選択してください";
-        return;
-    }
-
-    applyBuildState(savedBuild.buildState);
-    buildStorageMessage.textContent =
-        `「${savedBuild.name}」を読み込みました`;
-});
-
-showBuildDetailsButton.addEventListener("click", () => {
-    const savedBuild = loadBuild(savedBuildSelect.value);
-
-    if(!savedBuild){
-        buildStorageMessage.textContent =
-            "内容を表示するビルドを選択してください";
-        return;
-    }
-
-    renderBuildDetails(savedBuild);
-    buildDetailsOverlay.style.display = "flex";
-});
-
-closeBuildDetails.addEventListener("click", () => {
-    buildDetailsOverlay.style.display = "none";
-});
-
-deleteBuildButton.addEventListener("click", () => {
-    const savedBuild = loadBuild(savedBuildSelect.value);
-
-    if(!savedBuild){
-        buildStorageMessage.textContent =
-            "削除するビルドを選択してください";
-        return;
-    }
-
-    try{
-        deleteBuild(savedBuild.id);
-        renderSavedBuilds();
-        buildStorageMessage.textContent =
-            `「${savedBuild.name}」を削除しました`;
-    }catch{
-        buildStorageMessage.textContent =
-            "ビルドを削除できませんでした";
-    }
+bindBuildEvents({
+    buildNameInput,
+    saveBuildButton,
+    savedBuildSelect,
+    showBuildDetailsButton,
+    loadBuildButton,
+    deleteBuildButton,
+    buildStorageMessage,
+    buildDetailsOverlay,
+    buildDetailsContent,
+    closeBuildDetails,
+    getCurrentBuildState,
+    applyBuildState,
+    getSavedBuilds,
+    saveBuild,
+    loadBuild,
+    deleteBuild,
+    renderSavedBuilds,
+    renderBuildDetails
 });
 
 heldItems.forEach(item => {
@@ -530,78 +485,6 @@ pokemonSelectTwo.addEventListener("change", () => {
 // Update and rerender functions
 // ============================
 
-function renderSavedBuilds(selectedBuildId = ""){
-    const savedBuilds = getSavedBuilds();
-
-    savedBuildSelect.innerHTML = "";
-
-    if(savedBuilds.length === 0){
-        const emptyOption = document.createElement("option");
-        emptyOption.value = "";
-        emptyOption.textContent = "保存済みビルドなし";
-        savedBuildSelect.append(emptyOption);
-        savedBuildSelect.disabled = true;
-        showBuildDetailsButton.disabled = true;
-        loadBuildButton.disabled = true;
-        deleteBuildButton.disabled = true;
-        return;
-    }
-
-    savedBuilds.forEach(savedBuild => {
-        const option = document.createElement("option");
-        option.value = savedBuild.id;
-        option.textContent = savedBuild.name;
-        savedBuildSelect.append(option);
-    });
-
-    savedBuildSelect.disabled = false;
-    showBuildDetailsButton.disabled = false;
-    loadBuildButton.disabled = false;
-    deleteBuildButton.disabled = false;
-
-    if(
-        selectedBuildId &&
-        savedBuilds.some(savedBuild => savedBuild.id === selectedBuildId)
-    ){
-        savedBuildSelect.value = selectedBuildId;
-    }
-}
-
-function renderBuildDetails(savedBuild){
-    const buildState = savedBuild.buildState;
-    const attacker = buildState.attacker || {};
-    const hitCounts = buildState.hitCounts || {};
-    const calculationState = buildState.calculationState || {};
-    const normalAttackData =
-        calculationState.normalAttackData || {};
-    const heldItemSlots = Array.isArray(attacker.heldItemSlots)
-        ? attacker.heldItemSlots
-        : [];
-    const details = [
-        ["名前", savedBuild.name],
-        ["ポケモン名前", attacker.pokemonId],
-        ["レベル", attacker.level],
-        ["技セット1", attacker.skillOneName],
-        ["技セット2", attacker.skillTwoName],
-        ["ユナイト技", attacker.uniteMoveName],
-        ["持ち物", heldItemSlots.join(", ")],
-        ["通常攻撃ヒット数", hitCounts.normalAttack],
-        ["技セット1ヒット数", hitCounts.skillOne],
-        ["技セット2ヒット数", hitCounts.skillTwo],
-        ["ユナイト技ヒット数", hitCounts.unite],
-        ["通常攻撃合計ダメージ", normalAttackData.totalDamage],
-        ["急所回数", normalAttackData.criticalCount]
-    ];
-
-    buildDetailsContent.replaceChildren();
-
-    details.forEach(([label, value]) => {
-        const row = document.createElement("p");
-        row.textContent = `${label}: ${value ?? "null"}`;
-        buildDetailsContent.append(row);
-    });
-}
-
 function resetDamageResultVisibility(){
     if(window.matchMedia("(max-width: 768px)").matches){
         damageResult.style.display = "none";
@@ -696,81 +579,8 @@ function resetAppState(){
     resetDamageResultVisibility();
 }
 
-function cloneNormalAttackData(normalAttackData){
-    if(!normalAttackData){
-        return null;
-    }
-
-    return {
-        totalDamage: normalAttackData.totalDamage,
-        criticalCount: normalAttackData.criticalCount,
-        hitDamages: normalAttackData.hitDamages.map(hitData => ({
-            damage: hitData.damage,
-            critical: hitData.critical,
-            boosted: hitData.boosted
-        }))
-    };
-}
-
-function getValidNormalAttackData(
-    normalAttackData,
-    expectedHitCount,
-    criticalEnabled
-){
-    if(
-        !normalAttackData ||
-        typeof normalAttackData !== "object" ||
-        normalAttackData.calculationVersion !==
-            NORMAL_ATTACK_CALCULATION_VERSION ||
-        !Number.isInteger(normalAttackData.totalDamage) ||
-        normalAttackData.totalDamage < 0 ||
-        !Number.isInteger(normalAttackData.criticalCount) ||
-        normalAttackData.criticalCount < 0 ||
-        !Array.isArray(normalAttackData.hitDamages) ||
-        normalAttackData.hitDamages.length !== expectedHitCount
-    ){
-        return null;
-    }
-
-    const hitDamagesAreValid = normalAttackData.hitDamages.every(
-        hitData =>
-            hitData &&
-            typeof hitData === "object" &&
-            Number.isInteger(hitData.damage) &&
-            hitData.damage >= 0 &&
-            typeof hitData.critical === "boolean" &&
-            typeof hitData.boosted === "boolean"
-    );
-
-    if(!hitDamagesAreValid){
-        return null;
-    }
-
-    const criticalCount = normalAttackData.hitDamages.filter(
-        hitData => hitData.critical
-    ).length;
-    const hitDamageTotal = normalAttackData.hitDamages.reduce(
-        (total, hitData) => total + hitData.damage,
-        0
-    );
-    const roundingDifference =
-        normalAttackData.totalDamage - hitDamageTotal;
-
-    if(
-        normalAttackData.criticalCount !== criticalCount ||
-        (!criticalEnabled && criticalCount > 0) ||
-        roundingDifference < 0 ||
-        roundingDifference > Math.max(0, expectedHitCount - 1)
-    ){
-        return null;
-    }
-
-    return cloneNormalAttackData(normalAttackData);
-}
-
 export function getCurrentBuildState(){
-    return {
-        version: BUILD_STATE_VERSION,
+    return createBuildState({
         attacker: {
             pokemonId: currentPokemon.id,
             level: Number(levelSelect.value),
@@ -790,38 +600,18 @@ export function getCurrentBuildState(){
         },
         criticalEnabled: criticalCheck.checked,
         calculationState: {
-            normalAttackData: currentNormalAttackData
-                ? {
-                    calculationVersion:
-                        NORMAL_ATTACK_CALCULATION_VERSION,
-                    ...cloneNormalAttackData(currentNormalAttackData)
-                }
-                : null,
+            normalAttackData: currentNormalAttackData,
             normalAttackCriticalLocked:
                 criticalPatternLock.checked,
             hasAttacked
         }
-    };
+    });
 }
 
 export function applyBuildState(build){
-    if(
-        !build ||
-        typeof build !== "object" ||
-        build.version !== BUILD_STATE_VERSION
-    ){
+    if(!isValidBuildState(build)){
         return getCurrentBuildState();
     }
-
-    const normalizeInteger = (value, min, max, fallback) => {
-        const number = Number(value);
-
-        if(!Number.isInteger(number)){
-            return fallback;
-        }
-
-        return Math.min(max, Math.max(min, number));
-    };
 
     const preservedEnemyPokemon = enemyPokemon;
     const preservedEnemyLevel = enemyLevelSelect.value;
@@ -1256,4 +1046,3 @@ function renderTotalDamageResult(finalDamageData, moveDamageData){
 
 updatePlayerUI();
 updateEnemyUI();
-renderSavedBuilds();
