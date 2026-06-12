@@ -351,9 +351,9 @@ body {
    labels
 ========================= */
 
-.skill-one p,
-.skill-two p,
-.unite p,
+.skill-one > p:first-child,
+.skill-two > p:first-child,
+.unite > p:first-child,
 .skill p,
 .result-p{
     font-size:10px;
@@ -374,6 +374,8 @@ body {
     font-weight:bold;
 }
 .result-p-p {
+    width: 100%;
+    margin-top:3px;
    min-height: 40px;
    padding:8px 12px;
    border-radius: 8px;
@@ -688,36 +690,29 @@ img
 
     .item-show {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: minmax(0, 1fr);
         gap: 12px;
     }
 
     .stats-area,
     .skills-area,
-    .attacker-selected-moves,
     .result-buttons {
         min-width: 0;
     }
 
     .stats-area {
         grid-column: 1;
-        grid-row: 1;
+        order: 1;
     }
 
     .result-buttons {
-        grid-column: 2;
-        grid-row: 1;
+        grid-column: 1;
+        order: 6;
         align-self: start;
     }
 
     .skills-area {
-        grid-column: 1;
-        grid-row: 2;
-    }
-
-    .attacker-selected-moves {
-        grid-column: 2;
-        grid-row: 2;
+        display: contents;
     }
 
     .skill-wrapper,
@@ -891,13 +886,23 @@ img
     .held-item {
         min-width: 0;
         width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
         padding: 10px 6px;
         font-size: 14px;
     }
 
-    .held-item img,
-    .slot-image {
+    .held-item img {
         max-width: 56px;
+    }
+
+    .held-item .slot-image {
+        display: block;
+        width: calc(100% - 4px);
+        max-width: calc(100% - 4px);
+        height: auto;
+        margin: 2px;
+        object-fit: contain;
     }
 }
 
@@ -1041,15 +1046,28 @@ img
 @media (max-width: 768px) {
     .skill-name,
     .result-tiile {
-        font-size: 24px;
-        margin-bottom: 8px;
+        display: none;
     }
 
-    .skill-wrapper {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        padding: 8px;
+    .skill-wrapper,
+    .pokemon-result {
+        display: contents;
+    }
+
+    .normalAttack {
+        order: 2;
+    }
+
+    .skill-one {
+        order: 3;
+    }
+
+    .skill-two {
+        order: 4;
+    }
+
+    .unite {
+        order: 5;
     }
 
     .skill-one,
@@ -1061,13 +1079,9 @@ img
         min-width: 0;
     }
 
-    .unite {
-        grid-column: 1 / -1;
-    }
-
-    .skill-one p,
-    .skill-two p,
-    .unite p,
+    .skill-one > p:first-child,
+    .skill-two > p:first-child,
+    .unite > p:first-child,
     .result-p {
         padding: 4px 8px;
         margin-bottom: 6px;
@@ -1079,13 +1093,6 @@ img
         padding: 4px 2px;
         font-size: 14px;
         line-height: 1.25;
-    }
-
-    .pokemon-result {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        padding: 8px;
     }
 
     .pokemon-result > div {

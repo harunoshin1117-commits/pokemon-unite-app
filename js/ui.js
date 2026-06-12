@@ -11,6 +11,7 @@ export function updatePlayerUI(context){
         statusName,
         selectedSkillOne,
         selectedSkillTwo,
+        selectedSkillThird,
         skillFirstOne,
         skillFirstResult,
         skillFirstTwo,
@@ -18,6 +19,7 @@ export function updatePlayerUI(context){
         skillSecondResult,
         skillSecondTwo,
         skillThirdOne,
+        skillThirdResult,
         skillThirdTwo,
         uniteMove,
         statsText,
@@ -32,15 +34,50 @@ export function updatePlayerUI(context){
     } = context;
 
   // リセット
-  skillFirstOne.textContent = "";
-  skillSecondOne.textContent = "";
-  skillThirdOne.textContent = "";
-  skillFirstTwo.textContent = "";
-  skillSecondTwo.textContent = "";
-  skillThirdTwo.textContent = "";
-  uniteMove.textContent = "";
-  skillFirstOne.style.opacity = 1;
-  skillFirstTwo.style.opacity = 1;
+  const moveOptions = [
+    skillFirstOne,
+    skillSecondOne,
+    skillThirdOne,
+    skillFirstTwo,
+    skillSecondTwo,
+    skillThirdTwo,
+    uniteMove
+  ];
+
+  moveOptions.forEach(option => {
+    option.textContent = "";
+    option.value = "";
+    option.hidden = true;
+  });
+
+  function setMoveOption(option, moveName){
+    option.textContent = moveName;
+    option.value = moveName;
+    option.hidden = false;
+  }
+
+  function keepSelectedMoveOption(resultElement, selectedMove){
+    if(!selectedMove){
+      return;
+    }
+
+    const options = Array.from(resultElement.options);
+    const selectedOption = options.find(
+      option => option.value === selectedMove.name
+    );
+
+    if(selectedOption){
+      return;
+    }
+
+    const hiddenOption = options.find(
+      option => option.value === "" && option.hidden
+    );
+
+    if(hiddenOption){
+      setMoveOption(hiddenOption, selectedMove.name);
+    }
+  }
   statsText.innerHTML = "";
   damageTaken.textContent = "";
   remainingHp.textContent = "";
@@ -57,29 +94,25 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
     if(level >= skillLv){
         
         if(skillLv ===1 || skillLv ===3 ){
-           skillFirstOne.textContent = skills[0].name;
-           skillFirstTwo.textContent = skills[1].name;
+           setMoveOption(skillFirstOne, skills[0].name);
+           setMoveOption(skillFirstTwo, skills[1].name);
         }
           if(skills[0].replace){
 
-            skillSecondOne.textContent = skills[0].name;
-            skillSecondTwo.textContent = skills[1].name;
-
-            skillFirstOne.style.opacity = 0.3;
+            setMoveOption(skillSecondOne, skills[0].name);
+            setMoveOption(skillSecondTwo, skills[1].name);
         }
 
         // 技2派生
         if(skills[0].replaceSecond){
 
-            skillThirdOne.textContent = skills[0].name;
-            skillThirdTwo.textContent = skills[1].name;
-
-            skillFirstTwo.style.opacity = 0.3;
+            setMoveOption(skillThirdOne, skills[0].name);
+            setMoveOption(skillThirdTwo, skills[1].name);
         }
            
        
         if( skillLv ==9){
-            uniteMove.textContent = skills[0].name;
+            setMoveOption(uniteMove, skills[0].name);
 
         }
        
@@ -109,6 +142,9 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
 
 showSelectPokemonImage(currentPokemon, selectPokemonImage);
     
+  keepSelectedMoveOption(skillFirstResult, selectedSkillOne);
+  keepSelectedMoveOption(skillSecondResult, selectedSkillTwo);
+  keepSelectedMoveOption(skillThirdResult, selectedSkillThird);
 
   function upChangelevelDamage(selectedMove,resultElement){
     
@@ -133,6 +169,10 @@ showSelectPokemonImage(currentPokemon, selectPokemonImage);
    upChangelevelDamage(
     selectedSkillTwo,
     skillSecondResult
+   )
+   upChangelevelDamage(
+    selectedSkillThird,
+    skillThirdResult
    )
     
 

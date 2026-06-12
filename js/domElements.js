@@ -12,8 +12,6 @@ export const skillFirstTwo = document.getElementById("skill-first-two");
 export const skillSecondTwo = document.getElementById("skill-second-two");
 export const skillThirdTwo = document.getElementById("skill-third-two");
 
-export const skillsFirst = document.querySelectorAll("#skill-one li");
-export const skillsSecond = document.querySelectorAll("#skill-two li");
 export const uniteMove = document.getElementById("unite-move");
 
 export const titlePokemonTitle = document.querySelector(".title-pokemon-title");
@@ -22,7 +20,6 @@ export const enemyLevelSelect = document.getElementById("enemy-level");
 export const pokemonSelectTwo = document.getElementById("pokemon-select-two");
 export const enemyName = document.getElementById("enemy-name");
 
-export const colorChange = document.querySelectorAll(".color-change");
 export const skillFirstDamage = document.getElementById("skill-first-damage");
 export const skillSecondDamage = document.getElementById("skill-second-damage");
 export const skillThirdDamage = document.getElementById("skill-third-damage");

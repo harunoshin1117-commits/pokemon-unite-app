@@ -74,7 +74,6 @@ import {
     closeDetailPopup,
     closeBuildDetails,
     closeModal,
-    colorChange,
     criticalCheck,
     criticalPatternLock,
     damageResult,
@@ -130,8 +129,6 @@ import {
     skillThirdDamage,
     skillThirdResult,
     skillThirdTwo,
-    skillsFirst,
-    skillsSecond,
     statsText,
     takenAll,
     titlePokemonTitle,
@@ -270,74 +267,64 @@ pokemonSelect.addEventListener("change", () => {
 // Move selection events
 // =========================
 
-skillsFirst.forEach(skill => {
-    skill.addEventListener("click", () => {
-        if(skillFirstResult.textContent === "" || skillFirstResult.textContent !== skill.textContent){
-            const skillName = skill.textContent.replace("+", "");
-            const selectedMove = findMoveByName(currentPokemon, skillName);
+skillFirstResult.addEventListener("change", () => {
+    selectedSkillOne = skillFirstResult.value
+        ? findMoveByName(currentPokemon, skillFirstResult.value)
+        : null;
 
-            selectedSkillOne = selectedMove;
-            renderSkillOneRawDamage();
-            showSkillResult(skillFirstResult, selectedMove.name, selectedMove);
-            rerenderAfterAttack();
-        }else{
-            skillFirstResult.textContent = "";
-            skillFirstResult.style.backgroundColor = "white";
-            skillFirstDamage.textContent = "威力:";
-            damageTaken.textContent = "";
-            remainingHp.textContent = "";
-            hpFillOne.style.width = "100%";
-            hpFillOne.style.backgroundColor = "green";
-            selectedSkillOne = null;
-            rerenderAfterAttack();
-        }
-    });
-});
-
-skillsSecond.forEach(skill => {
-    skill.addEventListener("click", () => {
-        if(skillSecondResult.textContent === "" || skillSecondResult.textContent !== skill.textContent){
-            const skillName = skill.textContent.replace("+", "");
-            const selectedMove = findMoveByName(currentPokemon, skillName);
-
-            selectedSkillTwo = selectedMove;
-            renderSkillTwoRawDamage();
-            showSkillResult(skillSecondResult, selectedMove.name, selectedMove);
-            rerenderAfterAttack();
-        }else{
-            skillSecondResult.textContent = "";
-            skillSecondResult.style.backgroundColor = "white";
-            skillSecondDamage.textContent = "威力:";
-            damageTakenPlus.textContent = "";
-            remainingHpPlus.textContent = "";
-            hpFillTwo.style.width = "100%";
-            hpFillTwo.style.backgroundColor = "green";
-            selectedSkillTwo = null;
-            rerenderAfterAttack();
-        }
-    });
-});
-
-uniteMove.addEventListener("click", () => {
-    if(skillThirdResult.textContent === ""){
-        skillThirdResult.textContent = uniteMove.textContent;
-        skillThirdResult.style.backgroundColor = currentPokemon.color;
-
-        const move = getUniteMove(currentPokemon);
-        selectedSkillThird = move;
-        renderSkillThirdRawDamage();
-        rerenderAfterAttack();
+    if(selectedSkillOne){
+        renderSkillOneRawDamage();
     }else{
-        skillThirdResult.textContent = "";
-        skillThirdResult.style.backgroundColor = "white";
-        skillThirdDamage.textContent = "威力:";
-        uniteTaken.textContent = "";
-        remainingHpUnite.textContent = "";
-        hpFillUnite.style.width = "100%";
-        hpFillUnite.style.backgroundColor = "green";
-        selectedSkillThird = null;
-        rerenderAfterAttack();
+        resetDamageDisplay(
+            skillFirstResult,
+            skillFirstDamage,
+            damageTaken,
+            remainingHp,
+            hpFillOne
+        );
     }
+
+    rerenderAfterAttack();
+});
+
+skillSecondResult.addEventListener("change", () => {
+    selectedSkillTwo = skillSecondResult.value
+        ? findMoveByName(currentPokemon, skillSecondResult.value)
+        : null;
+
+    if(selectedSkillTwo){
+        renderSkillTwoRawDamage();
+    }else{
+        resetDamageDisplay(
+            skillSecondResult,
+            skillSecondDamage,
+            damageTakenPlus,
+            remainingHpPlus,
+            hpFillTwo
+        );
+    }
+
+    rerenderAfterAttack();
+});
+
+skillThirdResult.addEventListener("change", () => {
+    selectedSkillThird = skillThirdResult.value
+        ? getUniteMove(currentPokemon)
+        : null;
+
+    if(selectedSkillThird){
+        renderSkillThirdRawDamage();
+    }else{
+        resetDamageDisplay(
+            skillThirdResult,
+            skillThirdDamage,
+            uniteTaken,
+            remainingHpUnite,
+            hpFillUnite
+        );
+    }
+
+    rerenderAfterAttack();
 });
 allResetButton.addEventListener("click",() => {
     resetAppState();
@@ -449,26 +436,6 @@ bindUiEvents({
     heldItems,
     overlay,
     closeModal
-});
-
-// =========================
-// Hover color sync
-// =========================
-
-colorChange.forEach(color => {
-
-    color.addEventListener("mouseover", () => {
-
-        color.style.backgroundColor = currentPokemon.color;
-
-    });
-
-    color.addEventListener("mouseout", () => {
-
-        color.style.backgroundColor = "";
-
-    });
-
 });
 
 // =========================
@@ -982,6 +949,7 @@ function updatePlayerUI(){
         statusName,
         selectedSkillOne,
         selectedSkillTwo,
+        selectedSkillThird,
         skillFirstOne,
         skillFirstResult,
         skillFirstTwo,
@@ -989,6 +957,7 @@ function updatePlayerUI(){
         skillSecondResult,
         skillSecondTwo,
         skillThirdOne,
+        skillThirdResult,
         skillThirdTwo,
         uniteMove,
         statsText,

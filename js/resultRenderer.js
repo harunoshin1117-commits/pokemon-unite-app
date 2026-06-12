@@ -117,6 +117,10 @@ export function showSkillResult(
     level,
     pokemonColor
 ){
+    if(resultElement.tagName === "SELECT"){
+        resultElement.value = selectedMove?.name ?? "";
+        return;
+    }
 
     resultElement.textContent = skillText;
 
@@ -227,8 +231,12 @@ export function resetDamageDisplay(
     remainingHpElement,
     hpBarElement
 ){
-    skillResultElement.textContent = "";
-    skillResultElement.style.backgroundColor = "";
+    if(skillResultElement.tagName === "SELECT"){
+        skillResultElement.value = "";
+    }else{
+        skillResultElement.textContent = "";
+        skillResultElement.style.backgroundColor = "";
+    }
     
     damageElement.textContent = "威力:";
     finalDamageElement.textContent = "";
