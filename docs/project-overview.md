@@ -1,6 +1,6 @@
 ﻿# Pokemon Unite App Project Overview
 
-最終更新日: 2026-06-11
+最終更新日: 2026-06-14
 
 ## 概要
 
@@ -35,7 +35,8 @@
 ポケモンユナイト/
 ├─ .git/
 ├─ docs/
-│  └─ project-overview.md
+│  ├─ project-overview.md
+│  └─ roadmap.md
 ├─ images/
 │  ├─ Cinderace-image.png
 │  ├─ Greninja-image.png
@@ -75,6 +76,8 @@
 ```
 
 `.git/` はGit管理用フォルダです。アプリ本体は `index.html`、`style.css`、`js/`、`images/` で構成されています。`package.json` と `tests/` はNode標準テストの設定とテストコードです。
+
+`docs/roadmap.md` は、思いついた機能や改善案を忘れないように保管するファイルです。記載内容は実装予定や確定仕様を意味しません。
 
 ---
 

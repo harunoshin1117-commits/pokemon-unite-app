@@ -109,7 +109,7 @@ export function renderMoveFinalDamage(
         hpBarElement
     );
 }
-
+//ここ確認
 export function showSkillResult(
     resultElement,
     skillText,
