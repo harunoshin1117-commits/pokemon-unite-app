@@ -24,7 +24,10 @@ export function cloneNormalAttackData(normalAttackData){
         hitDamages: normalAttackData.hitDamages.map(hitData => ({
             damage: hitData.damage,
             critical: hitData.critical,
-            boosted: hitData.boosted
+            boosted: hitData.boosted,
+            ...(typeof hitData.defenseReference === "string"
+                ? { defenseReference: hitData.defenseReference }
+                : {})
         }))
     };
 }
@@ -64,7 +67,12 @@ export function getValidNormalAttackData(
             Number.isInteger(hitData.damage) &&
             hitData.damage >= 0 &&
             typeof hitData.critical === "boolean" &&
-            typeof hitData.boosted === "boolean"
+            typeof hitData.boosted === "boolean" &&
+            (
+                hitData.defenseReference === undefined ||
+                hitData.defenseReference === "defense" ||
+                hitData.defenseReference === "spDefense"
+            )
     );
 
     if(!hitDamagesAreValid){

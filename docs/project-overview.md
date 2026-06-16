@@ -1,6 +1,6 @@
 ﻿# Pokemon Unite App Project Overview
 
-最終更新日: 2026-06-14
+最終更新日: 2026-06-16
 
 ## 概要
 
@@ -214,6 +214,8 @@ JavaScriptはES Modulesとして読み込まれます。
 
 `stats` はレベル1から15までのステータスです。
 
+ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化を試すため、計算用データ形式へ移行中です。通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照する形で、`cycle`、`referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
+
 ### js/helditemData.js
 
 持ち物データを定義します。
@@ -303,10 +305,12 @@ JavaScriptはES Modulesとして読み込まれます。
   - 持ち物スロット、ヒット数、通常攻撃の各ヒット情報を新しいオブジェクト・配列として複製します。
 - `cloneNormalAttackData(normalAttackData)`
   - 急所結果を含む通常攻撃データを複製します。
+  - 各ヒットに `defenseReference` がある場合は保持します。古い保存データのように存在しない場合も読み込み可能です。
 - `normalizeInteger(value, min, max, fallback)`
   - レベルやヒット数を整数へ変換し、指定範囲へ補正します。整数にできない値では既定値を返します。
 - `getValidNormalAttackData(normalAttackData, expectedHitCount, criticalEnabled)`
   - 計算バージョン、合計ダメージ、急所回数、各ヒット情報を検証し、有効な場合だけ複製して返します。
+  - `defenseReference` は未指定、`defense`、`spDefense` を有効値として扱います。
   - 無効な通常攻撃データは `null` とし、読み込み時に現在の計算処理で再生成します。
 - `isValidBuildState(buildState)`
   - 保存形式バージョン、攻撃側、ヒット数、持ち物スロット、急所設定、計算状態などの必須構造を検証します。
@@ -365,6 +369,8 @@ JavaScriptはES Modulesとして読み込まれます。
 - `computeNormalAttackFinalDamage()` による通常攻撃の防御・特防補正後ダメージ計算
 
 DOM参照やグローバル状態参照は持たず、必要な値は引数で受け取ります。計算結果はES Modules化前と同じにする方針です。
+
+ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack` データを参照して計算する実験実装へ移行しています。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、旧形式または未対応ポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。
 
 ### js/heldItemService.js
 
@@ -873,7 +879,7 @@ Node標準のテスト機能を使うため、外部ライブラリは追加し�
 
 ### 通常攻撃ロジックがポケモンごとに重複している
 
-`calculateNormalAttackDamage()` はポケモンごとに似た処理が重複しています。通常攻撃の倍率、強化通常の条件、急所可否などを `pokemonData.js` 側の設定へ寄せると、ポケモン追加時の修正量を減らせます。
+`calculateNormalAttackDamage()` はポケモンごとに似た処理が重複しています。ピカチュウだけは `pokemonData.js` の `normalAttack` データ参照へ実験移行済みです。通常攻撃の倍率、強化通常の条件、急所可否などを他ポケモンにも広げると、ポケモン追加時の修正量を減らせます。
 
 計算結果が変わる可能性があるため、これはDOM整理やイベント分割より後に行います。
 

@@ -5,10 +5,23 @@ export const pokemonsList = [
         Image:"./images/pikachu-image.png",
         normalAttack:{
                         description: "3回目の攻撃は強化攻撃になり、相手をまひさせる",
+                        cycle: 3,
                         damage:{
-                            basic: "100% Atk",
+                            basic: {
+                                formula: "100% Atk",
+                                referenceStat: "attack",
+                                ratio: 1,
+                                levelScaling: 0,
+                                fixedValue: 0,
+                                defenseReference: "defense"
+                            },
                             boosted: {
-                                formula: "38% SpAtk + 10 * (level - 1) + 200"
+                                formula: "38% SpAtk + 10 * (level - 1) + 200",
+                                referenceStat: "spAttack",
+                                ratio: 0.38,
+                                levelScaling: 10,
+                                fixedValue: 200,
+                                defenseReference: "spDefense"
                             }
                         }
                        

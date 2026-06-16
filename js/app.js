@@ -730,6 +730,7 @@ function updateNormalAttack(){
         pokemonId: currentPokemon.id,
         hitCount: Number(hitCountSelects.normalAttack.value),
         status: getCurrentPlayerStatus(),
+        normalAttack: currentPokemon.normalAttack,
         criticalEnabled: criticalCheck.checked,
         criticalPattern: lockedNormalAttackCriticalPattern
     });
