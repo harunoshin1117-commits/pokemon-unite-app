@@ -33,7 +33,9 @@ export function createHitCountOptions(hitCountSelects){
             const option = document.createElement("option");
 
             option.value = i;
-            option.textContent = i + "Hits";
+            option.textContent = select === hitCountSelects.normalAttack
+                ? i + "Hits"
+                : i + "回";
 
             select.appendChild(option);
         }

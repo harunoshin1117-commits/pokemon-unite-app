@@ -66,9 +66,9 @@ export function renderBuildDetails(
         ["ユナイト技", attacker.uniteMoveName],
         ["持ち物", heldItemSlots.join(", ")],
         ["通常攻撃ヒット数", hitCounts.normalAttack],
-        ["技セット1ヒット数", hitCounts.skillOne],
-        ["技セット2ヒット数", hitCounts.skillTwo],
-        ["ユナイト技ヒット数", hitCounts.unite],
+        ["技セット1使用回数", hitCounts.skillOne],
+        ["技セット2使用回数", hitCounts.skillTwo],
+        ["ユナイト技使用回数", hitCounts.unite],
         ["通常攻撃合計ダメージ", normalAttackData.totalDamage],
         ["急所回数", normalAttackData.criticalCount]
     ];
