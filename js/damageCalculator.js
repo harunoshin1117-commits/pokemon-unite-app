@@ -22,6 +22,58 @@ export function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
     return Math.floor(damage);
 }
 
+function hasDamageComponents(selectedMove){
+    return Array.isArray(selectedMove?.damageComponents);
+}
+
+function getMoveDamageComponents(selectedMove, level){
+    if(
+        isPlusMove(selectedMove, level) &&
+        Array.isArray(selectedMove.plusDamageComponents)
+    ){
+        return selectedMove.plusDamageComponents;
+    }
+
+    return selectedMove.damageComponents;
+}
+
+function getDamageComponentHitCount(component, selectedMove, level){
+    if(
+        isPlusMove(selectedMove, level) &&
+        Number.isInteger(component.plusHitCount)
+    ){
+        return component.plusHitCount;
+    }
+
+    return Number.isInteger(component.hitCount)
+        ? component.hitCount
+        : 1;
+}
+
+function calculateDamageComponent(component, attackerLevel, attackerStats){
+    const scalingStat = attackerStats[component.referenceStat] ?? 0;
+    const damage =
+        scalingStat * component.ratio +
+        component.levelScaling * (attackerLevel - 1) +
+        component.fixedValue;
+
+    return Math.floor(damage);
+}
+
+function getDefenseValue(defenseReference, enemyPokemonStats){
+    if(defenseReference === "defense"){
+        return enemyPokemonStats.defense;
+    }
+
+    if(defenseReference === "spDefense"){
+        return enemyPokemonStats.spDefense;
+    }
+
+    throw new Error(
+        `未対応の防御参照です: ${defenseReference}`
+    );
+}
+
 export function computeFinalDamage(
     selectedMove,
     hitCount = 1,
@@ -29,6 +81,47 @@ export function computeFinalDamage(
     attackerStats,
     enemyPokemonStats
 ){
+
+        if(hasDamageComponents(selectedMove)){
+            const components = getMoveDamageComponents(
+                selectedMove,
+                attackerLevel
+            );
+
+            let totalFinalDamage = 0;
+
+            components.forEach(component => {
+                const rawDamage = calculateDamageComponent(
+                    component,
+                    attackerLevel,
+                    attackerStats
+                );
+                const componentHitCount = getDamageComponentHitCount(
+                    component,
+                    selectedMove,
+                    attackerLevel
+                );
+                const defenseValue = getDefenseValue(
+                    component.defenseReference,
+                    enemyPokemonStats
+                );
+                const finalDamage = rawDamage *
+                    (
+                        1 -
+                        (
+                            defenseValue /
+                            (defenseValue + 600)
+                        )
+                    );
+
+                totalFinalDamage +=
+                    Math.floor(finalDamage) *
+                    componentHitCount *
+                    hitCount;
+            });
+
+            return totalFinalDamage;
+        }
 
         const rawDamage = getTotalDamage(
             selectedMove,
@@ -408,8 +501,7 @@ export function computeNormalAttackFinalDamage(normalAttackData, pokemonId, enem
 
 export function isPlusMove(move, level){
     if(
-        move.upgradeLevel &&
-        move.formulaPlus &&
+        move?.upgradeLevel &&
         level >= move.upgradeLevel
     ){
         return true;
@@ -420,13 +512,35 @@ export function isPlusMove(move, level){
 export function getRawDamage(selectedMove, level, status){
 
     if(
-        !selectedMove ||
-        !selectedMove.formula
+        !selectedMove
     ){
         return null;
     }
 
-    if(isPlusMove(selectedMove, level)){
+    if(hasDamageComponents(selectedMove)){
+        const components = getMoveDamageComponents(selectedMove, level);
+
+        return components.reduce((total, component) => {
+            const componentHitCount = getDamageComponentHitCount(
+                component,
+                selectedMove,
+                level
+            );
+
+            return total +
+                calculateDamageComponent(component, level, status) *
+                componentHitCount;
+        }, 0);
+    }
+
+    if(!selectedMove.formula){
+        return null;
+    }
+
+    if(
+        isPlusMove(selectedMove, level) &&
+        selectedMove.formulaPlus
+    ){
         return calculateDamagePlus(
             selectedMove,
             level,

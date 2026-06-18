@@ -46,7 +46,17 @@ export const pokemonsList = [
                     ratio:0.36,
                     levelScaling:11,
                     baseDamage:350
-                }
+                },
+                damageComponents: [{
+                    id: "main",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.36,
+                    levelScaling: 11,
+                    fixedValue: 350,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }]
                }],
             4:[{
                 name:"エレキボール",
@@ -81,6 +91,17 @@ export const pokemonsList = [
                         levelScaling:5,
                         baseDamage:218
                     },
+                    damageComponents: [{
+                        id: "perHit",
+                        type: "standard",
+                        referenceStat: "spAttack",
+                        ratio: 0.209,
+                        levelScaling: 5,
+                        fixedValue: 218,
+                        defenseReference: "spDefense",
+                        hitCount: 5,
+                        plusHitCount: 7
+                    }],
                     upgradeLevel:11
                 }],
             6:[{
@@ -98,6 +119,16 @@ export const pokemonsList = [
                     levelScaling:3,
                     baseDamage:150
                 },
+                damageComponents: [{
+                    id: "perHit",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.16,
+                    levelScaling: 3,
+                    fixedValue: 162,
+                    defenseReference: "spDefense",
+                    hitCount: 5
+                }],
                 upgradeLevel:13
              },
                 {
@@ -115,6 +146,26 @@ export const pokemonsList = [
                         levelScaling:14,
                         baseDamage:600
                     },
+                    damageComponents: [{
+                        id: "main",
+                        type: "standard",
+                        referenceStat: "spAttack",
+                        ratio: 0.55,
+                        levelScaling: 13,
+                        fixedValue: 550,
+                        defenseReference: "spDefense",
+                        hitCount: 1
+                    }],
+                    plusDamageComponents: [{
+                        id: "main",
+                        type: "standard",
+                        referenceStat: "spAttack",
+                        ratio: 0.65,
+                        levelScaling: 15,
+                        fixedValue: 660,
+                        defenseReference: "spDefense",
+                        hitCount: 1
+                    }],
                     upgradeLevel:13
                 }],
             9:[{

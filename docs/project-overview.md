@@ -1,6 +1,6 @@
 ﻿# Pokemon Unite App Project Overview
 
-最終更新日: 2026-06-16
+最終更新日: 2026-06-18
 
 ## 概要
 
@@ -217,6 +217,8 @@ JavaScriptはES Modulesとして読み込まれます。
 
 ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化を試すため、計算用データ形式へ移行中です。通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照する形で、`cycle`、`referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
 
+ピカチュウの一部技は、技計算のデータ駆動化を進めるため `damageComponents` 形式へ移行中です。現在は、エレキネット、かみなり、ボルテッカー、10万ボルトが対象です。`damageComponents` では `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference`、`hitCount` を持ちます。技選択UIの値は「使用回数」として扱い、`damageComponents.hitCount` は技1回あたりの内部ヒット数として扱います。旧 `formula` / `formulaPlus` は当面残し、新形式がある技では新形式を優先します。
+
 ### js/helditemData.js
 
 持ち物データを定義します。
@@ -372,6 +374,8 @@ JavaScriptはES Modulesとして読み込まれます。
 DOM参照やグローバル状態参照は持たず、必要な値は引数で受け取ります。計算結果はES Modules化前と同じにする方針です。
 
 ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack` データを参照して計算する実験実装へ移行しています。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、旧形式または未対応ポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。
+
+技ダメージは、`damageComponents` がある場合だけ新形式を優先して計算します。新形式では画面の選択値を使用回数、`damageComponents.hitCount` を内部ヒット数として扱います。最終ダメージは内部1ヒットごとに防御または特防補正を適用してから、内部ヒット数と使用回数を掛けて合計します。`plusDamageComponents` がある技はプラス時にそちらを使い、式が同じでヒット数だけ変わる技は `plusHitCount` を使います。新形式がない技は従来の `formula` / `formulaPlus` 計算へフォールバックします。`defenseReference` は `defense` または `spDefense` のみ有効で、不正な値はエラーにしてデータ不備を早く検出します。
 
 ### js/heldItemService.js
 
@@ -643,8 +647,9 @@ PCでは `damage-result` を常時表示します。スマホでは「結果」�
   - `pokemonsList` からポケモン選択肢を生成します。
 
 - `createHitCountOptions(hitCountSelects)`
-  - 通常攻撃、技1、技2、ユナイト技のヒット数選択肢を生成します。
-  - 通常攻撃以外の初期値を1Hitに設定します。
+  - 通常攻撃、技1、技2、ユナイト技の選択肢を生成します。
+  - 通常攻撃は `Hits` 表示、通常攻撃以外は `回` 表示にします。
+  - 通常攻撃以外の初期値を `1回` に設定します。
 
 ### UI更新系
 
@@ -672,15 +677,19 @@ PCでは `damage-result` を常時表示します。スマホでは「結果」�
 - `isPlusMove(move, level)`
   - 渡されたレベルでアップグレード技として扱うか判定します。
   - DOMを直接参照せず、レベルを引数で受け取ります。
+  - 旧形式の `formulaPlus` には依存せず、`damageComponents` / `plusDamageComponents` 形式の技でも同じ判定を使います。
 
 - `getRawDamage(selectedMove, level, status)`
   - 通常式とアップグレード式を切り替えて、技の基礎威力を返します。
+  - 旧形式でプラス判定になっても `formulaPlus` がない場合は、通常式で計算します。
 
 - `getTotalDamage(selectedMove, hitCount, level, status)`
-  - 技の基礎威力にヒット数を掛けます。
+  - 旧形式の技では基礎威力に使用回数を掛けます。
+  - `damageComponents` 形式の技では、内部ヒット数を含めた基礎威力合計に使用回数を掛けます。
 
 - `computeFinalDamage(selectedMove, hitCount = 1, attackerLevel, attackerStats, enemyPokemonStats)`
   - 相手の防御または特防を考慮して、技の最終ダメージを返します。
+  - `damageComponents` 形式の技では、内部1ヒットごとに防御または特防補正を適用し、内部ヒット数と使用回数を掛けて合計します。
 
 ### 通常攻撃計算
 
