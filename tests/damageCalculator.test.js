@@ -3,11 +3,14 @@ import { test } from "node:test";
 
 import {
     calculateNormalAttackDamage,
+    computeNormalAttackFinalDamage,
     computeFinalDamage,
     getRawDamage,
     isPlusMove
 } from "../js/damageCalculator.js";
 import { pokemonsList } from "../js/pokemonData.js";
+
+const pikachu = pokemonsList.find(pokemon => pokemon.id === "Pikachu");
 
 function calculateGreninjaNormalAttack({
     attack = 100,
@@ -24,6 +27,25 @@ function calculateGreninjaNormalAttack({
             spAttack: 0,
             criticalRate: 20
         },
+        criticalEnabled,
+        criticalPattern,
+        random
+    });
+}
+
+function calculatePikachuNormalAttack({
+    level = 5,
+    hitCount = 3,
+    criticalEnabled = false,
+    criticalPattern = null,
+    random = Math.random
+} = {}){
+    return calculateNormalAttackDamage({
+        level,
+        pokemonId: pikachu.id,
+        hitCount,
+        status: pikachu.stats[level],
+        normalAttack: pikachu.normalAttack,
         criticalEnabled,
         criticalPattern,
         random
@@ -105,8 +127,185 @@ test("通常攻撃の急所回数と各ヒット情報が一致する", () => {
     assert.equal(result.hitDamages.length, 3);
 });
 
+test("ピカチュウ通常攻撃がレベル5実測値と一致する", () => {
+    const singleHitData = calculatePikachuNormalAttack({
+        hitCount: 1
+    });
+    const singleHitFinalDamage = computeNormalAttackFinalDamage(
+        singleHitData,
+        pikachu.id,
+        pikachu.stats[5]
+    );
+    const threeHitData = calculatePikachuNormalAttack({
+        hitCount: 3
+    });
+    const threeHitFinalDamage = computeNormalAttackFinalDamage(
+        threeHitData,
+        pikachu.id,
+        pikachu.stats[5]
+    );
+
+    assert.deepEqual(
+        singleHitFinalDamage.finalHitDamages.map(hitData => hitData.damage),
+        [143]
+    );
+    assert.deepEqual(
+        threeHitFinalDamage.finalHitDamages.map(hitData => hitData.damage),
+        [143, 143, 288]
+    );
+    assert.equal(threeHitFinalDamage.totalFinalDamage, 574);
+});
+
+test("ピカチュウ通常攻撃は防御だけを参照する", () => {
+    const normalAttackData = calculatePikachuNormalAttack({
+        hitCount: 1
+    });
+    const baseResult = computeNormalAttackFinalDamage(
+        normalAttackData,
+        pikachu.id,
+        {
+            defense: 69,
+            spDefense: 55
+        }
+    );
+    const changedDefenseResult = computeNormalAttackFinalDamage(
+        normalAttackData,
+        pikachu.id,
+        {
+            defense: 600,
+            spDefense: 55
+        }
+    );
+    const changedSpDefenseResult = computeNormalAttackFinalDamage(
+        normalAttackData,
+        pikachu.id,
+        {
+            defense: 69,
+            spDefense: 600
+        }
+    );
+
+    assert.notEqual(
+        changedDefenseResult.totalFinalDamage,
+        baseResult.totalFinalDamage
+    );
+    assert.equal(
+        changedSpDefenseResult.totalFinalDamage,
+        baseResult.totalFinalDamage
+    );
+});
+
+test("ピカチュウ強化攻撃は特防だけを参照する", () => {
+    const thirdHit = calculatePikachuNormalAttack({
+        hitCount: 3
+    }).hitDamages[2];
+    const boostedAttackData = {
+        totalDamage: thirdHit.damage,
+        criticalCount: 0,
+        hitDamages: [thirdHit]
+    };
+    const baseResult = computeNormalAttackFinalDamage(
+        boostedAttackData,
+        pikachu.id,
+        {
+            defense: 69,
+            spDefense: 55
+        }
+    );
+    const changedDefenseResult = computeNormalAttackFinalDamage(
+        boostedAttackData,
+        pikachu.id,
+        {
+            defense: 600,
+            spDefense: 55
+        }
+    );
+    const changedSpDefenseResult = computeNormalAttackFinalDamage(
+        boostedAttackData,
+        pikachu.id,
+        {
+            defense: 69,
+            spDefense: 600
+        }
+    );
+
+    assert.equal(
+        changedDefenseResult.totalFinalDamage,
+        baseResult.totalFinalDamage
+    );
+    assert.notEqual(
+        changedSpDefenseResult.totalFinalDamage,
+        baseResult.totalFinalDamage
+    );
+});
+
+test("ピカチュウ通常攻撃は3回周期を維持する", () => {
+    const result = calculatePikachuNormalAttack({
+        hitCount: 6
+    });
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.boosted),
+        [false, false, true, false, false, true]
+    );
+});
+
+test("ピカチュウ通常攻撃でも固定した急所パターンを維持する", () => {
+    const result = calculatePikachuNormalAttack({
+        hitCount: 3,
+        criticalEnabled: true,
+        criticalPattern: [true, false, true],
+        random: () => {
+            throw new Error("固定中は乱数を使用しない");
+        }
+    });
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.critical),
+        [true, false, true]
+    );
+    assert.equal(result.criticalCount, 2);
+});
+
+test("旧形式のポケモンは従来どおり通常攻撃を計算する", () => {
+    const result = calculateGreninjaNormalAttack({
+        attack: 100,
+        criticalEnabled: false
+    });
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.damage),
+        [100, 100, 130]
+    );
+    assert.equal(result.totalDamage, 330);
+});
+
+test("通常攻撃の未対応防御参照はエラーにする", () => {
+    const normalAttackData = {
+        totalDamage: 100,
+        criticalCount: 0,
+        hitDamages: [{
+            damage: 100,
+            critical: false,
+            boosted: false,
+            defenseReference: "unknownDefense"
+        }]
+    };
+
+    assert.throws(
+        () => computeNormalAttackFinalDamage(
+            normalAttackData,
+            pikachu.id,
+            {
+                defense: 50,
+                spDefense: 50
+            }
+        ),
+        /未対応の防御参照です: unknownDefense/
+    );
+});
+
 test("ピカチュウのdamageComponents技が実測値と一致する", () => {
-    const pikachu = pokemonsList.find(pokemon => pokemon.id === "Pikachu");
     const findMove = moveName =>
         Object.values(pikachu.skill)
             .flat()

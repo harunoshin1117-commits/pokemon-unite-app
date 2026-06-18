@@ -168,10 +168,10 @@ export function computeFinalDamage(
 
 function hasNormalAttackDamageData(normalAttack){
     return Boolean(
-        normalAttack?.damage?.basic &&
-        typeof normalAttack.damage.basic === "object" &&
-        normalAttack?.damage?.boosted &&
-        typeof normalAttack.damage.boosted === "object"
+        normalAttack?.basic &&
+        typeof normalAttack.basic === "object" &&
+        normalAttack?.boosted &&
+        typeof normalAttack.boosted === "object"
     );
 }
 
@@ -209,7 +209,6 @@ export function calculateNormalAttackDamage({
 }){
     
     const atk = status.attack;
-    const spAtk = status.spAttack;
     const critical = status.criticalRate;
    
     if(hasNormalAttackDamageData(normalAttack)){
@@ -221,8 +220,8 @@ export function calculateNormalAttackDamage({
         for(let i = 1; i <= hitCount; i++){
             const boosted = i % cycle === 0;
             const formula = boosted
-                ? normalAttack.damage.boosted
-                : normalAttack.damage.basic;
+                ? normalAttack.boosted
+                : normalAttack.basic;
             let damage = calculateNormalAttackHitDamage(
                 formula,
                 level,
@@ -257,58 +256,7 @@ export function calculateNormalAttackDamage({
         };
     }
 
-    if(pokemonId === "Pikachu" ){
-
-        const basicDamage = 1 * atk;
-        const boostedDamage = 0.38 * spAtk + 10 * (level - 1) +200;
-        let totalDamage = 0;
-        let criticalCount = 0;
-        let hitDamages = [];
-       for(let i = 1;i <= hitCount;i++){
-
-            let damage;
-            let isCritical = false;
-            //　強化攻撃判定
-            if(i%3 === 0){
-                
-                damage = boostedDamage;
-
-            }else{
-
-                damage = basicDamage;
-
-       }
-       if(criticalEnabled){
-        //急所判定
-       isCritical = Array.isArray(criticalPattern)
-            ? criticalPattern[i - 1] === true
-            : random() <critical/100;
-        //急所なら二倍（今回だけ）
-        if(isCritical){
-            criticalCount++;
-            damage *= 2
-        }
-       }
-        hitDamages.push({
-            damage:Math.floor(damage),
-            critical: isCritical,
-            boosted:i%3 === 0
-        });
-        totalDamage += damage;
-    }
-        
-
-       
-      
-        const totalNormalAttackDamage = Math.floor(totalDamage);
-
-
-        return {
-            totalDamage: totalNormalAttackDamage,
-            criticalCount: criticalCount,
-            hitDamages};
-
-    }if(pokemonId === "Greninja"){
+    if(pokemonId === "Greninja"){
          
         const basicDamage = 1 * atk;
 
@@ -422,9 +370,10 @@ export function computeNormalAttackFinalDamage(normalAttackData, pokemonId, enem
             for(const hitData of normalAttackData.hitDamages){
                 const defenseReference =
                     getNormalAttackDefenseReference(hitData, pokemonId);
-                const targetDefense = defenseReference === "spDefense"
-                    ? spDefense
-                    : defense;
+                const targetDefense = getDefenseValue(
+                    defenseReference,
+                    enemyPokemonStats
+                );
 
                 const finalDamage = hitData.damage * 
             
@@ -458,9 +407,10 @@ export function computeNormalAttackFinalDamage(normalAttackData, pokemonId, enem
         for(const hitData of normalAttackData.hitDamages){
             const defenseReference =
                 getNormalAttackDefenseReference(hitData, pokemonId);
-            const targetDefense = defenseReference === "spDefense"
-                ? spDefense
-                : defense;
+            const targetDefense = getDefenseValue(
+                defenseReference,
+                enemyPokemonStats
+            );
 
             const finalDamage = hitData.damage * 
                                             (

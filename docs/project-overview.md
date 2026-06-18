@@ -215,7 +215,7 @@ JavaScriptはES Modulesとして読み込まれます。
 
 `stats` はレベル1から15までのステータスです。
 
-ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化を試すため、計算用データ形式へ移行中です。通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照する形で、`cycle`、`referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
+ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化として計算用データ形式へ移行済みです。`cycle`、`basic`、`boosted` を持ち、通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照します。`basic` / `boosted` は `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
 
 ピカチュウの一部技は、技計算のデータ駆動化を進めるため `damageComponents` 形式へ移行中です。現在は、エレキネット、かみなり、ボルテッカー、10万ボルトが対象です。`damageComponents` では `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference`、`hitCount` を持ちます。技選択UIの値は「使用回数」として扱い、`damageComponents.hitCount` は技1回あたりの内部ヒット数として扱います。旧 `formula` / `formulaPlus` は当面残し、新形式がある技では新形式を優先します。
 
@@ -373,7 +373,7 @@ JavaScriptはES Modulesとして読み込まれます。
 
 DOM参照やグローバル状態参照は持たず、必要な値は引数で受け取ります。計算結果はES Modules化前と同じにする方針です。
 
-ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack` データを参照して計算する実験実装へ移行しています。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、旧形式または未対応ポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。
+ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack.basic` / `normalAttack.boosted` データを参照して計算します。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、ピカチュウの式を関数内に直接持ちません。新形式がないポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。不正な `defenseReference` はエラーにしてデータ不備を検出します。
 
 技ダメージは、`damageComponents` がある場合だけ新形式を優先して計算します。新形式では画面の選択値を使用回数、`damageComponents.hitCount` を内部ヒット数として扱います。最終ダメージは内部1ヒットごとに防御または特防補正を適用してから、内部ヒット数と使用回数を掛けて合計します。`plusDamageComponents` がある技はプラス時にそちらを使い、式が同じでヒット数だけ変わる技は `plusHitCount` を使います。新形式がない技は従来の `formula` / `formulaPlus` 計算へフォールバックします。`defenseReference` は `defense` または `spDefense` のみ有効で、不正な値はエラーにしてデータ不備を早く検出します。
 
