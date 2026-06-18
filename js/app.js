@@ -6,6 +6,7 @@ import { pokemonsList } from "./pokemonData.js";
 import { heldItemsList } from "./helditemData.js";
 import {
     computeFinalDamage,
+    computeMoveDamageData,
     calculateNormalAttackDamage,
     computeNormalAttackFinalDamage,
     getTotalDamage
@@ -884,6 +885,23 @@ function buildMoveDamageData(selectedMove, hitCount){
     const attackerStatus = getCurrentPlayerStatus();
     const enemyStats = getEnemyStats();
     const enemyHp = getEnemyHp();
+    const enemyState = {
+        maxHp: enemyHp,
+        currentHp: enemyHp,
+        defense: enemyStats.defense,
+        spDefense: enemyStats.spDefense
+    };
+
+    if(selectedMove.damageComponents){
+        return computeMoveDamageData({
+            selectedMove,
+            useCount: hitCount,
+            attackerLevel: level,
+            attackerStats: attackerStatus,
+            enemyState,
+            carryHpBetweenUses: true
+        });
+    }
 
     const rawDamage = getTotalDamage(
         selectedMove,

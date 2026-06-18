@@ -23,7 +23,10 @@ export function calculateDamagePlus(selectedMove,attackerLevel,attackerStats){
 }
 
 function hasDamageComponents(selectedMove){
-    return Array.isArray(selectedMove?.damageComponents);
+    return (
+        Array.isArray(selectedMove?.damageComponents) &&
+        selectedMove.damageComponents.length > 0
+    );
 }
 
 function getMoveDamageComponents(selectedMove, level){
@@ -35,6 +38,19 @@ function getMoveDamageComponents(selectedMove, level){
     }
 
     return selectedMove.damageComponents;
+}
+
+function getAdditionalDamageEffects(selectedMove, level){
+    if(
+        isPlusMove(selectedMove, level) &&
+        Array.isArray(selectedMove.plusAdditionalDamageEffects)
+    ){
+        return selectedMove.plusAdditionalDamageEffects;
+    }
+
+    return Array.isArray(selectedMove.additionalDamageEffects)
+        ? selectedMove.additionalDamageEffects
+        : [];
 }
 
 function getDamageComponentHitCount(component, selectedMove, level){
@@ -60,6 +76,15 @@ function calculateDamageComponent(component, attackerLevel, attackerStats){
     return Math.floor(damage);
 }
 
+function calculateTargetMissingHpDamage(effect, targetMissingHp){
+    const damage =
+        targetMissingHp * effect.ratio +
+        effect.levelScaling +
+        effect.fixedValue;
+
+    return Math.floor(damage);
+}
+
 function getDefenseValue(defenseReference, enemyPokemonStats){
     if(defenseReference === "defense"){
         return enemyPokemonStats.defense;
@@ -74,6 +99,251 @@ function getDefenseValue(defenseReference, enemyPokemonStats){
     );
 }
 
+function applyDefense(rawDamage, defenseReference, enemyState){
+    const defenseValue = getDefenseValue(defenseReference, enemyState);
+    const finalDamage = rawDamage *
+        (
+            1 -
+            (
+                defenseValue /
+                (defenseValue + 600)
+            )
+        );
+
+    return Math.floor(finalDamage);
+}
+
+function createEmptyMoveDamageData(selectedMove, useCount, enemyState){
+    const maxHp = enemyState?.maxHp ?? null;
+    const startingHp = Number.isFinite(enemyState?.currentHp)
+        ? enemyState.currentHp
+        : maxHp;
+
+    return {
+        selectedMove,
+        useCount,
+        hitCount: useCount,
+        hpBefore: startingHp,
+        baseRawDamage: 0,
+        baseFinalDamage: 0,
+        additionalRawDamage: 0,
+        additionalFinalDamage: 0,
+        rawDamage: null,
+        finalDamage: null,
+        hpAfter: null,
+        displayHpAfter: null,
+        sequentialHpAfter: null,
+        enemyHp: maxHp,
+        useResults: []
+    };
+}
+
+export function computeMoveDamageData({
+    selectedMove,
+    useCount = 1,
+    attackerLevel,
+    attackerStats,
+    enemyState,
+    carryHpBetweenUses = false
+}){
+    if(!selectedMove || !enemyState){
+        return createEmptyMoveDamageData(selectedMove ?? null, useCount, enemyState);
+    }
+
+    const maxHp = enemyState.maxHp;
+    const startingHp = Number.isFinite(enemyState.currentHp)
+        ? enemyState.currentHp
+        : maxHp;
+    let currentHp = startingHp;
+    let baseRawDamage = 0;
+    let baseFinalDamage = 0;
+    let additionalRawDamage = 0;
+    let additionalFinalDamage = 0;
+    const useResults = [];
+
+    if(hasDamageComponents(selectedMove)){
+        const components = getMoveDamageComponents(
+            selectedMove,
+            attackerLevel
+        );
+        const additionalEffects = getAdditionalDamageEffects(
+            selectedMove,
+            attackerLevel
+        );
+
+        for(let useIndex = 1; useIndex <= useCount; useIndex++){
+            let useCurrentHp = carryHpBetweenUses
+                ? currentHp
+                : startingHp;
+            const hpBeforeUse = useCurrentHp;
+            let useBaseRawDamage = 0;
+            let useBaseFinalDamage = 0;
+            let useAdditionalRawDamage = 0;
+            let useAdditionalFinalDamage = 0;
+
+            components.forEach(component => {
+                const componentHitCount = getDamageComponentHitCount(
+                    component,
+                    selectedMove,
+                    attackerLevel
+                );
+
+                for(let hitIndex = 1; hitIndex <= componentHitCount; hitIndex++){
+                    const rawDamage = calculateDamageComponent(
+                        component,
+                        attackerLevel,
+                        attackerStats
+                    );
+                    const finalDamage = applyDefense(
+                        rawDamage,
+                        component.defenseReference,
+                        enemyState
+                    );
+
+                    useBaseRawDamage += rawDamage;
+                    useBaseFinalDamage += finalDamage;
+                    useCurrentHp = Math.max(0, useCurrentHp - finalDamage);
+                }
+            });
+
+            additionalEffects.forEach(effect => {
+                if(effect.type !== "targetMissingHp"){
+                    throw new Error(
+                        `未対応の追加ダメージです: ${effect.type}`
+                    );
+                }
+
+                if(effect.trigger !== "afterMainDamage"){
+                    throw new Error(
+                        `未対応の追加ダメージ発動タイミングです: ${effect.trigger}`
+                    );
+                }
+
+                const effectHitCount = getDamageComponentHitCount(
+                    effect,
+                    selectedMove,
+                    attackerLevel
+                );
+
+                for(let hitIndex = 1; hitIndex <= effectHitCount; hitIndex++){
+                    const targetMissingHp = Math.max(0, maxHp - useCurrentHp);
+                    const rawDamage = calculateTargetMissingHpDamage(
+                        effect,
+                        targetMissingHp
+                    );
+                    const finalDamage = applyDefense(
+                        rawDamage,
+                        effect.defenseReference,
+                        enemyState
+                    );
+
+                    useAdditionalRawDamage += rawDamage;
+                    useAdditionalFinalDamage += finalDamage;
+                    useCurrentHp = Math.max(0, useCurrentHp - finalDamage);
+                }
+            });
+
+            if(carryHpBetweenUses){
+                currentHp = useCurrentHp;
+            }
+
+            useResults.push({
+                useNumber: useIndex,
+                hpBefore: hpBeforeUse,
+                baseRawDamage: useBaseRawDamage,
+                baseFinalDamage: useBaseFinalDamage,
+                additionalRawDamage: useAdditionalRawDamage,
+                additionalFinalDamage: useAdditionalFinalDamage,
+                rawDamage: useBaseRawDamage + useAdditionalRawDamage,
+                finalDamage: useBaseFinalDamage + useAdditionalFinalDamage,
+                hpAfter: useCurrentHp
+            });
+
+            baseRawDamage += useBaseRawDamage;
+            baseFinalDamage += useBaseFinalDamage;
+            additionalRawDamage += useAdditionalRawDamage;
+            additionalFinalDamage += useAdditionalFinalDamage;
+        }
+
+        const finalDamage = baseFinalDamage + additionalFinalDamage;
+        const displayHpAfter = Math.max(0, startingHp - finalDamage);
+        const sequentialHpAfter = carryHpBetweenUses
+            ? currentHp
+            : null;
+        const hpAfter = displayHpAfter;
+
+        return {
+            selectedMove,
+            useCount,
+            hitCount: useCount,
+            hpBefore: startingHp,
+            baseRawDamage,
+            baseFinalDamage,
+            additionalRawDamage,
+            additionalFinalDamage,
+            rawDamage: baseRawDamage + additionalRawDamage,
+            finalDamage,
+            hpAfter,
+            displayHpAfter,
+            sequentialHpAfter,
+            enemyHp: maxHp,
+            useResults
+        };
+    }
+
+    const rawDamage = getTotalDamage(
+        selectedMove,
+        useCount,
+        attackerLevel,
+        attackerStats
+    );
+
+    if(rawDamage === null){
+        return createEmptyMoveDamageData(selectedMove, useCount, enemyState);
+    }
+
+    const finalDamage = computeFinalDamage(
+        selectedMove,
+        useCount,
+        attackerLevel,
+        attackerStats,
+        enemyState
+    );
+    const hpAfter = Math.max(0, currentHp - finalDamage);
+    const displayHpAfter = hpAfter;
+    const sequentialHpAfter = carryHpBetweenUses
+        ? hpAfter
+        : null;
+
+    return {
+        selectedMove,
+        useCount,
+        hitCount: useCount,
+        hpBefore: startingHp,
+        baseRawDamage: rawDamage,
+        baseFinalDamage: finalDamage,
+        additionalRawDamage: 0,
+        additionalFinalDamage: 0,
+        rawDamage,
+        finalDamage,
+        hpAfter,
+        displayHpAfter,
+        sequentialHpAfter,
+        enemyHp: maxHp,
+        useResults: [{
+            useNumber: 1,
+            hpBefore: startingHp,
+            baseRawDamage: rawDamage,
+            baseFinalDamage: finalDamage,
+            additionalRawDamage: 0,
+            additionalFinalDamage: 0,
+            rawDamage,
+            finalDamage,
+            hpAfter
+        }]
+    };
+}
+
 export function computeFinalDamage(
     selectedMove,
     hitCount = 1,
@@ -83,44 +353,18 @@ export function computeFinalDamage(
 ){
 
         if(hasDamageComponents(selectedMove)){
-            const components = getMoveDamageComponents(
+            return computeMoveDamageData({
                 selectedMove,
-                attackerLevel
-            );
-
-            let totalFinalDamage = 0;
-
-            components.forEach(component => {
-                const rawDamage = calculateDamageComponent(
-                    component,
-                    attackerLevel,
-                    attackerStats
-                );
-                const componentHitCount = getDamageComponentHitCount(
-                    component,
-                    selectedMove,
-                    attackerLevel
-                );
-                const defenseValue = getDefenseValue(
-                    component.defenseReference,
-                    enemyPokemonStats
-                );
-                const finalDamage = rawDamage *
-                    (
-                        1 -
-                        (
-                            defenseValue /
-                            (defenseValue + 600)
-                        )
-                    );
-
-                totalFinalDamage +=
-                    Math.floor(finalDamage) *
-                    componentHitCount *
-                    hitCount;
-            });
-
-            return totalFinalDamage;
+                useCount: hitCount,
+                attackerLevel,
+                attackerStats,
+                enemyState: {
+                    maxHp: enemyPokemonStats.hp,
+                    currentHp: enemyPokemonStats.hp,
+                    defense: enemyPokemonStats.defense,
+                    spDefense: enemyPokemonStats.spDefense
+                }
+            }).finalDamage;
         }
 
         const rawDamage = getTotalDamage(

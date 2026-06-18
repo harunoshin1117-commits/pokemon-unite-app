@@ -33,7 +33,17 @@ export const pokemonsList = [
                     ratio:0.75,
                     levelScaling:21,
                     baseDamage:390
-                } },
+                },
+                damageComponents: [{
+                    id: "main",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.75,
+                    levelScaling: 21,
+                    fixedValue: 390,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }] },
                {
                 name:"エレキネット",
                   category:"special",
@@ -70,6 +80,48 @@ export const pokemonsList = [
                     levelScaling:28,
                     baseDamage:480
                 },
+                damageComponents: [{
+                    id: "main",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.84,
+                    levelScaling: 25,
+                    fixedValue: 441,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }],
+                additionalDamageEffects: [{
+                    id: "missingHp",
+                    type: "targetMissingHp",
+                    trigger: "afterMainDamage",
+                    referenceStat: "targetMissingHp",
+                    ratio: 0.06,
+                    levelScaling: 0,
+                    fixedValue: 0,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }],
+                plusDamageComponents: [{
+                    id: "main",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.9,
+                    levelScaling: 29,
+                    fixedValue: 504,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }],
+                plusAdditionalDamageEffects: [{
+                    id: "missingHp",
+                    type: "targetMissingHp",
+                    trigger: "afterMainDamage",
+                    referenceStat: "targetMissingHp",
+                    ratio: 0.08,
+                    levelScaling: 0,
+                    fixedValue: 0,
+                    defenseReference: "spDefense",
+                    hitCount: 1
+                }],
                 upgradeLevel:11
                 },
                 {

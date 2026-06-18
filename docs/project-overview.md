@@ -6,6 +6,8 @@
 
 このリポジトリは、ポケモンユナイトのダメージ計算を行う静的Webアプリです。フレームワークやビルドツールは使わず、`index.html`、`style.css`、複数のJavaScriptファイルだけで構成されています。
 
+開発方針として、計算処理はできる限り実戦に近い状況を再現することを優先します。技の使用回数、HP減少、追加ダメージ、将来追加する持ち物・メダル・シールド・倍率補正などは、ゲーム内で起こる順序に近づける方針です。ただし、未確認の仕様は推測で確定せず、検証できた値や挙動から段階的に反映します。
+
 現在の主な機能は以下です。
 
 - 攻撃側ポケモン選択
@@ -217,7 +219,9 @@ JavaScriptはES Modulesとして読み込まれます。
 
 ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化として計算用データ形式へ移行済みです。`cycle`、`basic`、`boosted` を持ち、通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照します。`basic` / `boosted` は `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
 
-ピカチュウの一部技は、技計算のデータ駆動化を進めるため `damageComponents` 形式へ移行中です。現在は、エレキネット、かみなり、ボルテッカー、10万ボルトが対象です。`damageComponents` では `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference`、`hitCount` を持ちます。技選択UIの値は「使用回数」として扱い、`damageComponents.hitCount` は技1回あたりの内部ヒット数として扱います。旧 `formula` / `formulaPlus` は当面残し、新形式がある技では新形式を優先します。
+ピカチュウの一部技は、技計算のデータ駆動化を進めるため `damageComponents` 形式へ移行中です。現在は、エレキネット、エレキボール、かみなり、ボルテッカー、10万ボルトが対象です。`damageComponents` では `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference`、`hitCount` を持ちます。技選択UIの値は「使用回数」として扱い、`damageComponents.hitCount` は技1回あたりの内部ヒット数として扱います。旧 `formula` / `formulaPlus` は当面残し、新形式がある技では新形式を優先します。
+
+エレキボールは、本体ダメージとは別に `additionalDamageEffects` / `plusAdditionalDamageEffects` を持ち、相手の減少HPを参照する追加ダメージを表現します。通常版は減少HPの6%、プラス版は8%を参照します。現在の検証方針では「本体rawDamage計算 → 特防補正 → HP減少 → 減少HP参照 → 追加rawDamage計算 → 特防補正 → HP減少」の順番です。`trigger: "afterMainDamage"` は、全 `damageComponents` と全内部ヒットが終わった後に追加効果を実行する意味です。
 
 ### js/helditemData.js
 
@@ -368,6 +372,7 @@ JavaScriptはES Modulesとして読み込まれます。
 - `isPlusMove()` によるアップグレード技判定
 - `getRawDamage()` / `getTotalDamage()` による技威力取得
 - `computeFinalDamage()` による防御・特防補正後ダメージ計算
+- `computeMoveDamageData()` による技使用回数ごとの本体・追加ダメージ、HP推移の計算
 - `calculateNormalAttackDamage()` による通常攻撃のヒット別基礎ダメージ計算
 - `computeNormalAttackFinalDamage()` による通常攻撃の防御・特防補正後ダメージ計算
 
@@ -376,6 +381,10 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack.basic` / `normalAttack.boosted` データを参照して計算します。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、ピカチュウの式を関数内に直接持ちません。新形式がないポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。不正な `defenseReference` はエラーにしてデータ不備を検出します。
 
 技ダメージは、`damageComponents` がある場合だけ新形式を優先して計算します。新形式では画面の選択値を使用回数、`damageComponents.hitCount` を内部ヒット数として扱います。最終ダメージは内部1ヒットごとに防御または特防補正を適用してから、内部ヒット数と使用回数を掛けて合計します。`plusDamageComponents` がある技はプラス時にそちらを使い、式が同じでヒット数だけ変わる技は `plusHitCount` を使います。新形式がない技は従来の `formula` / `formulaPlus` 計算へフォールバックします。`defenseReference` は `defense` または `spDefense` のみ有効で、不正な値はエラーにしてデータ不備を早く検出します。
+
+`computeMoveDamageData()` はDOMやグローバル状態を参照せず、`selectedMove`、`useCount`、`attackerLevel`、`attackerStats`、`enemyState` を引数で受け取る純粋な計算関数です。`enemyState` は `{ maxHp, currentHp, defense, spDefense }` を想定し、`currentHp` が数値なら必ずその値から開始します。`currentHp` が未指定の場合だけ `maxHp` へフォールバックします。関数内では `enemyState`、`attackerStats`、`selectedMove` を直接変更せず、ローカル変数の `currentHp` だけを更新します。
+
+戻り値は、既存表示との互換用に `rawDamage` / `finalDamage` を合計値として持ちつつ、`baseRawDamage`、`baseFinalDamage`、`additionalRawDamage`、`additionalFinalDamage`、`hpBefore`、`hpAfter`、`displayHpAfter`、`sequentialHpAfter`、`useResults` も返します。`useResults` は技の使用回数ごとの内訳です。現在のUIから呼ぶ場合は `currentHp = maxHp` として渡し、`carryHpBetweenUses: true` で使用回数ごとにHPを引き継ぎます。`hpAfter` は当面の既存表示互換として `displayHpAfter` と同じ値を返します。`displayHpAfter` は合計ダメージを開始HPから引いた表示用の残りHP、`sequentialHpAfter` は `carryHpBetweenUses: true` のときに次の攻撃へ引き継げるHPです。攻撃順を選ぶコンボ機能はまだ実装していませんが、将来は前の技の `sequentialHpAfter` を次の技の `enemyState.currentHp` として渡せる設計にしています。
 
 ### js/heldItemService.js
 
@@ -1127,6 +1136,8 @@ js/build/
 - 保存関連の `buildController.js`、`buildRenderer.js`、`buildStorage.js` を `js/build/` へ移動しました。
 - `js/build/buildState.js` を追加し、保存形式と通常攻撃計算のバージョン、通常攻撃データの複製、`createBuildState()` による保存形式生成をまとめました。
 - `getCurrentBuildState()` はDOMと内部状態から値を集め、保存形式への変換と複製を `createBuildState()` に任せる形へ変更しました。
+- ピカチュウのエレキボールを `damageComponents` と `additionalDamageEffects` 形式へ移行し、本体ダメージ後の減少HPを参照する追加ダメージを計算できるようにしました。
+- `computeMoveDamageData()` を追加し、技使用回数ごとの本体ダメージ、追加ダメージ、HP推移を `useResults` として返す形にしました。現在のUIでは満タンHPから計算を開始し、使用回数間では `carryHpBetweenUses: true` でHPを引き継ぎます。`hpAfter` は当面既存表示互換のため残し、意味を明確にした `displayHpAfter` と `sequentialHpAfter` を追加しました。将来の攻撃順機能では前の技の `sequentialHpAfter` を使って、次の技の `currentHp` へ渡せるようにしています。
 
 現在の `appSelectors.js` には以下があります。
 

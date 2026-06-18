@@ -5,12 +5,17 @@ import {
     calculateNormalAttackDamage,
     computeNormalAttackFinalDamage,
     computeFinalDamage,
+    computeMoveDamageData,
     getRawDamage,
     isPlusMove
 } from "../js/damageCalculator.js";
 import { pokemonsList } from "../js/pokemonData.js";
 
 const pikachu = pokemonsList.find(pokemon => pokemon.id === "Pikachu");
+const findPikachuMove = moveName =>
+    Object.values(pikachu.skill)
+        .flat()
+        .find(move => move.name === moveName);
 
 function calculateGreninjaNormalAttack({
     attack = 100,
@@ -306,11 +311,13 @@ test("通常攻撃の未対応防御参照はエラーにする", () => {
 });
 
 test("ピカチュウのdamageComponents技が実測値と一致する", () => {
-    const findMove = moveName =>
-        Object.values(pikachu.skill)
-            .flat()
-            .find(move => move.name === moveName);
     const testCases = [
+        {
+            moveName: "電気ショック",
+            level: 1,
+            expectedRawDamage: 427,
+            expectedFinalDamage: 408
+        },
         {
             moveName: "エレキネット",
             level: 1,
@@ -362,7 +369,7 @@ test("ピカチュウのdamageComponents技が実測値と一致する", () => {
     ];
 
     testCases.forEach(testCase => {
-        const move = findMove(testCase.moveName);
+        const move = findPikachuMove(testCase.moveName);
         const attackerStats = pikachu.stats[testCase.level];
         const enemyStats = pikachu.stats[testCase.level];
 
@@ -383,6 +390,320 @@ test("ピカチュウのdamageComponents技が実測値と一致する", () => {
             `${testCase.moveName} Lv${testCase.level} final damage`
         );
     });
+});
+
+test("エレキボールは満タンHPから本体と追加ダメージを計算する", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            currentHp: pikachu.stats[4].hp,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        }
+    });
+
+    assert.equal(result.hpBefore, 3646);
+    assert.equal(result.baseRawDamage, 647);
+    assert.equal(result.baseFinalDamage, 600);
+    assert.equal(result.additionalRawDamage, 36);
+    assert.equal(result.additionalFinalDamage, 33);
+    assert.equal(result.rawDamage, 683);
+    assert.equal(result.finalDamage, 633);
+    assert.equal(result.hpAfter, 3013);
+    assert.equal(result.displayHpAfter, 3013);
+    assert.equal(result.sequentialHpAfter, null);
+    assert.deepEqual(
+        result.useResults.map(useResult => ({
+            hpBefore: useResult.hpBefore,
+            baseFinalDamage: useResult.baseFinalDamage,
+            additionalFinalDamage: useResult.additionalFinalDamage,
+            finalDamage: useResult.finalDamage,
+            hpAfter: useResult.hpAfter
+        })),
+        [{
+            hpBefore: 3646,
+            baseFinalDamage: 600,
+            additionalFinalDamage: 33,
+            finalDamage: 633,
+            hpAfter: 3013
+        }]
+    );
+});
+
+test("computeMoveDamageDataはcurrentHp未指定ならmaxHpから計算する", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        }
+    });
+
+    assert.equal(result.hpBefore, 3646);
+    assert.equal(result.finalDamage, 633);
+    assert.equal(result.hpAfter, 3013);
+    assert.equal(result.displayHpAfter, 3013);
+    assert.equal(result.sequentialHpAfter, null);
+});
+
+test("エレキボールは渡されたcurrentHpから計算を開始する", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            currentHp: 3000,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        }
+    });
+
+    assert.equal(result.hpBefore, 3000);
+    assert.equal(result.baseFinalDamage, 600);
+    assert.equal(result.additionalRawDamage, 74);
+    assert.equal(result.additionalFinalDamage, 68);
+    assert.equal(result.finalDamage, 668);
+    assert.equal(result.hpAfter, 2332);
+    assert.equal(result.displayHpAfter, 2332);
+    assert.equal(result.sequentialHpAfter, null);
+});
+
+test("エレキボール複数使用はデフォルトでは使用回数間でHPを引き継がない", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 2,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            currentHp: pikachu.stats[4].hp,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        }
+    });
+
+    assert.deepEqual(
+        result.useResults.map(useResult => ({
+            hpBefore: useResult.hpBefore,
+            baseFinalDamage: useResult.baseFinalDamage,
+            additionalFinalDamage: useResult.additionalFinalDamage,
+            finalDamage: useResult.finalDamage,
+            hpAfter: useResult.hpAfter
+        })),
+        [
+            {
+                hpBefore: 3646,
+                baseFinalDamage: 600,
+                additionalFinalDamage: 33,
+                finalDamage: 633,
+                hpAfter: 3013
+            },
+            {
+                hpBefore: 3646,
+                baseFinalDamage: 600,
+                additionalFinalDamage: 33,
+                finalDamage: 633,
+                hpAfter: 3013
+            }
+        ]
+    );
+    assert.equal(result.finalDamage, 1266);
+    assert.equal(result.hpAfter, 2380);
+    assert.equal(result.displayHpAfter, 2380);
+    assert.equal(result.sequentialHpAfter, null);
+});
+
+test("エレキボール複数使用は指定時だけ同じ計算内でHPを引き継ぐ", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 2,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            currentHp: pikachu.stats[4].hp,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        },
+        carryHpBetweenUses: true
+    });
+
+    assert.deepEqual(
+        result.useResults.map(useResult => ({
+            hpBefore: useResult.hpBefore,
+            baseFinalDamage: useResult.baseFinalDamage,
+            additionalFinalDamage: useResult.additionalFinalDamage,
+            finalDamage: useResult.finalDamage,
+            hpAfter: useResult.hpAfter
+        })),
+        [
+            {
+                hpBefore: 3646,
+                baseFinalDamage: 600,
+                additionalFinalDamage: 33,
+                finalDamage: 633,
+                hpAfter: 3013
+            },
+            {
+                hpBefore: 3013,
+                baseFinalDamage: 600,
+                additionalFinalDamage: 67,
+                finalDamage: 667,
+                hpAfter: 2346
+            }
+        ]
+    );
+    assert.equal(result.finalDamage, 1300);
+    assert.equal(result.hpAfter, 2346);
+    assert.equal(result.displayHpAfter, 2346);
+    assert.equal(result.sequentialHpAfter, 2346);
+});
+
+test("エレキボール+は減少HPの8%で追加ダメージを計算する", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 15,
+        attackerStats: pikachu.stats[15],
+        enemyState: {
+            maxHp: pikachu.stats[15].hp,
+            currentHp: pikachu.stats[15].hp,
+            defense: pikachu.stats[15].defense,
+            spDefense: pikachu.stats[15].spDefense
+        }
+    });
+
+    assert.equal(result.baseRawDamage, 1768);
+    assert.equal(result.baseFinalDamage, 1326);
+    assert.equal(result.additionalRawDamage, 106);
+    assert.equal(result.additionalFinalDamage, 79);
+    assert.equal(result.finalDamage, 1405);
+    assert.equal(result.hpAfter, 4895);
+    assert.equal(result.displayHpAfter, 4895);
+    assert.equal(result.sequentialHpAfter, null);
+});
+
+test("computeMoveDamageDataは入力された敵状態、攻撃側状態、技データを変更しない", () => {
+    const move = findPikachuMove("エレキボール");
+    const attackerStats = { ...pikachu.stats[4] };
+    const enemyState = {
+        maxHp: pikachu.stats[4].hp,
+        currentHp: pikachu.stats[4].hp,
+        defense: pikachu.stats[4].defense,
+        spDefense: pikachu.stats[4].spDefense
+    };
+    const attackerBefore = JSON.stringify(attackerStats);
+    const enemyBefore = JSON.stringify(enemyState);
+    const moveBefore = JSON.stringify(move);
+
+    computeMoveDamageData({
+        selectedMove: move,
+        useCount: 2,
+        attackerLevel: 4,
+        attackerStats,
+        enemyState
+    });
+
+    assert.equal(JSON.stringify(attackerStats), attackerBefore);
+    assert.equal(JSON.stringify(enemyState), enemyBefore);
+    assert.equal(JSON.stringify(move), moveBefore);
+});
+
+test("computeMoveDamageDataはcurrentHpが0でもmaxHpへ戻さない", () => {
+    const move = findPikachuMove("エレキボール");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 4,
+        attackerStats: pikachu.stats[4],
+        enemyState: {
+            maxHp: pikachu.stats[4].hp,
+            currentHp: 0,
+            defense: pikachu.stats[4].defense,
+            spDefense: pikachu.stats[4].spDefense
+        }
+    });
+
+    assert.equal(result.hpBefore, 0);
+    assert.equal(result.hpAfter, 0);
+});
+
+test("computeMoveDamageDataは単純なdamageComponents技も同じ基本形で返す", () => {
+    const move = findPikachuMove("エレキネット");
+    const result = computeMoveDamageData({
+        selectedMove: move,
+        useCount: 1,
+        attackerLevel: 5,
+        attackerStats: pikachu.stats[5],
+        enemyState: {
+            maxHp: pikachu.stats[5].hp,
+            currentHp: pikachu.stats[5].hp,
+            defense: pikachu.stats[5].defense,
+            spDefense: pikachu.stats[5].spDefense
+        }
+    });
+
+    assert.equal(result.hpBefore, 3788);
+    assert.equal(result.baseRawDamage, 465);
+    assert.equal(result.baseFinalDamage, 425);
+    assert.equal(result.additionalRawDamage, 0);
+    assert.equal(result.additionalFinalDamage, 0);
+    assert.equal(result.rawDamage, 465);
+    assert.equal(result.finalDamage, 425);
+    assert.equal(result.hpAfter, 3363);
+    assert.equal(result.displayHpAfter, 3363);
+    assert.equal(result.sequentialHpAfter, null);
+    assert.deepEqual(result.useResults, [{
+        useNumber: 1,
+        hpBefore: 3788,
+        baseRawDamage: 465,
+        baseFinalDamage: 425,
+        additionalRawDamage: 0,
+        additionalFinalDamage: 0,
+        rawDamage: 465,
+        finalDamage: 425,
+        hpAfter: 3363
+    }]);
+});
+
+test("空のdamageComponentsは新形式扱いにしない", () => {
+    const move = {
+        category: "special",
+        damageComponents: [],
+        formula: {
+            scaling: "spAttack",
+            ratio: 1,
+            levelScaling: 0,
+            baseDamage: 100
+        }
+    };
+
+    assert.equal(
+        computeFinalDamage(
+            move,
+            1,
+            5,
+            { spAttack: 100 },
+            { defense: 999, spDefense: 0 }
+        ),
+        200
+    );
 });
 
 test("isPlusMoveは旧formulaPlusなしでもアップグレードレベルで判定する", () => {
