@@ -224,7 +224,17 @@ export const pokemonsList = [
                     ratio:0.451,
                     levelScaling:9,
                     baseDamage:450
-                }
+                },
+                damageComponents: [{
+                    id: "perHit",
+                    type: "standard",
+                    referenceStat: "spAttack",
+                    ratio: 0.49,
+                    levelScaling: 10,
+                    fixedValue: 486,
+                    defenseReference: "spDefense",
+                    hitCount: 4
+                }]
             }]
         },
 

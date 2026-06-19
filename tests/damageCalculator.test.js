@@ -365,6 +365,12 @@ test("ピカチュウのdamageComponents技が実測値と一致する", () => {
             level: 13,
             expectedRawDamage: 1321,
             expectedFinalDamage: 1044
+        },
+        {
+            moveName: "フルボルトストーム",
+            level: 9,
+            expectedRawDamage: 3080,
+            expectedFinalDamage: 2648
         }
     ];
 

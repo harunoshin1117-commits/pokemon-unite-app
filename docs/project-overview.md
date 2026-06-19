@@ -223,6 +223,8 @@ JavaScriptはES Modulesとして読み込まれます。
 
 エレキボールは、本体ダメージとは別に `additionalDamageEffects` / `plusAdditionalDamageEffects` を持ち、相手の減少HPを参照する追加ダメージを表現します。通常版は減少HPの6%、プラス版は8%を参照します。現在の検証方針では「本体rawDamage計算 → 特防補正 → HP減少 → 減少HP参照 → 追加rawDamage計算 → 特防補正 → HP減少」の順番です。`trigger: "afterMainDamage"` は、全 `damageComponents` と全内部ヒットが終わった後に追加効果を実行する意味です。
 
+フルボルトストームは、同一対象へ4ヒットする条件での検証値を `damageComponents` に入れています。複数対象時の対象選択・分散条件は未確認です。
+
 ### js/helditemData.js
 
 持ち物データを定義します。
