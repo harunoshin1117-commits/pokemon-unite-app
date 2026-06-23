@@ -219,7 +219,13 @@ JavaScriptはES Modulesとして読み込まれます。
 
 `stats` はレベル1から15までのステータスです。
 
-ピカチュウの `normalAttack` は、通常攻撃ロジックのデータ駆動化として計算用データ形式へ移行済みです。`cycle`、`basic`、`boosted` を持ち、通常攻撃は `attack` と `defense`、強化通常攻撃は `spAttack` と `spDefense` を参照します。`basic` / `boosted` は `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。他ポケモンの通常攻撃は旧処理を維持しています。
+ピカチュウとエースバーンの `normalAttack` は、通常攻撃ロジックのデータ駆動化として計算用データ形式へ移行済みです。`cycle`、`basic`、`boosted` を持ち、`basic` / `boosted` は `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference` を持ちます。ピカチュウは通常攻撃で `attack` と `defense`、強化通常攻撃で `spAttack` と `spDefense` を参照します。エースバーンは通常攻撃・強化通常攻撃ともに `attack` と `defense` を参照します。ゲッコウガなど未移行ポケモンの通常攻撃は旧処理を維持しています。
+
+エースバーンの `normalAttack` には、将来の攻撃順機能で使うための `boostedTriggers` と `wildPokemonDamageCaps` も持たせています。現在の単発計算画面では、3回周期の通常攻撃・強化通常攻撃のダメージ式だけを計算に接続し、わざ使用後に次の通常攻撃が強化される戦闘中状態管理や、野生ポケモンへのダメージ上限適用はまだ実装していません。
+
+エースバーンの `stats` は、調査データで confirmed 扱いにした Unite-DB 採用値へ移行済みです。現在の `pokemonData.js` の既存構造に合わせ、アプリが使っている `hp`、`attack`、`defense`、`spAttack`、`spDefense`、`criticalRate` を反映しています。`lifesteal`、`attackSpeed`、`moveSpeed`、`penetration` は研究データ側にはありますが、現行アプリでは未使用のためまだ `pokemonData.js` へは入れていません。
+
+エースバーンの特性 `もうか` は、`passiveEffects` にデータのみ追加しています。HP50%以下時の急所率+10%・通常攻撃速度+20%、通常攻撃1個/強化通常攻撃2個/技2個の火種付与、5個時の発火追加ダメージ式を持ちます。現在の単発計算画面では、自分の現在HP、時間経過、クールダウン、対象ごとの火種スタックを扱っていないため、計算処理にはまだ接続していません。発火追加ダメージの防御補正、丸め順、スタック消費とダメージ発生順は未確認です。
 
 ピカチュウの一部技は、技計算のデータ駆動化を進めるため `damageComponents` 形式へ移行中です。現在は、エレキネット、エレキボール、かみなり、ボルテッカー、10万ボルトが対象です。`damageComponents` では `referenceStat`、`ratio`、`levelScaling`、`fixedValue`、`defenseReference`、`hitCount` を持ちます。技選択UIの値は「使用回数」として扱い、`damageComponents.hitCount` は技1回あたりの内部ヒット数として扱います。旧 `formula` / `formulaPlus` は当面残し、新形式がある技では新形式を優先します。
 
@@ -382,7 +388,7 @@ JavaScriptはES Modulesとして読み込まれます。
 
 DOM参照やグローバル状態参照は持たず、必要な値は引数で受け取ります。計算結果はES Modules化前と同じにする方針です。
 
-ピカチュウの通常攻撃は、`pokemonData.js` の `normalAttack.basic` / `normalAttack.boosted` データを参照して計算します。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、ピカチュウの式を関数内に直接持ちません。新形式がないポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。不正な `defenseReference` はエラーにしてデータ不備を検出します。
+ピカチュウとエースバーンの通常攻撃は、`pokemonData.js` の `normalAttack.basic` / `normalAttack.boosted` データを参照して計算します。`calculateNormalAttackDamage()` は新形式データが渡された場合だけデータ参照で計算し、移行済みポケモンの式を関数内に直接持ちません。新形式がないポケモンでは従来のポケモン別分岐を使います。`computeNormalAttackFinalDamage()` は各ヒットの `defenseReference` を見て、防御または特防を選びます。古い保存済み通常攻撃データに `defenseReference` がない場合は、ピカチュウの強化通常だけ `spDefense`、それ以外は `defense` として扱います。不正な `defenseReference` はエラーにしてデータ不備を検出します。
 
 技ダメージは、`damageComponents` がある場合だけ新形式を優先して計算します。新形式では画面の選択値を使用回数、`damageComponents.hitCount` を内部ヒット数として扱います。最終ダメージは内部1ヒットごとに防御または特防補正を適用してから、内部ヒット数と使用回数を掛けて合計します。`plusDamageComponents` がある技はプラス時にそちらを使い、式が同じでヒット数だけ変わる技は `plusHitCount` を使います。新形式がない技は従来の `formula` / `formulaPlus` 計算へフォールバックします。`defenseReference` は `defense` または `spDefense` のみ有効で、不正な値はエラーにしてデータ不備を早く検出します。
 
@@ -902,7 +908,7 @@ Node標準のテスト機能を使うため、外部ライブラリは追加し�
 
 ### 通常攻撃ロジックがポケモンごとに重複している
 
-`calculateNormalAttackDamage()` はポケモンごとに似た処理が重複しています。ピカチュウだけは `pokemonData.js` の `normalAttack` データ参照へ実験移行済みです。通常攻撃の倍率、強化通常の条件、急所可否などを他ポケモンにも広げると、ポケモン追加時の修正量を減らせます。
+`calculateNormalAttackDamage()` はポケモンごとに似た処理が重複しています。ピカチュウとエースバーンは `pokemonData.js` の `normalAttack` データ参照へ移行済みです。通常攻撃の倍率、強化通常の条件、急所可否などを他ポケモンにも広げると、ポケモン追加時の修正量を減らせます。
 
 計算結果が変わる可能性があるため、これはDOM整理やイベント分割より後に行います。
 

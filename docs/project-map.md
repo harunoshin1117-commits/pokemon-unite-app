@@ -38,6 +38,7 @@
 | 追加ダメージ効果を増やす | `js/pokemonData.js`, `js/damageCalculator.js` | `tests/damageCalculator.test.js`, `js/resultRenderer.js` |
 | エレキボールを確認する | `js/pokemonData.js`, `js/damageCalculator.js` | `..\データリサーチ\pikachu-researchData.json`, `tests/damageCalculator.test.js` |
 | 攻撃順・コンボ機能を考える | `js/damageCalculator.js`, `js/app.js` | `js/resultRenderer.js`, `docs/project-overview.md` |
+| 全ポケモンの特殊効果を横断調査する | `..\データリサーチ\mechanics-survey\batch-*`, `docs/special-mechanics-inventory.json` | `docs/special-mechanics-matrix.md`, `docs/special-mechanics-design-notes.md`, 既存の `..\データリサーチ\*-researchData.json` |
 | 持ち物データを直す | `js/helditemData.js` | `js/heldItemService.js` |
 | 持ち物効果計算を直す | `js/heldItemService.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js` |
 | 保存ビルド機能を直す | `js/build/` | `js/app.js`, `tests/build*.test.js` |
@@ -76,6 +77,10 @@
 
 - `..\データリサーチ\README.md`: 研究データ置き場の説明。
 - `..\データリサーチ\pikachu-researchData.json`: ピカチュウの検証候補、出典、確定状況、矛盾点。
+- `..\データリサーチ\mechanics-survey\batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技の特殊効果をバッチ単位で横断調査するドラフト。
+- `docs/special-mechanics-inventory.json`: 特殊効果の横断一覧。攻撃順依存、時間管理、相手ごとの状態管理などを機械処理しやすい形で確認する。
+- `docs/special-mechanics-matrix.md`: 特殊効果の横断表。人間がざっと比較するためのMarkdown一覧。
+- `docs/special-mechanics-design-notes.md`: 横断調査から見える共通設計案と未確認リスクのメモ。
 
 ### js
 

@@ -12,6 +12,7 @@ import {
 import { pokemonsList } from "../js/pokemonData.js";
 
 const pikachu = pokemonsList.find(pokemon => pokemon.id === "Pikachu");
+const cinderace = pokemonsList.find(pokemon => pokemon.id === "Cinderace");
 const findPikachuMove = moveName =>
     Object.values(pikachu.skill)
         .flat()
@@ -51,6 +52,26 @@ function calculatePikachuNormalAttack({
         hitCount,
         status: pikachu.stats[level],
         normalAttack: pikachu.normalAttack,
+        criticalEnabled,
+        criticalPattern,
+        random
+    });
+}
+
+function calculateCinderaceNormalAttack({
+    level = 5,
+    hitCount = 3,
+    status = cinderace.stats[level],
+    criticalEnabled = false,
+    criticalPattern = null,
+    random = Math.random
+} = {}){
+    return calculateNormalAttackDamage({
+        level,
+        pokemonId: cinderace.id,
+        hitCount,
+        status,
+        normalAttack: cinderace.normalAttack,
         criticalEnabled,
         criticalPattern,
         random
@@ -270,6 +291,147 @@ test("ピカチュウ通常攻撃でも固定した急所パターンを維持�
         [true, false, true]
     );
     assert.equal(result.criticalCount, 2);
+});
+
+test("エースバーン通常攻撃はnormalAttackデータを参照して計算する", () => {
+    const result = calculateCinderaceNormalAttack({
+        level: 5,
+        hitCount: 3
+    });
+    const finalDamage = computeNormalAttackFinalDamage(
+        result,
+        cinderace.id,
+        cinderace.stats[5]
+    );
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.damage),
+        [174, 174, 243]
+    );
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.boosted),
+        [false, false, true]
+    );
+    assert.deepEqual(
+        finalDamage.finalHitDamages.map(hitData => hitData.damage),
+        [153, 153, 215]
+    );
+    assert.equal(finalDamage.totalFinalDamage, 521);
+});
+
+test("エースバーンステータスはUnite-DB採用値を参照する", () => {
+    assert.deepEqual(cinderace.stats[5], {
+        hp: 3382,
+        attack: 174,
+        defense: 78,
+        spAttack: 32,
+        spDefense: 55,
+        criticalRate: 15
+    });
+    assert.deepEqual(cinderace.stats[15], {
+        hp: 6000,
+        attack: 418,
+        defense: 268,
+        spAttack: 119,
+        spDefense: 232,
+        criticalRate: 30
+    });
+});
+
+test("エースバーン通常攻撃と強化攻撃は別の倍率データを参照する", () => {
+    const result = calculateCinderaceNormalAttack({
+        level: 5,
+        hitCount: 3,
+        status: {
+            attack: 2000,
+            spAttack: 1,
+            criticalRate: 0
+        }
+    });
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.damage),
+        [2000, 2000, 2800]
+    );
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.defenseReference),
+        ["defense", "defense", "defense"]
+    );
+});
+
+test("エースバーン通常攻撃でも固定した急所パターンを維持する", () => {
+    const result = calculateCinderaceNormalAttack({
+        hitCount: 3,
+        criticalEnabled: true,
+        criticalPattern: [true, false, true],
+        random: () => {
+            throw new Error("固定中は乱数を使用しない");
+        }
+    });
+
+    assert.deepEqual(
+        result.hitDamages.map(hitData => hitData.critical),
+        [true, false, true]
+    );
+    assert.equal(result.criticalCount, 2);
+});
+
+test("エースバーン通常攻撃は元のステータスオブジェクトを変更しない", () => {
+    const status = { ...cinderace.stats[5] };
+    const before = JSON.stringify(status);
+
+    calculateCinderaceNormalAttack({
+        level: 5,
+        hitCount: 3,
+        status,
+        criticalPattern: [true, false, false]
+    });
+
+    assert.equal(JSON.stringify(status), before);
+});
+
+test("エースバーン通常攻撃データは将来用の強化条件と野生上限を持つ", () => {
+    assert.deepEqual(cinderace.normalAttack.boostedTriggers, [
+        {
+            type: "attackCycle",
+            every: 3
+        },
+        {
+            type: "afterMove",
+            appliesTo: "nextNormalAttack",
+            persistsUntilUsed: true
+        }
+    ]);
+    assert.deepEqual(cinderace.normalAttack.wildPokemonDamageCaps, {
+        basic: 1000,
+        boosted: 1300
+    });
+});
+
+test("エースバーン特性データは火種と発火追加ダメージを持つ", () => {
+    const blaze = cinderace.passiveEffects.find(
+        effect => effect.id === "cinderace-blaze"
+    );
+
+    assert.equal(blaze.implementationStatus, "dataOnly");
+    assert.deepEqual(blaze.lowHpBuff.trigger, {
+        type: "selfHpRatioAtOrBelow",
+        value: 0.5
+    });
+    assert.deepEqual(blaze.lowHpBuff.effects, {
+        criticalRateBonus: 10,
+        autoAttackSpeedBonus: 20
+    });
+    assert.deepEqual(blaze.cinderStacks.stacksByAttackType, {
+        normalAttack: 1,
+        boostedNormalAttack: 2,
+        move: 2
+    });
+    assert.equal(blaze.cinderStacks.triggerStacks, 5);
+    assert.equal(blaze.flareDamage.attackRatio, 0.9);
+    assert.equal(blaze.flareDamage.targetMaxHpLevelScalingRatio, 0.007);
+    assert.equal(blaze.flareDamage.fixedValue, 25);
+    assert.equal(blaze.flareDamage.wildPokemonMaxHpDamageCap, 500);
 });
 
 test("旧形式のポケモンは従来どおり通常攻撃を計算する", () => {

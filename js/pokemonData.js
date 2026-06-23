@@ -664,7 +664,40 @@ export const pokemonsList = [
         id:"Cinderace",
         name:"エースバーン",
         Image:"./images/Cinderace-image.png",
-        normalAttack:{},
+        normalAttack:{
+            description: "3回目の攻撃は強化攻撃になり、わざ使用後も次の通常攻撃が強化攻撃になる",
+            cycle: 3,
+            cycleLength: 3,
+            boostedTriggers: [
+                {
+                    type: "attackCycle",
+                    every: 3
+                },
+                {
+                    type: "afterMove",
+                    appliesTo: "nextNormalAttack",
+                    persistsUntilUsed: true
+                }
+            ],
+            wildPokemonDamageCaps: {
+                basic: 1000,
+                boosted: 1300
+            },
+            basic: {
+                referenceStat: "attack",
+                ratio: 1,
+                levelScaling: 0,
+                fixedValue: 0,
+                defenseReference: "defense"
+            },
+            boosted: {
+                referenceStat: "attack",
+                ratio: 1.4,
+                levelScaling: 0,
+                fixedValue: 0,
+                defenseReference: "defense"
+            }
+        },
         skill:{
             1:[
                 {
@@ -782,6 +815,47 @@ export const pokemonsList = [
             ]
         },
 
+        passiveEffects: [
+            {
+                id: "cinderace-blaze",
+                name: "もうか",
+                lowHpBuff: {
+                    trigger: {
+                        type: "selfHpRatioAtOrBelow",
+                        value: 0.5
+                    },
+                    durationSeconds: 5,
+                    cooldownSeconds: 30,
+                    effects: {
+                        criticalRateBonus: 10,
+                        autoAttackSpeedBonus: 20
+                    }
+                },
+                cinderStacks: {
+                    targetStackId: "cinder",
+                    durationSeconds: 5,
+                    stacksByAttackType: {
+                        normalAttack: 1,
+                        boostedNormalAttack: 2,
+                        move: 2
+                    },
+                    triggerStacks: 5,
+                    consumeStacksOnTrigger: true
+                },
+                flareDamage: {
+                    type: "attackAndTargetMaxHpLevelScaling",
+                    referenceStat: "attack",
+                    attackRatio: 0.9,
+                    targetMaxHpLevelScalingRatio: 0.007,
+                    fixedValue: 25,
+                    damageType: "physical",
+                    defenseReference: "defense",
+                    wildPokemonMaxHpDamageCap: 500
+                },
+                implementationStatus: "dataOnly"
+            }
+        ],
+
         stats:{
             1:{
                 hp:3000,
@@ -793,128 +867,128 @@ export const pokemonsList = [
             },
 
             2:{
-                hp:3034,
+                hp:3043,
                 attack:140,
                 defense:53,
                 spAttack:21,
-                spDefense:32,
+                spDefense:33,
                 criticalRate:0
             },
 
             3:{
-                hp:3075,
+                hp:3095,
                 attack:145,
-                defense:56,
+                defense:57,
                 spAttack:23,
-                spDefense:34,
-                criticalRate:0
-            },
-
-            4:{
-                hp:3124,
-                attack:151,
-                defense:60,
-                spAttack:25,
                 spDefense:36,
                 criticalRate:0
             },
 
+            4:{
+                hp:3157,
+                attack:151,
+                defense:62,
+                spAttack:25,
+                spDefense:40,
+                criticalRate:0
+            },
+
             5:{
-                hp:3304,
+                hp:3382,
                 attack:174,
-                defense:75,
+                defense:78,
                 spAttack:32,
-                spDefense:45,
+                spDefense:55,
                 criticalRate:15
             },
 
             6:{
-                hp:3376,
+                hp:3471,
                 attack:183,
-                defense:81,
+                defense:84,
                 spAttack:35,
-                spDefense:49,
+                spDefense:61,
                 criticalRate:15
             },
 
             7:{
-                hp:3702,
+                hp:3878,
                 attack:221,
-                defense:108,
+                defense:114,
                 spAttack:49,
-                spDefense:65,
+                spDefense:88,
                 criticalRate:15
             },
 
             8:{
-                hp:3805,
+                hp:4007,
                 attack:233,
-                defense:117,
+                defense:123,
                 spAttack:53,
-                spDefense:70,
+                spDefense:97,
                 criticalRate:15
             },
 
             9:{
-                hp:3929,
+                hp:4161,
                 attack:247,
-                defense:127,
+                defense:134,
                 spAttack:58,
-                spDefense:76,
+                spDefense:107,
                criticalRate:30
             },
 
             10:{
-                hp:4077,
+                hp:4346,
                 attack:264,
-                defense:139,
+                defense:147,
                 spAttack:64,
-                spDefense:83,
+                spDefense:119,
                criticalRate:30
             },
 
             11:{
-                hp:4225,
+                hp:4568,
                 attack:284,
-                defense:154,
+                defense:163,
                 spAttack:71,
-                spDefense:92,
+                spDefense:134,
                criticalRate:30
             },
 
             12:{
-                hp:4468,
+                hp:4835,
                 attack:309,
-                defense:172,
+                defense:182,
                 spAttack:80,
-                spDefense:103,
+                spDefense:152,
                criticalRate:30
             },
 
             13:{
-                hp:4724,
+                hp:5155,
                 attack:339,
-                defense:193,
+                defense:206,
                 spAttack:91,
-                spDefense:116,
+                spDefense:175,
                criticalRate:30
             },
 
             14:{
-                hp:5031,
+                hp:5539,
                 attack:375,
-                defense:219,
+                defense:235,
                 spAttack:104,
-                spDefense:131,
+                spDefense:201,
                criticalRate:30
             },
 
             15:{
-                hp:5400,
+                hp:6000,
                 attack:418,
-                defense:250,
+                defense:268,
                 spAttack:119,
-                spDefense:149,
+                spDefense:232,
                criticalRate:30
             }
         },
