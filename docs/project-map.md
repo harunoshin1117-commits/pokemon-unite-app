@@ -38,7 +38,7 @@
 | 追加ダメージ効果を増やす | `js/pokemonData.js`, `js/damageCalculator.js` | `tests/damageCalculator.test.js`, `js/resultRenderer.js` |
 | エレキボールを確認する | `js/pokemonData.js`, `js/damageCalculator.js` | `..\データリサーチ\pikachu-researchData.json`, `tests/damageCalculator.test.js` |
 | 攻撃順・コンボ機能を考える | `js/damageCalculator.js`, `js/app.js` | `js/resultRenderer.js`, `docs/project-overview.md` |
-| 全ポケモンの特殊効果を横断調査する | `..\データリサーチ\mechanics-effects-survey-v2\batch-*`, `docs/special-mechanics-inventory-v2.json` | `docs/special-mechanics-matrix-v2.md`, `docs/special-mechanics-design-notes-v2.md`, 旧調査の `..\データリサーチ\mechanics-survey\batch-*`, 既存の `..\データリサーチ\*-researchData.json` |
+| 全ポケモンの特殊効果を横断調査する | `..\データリサーチ\mechanics-effects-survey-v3\batch-*`, `docs/special-mechanics-inventory-v3.json` | `docs/special-mechanics-matrix-v3.md`, `docs/special-mechanics-design-notes-v3.md`, 旧調査の `..\データリサーチ\mechanics-effects-survey-v2\batch-*`, `..\データリサーチ\mechanics-survey\batch-*`, 既存の `..\データリサーチ\*-researchData.json` |
 | 持ち物データを直す | `js/helditemData.js` | `js/heldItemService.js` |
 | 持ち物効果計算を直す | `js/heldItemService.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js` |
 | 保存ビルド機能を直す | `js/build/` | `js/app.js`, `tests/build*.test.js` |
@@ -79,12 +79,16 @@
 - `..\データリサーチ\pikachu-researchData.json`: ピカチュウの検証候補、出典、確定状況、矛盾点。
 - `..\データリサーチ\mechanics-survey\batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技の特殊効果をバッチ単位で横断調査するドラフト。
 - `..\データリサーチ\mechanics-effects-survey-v2\batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技を、ソース単位ではなく効果単位で分解したv2ドラフト。直接ダメージと単純移動は `baseAction` に分ける。
+- `..\データリサーチ\mechanics-effects-survey-v3\batch-*`: v2で漏れていた派生技、上位技、Plus効果、強化通常攻撃、Unite Buffを含め、調査対象ソース一覧を作ってから効果単位で分解したv3ドラフト。
 - `docs/special-mechanics-inventory.json`: 特殊効果の横断一覧。攻撃順依存、時間管理、相手ごとの状態管理などを機械処理しやすい形で確認する。
 - `docs/special-mechanics-matrix.md`: 特殊効果の横断表。人間がざっと比較するためのMarkdown一覧。
 - `docs/special-mechanics-design-notes.md`: 横断調査から見える共通設計案と未確認リスクのメモ。
 - `docs/special-mechanics-inventory-v2.json`: v2特殊効果の横断一覧。特殊効果0件のソースも残し、効果ごとに `battleState` 必要理由を確認する。
 - `docs/special-mechanics-matrix-v2.md`: v2特殊効果の横断表。効果単位で人間レビューしやすくしたMarkdown一覧。
 - `docs/special-mechanics-design-notes-v2.md`: v2調査から見える共通設計案と未確認リスクのメモ。
+- `docs/special-mechanics-inventory-v3.json`: v3特殊効果の横断一覧。全技ソース、Plus効果、強化通常攻撃、Unite Buff、v2との差分、未取得技チェック結果を含む。
+- `docs/special-mechanics-matrix-v3.md`: v3特殊効果の横断表。ポケモンごとのソース数と効果一覧をMarkdownで確認する。
+- `docs/special-mechanics-design-notes-v3.md`: v3調査から見えるデータ列挙・Plus効果・強化通常攻撃分離の設計メモ。
 
 ### js
 

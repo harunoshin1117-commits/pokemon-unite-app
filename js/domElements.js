@@ -67,6 +67,25 @@ export const criticalPatternLock = document.getElementById("critical-pattern-loc
 export const selectItems = document.querySelectorAll(".select-items");
 
 export const selectPokemonImage = document.getElementById("pokemon-img");
+export const attackerSummaryImage = document.getElementById("attacker-summary-image");
+export const attackerSummaryName = document.getElementById("attacker-summary-name");
+export const attackerSummaryLevel = document.getElementById("attacker-summary-level");
+export const attackerSummaryAttack = document.getElementById("attacker-summary-attack");
+export const attackerSummaryDefense = document.getElementById("attacker-summary-defense");
+export const attackerSummarySpAttack = document.getElementById("attacker-summary-sp-attack");
+export const attackerSummarySpDefense = document.getElementById("attacker-summary-sp-defense");
+export const attackerSummaryHp = document.getElementById("attacker-summary-hp");
+export const attackerSummaryMoveSpeed = document.getElementById("attacker-summary-move-speed");
+export const attackerSummaryCriticalRate = document.getElementById("attacker-summary-critical-rate");
+export const attackerSummaryCriticalDamage = document.getElementById("attacker-summary-critical-damage");
+export const attackerSummaryCurrentHp = document.getElementById("attacker-summary-current-hp");
+export const attackerSummaryHpFill = document.getElementById("attacker-summary-hp-fill");
+export const attackerSummaryAbility = document.getElementById("attacker-summary-ability");
+export const abilityImage = document.getElementById("ability-image");
+export const abilityImagePlaceholder = document.getElementById("ability-image-placeholder");
+export const abilityName = document.getElementById("ability-name");
+export const abilityDescription = document.getElementById("ability-description");
+export const abilityNote = document.getElementById("ability-note");
 
 export const attackAction = document.querySelector(".attack-action");
 export const resultPopup = document.querySelector(".result-popup");

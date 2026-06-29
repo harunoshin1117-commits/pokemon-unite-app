@@ -428,6 +428,24 @@ test("エースバーン特性データは火種と発火追加ダメージを�
         move: 2
     });
     assert.equal(blaze.cinderStacks.triggerStacks, 5);
+    assert.equal(blaze.cinderStacks.consumedStacksOnTrigger, 5);
+    assert.equal(blaze.cinderStacks.overflowStacksRemain, true);
+    assert.equal(
+        blaze.cinderStacks.damageDisplayOrder,
+        "hitDamageThenFlareDamage"
+    );
+    assert.equal(
+        blaze.cinderStacks.verificationStatus.displayOrder,
+        "measured"
+    );
+    assert.equal(
+        blaze.cinderStacks.verificationStatus.internalProcessingOrder,
+        "needsRecheck"
+    );
+    assert.equal(
+        blaze.cinderStacks.verificationStatus.stackTimerRefreshRule,
+        "needsGameVerification"
+    );
     assert.equal(blaze.flareDamage.attackRatio, 0.9);
     assert.equal(blaze.flareDamage.targetMaxHpLevelScalingRatio, 0.007);
     assert.equal(blaze.flareDamage.fixedValue, 25);

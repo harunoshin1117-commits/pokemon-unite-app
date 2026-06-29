@@ -66,8 +66,27 @@ import {
     getUniteMove
 } from "./appSelectors.js";
 import {
+    abilityDescription,
+    abilityImage,
+    abilityImagePlaceholder,
+    abilityName,
+    abilityNote,
     allResetButton,
     attackAction,
+    attackerSummaryAbility,
+    attackerSummaryAttack,
+    attackerSummaryCriticalDamage,
+    attackerSummaryCriticalRate,
+    attackerSummaryCurrentHp,
+    attackerSummaryDefense,
+    attackerSummaryHp,
+    attackerSummaryHpFill,
+    attackerSummaryImage,
+    attackerSummaryLevel,
+    attackerSummaryMoveSpeed,
+    attackerSummaryName,
+    attackerSummarySpAttack,
+    attackerSummarySpDefense,
     buildNameInput,
     buildDetailsContent,
     buildDetailsOverlay,
@@ -194,6 +213,7 @@ Object.values(hitCountSelects).forEach(select => {
 levelSelect.addEventListener("change", () => {
 
     updatePlayerUI();
+    updateAttackerSummaryCard();
     updateNormalAttack();
    updateDamageByHitCount();
    
@@ -258,6 +278,8 @@ pokemonSelect.addEventListener("change", () => {
     titlePokemonTitle.textContent = selectedId;
 
     showSelectPokemonImage();
+    updateAbilityDisplay();
+    updateAttackerSummaryCard();
     updatePlayerUI();
    updateNormalAttack();
    
@@ -382,6 +404,7 @@ selectItems.forEach(item => {
            showHeldItem(item.dataset.id,selectedItem);
            overlay.style.display = "none";
            updatePlayerUI();
+           updateAttackerSummaryCard();
            updateNormalAttack();
           
     })
@@ -390,6 +413,7 @@ selectItems.forEach(item => {
 
 criticalCheck.addEventListener("click",() => {
     releaseNormalAttackCriticalLock();
+    updateAttackerSummaryCard();
     updateNormalAttack();
 })
 
@@ -403,6 +427,7 @@ criticalPatternLock.addEventListener("change", () => {
     }
 
     lockedNormalAttackCriticalPattern = null;
+    updateAttackerSummaryCard();
     updateNormalAttack();
 });
 
@@ -554,6 +579,8 @@ function resetAppState(){
     titlePokemonTitle.textContent = currentPokemon.id;
     enemyName.textContent = enemyPokemon.id;
     showSelectPokemonImage();
+    updateAbilityDisplay();
+    updateAttackerSummaryCard();
     updatePlayerUI();
     updateEnemyUI();
     updateNormalAttack();
@@ -664,6 +691,8 @@ export function applyBuildState(build){
     titlePokemonTitle.textContent = currentPokemon.id;
     enemyName.textContent = enemyPokemon.id;
     showSelectPokemonImage();
+    updateAbilityDisplay();
+    updateAttackerSummaryCard();
     updatePlayerUI();
     updateEnemyUI();
 
@@ -1031,6 +1060,95 @@ function showSelectPokemonImage(){
     renderSelectPokemonImage(currentPokemon, selectPokemonImage);
 }
 
+function updateAbilityDisplay(){
+    const ability = currentPokemon.abilityDisplayData;
+
+    abilityName.textContent = ability?.name || "特性情報は準備中です";
+    abilityDescription.textContent = ability?.shortDescription || "";
+    abilityNote.textContent =
+        ability?.note || "現在は説明表示のみ。計算処理には未接続。";
+
+    if(ability?.image){
+        abilityImage.src = ability.image;
+        abilityImage.alt = `${abilityName.textContent}のイメージ`;
+        abilityImage.hidden = false;
+        abilityImagePlaceholder.hidden = true;
+    }else{
+        abilityImage.removeAttribute("src");
+        abilityImage.alt = "";
+        abilityImage.hidden = true;
+        abilityImagePlaceholder.hidden = false;
+    }
+}
+
+function formatSummaryNumber(value){
+    return Number.isFinite(value)
+        ? Math.floor(value).toLocaleString()
+        : "-";
+}
+
+function formatSummaryPercent(value){
+    if(!Number.isFinite(value)){
+        return "-";
+    }
+
+    return `${Math.floor(value)}%`;
+}
+
+function getSummaryMoveSpeed(status){
+    return status.moveSpeed ??
+        status.movementSpeed ??
+        status.speed ??
+        null;
+}
+
+function getSummaryCriticalDamage(status){
+    const criticalDamage =
+        status.criticalDamage ??
+        status.criticalDamageRate ??
+        200;
+
+    if(!Number.isFinite(criticalDamage)){
+        return "200%";
+    }
+
+    return criticalDamage <= 10
+        ? `${Math.floor(criticalDamage * 100)}%`
+        : `${Math.floor(criticalDamage)}%`;
+}
+
+function updateAttackerSummaryCard(){
+    const status = getCurrentPlayerStatus();
+    const level = Number(levelSelect.value);
+    const maxHp = Number(status.hp);
+    const currentHp = Number.isFinite(maxHp) ? maxHp : 0;
+    const hpPercent = maxHp > 0
+        ? Math.max(0, Math.min(100, Math.floor((currentHp / maxHp) * 100)))
+        : 0;
+    const abilityNameText =
+        currentPokemon.abilityDisplayData?.name || "特性情報準備中";
+
+    attackerSummaryImage.src = currentPokemon.Image || "";
+    attackerSummaryImage.alt = `${currentPokemon.name || currentPokemon.id}の画像`;
+    attackerSummaryName.textContent = currentPokemon.name || currentPokemon.id;
+    attackerSummaryLevel.textContent = `Lv.${level}`;
+    attackerSummaryAttack.textContent = formatSummaryNumber(status.attack);
+    attackerSummaryDefense.textContent = formatSummaryNumber(status.defense);
+    attackerSummarySpAttack.textContent = formatSummaryNumber(status.spAttack);
+    attackerSummarySpDefense.textContent = formatSummaryNumber(status.spDefense);
+    attackerSummaryHp.textContent = formatSummaryNumber(maxHp);
+    attackerSummaryMoveSpeed.textContent =
+        formatSummaryNumber(getSummaryMoveSpeed(status));
+    attackerSummaryCriticalRate.textContent =
+        formatSummaryPercent(status.criticalRate);
+    attackerSummaryCriticalDamage.textContent =
+        getSummaryCriticalDamage(status);
+    attackerSummaryCurrentHp.textContent =
+        `${formatSummaryNumber(currentHp)} / ${formatSummaryNumber(maxHp)} (${hpPercent}%)`;
+    attackerSummaryHpFill.style.width = `${hpPercent}%`;
+    attackerSummaryAbility.textContent = abilityNameText;
+}
+
 function renderTotalDamageResult(finalDamageData, moveDamageData){
     renderFinalDamageAll(finalDamageData, {
         moveDamageData,
@@ -1047,3 +1165,5 @@ function renderTotalDamageResult(finalDamageData, moveDamageData){
 
 updatePlayerUI();
 updateEnemyUI();
+updateAbilityDisplay();
+updateAttackerSummaryCard();

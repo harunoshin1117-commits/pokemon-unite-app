@@ -1,3 +1,6 @@
+// pokemonsList is a large array. When checking stats, always identify the
+// target Pokemon by id first instead of relying on nearby line numbers.
+// Known ids: Pikachu, Greninja, Cinderace.
 export const pokemonsList = [
     {
         id:"Pikachu",
@@ -664,6 +667,13 @@ export const pokemonsList = [
         id:"Cinderace",
         name:"エースバーン",
         Image:"./images/Cinderace-image.png",
+        abilityDisplayData: {
+            name: "もうか",
+            shortDescription:
+                "HPが一定以下になると、急所率と攻撃速度が上昇する。通常攻撃や技の命中によって火種を付与する。",
+            image: "",
+            note: "現在は説明表示のみ。計算処理には未接続。"
+        },
         normalAttack:{
             description: "3回目の攻撃は強化攻撃になり、わざ使用後も次の通常攻撃が強化攻撃になる",
             cycle: 3,
@@ -840,7 +850,21 @@ export const pokemonsList = [
                         move: 2
                     },
                     triggerStacks: 5,
-                    consumeStacksOnTrigger: true
+                    consumeStacksOnTrigger: true,
+                    consumedStacksOnTrigger: 5,
+                    overflowStacksRemain: true,
+                    triggerCheck: "afterStackAdded",
+                    damageDisplayOrder: "hitDamageThenFlareDamage",
+                    verificationStatus: {
+                        displayOrder: "measured",
+                        consumedStacksOnTrigger: "measured",
+                        overflowStacksRemain: "measured",
+                        durationSeconds: "measured",
+                        internalProcessingOrder: "needsRecheck",
+                        stackTimerRefreshRule: "needsGameVerification",
+                        perTargetIndependence: "needsGameVerification",
+                        multiTriggerPerHit: "unconfirmed"
+                    }
                 },
                 flareDamage: {
                     type: "attackAndTargetMaxHpLevelScaling",
