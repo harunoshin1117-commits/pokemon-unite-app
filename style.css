@@ -1369,7 +1369,7 @@ hpバー作成
         min-height: 150px;
         width: 100%;
         max-width: 100%;
-        padding: 10px;
+        padding: 8px;
         overflow: visible;
     }
 
@@ -1379,24 +1379,39 @@ hpバー作成
 
     .held-items {
         display: flex;
-        gap: 8px;
+        gap: 6px;
         overflow-x: visible;
         justify-content: center;
     }
 
     .held-items > div {
-        width: 96px;
-        max-width: 96px;
-        flex: 0 0 96px;
+        width: auto;
+        max-width: 86px;
+        min-width: 0;
+        flex: 1 1 0;
+    }
+
+    .held-items > div > p {
+        display: none;
     }
 
     .held-item {
-        min-width: 82px;
-        width: 82px;
-        height: 82px;
+        min-width: 0;
+        width: clamp(68px, 24vw, 82px);
+        height: clamp(68px, 24vw, 82px);
         box-sizing: border-box;
         overflow: hidden;
-        padding: 6px;
+        padding: 5px;
+        font-size: 18px;
+    }
+
+    .held-item.is-held-item-selected {
+        gap: 2px;
+        font-size: 10px;
+    }
+
+    .held-item-image-frame {
+        height: clamp(38px, 14vw, 50px);
     }
 
     .held-item img {
@@ -1410,6 +1425,12 @@ hpバー作成
         height: auto;
         margin: 0 auto;
         object-fit: contain;
+    }
+
+    .held-item-name {
+        font-size: clamp(9px, 2.8vw, 11px);
+        line-height: 1.05;
+        max-height: 24px;
     }
 
     .ability-display-body {
