@@ -3,8 +3,6 @@ export function bindUiEvents({
     detailPopupOverlay,
     resultBreakdownToggle,
     detailDamageResult,
-    playerStatsToggle,
-    statsText,
     enemyStatsToggle,
     enemyStatsText,
     heldItems,
@@ -20,10 +18,6 @@ export function bindUiEvents({
         resultBreakdownToggle.textContent = detailDamageResult.classList.contains("is-open")
             ? "内訳を閉じる"
             : "内訳を見る";
-    });
-
-    playerStatsToggle.addEventListener("click", () => {
-        statsText.classList.toggle("is-open");
     });
 
     enemyStatsToggle.addEventListener("click", () => {

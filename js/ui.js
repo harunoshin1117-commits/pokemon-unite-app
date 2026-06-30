@@ -1,5 +1,4 @@
 import {
-    showSelectPokemonImage,
     showSkillResult
 } from "./resultRenderer.js";
 
@@ -7,8 +6,6 @@ export function updatePlayerUI(context){
     const {
         level,
         currentPokemon,
-        currentPokemonStats,
-        statusName,
         selectedSkillOne,
         selectedSkillTwo,
         selectedSkillThird,
@@ -22,14 +19,12 @@ export function updatePlayerUI(context){
         skillThirdResult,
         skillThirdTwo,
         uniteMove,
-        statsText,
         damageTaken,
         remainingHp,
         damageTakenPlus,
         remainingHpPlus,
         uniteTaken,
         remainingHpUnite,
-        selectPokemonImage,
         updateDamageByHitCount
     } = context;
 
@@ -78,7 +73,6 @@ export function updatePlayerUI(context){
       setMoveOption(hiddenOption, selectedMove.name);
     }
   }
-  statsText.innerHTML = "";
   damageTaken.textContent = "";
   remainingHp.textContent = "";
   damageTakenPlus.textContent = "";
@@ -130,18 +124,6 @@ Object.entries(currentPokemon.skill).forEach(([skillLevel,skills]) => {
 
   
 
-
-    Object.entries(currentPokemonStats).forEach(([key,value]) =>{
-          const p = document.createElement("p");
-                
-            p.textContent = `${statusName[key]}: ${Math.floor(value)}`;
-
-             statsText.appendChild(p);
-        
-    })
-
-showSelectPokemonImage(currentPokemon, selectPokemonImage);
-    
   keepSelectedMoveOption(skillFirstResult, selectedSkillOne);
   keepSelectedMoveOption(skillSecondResult, selectedSkillTwo);
   keepSelectedMoveOption(skillThirdResult, selectedSkillThird);

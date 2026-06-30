@@ -14,8 +14,6 @@ export const skillThirdTwo = document.getElementById("skill-third-two");
 
 export const uniteMove = document.getElementById("unite-move");
 
-export const titlePokemonTitle = document.querySelector(".title-pokemon-title");
-
 export const enemyLevelSelect = document.getElementById("enemy-level");
 export const pokemonSelectTwo = document.getElementById("pokemon-select-two");
 export const enemyName = document.getElementById("enemy-name");
@@ -66,7 +64,6 @@ export const criticalPatternLock = document.getElementById("critical-pattern-loc
 
 export const selectItems = document.querySelectorAll(".select-items");
 
-export const selectPokemonImage = document.getElementById("pokemon-img");
 export const attackerSummaryImage = document.getElementById("attacker-summary-image");
 export const attackerSummaryName = document.getElementById("attacker-summary-name");
 export const attackerSummaryLevel = document.getElementById("attacker-summary-level");
@@ -79,7 +76,11 @@ export const attackerSummaryMoveSpeed = document.getElementById("attacker-summar
 export const attackerSummaryCriticalRate = document.getElementById("attacker-summary-critical-rate");
 export const attackerSummaryCriticalDamage = document.getElementById("attacker-summary-critical-damage");
 export const attackerSummaryCurrentHp = document.getElementById("attacker-summary-current-hp");
+export const attackerSummaryCurrentHpInput = document.getElementById("attacker-summary-current-hp-input");
+export const attackerSummaryCurrentHpMax = document.getElementById("attacker-summary-current-hp-max");
+export const attackerSummaryCurrentHpPercent = document.getElementById("attacker-summary-current-hp-percent");
 export const attackerSummaryHpFill = document.getElementById("attacker-summary-hp-fill");
+export const attackerSummaryHpRange = document.getElementById("attacker-summary-hp-range");
 export const attackerSummaryAbility = document.getElementById("attacker-summary-ability");
 export const abilityImage = document.getElementById("ability-image");
 export const abilityImagePlaceholder = document.getElementById("ability-image-placeholder");
@@ -95,9 +96,7 @@ export const resultBreakdownToggle = document.getElementById("result-breakdown-t
 export const detailPopupOverlay = document.getElementById("detail-popup-overlay");
 export const hitDamageResult = document.getElementById("hitDamage-result");
 export const closeDetailPopup = document.getElementById("close-detail-popup");
-export const playerStatsToggle = document.getElementById("player-stats-toggle");
 export const enemyStatsToggle = document.getElementById("enemy-stats-toggle");
-export const statsText = document.getElementById("stats-text");
 export const enemyStatsText = document.getElementById("enemy-stats-text");
 
 export const hitCountSelects= {

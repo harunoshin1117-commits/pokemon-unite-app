@@ -26,7 +26,6 @@ import {
     showHitDamagesPopup,
     showNormalAttackDamage as renderNormalAttackDamage,
     showNormalAttackFinalDamage as renderNormalAttackFinalDamage,
-    showSelectPokemonImage as renderSelectPokemonImage,
     showSkillResult as renderSkillResult
 } from "./resultRenderer.js";
 import {
@@ -77,10 +76,13 @@ import {
     attackerSummaryAttack,
     attackerSummaryCriticalDamage,
     attackerSummaryCriticalRate,
-    attackerSummaryCurrentHp,
+    attackerSummaryCurrentHpInput,
+    attackerSummaryCurrentHpMax,
+    attackerSummaryCurrentHpPercent,
     attackerSummaryDefense,
     attackerSummaryHp,
     attackerSummaryHpFill,
+    attackerSummaryHpRange,
     attackerSummaryImage,
     attackerSummaryLevel,
     attackerSummaryMoveSpeed,
@@ -122,7 +124,6 @@ import {
     mobileTabPanels,
     normalAttackDamage,
     overlay,
-    playerStatsToggle,
     pokemonSelect,
     pokemonSelectTwo,
     remainingHp,
@@ -136,7 +137,6 @@ import {
     savedBuildSelect,
     showBuildDetailsButton,
     selectItems,
-    selectPokemonImage,
     skillFirstOne,
     skillFirstDamage,
     skillFirstResult,
@@ -149,9 +149,7 @@ import {
     skillThirdDamage,
     skillThirdResult,
     skillThirdTwo,
-    statsText,
     takenAll,
-    titlePokemonTitle,
     uniteTaken,
     uniteMove
 } from "./domElements.js";
@@ -178,6 +176,7 @@ let selectedSkillThird = null;
 let currentNormalAttackData = null;
 let currentHeldItems = [];
 let currentSelectedSlot = null;
+let attackerCurrentHp = null;
 let hasAttacked = false;
 let lockedNormalAttackCriticalPattern = null;
 const mobileQuery = window.matchMedia("(max-width: 768px)");
@@ -191,6 +190,13 @@ createLevelOptions(enemyLevelSelect);
 createPokemonOptions(pokemonSelect, pokemonsList);
 createPokemonOptions(pokemonSelectTwo, pokemonsList);
 createHitCountOptions(hitCountSelects);
+
+currentPokemon = findPokemonById(pokemonsList, pokemonSelect.value) || pokemonsList[0];
+enemyPokemon = findPokemonById(pokemonsList, pokemonSelectTwo.value) || pokemonsList[0];
+levelSelect.value = levelSelect.value || "1";
+enemyLevelSelect.value = enemyLevelSelect.value || "1";
+updateAbilityDisplay();
+updateAttackerSummaryCard();
 
 updateNormalAttack();
 
@@ -206,11 +212,34 @@ Object.values(hitCountSelects).forEach(select => {
     })
 })
 
+attackerSummaryHpRange.addEventListener("input", () => {
+    const maxHp = getAttackerMaxHp();
+    attackerCurrentHp = normalizeInteger(
+        attackerSummaryHpRange.value,
+        0,
+        maxHp,
+        maxHp
+    );
+    updateAttackerSummaryCard();
+});
+
+attackerSummaryCurrentHpInput.addEventListener("input", () => {
+    const maxHp = getAttackerMaxHp();
+    attackerCurrentHp = normalizeInteger(
+        attackerSummaryCurrentHpInput.value,
+        0,
+        maxHp,
+        maxHp
+    );
+    updateAttackerSummaryCard();
+});
+
 // =========================
 // Player and result events
 // =========================
 
 levelSelect.addEventListener("change", () => {
+    attackerCurrentHp = null;
 
     updatePlayerUI();
     updateAttackerSummaryCard();
@@ -223,6 +252,7 @@ levelSelect.addEventListener("change", () => {
 
 pokemonSelect.addEventListener("change", () => {
     releaseNormalAttackCriticalLock();
+    attackerCurrentHp = null;
    
     selectedSkillOne = null;
     selectedSkillTwo = null;
@@ -274,10 +304,6 @@ pokemonSelect.addEventListener("change", () => {
     currentPokemon = findPokemonById(pokemonsList, selectedId);
 
   
-
-    titlePokemonTitle.textContent = selectedId;
-
-    showSelectPokemonImage();
     updateAbilityDisplay();
     updateAttackerSummaryCard();
     updatePlayerUI();
@@ -455,8 +481,6 @@ bindUiEvents({
     detailPopupOverlay,
     resultBreakdownToggle,
     detailDamageResult,
-    playerStatsToggle,
-    statsText,
     enemyStatsToggle,
     enemyStatsText,
     heldItems,
@@ -511,6 +535,7 @@ function resetAppState(){
     currentNormalAttackData = null;
     currentHeldItems = [];
     currentSelectedSlot = null;
+    attackerCurrentHp = null;
 
     pokemonSelect.value = currentPokemon.id;
     pokemonSelectTwo.value = enemyPokemon.id;
@@ -526,7 +551,8 @@ function resetAppState(){
     heldItems.forEach(item => {
         item.textContent = "✚";
         item.dataset.id = "";
-        item.style.padding = "20px";
+        item.style.padding = "";
+        item.classList.remove("is-held-item-selected");
     });
 
     resetDamageDisplay(
@@ -566,7 +592,6 @@ function resetAppState(){
     hpFillAll.style.backgroundColor = "green";
 
     detailDamageResult.classList.remove("is-open");
-    statsText.classList.remove("is-open");
     enemyStatsText.classList.remove("is-open");
     resultBreakdownToggle.textContent = "内訳を見る";
 
@@ -576,9 +601,7 @@ function resetAppState(){
     overlay.style.display = "none";
     resultPopup.style.display = "none";
 
-    titlePokemonTitle.textContent = currentPokemon.id;
     enemyName.textContent = enemyPokemon.id;
-    showSelectPokemonImage();
     updateAbilityDisplay();
     updateAttackerSummaryCard();
     updatePlayerUI();
@@ -592,6 +615,7 @@ export function getCurrentBuildState(){
         attacker: {
             pokemonId: currentPokemon.id,
             level: Number(levelSelect.value),
+            currentHp: getCurrentAttackerHpForSave(),
             skillOneName: selectedSkillOne?.name ?? null,
             skillTwoName: selectedSkillTwo?.name ?? null,
             uniteMoveName: selectedSkillThird?.name ?? null,
@@ -687,10 +711,14 @@ export function applyBuildState(build){
 
     currentHeldItems = [...restoredHeldItemIds];
     currentSelectedSlot = null;
+    attackerCurrentHp = normalizeInteger(
+        build.attacker?.currentHp,
+        0,
+        getAttackerMaxHp(),
+        getAttackerMaxHp()
+    );
 
-    titlePokemonTitle.textContent = currentPokemon.id;
     enemyName.textContent = enemyPokemon.id;
-    showSelectPokemonImage();
     updateAbilityDisplay();
     updateAttackerSummaryCard();
     updatePlayerUI();
@@ -879,8 +907,11 @@ function getActiveHeldItemsForCurrentSelection(){
 }
 
 function getCurrentPlayerStatus(){
-    const level = Number(levelSelect.value);
-    const baseStats = getPokemonStatsAtLevel(currentPokemon, level);
+    const level = normalizeInteger(levelSelect.value, 1, 15, 1);
+    const selectedPokemon =
+        findPokemonById(pokemonsList, pokemonSelect.value) ||
+        currentPokemon;
+    const baseStats = getPokemonStatsAtLevel(selectedPokemon, level);
 
     return getCurrentStatus(
         baseStats,
@@ -993,8 +1024,6 @@ function updatePlayerUI(){
     renderPlayerUI({
         level: Number(levelSelect.value),
         currentPokemon,
-        currentPokemonStats: getCurrentPlayerStatus(),
-        statusName,
         selectedSkillOne,
         selectedSkillTwo,
         selectedSkillThird,
@@ -1008,14 +1037,12 @@ function updatePlayerUI(){
         skillThirdResult,
         skillThirdTwo,
         uniteMove,
-        statsText,
         damageTaken,
         remainingHp,
         damageTakenPlus,
         remainingHpPlus,
         uniteTaken,
         remainingHpUnite,
-        selectPokemonImage,
         updateDamageByHitCount
     });
 }
@@ -1054,10 +1081,6 @@ function showSkillResult(resultElement, skillText, selectedMove){
 
 function showHeldItem(itemId, selectedItem){
     renderHeldItem(itemId, selectedItem, currentSelectedSlot);
-}
-
-function showSelectPokemonImage(){
-    renderSelectPokemonImage(currentPokemon, selectPokemonImage);
 }
 
 function updateAbilityDisplay(){
@@ -1117,35 +1140,70 @@ function getSummaryCriticalDamage(status){
         : `${Math.floor(criticalDamage)}%`;
 }
 
-function updateAttackerSummaryCard(){
+function getAttackerMaxHp(){
     const status = getCurrentPlayerStatus();
-    const level = Number(levelSelect.value);
-    const maxHp = Number(status.hp);
-    const currentHp = Number.isFinite(maxHp) ? maxHp : 0;
-    const hpPercent = maxHp > 0
-        ? Math.max(0, Math.min(100, Math.floor((currentHp / maxHp) * 100)))
+    const maxHp = Math.floor(Number(status.hp));
+
+    return Number.isFinite(maxHp) && maxHp > 0
+        ? maxHp
+        : 0;
+}
+
+function getCurrentAttackerHpForSave(){
+    const maxHp = getAttackerMaxHp();
+
+    if(attackerCurrentHp === null){
+        return maxHp;
+    }
+
+    return normalizeInteger(attackerCurrentHp, 0, maxHp, maxHp);
+}
+
+function updateAttackerSummaryCard(){
+    const selectedPokemon =
+        findPokemonById(pokemonsList, pokemonSelect.value) ||
+        currentPokemon;
+    const status = getCurrentPlayerStatus();
+    const level = normalizeInteger(levelSelect.value, 1, 15, 1);
+    const maxHp = Math.floor(Number(status.hp));
+    const safeMaxHp = Number.isFinite(maxHp) && maxHp > 0
+        ? maxHp
+        : 0;
+    const currentHp = attackerCurrentHp === null
+        ? safeMaxHp
+        : normalizeInteger(attackerCurrentHp, 0, safeMaxHp, safeMaxHp);
+    const hpPercent = safeMaxHp > 0
+        ? Math.max(0, Math.min(100, Math.floor((currentHp / safeMaxHp) * 100)))
         : 0;
     const abilityNameText =
-        currentPokemon.abilityDisplayData?.name || "特性情報準備中";
+        selectedPokemon.abilityDisplayData?.name || "特性情報準備中";
 
-    attackerSummaryImage.src = currentPokemon.Image || "";
-    attackerSummaryImage.alt = `${currentPokemon.name || currentPokemon.id}の画像`;
-    attackerSummaryName.textContent = currentPokemon.name || currentPokemon.id;
+    attackerCurrentHp = currentHp;
+
+    attackerSummaryImage.src = selectedPokemon.Image || "";
+    attackerSummaryImage.alt = `${selectedPokemon.name || selectedPokemon.id}の画像`;
+    attackerSummaryName.textContent = selectedPokemon.name || selectedPokemon.id;
     attackerSummaryLevel.textContent = `Lv.${level}`;
     attackerSummaryAttack.textContent = formatSummaryNumber(status.attack);
     attackerSummaryDefense.textContent = formatSummaryNumber(status.defense);
     attackerSummarySpAttack.textContent = formatSummaryNumber(status.spAttack);
     attackerSummarySpDefense.textContent = formatSummaryNumber(status.spDefense);
-    attackerSummaryHp.textContent = formatSummaryNumber(maxHp);
+    attackerSummaryHp.textContent = formatSummaryNumber(safeMaxHp);
     attackerSummaryMoveSpeed.textContent =
         formatSummaryNumber(getSummaryMoveSpeed(status));
     attackerSummaryCriticalRate.textContent =
         formatSummaryPercent(status.criticalRate);
     attackerSummaryCriticalDamage.textContent =
         getSummaryCriticalDamage(status);
-    attackerSummaryCurrentHp.textContent =
-        `${formatSummaryNumber(currentHp)} / ${formatSummaryNumber(maxHp)} (${hpPercent}%)`;
+    attackerSummaryCurrentHpInput.max = String(safeMaxHp);
+    attackerSummaryCurrentHpInput.value = String(currentHp);
+    attackerSummaryCurrentHpInput.disabled = safeMaxHp <= 0;
+    attackerSummaryCurrentHpMax.textContent = formatSummaryNumber(safeMaxHp);
+    attackerSummaryCurrentHpPercent.textContent = `(${hpPercent}%)`;
     attackerSummaryHpFill.style.width = `${hpPercent}%`;
+    attackerSummaryHpRange.max = String(safeMaxHp);
+    attackerSummaryHpRange.value = String(currentHp);
+    attackerSummaryHpRange.disabled = safeMaxHp <= 0;
     attackerSummaryAbility.textContent = abilityNameText;
 }
 
@@ -1167,3 +1225,7 @@ updatePlayerUI();
 updateEnemyUI();
 updateAbilityDisplay();
 updateAttackerSummaryCard();
+window.setTimeout(() => {
+    updateAbilityDisplay();
+    updateAttackerSummaryCard();
+}, 0);

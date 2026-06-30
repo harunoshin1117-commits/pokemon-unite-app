@@ -33,47 +33,71 @@ body {
 
 .main-pokemon-title {
     display: flex;
-    gap: 24px;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
-.main-pokemon-title > div:first-child {
-    flex: 1 1 0;
+.main-pokemon-title .select-font {
+    flex: 1 1 auto;
     min-width: 0;
+}
+
+.attacker-control-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.attacker-control-field select {
+    max-width: 180px;
 }
 
 .pokemon-side-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
-    flex: 1 1 0;
+    align-items: stretch;
+    width: 100%;
     min-width: 0;
+    margin-bottom: 16px;
 }
 
 .attacker-summary-card {
     display: grid;
-    grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
-    gap: 18px;
+    grid-template-columns: minmax(128px, 150px) minmax(0, 1fr);
+    gap: 20px;
     align-items: center;
     margin-bottom: 16px;
-    padding: 14px 18px;
+    padding: 12px 14px;
     border: 3px solid black;
     border-radius: 16px;
     background: white;
     box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .attacker-summary-main {
     display: grid;
-    grid-template-columns: 84px minmax(0, 1fr);
-    gap: 14px;
-    align-items: center;
+    grid-template-areas:
+        "heading"
+        "image";
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    justify-items: center;
     min-width: 0;
 }
 
 .attacker-summary-image-box {
-    width: 84px;
-    height: 84px;
+    grid-area: image;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     background: #fff4ed;
     display: flex;
@@ -89,6 +113,8 @@ body {
 }
 
 .attacker-summary-heading {
+    grid-area: heading;
+    width: 100%;
     min-width: 0;
 }
 
@@ -97,12 +123,15 @@ body {
     flex-wrap: wrap;
     gap: 8px;
     align-items: center;
+    justify-content: center;
 }
 
 .attacker-summary-name {
-    font-size: 26px;
+    font-size: clamp(20px, 2vw, 24px);
     font-weight: bold;
     line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 
 .attacker-summary-level {
@@ -124,18 +153,20 @@ body {
 }
 
 .attacker-summary-stats-primary {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(58px, 1fr));
+    gap: 0;
     padding-bottom: 10px;
     border-bottom: 1px solid #d9d9d9;
 }
 
 .attacker-summary-stats-secondary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-width: 160px;
+    min-width: 0;
 }
 
 .attacker-summary-stat {
     min-width: 0;
+    padding: 0 5px;
     text-align: center;
     border-right: 1px solid #d9d9d9;
 }
@@ -158,14 +189,41 @@ body {
 .attacker-summary-hp-area strong,
 .attacker-summary-ability strong {
     display: block;
-    font-size: 19px;
+    font-size: clamp(16px, 1.8vw, 19px);
     line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+.attacker-summary-current-hp {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: baseline;
+}
+
+.attacker-summary-current-hp-input {
+    width: 5.5em;
+    min-width: 0;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: inherit;
+    line-height: 1;
+    text-align: right;
+}
+
+.attacker-summary-current-hp-input:focus {
+    outline: none;
+    border-bottom-color: black;
+    background: #fff7d6;
 }
 
 .attacker-summary-bottom {
     display: grid;
-    grid-template-columns: minmax(160px, 0.8fr) minmax(220px, 1.4fr) minmax(110px, 0.7fr);
-    gap: 14px;
+    grid-template-columns: minmax(120px, 0.75fr) minmax(180px, 1.45fr) minmax(78px, 0.6fr);
+    gap: 8px;
     align-items: center;
     padding-top: 10px;
 }
@@ -176,12 +234,13 @@ body {
 }
 
 .attacker-summary-hp-bar {
+    position: relative;
     width: 100%;
     height: 10px;
     margin-top: 6px;
     border-radius: 999px;
     background: #e4e4e4;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .attacker-summary-hp-fill {
@@ -189,6 +248,48 @@ body {
     height: 100%;
     border-radius: 999px;
     background: #19b45b;
+    pointer-events: none;
+}
+
+.attacker-summary-hp-range {
+    position: absolute;
+    inset: -7px 0;
+    width: 100%;
+    height: 24px;
+    margin: 0;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.attacker-summary-hp-range::-webkit-slider-runnable-track {
+    height: 10px;
+    background: transparent;
+}
+
+.attacker-summary-hp-range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    margin-top: -5px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: #111;
+    box-shadow: 0 0 0 2px black;
+}
+
+.attacker-summary-hp-range::-moz-range-track {
+    height: 10px;
+    background: transparent;
+}
+
+.attacker-summary-hp-range::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: #111;
+    box-shadow: 0 0 0 2px black;
 }
 
 .attacker-summary-ability strong {
@@ -199,6 +300,8 @@ body {
     text-align: center;
     border-radius:20px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    flex: 1 1 0;
+    min-width: 0;
 
 }
 .held-items { 
@@ -208,6 +311,13 @@ body {
     justify-content:center;
 }
 
+.held-items > div {
+    width: 96px;
+    max-width: 96px;
+    flex: 0 0 96px;
+    min-width: 0;
+}
+
 .ability-display {
     margin: 0;
     padding: 10px;
@@ -215,6 +325,8 @@ body {
     border-radius: 16px;
     background: white;
     text-align: left;
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .ability-display-title {
@@ -402,6 +514,8 @@ body {
 ========================= */
 
 .pokemon{
+    flex: 1 1 0;
+    min-width: 0;
     padding:20px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     background: white;
@@ -468,20 +582,6 @@ body {
 }
 
 
-/* =========================
-   stats area
-========================= */
-
-.stats-text{
-    border:2px solid black;
-    border-radius:10px;
-    padding:15px;
-    min-width:200px;
-    min-height:300px;
-    background:white;
-}
-
-.stats-text p,
 #enemy-stats-text p{
     margin-bottom:8px;
     font-size:20px;
@@ -505,27 +605,66 @@ body {
 }
 
 .skill-wrapper,
-.pokemon-result,
-.stats-text{
+.pokemon-result{
     min-height:300px;
 }
 .held-items-select {
     border:3px solid black;
 }
 .held-item {
-    min-width: 72px;
-    min-height: auto;
-    padding:14px;
+    width: 82px;
+    min-width: 82px;
+    height: 82px;
+    min-height: 82px;
+    margin: 0 auto;
+    padding:6px;
     border:2px solid black;
     background:#f8f8f8;
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     cursor:pointer;
-    font-size:16px;
-   border-radius: 16px;
+    font-size:22px;
+    line-height: 1;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
+
+.held-item.is-held-item-selected {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 11px;
+    line-height: 1.15;
+}
+
+.held-item-image-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    min-height: 0;
+}
+
 .held-item img {
-    max-width: 80px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     border-radius: 20px;
+}
+
+.held-item-name {
+    display: block;
+    width: 100%;
+    max-height: 24px;
+    overflow: hidden;
+    color: black;
+    font-size: 11px;
+    font-weight: bold;
+    line-height: 1.1;
+    text-align: center;
+    overflow-wrap: anywhere;
 }
 .held-item:hover {
     transform: translateY(-10px);
@@ -544,8 +683,7 @@ body {
     margin-bottom:10px;
 }
 
-.enemy-name,
-.title-pokemon-title{
+.enemy-name{
     font-size:32px;
     margin-top:10px;
 }
@@ -609,15 +747,6 @@ body {
    border-radius: 8px;
    background: transparent;
 }
-
-/* =========================
-   text style
-========================= */
-
-.stats-text p{
-    font-weight:bold;
-}
-
 
 /* =========================
    enemy
@@ -828,16 +957,6 @@ hpバー作成
 .boosted-color {
     color:rgb(170, 182, 250);
 }
-/*
-img
-*/
-.image-pokemon {
-    margin-top:20px;
-    width: 100px;
-    height: auto;
-    box-shadow: none;
-}
-
 .detail-popup #hitDamage-result {
     
     display: flex;
@@ -863,6 +982,122 @@ img
     color: black;
     border-color: #f43f5e;
     background: #ffe4e6;
+}
+
+/* =========================
+   tablet layout
+========================= */
+@media (min-width: 769px) and (max-width: 1305px) {
+    .container {
+        max-width: none;
+    }
+
+    .pokemons {
+        flex-direction: column;
+        gap: 16px;
+        padding: 0 14px 24px;
+    }
+
+    .battle-area {
+        flex-wrap: wrap;
+        gap: 16px;
+        min-width: 0;
+    }
+
+    .pokemon {
+        flex: 1 1 100%;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .enemy-pokemon {
+        flex: 1 1 260px;
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .damage-result {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+    }
+
+    .main-pokemon-title {
+        gap: 12px;
+    }
+
+    .pokemon-side-info {
+        flex-direction: row;
+        gap: 12px;
+    }
+
+    .held-items-select {
+        width: auto;
+        max-width: 100%;
+        margin: 0;
+        padding: 8px 12px;
+    }
+
+    .held-items {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .held-items > div {
+        width: 96px;
+        max-width: 96px;
+        flex: 0 0 96px;
+    }
+
+    .held-item {
+        width: 82px;
+        min-width: 82px;
+        height: 82px;
+        margin: 0 auto;
+        padding: 6px;
+        overflow: hidden;
+    }
+
+    .held-item img,
+    .held-item .slot-image {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        object-fit: contain;
+    }
+
+    .item-show {
+        gap: 16px;
+        min-width: 0;
+    }
+
+    .skills-area {
+        min-width: 0;
+        flex: 1 1 auto;
+    }
+
+    .result-buttons {
+        flex: 0 1 180px;
+        min-width: 0;
+    }
+
+    .result-button {
+        min-width: 0;
+    }
+
+    .build-storage-row {
+        flex-wrap: wrap;
+    }
+
+    .build-storage-row input,
+    .build-storage-row select {
+        min-width: 0;
+        flex: 1 1 220px;
+    }
 }
 
 /* =========================
@@ -912,6 +1147,7 @@ img
 
     .pokemon-side-info {
         width: 100%;
+        flex-direction: column;
     }
 
     .attacker-summary-card {
@@ -921,7 +1157,10 @@ img
     }
 
     .attacker-summary-main {
-        grid-template-columns: 72px minmax(0, 1fr);
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "heading"
+            "image";
     }
 
     .attacker-summary-image-box {
@@ -940,6 +1179,11 @@ img
     .attacker-summary-bottom {
         grid-template-columns: minmax(0, 1fr);
         gap: 10px;
+    }
+
+    .attacker-summary-hp-range {
+        inset: -17px 0;
+        height: 44px;
     }
 
     .attacker-summary-stats-secondary {
@@ -962,15 +1206,9 @@ img
         gap: 12px;
     }
 
-    .stats-area,
     .skills-area,
     .result-buttons {
         min-width: 0;
-    }
-
-    .stats-area {
-        grid-column: 1;
-        order: 1;
     }
 
     .result-buttons {
@@ -985,27 +1223,17 @@ img
 
     .skill-wrapper,
     .pokemon-result,
-    .stats-text,
     #enemy-stats-text {
         min-height: 0;
-    }
-
-    .stats-text {
-        min-width: 0;
     }
 
     .stats-title,
     .skill-name,
     .enemy-stats > p,
-    .title-pokemon-title,
     .enemy-name {
         font-size: 24px;
     }
 
-    .title-pokemon-title{
-        margin-bottom: 10px;
-    }
-    .stats-text p,
     #enemy-stats-text p {
         font-size: 16px;
     }
@@ -1137,39 +1365,50 @@ img
 ========================= */
 @media (max-width: 768px) {
     .held-items-select {
-        min-height: 0;
+        flex: 0 0 auto;
+        min-height: 150px;
         width: 100%;
         max-width: 100%;
-        overflow: hidden;
+        padding: 10px;
+        overflow: visible;
+    }
+
+    .ability-display {
+        flex: 0 0 auto;
     }
 
     .held-items {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        display: flex;
         gap: 8px;
         overflow-x: visible;
-        justify-content: stretch;
+        justify-content: center;
+    }
+
+    .held-items > div {
+        width: 96px;
+        max-width: 96px;
+        flex: 0 0 96px;
     }
 
     .held-item {
-        min-width: 0;
-        width: 100%;
+        min-width: 82px;
+        width: 82px;
+        height: 82px;
         box-sizing: border-box;
         overflow: hidden;
-        padding: 10px 6px;
-        font-size: 14px;
+        padding: 6px;
     }
 
     .held-item img {
-        max-width: 56px;
+        max-width: 100%;
     }
 
     .held-item .slot-image {
         display: block;
-        width: calc(100% - 4px);
-        max-width: calc(100% - 4px);
+        width: auto;
+        max-width: 100%;
         height: auto;
-        margin: 2px;
+        margin: 0 auto;
         object-fit: contain;
     }
 
@@ -1275,7 +1514,6 @@ img
 }
 
 @media (min-width: 769px) {
-    .stats-text,
     #enemy-stats-text {
         display: block !important;
     }
@@ -1307,12 +1545,10 @@ img
         content: "閉じる";
     }
 
-    .stats-text,
     #enemy-stats-text {
         display: none;
     }
 
-    .stats-text.is-open,
     #enemy-stats-text.is-open {
         display: block;
     }

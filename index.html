@@ -67,9 +67,33 @@
                                     </div>
                                     <div class="attacker-summary-hp-area">
                                         <span>現在HP</span>
-                                        <strong id="attacker-summary-current-hp">-</strong>
-                                        <div class="attacker-summary-hp-bar" aria-hidden="true">
+                                        <strong id="attacker-summary-current-hp" class="attacker-summary-current-hp">
+                                            <input
+                                                id="attacker-summary-current-hp-input"
+                                                class="attacker-summary-current-hp-input"
+                                                type="number"
+                                                min="0"
+                                                max="0"
+                                                value="0"
+                                                step="1"
+                                                aria-label="攻撃側の現在HPを直接入力"
+                                            >
+                                            <span>/</span>
+                                            <span id="attacker-summary-current-hp-max">-</span>
+                                            <span id="attacker-summary-current-hp-percent">(100%)</span>
+                                        </strong>
+                                        <div class="attacker-summary-hp-bar">
                                             <div id="attacker-summary-hp-fill" class="attacker-summary-hp-fill"></div>
+                                            <input
+                                                id="attacker-summary-hp-range"
+                                                class="attacker-summary-hp-range"
+                                                type="range"
+                                                min="0"
+                                                max="0"
+                                                value="0"
+                                                step="1"
+                                                aria-label="攻撃側の現在HP"
+                                            >
                                         </div>
                                     </div>
                                     <div class="attacker-summary-ability">
@@ -81,51 +105,52 @@
                         </section>
 
                         <div class="main-pokemon-title mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
-                            <div >
-                                <div class="all-reset" id="all-reset">
-                                    <p class="select-font">攻撃側のポケモン選択</p>
-                                    <button id="all-reset-button" class="all-reset-button">オールリセット</button>
-                                </div>
+                            <p class="select-font">攻撃側のポケモン選択</p>
+                            <div class="attacker-control-field">
                                 <label for="pokemon-select">名前</label>
                                 <select name="" id="pokemon-select"></select>
-                                <div class="pokemon-img" id="pokemon-img"></div>
                             </div>
-                            <div class="pokemon-side-info">
-                                <div id="held-item-select" class="held-items-select">
-                                    <p class="held-item-title">持ち物選択</p>
-                                    <div class="held-items">
-                                        <div>
-                                            <div class="held-item">✚</div>
-                                            <p>名前</p>
-                                        </div>
-                                        <div>
-                                            <div class="held-item">✚</div>
-                                            <p>名前</p>
-                                        </div>
-                                        <div>
-                                            <div class="held-item">✚</div>
-                                            <p>名前</p>
-                                        </div>
-                                    </div> 
-                                    <div class="held-items-stats">
-                                        <p>ステータス合計</p>
+                            <div class="attacker-control-field">
+                                <label for="level">レベル</label>
+                                <select name="" id="level"></select>
+                            </div>
+                            <button id="all-reset-button" class="all-reset-button">オールリセット</button>
+                        </div>
+                        <div class="pokemon-side-info">
+                            <div id="held-item-select" class="held-items-select">
+                                <p class="held-item-title">持ち物選択</p>
+                                <div class="held-items">
+                                    <div>
+                                        <div class="held-item">✚</div>
+                                        <p>名前</p>
+                                    </div>
+                                    <div>
+                                        <div class="held-item">✚</div>
+                                        <p>名前</p>
+                                    </div>
+                                    <div>
+                                        <div class="held-item">✚</div>
+                                        <p>名前</p>
                                     </div>
                                 </div>
-                                <section class="ability-display" id="ability-display" aria-labelledby="ability-display-title">
-                                    <p class="ability-display-title" id="ability-display-title">特性</p>
-                                    <div class="ability-display-body">
-                                        <div class="ability-image-box">
-                                            <img id="ability-image" class="ability-image" alt="" hidden>
-                                            <div id="ability-image-placeholder" class="ability-image-placeholder">画像準備中</div>
-                                        </div>
-                                        <div class="ability-text">
-                                            <p id="ability-name" class="ability-name">特性情報は準備中です</p>
-                                            <p id="ability-description" class="ability-description"></p>
-                                            <p id="ability-note" class="ability-note">現在は説明表示のみ。計算処理には未接続。</p>
-                                        </div>
-                                    </div>
-                                </section>
+                                <div class="held-items-stats">
+                                    <p>ステータス合計</p>
+                                </div>
                             </div>
+                            <section class="ability-display" id="ability-display" aria-labelledby="ability-display-title">
+                                <p class="ability-display-title" id="ability-display-title">特性</p>
+                                <div class="ability-display-body">
+                                    <div class="ability-image-box">
+                                        <img id="ability-image" class="ability-image" alt="" hidden>
+                                        <div id="ability-image-placeholder" class="ability-image-placeholder">画像準備中</div>
+                                    </div>
+                                    <div class="ability-text">
+                                        <p id="ability-name" class="ability-name">特性情報は準備中です</p>
+                                        <p id="ability-description" class="ability-description"></p>
+                                        <p id="ability-note" class="ability-note">現在は説明表示のみ。計算処理には未接続。</p>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
 
                         <section class="build-storage mobile-tab-panel" data-mobile-tab-panel="details" aria-labelledby="build-storage-title">
@@ -145,22 +170,8 @@
                             <p id="build-storage-message" class="build-storage-message" aria-live="polite"></p>
                         </section>
 
-                        <div class="mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
-                            <h1 id="pokemontitle" class="title-pokemon-title">Pikachu</h1>
-                        </div>
-                        
                         <div class="pokemon-items" id="pokemon-items">
-                            <div class="mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
-                                <label for="level">レベル</label>
-                                <select name="" id="level"></select>
-                            </div>
                             <div class="item-show">
-                                <div class="stats-area mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
-                                    <button id="player-stats-toggle" class="stats-title stats-toggle" type="button">ステータス</button>
-                                    <div class="stats-text" id="stats-text">
-                    
-                                    </div>
-                                </div>
                                 <div class="skills-area mobile-tab-panel is-mobile-tab-active" data-mobile-tab-panel="attacker">
                                     <p class="skill-name">覚える技</p>
                     

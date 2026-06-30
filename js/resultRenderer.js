@@ -139,25 +139,22 @@ export function showHeldItem(itemId,
 
        currentSelectedSlot.innerHTML = "✚";
        currentSelectedSlot.dataset.id = "";
-       currentSelectedSlot.style.padding = "20px";
+       currentSelectedSlot.style.padding = "";
+       currentSelectedSlot.classList.remove("is-held-item-selected");
     }else{
 
-        currentSelectedSlot.innerHTML = `${selectedItem.name} <img src= "${selectedItem.image}" class="slot-image">  `;
+        currentSelectedSlot.innerHTML = `
+            <span class="held-item-image-frame">
+                <img src="${selectedItem.image}" alt="${selectedItem.name}" class="slot-image">
+            </span>
+            <span class="held-item-name">${selectedItem.name}</span>
+        `;
        
         currentSelectedSlot.dataset.id = itemId;
-        currentSelectedSlot.style.padding = "0px";
+        currentSelectedSlot.classList.add("is-held-item-selected");
 
         
     }
-}
-
-export function showSelectPokemonImage(currentPokemon, selectPokemonImage){
-
-   
-    const image = currentPokemon.Image;
-    selectPokemonImage.innerHTML = `<img src = "${image}" class="image-pokemon">`
-    
-
 }
 
 export function showHitDamagesPopup(

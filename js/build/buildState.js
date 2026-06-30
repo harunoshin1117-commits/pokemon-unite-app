@@ -117,6 +117,13 @@ export function isValidBuildState(buildState){
 
     return (
         typeof attacker.pokemonId === "string" &&
+        (
+            attacker.currentHp === undefined ||
+            (
+                Number.isInteger(attacker.currentHp) &&
+                attacker.currentHp >= 0
+            )
+        ) &&
         isNullableString(attacker.skillOneName) &&
         isNullableString(attacker.skillTwoName) &&
         isNullableString(attacker.uniteMoveName) &&
@@ -144,6 +151,7 @@ export function createBuildState({
         attacker: {
             pokemonId: attacker.pokemonId,
             level: attacker.level,
+            currentHp: attacker.currentHp,
             skillOneName: attacker.skillOneName,
             skillTwoName: attacker.skillTwoName,
             uniteMoveName: attacker.uniteMoveName,

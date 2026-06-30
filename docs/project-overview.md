@@ -113,7 +113,6 @@
 
 現在のHTMLでは、スマホUI用に以下の要素が追加されています。
 
-- `player-stats-toggle`: 攻撃側ステータス開閉ボタン
 - `enemy-stats-toggle`: 相手ステータス開閉ボタン
 - `damage-result-header`: 計算結果の見出しと詳細表示ボタンを横並びにするヘッダー
 - `result-breakdown-card`: 通常攻撃、技1、技2、ユナイト技の内訳カード
@@ -464,7 +463,7 @@ DOM参照やグローバル状態参照は持たず、必要な値は引数で�
 - `showNormalAttackDamage()` / `showNormalAttackFinalDamage()` による通常攻撃表示
 - `renderFinalDamageAll()` による合計ダメージ表示
 - `updateHpBar()` によるHPバー更新
-- `showSkillResult()` / `showHeldItem()` / `showSelectPokemonImage()` による選択状態表示
+- `showSkillResult()` / `showHeldItem()` による選択状態表示
 - `showHitDamagesPopup()` / `showSingleHitDamagesPopup()` による詳細ポップアップ表示
 - `resetDamageDisplay()` による表示リセット
 
@@ -694,13 +693,10 @@ PCでは `damage-result` を常時表示します。スマホでは「結果」�
 ### UI更新系
 
 - `updatePlayerUI()`
-  - 攻撃側の技、ステータス、画像、選択済み技表示を更新します。
+  - 攻撃側の技候補と選択済み技表示を更新します。攻撃側の画像・主要ステータスは要約カードで表示します。
 
 - `updateEnemyUI()`
   - 防御側のステータス表示を更新します。
-
-- `showSelectPokemonImage()`
-  - 現在の攻撃側ポケモン画像を表示します。
 
 - `updateHpBar(currentHp, maxHp, hpBarElement)`
   - 残りHP割合に応じてHPバーの幅と色を更新します。
