@@ -11,6 +11,7 @@
 4. 必要になった場合だけ `docs/project-overview.md`
 5. アイデア確認が目的なら `docs/roadmap.md`
 6. Git管理ルートや外側フォルダの扱いを確認する場合は `docs/repository-layout-plan.md`
+7. 外側ルート用 `.gitignore` の方針を確認する場合は `docs/root-gitignore-plan.md`
 
 `docs/project-overview.md` は詳しい履歴と構造メモです。長いため、通常は `project-map` と `current-status` を読んでから、必要な章だけ参照してください。
 
@@ -43,6 +44,7 @@
 現時点では Git 管理ルートが `ポケモンユナイト/` のため、GitHub からは外側の `データリサーチ/` や `人間確認用/` が見えない場合があります。GitHub 上だけでレビューする場合は、この点に注意してください。
 Git管理ルートを外側へ広げる案は `docs/repository-layout-plan.md` にまとめています。
 動画解析ツール関連は今回のGitHubリポジトリには含めない方針です。動画、切り抜き画像、仮想環境、`tools/damage-video-review/` は原則としてGit管理対象から外します。
+`tools/` は、軽量な補助スクリプトや説明ファイルだけをGit管理候補にします。動画解析ツールや生成物を含む重いフォルダは含めません。
 
 ## 信頼状態の目安
 

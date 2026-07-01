@@ -18,6 +18,32 @@ C:\Projects\pokemon-unite-app\ポケモンユナイト
 
 そのため、GitHub から見ると、外側にある `データリサーチ/` や `人間確認用/` が見えない可能性があります。
 
+## 現時点の確定方針
+
+Git管理ルートを外側へ広げる場合、GitHubに含める対象は以下を基本方針とします。
+
+```text
+含める:
+- ポケモンユナイト/
+- データリサーチ/
+- 人間確認用/
+- tools/ の中の軽量な補助スクリプト、説明ファイル、設定例
+
+含めない:
+- tools/damage-video-review/
+- 検証動画/
+- チャットgpt作成画像/
+- 動画ファイル
+- zipなどの圧縮ファイル
+- 仮想環境
+- node_modules
+- output系フォルダ
+- 一時ファイル、ログ
+```
+
+`tools/` は必要フォルダ候補ですが、丸ごとGitに入れるわけではありません。
+現在の `tools/damage-video-review/` は動画解析ツール関連のため、今回のリポジトリには含めません。
+
 ## 現在の外側フォルダ構成
 
 ```text
@@ -169,6 +195,7 @@ pokemon-unite-app/
 ## .gitignore に入れる候補
 
 Gitルートを外側へ広げる前に、外側用 `.gitignore` を確認します。
+具体的な候補と各項目の説明は [root-gitignore-plan.md](root-gitignore-plan.md) にまとめます。
 
 候補:
 
