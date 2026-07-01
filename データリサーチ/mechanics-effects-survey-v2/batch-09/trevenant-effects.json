@@ -1,0 +1,735 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "trevenant",
+  "pokemonName": "Trevenant",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "natural-cure",
+        "name": "Natural Cure",
+        "parentName": null,
+        "originalDescription": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time one of Trevenant's moves damage an enemy. This cooldown reduction cannot be triggered more than once every 0.5s.",
+        "translatedDescription": "機械要約: Natural Cure は 待ち時間を短縮する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time one of Trevenant's moves damage an enemy. This cooldown reduction cannot be triggered more than once every 0.5s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Heal - 8 Ticks",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "[ 2+(0.18 * (Level -1)) ] % of max HP"
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "natural-cure__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "natural-cure__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time one of Trevenant's moves damage an enemy. This cooldown reduction cannot be triggered more than once every 0.5s.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Heal - 8 Ticks",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "",
+              "notes": "[ 2+(0.18 * (Level -1)) ] % of max HP"
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "trevenant__natural-cure",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+        "translatedDescription": "機械要約: Attack は HPを回復する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "trevenant__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "will-o-wisp",
+        "name": "Will-o-Wisp",
+        "parentName": null,
+        "originalDescription": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+        "translatedDescription": "機械要約: Will-o-Wisp は やけどを付与する、攻撃・特攻などのステータスを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "58",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "190",
+            "trueDescription": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (3 Ticks)",
+            "ratio": "14.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "48",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "will-o-wisp__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "will-o-wisp__02__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subs",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subs",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "trevenant__will-o-wisp",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "branch-poke",
+        "name": "Branch Poke",
+        "parentName": null,
+        "originalDescription": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+        "translatedDescription": "機械要約: Branch Poke は 移動速度を下げる、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "75",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "280",
+            "trueDescription": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Heal (Over 3s)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9% max HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "branch-poke__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "branch-poke__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+          "codexInterpretation": "HPを回復する。 原文証拠: dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "trevenant__branch-poke",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "phantom-forest",
+        "name": "Phantom Forest",
+        "parentName": null,
+        "originalDescription": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each attacker). The mark lasts for 6s. Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times. While Trevenant is shielded by this shield, HP recovery effects applied to Trevenant are increased by 50%. Buffs: 30% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Phantom Forest は 相手を打ち上げる、移動速度を下げる、妨害無効になる、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "700",
+            "trueDescription": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each attacker). The mark lasts for 6s. Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times. While Trevenant is shielded by this shield, HP recovery effects applied to Trevenant are increased by 50%.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield - per Enemy Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Marked Bonus",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "phantom-forest__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "phantom-forest__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "phantom-forest__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "phantom-forest__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "phantom-forest__05__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "trevenant__phantom-forest",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 13,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

@@ -1,0 +1,533 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "blaziken",
+  "pokemonName": "Blaziken",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "blaze",
+        "name": "Blaze",
+        "parentName": null,
+        "originalDescription": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's HP is at half or lower, more HP is restored.",
+        "translatedDescription": "機械要約: Blaze には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's HP is at half or lower, more HP is restored.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Max HP",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Healing (at or below 50% HP)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__blaze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%. For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Punch Style",
+            "ratio": "110",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%.",
+            "notes": "For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Kick Style",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While in Punch Style, attack speed is increased by 40%.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: While in Punch Style, attack speed is increased by 40%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "aerial-ace",
+        "name": "Aerial Ace",
+        "parentName": null,
+        "originalDescription": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+        "translatedDescription": "機械要約: Aerial Ace は 再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "83",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "190",
+            "trueDescription": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "aerial-ace__01__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "reuseOrSecondActivation"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__aerial-ace",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "ember",
+        "name": "Ember",
+        "parentName": null,
+        "originalDescription": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+        "translatedDescription": "機械要約: Ember は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "290",
+            "trueDescription": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ember__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__ember",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "spinning-flame-fist",
+        "name": "Spinning Flame Fist",
+        "parentName": null,
+        "originalDescription": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset. Buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+        "translatedDescription": "機械要約: Spinning Flame Fist は シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (2x)",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "100",
+            "trueDescription": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "spinning-flame-fist__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 9% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 9% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "spinning-flame-fist__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__spinning-flame-fist",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "spinning-flame-kick",
+        "name": "Spinning Flame Kick",
+        "parentName": null,
+        "originalDescription": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset. Buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier",
+        "translatedDescription": "機械要約: Spinning Flame Kick は シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "200",
+            "trueDescription": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "spinning-flame-kick__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 9% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 9% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "spinning-flame-kick__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blaziken__spinning-flame-kick",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 6,
+    "specialEffectCount": 7,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

@@ -1,0 +1,676 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "crustle",
+  "pokemonName": "Crustle",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "sturdy",
+        "name": "Sturdy",
+        "parentName": null,
+        "originalDescription": "For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more). Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times.",
+        "translatedDescription": "機械要約: Sturdy は 防御・特防を変化させる、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Def & Sp. Def - Increase (Stacks 10x)",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "6",
+            "trueDescription": "For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sturdy__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more). Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more). Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sturdy__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "selfStackOrGauge"
+          ],
+          "sourceEvidence": "Gains a stacking Def/SpDef buff for every 7% HP missing.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Gains a stacking Def/SpDef buff for every 7% HP missing.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "sturdy__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Def & Sp. Def - Increase (Stacks 10x)",
+              "ratio": "0",
+              "damageType": "Atk",
+              "levelScaling": "2",
+              "base": "6",
+              "trueDescription": "For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "For every 7% missing HP, this Pokémon's Defense and Sp.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: For every 7% missing HP, this Pokémon's Defense and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "crustle__sturdy",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+        "translatedDescription": "機械要約: Attack は 移動速度を下げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "crustle__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "rock-slide",
+        "name": "Rock Slide",
+        "parentName": null,
+        "originalDescription": "The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s. Drops large rocks on the designated area. When this move hits, it deals damage to enemies in the area of effect and leaves them unable to act for a short time.",
+        "translatedDescription": "機械要約: Rock Slide は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "63",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "160",
+            "trueDescription": "The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rock-slide__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "crustle__rock-slide",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "fury-cutter",
+        "name": "Fury Cutter",
+        "parentName": null,
+        "originalDescription": "The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times). Subsequent hits of this move on marked targets have 20% increased damage (maximum 40% increased damage on the third and subsequent hits from this move). Additional stacking damage from this move is always rounded up. Slashes enemies with claws, dealing damage to them. Hitting the same enemy multiple times in succession with this move increases the damage dealt.",
+        "translatedDescription": "機械要約: Fury Cutter は 与ダメージを変化させる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "117",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "290",
+            "trueDescription": "The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times). Subsequent hits of this move on marked targets have 20% increased damage (maximum 40% increased damage on the third and subsequent hits from this move).",
+            "notes": "Additional stacking damage from this move is always rounded up."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fury-cutter__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hitting the same enemy multiple times in succession with this move increases the damage dealt.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Hitting the same enemy multiple times in succession with this move increases the damage dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fury-cutter__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 9,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "crustle__fury-cutter",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "rubble-rouser",
+        "name": "Rubble Rouser",
+        "parentName": null,
+        "originalDescription": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s. For 10s after, the whirlwind of rocks damage nearby opposing Pokémon every 1s. If the user receives damage during Rubble Rouser, the user deals additional revenge damage to nearby opposing Pokémon (2s CD). The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600. Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them. If the user receives damage while this move is in effect, the move deals additional hits to nearby enemies. Buffs: 30% Movement Speed, 40% Max HP Shield",
+        "translatedDescription": "機械要約: Rubble Rouser は 行動不能・スタンを付与する、妨害無効になる、シールドを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Revenge",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "360",
+            "trueDescription": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s. For 10s after, the whirlwind of rocks damage nearby opposing Pokémon every 1s. If the user receives damage during Rubble Rouser, the user deals additional revenge damage to nearby opposing Pokémon (2s CD).",
+            "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Aura",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rubble-rouser__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rubble-rouser__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rubble-rouser__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rubble-rouser__04__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Revenge",
+              "ratio": "160",
+              "damageType": "Atk",
+              "levelScaling": "12",
+              "base": "360",
+              "trueDescription": "The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s. For 10s after, the whirlwind of rocks damage nearby opposing Pokémon every 1s. If the user receives damage during Rubble Rouser, the user deals additional revenge damage to nearby opposing Pokémon (2s CD).",
+              "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Aura",
+              "ratio": "40",
+              "damageType": "Atk",
+              "levelScaling": "3",
+              "base": "90",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "crustle__rubble-rouser",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 12,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

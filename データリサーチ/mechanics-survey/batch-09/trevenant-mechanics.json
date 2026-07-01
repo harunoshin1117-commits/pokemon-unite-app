@@ -1,0 +1,839 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "trevenant",
+  "pokemonName": "Trevenant",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "natural-cure",
+      "name": "Natural Cure",
+      "originalDescription": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time one of Trevenant's moves damage an enemy. This cooldown reduction cannot be triggered more than once every 0.5s.",
+      "summary": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Heal - 8 Ticks",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "[ 2+(0.18 * (Level -1)) ] % of max HP"
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+      "summary": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "58",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3 Ticks)",
+            "ratio": "14.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "48",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "branch-poke",
+      "name": "Branch Poke",
+      "originalDescription": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+      "summary": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal (Over 3s)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal (Over 3s)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "phantom-forest",
+      "name": "Phantom Forest",
+      "originalDescription": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each attacker). The mark lasts for 6s. Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times. While Trevenant is shielded by this shield, HP recovery effects applied to Trevenant are increased by 50%. Unite buffs: 30% Movement Speed, 20% Max HP Shield",
+      "summary": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each at",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "700",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - per Enemy Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Marked Bonus",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "700",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - per Enemy Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Marked Bonus",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "maxHp",
+    "dotTimer",
+    "normalAttackCycleOrReadyFlag",
+    "stackCount",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "natural-cure",
+      "name": "Natural Cure",
+      "originalDescription": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time one of Trevenant's moves damage an enemy. This cooldown reduction cannot be triggered more than once every 0.5s.",
+      "summary": "When Trevenant deals or receives damage while at or below 35% max HP, a continuous HP recovery effect is triggered every 0.5s for 4s. This effect also reduces the cooldowns of Trevenant's moves by 1s every 1s. When this HP recovery effect ends, there is a 100s cooldown. However, this cooldown is reduced by 1s each time",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Heal - 8 Ticks",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "[ 2+(0.18 * (Level -1)) ] % of max HP"
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies and heal for 5% max HP when this boosted attack hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+      "summary": "Shoot 3 sinister flames in the designated direction, dealing damage to enemies hit and leaving them burned for 3s. This burn reduces enemy Attack by 10% and Sp. Attack by 5% for 3s. The first wisp to hit a target deals full damage, and subsequent flame hits deal 50% damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "58",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3 Ticks)",
+            "ratio": "14.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "48",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "branch-poke",
+      "name": "Branch Poke",
+      "originalDescription": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+      "summary": "Trevenant jabs in the designated direction; dealing damage, decreasing their movement speed by 40% for 2s, and healing Trevenant for 9% max HP (over 3 ticks as 1 tick per second) when hitting an enemy.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal (Over 3s)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal (Over 3s)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "phantom-forest",
+      "name": "Phantom Forest",
+      "originalDescription": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each attacker). The mark lasts for 6s. Trevenant is also granted a shield for 6s when this move hits an enemy with the shield being strengthened for each enemy hit, up to 5 times. While Trevenant is shielded by this shield, HP recovery effects applied to Trevenant are increased by 50%. Unite buffs: 30% Movement Speed, 20% Max HP Shield",
+      "summary": "Briefly becomes unstoppable and creates a cursed forest, dealing damage to enemies in the area of effect and marking them, throwing them, and decreasing their movement speed by 50% for 2s. Trevenant and allies deal increased basic (and boosted) attack damage to enemies that were marked by this move (0.5s cd for each at",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "700",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - per Enemy Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Marked Bonus",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "700",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - per Enemy Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Marked Bonus",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

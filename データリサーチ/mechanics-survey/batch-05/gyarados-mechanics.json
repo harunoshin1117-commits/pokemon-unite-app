@@ -1,0 +1,750 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "gyarados",
+  "pokemonName": "Gyarados",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "rattled",
+      "name": "Rattled",
+      "originalDescription": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team. Once the effort gauge is full, Magikarp evolves into Gyarados.",
+      "summary": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the op",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "ko-or-assist"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "koOrAssistCondition"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, eventHistory",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-magikarp",
+      "name": "Attack - Magikarp",
+      "originalDescription": "Magikarp has no boosted attack. Magikarp's basic attacks are a set animation length.",
+      "summary": "Magikarp has no boosted attack. Magikarp's basic attacks are a set animation length.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Magikarp's basic attacks are a set animation length."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-magikarp-boosted",
+      "name": "Attack - Magikarp Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Gyarados)",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "flail",
+      "name": "Flail",
+      "originalDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+      "summary": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Above 66% HP",
+          "ratio": "178",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "310",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Between 66% and 33% HP",
+            "ratio": "222",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "385",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Below 33% HP",
+            "ratio": "357",
+            "damageType": "Atk",
+            "levelScaling": "45",
+            "base": "616",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "splash",
+      "name": "Splash",
+      "originalDescription": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+      "summary": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dragon-current",
+      "name": "Dragon Current",
+      "originalDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes. If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes. If the user stays underwater for at least",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "33",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "33",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "koAssistEvent",
+    "normalAttackCycleOrReadyFlag",
+    "maxHp",
+    "cooldownState",
+    "shieldHp",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "eventHistory",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "rattled",
+      "name": "Rattled",
+      "originalDescription": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team. Once the effort gauge is full, Magikarp evolves into Gyarados.",
+      "summary": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the op",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "ko-or-assist"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "koOrAssistCondition"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, eventHistory",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-magikarp",
+      "name": "Attack - Magikarp",
+      "originalDescription": "Magikarp has no boosted attack. Magikarp's basic attacks are a set animation length.",
+      "summary": "Magikarp has no boosted attack. Magikarp's basic attacks are a set animation length.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Magikarp's basic attacks are a set animation length."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-magikarp-boosted",
+      "name": "Attack - Magikarp Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Gyarados)",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "flail",
+      "name": "Flail",
+      "originalDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+      "summary": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Above 66% HP",
+          "ratio": "178",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "310",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Between 66% and 33% HP",
+            "ratio": "222",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "385",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Below 33% HP",
+            "ratio": "357",
+            "damageType": "Atk",
+            "levelScaling": "45",
+            "base": "616",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "splash",
+      "name": "Splash",
+      "originalDescription": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+      "summary": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dragon-current",
+      "name": "Dragon Current",
+      "originalDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes. If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes. If the user stays underwater for at least",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "33",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "33",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

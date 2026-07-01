@@ -1,0 +1,537 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "machamp",
+  "pokemonName": "Machamp",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "guts",
+        "name": "Guts",
+        "parentName": null,
+        "originalDescription": "Increases Attack by 10% for 5s when afflicted by any debuff. Increases Attack when afflicted by a status condition.",
+        "translatedDescription": "機械要約: Guts には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases Attack by 10% for 5s when afflicted by any debuff.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__guts",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies by 50% for 1s. Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies for a short time.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies by 50% for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "karate-chop",
+        "name": "Karate Chop",
+        "parentName": null,
+        "originalDescription": "Machamp attacks in a straight line dealing damage to enemies hit. Attack opposing Pokémon with a sharp chop.",
+        "translatedDescription": "機械要約: Karate Chop には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "217",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "Machamp attacks in a straight line dealing damage to enemies hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__karate-chop",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "bulk-up",
+        "name": "Bulk Up",
+        "parentName": null,
+        "originalDescription": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s. Machop's next attack is boosted. Become immune to hindrances for a short time. Increases movement speed, basic attack speed, and Attack. The next basic attack also becomes a boosted attack.",
+        "translatedDescription": "機械要約: Bulk Up は 妨害無効になる、移動速度を上げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s. Machop's next attack is boosted.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bulk-up__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bulk-up__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases movement speed, basic attack speed, and Attack.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Increases movement speed, basic attack speed, and Attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bulk-up__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack also becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The next basic attack also becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__bulk-up",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "barrage-blow",
+        "name": "Barrage Blow",
+        "parentName": null,
+        "originalDescription": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp. Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect. Increases Machamp's movement speed by 5%, Attack by 30%, Defense by 200, and Sp. Defense by 200 for 10s. If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them. The final blow deals double the damage of the previous hits. Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Barrage Blow は 相手を押し出す、妨害無効になる、防御・特防を変化させる、シールドを付与する、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (6x)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "100",
+            "trueDescription": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp. Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Final Hit",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "barrage-blow__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockBack",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__03__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__05__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "reuseOrSecondActivation"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__barrage-blow",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 9,
+    "zeroSpecialEffectSourceCount": 2,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

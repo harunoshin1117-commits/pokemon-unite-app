@@ -1,0 +1,765 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "goodra",
+  "pokemonName": "Goodra",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gooey",
+      "name": "Gooey",
+      "originalDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered.",
+      "summary": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicabl",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Slime)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "120",
+          "notes": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered."
+        },
+        "additional": [
+          {
+            "label": "Healing (Per Tick)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "Additional 1.2% Missing HP per tick",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and s",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage. "
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "57",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Additional (Melee)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+      "summary": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "128",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "380",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "128",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "380",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+      "summary": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+      "trigger": "move hit",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "right-as-rain",
+      "name": "Right as Rain",
+      "originalDescription": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. Unite buffs: 40% Max HP Shield, 50% Movement Speed",
+      "summary": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. Unite buffs: 40% Max HP Shield, 50% Movement Speed",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing (13 ticks)",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "notes": "4.6% Max HP"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Healing (13 ticks)",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "notes": "4.6% Max HP"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gooey",
+      "name": "Gooey",
+      "originalDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered.",
+      "summary": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicabl",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Slime)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "120",
+          "notes": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered."
+        },
+        "additional": [
+          {
+            "label": "Healing (Per Tick)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "Additional 1.2% Missing HP per tick",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and s",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage. "
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "57",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Additional (Melee)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+      "summary": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "128",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "380",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "128",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "380",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+      "summary": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+      "trigger": "move hit",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "right-as-rain",
+      "name": "Right as Rain",
+      "originalDescription": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. Unite buffs: 40% Max HP Shield, 50% Movement Speed",
+      "summary": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. Unite buffs: 40% Max HP Shield, 50% Movement Speed",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing (13 ticks)",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "notes": "4.6% Max HP"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Healing (13 ticks)",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "notes": "4.6% Max HP"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

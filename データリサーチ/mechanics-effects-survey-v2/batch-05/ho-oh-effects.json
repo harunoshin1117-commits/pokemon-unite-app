@@ -1,0 +1,499 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "ho-oh",
+  "pokemonName": "Ho-Oh",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "regenerator",
+        "name": "Regenerator",
+        "parentName": null,
+        "originalDescription": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+        "translatedDescription": "機械要約: Regenerator は シールドを付与する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "regenerator__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Damage to shields will not deactivate Regenerator.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Damage to shields will not deactivate Regenerator.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "regenerator__02__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "ho-oh__regenerator",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+        "translatedDescription": "機械要約: Attack は 移動速度を下げる、HPを回復する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "ho-oh__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "safeguard",
+        "name": "Safeguard",
+        "parentName": null,
+        "originalDescription": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+        "translatedDescription": "機械要約: Safeguard は 移動速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "safeguard__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "ho-oh__safeguard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "tailwind",
+        "name": "Tailwind",
+        "parentName": null,
+        "originalDescription": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Opposing Pokémon moving against the whirlwind have their movement speed decreased by 30% lasting for 0.5s after stepping out of the field.",
+        "translatedDescription": "機械要約: Tailwind は 移動速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "93",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "340",
+            "trueDescription": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Opposing Pokémon moving against the whirlwind have their movement speed decreased by 30% lasting for 0.5s after stepping out of the field.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tailwind__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "ho-oh__tailwind",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "rekindling-flame",
+        "name": "Rekindling Flame",
+        "parentName": null,
+        "originalDescription": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there are feathers nearby. The number of available revivals are based on how much Aeos energy is consumed. One ally may be always revived. Up to two allies are revivable if at least 9 energy is consumed. Up to three allies are revivable if at least 17 Aeos energy is consumed. Up to four allies are revivable if at least 25 Aeos energy is consumed. Buffs: 80% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Rekindling Flame は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there are feathers nearby. The number of available revivals are based on how much Aeos energy is consumed. One ally may be always revived. Up to two allies are revivable if at least 9 energy is consumed. Up to three allies are revivable if at least 17 Aeos energy is consumed. Up to four allies are revivable if at least 25 Aeos energy is consumed.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rekindling-flame__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "ho-oh__rekindling-flame",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 8,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

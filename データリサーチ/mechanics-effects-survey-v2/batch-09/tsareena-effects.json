@@ -1,0 +1,380 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "tsareena",
+  "pokemonName": "Tsareena",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "oblivious",
+        "name": "Oblivious",
+        "parentName": null,
+        "originalDescription": "Reduces the duration of hindrances inflicted on the user by an increased amount. When a hindrance is inflicted on Bounsweet, Steenee; decrease the duration of the effect.",
+        "translatedDescription": "機械要約: Oblivious には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces the duration of hindrances inflicted on the user by an increased amount.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "tsareena__oblivious",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon, damage nearby opposing Pokémon and lowering the Defense of those hit by 20% for 1s.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon, damage nearby opposing Pokémon and lowering the Defense of those hit by 20% for 1s.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, lunging at an opposing Pokémon, damage nearby opposing Pokémon and lowering the Defense of those hit by 20% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "tsareena__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "razor-leaf",
+        "name": "Razor Leaf",
+        "parentName": null,
+        "originalDescription": "The user pelts sharp-edged leaves in the designated direction, damaging opposing Pokémon hit up to 3 times. The critical-hit rate of this move is increased by 15%. Pelts leaves in the designated direction, dealing damage to enemies hit. The critical-hit rate of this move is higher than that of basic attacks.",
+        "translatedDescription": "機械要約: Razor Leaf には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (3x)",
+            "ratio": "62",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "120",
+            "trueDescription": "The user pelts sharp-edged leaves in the designated direction, damaging opposing Pokémon hit up to 3 times. The critical-hit rate of this move is increased by 15%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "tsareena__razor-leaf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "rapid-spin",
+        "name": "Rapid Spin",
+        "parentName": null,
+        "originalDescription": "The user dashes forward and spins, damaging opposing Pokémon in their path and increasing the user's movement speed by 30% for 1.5s when it hits. Tsareena spins in the designated direction, dealing damage to any enemy hit. When this move hits, increase Tsareena's movement speed for a short time.",
+        "translatedDescription": "機械要約: Rapid Spin には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "113",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "260",
+            "trueDescription": "The user dashes forward and spins, damaging opposing Pokémon in their path and increasing the user's movement speed by 30% for 1.5s when it hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "tsareena__rapid-spin",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "queen-ascendant",
+        "name": "Queen Ascendant",
+        "parentName": null,
+        "originalDescription": "Tsareena leaps toward an enemy player and kicks it high into the air before showering it with a series of kicks while airborne, dealing damage to them. The moment Tsareena lands on the ground, recover HP. While airborne, the enemy that is being kicked and Tsareena are not affected by other moves. Tsareena leaps toward an enemy from the opposing team and kicks it high into the air before showering it with a series of kicks while airborne, dealing damage to them. The moment Tsareena lands on the ground, recover HP. While airborne, the enemy that is being kicked and Tsareena are not affected by other moves. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Queen Ascendant は 待ち時間を短縮する、HPを回復する、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (9x)",
+            "ratio": "45",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "64",
+            "trueDescription": "Tsareena leaps toward an enemy player and kicks it high into the air before showering it with a series of kicks while airborne, dealing damage to them. The moment Tsareena lands on the ground, recover HP. While airborne, the enemy that is being kicked and Tsareena are not affected by other moves.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Final Hit",
+            "ratio": "180",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "256",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Heal - Landing",
+            "ratio": "70",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "350",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "queen-ascendant__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "queen-ascendant__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The moment Tsareena lands on the ground, recover HP.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The moment Tsareena lands on the ground, recover HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "queen-ascendant__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "tsareena__queen-ascendant",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 4,
+    "zeroSpecialEffectSourceCount": 3,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

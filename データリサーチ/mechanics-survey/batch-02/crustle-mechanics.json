@@ -1,0 +1,697 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "crustle",
+  "pokemonName": "Crustle",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "sturdy",
+      "name": "Sturdy",
+      "originalDescription": "Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times. For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+      "summary": "Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times. For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "defenseOrSpDefenseChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Def & Sp. Def - Increase (Stacks 10x)",
+          "ratio": "0",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "6",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "96",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "rock-slide",
+      "name": "Rock Slide",
+      "originalDescription": "Drops large rocks on the designated area. When this move hits, it deals damage to enemies in the area of effect and leaves them unable to act for a short time. The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+      "summary": "Drops large rocks on the designated area. When this move hits, it deals damage to enemies in the area of effect and leaves them unable to act for a short time. The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "63",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fury-cutter",
+      "name": "Fury Cutter",
+      "originalDescription": "Slashes enemies with claws, dealing damage to them. Hitting the same enemy multiple times in succession with this move increases the damage dealt. The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times). Subsequent hits of this move on marked targets have 20% increased damage (maximum 40% increased damage on the third and subsequent hits from this move). Additional stacking damage from this move is always rounded up.",
+      "summary": "Slashes enemies with claws, dealing damage to them. Hitting the same enemy multiple times in succession with this move increases the damage dealt. The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s tha",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 9,
+      "cooldownSeconds": 3.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "117",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "290",
+          "notes": "Additional stacking damage from this move is always rounded up."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rubble-rouser",
+      "name": "Rubble Rouser",
+      "originalDescription": "Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them. If the user receives damage while this move is in effect, the move deals additional hits to nearby enemies. The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s. For 10s after, the whirlwind of rocks damage nearby opposing Pokémon every 1s. If the user receives damage during Rubble Rouser, the user deals additional revenge damage to nearby opposing Pokémon (2s CD). The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them. If the user receives damage while this move is in effect, the move deals additional hits to nearby enemies. The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunnin",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Revenge",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "360",
+          "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+        },
+        "additional": [
+          {
+            "label": "Damage - Aura",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Revenge",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "360",
+          "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+        },
+        "additional": [
+          {
+            "label": "Damage - Aura",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "currentHp",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "cooldownState",
+    "shieldHp",
+    "maxHp",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "sturdy",
+      "name": "Sturdy",
+      "originalDescription": "Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times. For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+      "summary": "Gains a stacking Def/SpDef buff for every 7% HP missing. Stacks up to 10 times. For every 7% missing HP, this Pokémon's Defense and Sp. Def are increased (up to 10 times; maximum at 70% missing HP or more).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "defenseOrSpDefenseChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Def & Sp. Def - Increase (Stacks 10x)",
+          "ratio": "0",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "6",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "96",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "rock-slide",
+      "name": "Rock Slide",
+      "originalDescription": "Drops large rocks on the designated area. When this move hits, it deals damage to enemies in the area of effect and leaves them unable to act for a short time. The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+      "summary": "Drops large rocks on the designated area. When this move hits, it deals damage to enemies in the area of effect and leaves them unable to act for a short time. The user drops large rocks at the designated location, damaging opposing Pokémon in the area of effect and stunning them for 1s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "63",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fury-cutter",
+      "name": "Fury Cutter",
+      "originalDescription": "Slashes enemies with claws, dealing damage to them. Hitting the same enemy multiple times in succession with this move increases the damage dealt. The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s that stacks with subsequent Fury Cutter hits (up to 3 times). Subsequent hits of this move on marked targets have 20% increased damage (maximum 40% increased damage on the third and subsequent hits from this move). Additional stacking damage from this move is always rounded up.",
+      "summary": "Slashes enemies with claws, dealing damage to them. Hitting the same enemy multiple times in succession with this move increases the damage dealt. The user slashes once with their claw while dashing slightly in the designated direction, damaging opposing Pokémon hit. Targets hit by Fury Cutter receive a mark for 9s tha",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 9,
+      "cooldownSeconds": 3.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "117",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "290",
+          "notes": "Additional stacking damage from this move is always rounded up."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rubble-rouser",
+      "name": "Rubble Rouser",
+      "originalDescription": "Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them. If the user receives damage while this move is in effect, the move deals additional hits to nearby enemies. The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunning nearby enemies for 1s. For 10s after, the whirlwind of rocks damage nearby opposing Pokémon every 1s. If the user receives damage during Rubble Rouser, the user deals additional revenge damage to nearby opposing Pokémon (2s CD). The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Gain a shield for a short time and leave nearby enemies unable to act, dealing damage over time to them. If the user receives damage while this move is in effect, the move deals additional hits to nearby enemies. The user becomes unstoppable as they summon a whirlwind of rocks around them, gaining a shield, and stunnin",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Revenge",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "360",
+          "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+        },
+        "additional": [
+          {
+            "label": "Damage - Aura",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Revenge",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "360",
+          "notes": "The value of the shield gained from Rubble Rouser is equal to 40% max HP + 600."
+        },
+        "additional": [
+          {
+            "label": "Damage - Aura",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

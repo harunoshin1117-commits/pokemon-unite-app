@@ -1,0 +1,1292 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "typhlosion",
+  "pokemonName": "Typhlosion",
+  "role": "A+",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Intermediate",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "blaze",
+      "moveName": "Blaze",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "ember",
+      "moveName": "Ember",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "eruption",
+      "moveName": "Eruption",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Ember",
+      "isPlus": false,
+      "originalDescription": "The user launches 3 flames skyward, over the next 2 seconds these flames crash down on opposing Pokémon in the area. Subsequent hits on the same target deal 20% less damage for the second hit, and 40% less damage for the third hit and beyond. Increases rage by 2 per hit. At peak rage, 4 flames are launched skyward.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "eruption-plus",
+      "moveName": "Eruption+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Eruption",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of this move.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "tackle",
+      "moveName": "Tackle",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "flame-wheel",
+      "moveName": "Flame Wheel",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Tackle",
+      "isPlus": false,
+      "originalDescription": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s. If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s. Afterwards the user readies a boosted attack. Increases rage by 2 for each hit. At peak rage, this move instead throws opposing Pokémon for 0.5s when crashing down.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "flame-wheel-plus",
+      "moveName": "Flame Wheel+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Flame Wheel",
+      "isPlus": true,
+      "originalDescription": "Increases the strength of the shield.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "explosive-heat-haze",
+      "moveName": "Explosive Heat Haze",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Typhlosion",
+      "pokemonId": "typhlosion",
+      "sourceId": "explosive-heat-haze-unite-buff",
+      "moveName": "Explosive Heat Haze Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Explosive Heat Haze",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Blaze",
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Ember",
+      "sourceType": "initialMove",
+      "sourceId": "ember",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Eruption",
+      "sourceType": "moveChoice",
+      "sourceId": "eruption",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Ember"
+    },
+    {
+      "name": "Eruption+",
+      "sourceType": "movePlus",
+      "sourceId": "eruption-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Eruption"
+    },
+    {
+      "name": "Tackle",
+      "sourceType": "initialMove",
+      "sourceId": "tackle",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Flame Wheel",
+      "sourceType": "moveChoice",
+      "sourceId": "flame-wheel",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Tackle"
+    },
+    {
+      "name": "Flame Wheel+",
+      "sourceType": "movePlus",
+      "sourceId": "flame-wheel-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Flame Wheel"
+    },
+    {
+      "name": "Explosive Heat Haze",
+      "sourceType": "uniteMove",
+      "sourceId": "explosive-heat-haze",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Explosive Heat Haze Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "explosive-heat-haze-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Explosive Heat Haze"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "blaze",
+        "name": "Blaze",
+        "rawName": "Blaze",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+        "translatedDescription": "機械要約: Blaze は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s.",
+            "notes": "If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "blaze__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s.",
+              "notes": "If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__blaze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "160",
+            "trueDescription": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area.",
+            "notes": "Basic attacks increase rage by 1, boosted attacks increase rage by 2."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack every third attack, breathing fire and dealing damage in an area.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack every third attack, breathing fire and dealing damage in an area.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "45",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "240",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "ember",
+        "name": "Ember",
+        "rawName": "Ember",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+        "translatedDescription": "機械要約: Ember は やけどを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "450",
+            "trueDescription": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit.",
+            "notes": "At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ember__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__ember",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "eruption",
+        "name": "Eruption",
+        "rawName": "Eruption",
+        "parentName": "Ember",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user launches 3 flames skyward, over the next 2 seconds these flames crash down on opposing Pokémon in the area. Subsequent hits on the same target deal 20% less damage for the second hit, and 40% less damage for the third hit and beyond. Increases rage by 2 per hit. At peak rage, 4 flames are launched skyward.",
+        "translatedDescription": "機械要約: Eruption には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit",
+            "ratio": "95",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "420",
+            "trueDescription": "The user launches 3 flames skyward, over the next 2 seconds these flames crash down on opposing Pokémon in the area. Subsequent hits on the same target deal 20% less damage for the second hit, and 40% less damage for the third hit and beyond. Increases rage by 2 per hit.",
+            "notes": "At peak rage, 4 flames are launched skyward."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__eruption",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "eruption-plus",
+        "name": "Eruption+",
+        "rawName": "Eruption",
+        "parentName": "Eruption",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of this move.",
+        "translatedDescription": "機械要約: Eruption+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - per Hit",
+            "ratio": "109",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "483",
+            "trueDescription": "Increases the damage of this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__eruption-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "tackle",
+        "name": "Tackle",
+        "rawName": "Tackle",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+        "translatedDescription": "機械要約: Tackle は 行動不能・スタンを付与する、移動速度を下げる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "500",
+            "trueDescription": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits.",
+            "notes": "At peak rage, this move instead stuns opposing Pokémon for 0.5s."
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tackle__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "tackle__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "tackle__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__tackle",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "flame-wheel",
+        "name": "Flame Wheel",
+        "rawName": "Flame Wheel",
+        "parentName": "Tackle",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s. If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s. Afterwards the user readies a boosted attack. Increases rage by 2 for each hit. At peak rage, this move instead throws opposing Pokémon for 0.5s when crashing down.",
+        "translatedDescription": "機械要約: Flame Wheel は 行動不能・スタンを付与する、相手を打ち上げる、移動速度を下げる、妨害無効になる、シールドを付与する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "380",
+            "trueDescription": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s. If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s. Afterwards the user readies a boosted attack. Increases rage by 2 for each hit.",
+            "notes": "At peak rage, this move instead throws opposing Pokémon for 0.5s when crashing down."
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "350",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flame-wheel__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-wheel__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "At peak rage, this move instead throws opposing Pokémon for 0.5s when crashing down.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: At peak rage, this move instead throws opposing Pokémon for 0.5s when crashing down.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-wheel__03__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-wheel__04__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-wheel__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user cloaks themselves in fire becoming Unstoppable, and charges in the designated direction dealing damage to opposing Pokémon hit, stunning them for 0.45s, and granting the user a shield for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-wheel__06__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: If an opposing Pokémon or wall was hit, the user jumps into the air and can move around, after a short delay the user crashes down dealing damage in an area, slowing opposing Pokémon by 50% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__flame-wheel",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "flame-wheel-plus",
+        "name": "Flame Wheel+",
+        "rawName": "Flame Wheel",
+        "parentName": "Flame Wheel",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the strength of the shield.",
+        "translatedDescription": "機械要約: Flame Wheel+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "130",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "455",
+            "trueDescription": "Increases the strength of the shield.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flame-wheel-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the strength of the shield.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Increases the strength of the shield.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__flame-wheel-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "explosive-heat-haze",
+        "name": "Explosive Heat Haze",
+        "rawName": "Explosive Heat Haze",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user.",
+        "translatedDescription": "機械要約: Explosive Heat Haze は 妨害無効になる、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - up to 14x",
+            "ratio": "20",
+            "damageType": "SpAtk",
+            "levelScaling": "1",
+            "base": "200",
+            "trueDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14.",
+            "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "explosive-heat-haze__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "explosive-heat-haze__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - up to 14x",
+              "ratio": "20",
+              "damageType": "SpAtk",
+              "levelScaling": "1",
+              "base": "200",
+              "trueDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14.",
+              "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__explosive-heat-haze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "explosive-heat-haze-unite-buff",
+        "name": "Explosive Heat Haze Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Explosive Heat Haze",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Explosive Heat Haze Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "explosive-heat-haze-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "explosive-heat-haze-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "explosive-heat-haze-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "typhlosion__explosive-heat-haze-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 11,
+    "specialEffectCount": 18,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

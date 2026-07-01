@@ -1,0 +1,852 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "cinderace",
+  "pokemonName": "Cinderace",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchCinderace"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "blaze",
+        "name": "Blaze",
+        "parentName": null,
+        "originalDescription": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD). When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target. When using a move, the next basic attack becomes a boosted attack. When hitting an enemy with a basic attack or move, a cinder is placed on that enemy. Attacking a cindered enemy a certain number of times will cause the cinder to flare, dealing damage to the enemy. When at half HP or less, critical-hit rate is increased by 10% and basic attack speed is increased by 20% for a short time.",
+        "translatedDescription": "機械要約: Blaze は 通常攻撃速度を上げる、急所率を上げる、スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる、HP割合条件で発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchCinderace"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Flare",
+            "ratio": "90",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "25",
+            "trueDescription": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+            "notes": "When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Flare (Additional)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "0.7% Enemy Max HP x (Level - 1)",
+            "notes": "Against Wild Pokémon: The total damage is capped at 500."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "blaze__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 30,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blaze__02__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 30,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "criticalRateUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "codexInterpretation": "急所率を上げる。 原文証拠: When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blaze__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "blaze__04__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When using a move, the next basic attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: When using a move, the next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blaze__05__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When using a move, the next basic attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: When using a move, the next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blaze__06__hpThreshold",
+          "effectType": "hpThreshold",
+          "summary": "HP割合条件で発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 30,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpThreshold"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "codexInterpretation": "HP割合条件で発動する。 原文証拠: When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cinderace__blaze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300. Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+        "translatedDescription": "機械要約: Attack は 次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchCinderace"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used.",
+            "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack or after using a move, dealing increased damage.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: Becomes a boosted attack with every third attack or after using a move, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack or after using a move, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack or after using a move, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: basic attack damage is capped at 1000",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: basic attack damage is capped at 1000",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cinderace__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "ember",
+        "name": "Ember",
+        "parentName": null,
+        "originalDescription": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s. Shoot out a small flame, dealing damage to enemies, leaving them burned and decreasing their Attack for a short time.",
+        "translatedDescription": "機械要約: Ember は やけどを付与する、攻撃・特攻などのステータスを変化させる、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchCinderace"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "115",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "155",
+            "trueDescription": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+            "notes": "The Attack and Sp. Atk of the burned target are decreased by 5% for 2s."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (3x)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ember__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ember__02__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s. Shoot out a small flame, dealing damage t",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s. Shoot out a small flame, dealing damage t",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ember__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "115",
+              "damageType": "Atk",
+              "levelScaling": "8",
+              "base": "155",
+              "trueDescription": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+              "notes": "The Attack and Sp. Atk of the burned target are decreased by 5% for 2s."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (3x)",
+              "ratio": "20",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "0",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cinderace__ember",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "low-sweep",
+        "name": "Low Sweep",
+        "parentName": null,
+        "originalDescription": "Dashes forward with a low sweep, damaging opposing Pokémon in their path. Make a swift low sweep in the designated direction, dealing damage to any enemy it hits.",
+        "translatedDescription": "機械要約: Low Sweep には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchCinderace"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "36",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "100",
+            "trueDescription": "Dashes forward with a low sweep, damaging opposing Pokémon in their path.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cinderace__low-sweep",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "blazing-bicycle-kick",
+        "name": "Blazing Bicycle Kick",
+        "parentName": null,
+        "originalDescription": "Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon. The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit; and increasing movement speed by 10% for 5s when this Unite Move hits. Create a giant ball of flame and kick it toward the designated location. The ball releases a fierce shock wave that deals damage to enemies in the area of effect. Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits. Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Blazing Bicycle Kick は 妨害無効になる、移動速度を上げる、シールドを付与する、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchCinderace"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "247",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "670",
+            "trueDescription": "Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon. The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit; and increasing movement speed by 10% for 5s when this Unite Move hits.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "blazing-bicycle-kick__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blazing-bicycle-kick__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blazing-bicycle-kick__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "blazing-bicycle-kick__04__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "247",
+              "damageType": "Atk",
+              "levelScaling": "14",
+              "base": "670",
+              "trueDescription": "Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon. The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit; and increasing movement speed by 10% for 5s when this Unite Move hits.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "14% of enemy missing HP.",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cinderace__blazing-bicycle-kick",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 16,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

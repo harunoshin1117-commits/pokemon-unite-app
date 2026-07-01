@@ -1,0 +1,774 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "garchomp",
+  "pokemonName": "Garchomp",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "rough-skin",
+      "name": "Rough Skin",
+      "originalDescription": "When struck by a melee attack, a portion of the damage received is reflected back at the attacker. When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+      "summary": "When struck by a melee attack, a portion of the damage received is reflected back at the attacker. When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased. Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350.",
+      "summary": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased. Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks beco",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "summary": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack Speed - % Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "28",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "sand-attack",
+      "name": "Sand Attack",
+      "originalDescription": "Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed. The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits.",
+      "summary": "Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed. The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; incr",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulldoze",
+      "name": "Bulldoze",
+      "originalDescription": "Stomp down on the ground, dealing damage to enemies in the area of effect. The user stomps down on the ground, damaging opposing Pokémon in the area of effect.",
+      "summary": "Stomp down on the ground, dealing damage to enemies in the area of effect. The user stomps down on the ground, damaging opposing Pokémon in the area of effect.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "145",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "livid-outrage",
+      "name": "Livid Outrage",
+      "originalDescription": "Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time. The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and damages opposing Pokémon in a unique designated area with each attack, taking a brief moment after each attack to aim the next dash. Every attack more damage than the last. The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s. The user is left confused for 0.5s afterward. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time. The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and da",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "245",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "356",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "288",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "486",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Third Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fourth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "994",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fifth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "1372",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "245",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "356",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "288",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "486",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Third Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fourth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "994",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fifth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "1372",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "currentHp",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "rough-skin",
+      "name": "Rough Skin",
+      "originalDescription": "When struck by a melee attack, a portion of the damage received is reflected back at the attacker. When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+      "summary": "When struck by a melee attack, a portion of the damage received is reflected back at the attacker. When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased. Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350.",
+      "summary": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased. Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks beco",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "summary": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack Speed - % Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "28",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "sand-attack",
+      "name": "Sand Attack",
+      "originalDescription": "Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed. The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits.",
+      "summary": "Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed. The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; incr",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulldoze",
+      "name": "Bulldoze",
+      "originalDescription": "Stomp down on the ground, dealing damage to enemies in the area of effect. The user stomps down on the ground, damaging opposing Pokémon in the area of effect.",
+      "summary": "Stomp down on the ground, dealing damage to enemies in the area of effect. The user stomps down on the ground, damaging opposing Pokémon in the area of effect.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "145",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "livid-outrage",
+      "name": "Livid Outrage",
+      "originalDescription": "Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time. The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and damages opposing Pokémon in a unique designated area with each attack, taking a brief moment after each attack to aim the next dash. Every attack more damage than the last. The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s. The user is left confused for 0.5s afterward. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time. The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and da",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "245",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "356",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "288",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "486",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Third Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fourth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "994",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fifth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "1372",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "245",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "356",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "288",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "486",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Third Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fourth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "994",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Fifth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "1372",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,919 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "quaquaval",
+  "pokemonName": "Quaquaval",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "moxie",
+      "name": "Moxie",
+      "originalDescription": "When the user deals damage with auto attacks or moves, vibes increase, which increase Attack by 5% per stack up to 3. If no vibes are gained within 3s, they are lost, along with the user's boosted gauge. After evolving into Quaquaval, the next auto attack when vibes are maxed becomes Spinning Edge. Each time Spinning Edge hits opposing Pokémon, the user's movement speed is increased by 15% for 3s, stacking up to 3 times.",
+      "summary": "When the user deals damage with auto attacks or moves, vibes increase, which increase Attack by 5% per stack up to 3. If no vibes are gained within 3s, they are lost, along with the user's boosted gauge. After evolving into Quaquaval, the next auto attack when vibes are maxed becomes Spinning Edge. Each time Spinning E",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user kicks at opposing Pokémon dealing damage. Becomes a boosted attack every third attack, with the user stepping in for a kick with increased damage. Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects.",
+      "summary": "The user kicks at opposing Pokémon dealing damage. Becomes a boosted attack every third attack, with the user stepping in for a kick with increased damage. Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Spinning Edge [x6]",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Spinning Edge [x6]",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Spinning Edge (Low Sweep) [x6]",
+          "ratio": "57",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "172",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Spinning Edge (Low Sweep+) [x6]",
+            "ratio": "66",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Spinning Edge (Liquidation)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% of Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Spinning Edge (Liquidation+)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% of Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "pound",
+      "name": "Pound",
+      "originalDescription": "The user pounds the area, dealing damage and slowing opposing Pokémon by 30% for 2s.",
+      "summary": "The user pounds the area, dealing damage and slowing opposing Pokémon by 30% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "145",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "435",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "wing-attack",
+      "name": "Wing Attack",
+      "originalDescription": "The user lunges in the designated direction dealing damage, and gaining a shield for 3s on hit.",
+      "summary": "The user lunges in the designated direction dealing damage, and gaining a shield for 3s on hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "315",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "125",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "375",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "315",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "125",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "375",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "carnival-splash",
+      "name": "Carnival Splash",
+      "originalDescription": "The user becomes Unstoppable while dancing in place, gaining a shield and dealing damage to opposing Pokémon up to 3 times. The third hit will pull in opposing Pokémon towards the user, stunning them for 1s. Each opposing Pokémon pulled in grants the user a shield, up to 3 times. The third hit of this move will not affect wild Pokémon. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable while dancing in place, gaining a shield and dealing damage to opposing Pokémon up to 3 times. The third hit will pull in opposing Pokémon towards the user, stunning them for 1s. Each opposing Pokémon pulled in grants the user a shield, up to 3 times. The third hit of this move will not aff",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - 3 hits",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "390",
+          "notes": "The third hit of this move will not affect wild Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Bonus",
+            "ratio": "39.99",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "119",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - 3 hits",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "390",
+          "notes": "The third hit of this move will not affect wild Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Bonus",
+            "ratio": "39.99",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "119",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "cooldownState",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "moxie",
+      "name": "Moxie",
+      "originalDescription": "When the user deals damage with auto attacks or moves, vibes increase, which increase Attack by 5% per stack up to 3. If no vibes are gained within 3s, they are lost, along with the user's boosted gauge. After evolving into Quaquaval, the next auto attack when vibes are maxed becomes Spinning Edge. Each time Spinning Edge hits opposing Pokémon, the user's movement speed is increased by 15% for 3s, stacking up to 3 times.",
+      "summary": "When the user deals damage with auto attacks or moves, vibes increase, which increase Attack by 5% per stack up to 3. If no vibes are gained within 3s, they are lost, along with the user's boosted gauge. After evolving into Quaquaval, the next auto attack when vibes are maxed becomes Spinning Edge. Each time Spinning E",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user kicks at opposing Pokémon dealing damage. Becomes a boosted attack every third attack, with the user stepping in for a kick with increased damage. Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects.",
+      "summary": "The user kicks at opposing Pokémon dealing damage. Becomes a boosted attack every third attack, with the user stepping in for a kick with increased damage. Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Spinning Edge [x6]",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Spinning Edge deals damage 3 times in an area around the user over time, before rapidly dealing damage 3 more times. If Low Sweep was used preceding Spinning Edge, then it will do increased damage. If Liquidation was used preceding Spinning Edge, then it will grant a shield on use. If Carnival Splash was used preceding Spinning Edge, it will gain both effects."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Spinning Edge [x6]",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Spinning Edge (Low Sweep) [x6]",
+          "ratio": "57",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "172",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Spinning Edge (Low Sweep+) [x6]",
+            "ratio": "66",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Spinning Edge (Liquidation)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% of Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Spinning Edge (Liquidation+)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% of Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "pound",
+      "name": "Pound",
+      "originalDescription": "The user pounds the area, dealing damage and slowing opposing Pokémon by 30% for 2s.",
+      "summary": "The user pounds the area, dealing damage and slowing opposing Pokémon by 30% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "145",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "435",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "wing-attack",
+      "name": "Wing Attack",
+      "originalDescription": "The user lunges in the designated direction dealing damage, and gaining a shield for 3s on hit.",
+      "summary": "The user lunges in the designated direction dealing damage, and gaining a shield for 3s on hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "315",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "125",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "375",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "315",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "125",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "375",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "carnival-splash",
+      "name": "Carnival Splash",
+      "originalDescription": "The user becomes Unstoppable while dancing in place, gaining a shield and dealing damage to opposing Pokémon up to 3 times. The third hit will pull in opposing Pokémon towards the user, stunning them for 1s. Each opposing Pokémon pulled in grants the user a shield, up to 3 times. The third hit of this move will not affect wild Pokémon. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable while dancing in place, gaining a shield and dealing damage to opposing Pokémon up to 3 times. The third hit will pull in opposing Pokémon towards the user, stunning them for 1s. Each opposing Pokémon pulled in grants the user a shield, up to 3 times. The third hit of this move will not aff",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - 3 hits",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "390",
+          "notes": "The third hit of this move will not affect wild Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Bonus",
+            "ratio": "39.99",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "119",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - 3 hits",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "390",
+          "notes": "The third hit of this move will not affect wild Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Bonus",
+            "ratio": "39.99",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "119",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

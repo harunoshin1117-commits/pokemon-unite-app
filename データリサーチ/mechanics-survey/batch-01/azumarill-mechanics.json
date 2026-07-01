@@ -1,0 +1,682 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "azumarill",
+  "pokemonName": "Azumarill",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "huge-power",
+      "name": "Huge Power",
+      "originalDescription": "When this Pokémon hits only a single enemy with a basic attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with a basic attack, a move, or its Unite Move, the hits are never critical hits. When this Pokémon hits only a single enemy with an auto attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with an auto attack, a move, or its Unite Move, the hits are never critical hits. Critical hits deal 170% rather than 200%.",
+      "summary": "When this Pokémon hits only a single enemy with a basic attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with a basic attack, a move, or its Unite Move, the hits are never critical hits. When this Pokémon hits only a single enemy with an auto attac",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon. Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon. Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charge forward, dealing damage to any enemy hit and leave them unable to act for a short time. Charge forward; dealing damage to any enemy hit and leave them unable to act for 0.5s.",
+      "summary": "Charge forward, dealing damage to any enemy hit and leave them unable to act for a short time. Charge forward; dealing damage to any enemy hit and leave them unable to act for 0.5s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Spray bubbles in a cone; dealing damage to enemies in the area of effect and decrease their movement speed for a short time. This move can be used while moving. Spray bubbles in a cone dealing damage to enemies in the area of effect and decreasing their movement speed by 30% for 2s. This move can be used while moving.",
+      "summary": "Spray bubbles in a cone; dealing damage to enemies in the area of effect and decrease their movement speed for a short time. This move can be used while moving. Spray bubbles in a cone dealing damage to enemies in the area of effect and decreasing their movement speed by 30% for 2s. This move can be used while moving.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial Hit",
+          "ratio": "74",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "80",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Subsequent Hits",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Subsequent hits on the same target deal 25% damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "belly-bash",
+      "name": "Belly Bash",
+      "originalDescription": "Azumarill pounds their belly 3 times, granting a shield. With each pound, Azumarill loses HP in exchange for increased Attack. Azumarill can move while pounding their belly. Afterward, target an enemy and then charge at the target; dealing damage to them and throwing all enemies hit while charging. Azumarill targets an enemy player and then pounds their belly three times; losing 5% remaining HP with each pound in exchange for a 6.5% max HP shield that stacks with each pound and lasts 6s. Azumarill gains increased attack for 8s and can move while pounding their belly. Azumarill then charges at the target damaging and throwing all Pokémon hit while charging and Pokémon within the area effect around the target. Azumarill is unstoppable during this move. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Azumarill pounds their belly 3 times, granting a shield. With each pound, Azumarill loses HP in exchange for increased Attack. Azumarill can move while pounding their belly. Afterward, target an enemy and then charge at the target; dealing damage to them and throwing all enemies hit while charging. Azumarill targets an",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack - Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack - Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "stackCount",
+    "cooldownState",
+    "shieldHp",
+    "maxHp",
+    "currentHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "huge-power",
+      "name": "Huge Power",
+      "originalDescription": "When this Pokémon hits only a single enemy with a basic attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with a basic attack, a move, or its Unite Move, the hits are never critical hits. When this Pokémon hits only a single enemy with an auto attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with an auto attack, a move, or its Unite Move, the hits are never critical hits. Critical hits deal 170% rather than 200%.",
+      "summary": "When this Pokémon hits only a single enemy with a basic attack, a move, or their Unite Move, the hit is always a critical hit. However, when hitting two or more enemies at once with a basic attack, a move, or its Unite Move, the hits are never critical hits. When this Pokémon hits only a single enemy with an auto attac",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon. Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon. Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage to enemies within a cone area of effect in front of this Pokémon.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charge forward, dealing damage to any enemy hit and leave them unable to act for a short time. Charge forward; dealing damage to any enemy hit and leave them unable to act for 0.5s.",
+      "summary": "Charge forward, dealing damage to any enemy hit and leave them unable to act for a short time. Charge forward; dealing damage to any enemy hit and leave them unable to act for 0.5s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Spray bubbles in a cone; dealing damage to enemies in the area of effect and decrease their movement speed for a short time. This move can be used while moving. Spray bubbles in a cone dealing damage to enemies in the area of effect and decreasing their movement speed by 30% for 2s. This move can be used while moving.",
+      "summary": "Spray bubbles in a cone; dealing damage to enemies in the area of effect and decrease their movement speed for a short time. This move can be used while moving. Spray bubbles in a cone dealing damage to enemies in the area of effect and decreasing their movement speed by 30% for 2s. This move can be used while moving.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial Hit",
+          "ratio": "74",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "80",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Subsequent Hits",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Subsequent hits on the same target deal 25% damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "belly-bash",
+      "name": "Belly Bash",
+      "originalDescription": "Azumarill pounds their belly 3 times, granting a shield. With each pound, Azumarill loses HP in exchange for increased Attack. Azumarill can move while pounding their belly. Afterward, target an enemy and then charge at the target; dealing damage to them and throwing all enemies hit while charging. Azumarill targets an enemy player and then pounds their belly three times; losing 5% remaining HP with each pound in exchange for a 6.5% max HP shield that stacks with each pound and lasts 6s. Azumarill gains increased attack for 8s and can move while pounding their belly. Azumarill then charges at the target damaging and throwing all Pokémon hit while charging and Pokémon within the area effect around the target. Azumarill is unstoppable during this move. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Azumarill pounds their belly 3 times, granting a shield. With each pound, Azumarill loses HP in exchange for increased Attack. Azumarill can move while pounding their belly. Afterward, target an enemy and then charge at the target; dealing damage to them and throwing all enemies hit while charging. Azumarill targets an",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack - Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Attack - Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

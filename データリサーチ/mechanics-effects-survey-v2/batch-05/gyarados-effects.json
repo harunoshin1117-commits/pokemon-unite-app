@@ -1,0 +1,618 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "gyarados",
+  "pokemonName": "Gyarados",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "rattled",
+        "name": "Rattled",
+        "parentName": null,
+        "originalDescription": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%). Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team. Once the effort gauge is full, Magikarp evolves into Gyarados. When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%).",
+        "translatedDescription": "機械要約: Rattled は 移動速度を上げる、スタック、マーク、ゲージを扱う、KOまたはアシストで発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When damaged, increases movement speed by 5% for 3s (up to 5 times; maximum 25%).",
+            "notes": "Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team. Once the effort gauge is full, Magikarp evolves into Gyarados."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rattled__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When damaged, increases movement speed by 5% for 3s (up to 5 times",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: When damaged, increases movement speed by 5% for 3s (up to 5 times",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rattled__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "rattled__03__koAssistTrigger",
+          "effectType": "koAssistTrigger",
+          "summary": "KOまたはアシストで発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "koAssistTrigger"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "koAssistEvent"
+          ],
+          "sourceEvidence": "Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team.",
+          "codexInterpretation": "KOまたはアシストで発動する。 原文証拠: Increases the effort gauge each time Magikarp uses an auto attack or move, hits with an auto attack or move, scores a goal, knocks out a Pokémon from the opposing team or assists in knocking out a Pokémon from the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "gyarados__rattled",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-magikarp",
+        "name": "Attack - Magikarp",
+        "parentName": null,
+        "originalDescription": "Magikarp has no boosted attack. Magikarp's basic attacks are a set animation length.",
+        "translatedDescription": "機械要約: Attack - Magikarp には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Magikarp has no boosted attack.",
+            "notes": "Magikarp's basic attacks are a set animation length."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "gyarados__attack-magikarp",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "flail",
+        "name": "Flail",
+        "parentName": null,
+        "originalDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+        "translatedDescription": "機械要約: Flail には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Above 66% HP",
+            "ratio": "178",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "310",
+            "trueDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Between 66% and 33% HP",
+            "ratio": "222",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "385",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Below 33% HP",
+            "ratio": "357",
+            "damageType": "Atk",
+            "levelScaling": "45",
+            "base": "616",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "gyarados__flail",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "splash",
+        "name": "Splash",
+        "parentName": null,
+        "originalDescription": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+        "translatedDescription": "機械要約: Splash には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Jumps to the designated location forward.",
+            "notes": "A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "gyarados__splash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "dragon-current",
+        "name": "Dragon Current",
+        "parentName": null,
+        "originalDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes. If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Dragon Current は 相手を打ち上げる、移動速度を下げる、対象指定されない、またはステルス状態になる、待ち時間を短縮する、シールドを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "162",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes.",
+            "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "33",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-current__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__03__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "untargetableOrStealth"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__04__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__06__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "162",
+              "damageType": "Atk",
+              "levelScaling": "12",
+              "base": "325",
+              "trueDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When released or after 4s, forcefully leaps up and attacks, damaging opposing Pokémon hit. The longer the move is held, the larger the area of effect becomes.",
+              "notes": "If the user stays underwater for at least 1s before releasing the Unite Move, strengthens the movement speed increase to 55%; deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit. If underwater for at least 2s, strengthens the movement speed increase to 65%; deals even more damage and creates a waterspout where they surface instead, throwing opposing Pokémon hit for 1s."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Whirlpool level",
+              "ratio": "243",
+              "damageType": "Atk",
+              "levelScaling": "17",
+              "base": "488",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Whirlpool (5 Ticks)",
+              "ratio": "16.2",
+              "damageType": "Atk",
+              "levelScaling": "1",
+              "base": "33",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Damage - Water Spout level",
+              "ratio": "324",
+              "damageType": "Atk",
+              "levelScaling": "23",
+              "base": "650",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: deals increased damage and creates a whirlpool where they surface, dealing damage over time to opposing Pokémon in the area of effect (up to 5 times) and decreasing their movement speed for 4s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "gyarados__dragon-current",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 9,
+    "zeroSpecialEffectSourceCount": 3,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

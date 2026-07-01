@@ -1,0 +1,943 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mew",
+  "pokemonName": "Mew",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "synchronize",
+        "name": "Synchronize",
+        "parentName": null,
+        "originalDescription": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+        "translatedDescription": "機械要約: Synchronize は 移動速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synchronize__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__synchronize",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+        "translatedDescription": "機械要約: Attack は スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "70",
+            "trueDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "A maximum of 3 boost counters can be stored.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: A maximum of 3 boost counters can be stored.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__04__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "electro-ball",
+        "name": "Electro Ball",
+        "parentName": null,
+        "originalDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+        "translatedDescription": "機械要約: Electro Ball は まひを付与する、移動速度を下げる、通常攻撃速度を下げる、与ダメージを変化させる、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (No Light Screen Boost)",
+            "ratio": "114",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "260",
+            "trueDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is.",
+            "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Light Screen Boost)",
+            "ratio": "149",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "340",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+            "notes": ""
+          },
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Strengthens the effect of the paralysis inflicted by this move to 60% movement speed reduction and 30% attack speed reduction.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "paralysis",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__03__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__05__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (No Light Screen Boost)",
+              "ratio": "114",
+              "damageType": "SpAtk",
+              "levelScaling": "12",
+              "base": "260",
+              "trueDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is.",
+              "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+            },
+            {
+              "id": "add1",
+              "label": "Damage (Light Screen Boost)",
+              "ratio": "149",
+              "damageType": "SpAtk",
+              "levelScaling": "15",
+              "base": "340",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+              "notes": ""
+            },
+            {
+              "id": "enhanced",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Strengthens the effect of the paralysis inflicted by this move to 60% movement speed reduction and 30% attack speed reduction.",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "This move deals more damage the lower the enemies' remaining HP is.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: This move deals more damage the lower the enemies' remaining HP is.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__electro-ball",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "coaching",
+        "name": "Coaching",
+        "parentName": null,
+        "originalDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+        "translatedDescription": "機械要約: Coaching は 通常攻撃速度を上げる、待ち時間を短縮する、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+            "notes": ""
+          },
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduce this move's cooldown by 1s and reduces the timer of recently coached on allies to 6s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "teleportOrWarp",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "coaching__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "coaching__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "coaching__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__coaching",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "mystical-mirage",
+        "name": "Mystical Mirage",
+        "parentName": null,
+        "originalDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Mystical Mirage は 妨害無効になる、無敵になる、対象指定されない、またはステルス状態になる、待ち時間を短縮する、シールドを付与する、フィールド・設置範囲を生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "340",
+            "trueDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mystical-mirage__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__02__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "無敵になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__03__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "untargetableOrStealth"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__04__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__06__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "fieldArea"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "A field is created around Mew for 5s This field travels with Mew.",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: A field is created around Mew for 5s This field travels with Mew.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__mystical-mirage",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 19,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

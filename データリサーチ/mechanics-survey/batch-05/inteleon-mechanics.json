@@ -1,0 +1,581 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "inteleon",
+  "pokemonName": "Inteleon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "sniper",
+      "name": "Sniper",
+      "originalDescription": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters (up to a maximum of 3). A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Hitting any Pokémon prevents Inteleon from becoming camouflaged for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit. When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters. Sobble may only hold one critical counter. Drizzile may hold two. Inteleon may hold three. While camouflaged, Inteleon is slowed by 10%. A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Dealing or receiving damage breaks the camouflage and prevents Inteleon from starting to camouflage for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit. Critical hits deal 250% rather than 200% damage.",
+      "summary": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters (up to a maximum of 3). A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Hitting any Pokémon prevents",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate. Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate. Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "48.2",
+          "damageType": "SpAtk",
+          "levelScaling": "4",
+          "base": "90",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "54.8",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "tearful-look",
+      "name": "Tearful Look",
+      "originalDescription": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed. Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+      "summary": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed. Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+      "summary": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "27",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "94",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "azure-spy-vision",
+      "name": "Azure Spy Vision",
+      "originalDescription": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass. While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second. Unite buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+      "summary": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass. While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second. Unite buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "description contains uncertain wording",
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "sniper",
+      "name": "Sniper",
+      "originalDescription": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters (up to a maximum of 3). A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Hitting any Pokémon prevents Inteleon from becoming camouflaged for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit. When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters. Sobble may only hold one critical counter. Drizzile may hold two. Inteleon may hold three. While camouflaged, Inteleon is slowed by 10%. A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Dealing or receiving damage breaks the camouflage and prevents Inteleon from starting to camouflage for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit. Critical hits deal 250% rather than 200% damage.",
+      "summary": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters (up to a maximum of 3). A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Hitting any Pokémon prevents",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate. Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate. Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "48.2",
+          "damageType": "SpAtk",
+          "levelScaling": "4",
+          "base": "90",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "54.8",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tearful-look",
+      "name": "Tearful Look",
+      "originalDescription": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed. Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+      "summary": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed. Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+      "summary": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "27",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "94",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "azure-spy-vision",
+      "name": "Azure Spy Vision",
+      "originalDescription": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass. While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second. Unite buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+      "summary": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass. While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second. Unite buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

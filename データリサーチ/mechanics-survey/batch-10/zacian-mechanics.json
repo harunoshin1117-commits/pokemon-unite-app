@@ -1,0 +1,977 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "zacian",
+  "pokemonName": "Zacian",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "intrepid-sword",
+      "name": "Intrepid Sword",
+      "originalDescription": "If the goal scoring button is held down, Zacian charges its sword with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scoring button is held down, the more Aeos energy is charged into the sword, lengthening the duration of the boost effect on basic attacks and moves. This Ability goes on an 8s cooldown after it’s triggered. Minimum 5 energy is required to charge with a maximum of 10 (except for Unite Move). Duration for buff window is 3s for 5 energy, 6s for 8 energy, 10s for 10 energy. Charging occurs at a rate of 1 energy per 0.1s.",
+      "summary": "If the goal scoring button is held down, Zacian charges its sword with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scori",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP.",
+      "summary": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. Boosted attacks have an increased area of eff",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Stage One",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP. "
+        },
+        "additional": [
+          {
+            "label": "Stage Two",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Applies 15% Slow for 1s",
+            "notes": ""
+          },
+          {
+            "label": "Stage Three",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Heals 5% max hp",
+            "notes": ""
+          },
+          {
+            "label": "Stage Four",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dashes towards the target, reducing all Move cooldowns by 15% of their current cooldown.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Stage One - Boosted",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Deals additional 2% Max HP. (Additional damage capped at 400 on Wild Pokémon)"
+        },
+        "additional": [
+          {
+            "label": "Stage Two - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Applies 15% Slow for 1s & deals additional 3% Max HP (Additional damage capped at 600 on Wild Pokémon)",
+            "notes": ""
+          },
+          {
+            "label": "Stage Three - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Heals 5% Max HP & deals additional 3% Max HP damage (Additional damage capped at 600 on Wild Pokémon)",
+            "notes": ""
+          },
+          {
+            "label": "Stage Four - Boosted",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dashes towards the target, reducing all Move cooldowns by 15% of their current cooldown. Also deals additional 4% Max HP damage. (Additional damage capped at 750 on Wild Pokémon)",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+      "summary": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "262",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Area of Effect",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "131",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Boosted)",
+            "ratio": "208",
+            "damageType": "Atk",
+            "levelScaling": "18",
+            "base": "342",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Boosted) - Area of Effect",
+            "ratio": "104",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "171",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+      "summary": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "79",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Boosted)",
+            "ratio": "90.85",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "sovereign-sword",
+      "name": "Sovereign Sword",
+      "originalDescription": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more Aeos energy is charged into the sword, and the more damage this move deals. If a set amount of Aeos energy or more is charged into the sword, the Unite Move becomes boosted, and the slash’s area of effect increases. This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move. This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (<=9 Energy Charged)",
+          "ratio": "396",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "650",
+          "notes": "This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets."
+        },
+        "additional": [
+          {
+            "label": "Damage (10-19 Energy Charged)",
+            "ratio": "475.2",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "780",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (20-29 Energy Charged)",
+            "ratio": "554.4",
+            "damageType": "Atk",
+            "levelScaling": "32",
+            "base": "910",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (30 Energy Charged - Boosted)",
+            "ratio": "712.80",
+            "damageType": "Atk",
+            "levelScaling": "41",
+            "base": "1170",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Additional - Boosted) versus Unite Buffed Pokémon",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (<=9 Energy Charged)",
+          "ratio": "396",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "650",
+          "notes": "This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets."
+        },
+        "additional": [
+          {
+            "label": "Damage (10-19 Energy Charged)",
+            "ratio": "475.2",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "780",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (20-29 Energy Charged)",
+            "ratio": "554.4",
+            "damageType": "Atk",
+            "levelScaling": "32",
+            "base": "910",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (30 Energy Charged - Boosted)",
+            "ratio": "712.80",
+            "damageType": "Atk",
+            "levelScaling": "41",
+            "base": "1170",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Additional - Boosted) versus Unite Buffed Pokémon",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "intrepid-sword",
+      "name": "Intrepid Sword",
+      "originalDescription": "If the goal scoring button is held down, Zacian charges its sword with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scoring button is held down, the more Aeos energy is charged into the sword, lengthening the duration of the boost effect on basic attacks and moves. This Ability goes on an 8s cooldown after it’s triggered. Minimum 5 energy is required to charge with a maximum of 10 (except for Unite Move). Duration for buff window is 3s for 5 energy, 6s for 8 energy, 10s for 10 energy. Charging occurs at a rate of 1 energy per 0.1s.",
+      "summary": "If the goal scoring button is held down, Zacian charges its sword with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scori",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP.",
+      "summary": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. Boosted attacks have an increased area of eff",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Stage One",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP. "
+        },
+        "additional": [
+          {
+            "label": "Stage Two",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Applies 15% Slow for 1s",
+            "notes": ""
+          },
+          {
+            "label": "Stage Three",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Heals 5% max hp",
+            "notes": ""
+          },
+          {
+            "label": "Stage Four",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dashes towards the target, reducing all Move cooldowns by 15% of their current cooldown.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Stage One - Boosted",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Deals additional 2% Max HP. (Additional damage capped at 400 on Wild Pokémon)"
+        },
+        "additional": [
+          {
+            "label": "Stage Two - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Applies 15% Slow for 1s & deals additional 3% Max HP (Additional damage capped at 600 on Wild Pokémon)",
+            "notes": ""
+          },
+          {
+            "label": "Stage Three - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Heals 5% Max HP & deals additional 3% Max HP damage (Additional damage capped at 600 on Wild Pokémon)",
+            "notes": ""
+          },
+          {
+            "label": "Stage Four - Boosted",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dashes towards the target, reducing all Move cooldowns by 15% of their current cooldown. Also deals additional 4% Max HP damage. (Additional damage capped at 750 on Wild Pokémon)",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+      "summary": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "262",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Area of Effect",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "131",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Boosted)",
+            "ratio": "208",
+            "damageType": "Atk",
+            "levelScaling": "18",
+            "base": "342",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Boosted) - Area of Effect",
+            "ratio": "104",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "171",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+      "summary": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "79",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Boosted)",
+            "ratio": "90.85",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "sovereign-sword",
+      "name": "Sovereign Sword",
+      "originalDescription": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more Aeos energy is charged into the sword, and the more damage this move deals. If a set amount of Aeos energy or more is charged into the sword, the Unite Move becomes boosted, and the slash’s area of effect increases. This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move. This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (<=9 Energy Charged)",
+          "ratio": "396",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "650",
+          "notes": "This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets."
+        },
+        "additional": [
+          {
+            "label": "Damage (10-19 Energy Charged)",
+            "ratio": "475.2",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "780",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (20-29 Energy Charged)",
+            "ratio": "554.4",
+            "damageType": "Atk",
+            "levelScaling": "32",
+            "base": "910",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (30 Energy Charged - Boosted)",
+            "ratio": "712.80",
+            "damageType": "Atk",
+            "levelScaling": "41",
+            "base": "1170",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Additional - Boosted) versus Unite Buffed Pokémon",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (<=9 Energy Charged)",
+          "ratio": "396",
+          "damageType": "Atk",
+          "levelScaling": "23",
+          "base": "650",
+          "notes": "This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets."
+        },
+        "additional": [
+          {
+            "label": "Damage (10-19 Energy Charged)",
+            "ratio": "475.2",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "780",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (20-29 Energy Charged)",
+            "ratio": "554.4",
+            "damageType": "Atk",
+            "levelScaling": "32",
+            "base": "910",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (30 Energy Charged - Boosted)",
+            "ratio": "712.80",
+            "damageType": "Atk",
+            "levelScaling": "41",
+            "base": "1170",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Additional - Boosted) versus Unite Buffed Pokémon",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

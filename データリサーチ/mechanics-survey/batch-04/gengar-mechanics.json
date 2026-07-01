@@ -1,0 +1,628 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "gengar",
+  "pokemonName": "Gengar",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "levitate",
+      "name": "Levitate",
+      "originalDescription": "Increases movement speed by 10% when out of combat. (5s after leaving combat) When this Pokémon has not been in combat for 5s, their movement speed is increased by 20%.",
+      "summary": "Increases movement speed by 10% when out of combat. (5s after leaving combat) When this Pokémon has not been in combat for 5s, their movement speed is increased by 20%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage. Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage to opposing Pokémon hit.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage. Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage to opposing Pokémon hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "84",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Shoot multiple sinister flames, dealing damage to enemies and leaving them burned when it hits. The user shoots 3 sinister flames in a cone in the designated direction, damaging opposing Pokémon hit and burning them for 4s. The first flame deals full damage to each target hit; subsequent flames deal 50% of the full damage to the same target. The burn deals damage over time every 0.5s for 2s (dealing damage 3 times), and decreases Attack and Sp. Atk by 10% for 4s.",
+      "summary": "Shoot multiple sinister flames, dealing damage to enemies and leaving them burned when it hits. The user shoots 3 sinister flames in a cone in the designated direction, damaging opposing Pokémon hit and burning them for 4s. The first flame deals full damage to each target hit; subsequent flames deal 50% of the full dam",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Flame",
+          "ratio": "84",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "The burn deals damage over time every 0.5s for 2s (dealing damage 3 times), and decreases Attack and Sp. Atk by 10% for 4s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3 Ticks)",
+            "ratio": "28",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "lick",
+      "name": "Lick",
+      "originalDescription": "Attacks with the user's tongue and pulls enemies toward the user. The user extends their tongue in the designated direction, stopping at the first opposing Pokémon hit, damaging the target and pulling them toward the user's location. The user readies a boosted attack when this move is used.",
+      "summary": "Attacks with the user's tongue and pulls enemies toward the user. The user extends their tongue in the designated direction, stopping at the first opposing Pokémon hit, damaging the target and pulling them toward the user's location. The user readies a boosted attack when this move is used.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "113",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "140",
+          "notes": "The user readies a boosted attack when this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "phantom-ambush",
+      "name": "Phantom Ambush",
+      "originalDescription": "Jump to the designated area and start sneaking with increased movement speed. If this move is used again, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. The user becomes unstoppable as they jump forward to the designated location, then enters stealth and increases their movement speed by 30% for 7s. The user exits stealth when they use an attack. If this Unite Move is used again, the user becomes invincible as they jump out to attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 50% for 1.5s when it hits. The user readies a boosted attack each time this move is used. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Jump to the designated area and start sneaking with increased movement speed. If this move is used again, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. The user becomes unstoppable as they jump forward to the designated location, then enters stealth and increases ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 7,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "263",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "560",
+          "notes": "The user readies a boosted attack each time this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "263",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "560",
+          "notes": "The user readies a boosted attack each time this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "dotTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "levitate",
+      "name": "Levitate",
+      "originalDescription": "Increases movement speed by 10% when out of combat. (5s after leaving combat) When this Pokémon has not been in combat for 5s, their movement speed is increased by 20%.",
+      "summary": "Increases movement speed by 10% when out of combat. (5s after leaving combat) When this Pokémon has not been in combat for 5s, their movement speed is increased by 20%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage. Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage to opposing Pokémon hit.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage. Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage to opposing Pokémon hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an enemy and dealing damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "84",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Shoot multiple sinister flames, dealing damage to enemies and leaving them burned when it hits. The user shoots 3 sinister flames in a cone in the designated direction, damaging opposing Pokémon hit and burning them for 4s. The first flame deals full damage to each target hit; subsequent flames deal 50% of the full damage to the same target. The burn deals damage over time every 0.5s for 2s (dealing damage 3 times), and decreases Attack and Sp. Atk by 10% for 4s.",
+      "summary": "Shoot multiple sinister flames, dealing damage to enemies and leaving them burned when it hits. The user shoots 3 sinister flames in a cone in the designated direction, damaging opposing Pokémon hit and burning them for 4s. The first flame deals full damage to each target hit; subsequent flames deal 50% of the full dam",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Flame",
+          "ratio": "84",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "The burn deals damage over time every 0.5s for 2s (dealing damage 3 times), and decreases Attack and Sp. Atk by 10% for 4s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3 Ticks)",
+            "ratio": "28",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "lick",
+      "name": "Lick",
+      "originalDescription": "Attacks with the user's tongue and pulls enemies toward the user. The user extends their tongue in the designated direction, stopping at the first opposing Pokémon hit, damaging the target and pulling them toward the user's location. The user readies a boosted attack when this move is used.",
+      "summary": "Attacks with the user's tongue and pulls enemies toward the user. The user extends their tongue in the designated direction, stopping at the first opposing Pokémon hit, damaging the target and pulling them toward the user's location. The user readies a boosted attack when this move is used.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "113",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "140",
+          "notes": "The user readies a boosted attack when this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "phantom-ambush",
+      "name": "Phantom Ambush",
+      "originalDescription": "Jump to the designated area and start sneaking with increased movement speed. If this move is used again, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. The user becomes unstoppable as they jump forward to the designated location, then enters stealth and increases their movement speed by 30% for 7s. The user exits stealth when they use an attack. If this Unite Move is used again, the user becomes invincible as they jump out to attack, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 50% for 1.5s when it hits. The user readies a boosted attack each time this move is used. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Jump to the designated area and start sneaking with increased movement speed. If this move is used again, it deals damage to enemies in the area of effect and decreases their movement speed for a short time. The user becomes unstoppable as they jump forward to the designated location, then enters stealth and increases ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 7,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "263",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "560",
+          "notes": "The user readies a boosted attack each time this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "263",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "560",
+          "notes": "The user readies a boosted attack each time this move is used."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

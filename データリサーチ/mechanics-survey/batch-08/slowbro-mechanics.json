@@ -1,0 +1,755 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "slowbro",
+  "pokemonName": "Slowbro",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "oblivious",
+      "name": "Oblivious",
+      "originalDescription": "When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense. Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. When dealing damage to an enemy with Water Gun, Scald, Surf, or Slowbeam - decrease their Sp. Def by 4% for 5s, stacking up to 5 times.",
+      "summary": "When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense. Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "healing",
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "110",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled. Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's movement speed is reduced by 30% while channeling. Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy.",
+      "summary": "Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled. Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's moveme",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "healing",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Uncharged",
+          "ratio": "147",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Low Charge",
+            "ratio": "196",
+            "damageType": "SpAtk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Mid Charge",
+            "ratio": "245",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - High Charge",
+            "ratio": "294",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "480",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Uncharged",
+          "ratio": "147",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Low Charge",
+            "ratio": "196",
+            "damageType": "SpAtk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Mid Charge",
+            "ratio": "245",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - High Charge",
+            "ratio": "294",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "480",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slack-off",
+      "name": "Slack Off",
+      "originalDescription": "Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect. Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap.",
+      "summary": "Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect. Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manu",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 11,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "slowbeam",
+      "name": "Slowbeam",
+      "originalDescription": "Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move. Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move. Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10%",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x6)",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "170",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (x6)",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "170",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "maxHp",
+    "normalAttackCycleOrReadyFlag",
+    "dotTimer",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "oblivious",
+      "name": "Oblivious",
+      "originalDescription": "When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense. Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. When dealing damage to an enemy with Water Gun, Scald, Surf, or Slowbeam - decrease their Sp. Def by 4% for 5s, stacking up to 5 times.",
+      "summary": "When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense. Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "healing",
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "110",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled. Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's movement speed is reduced by 30% while channeling. Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy.",
+      "summary": "Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled. Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's moveme",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "healing",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Uncharged",
+          "ratio": "147",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Low Charge",
+            "ratio": "196",
+            "damageType": "SpAtk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Mid Charge",
+            "ratio": "245",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - High Charge",
+            "ratio": "294",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "480",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Uncharged",
+          "ratio": "147",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Low Charge",
+            "ratio": "196",
+            "damageType": "SpAtk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Mid Charge",
+            "ratio": "245",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - High Charge",
+            "ratio": "294",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "480",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slack-off",
+      "name": "Slack Off",
+      "originalDescription": "Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect. Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap.",
+      "summary": "Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect. Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manu",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 11,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "slowbeam",
+      "name": "Slowbeam",
+      "originalDescription": "Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move. Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move. Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10%",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x6)",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "170",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (x6)",
+          "ratio": "80",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "170",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

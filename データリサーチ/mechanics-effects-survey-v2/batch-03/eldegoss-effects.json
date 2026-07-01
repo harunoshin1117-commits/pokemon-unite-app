@@ -1,0 +1,771 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "eldegoss",
+  "pokemonName": "Eldegoss",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "cotton-down",
+        "name": "Cotton Down",
+        "parentName": null,
+        "originalDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD). Damages an enemy and decreases its movement speed for a short time after receiving a certain amount of damage. When that happens, also recover HP and gain increased movement speed for a short time.",
+        "translatedDescription": "機械要約: Cotton Down は 移動速度を下げる、HPを回復する、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Revenge",
+            "ratio": "35",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing - Revenge",
+            "ratio": "65",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "165",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-down__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": 10,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-down__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When that happens, also recover HP and gain increased movement speed for a short time.",
+          "codexInterpretation": "HPを回復する。 原文証拠: When that happens, also recover HP and gain increased movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-down__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Revenge",
+              "ratio": "35",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "150",
+              "trueDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Healing - Revenge",
+              "ratio": "65",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "165",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-down",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage and decrease their movement speed by 20% for 1s. Each teammate uses their own Sp. Atk to deal additional damage on targets with cotton fluff. This additional damage has an internal cooldown of 0.35s for each teammate. Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy. The user's basic attacks against an enemy with cotton fluff on it deal increased damage and decreases the enemies movement speed for a short time.",
+        "translatedDescription": "機械要約: Attack は 攻撃・特攻などのステータスを変化させる、通常攻撃回数により強化攻撃になる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage and decrease their movement speed by 20% for 1s.",
+            "notes": "Each teammate uses their own Sp. Atk to deal additional damage on targets with cotton fluff. This additional damage has an internal cooldown of 0.35s for each teammate."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "leafage",
+        "name": "Leafage",
+        "parentName": null,
+        "originalDescription": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Pelt the target with leaves, decreasing the movement speed of enemies for a short time when it hits.",
+        "translatedDescription": "機械要約: Leafage は 移動速度を下げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "129",
+            "damageType": "SpAtk",
+            "levelScaling": "11",
+            "base": "210",
+            "trueDescription": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leafage__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leafage__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__leafage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "synthesis",
+        "name": "Synthesis",
+        "parentName": null,
+        "originalDescription": "The user uses sunlight to heal themself and teammates in the area of effect. Restores the HP of the user and nearby allies.",
+        "translatedDescription": "機械要約: Synthesis は HPを回復する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "350",
+            "trueDescription": "The user uses sunlight to heal themself and teammates in the area of effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synthesis__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The user uses sunlight to heal themself and teammates in the area of effect.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The user uses sunlight to heal themself and teammates in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "synthesis__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user uses sunlight to heal themself and teammates in the area of effect.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user uses sunlight to heal themself and teammates in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__synthesis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "cotton-cloud-crash",
+        "name": "Cotton Cloud Crash",
+        "parentName": null,
+        "originalDescription": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air. If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s. Float into the air and become invincible. If used again, pound the ground, attacking and shoving enemies and restoring HP to allies in the area of effect. Buffs: 30% Movement Speed, 30% Max HP Shield",
+        "translatedDescription": "機械要約: Cotton Cloud Crash は 無敵になる、シールドを付与する、再使用・派生・2段目を持つ、味方へ付着または移動する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "200",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "530",
+            "trueDescription": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air. If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "337",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "700",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-cloud-crash__01__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "codexInterpretation": "無敵になる。 原文証拠: The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__03__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "reuseOrSecondActivation"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__04__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__05__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-cloud-crash",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 15,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

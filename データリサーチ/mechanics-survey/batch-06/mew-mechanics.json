@@ -1,0 +1,742 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mew",
+  "pokemonName": "Mew",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "synchronize",
+      "name": "Synchronize",
+      "originalDescription": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+      "summary": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+      "summary": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "next-normal-attack-ready",
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "70",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "160",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "electro-ball",
+      "name": "Electro Ball",
+      "originalDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+      "summary": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (No Light Screen Boost)",
+          "ratio": "114",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "260",
+          "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+        },
+        "additional": [
+          {
+            "label": "Damage (Light Screen Boost)",
+            "ratio": "149",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "340",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+            "notes": ""
+          }
+        ],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Strengthens the effect of the paralysis inflicted by this move to 60% movement speed reduction and 30% attack speed reduction.",
+          "cooldown": "",
+          "notes": ""
+        }
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "coaching",
+      "name": "Coaching",
+      "originalDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+      "summary": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of E",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Reduce this move's cooldown by 1s and reduces the timer of recently coached on allies to 6s.",
+          "cooldown": "1",
+          "notes": ""
+        }
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Reduce this move's cooldown by 1s and reduces the timer of recently coached on allies to 6s.",
+          "cooldown": "1",
+          "notes": ""
+        }
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "mystical-mirage",
+      "name": "Mystical Mirage",
+      "originalDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemie",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 123,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "currentHp",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "synchronize",
+      "name": "Synchronize",
+      "originalDescription": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+      "summary": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+      "summary": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "next-normal-attack-ready",
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "70",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "160",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "280",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "electro-ball",
+      "name": "Electro Ball",
+      "originalDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+      "summary": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (No Light Screen Boost)",
+          "ratio": "114",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "260",
+          "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+        },
+        "additional": [
+          {
+            "label": "Damage (Light Screen Boost)",
+            "ratio": "149",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "340",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+            "notes": ""
+          }
+        ],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Strengthens the effect of the paralysis inflicted by this move to 60% movement speed reduction and 30% attack speed reduction.",
+          "cooldown": "",
+          "notes": ""
+        }
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "coaching",
+      "name": "Coaching",
+      "originalDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+      "summary": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of E",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Reduce this move's cooldown by 1s and reduces the timer of recently coached on allies to 6s.",
+          "cooldown": "1",
+          "notes": ""
+        }
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": {
+          "label": "",
+          "ratio": "",
+          "damageType": "",
+          "levelScaling": "",
+          "base": "",
+          "trueDescription": "Reduce this move's cooldown by 1s and reduces the timer of recently coached on allies to 6s.",
+          "cooldown": "1",
+          "notes": ""
+        }
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "mystical-mirage",
+      "name": "Mystical Mirage",
+      "originalDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemie",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 123,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,724 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "duraludon",
+  "pokemonName": "Duraludon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "heavy-metal",
+      "name": "Heavy Metal",
+      "originalDescription": "Prevents Duraludon from being thrown or shoved by the first attempt to shove or throw them. This ability goes on cooldown after it's triggered (50s cd). Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd).",
+      "summary": "Prevents Duraludon from being thrown or shoved by the first attempt to shove or throw them. This ability goes on cooldown after it's triggered (50s cd). Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 50,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit. Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "summary": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit. Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "summary": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals 1.5% enemy max HP damage and can critically strike.",
+            "notes": "Against Wild Pokemon: This damage is capped at 500."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "laser-focus",
+      "name": "Laser Focus",
+      "originalDescription": "Reduces damage received for a short time. Afterward, Duraludon's basic attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 basic attacks. Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 auto attacks.",
+      "summary": "Reduces damage received for a short time. Afterward, Duraludon's basic attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 basic attacks. Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or afte",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Bonus",
+          "ratio": "27",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "metal-claw",
+      "name": "Metal Claw",
+      "originalDescription": "Strike with sharp claws; dealing damage to enemies hit and decreasing their movement speed for a short time. After this move is used, Duraludon's next basic attack becomes a boosted attack. Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+      "summary": "Strike with sharp claws; dealing damage to enemies hit and decreasing their movement speed for a short time. After this move is used, Duraludon's next basic attack becomes a boosted attack. Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used",
+      "trigger": "after move use",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "revolving-ruin",
+      "name": "Revolving Ruin",
+      "originalDescription": "Fire a beam of light at the ground in a sweeping circle around Duraludon. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases their Attack by 8% for a short time. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam. Damage is dealt to any enemy in the area of effect after the beam of light is fired. A burning ring is also left where the beam of light touched the ground, and enemies that touch this ring take additional damage and have their movement speed decreased by 50% for 1s refreshing as damage continus to be taken from the burning ground. Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times. Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s. A burning ring is also left where the beam of light touched the ground for 10s; enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s. Subsequent hits after the first have the Attack stat bonus from this move applied to them. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Fire a beam of light at the ground in a sweeping circle around Duraludon. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases their Attack by 8% for a short time. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam. Damage is de",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit",
+          "ratio": "163",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burning Ring (per Tick)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "63",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - per Enemy",
+            "ratio": "68",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "68",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Hit",
+          "ratio": "163",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burning Ring (per Tick)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "63",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - per Enemy",
+            "ratio": "68",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "68",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "stackCount",
+    "shieldHp",
+    "maxHp",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "heavy-metal",
+      "name": "Heavy Metal",
+      "originalDescription": "Prevents Duraludon from being thrown or shoved by the first attempt to shove or throw them. This ability goes on cooldown after it's triggered (50s cd). Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd).",
+      "summary": "Prevents Duraludon from being thrown or shoved by the first attempt to shove or throw them. This ability goes on cooldown after it's triggered (50s cd). Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 50,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit. Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "summary": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit. Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "summary": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals 1.5% enemy max HP damage and can critically strike.",
+            "notes": "Against Wild Pokemon: This damage is capped at 500."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "laser-focus",
+      "name": "Laser Focus",
+      "originalDescription": "Reduces damage received for a short time. Afterward, Duraludon's basic attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 basic attacks. Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 auto attacks.",
+      "summary": "Reduces damage received for a short time. Afterward, Duraludon's basic attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 basic attacks. Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or afte",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Bonus",
+          "ratio": "27",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "metal-claw",
+      "name": "Metal Claw",
+      "originalDescription": "Strike with sharp claws; dealing damage to enemies hit and decreasing their movement speed for a short time. After this move is used, Duraludon's next basic attack becomes a boosted attack. Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+      "summary": "Strike with sharp claws; dealing damage to enemies hit and decreasing their movement speed for a short time. After this move is used, Duraludon's next basic attack becomes a boosted attack. Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used",
+      "trigger": "after move use",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "260",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "revolving-ruin",
+      "name": "Revolving Ruin",
+      "originalDescription": "Fire a beam of light at the ground in a sweeping circle around Duraludon. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases their Attack by 8% for a short time. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam. Damage is dealt to any enemy in the area of effect after the beam of light is fired. A burning ring is also left where the beam of light touched the ground, and enemies that touch this ring take additional damage and have their movement speed decreased by 50% for 1s refreshing as damage continus to be taken from the burning ground. Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times. Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s. A burning ring is also left where the beam of light touched the ground for 10s; enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s. Subsequent hits after the first have the Attack stat bonus from this move applied to them. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Fire a beam of light at the ground in a sweeping circle around Duraludon. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases their Attack by 8% for a short time. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam. Damage is de",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit",
+          "ratio": "163",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burning Ring (per Tick)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "63",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - per Enemy",
+            "ratio": "68",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "68",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Hit",
+          "ratio": "163",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burning Ring (per Tick)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "63",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - per Enemy",
+            "ratio": "68",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "68",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "tinkaton",
+  "pokemonName": "Tinkaton",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "mold-breaker",
+      "name": "Mold Breaker",
+      "originalDescription": "When damaging an opposing Pokémon with an active shield effect, 30% of the damage dealt to the shield is dealt as additional damage to the target's HP. This Pokémon's hammer strengthens every time they hit Pokémon from the opposing team with boosted attacks or moves, increasing this Pokémon's Attack by 0.5% per target hit (up to 100 times; maximum 50% Attack). After the hammer is strengthened 20, 40, and 60 times; Rock Smash, Gigaton Hammer, and Smack Down gain increased range.",
+      "summary": "When damaging an opposing Pokémon with an active shield effect, 30% of the damage dealt to the shield is dealt as additional damage to the target's HP. This Pokémon's hammer strengthens every time they hit Pokémon from the opposing team with boosted attacks or moves, increasing this Pokémon's Attack by 0.5% per target ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack after 12s, swinging the user's hammer in a circle around them, dealing increased damage and restoring 24% of the user's missing HP when it hits. This boosted attack remains readied until used. The time until the next boosted attack is readied is reduced faster when hit by opposing Pokémon's auto attacks. The hammer's size and basic attack range increase upon evolving into Tinkatuff and into Tinkaton.",
+      "summary": "Becomes a boosted attack after 12s, swinging the user's hammer in a circle around them, dealing increased damage and restoring 24% of the user's missing HP when it hits. This boosted attack remains readied until used. The time until the next boosted attack is readied is reduced faster when hit by opposing Pokémon's aut",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 12,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The hammer's size and basic attack range increase upon evolving into Tinkatuff and into Tinkaton."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "60",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "24% of missing HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "rock-smash",
+      "name": "Rock Smash",
+      "originalDescription": "The user swings down their hammer with rock-crushing force, damaging opposing Pokémon in the area of effect and stunning them for 0.15s when hit. The stronger the hammer, the larger this move's area of effect.",
+      "summary": "The user swings down their hammer with rock-crushing force, damaging opposing Pokémon in the area of effect and stunning them for 0.15s when hit. The stronger the hammer, the larger this move's area of effect.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.15,
+      "cooldownSeconds": 6.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "350",
+          "notes": "The stronger the hammer, the larger this move's area of effect."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fairy-wind",
+      "name": "Fairy Wind",
+      "originalDescription": "The user stirs up a fairy wind in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 1s.",
+      "summary": "The user stirs up a fairy wind in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "kiss-bliss-kaboom",
+      "name": "Kiss Bliss Kaboom",
+      "originalDescription": "The user first blows cute kisses at the designated Pokémon from the opposing team and their nearby allies, damaging and stunning them for 1.2s when Kiss Bliss hits a target. The user can then use the Unite Move again, leaping up forward and slamming their hammer down at the designated location, damaging opposing Pokémon in the area of effect of Kaboom. Unite Move buffs apply when Kiss Bliss hits a target. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user first blows cute kisses at the designated Pokémon from the opposing team and their nearby allies, damaging and stunning them for 1.2s when Kiss Bliss hits a target. The user can then use the Unite Move again, leaping up forward and slamming their hammer down at the designated location, damaging opposing Pokémo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.2,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Kiss Bliss",
+          "ratio": "54",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "108",
+          "notes": "Unite Move buffs apply when Kiss Bliss hits a target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kaboom",
+            "ratio": "270",
+            "damageType": "Atk",
+            "levelScaling": "24",
+            "base": "756",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Kiss Bliss",
+          "ratio": "54",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "108",
+          "notes": "Unite Move buffs apply when Kiss Bliss hits a target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kaboom",
+            "ratio": "270",
+            "damageType": "Atk",
+            "levelScaling": "24",
+            "base": "756",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "currentHp",
+    "durationTimer",
+    "cooldownState",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "attackOrder",
+    "actionOrder",
+    "time"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "mold-breaker",
+      "name": "Mold Breaker",
+      "originalDescription": "When damaging an opposing Pokémon with an active shield effect, 30% of the damage dealt to the shield is dealt as additional damage to the target's HP. This Pokémon's hammer strengthens every time they hit Pokémon from the opposing team with boosted attacks or moves, increasing this Pokémon's Attack by 0.5% per target hit (up to 100 times; maximum 50% Attack). After the hammer is strengthened 20, 40, and 60 times; Rock Smash, Gigaton Hammer, and Smack Down gain increased range.",
+      "summary": "When damaging an opposing Pokémon with an active shield effect, 30% of the damage dealt to the shield is dealt as additional damage to the target's HP. This Pokémon's hammer strengthens every time they hit Pokémon from the opposing team with boosted attacks or moves, increasing this Pokémon's Attack by 0.5% per target ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack after 12s, swinging the user's hammer in a circle around them, dealing increased damage and restoring 24% of the user's missing HP when it hits. This boosted attack remains readied until used. The time until the next boosted attack is readied is reduced faster when hit by opposing Pokémon's auto attacks. The hammer's size and basic attack range increase upon evolving into Tinkatuff and into Tinkaton.",
+      "summary": "Becomes a boosted attack after 12s, swinging the user's hammer in a circle around them, dealing increased damage and restoring 24% of the user's missing HP when it hits. This boosted attack remains readied until used. The time until the next boosted attack is readied is reduced faster when hit by opposing Pokémon's aut",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 12,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The hammer's size and basic attack range increase upon evolving into Tinkatuff and into Tinkaton."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "60",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "24% of missing HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "rock-smash",
+      "name": "Rock Smash",
+      "originalDescription": "The user swings down their hammer with rock-crushing force, damaging opposing Pokémon in the area of effect and stunning them for 0.15s when hit. The stronger the hammer, the larger this move's area of effect.",
+      "summary": "The user swings down their hammer with rock-crushing force, damaging opposing Pokémon in the area of effect and stunning them for 0.15s when hit. The stronger the hammer, the larger this move's area of effect.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.15,
+      "cooldownSeconds": 6.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "350",
+          "notes": "The stronger the hammer, the larger this move's area of effect."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fairy-wind",
+      "name": "Fairy Wind",
+      "originalDescription": "The user stirs up a fairy wind in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 1s.",
+      "summary": "The user stirs up a fairy wind in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "kiss-bliss-kaboom",
+      "name": "Kiss Bliss Kaboom",
+      "originalDescription": "The user first blows cute kisses at the designated Pokémon from the opposing team and their nearby allies, damaging and stunning them for 1.2s when Kiss Bliss hits a target. The user can then use the Unite Move again, leaping up forward and slamming their hammer down at the designated location, damaging opposing Pokémon in the area of effect of Kaboom. Unite Move buffs apply when Kiss Bliss hits a target. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user first blows cute kisses at the designated Pokémon from the opposing team and their nearby allies, damaging and stunning them for 1.2s when Kiss Bliss hits a target. The user can then use the Unite Move again, leaping up forward and slamming their hammer down at the designated location, damaging opposing Pokémo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.2,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Kiss Bliss",
+          "ratio": "54",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "108",
+          "notes": "Unite Move buffs apply when Kiss Bliss hits a target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kaboom",
+            "ratio": "270",
+            "damageType": "Atk",
+            "levelScaling": "24",
+            "base": "756",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Kiss Bliss",
+          "ratio": "54",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "108",
+          "notes": "Unite Move buffs apply when Kiss Bliss hits a target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kaboom",
+            "ratio": "270",
+            "damageType": "Atk",
+            "levelScaling": "24",
+            "base": "756",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

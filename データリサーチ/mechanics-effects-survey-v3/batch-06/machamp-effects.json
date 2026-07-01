@@ -1,0 +1,1939 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "machamp",
+  "pokemonName": "Machamp",
+  "role": "A",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "guts",
+      "moveName": "Guts",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Increases Attack by 10% for 5s when afflicted by any debuff. Increases Attack when afflicted by a status condition.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies by 50% for 1s. Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies for a short time.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies for a short time.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "karate-chop",
+      "moveName": "Karate Chop",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Machamp attacks in a straight line dealing damage to enemies hit. Attack opposing Pokémon with a sharp chop.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "close-combat",
+      "moveName": "Close Combat",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Karate Chop",
+      "isPlus": false,
+      "originalDescription": "Machamp unleashes a barrage of blows in a targeted direction for 1s, hitting multiple times and finishing with a single large strike. Machamp is unstoppable for the duration and can move while using Close Combat. Unleash a series of punches in the designated direction, dealing increased damage with the last punch. The user can move while using this move and becomes immune to hindrances.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "close-combat-plus",
+      "moveName": "Close Combat+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Close Combat",
+      "isPlus": true,
+      "originalDescription": "Deals 25% additional damage if the target is affected by a status condition. Deals increased damage to enemies that are afflicted by a status condition.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "cross-chop",
+      "moveName": "Cross Chop",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Karate Chop",
+      "isPlus": false,
+      "originalDescription": "Machamp dashes forward, dealing damage to enemies hit. Cross Chop may critically hit and has a 5% higher Critical-Hit Rate. Cross Chop further increases Critical-Hit Rate by 5% for 3s on hit. Has the user deliver a double chop with forearms crossed while dashing forward. This increases the user's critical-hit rate.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "cross-chop-plus",
+      "moveName": "Cross Chop+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Cross Chop",
+      "isPlus": true,
+      "originalDescription": "Machamp’s auto attacks increases Atk by 3 per target hit, permanently stacking up to 40 times. Increases Attack with each basic attack, up to a set max.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "bulk-up",
+      "moveName": "Bulk Up",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s. Machop's next attack is boosted. Become immune to hindrances for a short time. Increases movement speed, basic attack speed, and Attack. The next basic attack also becomes a boosted attack.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "dynamic-punch",
+      "moveName": "Dynamic Punch",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Bulk Up",
+      "isPlus": false,
+      "originalDescription": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius. Machamp’s Attack is increased by 15% for 5s and gains bonus movement speed of 40% diminishing by 20% over 3s when using Dynamic Punch. Machamp’s next auto attack is boosted. Jump to the designated location, dealing damage to enemies in the area of effect and leaving them unable to act when it hits. After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased. The next basic attack also becomes a boosted attack.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "dynamic-punch-plus",
+      "moveName": "Dynamic Punch+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Dynamic Punch",
+      "isPlus": true,
+      "originalDescription": "Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%. Increased Attack and movement speed.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "submission",
+      "moveName": "Submission",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Bulk Up",
+      "isPlus": false,
+      "originalDescription": "Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack. Machamp’s next auto attack during submission is enhanced, hitting twice and slamming the target down behind Machamp. If this attack hits, Machamp also gains 5% increased Critical-Hit Rate and 40% Attack Speed for 3s. Increases movement speed and become immune to hindrances. When the next basic attack hits, the attack deals increased damage and slams the enemy onto the ground, leaving it unable to act. Once this move ends, the user's critical-hit rate and basic attack speed are increased for a short time.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "submission-plus",
+      "moveName": "Submission+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Submission",
+      "isPlus": true,
+      "originalDescription": "Further increases Critical-Hit Rate by 5% and Attack Speed by 10%. Increased critical-hit rate and basic attack speed.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "barrage-blow",
+      "moveName": "Barrage Blow",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp. Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect. Increases Machamp's movement speed by 5%, Attack by 30%, Defense by 200, and Sp. Defense by 200 for 10s. If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them. The final blow deals double the damage of the previous hits.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Machamp",
+      "pokemonId": "machamp",
+      "sourceId": "barrage-blow-unite-buff",
+      "moveName": "Barrage Blow Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Barrage Blow",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Guts",
+      "sourceType": "passive",
+      "sourceId": "guts",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Karate Chop",
+      "sourceType": "initialMove",
+      "sourceId": "karate-chop",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Close Combat",
+      "sourceType": "moveChoice",
+      "sourceId": "close-combat",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Karate Chop"
+    },
+    {
+      "name": "Close Combat+",
+      "sourceType": "movePlus",
+      "sourceId": "close-combat-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Close Combat"
+    },
+    {
+      "name": "Cross Chop",
+      "sourceType": "moveChoice",
+      "sourceId": "cross-chop",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Karate Chop"
+    },
+    {
+      "name": "Cross Chop+",
+      "sourceType": "movePlus",
+      "sourceId": "cross-chop-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Cross Chop"
+    },
+    {
+      "name": "Bulk Up",
+      "sourceType": "initialMove",
+      "sourceId": "bulk-up",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Dynamic Punch",
+      "sourceType": "moveChoice",
+      "sourceId": "dynamic-punch",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Bulk Up"
+    },
+    {
+      "name": "Dynamic Punch+",
+      "sourceType": "movePlus",
+      "sourceId": "dynamic-punch-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Dynamic Punch"
+    },
+    {
+      "name": "Submission",
+      "sourceType": "moveChoice",
+      "sourceId": "submission",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Bulk Up"
+    },
+    {
+      "name": "Submission+",
+      "sourceType": "movePlus",
+      "sourceId": "submission-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Submission"
+    },
+    {
+      "name": "Barrage Blow",
+      "sourceType": "uniteMove",
+      "sourceId": "barrage-blow",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Barrage Blow Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "barrage-blow-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Barrage Blow"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "guts",
+        "name": "Guts",
+        "rawName": "Guts",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Increases Attack by 10% for 5s when afflicted by any debuff. Increases Attack when afflicted by a status condition.",
+        "translatedDescription": "機械要約: Guts には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases Attack by 10% for 5s when afflicted by any debuff.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__guts",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies by 50% for 1s. Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies for a short time.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies by 50% for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. This boosted attack also decreases the movement speed of enemies for a short time.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "karate-chop",
+        "name": "Karate Chop",
+        "rawName": "Karate Chop",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Machamp attacks in a straight line dealing damage to enemies hit. Attack opposing Pokémon with a sharp chop.",
+        "translatedDescription": "機械要約: Karate Chop には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "217",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "Machamp attacks in a straight line dealing damage to enemies hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__karate-chop",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "close-combat",
+        "name": "Close Combat",
+        "rawName": "Close Combat",
+        "parentName": "Karate Chop",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Machamp unleashes a barrage of blows in a targeted direction for 1s, hitting multiple times and finishing with a single large strike. Machamp is unstoppable for the duration and can move while using Close Combat. Unleash a series of punches in the designated direction, dealing increased damage with the last punch. The user can move while using this move and becomes immune to hindrances.",
+        "translatedDescription": "機械要約: Close Combat は 妨害無効になる、妨害耐性を得る。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (4 hits)",
+            "ratio": "65",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "55",
+            "trueDescription": "Machamp unleashes a barrage of blows in a targeted direction for 1s, hitting multiple times and finishing with a single large strike. Machamp is unstoppable for the duration and can move while using Close Combat.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Final Hit",
+            "ratio": "195",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "165",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "close-combat__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp is unstoppable for the duration and can move while using Close Combat.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Machamp is unstoppable for the duration and can move while using Close Combat.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "close-combat__02__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user can move while using this move and becomes immune to hindrances.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: The user can move while using this move and becomes immune to hindrances.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__close-combat",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "close-combat-plus",
+        "name": "Close Combat+",
+        "rawName": "Close Combat",
+        "parentName": "Close Combat",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Deals 25% additional damage if the target is affected by a status condition. Deals increased damage to enemies that are afflicted by a status condition.",
+        "translatedDescription": "機械要約: Close Combat+ は 与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals 25% additional damage if the target is affected by a status condition.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "close-combat-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Deals increased damage to enemies that are afflicted by a status condition.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Deals increased damage to enemies that are afflicted by a status condition.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__close-combat-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "cross-chop",
+        "name": "Cross Chop",
+        "rawName": "Cross Chop",
+        "parentName": "Karate Chop",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Machamp dashes forward, dealing damage to enemies hit. Cross Chop may critically hit and has a 5% higher Critical-Hit Rate. Cross Chop further increases Critical-Hit Rate by 5% for 3s on hit. Has the user deliver a double chop with forearms crossed while dashing forward. This increases the user's critical-hit rate.",
+        "translatedDescription": "機械要約: Cross Chop は 急所率を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "98",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "290",
+            "trueDescription": "Machamp dashes forward, dealing damage to enemies hit. Cross Chop may critically hit and has a 5% higher Critical-Hit Rate. Cross Chop further increases Critical-Hit Rate by 5% for 3s on hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cross-chop__01__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Cross Chop further increases Critical-Hit Rate by 5% for 3s on hit.",
+          "codexInterpretation": "急所率を上げる。 原文証拠: Cross Chop further increases Critical-Hit Rate by 5% for 3s on hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__cross-chop",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "cross-chop-plus",
+        "name": "Cross Chop+",
+        "rawName": "Cross Chop",
+        "parentName": "Cross Chop",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Machamp’s auto attacks increases Atk by 3 per target hit, permanently stacking up to 40 times. Increases Attack with each basic attack, up to a set max.",
+        "translatedDescription": "機械要約: Cross Chop+ は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Machamp’s auto attacks increases Atk by 3 per target hit, permanently stacking up to 40 times.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cross-chop-plus__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Machamp’s auto attacks increases Atk by 3 per target hit, permanently stacking up to 40 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Machamp’s auto attacks increases Atk by 3 per target hit, permanently stacking up to 40 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__cross-chop-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "bulk-up",
+        "name": "Bulk Up",
+        "rawName": "Bulk Up",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s. Machop's next attack is boosted. Become immune to hindrances for a short time. Increases movement speed, basic attack speed, and Attack. The next basic attack also becomes a boosted attack.",
+        "translatedDescription": "機械要約: Bulk Up は 妨害無効になる、妨害耐性を得る、移動速度を上げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s. Machop's next attack is boosted.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bulk-up__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Machop buffs themselves for 3s becoming unstoppable, increasing attack by 15%, attack speed by 40% and movement speed by 30% inititally, diminishing gradually every 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bulk-up__02__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Become immune to hindrances for a short time.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Become immune to hindrances for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bulk-up__03__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases movement speed, basic attack speed, and Attack.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Increases movement speed, basic attack speed, and Attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bulk-up__04__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack also becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The next basic attack also becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__bulk-up",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dynamic-punch",
+        "name": "Dynamic Punch",
+        "rawName": "Dynamic Punch",
+        "parentName": "Bulk Up",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius. Machamp’s Attack is increased by 15% for 5s and gains bonus movement speed of 40% diminishing by 20% over 3s when using Dynamic Punch. Machamp’s next auto attack is boosted. Jump to the designated location, dealing damage to enemies in the area of effect and leaving them unable to act when it hits. After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased. The next basic attack also becomes a boosted attack.",
+        "translatedDescription": "機械要約: Dynamic Punch は 行動不能・スタンを付与する、移動速度を下げる、妨害無効になる、妨害耐性を得る、通常攻撃速度を上げる、攻撃・特攻などを変化させる、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Tick (4 Ticks)",
+            "ratio": "28",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "50",
+            "trueDescription": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius. Machamp’s Attack is increased by 15% for 5s and gains bonus movement speed of 40% diminishing by 20% over 3s when using Dynamic Punch. Machamp’s next auto attack is boosted.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dynamic-punch__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Machamp jumps to target location, becoming unstoppable for 0.5s, stunning enemies hit for 0.5s, slowing them by 40% for 3s, and dealing damage four times in quick succession to the landing radius.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__04__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__05__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: After using this move, the user becomes immune to hindrances, their movement speed and basic attack speed is increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__06__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp’s Attack is increased by 15% for 5s and gains bonus movement speed of 40% diminishing by 20% over 3s when using Dynamic Punch.",
+          "codexInterpretation": "攻撃・特攻などを変化させる。 原文証拠: Machamp’s Attack is increased by 15% for 5s and gains bonus movement speed of 40% diminishing by 20% over 3s when using Dynamic Punch.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__07__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Machamp’s next auto attack is boosted.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: Machamp’s next auto attack is boosted.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch__08__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack also becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The next basic attack also becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__dynamic-punch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dynamic-punch-plus",
+        "name": "Dynamic Punch+",
+        "rawName": "Dynamic Punch",
+        "parentName": "Dynamic Punch",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%. Increased Attack and movement speed.",
+        "translatedDescription": "機械要約: Dynamic Punch+ は 移動速度を下げる、移動速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dynamic-punch-plus__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dynamic-punch-plus__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Further increases movement speed by 30%, Attack bonus by 5%, and slow by 20%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__dynamic-punch-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "submission",
+        "name": "Submission",
+        "rawName": "Submission",
+        "parentName": "Bulk Up",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack. Machamp’s next auto attack during submission is enhanced, hitting twice and slamming the target down behind Machamp. If this attack hits, Machamp also gains 5% increased Critical-Hit Rate and 40% Attack Speed for 3s. Increases movement speed and become immune to hindrances. When the next basic attack hits, the attack deals increased damage and slams the enemy onto the ground, leaving it unable to act. Once this move ends, the user's critical-hit rate and basic attack speed are increased for a short time.",
+        "translatedDescription": "機械要約: Submission は 行動不能・スタンを付与する、妨害無効になる、妨害耐性を得る、移動速度を上げる、次の通常攻撃または強化攻撃を準備する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (2x)",
+            "ratio": "115",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "210",
+            "trueDescription": "Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack. Machamp’s next auto attack during submission is enhanced, hitting twice and slamming the target down behind Machamp. If this attack hits, Machamp also gains 5% increased Critical-Hit Rate and 40% Attack Speed for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "submission__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the next basic attack hits, the attack deals increased damage and slams the enemy onto the ground, leaving it unable to act.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: When the next basic attack hits, the attack deals increased damage and slams the enemy onto the ground, leaving it unable to act.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "submission__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "submission__03__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases movement speed and become immune to hindrances.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Increases movement speed and become immune to hindrances.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "submission__04__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases movement speed and become immune to hindrances.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Increases movement speed and become immune to hindrances.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "submission__05__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: Machamp becomes unstoppable for 5s and gains 70% increased movement speed (diminishing every 1s by 20%) or until the next auto attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__submission",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "submission-plus",
+        "name": "Submission+",
+        "rawName": "Submission",
+        "parentName": "Submission",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Further increases Critical-Hit Rate by 5% and Attack Speed by 10%. Increased critical-hit rate and basic attack speed.",
+        "translatedDescription": "機械要約: Submission+ は 急所率を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Further increases Critical-Hit Rate by 5% and Attack Speed by 10%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "submission-plus__01__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Further increases Critical-Hit Rate by 5% and Attack Speed by 10%.",
+          "codexInterpretation": "急所率を上げる。 原文証拠: Further increases Critical-Hit Rate by 5% and Attack Speed by 10%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__submission-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "barrage-blow",
+        "name": "Barrage Blow",
+        "rawName": "Barrage Blow",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp. Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect. Increases Machamp's movement speed by 5%, Attack by 30%, Defense by 200, and Sp. Defense by 200 for 10s. If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them. The final blow deals double the damage of the previous hits.",
+        "translatedDescription": "機械要約: Barrage Blow は 相手を押し出す、妨害無効になる、防御・特防を変化させる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (6x)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "100",
+            "trueDescription": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp. Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Final Hit",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "barrage-blow__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Defense by 300 for 8s before unleashing an unstoppable combo attack that continuously shoves enemies in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__03__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Machamp gains increased movement speed by 10%, Attack by 25%, Defense by 300, and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again, unleash a combo attack, dealing damage to enemies in the area of effect and shoving them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__barrage-blow",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "barrage-blow-unite-buff",
+        "name": "Barrage Blow Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Barrage Blow",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Barrage Blow Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "barrage-blow-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "barrage-blow-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "machamp__barrage-blow-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 33,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

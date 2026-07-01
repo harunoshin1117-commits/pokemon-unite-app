@@ -1,0 +1,1746 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "lapras",
+  "pokemonName": "Lapras",
+  "role": "C",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Intermediate",
+    "role": "Defender"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "shell-armor",
+      "moveName": "Shell Armor",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "If Lapras would take a single instance of damage that would be greater than 10% of Lapras's maximum HP, this damage will be reduced by 25%.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting water through the target and dealing increased damage to Pokémon hit by the spray. The boosted attack also heals Lapras.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "4% Max HP per tick",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "whirlpool",
+      "moveName": "Whirlpool",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect. The time between hits is shorter the farther opposing Pokémon are from the whirlpool’s center.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "water-pulse",
+      "moveName": "Water Pulse",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Whirlpool",
+      "isPlus": false,
+      "originalDescription": "Release a pulse of water centered on itself that spreads out, dealing damage to Pokémon it hits and decreasing their movement speed by 30% for 2s. For each opposing Pokémon hit by a pulse from this move, an additional pulse will be released the next time this move is used within 8 seconds, up to a total of 3 pulses. If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "water-pulse-plus",
+      "moveName": "Water Pulse+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Water Pulse",
+      "isPlus": true,
+      "originalDescription": "Increases the maximum number of pulses to 4.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "perish-song",
+      "moveName": "Perish Song",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Whirlpool",
+      "isPlus": false,
+      "originalDescription": "Sing an eerie melody that echoes around yourself, dealing damage to opposing Pokémon it hits. This move can be used up to three times consecutively within 5s of its last use. Pokémon hit all three times take additional damage equal to one Perish Song hit. If the additional damage would bring an enemy Pokémon below 10% of their max HP, that enemy Pokémon will take 40% of their maximum HP as True Damage.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "perish-song-plus",
+      "moveName": "Perish Song+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Perish Song",
+      "isPlus": true,
+      "originalDescription": "The next basic attack after using this move becomes a boosted attack. 13% Missing HP",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "ice-shard",
+      "moveName": "Ice Shard",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Hurl 5 chunks of ice in a forward direction, dealing damage to Pokémon they hit and leaving them frozen for 0.6s. If this move hits a Pokémon that is already frozen, it deals damage to it and shoves in the direction of the ice shards for 0.4s.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "bubble-beam",
+      "moveName": "Bubble Beam",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Ice Shard",
+      "isPlus": false,
+      "originalDescription": "Create a bubble shield on Lapras for up to 4s or until the shield is broken, then spray 5 bubbles with a beam in the designated direction. Pokémon hit by the bubbles take damage and are enveloped by it, leaving them unable to act for 1s. After the bubbles fly a set distance, they slowly float for 3s. Pokémon hit by a floating bubble are enveloped by it and left unable to act for 1s, but will not be damaged.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "bubble-beam-plus",
+      "moveName": "Bubble Beam+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Bubble Beam",
+      "isPlus": true,
+      "originalDescription": "Increases the strength of the shield granted by this move.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "ice-beam",
+      "moveName": "Ice Beam",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Ice Shard",
+      "isPlus": false,
+      "originalDescription": "Unleash an icy-cold beam of energy in the designated direction, dealing damage to Pokémon hit and freezing the ground for 3s. Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times. Pokémon become frozen for 1s if they remain on the frozen ground for 3 ticks. When Lapras is on the frozen ground, Lapras's movement speed is increased by 40%, lingering for 0.5s if Lapras leaves the frozen ground.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "ice-beam-plus",
+      "moveName": "Ice Beam+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Ice Beam",
+      "isPlus": true,
+      "originalDescription": "Increase the duration Pokémon are Frozen for to 1.5s.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "lapras-express",
+      "moveName": "Lapras Express",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Ride a wave quickly and continuously forward becoming Unstoppable for up to 15s. Lapras’s movement speed increases every second while riding but decreases if the user hits an obstacle. If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s. If the user hits an enemy Pokémon while still riding, the user stops in place, dealing damage to and throwing the opposing Pokémon for 1.5s. While the user is riding the wave, one nearby ally Pokémon of the user’s choice within range may be picked up and can ride on its back. Ally Pokémon riding on the user’s back can dismount whenever they choose.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Lapras",
+      "pokemonId": "lapras",
+      "sourceId": "lapras-express-unite-buff",
+      "moveName": "Lapras Express Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Lapras Express",
+      "isPlus": false,
+      "originalDescription": "Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping. Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Shell Armor",
+      "sourceType": "passive",
+      "sourceId": "shell-armor",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Whirlpool",
+      "sourceType": "initialMove",
+      "sourceId": "whirlpool",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Water Pulse",
+      "sourceType": "moveChoice",
+      "sourceId": "water-pulse",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Whirlpool"
+    },
+    {
+      "name": "Water Pulse+",
+      "sourceType": "movePlus",
+      "sourceId": "water-pulse-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Water Pulse"
+    },
+    {
+      "name": "Perish Song",
+      "sourceType": "moveChoice",
+      "sourceId": "perish-song",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Whirlpool"
+    },
+    {
+      "name": "Perish Song+",
+      "sourceType": "movePlus",
+      "sourceId": "perish-song-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Perish Song"
+    },
+    {
+      "name": "Ice Shard",
+      "sourceType": "initialMove",
+      "sourceId": "ice-shard",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Bubble Beam",
+      "sourceType": "moveChoice",
+      "sourceId": "bubble-beam",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Ice Shard"
+    },
+    {
+      "name": "Bubble Beam+",
+      "sourceType": "movePlus",
+      "sourceId": "bubble-beam-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Bubble Beam"
+    },
+    {
+      "name": "Ice Beam",
+      "sourceType": "moveChoice",
+      "sourceId": "ice-beam",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Ice Shard"
+    },
+    {
+      "name": "Ice Beam+",
+      "sourceType": "movePlus",
+      "sourceId": "ice-beam-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Ice Beam"
+    },
+    {
+      "name": "Lapras Express",
+      "sourceType": "uniteMove",
+      "sourceId": "lapras-express",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Lapras Express Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "lapras-express-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Lapras Express"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "shell-armor",
+        "name": "Shell Armor",
+        "rawName": "Shell Armor",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "If Lapras would take a single instance of damage that would be greater than 10% of Lapras's maximum HP, this damage will be reduced by 25%.",
+        "translatedDescription": "機械要約: Shell Armor は フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "If Lapras would take a single instance of damage that would be greater than 10% of Lapras's maximum HP, this damage will be reduced by 25%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "shell-armor__01__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If Lapras would take a single instance of damage that would be greater than 10% of Lapras's maximum HP, this damage will be reduced by 25%.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If Lapras would take a single instance of damage that would be greater than 10% of Lapras's maximum HP, this damage will be reduced by 25%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__shell-armor",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, shooting water through the target and dealing increased damage to Pokémon hit by the spray. The boosted attack also heals Lapras.",
+        "translatedDescription": "機械要約: Attack は HPを回復する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Becomes a boosted attack with every third attack, shooting water through the target and dealing increased damage to Pokémon hit by the spray. The boosted attack also heals Lapras.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The boosted attack also heals Lapras.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The boosted attack also heals Lapras.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, shooting water through the target and dealing increased damage to Pokémon hit by the spray.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, shooting water through the target and dealing increased damage to Pokémon hit by the spray.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "4% Max HP per tick",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted x3",
+            "ratio": "20",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "4% Max HP per tick",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "whirlpool",
+        "name": "Whirlpool",
+        "rawName": "Whirlpool",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect. The time between hits is shorter the farther opposing Pokémon are from the whirlpool’s center.",
+        "translatedDescription": "機械要約: Whirlpool は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "24",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "70",
+            "trueDescription": "Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect. The time between hits is shorter the farther opposing Pokémon are from the whirlpool’s center.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "whirlpool__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "24",
+              "damageType": "SpAtk",
+              "levelScaling": "4",
+              "base": "70",
+              "trueDescription": "Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect. The time between hits is shorter the farther opposing Pokémon are from the whirlpool’s center.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Create a whirlpool centered on Lapras that lasts for 3s, dealing damage over time to opposing Pokémon in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__whirlpool",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "water-pulse",
+        "name": "Water Pulse",
+        "rawName": "Water Pulse",
+        "parentName": "Whirlpool",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Release a pulse of water centered on itself that spreads out, dealing damage to Pokémon it hits and decreasing their movement speed by 30% for 2s. For each opposing Pokémon hit by a pulse from this move, an additional pulse will be released the next time this move is used within 8 seconds, up to a total of 3 pulses. If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+        "translatedDescription": "機械要約: Water Pulse は 次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (First Pulse)",
+            "ratio": "74",
+            "damageType": "SpAtk",
+            "levelScaling": "11",
+            "base": "230",
+            "trueDescription": "Release a pulse of water centered on itself that spreads out, dealing damage to Pokémon it hits and decreasing their movement speed by 30% for 2s. For each opposing Pokémon hit by a pulse from this move, an additional pulse will be released the next time this move is used within 8 seconds, up to a total of 3 pulses. If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Subsequent pulses)",
+            "ratio": "45",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "water-pulse__01__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "water-pulse__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: If the first pulse after activating this move hits a Pokémon, the user’s next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__water-pulse",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "water-pulse-plus",
+        "name": "Water Pulse+",
+        "rawName": "Water Pulse",
+        "parentName": "Water Pulse",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the maximum number of pulses to 4.",
+        "translatedDescription": "機械要約: Water Pulse+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the maximum number of pulses to 4.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__water-pulse-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "perish-song",
+        "name": "Perish Song",
+        "rawName": "Perish Song",
+        "parentName": "Whirlpool",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Sing an eerie melody that echoes around yourself, dealing damage to opposing Pokémon it hits. This move can be used up to three times consecutively within 5s of its last use. Pokémon hit all three times take additional damage equal to one Perish Song hit. If the additional damage would bring an enemy Pokémon below 10% of their max HP, that enemy Pokémon will take 40% of their maximum HP as True Damage.",
+        "translatedDescription": "機械要約: Perish Song には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage ",
+            "ratio": "82.8",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "282",
+            "trueDescription": "Sing an eerie melody that echoes around yourself, dealing damage to opposing Pokémon it hits. This move can be used up to three times consecutively within 5s of its last use. Pokémon hit all three times take additional damage equal to one Perish Song hit. If the additional damage would bring an enemy Pokémon below 10% of their max HP, that enemy Pokémon will take 40% of their maximum HP as True Damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__perish-song",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "perish-song-plus",
+        "name": "Perish Song+",
+        "rawName": "Perish Song",
+        "parentName": "Perish Song",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "The next basic attack after using this move becomes a boosted attack. 13% Missing HP",
+        "translatedDescription": "機械要約: Perish Song+ は 通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The next basic attack after using this move becomes a boosted attack.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd2",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "13% Missing HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "perish-song-plus__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack after using this move becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The next basic attack after using this move becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "perish-song-plus__02__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "The next basic attack after using this move becomes a boosted attack.",
+              "notes": ""
+            },
+            {
+              "id": "enhancedAdd2",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "13% Missing HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "13% Missing HP",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 13% Missing HP",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__perish-song-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "ice-shard",
+        "name": "Ice Shard",
+        "rawName": "Ice Shard",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Hurl 5 chunks of ice in a forward direction, dealing damage to Pokémon they hit and leaving them frozen for 0.6s. If this move hits a Pokémon that is already frozen, it deals damage to it and shoves in the direction of the ice shards for 0.4s.",
+        "translatedDescription": "機械要約: Ice Shard は こおり・凍結を付与する、相手を押し出す。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Chunk",
+            "ratio": "19",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "70",
+            "trueDescription": "Hurl 5 chunks of ice in a forward direction, dealing damage to Pokémon they hit and leaving them frozen for 0.6s. If this move hits a Pokémon that is already frozen, it deals damage to it and shoves in the direction of the ice shards for 0.4s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-shard__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl 5 chunks of ice in a forward direction, dealing damage to Pokémon they hit and leaving them frozen for 0.6s.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Hurl 5 chunks of ice in a forward direction, dealing damage to Pokémon they hit and leaving them frozen for 0.6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-shard__02__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If this move hits a Pokémon that is already frozen, it deals damage to it and shoves in the direction of the ice shards for 0.4s.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: If this move hits a Pokémon that is already frozen, it deals damage to it and shoves in the direction of the ice shards for 0.4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__ice-shard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "bubble-beam",
+        "name": "Bubble Beam",
+        "rawName": "Bubble Beam",
+        "parentName": "Ice Shard",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Create a bubble shield on Lapras for up to 4s or until the shield is broken, then spray 5 bubbles with a beam in the designated direction. Pokémon hit by the bubbles take damage and are enveloped by it, leaving them unable to act for 1s. After the bubbles fly a set distance, they slowly float for 3s. Pokémon hit by a floating bubble are enveloped by it and left unable to act for 1s, but will not be damaged.",
+        "translatedDescription": "機械要約: Bubble Beam は 行動不能・スタンを付与する、移動速度を下げる、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "172.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "575",
+            "trueDescription": "Create a bubble shield on Lapras for up to 4s or until the shield is broken, then spray 5 bubbles with a beam in the designated direction. Pokémon hit by the bubbles take damage and are enveloped by it, leaving them unable to act for 1s. After the bubbles fly a set distance, they slowly float for 3s. Pokémon hit by a floating bubble are enveloped by it and left unable to act for 1s, but will not be damaged.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage",
+            "ratio": "119",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bubble-beam__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pokémon hit by the bubbles take damage and are enveloped by it, leaving them unable to act for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Pokémon hit by the bubbles take damage and are enveloped by it, leaving them unable to act for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bubble-beam__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After the bubbles fly a set distance, they slowly float for 3s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: After the bubbles fly a set distance, they slowly float for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bubble-beam__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Create a bubble shield on Lapras for up to 4s or until the shield is broken, then spray 5 bubbles with a beam in the designated direction.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Create a bubble shield on Lapras for up to 4s or until the shield is broken, then spray 5 bubbles with a beam in the designated direction.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bubble-beam__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "After the bubbles fly a set distance, they slowly float for 3s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: After the bubbles fly a set distance, they slowly float for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__bubble-beam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "bubble-beam-plus",
+        "name": "Bubble Beam+",
+        "rawName": "Bubble Beam",
+        "parentName": "Bubble Beam",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the strength of the shield granted by this move.",
+        "translatedDescription": "機械要約: Bubble Beam+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "207",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "690",
+            "trueDescription": "Increases the strength of the shield granted by this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bubble-beam-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the strength of the shield granted by this move.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Increases the strength of the shield granted by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__bubble-beam-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "ice-beam",
+        "name": "Ice Beam",
+        "rawName": "Ice Beam",
+        "parentName": "Ice Shard",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Unleash an icy-cold beam of energy in the designated direction, dealing damage to Pokémon hit and freezing the ground for 3s. Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times. Pokémon become frozen for 1s if they remain on the frozen ground for 3 ticks. When Lapras is on the frozen ground, Lapras's movement speed is increased by 40%, lingering for 0.5s if Lapras leaves the frozen ground.",
+        "translatedDescription": "機械要約: Ice Beam は こおり・凍結を付与する、移動速度を上げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Beam",
+            "ratio": "36",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "120",
+            "trueDescription": "Unleash an icy-cold beam of energy in the designated direction, dealing damage to Pokémon hit and freezing the ground for 3s. Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times. Pokémon become frozen for 1s if they remain on the frozen ground for 3 ticks. When Lapras is on the frozen ground, Lapras's movement speed is increased by 40%, lingering for 0.5s if Lapras leaves the frozen ground.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Frozen Ground",
+            "ratio": "27",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "95",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-beam__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-beam__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Lapras is on the frozen ground, Lapras's movement speed is increased by 40%, lingering for 0.5s if Lapras leaves the frozen ground.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: When Lapras is on the frozen ground, Lapras's movement speed is increased by 40%, lingering for 0.5s if Lapras leaves the frozen ground.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-beam__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Pokémon on the frozen ground take damage every 0.4s they remain on it and have their movement speed decreased by 15% for 2s stacking up to 6 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__ice-beam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "ice-beam-plus",
+        "name": "Ice Beam+",
+        "rawName": "Ice Beam",
+        "parentName": "Ice Beam",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increase the duration Pokémon are Frozen for to 1.5s.",
+        "translatedDescription": "機械要約: Ice Beam+ は こおり・凍結を付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increase the duration Pokémon are Frozen for to 1.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-beam-plus__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increase the duration Pokémon are Frozen for to 1.5s.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Increase the duration Pokémon are Frozen for to 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__ice-beam-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "lapras-express",
+        "name": "Lapras Express",
+        "rawName": "Lapras Express",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Ride a wave quickly and continuously forward becoming Unstoppable for up to 15s. Lapras’s movement speed increases every second while riding but decreases if the user hits an obstacle. If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s. If the user hits an enemy Pokémon while still riding, the user stops in place, dealing damage to and throwing the opposing Pokémon for 1.5s. While the user is riding the wave, one nearby ally Pokémon of the user’s choice within range may be picked up and can ride on its back. Ally Pokémon riding on the user’s back can dismount whenever they choose.",
+        "translatedDescription": "機械要約: Lapras Express は 相手を打ち上げる、妨害無効になる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "172",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "580",
+            "trueDescription": "Ride a wave quickly and continuously forward becoming Unstoppable for up to 15s. Lapras’s movement speed increases every second while riding but decreases if the user hits an obstacle. If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s. If the user hits an enemy Pokémon while still riding, the user stops in place, dealing damage to and throwing the opposing Pokémon for 1.5s. While the user is riding the wave, one nearby ally Pokémon of the user’s choice within range may be picked up and can ride on its back. Ally Pokémon riding on the user’s back can dismount whenever they choose.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "lapras-express__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "lapras-express__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 15,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Ride a wave quickly and continuously forward becoming Unstoppable for up to 15s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Ride a wave quickly and continuously forward becoming Unstoppable for up to 15s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "lapras-express__03__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move is used again, the user stops and launches a wave that continues moving forward, dealing damage to Pokémon it hits and throwing them for 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__lapras-express",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "lapras-express-unite-buff",
+        "name": "Lapras Express Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Lapras Express",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping. Buff duration: 6",
+        "translatedDescription": "機械要約: Lapras Express Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "lapras-express-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "lapras-express-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping.",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 20% Max HP Shield on activation, 40% Max HP shield and 30% Movement speed after stopping.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lapras__lapras-express-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 24,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

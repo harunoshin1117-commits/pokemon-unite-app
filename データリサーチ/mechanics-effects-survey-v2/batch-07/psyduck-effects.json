@@ -1,0 +1,735 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "psyduck",
+  "pokemonName": "Psyduck",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "swift-swim",
+        "name": "Swift Swim",
+        "parentName": null,
+        "originalDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD). This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s.",
+        "translatedDescription": "機械要約: Swift Swim は 移動速度を下げる、妨害無効になる、移動速度を上げる、受けるダメージを軽減する、継続ダメージを与える、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+            "notes": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "swift-swim__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s",
+          "codexInterpretation": "妨害無効になる。 原文証拠: When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__03__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": 10,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__04__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__05__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": 10,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+              "notes": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__06__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__07__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD).",
+              "notes": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "psyduck__swift-swim",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Attacks with a shot of water. Psyduck has no boosted attack.",
+        "translatedDescription": "機械要約: Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Attacks with a shot of water.",
+            "notes": "Psyduck has no boosted attack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "psyduck__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "confusion",
+        "name": "Confusion",
+        "parentName": null,
+        "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits. While the mysterious power is active, deals increased damage.",
+        "translatedDescription": "機械要約: Confusion は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "70",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "380",
+            "trueDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits.",
+            "notes": "While the mysterious power is active, deals increased damage."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Mysterious Power",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "456",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "confusion__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "psyduck__confusion",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "tail-whip",
+        "name": "Tail Whip",
+        "parentName": null,
+        "originalDescription": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+        "translatedDescription": "機械要約: Tail Whip は 移動速度を下げる、防御・特防を変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "320",
+            "trueDescription": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s.",
+            "notes": "While the mysterious power is active, strengthens the Sp. Def decrease to 30%."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tail-whip__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "tail-whip__02__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "psyduck__tail-whip",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "full-power-psy-ay-ay",
+        "name": "Full-Power Psy-ay-ay!",
+        "parentName": null,
+        "originalDescription": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit. After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Full-Power Psy-ay-ay! は 与ダメージを変化させる、待ち時間を短縮する、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (x3)",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "300",
+            "trueDescription": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit.",
+            "notes": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "full-power-psy-ay-ay__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "full-power-psy-ay-ay__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "full-power-psy-ay-ay__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "full-power-psy-ay-ay__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "psyduck__full-power-psy-ay-ay",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 14,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

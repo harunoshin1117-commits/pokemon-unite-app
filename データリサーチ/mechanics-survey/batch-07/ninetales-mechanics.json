@@ -1,0 +1,682 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "ninetales",
+  "pokemonName": "Ninetales",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "snow-warning",
+      "name": "Snow Warning",
+      "originalDescription": "Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s. This ability has an 8s cooldown. Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. This ability has a 4s cooldown. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s.",
+      "summary": "Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s. This ability has an 8s cooldown. Causes snow to fall on an enemy, de",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 75,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time. Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time. Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed fo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "53.2",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "250",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "powder-snow",
+      "name": "Powder Snow",
+      "originalDescription": "Attack with a chilly gust of powdery snow, decreasing the movement speed of enemies for a short time when it hits. Ninetales attacks with a chilly gust of powdery snow; dealing damage to enemies hit and decreasing their movement speed by 50% for 1s.",
+      "summary": "Attack with a chilly gust of powdery snow, decreasing the movement speed of enemies for a short time when it hits. Ninetales attacks with a chilly gust of powdery snow; dealing damage to enemies hit and decreasing their movement speed by 50% for 1s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "78",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "icy-wind",
+      "name": "Icy Wind",
+      "originalDescription": "Attack with a gust of freezing air, dealing damage to enemies in the area of effect and decreases their movement speed for a short time when it hits. Attacks with a gust of freezing air; damaging, and slowing Pokémon hit by 20% for 1s. Icy Wind shoves Pokémon hit in the direction of the wind for a short distance unless they are already at the maximum range of the move.",
+      "summary": "Attack with a gust of freezing air, dealing damage to enemies in the area of effect and decreases their movement speed for a short time when it hits. Attacks with a gust of freezing air; damaging, and slowing Pokémon hit by 20% for 1s. Icy Wind shoves Pokémon hit in the direction of the wind for a short distance unless",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x2)",
+          "ratio": "61",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "snow-globe",
+      "name": "Snow Globe",
+      "originalDescription": "Attacks with a chilly blast of snow and ice, dealing damage to enemies in the area of effect when it hits. Deals increased damage to enemies that are frozen. Attack with a chilly blast of snow and ice; dealing damage to enemies in the area of effect around Ninetales when it hits. Deals increased damage to enemies that are frozen. Ninetales is unstoppable during the cast. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Attacks with a chilly blast of snow and ice, dealing damage to enemies in the area of effect when it hits. Deals increased damage to enemies that are frozen. Attack with a chilly blast of snow and ice; dealing damage to enemies in the area of effect around Ninetales when it hits. Deals increased damage to enemies that ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Frozen Enemies",
+          "ratio": "242",
+          "damageType": "SpAtk",
+          "levelScaling": "35",
+          "base": "1640",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Unfrozen Enemies",
+            "ratio": "159",
+            "damageType": "SpAtk",
+            "levelScaling": "32",
+            "base": "1150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Frozen Enemies",
+          "ratio": "242",
+          "damageType": "SpAtk",
+          "levelScaling": "35",
+          "base": "1640",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Unfrozen Enemies",
+            "ratio": "159",
+            "damageType": "SpAtk",
+            "levelScaling": "32",
+            "base": "1150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "snow-warning",
+      "name": "Snow Warning",
+      "originalDescription": "Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s. This ability has an 8s cooldown. Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. This ability has a 4s cooldown. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s.",
+      "summary": "Causes snow to fall on an enemy, dealing damage to it and decreasing their movement speed by 30% for .75s. Boosted attacks, Snow Warning, and all moves (except Aurora Veil) sling snow; hitting the same target with snow 4 times will freeze them for 1s. This ability has an 8s cooldown. Causes snow to fall on an enemy, de",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 75,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time. Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time. Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed fo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to nearby enemies and decreases their movement speed for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "53.2",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "250",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "powder-snow",
+      "name": "Powder Snow",
+      "originalDescription": "Attack with a chilly gust of powdery snow, decreasing the movement speed of enemies for a short time when it hits. Ninetales attacks with a chilly gust of powdery snow; dealing damage to enemies hit and decreasing their movement speed by 50% for 1s.",
+      "summary": "Attack with a chilly gust of powdery snow, decreasing the movement speed of enemies for a short time when it hits. Ninetales attacks with a chilly gust of powdery snow; dealing damage to enemies hit and decreasing their movement speed by 50% for 1s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "78",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "icy-wind",
+      "name": "Icy Wind",
+      "originalDescription": "Attack with a gust of freezing air, dealing damage to enemies in the area of effect and decreases their movement speed for a short time when it hits. Attacks with a gust of freezing air; damaging, and slowing Pokémon hit by 20% for 1s. Icy Wind shoves Pokémon hit in the direction of the wind for a short distance unless they are already at the maximum range of the move.",
+      "summary": "Attack with a gust of freezing air, dealing damage to enemies in the area of effect and decreases their movement speed for a short time when it hits. Attacks with a gust of freezing air; damaging, and slowing Pokémon hit by 20% for 1s. Icy Wind shoves Pokémon hit in the direction of the wind for a short distance unless",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x2)",
+          "ratio": "61",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "snow-globe",
+      "name": "Snow Globe",
+      "originalDescription": "Attacks with a chilly blast of snow and ice, dealing damage to enemies in the area of effect when it hits. Deals increased damage to enemies that are frozen. Attack with a chilly blast of snow and ice; dealing damage to enemies in the area of effect around Ninetales when it hits. Deals increased damage to enemies that are frozen. Ninetales is unstoppable during the cast. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Attacks with a chilly blast of snow and ice, dealing damage to enemies in the area of effect when it hits. Deals increased damage to enemies that are frozen. Attack with a chilly blast of snow and ice; dealing damage to enemies in the area of effect around Ninetales when it hits. Deals increased damage to enemies that ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Frozen Enemies",
+          "ratio": "242",
+          "damageType": "SpAtk",
+          "levelScaling": "35",
+          "base": "1640",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Unfrozen Enemies",
+            "ratio": "159",
+            "damageType": "SpAtk",
+            "levelScaling": "32",
+            "base": "1150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Frozen Enemies",
+          "ratio": "242",
+          "damageType": "SpAtk",
+          "levelScaling": "35",
+          "base": "1640",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Unfrozen Enemies",
+            "ratio": "159",
+            "damageType": "SpAtk",
+            "levelScaling": "32",
+            "base": "1150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,665 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "blissey",
+  "pokemonName": "Blissey",
+  "role": "Supporter",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "natural-cure",
+      "name": "Natural Cure",
+      "originalDescription": "Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered. Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+      "summary": "Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered. Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage. Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used.",
+      "summary": "Becomes a boosted attack after a set amount of time passes, dealing increased damage. Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "summary": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "pound",
+      "name": "Pound",
+      "originalDescription": "Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits. The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "summary": "Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits. The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "47",
+          "damageType": "SpAtk",
+          "levelScaling": "28",
+          "base": "520",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "heal-pulse",
+      "name": "Heal Pulse",
+      "originalDescription": "Continually restores the user's and designated ally HP for a short time. The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+      "summary": "Continually restores the user's and designated ally HP for a short time. The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing (4x)",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing (4x)",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "bliss-assistance",
+      "name": "Bliss Assistance",
+      "originalDescription": "Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with. The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp. Atk by 20% for 6s. The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s. While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s. When reaching the target ally, nearby opposing Pokémon are damaged again. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with. Th",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94.4",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "1190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "1200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94.4",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "1190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "1200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "dotTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "natural-cure",
+      "name": "Natural Cure",
+      "originalDescription": "Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered. Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+      "summary": "Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered. Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage. Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used.",
+      "summary": "Becomes a boosted attack after a set amount of time passes, dealing increased damage. Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "summary": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "pound",
+      "name": "Pound",
+      "originalDescription": "Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits. The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "summary": "Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits. The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "47",
+          "damageType": "SpAtk",
+          "levelScaling": "28",
+          "base": "520",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "heal-pulse",
+      "name": "Heal Pulse",
+      "originalDescription": "Continually restores the user's and designated ally HP for a short time. The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+      "summary": "Continually restores the user's and designated ally HP for a short time. The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing (4x)",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing (4x)",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "60",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "bliss-assistance",
+      "name": "Bliss Assistance",
+      "originalDescription": "Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with. The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp. Atk by 20% for 6s. The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s. While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s. When reaching the target ally, nearby opposing Pokémon are damaged again. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with. Th",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94.4",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "1190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "1200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "94.4",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "1190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "1200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

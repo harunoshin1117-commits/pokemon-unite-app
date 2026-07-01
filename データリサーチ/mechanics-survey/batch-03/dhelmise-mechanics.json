@@ -1,0 +1,994 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dhelmise",
+  "pokemonName": "Dhelmise",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steelworker",
+      "name": "Steelworker",
+      "originalDescription": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability expires after 3s, HP proportional to the amount of remaining shields is restored.",
+      "summary": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability e",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user attacks by slamming their body. Dhelmise has no boosted attack.",
+      "summary": "The user attacks by slamming their body. Dhelmise has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Dhelmise has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "payback",
+      "name": "Payback",
+      "originalDescription": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+      "summary": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Additional (Revenge)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulldoze",
+      "name": "Bulldoze",
+      "originalDescription": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+      "summary": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "seaweed-snare",
+      "name": "Seaweed Snare",
+      "originalDescription": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s. Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charg",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.45,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "shieldHp",
+    "durationTimer",
+    "maxHp",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steelworker",
+      "name": "Steelworker",
+      "originalDescription": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability expires after 3s, HP proportional to the amount of remaining shields is restored.",
+      "summary": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability e",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Additional (Basic)",
+          "ratio": "119",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user attacks by slamming their body. Dhelmise has no boosted attack.",
+      "summary": "The user attacks by slamming their body. Dhelmise has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Dhelmise has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "payback",
+      "name": "Payback",
+      "originalDescription": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+      "summary": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Additional (Revenge)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulldoze",
+      "name": "Bulldoze",
+      "originalDescription": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+      "summary": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "seaweed-snare",
+      "name": "Seaweed Snare",
+      "originalDescription": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s. Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charg",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.45,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "114",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "172",
+          "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

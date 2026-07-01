@@ -1,0 +1,1008 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "urshifu",
+  "pokemonName": "Urshifu",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "inner-focus",
+      "name": "Inner Focus",
+      "originalDescription": "Reduces the duration of hindrances inflicted on Kubfu by 15%.",
+      "summary": "Reduces the duration of hindrances inflicted on Kubfu by 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-kubfu",
+      "name": "Attack - Kubfu",
+      "originalDescription": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-kubfu-boosted",
+      "name": "Attack - Kubfu Boosted",
+      "originalDescription": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Kubfu)",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Single Strike)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield (Single Strike)",
+            "ratio": "70",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Boosted (Rapid Strike, 2x)",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "rock-smash",
+      "name": "Rock Smash",
+      "originalDescription": "The user receives 20% reduced damage as they charge power for up to 2s, increasing power levels until reaching maximum charge after 1s; then punches in the designated direction when released, damaging opposing Pokémon hit. If this move is canceled or not released after 2s, it goes on a 0.9s cooldown.",
+      "summary": "The user receives 20% reduced damage as they charge power for up to 2s, increasing power levels until reaching maximum charge after 1s; then punches in the designated direction when released, damaging opposing Pokémon hit. If this move is canceled or not released after 2s, it goes on a 0.9s cooldown.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (1st Level Charge)",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (2nd Level Charge)",
+            "ratio": "113.85",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "184",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (3rd Level Charge)",
+            "ratio": "128.7",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "208",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (4th Level Charge)",
+            "ratio": "143.55",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "232",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (5th Level Charge)",
+            "ratio": "158.4",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "256",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "headbutt",
+      "name": "Headbutt",
+      "originalDescription": "The user dashes forward with a headbutt, damaging opposing Pokémon and shoving them when it hits.",
+      "summary": "The user dashes forward with a headbutt, damaging opposing Pokémon and shoving them when it hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ebon-fist",
+      "name": "Ebon Fist",
+      "originalDescription": "The user becomes unstoppable and the cooldown of Wicked Blow is reset when this Unite Move is used. The user dashes at the designated Pokémon from the opposing team, stunning them, then chooses whether to designate a direction to move or not. If no direction is chosen, the user pushes them slightly and delivers an uppercut, damaging the target, throwing them and stunning them when they land. If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes unstoppable and the cooldown of Wicked Blow is reset when this Unite Move is used. The user dashes at the designated Pokémon from the opposing team, stunning them, then chooses whether to designate a direction to move or not. If no direction is chosen, the user pushes them slightly and delivers an uppe",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "330",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "615",
+          "notes": "If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit."
+        },
+        "additional": [
+          {
+            "label": "Damage with Directive Input",
+            "ratio": "440",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "820",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Collision",
+            "ratio": "330",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "330",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "615",
+          "notes": "If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit."
+        },
+        "additional": [
+          {
+            "label": "Damage with Directive Input",
+            "ratio": "440",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "820",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Collision",
+            "ratio": "330",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flowing-fists",
+      "name": "Flowing Fists",
+      "originalDescription": "The user activates the Flowing Fists buff for up to 10s, and briefly becomes unstoppable and damages nearby opposing Pokémon, shoving them away. If this Unite Move is used again, the user becomes unstoppable and receives 30% reduced damage as they unleash a minimum of 5 consecutive blows upon the designated Pokémon from the opposing team, dealing damage to the target and shoving them with each hit. After the consecutive blows have finished, the user delivers a final kick, damaging opposing Pokémon in front of themself and shoving them when it hits. When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows). Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user activates the Flowing Fists buff for up to 10s, and briefly becomes unstoppable and damages nearby opposing Pokémon, shoving them away. If this Unite Move is used again, the user becomes unstoppable and receives 30% reduced damage as they unleash a minimum of 5 consecutive blows upon the designated Pokémon fro",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Initial Hit)",
+          "ratio": "37",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": "When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows)."
+        },
+        "additional": [
+          {
+            "label": "Damage (Hits during follow-up attack)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Final Hit and shove)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Initial Hit)",
+          "ratio": "37",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": "When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows)."
+        },
+        "additional": [
+          {
+            "label": "Damage (Hits during follow-up attack)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Final Hit and shove)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "inner-focus",
+      "name": "Inner Focus",
+      "originalDescription": "Reduces the duration of hindrances inflicted on Kubfu by 15%.",
+      "summary": "Reduces the duration of hindrances inflicted on Kubfu by 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-kubfu",
+      "name": "Attack - Kubfu",
+      "originalDescription": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-kubfu-boosted",
+      "name": "Attack - Kubfu Boosted",
+      "originalDescription": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with increased range every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Kubfu)",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Single Strike)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield (Single Strike)",
+            "ratio": "70",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Boosted (Rapid Strike, 2x)",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "rock-smash",
+      "name": "Rock Smash",
+      "originalDescription": "The user receives 20% reduced damage as they charge power for up to 2s, increasing power levels until reaching maximum charge after 1s; then punches in the designated direction when released, damaging opposing Pokémon hit. If this move is canceled or not released after 2s, it goes on a 0.9s cooldown.",
+      "summary": "The user receives 20% reduced damage as they charge power for up to 2s, increasing power levels until reaching maximum charge after 1s; then punches in the designated direction when released, damaging opposing Pokémon hit. If this move is canceled or not released after 2s, it goes on a 0.9s cooldown.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (1st Level Charge)",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (2nd Level Charge)",
+            "ratio": "113.85",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "184",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (3rd Level Charge)",
+            "ratio": "128.7",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "208",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (4th Level Charge)",
+            "ratio": "143.55",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "232",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (5th Level Charge)",
+            "ratio": "158.4",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "256",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "headbutt",
+      "name": "Headbutt",
+      "originalDescription": "The user dashes forward with a headbutt, damaging opposing Pokémon and shoving them when it hits.",
+      "summary": "The user dashes forward with a headbutt, damaging opposing Pokémon and shoving them when it hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ebon-fist",
+      "name": "Ebon Fist",
+      "originalDescription": "The user becomes unstoppable and the cooldown of Wicked Blow is reset when this Unite Move is used. The user dashes at the designated Pokémon from the opposing team, stunning them, then chooses whether to designate a direction to move or not. If no direction is chosen, the user pushes them slightly and delivers an uppercut, damaging the target, throwing them and stunning them when they land. If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes unstoppable and the cooldown of Wicked Blow is reset when this Unite Move is used. The user dashes at the designated Pokémon from the opposing team, stunning them, then chooses whether to designate a direction to move or not. If no direction is chosen, the user pushes them slightly and delivers an uppe",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "330",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "615",
+          "notes": "If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit."
+        },
+        "additional": [
+          {
+            "label": "Damage with Directive Input",
+            "ratio": "440",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "820",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Collision",
+            "ratio": "330",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "330",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "615",
+          "notes": "If the user chooses a direction, the user instead delivers a more powerful blow to the target, dealing increased damage and shoving them in the designated direction. The shoved target also deals reduced damage to opposing Pokémon they collide with and throws those hit."
+        },
+        "additional": [
+          {
+            "label": "Damage with Directive Input",
+            "ratio": "440",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "820",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Collision",
+            "ratio": "330",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flowing-fists",
+      "name": "Flowing Fists",
+      "originalDescription": "The user activates the Flowing Fists buff for up to 10s, and briefly becomes unstoppable and damages nearby opposing Pokémon, shoving them away. If this Unite Move is used again, the user becomes unstoppable and receives 30% reduced damage as they unleash a minimum of 5 consecutive blows upon the designated Pokémon from the opposing team, dealing damage to the target and shoving them with each hit. After the consecutive blows have finished, the user delivers a final kick, damaging opposing Pokémon in front of themself and shoving them when it hits. When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows). Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user activates the Flowing Fists buff for up to 10s, and briefly becomes unstoppable and damages nearby opposing Pokémon, shoving them away. If this Unite Move is used again, the user becomes unstoppable and receives 30% reduced damage as they unleash a minimum of 5 consecutive blows upon the designated Pokémon fro",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Initial Hit)",
+          "ratio": "37",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": "When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows)."
+        },
+        "additional": [
+          {
+            "label": "Damage (Hits during follow-up attack)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Final Hit and shove)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Initial Hit)",
+          "ratio": "37",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": "When the Flowing Fists buff is active, until the follow-up attack is used, every 2 times the user hits a Pokémon from the opposing team, the number of consecutive blows for the follow-up attack increases by 1 (up to 10 hits for an additional 5 blows; maximum 10 consecutive blows)."
+        },
+        "additional": [
+          {
+            "label": "Damage (Hits during follow-up attack)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Final Hit and shove)",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

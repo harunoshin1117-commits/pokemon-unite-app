@@ -1,0 +1,1820 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "blissey",
+  "pokemonName": "Blissey",
+  "role": "A+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "Supporter"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "natural-cure",
+      "moveName": "Natural Cure",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse. Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used. Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "pound",
+      "moveName": "Pound",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "egg-bomb",
+      "moveName": "Egg Bomb",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Pound",
+      "isPlus": false,
+      "originalDescription": "The user hurls an egg at the designated location that explodes, damaging opposing Pokémon in the area of effect and throwing them away from the center of impact for 0.8s. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. If the user learns both Soft-Boiled and Egg Bomb, the uses kept in reserve for Egg Bomb is added to Soft-Boiled's reserve pool; this reserve pool is shared between both moves. The base cooldown for both moves becomes 5s. The cooldown between using the same move remains at 2s. Hurls an egg at the designated location. The egg then explodes, dealing damage to enemies in the area of effect and throwing them.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "egg-bomb-plus",
+      "moveName": "Egg Bomb+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Egg Bomb",
+      "isPlus": true,
+      "originalDescription": "Decreases the movement speed of opposing Pokémon hit by 40% for 2s. Also decreases the movement speed of enemies for a short time when they are thrown by this move.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "helping-hand",
+      "moveName": "Helping Hand",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Pound",
+      "isPlus": false,
+      "originalDescription": "The user increases the movement speed and basic attack speed of themself and nearby teammates by 30% for 4s. When buffed, the user's auto attacks also become boosted attacks. For a short time, greatly increases the user's and nearby allies movement speed and basic attack speed. While this move's effects last, all of the user's basic attacks become boosted attacks.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "helping-hand-plus",
+      "moveName": "Helping Hand+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Helping Hand",
+      "isPlus": true,
+      "originalDescription": "Increases the auto attack damage of all teammates buffed by this move by 15% for 4s. Increases the damage of basic attacks while this move's effects last.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "heal-pulse",
+      "moveName": "Heal Pulse",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user restores the HP of themself and a designated teammate every 0.5s over 2s. Continually restores the user's and designated ally HP for a short time.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "soft-boiled",
+      "moveName": "Soft-Boiled",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Heal Pulse",
+      "isPlus": false,
+      "originalDescription": "The user throws an egg to a designated teammate, restoring the HP of themself and the designated teammate. The user and the designated teammate restore HP over time every 1s over 2s afterward. Subsequent uses of this move overwrites any HP over time the user and the designated teammate is yet to restore from previous uses. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. Throws an egg to an ally, restoring its HP as well as the user's HP. A maximum of 3 uses can be kept in reserve for this move and cannot be used more than once every 2s.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "soft-boiled-plus",
+      "moveName": "Soft-Boiled+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Soft-Boiled",
+      "isPlus": true,
+      "originalDescription": "Gains 1 additional use kept in reserve. Increases the maximum number of uses that can be kept in reserve.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "safeguard",
+      "moveName": "Safeguard",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Heal Pulse",
+      "isPlus": false,
+      "originalDescription": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s. Blissey grants both the targeted ally and themself a shield, purging hindrances and making both immune to hindrances as long as the shield lasts.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "safeguard-plus",
+      "moveName": "Safeguard+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Safeguard",
+      "isPlus": true,
+      "originalDescription": "Strengthens the value of the shield effect. Shield value increased.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "bliss-assistance",
+      "moveName": "Bliss Assistance",
+      "sourceType": "uniteMove",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp. Atk by 20% for 6s. The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s. While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s. When reaching the target ally, nearby opposing Pokémon are damaged again. Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Blissey",
+      "pokemonId": "blissey",
+      "sourceId": "bliss-assistance-unite-buff",
+      "moveName": "Bliss Assistance Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": "Bliss Assistance",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Natural Cure",
+      "sourceType": "passive",
+      "sourceId": "natural-cure",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Pound",
+      "sourceType": "initialMove",
+      "sourceId": "pound",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Egg Bomb",
+      "sourceType": "moveChoice",
+      "sourceId": "egg-bomb",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Pound"
+    },
+    {
+      "name": "Egg Bomb+",
+      "sourceType": "movePlus",
+      "sourceId": "egg-bomb-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Egg Bomb"
+    },
+    {
+      "name": "Helping Hand",
+      "sourceType": "moveChoice",
+      "sourceId": "helping-hand",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Pound"
+    },
+    {
+      "name": "Helping Hand+",
+      "sourceType": "movePlus",
+      "sourceId": "helping-hand-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Helping Hand"
+    },
+    {
+      "name": "Heal Pulse",
+      "sourceType": "initialMove",
+      "sourceId": "heal-pulse",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Soft-Boiled",
+      "sourceType": "moveChoice",
+      "sourceId": "soft-boiled",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Heal Pulse"
+    },
+    {
+      "name": "Soft-Boiled+",
+      "sourceType": "movePlus",
+      "sourceId": "soft-boiled-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Soft-Boiled"
+    },
+    {
+      "name": "Safeguard",
+      "sourceType": "moveChoice",
+      "sourceId": "safeguard",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Heal Pulse"
+    },
+    {
+      "name": "Safeguard+",
+      "sourceType": "movePlus",
+      "sourceId": "safeguard-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Safeguard"
+    },
+    {
+      "name": "Bliss Assistance",
+      "sourceType": "uniteMove",
+      "sourceId": "bliss-assistance",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Bliss Assistance Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "bliss-assistance-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Bliss Assistance"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "natural-cure",
+        "name": "Natural Cure",
+        "rawName": "Natural Cure",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse. Removes all status condition from the Pokémon. This ability goes on cooldown after it's triggered.",
+        "translatedDescription": "機械要約: Natural Cure は 状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "natural-cure__01__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: Automatically cleanses this Pokémon every 6s, even if there are no effects to cleanse.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__natural-cure",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used. Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+        "translatedDescription": "機械要約: Attack は 次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "110",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack after 6s, dealing increased damage. This boosted attack remains readied until used.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This boosted attack remains readied until used.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: This boosted attack remains readied until used.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack after 6s, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack after 6s, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack after a set amount of time passes, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "pound",
+        "name": "Pound",
+        "rawName": "Pound",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Has the user attack by pounding in the designated direction, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when it hits.",
+        "translatedDescription": "機械要約: Pound には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "47",
+            "damageType": "SpAtk",
+            "levelScaling": "28",
+            "base": "520",
+            "trueDescription": "The user pounds in the designated direction, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__pound",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "egg-bomb",
+        "name": "Egg Bomb",
+        "rawName": "Egg Bomb",
+        "parentName": "Pound",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "The user hurls an egg at the designated location that explodes, damaging opposing Pokémon in the area of effect and throwing them away from the center of impact for 0.8s. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. If the user learns both Soft-Boiled and Egg Bomb, the uses kept in reserve for Egg Bomb is added to Soft-Boiled's reserve pool; this reserve pool is shared between both moves. The base cooldown for both moves becomes 5s. The cooldown between using the same move remains at 2s. Hurls an egg at the designated location. The egg then explodes, dealing damage to enemies in the area of effect and throwing them.",
+        "translatedDescription": "機械要約: Egg Bomb は 相手を打ち上げる、遅延または時間差でダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "41",
+            "damageType": "SpAtk",
+            "levelScaling": "21",
+            "base": "460",
+            "trueDescription": "The user hurls an egg at the designated location that explodes, damaging opposing Pokémon in the area of effect and throwing them away from the center of impact for 0.8s. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses.",
+            "notes": "If the user learns both Soft-Boiled and Egg Bomb, the uses kept in reserve for Egg Bomb is added to Soft-Boiled's reserve pool; this reserve pool is shared between both moves. The base cooldown for both moves becomes 5s. The cooldown between using the same move remains at 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "egg-bomb__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user hurls an egg at the designated location that explodes, damaging opposing Pokémon in the area of effect and throwing them away from the center of impact for 0.8s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The user hurls an egg at the designated location that explodes, damaging opposing Pokémon in the area of effect and throwing them away from the center of impact for 0.8s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "egg-bomb__02__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The egg then explodes, dealing damage to enemies in the area of effect and throwing them.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: The egg then explodes, dealing damage to enemies in the area of effect and throwing them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__egg-bomb",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "egg-bomb-plus",
+        "name": "Egg Bomb+",
+        "rawName": "Egg Bomb",
+        "parentName": "Egg Bomb",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Decreases the movement speed of opposing Pokémon hit by 40% for 2s. Also decreases the movement speed of enemies for a short time when they are thrown by this move.",
+        "translatedDescription": "機械要約: Egg Bomb+ は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Decreases the movement speed of opposing Pokémon hit by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "egg-bomb-plus__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Also decreases the movement speed of enemies for a short time when they are thrown by this move.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Also decreases the movement speed of enemies for a short time when they are thrown by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__egg-bomb-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "helping-hand",
+        "name": "Helping Hand",
+        "rawName": "Helping Hand",
+        "parentName": "Pound",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "The user increases the movement speed and basic attack speed of themself and nearby teammates by 30% for 4s. When buffed, the user's auto attacks also become boosted attacks. For a short time, greatly increases the user's and nearby allies movement speed and basic attack speed. While this move's effects last, all of the user's basic attacks become boosted attacks.",
+        "translatedDescription": "機械要約: Helping Hand は 味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user increases the movement speed and basic attack speed of themself and nearby teammates by 30% for 4s. When buffed, the user's auto attacks also become boosted attacks.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "helping-hand__01__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user increases the movement speed and basic attack speed of themself and nearby teammates by 30% for 4s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user increases the movement speed and basic attack speed of themself and nearby teammates by 30% for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__helping-hand",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "helping-hand-plus",
+        "name": "Helping Hand+",
+        "rawName": "Helping Hand",
+        "parentName": "Helping Hand",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the auto attack damage of all teammates buffed by this move by 15% for 4s. Increases the damage of basic attacks while this move's effects last.",
+        "translatedDescription": "機械要約: Helping Hand+ は 味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the auto attack damage of all teammates buffed by this move by 15% for 4s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "helping-hand-plus__01__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Increases the auto attack damage of all teammates buffed by this move by 15% for 4s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Increases the auto attack damage of all teammates buffed by this move by 15% for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__helping-hand-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "heal-pulse",
+        "name": "Heal Pulse",
+        "rawName": "Heal Pulse",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user restores the HP of themself and a designated teammate every 0.5s over 2s. Continually restores the user's and designated ally HP for a short time.",
+        "translatedDescription": "機械要約: Heal Pulse は 継続ダメージを与える、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing (4x)",
+            "ratio": "40",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "60",
+            "trueDescription": "The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "heal-pulse__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Healing (4x)",
+              "ratio": "40",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "60",
+              "trueDescription": "The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "heal-pulse__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user restores the HP of themself and a designated teammate every 0.5s over 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__heal-pulse",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "soft-boiled",
+        "name": "Soft-Boiled",
+        "rawName": "Soft-Boiled",
+        "parentName": "Heal Pulse",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "The user throws an egg to a designated teammate, restoring the HP of themself and the designated teammate. The user and the designated teammate restore HP over time every 1s over 2s afterward. Subsequent uses of this move overwrites any HP over time the user and the designated teammate is yet to restore from previous uses. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. Throws an egg to an ally, restoring its HP as well as the user's HP. A maximum of 3 uses can be kept in reserve for this move and cannot be used more than once every 2s.",
+        "translatedDescription": "機械要約: Soft-Boiled は 相手を打ち上げる、HPを回復する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing",
+            "ratio": "183",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "238",
+            "trueDescription": "The user throws an egg to a designated teammate, restoring the HP of themself and the designated teammate. The user and the designated teammate restore HP over time every 1s over 2s afterward. Subsequent uses of this move overwrites any HP over time the user and the designated teammate is yet to restore from previous uses. A maximum of 2 uses can be kept in reserve for this move, and there is a 2s cooldown between uses.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing - HoT (2x)",
+            "ratio": "75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "92",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "soft-boiled__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user throws an egg to a designated teammate, restoring the HP of themself and the designated teammate.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The user throws an egg to a designated teammate, restoring the HP of themself and the designated teammate.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "soft-boiled__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The user and the designated teammate restore HP over time every 1s over 2s afterward.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The user and the designated teammate restore HP over time every 1s over 2s afterward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "soft-boiled__03__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user and the designated teammate restore HP over time every 1s over 2s afterward.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user and the designated teammate restore HP over time every 1s over 2s afterward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__soft-boiled",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "soft-boiled-plus",
+        "name": "Soft-Boiled+",
+        "rawName": "Soft-Boiled",
+        "parentName": "Soft-Boiled",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Gains 1 additional use kept in reserve. Increases the maximum number of uses that can be kept in reserve.",
+        "translatedDescription": "機械要約: Soft-Boiled+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Gains 1 additional use kept in reserve.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__soft-boiled-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "safeguard",
+        "name": "Safeguard",
+        "rawName": "Safeguard",
+        "parentName": "Heal Pulse",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s. Blissey grants both the targeted ally and themself a shield, purging hindrances and making both immune to hindrances as long as the shield lasts.",
+        "translatedDescription": "機械要約: Safeguard は 妨害無効になる、妨害耐性を得る、シールドを付与する、味方へ付着または移動する、状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "185",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "620",
+            "trueDescription": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "safeguard__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "safeguard__02__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Blissey grants both the targeted ally and themself a shield, purging hindrances and making both immune to hindrances as long as the shield lasts.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Blissey grants both the targeted ally and themself a shield, purging hindrances and making both immune to hindrances as long as the shield lasts.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "safeguard__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "safeguard__04__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "safeguard__05__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: The user cleanses themself and a designated teammate, and grants the user and the teammate a shield that makes them unstoppable for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__safeguard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "safeguard-plus",
+        "name": "Safeguard+",
+        "rawName": "Safeguard",
+        "parentName": "Safeguard",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Strengthens the value of the shield effect. Shield value increased.",
+        "translatedDescription": "機械要約: Safeguard+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "205",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "690",
+            "trueDescription": "Strengthens the value of the shield effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "safeguard-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Strengthens the value of the shield effect.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Strengthens the value of the shield effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__safeguard-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "bliss-assistance",
+        "name": "Bliss Assistance",
+        "rawName": "Bliss Assistance",
+        "parentName": null,
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp. Atk by 20% for 6s. The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s. While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s. When reaching the target ally, nearby opposing Pokémon are damaged again. Has the user dash to the designated ally to give it an egg, granting that ally a shield and increasing its Attack and Sp. Attack for a short time. The user also intercepts a portion of the damage received by that ally for a short time. While dashing, the user throws nearby enemies and those it comes in contact with.",
+        "translatedDescription": "機械要約: Bliss Assistance は 相手を打ち上げる、妨害無効になる、攻撃・特攻などを変化させる、受けるダメージを軽減する、シールドを付与する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "94.4",
+            "damageType": "SpAtk",
+            "levelScaling": "25",
+            "base": "1190",
+            "trueDescription": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp. Atk by 20% for 6s. The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s. While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s. When reaching the target ally, nearby opposing Pokémon are damaged again.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "1200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bliss-assistance__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: While dashing, opposing Pokémon hit are damaged and thrown into the air for 0.8s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance__03__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "the user becomes unstoppable and dashes to the designated ally pokémon to give it an egg, granting that ally a shield and increasing their attack and sp. atk by 20% for 6s. the user also intercepts 50% of the post-mitigation damage received",
+          "codexInterpretation": "攻撃・特攻などを変化させる。 原文証拠: the user becomes unstoppable and dashes to the designated ally pokémon to give it an egg, granting that ally a shield and increasing their attack and sp. atk by 20% for 6s. the user also intercepts 50% of the post-mitigation damage received",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance__04__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: The user also intercepts 50% of the post-mitigation damage received by that ally as unmitigated damage for 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance__06__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user becomes unstoppable and dashes to the designated ally Pokémon to give it an egg, granting that ally a shield and increasing their Attack and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__bliss-assistance",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "bliss-assistance-unite-buff",
+        "name": "Bliss Assistance Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Bliss Assistance",
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Bliss Assistance Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bliss-assistance-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bliss-assistance-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "blissey__bliss-assistance-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 29,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

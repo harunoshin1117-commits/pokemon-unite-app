@@ -1,0 +1,605 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "meganium",
+  "pokemonName": "Meganium",
+  "role": "Supporter",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "overgrow",
+      "name": "Overgrow",
+      "originalDescription": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+      "summary": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon. This Pokémon has no boosted attack.",
+      "summary": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon. This Pokémon has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "180",
+          "notes": "This Pokémon has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "magical-leaf",
+      "name": "Magical Leaf",
+      "originalDescription": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+      "summary": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "560",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "synthesis",
+      "name": "Synthesis",
+      "originalDescription": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+      "summary": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "180",
+          "damageType": "SpAtk",
+          "levelScaling": "60",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "180",
+          "damageType": "SpAtk",
+          "levelScaling": "60",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "full-bloom-aroma",
+      "name": "Full Bloom Aroma",
+      "originalDescription": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects. Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy. Unite buffs: 10% Movement Speed, 10% Max HP Shield",
+      "summary": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects. Meganium gains ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 34,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per tick (x10)",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per tick (x10)",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "7",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "formOrMode",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "overgrow",
+      "name": "Overgrow",
+      "originalDescription": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+      "summary": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon. This Pokémon has no boosted attack.",
+      "summary": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon. This Pokémon has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "180",
+          "notes": "This Pokémon has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "magical-leaf",
+      "name": "Magical Leaf",
+      "originalDescription": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+      "summary": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "560",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "synthesis",
+      "name": "Synthesis",
+      "originalDescription": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+      "summary": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "180",
+          "damageType": "SpAtk",
+          "levelScaling": "60",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "180",
+          "damageType": "SpAtk",
+          "levelScaling": "60",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "full-bloom-aroma",
+      "name": "Full Bloom Aroma",
+      "originalDescription": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects. Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy. Unite buffs: 10% Movement Speed, 10% Max HP Shield",
+      "summary": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects. Meganium gains ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 34,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per tick (x10)",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per tick (x10)",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "7",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

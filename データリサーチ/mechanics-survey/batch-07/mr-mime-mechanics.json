@@ -1,0 +1,635 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mr-mime",
+  "pokemonName": "Mr. Mime",
+  "role": "Supporter",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "filter",
+      "name": "Filter",
+      "originalDescription": "Reduced damage received for a short time after using a move. Upon casting a Move, Mr. Mime takes 10% less damage for 2s.",
+      "summary": "Reduced damage received for a short time after using a move. Upon casting a Move, Mr. Mime takes 10% less damage for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits. Gains a Boosted Attack every 5s, dealing increased damage and throwing enemies in the air for 0.5s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits. Gains a Boosted Attack every 5s, dealing increased damage and throwing enemies in the air for 0.5s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "fake-out",
+      "name": "Fake Out",
+      "originalDescription": "Slap its hands together, shoving enemies in front of it. Mr. Mime claps, damaging and knocking back enemies hit for 0.4s.",
+      "summary": "Slap its hands together, shoving enemies in front of it. Mr. Mime claps, damaging and knocking back enemies hit for 0.4s.",
+      "trigger": "Move 1",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.4,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "194",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "light-screen",
+      "name": "Light Screen",
+      "originalDescription": "Create a wall of light in the designated area that prevents enemies from passing. Mr. Mime creates a wall that prevents enemies from passing. If an enemy is near the location where the wall is created, they are shoved and left unable to act for 0.5s.",
+      "summary": "Create a wall of light in the designated area that prevents enemies from passing. Mr. Mime creates a wall that prevents enemies from passing. If an enemy is near the location where the wall is created, they are shoved and left unable to act for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "showtime",
+      "name": "Showtime",
+      "originalDescription": "Jump to the designated location and start a pantomime performance, dealing damage over time to enemies in the area of effect and leaving them unable to act for a short time. Mr. Mime leaps forward and begins a performance; stunning enemies for 0.5s, dealing damage in a large area around him 4 times, and becomes unstoppable for the duration. The final hit deals double damage and stuns enemies for 1s. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Jump to the designated location and start a pantomime performance, dealing damage over time to enemies in the area of effect and leaving them unable to act for a short time. Mr. Mime leaps forward and begins a performance; stunning enemies for 0.5s, dealing damage in a large area around him 4 times, and becomes unstopp",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First 3 Hits",
+          "ratio": "79",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Final Hit",
+            "ratio": "158",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "440",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First 3 Hits",
+          "ratio": "79",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Final Hit",
+            "ratio": "158",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "440",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp",
+    "formOrMode",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "filter",
+      "name": "Filter",
+      "originalDescription": "Reduced damage received for a short time after using a move. Upon casting a Move, Mr. Mime takes 10% less damage for 2s.",
+      "summary": "Reduced damage received for a short time after using a move. Upon casting a Move, Mr. Mime takes 10% less damage for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits. Gains a Boosted Attack every 5s, dealing increased damage and throwing enemies in the air for 0.5s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits. Gains a Boosted Attack every 5s, dealing increased damage and throwing enemies in the air for 0.5s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and throwing enemies when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fake-out",
+      "name": "Fake Out",
+      "originalDescription": "Slap its hands together, shoving enemies in front of it. Mr. Mime claps, damaging and knocking back enemies hit for 0.4s.",
+      "summary": "Slap its hands together, shoving enemies in front of it. Mr. Mime claps, damaging and knocking back enemies hit for 0.4s.",
+      "trigger": "Move 1",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.4,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "194",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "light-screen",
+      "name": "Light Screen",
+      "originalDescription": "Create a wall of light in the designated area that prevents enemies from passing. Mr. Mime creates a wall that prevents enemies from passing. If an enemy is near the location where the wall is created, they are shoved and left unable to act for 0.5s.",
+      "summary": "Create a wall of light in the designated area that prevents enemies from passing. Mr. Mime creates a wall that prevents enemies from passing. If an enemy is near the location where the wall is created, they are shoved and left unable to act for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "showtime",
+      "name": "Showtime",
+      "originalDescription": "Jump to the designated location and start a pantomime performance, dealing damage over time to enemies in the area of effect and leaving them unable to act for a short time. Mr. Mime leaps forward and begins a performance; stunning enemies for 0.5s, dealing damage in a large area around him 4 times, and becomes unstoppable for the duration. The final hit deals double damage and stuns enemies for 1s. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Jump to the designated location and start a pantomime performance, dealing damage over time to enemies in the area of effect and leaving them unable to act for a short time. Mr. Mime leaps forward and begins a performance; stunning enemies for 0.5s, dealing damage in a large area around him 4 times, and becomes unstopp",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First 3 Hits",
+          "ratio": "79",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Final Hit",
+            "ratio": "158",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "440",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First 3 Hits",
+          "ratio": "79",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Final Hit",
+            "ratio": "158",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "440",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

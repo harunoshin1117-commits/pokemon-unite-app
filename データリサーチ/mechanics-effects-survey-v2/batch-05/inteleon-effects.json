@@ -1,0 +1,563 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "inteleon",
+  "pokemonName": "Inteleon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "sniper",
+        "name": "Sniper",
+        "parentName": null,
+        "originalDescription": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters. Sobble may only hold one critical counter. Drizzile may hold two. Inteleon may hold three. While camouflaged, Inteleon is slowed by 10%. A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Dealing or receiving damage breaks the camouflage and prevents Inteleon from starting to camouflage for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit. Critical hits deal 250% rather than 200% damage. When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters (up to a maximum of 3). A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Hitting any Pokémon prevents Inteleon from becoming camouflaged for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit.",
+        "translatedDescription": "機械要約: Sniper は 移動速度を下げる、スタック、マーク、ゲージを扱う、壁・地形・草むらなどと相互作用する、急所確定または急所不可などを持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters. Sobble may only hold one critical counter. Drizzile may hold two. Inteleon may hold three. While camouflaged, Inteleon is slowed by 10%. A critical counter is gained as soon as Inteleon is camouflaged, with a new counter gained every 3s while camouflaged. Dealing or receiving damage breaks the camouflage and prevents Inteleon from starting to camouflage for 3s. When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit.",
+            "notes": "Critical hits deal 250% rather than 200% damage."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sniper__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While camouflaged, Inteleon is slowed by 10%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: While camouflaged, Inteleon is slowed by 10%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sniper__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "sniper__03__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: When this Pokémon stays near a wall for 1s it becomes camouflaged, making opposing Pokémon unable to target it, and starts gaining critical counters.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sniper__04__criticalGuaranteedOrDisabled",
+          "effectType": "criticalGuaranteedOrDisabled",
+          "summary": "急所確定または急所不可などを持つ。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "statusCondition": null,
+          "statChanges": [
+            "criticalRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit.",
+          "codexInterpretation": "急所確定または急所不可などを持つ。 原文証拠: When a critical counter is consumed, Inteleon's next attack or move that can critically strike is guaranteed to be a critical hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "inteleon__sniper",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate. Becomes a boosted attack with every third attack, dealing increased damage with an increased critical-hit rate.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "48.2",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "90",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage with 20% increased critical-hit rate.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "inteleon__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "tearful-look",
+        "name": "Tearful Look",
+        "parentName": null,
+        "originalDescription": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time). Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed.",
+        "translatedDescription": "機械要約: Tearful Look は 攻撃・特攻などのステータスを変化させる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tearful-look__01__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time). Decreases the Attack and Sp. Atk of the target Pokémon by 20% for",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: Decreases the Attack and Sp. Atk of the target Pokémon by 20% for 3s. Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time). Decreases the Attack and Sp. Atk of the target Pokémon by 20% for",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "tearful-look__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Inteleon gains a critical counter and increases its movement speed by 40% for 3s (decreasing over time).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "inteleon__tearful-look",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "water-gun",
+        "name": "Water Gun",
+        "parentName": null,
+        "originalDescription": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+        "translatedDescription": "機械要約: Water Gun には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (x3)",
+            "ratio": "27",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "94",
+            "trueDescription": "Inteleon squirts water, dealing damage to opposing Pokémon it hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "inteleon__water-gun",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "azure-spy-vision",
+        "name": "Azure Spy Vision",
+        "parentName": null,
+        "originalDescription": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass. While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second. Buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+        "translatedDescription": "機械要約: Azure Spy Vision は シールドを付与する、スタック、マーク、ゲージを扱う、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass.",
+            "notes": "While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "azure-spy-vision__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 20% Max HP Shield, 30% Movement Speed, 35% Attack Speed",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "azure-spy-vision__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "selfStackOrGauge"
+          ],
+          "sourceEvidence": "While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: While active, also doubles Inteleon's critical-hit rate, and gives 1 critical counter per second.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "azure-spy-vision__03__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 10.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: For 10.5s, Inteleon can see nearby Pokémon that are in stealth or hiding in tall grass.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "inteleon__azure-spy-vision",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 10,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

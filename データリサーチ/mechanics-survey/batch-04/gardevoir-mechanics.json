@@ -1,0 +1,657 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "gardevoir",
+  "pokemonName": "Gardevoir",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "synchronize",
+      "name": "Synchronize",
+      "originalDescription": "When an enemy inflicts decreased movement speed or a damge-over-time condition on the Pokémon, the same is inflicted on that opponent. This ability goes on cooldown after it's triggered. When an opposing Pokémon decreases this Pokémon's movement speed, also decreases that opposing Pokémon's movement speed by 40% for 3s; or, when an opposing Pokémon inflicts a damage-over-time status condition on this Pokémon, also inflicts a damage-over time effect on that opposing Pokémon for 3s (8s CD).",
+      "summary": "When an enemy inflicts decreased movement speed or a damge-over-time condition on the Pokémon, the same is inflicted on that opponent. This ability goes on cooldown after it's triggered. When an opposing Pokémon decreases this Pokémon's movement speed, also decreases that opposing Pokémon's movement speed by 40% for 3s",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - DoT Applied (4x)",
+          "ratio": "15",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "15",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their Sp. Def by 10% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their Sp. Def by 10%",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "44",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Attacks straight in the designated direction. The user fires a psychic bolt in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 35% for 1s.",
+      "summary": "Attacks straight in the designated direction. The user fires a psychic bolt in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 35% for 1s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 4.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "402",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "teleport",
+      "name": "Teleport",
+      "originalDescription": "Has the user warp to the designated area, increasing the damage dealt by one basic attack after warping. The user readies a boosted attack and warps forward to the designated location. When this move is learned, passively increases the damage of Synchronize, auto attacks, and Confusion by 15% until this move is replaced.",
+      "summary": "Has the user warp to the designated area, increasing the damage dealt by one basic attack after warping. The user readies a boosted attack and warps forward to the designated location. When this move is learned, passively increases the damage of Synchronize, auto attacks, and Confusion by 15% until this move is replace",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fairy-singularity",
+      "name": "Fairy Singularity",
+      "originalDescription": "Warps Space in the designated area, drawing in enemies to the center. Shoves and deals damage to enemies the instant the warped space disappears. The user warps space in the designated area, dealing damage to opposing Pokémon and pulling them toward the center 4 times. As the warped space disappears, it deals increased damage to opposing Pokémon in the area of effect and shoves them away from the center. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Warps Space in the designated area, drawing in enemies to the center. Shoves and deals damage to enemies the instant the warped space disappears. The user warps space in the designated area, dealing damage to opposing Pokémon and pulling them toward the center 4 times. As the warped space disappears, it deals increased",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Final Tick",
+          "ratio": "66",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - 4 Ticks",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Final Tick",
+          "ratio": "66",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - 4 Ticks",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "synchronize",
+      "name": "Synchronize",
+      "originalDescription": "When an enemy inflicts decreased movement speed or a damge-over-time condition on the Pokémon, the same is inflicted on that opponent. This ability goes on cooldown after it's triggered. When an opposing Pokémon decreases this Pokémon's movement speed, also decreases that opposing Pokémon's movement speed by 40% for 3s; or, when an opposing Pokémon inflicts a damage-over-time status condition on this Pokémon, also inflicts a damage-over time effect on that opposing Pokémon for 3s (8s CD).",
+      "summary": "When an enemy inflicts decreased movement speed or a damge-over-time condition on the Pokémon, the same is inflicted on that opponent. This ability goes on cooldown after it's triggered. When an opposing Pokémon decreases this Pokémon's movement speed, also decreases that opposing Pokémon's movement speed by 40% for 3s",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - DoT Applied (4x)",
+          "ratio": "15",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "15",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their Sp. Def by 10% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time. Becomes a boosted attack with every third attack, damaging opposing Pokémon in the area of effect and decreasing their Sp. Def by 10%",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time.",
+      "summary": "Becomes a boosted attack with every third attack. When this boosted attack hits, it deals damage to enemies in the area of effect and decreases their Sp. Defense by 10% for a short time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "44",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Attacks straight in the designated direction. The user fires a psychic bolt in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 35% for 1s.",
+      "summary": "Attacks straight in the designated direction. The user fires a psychic bolt in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 35% for 1s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 4.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "402",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "teleport",
+      "name": "Teleport",
+      "originalDescription": "Has the user warp to the designated area, increasing the damage dealt by one basic attack after warping. The user readies a boosted attack and warps forward to the designated location. When this move is learned, passively increases the damage of Synchronize, auto attacks, and Confusion by 15% until this move is replaced.",
+      "summary": "Has the user warp to the designated area, increasing the damage dealt by one basic attack after warping. The user readies a boosted attack and warps forward to the designated location. When this move is learned, passively increases the damage of Synchronize, auto attacks, and Confusion by 15% until this move is replace",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fairy-singularity",
+      "name": "Fairy Singularity",
+      "originalDescription": "Warps Space in the designated area, drawing in enemies to the center. Shoves and deals damage to enemies the instant the warped space disappears. The user warps space in the designated area, dealing damage to opposing Pokémon and pulling them toward the center 4 times. As the warped space disappears, it deals increased damage to opposing Pokémon in the area of effect and shoves them away from the center. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Warps Space in the designated area, drawing in enemies to the center. Shoves and deals damage to enemies the instant the warped space disappears. The user warps space in the designated area, dealing damage to opposing Pokémon and pulling them toward the center 4 times. As the warped space disappears, it deals increased",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Final Tick",
+          "ratio": "66",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - 4 Ticks",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Final Tick",
+          "ratio": "66",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - 4 Ticks",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

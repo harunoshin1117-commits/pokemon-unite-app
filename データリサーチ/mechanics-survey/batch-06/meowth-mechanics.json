@@ -1,0 +1,623 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "meowth",
+  "pokemonName": "Meowth",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "pickup",
+      "name": "Pickup",
+      "originalDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s. Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own.",
+      "summary": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on coold",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+      "summary": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "scratch",
+      "name": "Scratch",
+      "originalDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+      "summary": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "450",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "feint",
+      "name": "Feint",
+      "originalDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+      "summary": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "405",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "gold-coin-barrage",
+      "name": "Gold Coin Barrage",
+      "originalDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early. Meowth can move while using this move, but is slowed by 110%. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Per Coin (10x)",
+          "ratio": "82",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "123",
+          "notes": "Meowth can move while using this move, but is slowed by 110%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Per Coin (10x)",
+          "ratio": "82",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "123",
+          "notes": "Meowth can move while using this move, but is slowed by 110%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "cooldownState",
+    "durationTimer",
+    "dotTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "pickup",
+      "name": "Pickup",
+      "originalDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s. Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own.",
+      "summary": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on coold",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+      "summary": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "scratch",
+      "name": "Scratch",
+      "originalDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+      "summary": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "450",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "feint",
+      "name": "Feint",
+      "originalDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+      "summary": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "162",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "405",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "gold-coin-barrage",
+      "name": "Gold Coin Barrage",
+      "originalDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early. Meowth can move while using this move, but is slowed by 110%. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Per Coin (10x)",
+          "ratio": "82",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "123",
+          "notes": "Meowth can move while using this move, but is slowed by 110%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Per Coin (10x)",
+          "ratio": "82",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "123",
+          "notes": "Meowth can move while using this move, but is slowed by 110%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

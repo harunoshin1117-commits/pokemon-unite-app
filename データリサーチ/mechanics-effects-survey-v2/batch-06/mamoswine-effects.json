@@ -1,0 +1,654 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mamoswine",
+  "pokemonName": "Mamoswine",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "thick-fat",
+        "name": "Thick Fat",
+        "parentName": null,
+        "originalDescription": "When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased by 30% for 5s. When Mamoswine deals damage, Defense and Sp. Def are increased for 3s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next basic attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased.",
+        "translatedDescription": "機械要約: Thick Fat は 防御・特防を変化させる、スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Defense & Sp. Defense",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "20",
+            "trueDescription": "When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased by 30% for 5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thick-fat__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thick-fat__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "selfStackOrGauge"
+          ],
+          "sourceEvidence": "Def are increased for 5s, stacking up to 3 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Def are increased for 5s, stacking up to 3 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "thick-fat__03__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mamoswine__thick-fat",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits. Freezing an enemy causes the user’s auto attacks to deal increased damage to them for 3s. Reapplying a freeze will refresh this duration. Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves.",
+        "translatedDescription": "機械要約: Attack は こおり・凍結を付与する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits. Freezing an enemy causes the user’s auto attacks to deal increased damage to them for 3s. Reapplying a freeze will refresh this duration.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Frozen Bonus",
+            "ratio": "19",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "freeze",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Reapplying a freeze will refresh this duration.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Reapplying a freeze will refresh this duration.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mamoswine__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "ice-shard",
+        "name": "Ice Shard",
+        "parentName": null,
+        "originalDescription": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s. If an enemy is hit by all three chunks, they're left frozen for 0.5s. Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time. If an enemy is hit by all three chunks, they're left frozen for a short time.",
+        "translatedDescription": "機械要約: Ice Shard は こおり・凍結を付与する、移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Shard (3 shards)",
+            "ratio": "62",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s. If an enemy is hit by all three chunks, they're left frozen for 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-shard__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "freeze",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If an enemy is hit by all three chunks, they're left frozen for 0.5s.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: If an enemy is hit by all three chunks, they're left frozen for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-shard__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mamoswine__ice-shard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "tackle",
+        "name": "Tackle",
+        "parentName": null,
+        "originalDescription": "Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s. Mamoswine rushes recklessly in the designated direction, dealing damage to enemies they hit and throws them in the air.",
+        "translatedDescription": "機械要約: Tackle は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tackle__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "dealing damage to enemies hit and throws them in the air for 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: dealing damage to enemies hit and throws them in the air for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mamoswine__tackle",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "mammoth-mash",
+        "name": "Mammoth Mash",
+        "parentName": null,
+        "originalDescription": "Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp. The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s. Mamoswine is unstoppable for the duration of the move. Mamoswine jumps to the designated location and becomes immune to hindrances - then repeatedly stomps the ground, dealing damage to enemies in the area of effect and decreases their movement speed for a short time with each stomp. The final stomp throws enemies in the air. Buffs: 30% Movement Speed, 40% Max HP Shield",
+        "translatedDescription": "機械要約: Mammoth Mash は 相手を打ち上げる、移動速度を下げる、妨害無効になる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Stomp",
+            "ratio": "153",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "420",
+            "trueDescription": "Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp. The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s. Mamoswine is unstoppable for the duration of the move.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Mini Stomps (2 stomps)",
+            "ratio": "102",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Final Stomp",
+            "ratio": "204",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mammoth-mash__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mammoth-mash__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mammoth-mash__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mamoswine is unstoppable for the duration of the move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Mamoswine is unstoppable for the duration of the move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mammoth-mash__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mamoswine__mammoth-mash",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 12,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

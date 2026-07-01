@@ -1,0 +1,740 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mamoswine",
+  "pokemonName": "Mamoswine",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "thick-fat",
+      "name": "Thick Fat",
+      "originalDescription": "When Mamoswine deals damage, Defense and Sp. Def are increased for 3s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next basic attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased. When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased by 30% for 5s.",
+      "summary": "When Mamoswine deals damage, Defense and Sp. Def are increased for 3s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next basic attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased. When",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Defense & Sp. Defense",
+          "ratio": "0",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "20",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves. Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits. Freezing an enemy causes the user’s auto attacks to deal increased damage to them for 3s. Reapplying a freeze will refresh this duration.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves. Becomes a boosted attack with every third attack, dealing damage and freezing en",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Frozen Bonus",
+            "ratio": "19",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "57",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "ice-shard",
+      "name": "Ice Shard",
+      "originalDescription": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time. If an enemy is hit by all three chunks, they're left frozen for a short time. Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s. If an enemy is hit by all three chunks, they're left frozen for 0.5s.",
+      "summary": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time. If an enemy is hit by all three chunks, they're left frozen for a short time. Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Shard (3 shards)",
+          "ratio": "62",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "140",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Mamoswine rushes recklessly in the designated direction, dealing damage to enemies they hit and throws them in the air. Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s.",
+      "summary": "Mamoswine rushes recklessly in the designated direction, dealing damage to enemies they hit and throws them in the air. Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "101",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "mammoth-mash",
+      "name": "Mammoth Mash",
+      "originalDescription": "Mamoswine jumps to the designated location and becomes immune to hindrances - then repeatedly stomps the ground, dealing damage to enemies in the area of effect and decreases their movement speed for a short time with each stomp. The final stomp throws enemies in the air. Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp. The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s. Mamoswine is unstoppable for the duration of the move. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Mamoswine jumps to the designated location and becomes immune to hindrances - then repeatedly stomps the ground, dealing damage to enemies in the area of effect and decreases their movement speed for a short time with each stomp. The final stomp throws enemies in the air. Mamoswine jumps to the designated location then",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Stomp",
+          "ratio": "153",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Mini Stomps (2 stomps)",
+            "ratio": "102",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Final Stomp",
+            "ratio": "204",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Stomp",
+          "ratio": "153",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Mini Stomps (2 stomps)",
+            "ratio": "102",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Final Stomp",
+            "ratio": "204",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "thick-fat",
+      "name": "Thick Fat",
+      "originalDescription": "When Mamoswine deals damage, Defense and Sp. Def are increased for 3s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next basic attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased. When Mamoswine deals damage, Defense and Sp. Def are increased for 5s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next auto attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased by 30% for 5s.",
+      "summary": "When Mamoswine deals damage, Defense and Sp. Def are increased for 3s, stacking up to 3 times. When Mamoswine uses Ice Shard, Icicle Crash or Ice Fang, the next basic attack is boosted. If any of these moves creates a freezing area of effect inside an ally goal zone, the goal-scoring speed of enemies is decreased. When",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Defense & Sp. Defense",
+          "ratio": "0",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "20",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves. Becomes a boosted attack with every third attack, dealing damage and freezing enemies for 0.5s when it hits. Freezing an enemy causes the user’s auto attacks to deal increased damage to them for 3s. Reapplying a freeze will refresh this duration.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves. Becomes a boosted attack with every third attack, dealing damage and freezing en",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Frozen Bonus",
+            "ratio": "19",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage and freezing enemies for a short time when it hits. Mamoswine's basic attacks deal increased damage for a short time to enemies recently frozen with one of Mamoswine's moves.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "57",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ice-shard",
+      "name": "Ice Shard",
+      "originalDescription": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time. If an enemy is hit by all three chunks, they're left frozen for a short time. Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed by 40% for 1.5s. If an enemy is hit by all three chunks, they're left frozen for 0.5s.",
+      "summary": "Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time. If an enemy is hit by all three chunks, they're left frozen for a short time. Hurls 3 chunks of ice at the designated location, dealing damage to enemies in the area of",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Shard (3 shards)",
+          "ratio": "62",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "140",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Mamoswine rushes recklessly in the designated direction, dealing damage to enemies they hit and throws them in the air. Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s.",
+      "summary": "Mamoswine rushes recklessly in the designated direction, dealing damage to enemies they hit and throws them in the air. Mamoswine rushes recklessly in the designated direction; dealing damage to enemies hit and throws them in the air for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "101",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "mammoth-mash",
+      "name": "Mammoth Mash",
+      "originalDescription": "Mamoswine jumps to the designated location and becomes immune to hindrances - then repeatedly stomps the ground, dealing damage to enemies in the area of effect and decreases their movement speed for a short time with each stomp. The final stomp throws enemies in the air. Mamoswine jumps to the designated location then repeatedly stomps the ground four times, dealing damage to enemies in the area of effect and decreases their movement speed for 0.5s with each stomp. The first stomp slows enemies by 30%, the two mini stomps slow them by 20%, and the final stomp slows them by 40% and throws them in the air for 1.5s. Mamoswine is unstoppable for the duration of the move. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Mamoswine jumps to the designated location and becomes immune to hindrances - then repeatedly stomps the ground, dealing damage to enemies in the area of effect and decreases their movement speed for a short time with each stomp. The final stomp throws enemies in the air. Mamoswine jumps to the designated location then",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Stomp",
+          "ratio": "153",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Mini Stomps (2 stomps)",
+            "ratio": "102",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Final Stomp",
+            "ratio": "204",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - First Stomp",
+          "ratio": "153",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "420",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Mini Stomps (2 stomps)",
+            "ratio": "102",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Final Stomp",
+            "ratio": "204",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

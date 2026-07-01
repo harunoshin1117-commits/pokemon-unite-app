@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "comfey",
+  "pokemonName": "Comfey",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "triage",
+        "name": "Triage",
+        "parentName": null,
+        "originalDescription": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP. While attached: becomes untargetable, restores 1% max HP every 1s; takes Aeos energy gained in excess of the maximum the ally can hold, and scores the same amount of Aeos energy into a goal as the ally if not using a move while the ally channels the score. Detaches from the ally in the designated direction when the button to return to base is used (or a separate detach button on mobile). When detaching: removes the Triage shield effect from the ally; becomes invincible for 0.5s, and readies a boosted attack.",
+        "translatedDescription": "機械要約: Triage は 無敵になる、対象指定されない、またはステルス状態になる、移動速度を上げる、HPを回復する、シールドを付与する、HP割合条件で発動する、味方へ付着または移動する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP.",
+            "notes": "While attached: becomes untargetable, restores 1% max HP every 1s; takes Aeos energy gained in excess of the maximum the ally can hold, and scores the same amount of Aeos energy into a goal as the ally if not using a move while the ally channels the score. Detaches from the ally in the designated direction when the button to return to base is used (or a separate detach button on mobile). When detaching: removes the Triage shield effect from the ally; becomes invincible for 0.5s, and readies a boosted attack."
+          },
+          {
+            "id": "add1",
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "triage__01__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "becomes invincible for 0.5s, and readies a boosted attack.",
+          "codexInterpretation": "無敵になる。 原文証拠: becomes invincible for 0.5s, and readies a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__02__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "untargetableOrStealth"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While attached: becomes untargetable, restores 1% max HP every 1s",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: While attached: becomes untargetable, restores 1% max HP every 1s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__03__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Increases movement speed by 25% when near ally Pokémon at 50% max HP or below.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__04__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects.",
+          "codexInterpretation": "HPを回復する。 原文証拠: consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__06__hpThreshold",
+          "effectType": "hpThreshold",
+          "summary": "HP割合条件で発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpThreshold"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below.",
+          "codexInterpretation": "HP割合条件で発動する。 原文証拠: Increases movement speed by 25% when near ally Pokémon at 50% max HP or below.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__07__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "While attached: becomes untargetable, restores 1% max HP every 1s",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: While attached: becomes untargetable, restores 1% max HP every 1s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triage__08__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 5,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Gains 4 flowers when entering tall grass while detached (5s CD).",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: Gains 4 flowers when entering tall grass while detached (5s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "comfey__triage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "comfey__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "synthesis",
+        "name": "Synthesis",
+        "parentName": null,
+        "originalDescription": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect. If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers).",
+        "translatedDescription": "機械要約: Synthesis は シールドを付与する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "140",
+            "trueDescription": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect.",
+            "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+          },
+          {
+            "id": "add1",
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synthesis__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If detached attaches to the designated ally Pokémon and grants them a Triage shield effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "synthesis__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: If detached attaches to the designated ally Pokémon and grants them a Triage shield effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "comfey__synthesis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "vine-whip",
+        "name": "Vine Whip",
+        "parentName": null,
+        "originalDescription": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits. While attached to an ally: increases this move's range.",
+        "translatedDescription": "機械要約: Vine Whip は 移動速度を下げる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "86",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "450",
+            "trueDescription": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits.",
+            "notes": "While attached to an ally: increases this move's range."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "vine-whip__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "vine-whip__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "While attached to an ally: increases this move's range.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: While attached to an ally: increases this move's range.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "comfey__vine-whip",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "flowery-fields-forever",
+        "name": "Flowery Fields Forever",
+        "parentName": null,
+        "originalDescription": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s. Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Flowery Fields Forever は 妨害無効になる、待ち時間を短縮する、HPを回復する、シールドを付与する、継続ダメージを与える、味方へ付着または移動する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Heal - per tick",
+            "ratio": "22.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "120",
+            "trueDescription": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+            "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+          },
+          {
+            "id": "add1",
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add4",
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add5",
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flowery-fields-forever__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__03__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__05__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Heal - per tick",
+              "ratio": "22.5",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "120",
+              "trueDescription": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+              "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+            },
+            {
+              "id": "add1",
+              "label": "Empowered Floral Healing Healing",
+              "ratio": "126.1",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "390",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Empowered Floral Healing Healing - Additional Per Flower",
+              "ratio": "19.5",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "59",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Empowered Floral Healing Overheal Shield",
+              "ratio": "63.05",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "195",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add4",
+              "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+              "ratio": "9.75",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "30",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add5",
+              "label": "Empowered Sweet Kiss",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Increases infatuation base duration by 1.3s",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__06__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attachToAlly"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Restores the HP of teammates in this Unite Move's tall grass every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flowery-fields-forever__07__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "comfey__flowery-fields-forever",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 20,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

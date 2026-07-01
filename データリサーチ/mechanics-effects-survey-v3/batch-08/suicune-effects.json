@@ -1,0 +1,1808 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "suicune",
+  "pokemonName": "Suicune",
+  "role": "A+",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "pressure",
+      "moveName": "Pressure",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out). Using a move grants a shield for 5s (up to 2 times); separately increases the crystal gauge by 1 for 5s (becoming full when increased 2 times). Flooded areas created by Whirlpool or Surf remain for 5s; opposing Pokémon in a flooded area are marked as drenched for 3s. Freezing a flooded area with a regular move (not Unite Move) also freezes opposing Pokémon in that flooded area for 1s. Freezing an opposing Pokémon marked as drenched removes the mark; targets frozen by a regular move or by a frozen area cannot be marked as drenched for 3s afterward. Deals bonus damage when freezing opposing Pokémon with a regular move or by being in a frozen area.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When the crystal gauge is full, readies a boosted attack for 5s as the crystal gauge decays to 0; increasing the crystal gauge refills it to full. Boosted attacks shoot water forward, damaging opposing Pokémon every 0.25s over 1s (up to 4 times), dealing bonus damage to frozen opposing Pokémon with each hit.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "water-pulse",
+      "moveName": "Water Pulse",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Fires a pulse of water in the designated direction, damaging opposing Pokémon and shoving them for 0.5s when it hits. Marks targets as drenched for 3s when it hits.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "whirlpool",
+      "moveName": "Whirlpool",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Water Pulse",
+      "isPlus": false,
+      "originalDescription": "Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit). If used again within 4s, moves the vortex in the designated direction, flooding the area it passes through. Marks targets as drenched for 3s when hit.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "whirlpool-plus",
+      "moveName": "Whirlpool+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Whirlpool",
+      "isPlus": true,
+      "originalDescription": "Reduces this move's cooldown by 1s.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "surf",
+      "moveName": "Surf",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Water Pulse",
+      "isPlus": false,
+      "originalDescription": "Prepares an area for a big wave to pass through, then creates the wave and sends it in the designated direction after 0.75s, damaging opposing Pokémon hit by the wave and shoving them. The prepared area becomes flooded after the wave passes through it. Marks targets hit by the wave as drenched for 3s. Hitting a pillar of ice created by Icy Wind with the wave shatters it, damaging opposing Pokémon hit.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "surf-plus",
+      "moveName": "Surf+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Surf",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of this move.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "avalanche",
+      "moveName": "Avalanche",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Creates snow to fall at the designated area for 1.5s, damaging opposing Pokémon in the area of effect (up to 3 times) and decreasing their movement speed by 30% for 2s when hit. After 1.5s, drops a clump of snow at the designated area, damaging opposing Pokémon again. The clump of snow freezes drenched targets for 1s when it hits; freezes flooded areas it drops on after 1s.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "ice-beam",
+      "moveName": "Ice Beam",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Avalanche",
+      "isPlus": false,
+      "originalDescription": "Fires an icy-cold beam of energy in the designated direction, damaging opposing Pokémon and decreasing their movement speed by 20% for 2s when it hits. This move freezes drenched targets for 1s when it hits; freezes flooded areas it hits after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "ice-beam-plus",
+      "moveName": "Ice Beam+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Ice Beam",
+      "isPlus": true,
+      "originalDescription": "Strengthens the movement speed decrease to 30%.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "icy-wind",
+      "moveName": "Icy Wind",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Avalanche",
+      "isPlus": false,
+      "originalDescription": "Builds up a gust of freezing air at the designated area for 0.5s, decreasing the movement speed of opposing Pokémon in the area of effect by 30% for 3s; then forms a pillar of ice, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 30% for 3s once fully formed. The pillar of ice shatters after 4s, damaging opposing Pokémon again. This move freezes drenched targets for 1s when the pillar of ice forms or when it shatters. Forming a pillar of ice on a flooded area freezes that area after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "icy-wind-plus",
+      "moveName": "Icy Wind+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Icy Wind",
+      "isPlus": true,
+      "originalDescription": "Reduces this move's cooldown by 1s.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "endless-ice-spikes",
+      "moveName": "Endless Ice Spikes",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Cleanses the user of status condition; then creates ice spikes in the designated direction, damaging opposing Pokémon in the area of effect and freezing those hit for 2s. After 2s, the ice spikes explode, damaging opposing Pokémon in the area of effect again. This Unite Move does not directly interact with drench marks, nor does it freeze flooded areas. Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Suicune",
+      "pokemonId": "suicune",
+      "sourceId": "endless-ice-spikes-unite-buff",
+      "moveName": "Endless Ice Spikes Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Endless Ice Spikes",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Pressure",
+      "sourceType": "passive",
+      "sourceId": "pressure",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Water Pulse",
+      "sourceType": "initialMove",
+      "sourceId": "water-pulse",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Whirlpool",
+      "sourceType": "moveChoice",
+      "sourceId": "whirlpool",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Water Pulse"
+    },
+    {
+      "name": "Whirlpool+",
+      "sourceType": "movePlus",
+      "sourceId": "whirlpool-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Whirlpool"
+    },
+    {
+      "name": "Surf",
+      "sourceType": "moveChoice",
+      "sourceId": "surf",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Water Pulse"
+    },
+    {
+      "name": "Surf+",
+      "sourceType": "movePlus",
+      "sourceId": "surf-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Surf"
+    },
+    {
+      "name": "Avalanche",
+      "sourceType": "initialMove",
+      "sourceId": "avalanche",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Ice Beam",
+      "sourceType": "moveChoice",
+      "sourceId": "ice-beam",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Avalanche"
+    },
+    {
+      "name": "Ice Beam+",
+      "sourceType": "movePlus",
+      "sourceId": "ice-beam-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Ice Beam"
+    },
+    {
+      "name": "Icy Wind",
+      "sourceType": "moveChoice",
+      "sourceId": "icy-wind",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Avalanche"
+    },
+    {
+      "name": "Icy Wind+",
+      "sourceType": "movePlus",
+      "sourceId": "icy-wind-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Icy Wind"
+    },
+    {
+      "name": "Endless Ice Spikes",
+      "sourceType": "uniteMove",
+      "sourceId": "endless-ice-spikes",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Endless Ice Spikes Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "endless-ice-spikes-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Endless Ice Spikes"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "pressure",
+        "name": "Pressure",
+        "rawName": "Pressure",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out). Using a move grants a shield for 5s (up to 2 times); separately increases the crystal gauge by 1 for 5s (becoming full when increased 2 times). Flooded areas created by Whirlpool or Surf remain for 5s; opposing Pokémon in a flooded area are marked as drenched for 3s. Freezing a flooded area with a regular move (not Unite Move) also freezes opposing Pokémon in that flooded area for 1s. Freezing an opposing Pokémon marked as drenched removes the mark; targets frozen by a regular move or by a frozen area cannot be marked as drenched for 3s afterward. Deals bonus damage when freezing opposing Pokémon with a regular move or by being in a frozen area.",
+        "translatedDescription": "機械要約: Pressure は こおり・凍結を付与する、受けるダメージを軽減する、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "45",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out). Using a move grants a shield for 5s (up to 2 times); separately increases the crystal gauge by 1 for 5s (becoming full when increased 2 times).",
+            "notes": "Flooded areas created by Whirlpool or Surf remain for 5s; opposing Pokémon in a flooded area are marked as drenched for 3s. Freezing a flooded area with a regular move (not Unite Move) also freezes opposing Pokémon in that flooded area for 1s. Freezing an opposing Pokémon marked as drenched removes the mark; targets frozen by a regular move or by a frozen area cannot be marked as drenched for 3s afterward. Deals bonus damage when freezing opposing Pokémon with a regular move or by being in a frozen area."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Freezing",
+            "ratio": "23",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "92",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pressure__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out).",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pressure__02__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out).",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Damaging a Pokémon from the opposing team below 10% max HP and frozen by Suicune deals an additional 15% max HP as true damage to the target (sufficient damage reduction can prevent the target from being knocked out).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pressure__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Using a move grants a shield for 5s (up to 2 times)",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Using a move grants a shield for 5s (up to 2 times)",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pressure__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "separately increases the crystal gauge by 1 for 5s (becoming full when increased 2 times).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: separately increases the crystal gauge by 1 for 5s (becoming full when increased 2 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__pressure",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When the crystal gauge is full, readies a boosted attack for 5s as the crystal gauge decays to 0; increasing the crystal gauge refills it to full. Boosted attacks shoot water forward, damaging opposing Pokémon every 0.25s over 1s (up to 4 times), dealing bonus damage to frozen opposing Pokémon with each hit.",
+        "translatedDescription": "機械要約: Attack は こおり・凍結を付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When the crystal gauge is full, readies a boosted attack for 5s as the crystal gauge decays to 0; increasing the crystal gauge refills it to full.",
+            "notes": "Boosted attacks shoot water forward, damaging opposing Pokémon every 0.25s over 1s (up to 4 times), dealing bonus damage to frozen opposing Pokémon with each hit."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.25,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Boosted attacks shoot water forward, damaging opposing Pokémon every 0.25s over 1s (up to 4 times), dealing bonus damage to frozen opposing Pokémon with each hit.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Boosted attacks shoot water forward, damaging opposing Pokémon every 0.25s over 1s (up to 4 times), dealing bonus damage to frozen opposing Pokémon with each hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "When the crystal gauge is full, readies a boosted attack for 5s as the crystal gauge decays to 0",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When the crystal gauge is full, readies a boosted attack for 5s as the crystal gauge decays to 0",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per tick",
+            "ratio": "21",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "94",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Frozen Bonus",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "44",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "water-pulse",
+        "name": "Water Pulse",
+        "rawName": "Water Pulse",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Fires a pulse of water in the designated direction, damaging opposing Pokémon and shoving them for 0.5s when it hits. Marks targets as drenched for 3s when it hits.",
+        "translatedDescription": "機械要約: Water Pulse は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "40",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "320",
+            "trueDescription": "Fires a pulse of water in the designated direction, damaging opposing Pokémon and shoving them for 0.5s when it hits.",
+            "notes": "Marks targets as drenched for 3s when it hits."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "water-pulse__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Marks targets as drenched for 3s when it hits.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Marks targets as drenched for 3s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__water-pulse",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "whirlpool",
+        "name": "Whirlpool",
+        "rawName": "Whirlpool",
+        "parentName": "Water Pulse",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit). If used again within 4s, moves the vortex in the designated direction, flooding the area it passes through. Marks targets as drenched for 3s when hit.",
+        "translatedDescription": "機械要約: Whirlpool は 相手を引き寄せる、移動速度を下げる、スタック、マーク、ゲージを扱う、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Per tick",
+            "ratio": "20",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "102",
+            "trueDescription": "Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit). If used again within 4s, moves the vortex in the designated direction, flooding the area it passes through.",
+            "notes": "Marks targets as drenched for 3s when hit."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Whirlpool reposition",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "198",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "whirlpool__01__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit).",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "whirlpool__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit).",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Generates a vortex of water at the designated area, damaging opposing Pokémon in the area of effect every 1s over 4s (up to 4 times), pulling them toward the center with each hit, and slowing enemies by 20% for 0.5s (refreshing on each hit).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "whirlpool__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Marks targets as drenched for 3s when hit.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Marks targets as drenched for 3s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "whirlpool__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again within 4s, moves the vortex in the designated direction, flooding the area it passes through.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again within 4s, moves the vortex in the designated direction, flooding the area it passes through.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__whirlpool",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "whirlpool-plus",
+        "name": "Whirlpool+",
+        "rawName": "Whirlpool",
+        "parentName": "Whirlpool",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Reduces this move's cooldown by 1s.",
+        "translatedDescription": "機械要約: Whirlpool+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this move's cooldown by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__whirlpool-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "surf",
+        "name": "Surf",
+        "rawName": "Surf",
+        "parentName": "Water Pulse",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Prepares an area for a big wave to pass through, then creates the wave and sends it in the designated direction after 0.75s, damaging opposing Pokémon hit by the wave and shoving them. The prepared area becomes flooded after the wave passes through it. Marks targets hit by the wave as drenched for 3s. Hitting a pillar of ice created by Icy Wind with the wave shatters it, damaging opposing Pokémon hit.",
+        "translatedDescription": "機械要約: Surf は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "70",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "351",
+            "trueDescription": "Prepares an area for a big wave to pass through, then creates the wave and sends it in the designated direction after 0.75s, damaging opposing Pokémon hit by the wave and shoving them. The prepared area becomes flooded after the wave passes through it.",
+            "notes": "Marks targets hit by the wave as drenched for 3s. Hitting a pillar of ice created by Icy Wind with the wave shatters it, damaging opposing Pokémon hit."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Marks targets hit by the wave as drenched for 3s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Marks targets hit by the wave as drenched for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__surf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "surf-plus",
+        "name": "Surf+",
+        "rawName": "Surf",
+        "parentName": "Surf",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of this move.",
+        "translatedDescription": "機械要約: Surf+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage",
+            "ratio": "82.7",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "417",
+            "trueDescription": "Increases the damage of this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__surf-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "avalanche",
+        "name": "Avalanche",
+        "rawName": "Avalanche",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Creates snow to fall at the designated area for 1.5s, damaging opposing Pokémon in the area of effect (up to 3 times) and decreasing their movement speed by 30% for 2s when hit. After 1.5s, drops a clump of snow at the designated area, damaging opposing Pokémon again. The clump of snow freezes drenched targets for 1s when it hits; freezes flooded areas it drops on after 1s.",
+        "translatedDescription": "機械要約: Avalanche は こおり・凍結を付与する、遅延または時間差でダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Falling Snow",
+            "ratio": "16",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "102",
+            "trueDescription": "Creates snow to fall at the designated area for 1.5s, damaging opposing Pokémon in the area of effect (up to 3 times) and decreasing their movement speed by 30% for 2s when hit. After 1.5s, drops a clump of snow at the designated area, damaging opposing Pokémon again.",
+            "notes": "The clump of snow freezes drenched targets for 1s when it hits; freezes flooded areas it drops on after 1s."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Clump of Snow",
+            "ratio": "24",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "153",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "avalanche__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The clump of snow freezes drenched targets for 1s when it hits",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: The clump of snow freezes drenched targets for 1s when it hits",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "avalanche__02__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "freezes flooded areas it drops on after 1s.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: freezes flooded areas it drops on after 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__avalanche",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "ice-beam",
+        "name": "Ice Beam",
+        "rawName": "Ice Beam",
+        "parentName": "Avalanche",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Fires an icy-cold beam of energy in the designated direction, damaging opposing Pokémon and decreasing their movement speed by 20% for 2s when it hits. This move freezes drenched targets for 1s when it hits; freezes flooded areas it hits after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses.",
+        "translatedDescription": "機械要約: Ice Beam は こおり・凍結を付与する、遅延または時間差でダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "79",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "385",
+            "trueDescription": "Fires an icy-cold beam of energy in the designated direction, damaging opposing Pokémon and decreasing their movement speed by 20% for 2s when it hits.",
+            "notes": "This move freezes drenched targets for 1s when it hits; freezes flooded areas it hits after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-beam__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This move freezes drenched targets for 1s when it hits",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: This move freezes drenched targets for 1s when it hits",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-beam__02__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "freezes flooded areas it hits after 1s.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: freezes flooded areas it hits after 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__ice-beam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "ice-beam-plus",
+        "name": "Ice Beam+",
+        "rawName": "Ice Beam",
+        "parentName": "Ice Beam",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Strengthens the movement speed decrease to 30%.",
+        "translatedDescription": "機械要約: Ice Beam+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Strengthens the movement speed decrease to 30%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__ice-beam-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "icy-wind",
+        "name": "Icy Wind",
+        "rawName": "Icy Wind",
+        "parentName": "Avalanche",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Builds up a gust of freezing air at the designated area for 0.5s, decreasing the movement speed of opposing Pokémon in the area of effect by 30% for 3s; then forms a pillar of ice, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 30% for 3s once fully formed. The pillar of ice shatters after 4s, damaging opposing Pokémon again. This move freezes drenched targets for 1s when the pillar of ice forms or when it shatters. Forming a pillar of ice on a flooded area freezes that area after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses.",
+        "translatedDescription": "機械要約: Icy Wind は こおり・凍結を付与する、遅延または時間差でダメージを与える、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "75",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "360",
+            "trueDescription": "Builds up a gust of freezing air at the designated area for 0.5s, decreasing the movement speed of opposing Pokémon in the area of effect by 30% for 3s; then forms a pillar of ice, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 30% for 3s once fully formed. The pillar of ice shatters after 4s, damaging opposing Pokémon again.",
+            "notes": "This move freezes drenched targets for 1s when the pillar of ice forms or when it shatters. Forming a pillar of ice on a flooded area freezes that area after 1s. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Pillar break",
+            "ratio": "88.1",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "431",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "icy-wind__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This move freezes drenched targets for 1s when the pillar of ice forms or when it shatters.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: This move freezes drenched targets for 1s when the pillar of ice forms or when it shatters.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "icy-wind__02__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Forming a pillar of ice on a flooded area freezes that area after 1s.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: Forming a pillar of ice on a flooded area freezes that area after 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "icy-wind__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "then forms a pillar of ice, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 30% for 3s once fully formed.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: then forms a pillar of ice, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 30% for 3s once fully formed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__icy-wind",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "icy-wind-plus",
+        "name": "Icy Wind+",
+        "rawName": "Icy Wind",
+        "parentName": "Icy Wind",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Reduces this move's cooldown by 1s.",
+        "translatedDescription": "機械要約: Icy Wind+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this move's cooldown by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__icy-wind-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "endless-ice-spikes",
+        "name": "Endless Ice Spikes",
+        "rawName": "Endless Ice Spikes",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Cleanses the user of status condition; then creates ice spikes in the designated direction, damaging opposing Pokémon in the area of effect and freezing those hit for 2s. After 2s, the ice spikes explode, damaging opposing Pokémon in the area of effect again. This Unite Move does not directly interact with drench marks, nor does it freeze flooded areas. Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+        "translatedDescription": "機械要約: Endless Ice Spikes は こおり・凍結を付与する、行動不能・スタンを付与する、遅延または時間差でダメージを与える、スタック、マーク、ゲージを扱う、状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Spike Creation",
+            "ratio": "92",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "460",
+            "trueDescription": "Cleanses the user of status condition; then creates ice spikes in the designated direction, damaging opposing Pokémon in the area of effect and freezing those hit for 2s. After 2s, the ice spikes explode, damaging opposing Pokémon in the area of effect again. This Unite Move does not directly interact with drench marks, nor does it freeze flooded areas.",
+            "notes": "Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Spike detonation",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "endless-ice-spikes__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This Unite Move does not directly interact with drench marks, nor does it freeze flooded areas.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: This Unite Move does not directly interact with drench marks, nor does it freeze flooded areas.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes__02__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes__03__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After 2s, the ice spikes explode, damaging opposing Pokémon in the area of effect again.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: After 2s, the ice spikes explode, damaging opposing Pokémon in the area of effect again.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes__05__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: Suicune can be stunned after cleansing themself and before creating the ice spikes, canceling the Unite Move and refunding 90% of the Unite Move gauge.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__endless-ice-spikes",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "endless-ice-spikes-unite-buff",
+        "name": "Endless Ice Spikes Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Endless Ice Spikes",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Endless Ice Spikes Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "endless-ice-spikes-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "endless-ice-spikes-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "suicune__endless-ice-spikes-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 27,
+    "zeroSpecialEffectSourceCount": 5,
+    "missingSourceCount": 0
+  }
+}

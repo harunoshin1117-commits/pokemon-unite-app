@@ -1,0 +1,1674 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "cramorant",
+  "pokemonName": "Cramorant",
+  "role": "C",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Expert",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "gulp-missile",
+      "moveName": "Gulp Missile",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive. When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp. Def by 5% for 3s. When below 50% max HP, instead catches Pikachu as prey, which decrease opposing Pokémon's movement speed by 50% and attack speed by 10% for 1s. When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "whirlpool",
+      "moveName": "Whirlpool",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user creates a whirlpool at a designated location, damaging opposing Pokémon in the area of effect over 1.8s (up to 10 times). The area of effect shrinks in size over the duration; opposing Pokémon standing at the outer edge of the whirlpool are hit only up to 3 times. The movement speed of opposing Pokémon in the area of effect is decreased by 50% for 0.2s when hit. The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times). Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by entering the whirlpool.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "surf",
+      "moveName": "Surf",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Whirlpool",
+      "isPlus": false,
+      "originalDescription": "The user sends a wave in the designated direction, damaging opposing Pokémon in the wave. The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull. The user catches prey with the first wave, and can enter the returning wave to catch more prey for Gulp Missile. Attacks with a wave that deals damage to enemies. Once the wave has traveled its full distance, it returns the way it came, dealing damage to enemies once again and pulling them back with the wave. The user can also catch Arrokuda or other prey by entering the wave.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "surf-plus",
+      "moveName": "Surf+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Surf",
+      "isPlus": true,
+      "originalDescription": "The first wave decreases the movement speed of opposing Pokémon hit by 40% for 3s. When the first wave hits enemies, it also decreases their movement speed for a short time.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "dive",
+      "moveName": "Dive",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Whirlpool",
+      "isPlus": false,
+      "originalDescription": "The user becomes unstoppable for 0.5s as they change the designated location into a puddle then dive to the puddle, damaging opposing Pokémon and shoving them for 0.5s when the user emerges from the puddle. The next boosted attack within 5s deals additional damage; boosted attacks after 5s have passed become regular boosted attacks. A maximum of 3 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. The user catches prey for Gulp Missile as they emerge from the puddle. Changes the designated area into a puddle and has the user dive to that area, dealing damage to enemies and shoving them when they're hit. The user also catches Arrokuda or other wild Pokémon as they emerge from the puddle. A maximum of 3 uses can be kept in reserve for this move.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "dive-plus",
+      "moveName": "Dive+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Dive",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of the dive. Increased damage.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "feather-dance",
+      "moveName": "Feather Dance",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s. Decreases the Attack and movement speed of enemies for a short time.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "hurricane",
+      "moveName": "Hurricane",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Feather Dance",
+      "isPlus": false,
+      "originalDescription": "The user creates a fierce wind at the designated location. After 0.5s, a hurricane catches opposing Pokémon in the area of effect, damaging them and throwing them for 1s. Afterwards the user's attack speed increases by 40% for 3s. Creates a fierce wind, dealing damage to enemies that get caught in it and throws them.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "hurricane-plus",
+      "moveName": "Hurricane+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Hurricane",
+      "isPlus": true,
+      "originalDescription": "Increases the user's movement speed by 20% for 3s. Increases the user's movement speed for a short time.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "air-slash",
+      "moveName": "Air Slash",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Feather Dance",
+      "isPlus": false,
+      "originalDescription": "The user shoots out 5 blades of air in a cone in the designated direction, damaging the first opposing Pokémon hit with each blade. The user also hops backward to create distance. This move's cooldown is reduced by 0.8s for each blade that hits (up to 4s). Shoot out many blades of air while moving backward to create distance. Deals damage to enemies in the area of effect and reduces this move's cooldown when it hits.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "air-slash-plus",
+      "moveName": "Air Slash+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Air Slash",
+      "isPlus": true,
+      "originalDescription": "Restores the user's HP for each blade of air that hits an opposing Pokémon. Restores the user's HP every time a blade of air hits an enemy.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "gatling-gulp-missile",
+      "moveName": "Gatling Gulp Missile",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times. The user cannot move or use moves while using Gatling Gulp Missile. The user can use this Unite Move again to cancel it early. The prey caught for each Gatling Gulp Missile attack depends on the user's current HP. If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey. Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Cramorant",
+      "pokemonId": "cramorant",
+      "sourceId": "gatling-gulp-missile-unite-buff",
+      "moveName": "Gatling Gulp Missile Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Gatling Gulp Missile",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Gulp Missile",
+      "sourceType": "passive",
+      "sourceId": "gulp-missile",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Whirlpool",
+      "sourceType": "initialMove",
+      "sourceId": "whirlpool",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Surf",
+      "sourceType": "moveChoice",
+      "sourceId": "surf",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Whirlpool"
+    },
+    {
+      "name": "Surf+",
+      "sourceType": "movePlus",
+      "sourceId": "surf-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Surf"
+    },
+    {
+      "name": "Dive",
+      "sourceType": "moveChoice",
+      "sourceId": "dive",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Whirlpool"
+    },
+    {
+      "name": "Dive+",
+      "sourceType": "movePlus",
+      "sourceId": "dive-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Dive"
+    },
+    {
+      "name": "Feather Dance",
+      "sourceType": "initialMove",
+      "sourceId": "feather-dance",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Hurricane",
+      "sourceType": "moveChoice",
+      "sourceId": "hurricane",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Feather Dance"
+    },
+    {
+      "name": "Hurricane+",
+      "sourceType": "movePlus",
+      "sourceId": "hurricane-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Hurricane"
+    },
+    {
+      "name": "Air Slash",
+      "sourceType": "moveChoice",
+      "sourceId": "air-slash",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Feather Dance"
+    },
+    {
+      "name": "Air Slash+",
+      "sourceType": "movePlus",
+      "sourceId": "air-slash-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Air Slash"
+    },
+    {
+      "name": "Gatling Gulp Missile",
+      "sourceType": "uniteMove",
+      "sourceId": "gatling-gulp-missile",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Gatling Gulp Missile Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "gatling-gulp-missile-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Gatling Gulp Missile"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "gulp-missile",
+        "name": "Gulp Missile",
+        "rawName": "Gulp Missile",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive. When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp. Def by 5% for 3s. When below 50% max HP, instead catches Pikachu as prey, which decrease opposing Pokémon's movement speed by 50% and attack speed by 10% for 1s. When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP.",
+        "translatedDescription": "機械要約: Gulp Missile は 防御・特防を変化させる、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive. When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+            "notes": "When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp. Def by 5% for 3s. When below 50% max HP, instead catches Pikachu as prey, which decrease opposing Pokémon's movement speed by 50% and attack speed by 10% for 1s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gulp-missile__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gulp-missile__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gulp-missile__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__gulp-missile",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every fourth attack, catching some form of prey.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every fourth attack, catching some form of prey.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every fourth attack, catching some form of prey.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Becomes a boosted attack with every fourth attack, catching some form of prey.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "76",
+            "damageType": "SpAtk",
+            "levelScaling": "16",
+            "base": "290",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every fourth attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every fourth attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "whirlpool",
+        "name": "Whirlpool",
+        "rawName": "Whirlpool",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user creates a whirlpool at a designated location, damaging opposing Pokémon in the area of effect over 1.8s (up to 10 times). The area of effect shrinks in size over the duration; opposing Pokémon standing at the outer edge of the whirlpool are hit only up to 3 times. The movement speed of opposing Pokémon in the area of effect is decreased by 50% for 0.2s when hit. The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times). Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by entering the whirlpool.",
+        "translatedDescription": "機械要約: Whirlpool は 移動速度を下げる、与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial (2 Ticks)",
+            "ratio": "24",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "100",
+            "trueDescription": "The user creates a whirlpool at a designated location, damaging opposing Pokémon in the area of effect over 1.8s (up to 10 times). The area of effect shrinks in size over the duration; opposing Pokémon standing at the outer edge of the whirlpool are hit only up to 3 times. The movement speed of opposing Pokémon in the area of effect is decreased by 50% for 0.2s when hit.",
+            "notes": "The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times)."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Middle (2 Ticks)",
+            "ratio": "27",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "110",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - End (6 Ticks)",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "whirlpool__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The area of effect slowly shrinks, but the damage dealt slowly increases.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The area of effect slowly shrinks, but the damage dealt slowly increases.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "whirlpool__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The area of effect slowly shrinks, but the damage dealt slowly increases.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: The area of effect slowly shrinks, but the damage dealt slowly increases.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__whirlpool",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "surf",
+        "name": "Surf",
+        "rawName": "Surf",
+        "parentName": "Whirlpool",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user sends a wave in the designated direction, damaging opposing Pokémon in the wave. The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull. The user catches prey with the first wave, and can enter the returning wave to catch more prey for Gulp Missile. Attacks with a wave that deals damage to enemies. Once the wave has traveled its full distance, it returns the way it came, dealing damage to enemies once again and pulling them back with the wave. The user can also catch Arrokuda or other prey by entering the wave.",
+        "translatedDescription": "機械要約: Surf は 行動不能・スタンを付与する、相手を引き寄せる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "First Hit",
+            "ratio": "75",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "390",
+            "trueDescription": "The user sends a wave in the designated direction, damaging opposing Pokémon in the wave. The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+            "notes": "The user catches prey with the first wave, and can enter the returning wave to catch more prey for Gulp Missile."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "112.5",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "585",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__02__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The wave reaches its maximum distance after 0.8s, then returns to its starting point at the same speed, damaging opposing Pokémon and pulling them with the returning wave, stunning them for 0.4s during the pull.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__surf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "surf-plus",
+        "name": "Surf+",
+        "rawName": "Surf",
+        "parentName": "Surf",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "The first wave decreases the movement speed of opposing Pokémon hit by 40% for 3s. When the first wave hits enemies, it also decreases their movement speed for a short time.",
+        "translatedDescription": "機械要約: Surf+ は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The first wave decreases the movement speed of opposing Pokémon hit by 40% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf-plus__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the first wave hits enemies, it also decreases their movement speed for a short time.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: When the first wave hits enemies, it also decreases their movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__surf-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dive",
+        "name": "Dive",
+        "rawName": "Dive",
+        "parentName": "Whirlpool",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user becomes unstoppable for 0.5s as they change the designated location into a puddle then dive to the puddle, damaging opposing Pokémon and shoving them for 0.5s when the user emerges from the puddle. The next boosted attack within 5s deals additional damage; boosted attacks after 5s have passed become regular boosted attacks. A maximum of 3 uses can be kept in reserve for this move, and there is a 2s cooldown between uses. The user catches prey for Gulp Missile as they emerge from the puddle. Changes the designated area into a puddle and has the user dive to that area, dealing damage to enemies and shoving them when they're hit. The user also catches Arrokuda or other wild Pokémon as they emerge from the puddle. A maximum of 3 uses can be kept in reserve for this move.",
+        "translatedDescription": "機械要約: Dive は 妨害無効になる、次の通常攻撃または強化攻撃を準備する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "45",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "180",
+            "trueDescription": "The user becomes unstoppable for 0.5s as they change the designated location into a puddle then dive to the puddle, damaging opposing Pokémon and shoving them for 0.5s when the user emerges from the puddle. The next boosted attack within 5s deals additional damage; boosted attacks after 5s have passed become regular boosted attacks. A maximum of 3 uses can be kept in reserve for this move, and there is a 2s cooldown between uses.",
+            "notes": "The user catches prey for Gulp Missile as they emerge from the puddle."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional (Next Boosted)",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "145",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dive__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable for 0.5s as they change the designated location into a puddle then dive to the puddle, damaging opposing Pokémon and shoving them for 0.5s when the user emerges from the puddle.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable for 0.5s as they change the designated location into a puddle then dive to the puddle, damaging opposing Pokémon and shoving them for 0.5s when the user emerges from the puddle.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dive__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next boosted attack within 5s deals additional damage",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: The next boosted attack within 5s deals additional damage",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dive__03__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "The user also catches Arrokuda or other wild Pokémon as they emerge from the puddle.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: The user also catches Arrokuda or other wild Pokémon as they emerge from the puddle.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__dive",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dive-plus",
+        "name": "Dive+",
+        "rawName": "Dive",
+        "parentName": "Dive",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of the dive. Increased damage.",
+        "translatedDescription": "機械要約: Dive+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage",
+            "ratio": "50",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "210",
+            "trueDescription": "Increases the damage of the dive.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__dive-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "feather-dance",
+        "name": "Feather Dance",
+        "rawName": "Feather Dance",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s. Decreases the Attack and movement speed of enemies for a short time.",
+        "translatedDescription": "機械要約: Feather Dance は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "feather-dance__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__feather-dance",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "hurricane",
+        "name": "Hurricane",
+        "rawName": "Hurricane",
+        "parentName": "Feather Dance",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user creates a fierce wind at the designated location. After 0.5s, a hurricane catches opposing Pokémon in the area of effect, damaging them and throwing them for 1s. Afterwards the user's attack speed increases by 40% for 3s. Creates a fierce wind, dealing damage to enemies that get caught in it and throws them.",
+        "translatedDescription": "機械要約: Hurricane は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "SpAtk",
+            "levelScaling": "11",
+            "base": "620",
+            "trueDescription": "The user creates a fierce wind at the designated location. After 0.5s, a hurricane catches opposing Pokémon in the area of effect, damaging them and throwing them for 1s. Afterwards the user's attack speed increases by 40% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "hurricane__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "After 0.5s, a hurricane catches opposing Pokémon in the area of effect, damaging them and throwing them for 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: After 0.5s, a hurricane catches opposing Pokémon in the area of effect, damaging them and throwing them for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__hurricane",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "hurricane-plus",
+        "name": "Hurricane+",
+        "rawName": "Hurricane",
+        "parentName": "Hurricane",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the user's movement speed by 20% for 3s. Increases the user's movement speed for a short time.",
+        "translatedDescription": "機械要約: Hurricane+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's movement speed by 20% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__hurricane-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "air-slash",
+        "name": "Air Slash",
+        "rawName": "Air Slash",
+        "parentName": "Feather Dance",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user shoots out 5 blades of air in a cone in the designated direction, damaging the first opposing Pokémon hit with each blade. The user also hops backward to create distance. This move's cooldown is reduced by 0.8s for each blade that hits (up to 4s). Shoot out many blades of air while moving backward to create distance. Deals damage to enemies in the area of effect and reduces this move's cooldown when it hits.",
+        "translatedDescription": "機械要約: Air Slash は 待ち時間を短縮する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Blade (5 blades)",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "165",
+            "trueDescription": "The user shoots out 5 blades of air in a cone in the designated direction, damaging the first opposing Pokémon hit with each blade. The user also hops backward to create distance. This move's cooldown is reduced by 0.8s for each blade that hits (up to 4s).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "air-slash__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move's cooldown is reduced by 0.8s for each blade that hits (up to 4s).",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: This move's cooldown is reduced by 0.8s for each blade that hits (up to 4s).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "air-slash__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user also hops backward to create distance.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user also hops backward to create distance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__air-slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "air-slash-plus",
+        "name": "Air Slash+",
+        "rawName": "Air Slash",
+        "parentName": "Air Slash",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Restores the user's HP for each blade of air that hits an opposing Pokémon. Restores the user's HP every time a blade of air hits an enemy.",
+        "translatedDescription": "機械要約: Air Slash+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Healing - per Blade (5 blades)",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "44",
+            "trueDescription": "Restores the user's HP for each blade of air that hits an opposing Pokémon.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__air-slash-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "gatling-gulp-missile",
+        "name": "Gatling Gulp Missile",
+        "rawName": "Gatling Gulp Missile",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times. The user cannot move or use moves while using Gatling Gulp Missile. The user can use this Unite Move again to cancel it early. The prey caught for each Gatling Gulp Missile attack depends on the user's current HP. If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey. Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect.",
+        "translatedDescription": "機械要約: Gatling Gulp Missile は 妨害無効になる、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (10x)",
+            "ratio": "95",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "370",
+            "trueDescription": "The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times. The user cannot move or use moves while using Gatling Gulp Missile. The user can use this Unite Move again to cancel it early. The prey caught for each Gatling Gulp Missile attack depends on the user's current HP.",
+            "notes": "If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gatling-gulp-missile__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 6.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gatling-gulp-missile__02__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 6.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__gatling-gulp-missile",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "gatling-gulp-missile-unite-buff",
+        "name": "Gatling Gulp Missile Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Gatling Gulp Missile",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+        "translatedDescription": "機械要約: Gatling Gulp Missile Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gatling-gulp-missile-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gatling-gulp-missile-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "cramorant__gatling-gulp-missile-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 23,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

@@ -1,0 +1,721 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "greninja",
+  "pokemonName": "Greninja",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchGreninja"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "torrent",
+        "name": "Torrent",
+        "parentName": null,
+        "originalDescription": "While at 50% max HP or below, increases Attack by 5% and movement speed by 12%. While HP is at 50% or less, Attack and movement speed are increased.",
+        "translatedDescription": "機械要約: Torrent は HP割合条件で発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchGreninja"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "torrent__01__hpThreshold",
+          "effectType": "hpThreshold",
+          "summary": "HP割合条件で発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpThreshold"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+          "codexInterpretation": "HP割合条件で発動する。 原文証拠: While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "greninja__torrent",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage. Auto attacks used at long range reduce the cooldown of Bubble, Water Shuriken, or Surf by 0.5s when they hit. Boosted attacks used at long range also decrease the movement speed of the opposing Pokémon hit by 25% for 0.5s. Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500. Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is.",
+        "translatedDescription": "機械要約: Attack は 移動速度を下げる、与ダメージを変化させる、通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchGreninja"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage. Auto attacks used at long range reduce the cooldown of Bubble, Water Shuriken, or Surf by 0.5s when they hit. Boosted attacks used at long range also decrease the movement speed of the opposing Pokémon hit by 25% for 0.5s.",
+            "notes": "Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__04__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Basic",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage. Auto attacks used at long range reduce the cooldown of Bubble, Water Shuriken, or Surf by 0.5s when they hit. Boosted attacks used at long range also decrease the movement speed of the opposing Pokémon hit by 25% for 0.5s.",
+              "notes": "Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__05__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "greninja__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "bubble",
+        "name": "Bubble",
+        "parentName": null,
+        "originalDescription": "Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits. Attack with a spray of bubbles, decreasing the movement speed of enemies when it hits.",
+        "translatedDescription": "機械要約: Bubble は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchGreninja"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (2 Hits)",
+            "ratio": "113",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "208",
+            "trueDescription": "Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bubble__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "greninja__bubble",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "substitute",
+        "name": "Substitute",
+        "parentName": null,
+        "originalDescription": "Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take. Leaves behind a substitute doll for the user while it's moving forward.",
+        "translatedDescription": "機械要約: Substitute は 無敵になる、防御・特防を変化させる、分身、コピー、身代わりなどを生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchGreninja"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s.",
+            "notes": "The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "substitute__01__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s.",
+          "codexInterpretation": "無敵になる。 原文証拠: Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "substitute__02__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would ",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would ",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "substitute__03__cloneOrDecoy",
+          "effectType": "cloneOrDecoy",
+          "summary": "分身、コピー、身代わりなどを生成する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cloneOrDecoy"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s.",
+          "codexInterpretation": "分身、コピー、身代わりなどを生成する。 原文証拠: Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "greninja__substitute",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "waterburst-shuriken",
+        "name": "Waterburst Shuriken",
+        "parentName": null,
+        "originalDescription": "Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s. The user then suddenly appears on top of the water shuriken which immediately bursts, damaging opposing Pokémon in the circular area of effect again and throwing them. Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing. Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits. The water shuriken then immediately explodes, dealing damage to enemies in the area of effect and throws them. Once this move ends, the user may jump in a designated direction. Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Waterburst Shuriken は 相手を打ち上げる、移動速度を下げる、妨害無効になる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchGreninja"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (2x)",
+            "ratio": "220",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s. The user then suddenly appears on top of the water shuriken which immediately bursts, damaging opposing Pokémon in the circular area of effect again and throwing them.",
+            "notes": "Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "waterburst-shuriken__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterburst-shuriken__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterburst-shuriken__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterburst-shuriken__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "greninja__waterburst-shuriken",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 14,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

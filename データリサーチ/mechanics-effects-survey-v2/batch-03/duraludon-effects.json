@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "duraludon",
+  "pokemonName": "Duraludon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "heavy-metal",
+        "name": "Heavy Metal",
+        "parentName": null,
+        "originalDescription": "Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd). Prevents Duraludon from being thrown or shoved by the first attempt to shove or throw them. This ability goes on cooldown after it's triggered (50s cd).",
+        "translatedDescription": "機械要約: Heavy Metal は 相手を打ち上げる、相手を押し出す。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them. This ability goes on cooldown after it's triggered (50s cd).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "heavy-metal__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "heavy-metal__02__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockBack",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Prevents Duraludon from being thrown or shoved by the first attempt to throw or shove them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "duraludon__heavy-metal",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit. Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, shooting a long beam that deals a large amount of damage to all enemies hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "duraludon__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "laser-focus",
+        "name": "Laser Focus",
+        "parentName": null,
+        "originalDescription": "Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 auto attacks. Reduces damage received for a short time. Afterward, Duraludon's basic attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 basic attacks.",
+        "translatedDescription": "機械要約: Laser Focus は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Bonus",
+            "ratio": "27",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "60",
+            "trueDescription": "Reduces damage received by 20% for .6s. Afterward, Duraludon's auto attacks deal additional damage to enemies hit. This buff expires after 8s or after 3 auto attacks.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "laser-focus__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Reduces damage received by 20% for .6s.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Reduces damage received by 20% for .6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "duraludon__laser-focus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "metal-claw",
+        "name": "Metal Claw",
+        "parentName": null,
+        "originalDescription": "Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used, Duraludon's next auto attack becomes a boosted attack. Strike with sharp claws; dealing damage to enemies hit and decreasing their movement speed for a short time. After this move is used, Duraludon's next basic attack becomes a boosted attack.",
+        "translatedDescription": "機械要約: Metal Claw は 移動速度を下げる、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "94",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "260",
+            "trueDescription": "Send sharp claws forward; dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "metal-claw__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "dealing damage to enemies hit and decreasing their movement speed by 30% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: dealing damage to enemies hit and decreasing their movement speed by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "metal-claw__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "metal-claw__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: After this move is used, Duraludon's next auto attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "duraludon__metal-claw",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "revolving-ruin",
+        "name": "Revolving Ruin",
+        "parentName": null,
+        "originalDescription": "Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times. Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s. A burning ring is also left where the beam of light touched the ground for 10s; enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s. Subsequent hits after the first have the Attack stat bonus from this move applied to them. Fire a beam of light at the ground in a sweeping circle around Duraludon. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases their Attack by 8% for a short time. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam. Damage is dealt to any enemy in the area of effect after the beam of light is fired. A burning ring is also left where the beam of light touched the ground, and enemies that touch this ring take additional damage and have their movement speed decreased by 50% for 1s refreshing as damage continus to be taken from the burning ground. Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Revolving Ruin は やけどを付与する、相手を押し出す、妨害無効になる、シールドを付与する、継続ダメージを与える、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit",
+            "ratio": "163",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "350",
+            "trueDescription": "Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times. Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s. A burning ring is also left where the beam of light touched the ground for 10s; enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s. Subsequent hits after the first have the Attack stat bonus from this move applied to them.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burning Ring (per Tick)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "63",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Shield - per Enemy",
+            "ratio": "68",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "68",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "revolving-ruin__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 10,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "A burning ring is also left where the beam of light touched the ground for 10s",
+          "codexInterpretation": "やけどを付与する。 原文証拠: A burning ring is also left where the beam of light touched the ground for 10s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "revolving-ruin__02__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockBack",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "revolving-ruin__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "revolving-ruin__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "revolving-ruin__05__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - per Hit",
+              "ratio": "163",
+              "damageType": "Atk",
+              "levelScaling": "6",
+              "base": "350",
+              "trueDescription": "Fire a beam of light at the ground in a sweeping circle around Duraludon, becoming unstoppable during the rotation. If this beam hits an enemy, it deals damage to them, grants Duraludon a shield and increases Attack by 8% for 8s. Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times. Damage is dealt to any enemy in the area of effect after the beam of light is fired and enemies are shoved for 0.5s. A burning ring is also left where the beam of light touched the ground for 10s; enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s. Subsequent hits after the first have the Attack stat bonus from this move applied to them.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burning Ring (per Tick)",
+              "ratio": "35",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "63",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Shield - per Enemy",
+              "ratio": "68",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "68",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: enemies that touch this ring take additional damage every 0.5s and have their movement speed decreased by 50% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "revolving-ruin__06__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Both the shield effect and the Attack increase are strengthened for each enemy that is hit by the beam, stacking up to 5 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "duraludon__revolving-ruin",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 13,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

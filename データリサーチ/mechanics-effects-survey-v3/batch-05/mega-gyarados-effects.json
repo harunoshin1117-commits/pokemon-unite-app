@@ -1,0 +1,1441 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "mega-gyarados",
+  "pokemonName": "Mega Gyarados",
+  "role": "A+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "swift-swim",
+      "moveName": "Swift Swim",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When the Pokémon uses a move, their movement speed increases by 30% for 3s. Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases. Once the gauge is full, the Pokémon evolves into Gyarados.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Magikarp and Mega Evolved Gyarados do not have a boosted attack. Mega Evolved Gyarados lunges when using a basic attack.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "flail",
+      "moveName": "Flail",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "dragon-breath",
+      "moveName": "Dragon Breath",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "10",
+      "parentName": "Flail",
+      "isPlus": false,
+      "originalDescription": "Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%. If this move hits, gains a buff for 5s; increasing the range and damage of auto attacks; and increasing basic attack speed by a minimum of 30%, strengthening by 10% for each additional opposing Pokémon hit (up to 2 times; maximum 50%). If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "dragon-breath-plus",
+      "moveName": "Dragon Breath+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "10",
+      "parentName": "Dragon Breath",
+      "isPlus": true,
+      "originalDescription": "Increases the damage dealt by this move and basic attacks.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "splash",
+      "moveName": "Splash",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "waterfall",
+      "moveName": "Waterfall",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "12",
+      "parentName": "Splash",
+      "isPlus": false,
+      "originalDescription": "Charges forward up to 3 times, damaging opposing Pokémon hit with each charge; waiting for at least 0.07s before dashing forward with the next charge. The first charge is a regular dash forward; the next movement within 2s after the last charge dashes forward with the same effect. Dragon Breath can be used within the 2s duration in between charges without interrupting this move's course. Using Dragon Current ends this move early. This move's cooldown begins when the move ends. If two charges hit opposing Pokémon, grants a shield for 2s. If all three charges hit opposing Pokémon, the third charge throws opposing Pokémon hit for 0.45s. If the user is mega evolved, instead the cooldown begins when the move is used. Additionally, the previous shield and throw effects are granted even if the move misses, and the cooldown of the move is reduced by 10% for each dash that hits.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "waterfall-plus",
+      "moveName": "Waterfall+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "12",
+      "parentName": "Waterfall",
+      "isPlus": true,
+      "originalDescription": "Reduces this move's cooldown by 1s.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "dragon-current",
+      "moveName": "Dragon Current",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When the button is released, the user leaps up forcefully and attacks. If the user stays underwater for 1s, Gyarados strengthens the movement speed increase to 55% and creates a whirlpool when surfacing, applying a continuous slow to opposing Pokémon hit. If the user stays underwater for 2s, Gyarados strengthens the movement speed increase to 65% and creates a waterspout when surfacing, throwing opposing Pokémon hit for 1s. The longer the move is held, the larger the area of effect becomes. After using this Unite Move, the user Mega Evolves for 15 seconds.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Mega Gyarados",
+      "pokemonId": "mega-gyarados",
+      "sourceId": "dragon-current-unite-buff",
+      "moveName": "Dragon Current Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Dragon Current",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Swift Swim",
+      "sourceType": "passive",
+      "sourceId": "swift-swim",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Flail",
+      "sourceType": "initialMove",
+      "sourceId": "flail",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Dragon Breath",
+      "sourceType": "moveChoice",
+      "sourceId": "dragon-breath",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Flail"
+    },
+    {
+      "name": "Dragon Breath+",
+      "sourceType": "movePlus",
+      "sourceId": "dragon-breath-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Dragon Breath"
+    },
+    {
+      "name": "Splash",
+      "sourceType": "initialMove",
+      "sourceId": "splash",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Waterfall",
+      "sourceType": "moveChoice",
+      "sourceId": "waterfall",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Splash"
+    },
+    {
+      "name": "Waterfall+",
+      "sourceType": "movePlus",
+      "sourceId": "waterfall-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Waterfall"
+    },
+    {
+      "name": "Dragon Current",
+      "sourceType": "uniteMove",
+      "sourceId": "dragon-current",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Dragon Current Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "dragon-current-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Dragon Current"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "swift-swim",
+        "name": "Swift Swim",
+        "rawName": "Swift Swim",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When the Pokémon uses a move, their movement speed increases by 30% for 3s. Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases. Once the gauge is full, the Pokémon evolves into Gyarados.",
+        "translatedDescription": "機械要約: Swift Swim は スタック、マーク、ゲージを扱う、KOまたはアシストで発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When the Pokémon uses a move, their movement speed increases by 30% for 3s. Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases. Once the gauge is full, the Pokémon evolves into Gyarados. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "swift-swim__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift-swim__02__koAssistTrigger",
+          "effectType": "koAssistTrigger",
+          "summary": "KOまたはアシストで発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "koAssistEvent"
+          ],
+          "sourceEvidence": "Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases.",
+          "codexInterpretation": "KOまたはアシストで発動する。 原文証拠: Each time this Pokémon knocks out an opposing Pokémon, scores a goal, or otherwise makes a contribution in battle, their effort gauge increases.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__swift-swim",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Magikarp and Mega Evolved Gyarados do not have a boosted attack. Mega Evolved Gyarados lunges when using a basic attack.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+            "notes": "Magikarp and Mega Evolved Gyarados do not have a boosted attack. Mega Evolved Gyarados lunges when using a basic attack."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Magikarp and Mega Evolved Gyarados do not have a boosted attack.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Magikarp and Mega Evolved Gyarados do not have a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted (Gyarados)",
+            "ratio": "140",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "flail",
+        "name": "Flail",
+        "rawName": "Flail",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+        "translatedDescription": "機械要約: Flail には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Above 66% HP",
+            "ratio": "178",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "310",
+            "trueDescription": "Flails on the spot, damaging nearby opposing Pokémon; damage strengthens for every 33% max HP the user is missing.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Between 66% and 33% HP",
+            "ratio": "222",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "385",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Below 33% HP",
+            "ratio": "357",
+            "damageType": "Atk",
+            "levelScaling": "45",
+            "base": "616",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__flail",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dragon-breath",
+        "name": "Dragon Breath",
+        "rawName": "Dragon Breath",
+        "parentName": "Flail",
+        "learnLevel": "7",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%. If this move hits, gains a buff for 5s; increasing the range and damage of auto attacks; and increasing basic attack speed by a minimum of 30%, strengthening by 10% for each additional opposing Pokémon hit (up to 2 times; maximum 50%). If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+        "translatedDescription": "機械要約: Dragon Breath は まひを付与する、妨害無効になる、通常攻撃速度を上げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "193",
+            "damageType": "Atk",
+            "levelScaling": "22",
+            "base": "325",
+            "trueDescription": "Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%. If this move hits, gains a buff for 5s; increasing the range and damage of auto attacks; and increasing basic attack speed by a minimum of 30%, strengthening by 10% for each additional opposing Pokémon hit (up to 2 times; maximum 50%).",
+            "notes": "If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Basic",
+            "ratio": "124",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Boosted",
+            "ratio": "166",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage (Mega) - Basic",
+            "ratio": "138",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-breath__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-breath__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-breath__03__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Exhales a mighty gust in the designated direction, damaging opposing Pokémon in the area of effect and paralyzing them for 3s when it hits, decreasing their movement speed and basic attack speed by 30%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-breath__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If the user is mega evolved, instead Mega Gyarados becomes unstoppable then chases down and performs 5 special auto attacks on targets hit by this attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__dragon-breath",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dragon-breath-plus",
+        "name": "Dragon Breath+",
+        "rawName": "Dragon Breath",
+        "parentName": "Dragon Breath",
+        "learnLevel": "7",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Increases the damage dealt by this move and basic attacks.",
+        "translatedDescription": "機械要約: Dragon Breath+ は 与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage",
+            "ratio": "232",
+            "damageType": "Atk",
+            "levelScaling": "26",
+            "base": "390",
+            "trueDescription": "Increases the damage dealt by this move and basic attacks.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Damage - Basic",
+            "ratio": "135",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd2",
+            "label": "Damage - Boosted",
+            "ratio": "176",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd3",
+            "label": "Damage (Mega) - Basic",
+            "ratio": "151",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-breath-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the damage dealt by this move and basic attacks.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Increases the damage dealt by this move and basic attacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__dragon-breath-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "splash",
+        "name": "Splash",
+        "rawName": "Splash",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Jumps to the designated location forward. A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses.",
+        "translatedDescription": "機械要約: Splash には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Jumps to the designated location forward.",
+            "notes": "A maximum of 3 uses can be kept in reserve, with a 2s cooldown between uses."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__splash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "waterfall",
+        "name": "Waterfall",
+        "rawName": "Waterfall",
+        "parentName": "Splash",
+        "learnLevel": "7",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Charges forward up to 3 times, damaging opposing Pokémon hit with each charge; waiting for at least 0.07s before dashing forward with the next charge. The first charge is a regular dash forward; the next movement within 2s after the last charge dashes forward with the same effect. Dragon Breath can be used within the 2s duration in between charges without interrupting this move's course. Using Dragon Current ends this move early. This move's cooldown begins when the move ends. If two charges hit opposing Pokémon, grants a shield for 2s. If all three charges hit opposing Pokémon, the third charge throws opposing Pokémon hit for 0.45s. If the user is mega evolved, instead the cooldown begins when the move is used. Additionally, the previous shield and throw effects are granted even if the move misses, and the cooldown of the move is reduced by 10% for each dash that hits.",
+        "translatedDescription": "機械要約: Waterfall は 相手を打ち上げる、相手を引き寄せる、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "208",
+            "trueDescription": "Charges forward up to 3 times, damaging opposing Pokémon hit with each charge; waiting for at least 0.07s before dashing forward with the next charge. The first charge is a regular dash forward; the next movement within 2s after the last charge dashes forward with the same effect. Dragon Breath can be used within the 2s duration in between charges without interrupting this move's course. Using Dragon Current ends this move early. This move's cooldown begins when the move ends. If two charges hit opposing Pokémon, grants a shield for 2s. If all three charges hit opposing Pokémon, the third charge throws opposing Pokémon hit for 0.45s.",
+            "notes": "If the user is mega evolved, instead the cooldown begins when the move is used. Additionally, the previous shield and throw effects are granted even if the move misses, and the cooldown of the move is reduced by 10% for each dash that hits."
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "waterfall__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If all three charges hit opposing Pokémon, the third charge throws opposing Pokémon hit for 0.45s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If all three charges hit opposing Pokémon, the third charge throws opposing Pokémon hit for 0.45s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterfall__02__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Dragon Breath can be used within the 2s duration in between charges without interrupting this move's course.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: Dragon Breath can be used within the 2s duration in between charges without interrupting this move's course.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterfall__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If two charges hit opposing Pokémon, grants a shield for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If two charges hit opposing Pokémon, grants a shield for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "waterfall__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If the user is mega evolved, instead the cooldown begins when the move is used.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If the user is mega evolved, instead the cooldown begins when the move is used.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__waterfall",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "waterfall-plus",
+        "name": "Waterfall+",
+        "rawName": "Waterfall",
+        "parentName": "Waterfall",
+        "learnLevel": "7",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Reduces this move's cooldown by 1s.",
+        "translatedDescription": "機械要約: Waterfall+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this move's cooldown by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__waterfall-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "dragon-current",
+        "name": "Dragon Current",
+        "rawName": "Dragon Current",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When the button is released, the user leaps up forcefully and attacks. If the user stays underwater for 1s, Gyarados strengthens the movement speed increase to 55% and creates a whirlpool when surfacing, applying a continuous slow to opposing Pokémon hit. If the user stays underwater for 2s, Gyarados strengthens the movement speed increase to 65% and creates a waterspout when surfacing, throwing opposing Pokémon hit for 1s. The longer the move is held, the larger the area of effect becomes. After using this Unite Move, the user Mega Evolves for 15 seconds.",
+        "translatedDescription": "機械要約: Dragon Current は 相手を打ち上げる、移動速度を下げる、対象指定されない、またはステルス状態になる、移動速度を上げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "162",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%. When the button is released, the user leaps up forcefully and attacks. If the user stays underwater for 1s, Gyarados strengthens the movement speed increase to 55% and creates a whirlpool when surfacing, applying a continuous slow to opposing Pokémon hit. If the user stays underwater for 2s, Gyarados strengthens the movement speed increase to 65% and creates a waterspout when surfacing, throwing opposing Pokémon hit for 1s. The longer the move is held, the larger the area of effect becomes.",
+            "notes": "After using this Unite Move, the user Mega Evolves for 15 seconds."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Whirlpool level",
+            "ratio": "243",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Whirlpool (5 Ticks)",
+            "ratio": "16.2",
+            "damageType": "Atk",
+            "levelScaling": "17",
+            "base": "488",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage - Water Spout level",
+            "ratio": "324",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-current__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the user stays underwater for 2s, Gyarados strengthens the movement speed increase to 65% and creates a waterspout when surfacing, throwing opposing Pokémon hit for 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If the user stays underwater for 2s, Gyarados strengthens the movement speed increase to 65% and creates a waterspout when surfacing, throwing opposing Pokémon hit for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the user stays underwater for 1s, Gyarados strengthens the movement speed increase to 55% and creates a whirlpool when surfacing, applying a continuous slow to opposing Pokémon hit.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: If the user stays underwater for 1s, Gyarados strengthens the movement speed increase to 55% and creates a whirlpool when surfacing, applying a continuous slow to opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__03__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__04__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Becomes untargetable and dives underwater for up to 4s while this Unite Move is held, increasing movement speed by 45%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "After using this Unite Move, the user Mega Evolves for 15 seconds.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: After using this Unite Move, the user Mega Evolves for 15 seconds.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__dragon-current",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "dragon-current-unite-buff",
+        "name": "Dragon Current Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Dragon Current",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Dragon Current Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-current-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-current-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-gyarados__dragon-current-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 11,
+    "specialEffectCount": 21,
+    "zeroSpecialEffectSourceCount": 4,
+    "missingSourceCount": 0
+  }
+}

@@ -1,0 +1,691 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "zapdos",
+  "pokemonName": "Zapdos",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "static",
+        "name": "Static",
+        "parentName": null,
+        "originalDescription": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+        "translatedDescription": "機械要約: Static は まひを付与する、移動速度を下げる、通常攻撃速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Field (5x)",
+            "ratio": "12",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "18",
+            "trueDescription": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%.",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "static__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "paralysis",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "static__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "static__03__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zapdos__static",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+        "translatedDescription": "機械要約: Attack は 待ち時間を短縮する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "40",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "120",
+            "trueDescription": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zapdos__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "thunder-shock",
+        "name": "Thunder Shock",
+        "parentName": null,
+        "originalDescription": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+        "translatedDescription": "機械要約: Thunder Shock には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "200",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zapdos__thunder-shock",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "discharge",
+        "name": "Discharge",
+        "parentName": null,
+        "originalDescription": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+        "translatedDescription": "機械要約: Discharge は まひを付与する、通常攻撃速度を下げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "92",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "138",
+            "trueDescription": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves.",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "discharge__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "paralysis",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "discharge__02__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "discharge__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zapdos__discharge",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "high-voltage-siege",
+        "name": "High-Voltage Siege",
+        "parentName": null,
+        "originalDescription": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area, it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act. If lightning bolts hit one of the opposing team's goal zones 5 times, that goal zone will become defenseless (scoring is instant) for 5s or until a goal is scored. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: High-Voltage Siege は まひを付与する、行動不能・スタンを付与する、相手を引き寄せる、通常攻撃速度を下げる、待ち時間を短縮する、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (7x)",
+            "ratio": "70",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "106",
+            "trueDescription": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area,  it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act. If lightning bolts hit one of the opposing team's goal zones 5 times, that goal zone will become defenseless (scoring is instant) for 5s or until a goal is scored.",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "high-voltage-siege__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "paralysis",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__02__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__03__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "pull",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the user moves a certain distance from the area, it will be dragged towards the user's position.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: If the user moves a certain distance from the area, it will be dragged towards the user's position.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__04__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__05__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__06__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "high-voltage-siege__07__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If the user moves a certain distance from the area, it will be dragged towards the user's position.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If the user moves a certain distance from the area, it will be dragged towards the user's position.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zapdos__high-voltage-siege",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 14,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

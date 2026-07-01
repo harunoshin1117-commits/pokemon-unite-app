@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "alcremie",
+  "pokemonName": "Alcremie",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "aroma-veil",
+      "name": "Aroma Veil",
+      "originalDescription": "When an ally is under the effect of one of Alcremie's shields or buffs, remove any hindrances that are applied or are currently affecting that ally. This ability will go on cooldown for 10s after removing a hindrance. This ability can also work on Alcremie as well. When Milcery evolves into Alcremie, gain a Sweet Gauge. When the Sweet Gauge is filled at 15 stacks, the cooldown of one charge of Recover and Decorate will be reset. These moves will also be empowered.",
+      "summary": "When an ally is under the effect of one of Alcremie's shields or buffs, remove any hindrances that are applied or are currently affecting that ally. This ability will go on cooldown for 10s after removing a hindrance. This ability can also work on Alcremie as well. When Milcery evolves into Alcremie, gain a Sweet Gauge",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "shield"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Attacks by throwing whip cream. Milcery and Alcremie do not have a boosted attack.",
+      "summary": "Attacks by throwing whip cream. Milcery and Alcremie do not have a boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "135",
+          "notes": "Milcery and Alcremie do not have a boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "helping-hand",
+      "name": "Helping Hand",
+      "originalDescription": "Grant a designated ally Pokémon or yourself a shield for 3s, in addition to increasing the recipients Attack by 40 and Special Attack by 25 for 3s",
+      "summary": "Grant a designated ally Pokémon or yourself a shield for 3s, in addition to increasing the recipients Attack by 40 and Special Attack by 25 for 3s",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "150",
+          "damageType": "SpAtk",
+          "levelScaling": "26",
+          "base": "525",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "150",
+          "damageType": "SpAtk",
+          "levelScaling": "26",
+          "base": "525",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "charm",
+      "name": "Charm",
+      "originalDescription": "Charm a target Pokémon with your cute voice, dealing damage to the first Pokémon hit. Pokémon hit by the charm have their Attack reduced by 30 and Special Attack reduced by 20 and movement speed reduced by 30% for 2s. Additionally, increases the sweet gauge by 2.",
+      "summary": "Charm a target Pokémon with your cute voice, dealing damage to the first Pokémon hit. Pokémon hit by the charm have their Attack reduced by 30 and Special Attack reduced by 20 and movement speed reduced by 30% for 2s. Additionally, increases the sweet gauge by 2.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fluffy-cream-supreme",
+      "name": "Fluffy Cream Supreme",
+      "originalDescription": "Create a giant cake and stand atop it becoming unstoppable and gaining a shield for 6s. Then throw whipped cream at allies. Allies who receive whipped cream are healed and have their maximum HP buffed for 8s. This move ends early if this move's shield is lost, Alcremie becomes bound, or if the move is manually cancelled. The shield is 60% of Alcremie's max HP Unite buffs: 40% Movement Speed, 30% CDR, 30% Max HP Shield (Applied when the move ends)",
+      "summary": "Create a giant cake and stand atop it becoming unstoppable and gaining a shield for 6s. Then throw whipped cream at allies. Allies who receive whipped cream are healed and have their maximum HP buffed for 8s. This move ends early if this move's shield is lost, Alcremie becomes bound, or if the move is manually cancelle",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "aroma-veil",
+      "name": "Aroma Veil",
+      "originalDescription": "When an ally is under the effect of one of Alcremie's shields or buffs, remove any hindrances that are applied or are currently affecting that ally. This ability will go on cooldown for 10s after removing a hindrance. This ability can also work on Alcremie as well. When Milcery evolves into Alcremie, gain a Sweet Gauge. When the Sweet Gauge is filled at 15 stacks, the cooldown of one charge of Recover and Decorate will be reset. These moves will also be empowered.",
+      "summary": "When an ally is under the effect of one of Alcremie's shields or buffs, remove any hindrances that are applied or are currently affecting that ally. This ability will go on cooldown for 10s after removing a hindrance. This ability can also work on Alcremie as well. When Milcery evolves into Alcremie, gain a Sweet Gauge",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "shield"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Attacks by throwing whip cream. Milcery and Alcremie do not have a boosted attack.",
+      "summary": "Attacks by throwing whip cream. Milcery and Alcremie do not have a boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "7",
+          "base": "135",
+          "notes": "Milcery and Alcremie do not have a boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "helping-hand",
+      "name": "Helping Hand",
+      "originalDescription": "Grant a designated ally Pokémon or yourself a shield for 3s, in addition to increasing the recipients Attack by 40 and Special Attack by 25 for 3s",
+      "summary": "Grant a designated ally Pokémon or yourself a shield for 3s, in addition to increasing the recipients Attack by 40 and Special Attack by 25 for 3s",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "150",
+          "damageType": "SpAtk",
+          "levelScaling": "26",
+          "base": "525",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "150",
+          "damageType": "SpAtk",
+          "levelScaling": "26",
+          "base": "525",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "charm",
+      "name": "Charm",
+      "originalDescription": "Charm a target Pokémon with your cute voice, dealing damage to the first Pokémon hit. Pokémon hit by the charm have their Attack reduced by 30 and Special Attack reduced by 20 and movement speed reduced by 30% for 2s. Additionally, increases the sweet gauge by 2.",
+      "summary": "Charm a target Pokémon with your cute voice, dealing damage to the first Pokémon hit. Pokémon hit by the charm have their Attack reduced by 30 and Special Attack reduced by 20 and movement speed reduced by 30% for 2s. Additionally, increases the sweet gauge by 2.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "25",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fluffy-cream-supreme",
+      "name": "Fluffy Cream Supreme",
+      "originalDescription": "Create a giant cake and stand atop it becoming unstoppable and gaining a shield for 6s. Then throw whipped cream at allies. Allies who receive whipped cream are healed and have their maximum HP buffed for 8s. This move ends early if this move's shield is lost, Alcremie becomes bound, or if the move is manually cancelled. The shield is 60% of Alcremie's max HP Unite buffs: 40% Movement Speed, 30% CDR, 30% Max HP Shield (Applied when the move ends)",
+      "summary": "Create a giant cake and stand atop it becoming unstoppable and gaining a shield for 6s. Then throw whipped cream at allies. Allies who receive whipped cream are healed and have their maximum HP buffed for 8s. This move ends early if this move's shield is lost, Alcremie becomes bound, or if the move is manually cancelle",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Healing - per Cream (48 max)",
+          "ratio": "19",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "45",
+          "notes": "The shield is 60% of Alcremie's max HP"
+        },
+        "additional": [
+          {
+            "label": "Max HP Increase - per Cream (48 max)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "hoopa",
+  "pokemonName": "Hoopa",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "magician",
+      "name": "Magician",
+      "originalDescription": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa. If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced. In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa (40s cooldown). If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced to 20s. Berries last 30 seconds and take 2 seconds to appear after magician's activation.",
+      "summary": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa. If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front o",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange"
+      ],
+      "durationSeconds": 40,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies. Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies. Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "53",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Deals damage to enemies in the designated area of effect, leaving them unable to act for a short time. Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+      "summary": "Deals damage to enemies in the designated area of effect, leaving them unable to act for a short time. Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 75,
+      "cooldownSeconds": 6.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "116",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed for a short time. Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s.",
+      "summary": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed for a short time. Unleash a telekinetic force in ",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "112",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "380",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rings-unbound",
+      "name": "Rings Unbound",
+      "originalDescription": "Transforms Hoopa into Hoopa Unbound for a short time, increasing max HP and creating a ring at the designated location. Each ally can warp to the ring's location one time. As Hoopa Unbound, moves change to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location. Hoopa Unbound lasts for 15s, increasing max HP by 40% and changes Hoopa's regular moves to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. The portal ring created stays open for 10s, and allies can warp to that location once within the duration of the ring. This portal is indicated on the mini map where all players may see where it is. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Transforms Hoopa into Hoopa Unbound for a short time, increasing max HP and creating a ring at the designated location. Each ally can warp to the ring's location one time. As Hoopa Unbound, moves change to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. Hoopa becomes invi",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "cooldownState",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "magician",
+      "name": "Magician",
+      "originalDescription": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa. If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced. In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa (40s cooldown). If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced to 20s. Berries last 30 seconds and take 2 seconds to appear after magician's activation.",
+      "summary": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa. If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front o",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange"
+      ],
+      "durationSeconds": 40,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies. Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies. Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "53",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Deals damage to enemies in the designated area of effect, leaving them unable to act for a short time. Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+      "summary": "Deals damage to enemies in the designated area of effect, leaving them unable to act for a short time. Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 75,
+      "cooldownSeconds": 6.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "116",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed for a short time. Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s.",
+      "summary": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed for a short time. Unleash a telekinetic force in ",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "112",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "380",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rings-unbound",
+      "name": "Rings Unbound",
+      "originalDescription": "Transforms Hoopa into Hoopa Unbound for a short time, increasing max HP and creating a ring at the designated location. Each ally can warp to the ring's location one time. As Hoopa Unbound, moves change to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location. Hoopa Unbound lasts for 15s, increasing max HP by 40% and changes Hoopa's regular moves to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. The portal ring created stays open for 10s, and allies can warp to that location once within the duration of the ring. This portal is indicated on the mini map where all players may see where it is. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Transforms Hoopa into Hoopa Unbound for a short time, increasing max HP and creating a ring at the designated location. Each ally can warp to the ring's location one time. As Hoopa Unbound, moves change to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. Hoopa becomes invi",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

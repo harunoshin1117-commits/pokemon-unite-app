@@ -1,0 +1,709 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "chandelure",
+  "pokemonName": "Chandelure",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "infiltrator",
+      "name": "Infiltrator",
+      "originalDescription": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+      "summary": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+      "summary": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks. Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+      "summary": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks. Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "33",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "140",
+          "notes": "Burns tick every 0.5s for 5 damage ticks."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "summary": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "44",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "290",
+          "notes": "Burns tick every 0.5s for 5 damage ticks."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "night-shade",
+      "name": "Night Shade",
+      "originalDescription": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+      "summary": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "18",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ignite-midnight",
+      "name": "Ignite Midnight",
+      "originalDescription": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled early. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled earl",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (6x)",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Final Blast Damage",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "405",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (6x)",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Final Blast Damage",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "405",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "dotTimer",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "infiltrator",
+      "name": "Infiltrator",
+      "originalDescription": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+      "summary": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+      "summary": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks. Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+      "summary": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks. Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "33",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "140",
+          "notes": "Burns tick every 0.5s for 5 damage ticks."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "summary": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "44",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "290",
+          "notes": "Burns tick every 0.5s for 5 damage ticks."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "night-shade",
+      "name": "Night Shade",
+      "originalDescription": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+      "summary": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "18",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ignite-midnight",
+      "name": "Ignite Midnight",
+      "originalDescription": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled early. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled earl",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (6x)",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Final Blast Damage",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "405",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (6x)",
+          "ratio": "56",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Final Blast Damage",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "405",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

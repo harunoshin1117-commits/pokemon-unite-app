@@ -1,0 +1,555 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "psyduck",
+  "pokemonName": "Psyduck",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "swift-swim",
+      "name": "Swift Swim",
+      "originalDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD). This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s.",
+      "summary": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD). This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. T",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Attacks with a shot of water. Psyduck has no boosted attack.",
+      "summary": "Attacks with a shot of water. Psyduck has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Psyduck has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits. While the mysterious power is active, deals increased damage.",
+      "summary": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits. While the mysterious power is active, deals increased damage.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "380",
+          "notes": "While the mysterious power is active, deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage - Mysterious Power",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "456",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tail-whip",
+      "name": "Tail Whip",
+      "originalDescription": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+      "summary": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "2",
+          "base": "320",
+          "notes": "While the mysterious power is active, strengthens the Sp. Def decrease to 30%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "full-power-psy-ay-ay",
+      "name": "Full-Power Psy-ay-ay!",
+      "originalDescription": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit. After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit. After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power. Unite buffs: 30% Movement Spe",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "300",
+          "notes": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "300",
+          "notes": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "cooldownState",
+    "durationTimer",
+    "maxHp",
+    "dotTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "swift-swim",
+      "name": "Swift Swim",
+      "originalDescription": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD). This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. This gauge fills at a rate of 30% per 1s (requiring a total of 3.33s to fully charge). When the headache gauge is full, a mysterious power is triggered, interrupting Psyduck from casting moves, cleansing status conditions on themself, becoming unstoppable and decreasing their movement speed by 30% for 1s; then shoving nearby opposing Pokémon away for 0.8s, and resetting this Pokémon's move cooldowns. The mysterious power stays active for 10s, boosting moves and giving them 20% cooldown reduction. When the mysterious power ends, Psyduck cannot use moves or attacks, or charge their headache gauge for 2.5s.",
+      "summary": "When damaged by a Pokémon from the opposing team; increases movement speed by 40% for 2s, decaying by 10% every 0.5s (minimum 25% increased movement speed) (10s CD). This Pokémon's headache gauge increases by 1% for every 0.5% max HP damage received by Psyduck or nearby ally Pokémon from Pokémon on the opposing team. T",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Attacks with a shot of water. Psyduck has no boosted attack.",
+      "summary": "Attacks with a shot of water. Psyduck has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Psyduck has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits. While the mysterious power is active, deals increased damage.",
+      "summary": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon and stunning them for 1s when it hits. While the mysterious power is active, deals increased damage.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "380",
+          "notes": "While the mysterious power is active, deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage - Mysterious Power",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "456",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tail-whip",
+      "name": "Tail Whip",
+      "originalDescription": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+      "summary": "Wags their tail at the designated opposing Pokémon, damaging them and decreasing their movement speed by 30% and their Sp. Def by 20% for 2s. While the mysterious power is active, strengthens the Sp. Def decrease to 30%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "2",
+          "base": "320",
+          "notes": "While the mysterious power is active, strengthens the Sp. Def decrease to 30%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "full-power-psy-ay-ay",
+      "name": "Full-Power Psy-ay-ay!",
+      "originalDescription": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit. After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Releases three mysterious psychic waves around themself, damaging opposing Pokémon in the area of effect and decreasing the damage dealt by them by 30% for 3s when hit. After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power. Unite buffs: 30% Movement Spe",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "300",
+          "notes": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (x3)",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "300",
+          "notes": "After using this Unite Move, increases the headache gauge by 50% as a consequence of Psyduck unleashing their full power."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

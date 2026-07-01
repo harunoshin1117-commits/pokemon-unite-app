@@ -1,0 +1,776 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "scyther",
+  "pokemonName": "Scyther",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "technician",
+      "name": "Technician",
+      "originalDescription": "After using a move, the next basic attack will change to deal 2 attacks instead. The second attack deals reduced damage. After this Pokémon uses a move, the next auto attack will deal two consecutive auto attacks instead. The second of these deals decreased damage. Technician lasts 5s and has no internal cooldown.",
+      "summary": "After using a move, the next basic attack will change to deal 2 attacks instead. The second attack deals reduced damage. After this Pokémon uses a move, the next auto attack will deal two consecutive auto attacks instead. The second of these deals decreased damage. Technician lasts 5s and has no internal cooldown.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Second Hit (Basic)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit (Boosted)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, increasing Scyther's movement speed by 40% for 3s.",
+      "summary": "Becomes a boosted attack with every third attack, increasing Scyther's movement speed by 40% for 3s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "fury-cutter",
+      "name": "Fury Cutter",
+      "originalDescription": "Slashes twice dealing damage with its scythes in a cone. The second slash deals more damage than the first.",
+      "summary": "Slashes twice dealing damage with its scythes in a cone. The second slash deals more damage than the first.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "69",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "82.8",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "240",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dashes in designated direction dealing damage to enemies hit along the way.",
+      "summary": "Dashes in designated direction dealing damage to enemies hit along the way.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "58",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "green-illusion-dive",
+      "name": "Green Illusion Dive",
+      "originalDescription": "Target an enemy, slashing through them dealing an initial hit of damage and creating 5 copies a set distance away. Copies deal damage to enemies they make contact with and apply a mark to them for 5s. After 5s, the copies return to Scyther, dealing damage to enemies they make contact with and healing Scyther for each hit. This move may be used again within 5s of activating as a dash in a designated direction dealing damage to enemies hit. The copies then dash to the end location of the user's dash. If a copy makes contact with an enemy while returning to Scyther, the copy deals damage to that enemy and disappears. If a marked enemy is knocked out, all of Scyther's move cooldowns are reset. Subsequent copies hitting the same target deal 70% reduced damage. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Target an enemy, slashing through them dealing an initial hit of damage and creating 5 copies a set distance away. Copies deal damage to enemies they make contact with and apply a mark to them for 5s. After 5s, the copies return to Scyther, dealing damage to enemies they make contact with and healing Scyther for each h",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "stackCount",
+    "shieldHp",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "technician",
+      "name": "Technician",
+      "originalDescription": "After using a move, the next basic attack will change to deal 2 attacks instead. The second attack deals reduced damage. After this Pokémon uses a move, the next auto attack will deal two consecutive auto attacks instead. The second of these deals decreased damage. Technician lasts 5s and has no internal cooldown.",
+      "summary": "After using a move, the next basic attack will change to deal 2 attacks instead. The second attack deals reduced damage. After this Pokémon uses a move, the next auto attack will deal two consecutive auto attacks instead. The second of these deals decreased damage. Technician lasts 5s and has no internal cooldown.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Second Hit (Basic)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit (Boosted)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, increasing Scyther's movement speed by 40% for 3s.",
+      "summary": "Becomes a boosted attack with every third attack, increasing Scyther's movement speed by 40% for 3s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fury-cutter",
+      "name": "Fury Cutter",
+      "originalDescription": "Slashes twice dealing damage with its scythes in a cone. The second slash deals more damage than the first.",
+      "summary": "Slashes twice dealing damage with its scythes in a cone. The second slash deals more damage than the first.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "69",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Second Hit",
+            "ratio": "82.8",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "240",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dashes in designated direction dealing damage to enemies hit along the way.",
+      "summary": "Dashes in designated direction dealing damage to enemies hit along the way.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "58",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "green-illusion-dive",
+      "name": "Green Illusion Dive",
+      "originalDescription": "Target an enemy, slashing through them dealing an initial hit of damage and creating 5 copies a set distance away. Copies deal damage to enemies they make contact with and apply a mark to them for 5s. After 5s, the copies return to Scyther, dealing damage to enemies they make contact with and healing Scyther for each hit. This move may be used again within 5s of activating as a dash in a designated direction dealing damage to enemies hit. The copies then dash to the end location of the user's dash. If a copy makes contact with an enemy while returning to Scyther, the copy deals damage to that enemy and disappears. If a marked enemy is knocked out, all of Scyther's move cooldowns are reset. Subsequent copies hitting the same target deal 70% reduced damage. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Target an enemy, slashing through them dealing an initial hit of damage and creating 5 copies a set distance away. Copies deal damage to enemies they make contact with and apply a mark to them for 5s. After 5s, the copies return to Scyther, dealing damage to enemies they make contact with and healing Scyther for each h",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Initial, Dash, & Copy Dash",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "230",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal - per Copy",
+            "ratio": "46.5",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

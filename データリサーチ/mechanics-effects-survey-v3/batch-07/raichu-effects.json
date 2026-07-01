@@ -1,0 +1,1720 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "raichu",
+  "pokemonName": "Raichu",
+  "role": "B+",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Intermediate",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "static",
+      "moveName": "Static",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "attack-pikachu-basic",
+      "moveName": "Attack - Pikachu",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "attack-pikachu-boosted",
+      "moveName": "Attack - Pikachu Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack - Pikachu",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunder-shock",
+      "moveName": "Thunder Shock",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "stored-power",
+      "moveName": "Stored Power",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Thunder Shock",
+      "isPlus": false,
+      "originalDescription": "Increases auto attack speed by 35% and empowers the next 6 auto attacks for 5s. Each empowered auto attack also launches a star-shaped electric blast at the target, dealing additional damage. This move goes on cooldown after all 6 electric blasts have been launched or after 5s.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "stored-power-plus",
+      "moveName": "Stored Power+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Stored Power",
+      "isPlus": true,
+      "originalDescription": "The electric blasts also decrease the target's Sp. Def by 10% for 3s (up to 3 times; maximum 30%).",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "electro-ball",
+      "moveName": "Electro Ball",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Thunder Shock",
+      "isPlus": false,
+      "originalDescription": "Hurls an electric orb toward the designated location, where it remains for up to 30s if it doesn't hit an opposing Pokémon on the way. When an electric orb and an opposing Pokémon touch; the orb releases its electricity and damages nearby opposing Pokémon. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses. A maximum of 3 orbs can be on the map at a given time.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "electro-ball-plus",
+      "moveName": "Electro Ball+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Electro Ball",
+      "isPlus": true,
+      "originalDescription": "Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunder-wave",
+      "moveName": "Thunder Wave",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunderbolt",
+      "moveName": "Thunderbolt",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Thunder Wave",
+      "isPlus": false,
+      "originalDescription": "Channels for 0.5s then releases a strong electric blast in the designated direction, damaging opposing Pokémon in the area of effect, and paralyzing them when it hits. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s. If this move hits an electric orb created by Electro Ball; the orb releases its electricity, dealing increased damage to nearby opposing Pokémon.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunderbolt-plus",
+      "moveName": "Thunderbolt+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Thunderbolt",
+      "isPlus": true,
+      "originalDescription": "Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "psychic",
+      "moveName": "Psychic",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Thunder Wave",
+      "isPlus": false,
+      "originalDescription": "Releases a strong telekinetic force in the designated area, damaging opposing Pokémon in the area of effect and applying a debuff which decreases their movement speed by 23% for 3s when it hits. If the user hits debuffed opposing Pokémon with an auto attack, it deals additional damage. If this move hits an electric orb created by Electro Ball; the orb is pulled to the center of this move's area of effect. This does not extend the duration the electric orb remains.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "psychic-plus",
+      "moveName": "Psychic+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Psychic",
+      "isPlus": true,
+      "originalDescription": "Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunderstorm-aerial",
+      "moveName": "Thunderstorm Aerial",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Raichu",
+      "pokemonId": "raichu",
+      "sourceId": "thunderstorm-aerial-unite-buff",
+      "moveName": "Thunderstorm Aerial Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Thunderstorm Aerial",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Static",
+      "sourceType": "passive",
+      "sourceId": "static",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack - Pikachu",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-pikachu-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack - Pikachu Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-pikachu-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack - Pikachu"
+    },
+    {
+      "name": "Thunder Shock",
+      "sourceType": "initialMove",
+      "sourceId": "thunder-shock",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Stored Power",
+      "sourceType": "moveChoice",
+      "sourceId": "stored-power",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Thunder Shock"
+    },
+    {
+      "name": "Stored Power+",
+      "sourceType": "movePlus",
+      "sourceId": "stored-power-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Stored Power"
+    },
+    {
+      "name": "Electro Ball",
+      "sourceType": "moveChoice",
+      "sourceId": "electro-ball",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Thunder Shock"
+    },
+    {
+      "name": "Electro Ball+",
+      "sourceType": "movePlus",
+      "sourceId": "electro-ball-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Electro Ball"
+    },
+    {
+      "name": "Thunder Wave",
+      "sourceType": "initialMove",
+      "sourceId": "thunder-wave",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Thunderbolt",
+      "sourceType": "moveChoice",
+      "sourceId": "thunderbolt",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Thunder Wave"
+    },
+    {
+      "name": "Thunderbolt+",
+      "sourceType": "movePlus",
+      "sourceId": "thunderbolt-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Thunderbolt"
+    },
+    {
+      "name": "Psychic",
+      "sourceType": "moveChoice",
+      "sourceId": "psychic",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Thunder Wave"
+    },
+    {
+      "name": "Psychic+",
+      "sourceType": "movePlus",
+      "sourceId": "psychic-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Psychic"
+    },
+    {
+      "name": "Thunderstorm Aerial",
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm-aerial",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Thunderstorm Aerial Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "thunderstorm-aerial-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Thunderstorm Aerial"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "static",
+        "name": "Static",
+        "rawName": "Static",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+        "translatedDescription": "機械要約: Static は まひを付与する、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD).",
+            "notes": "Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "static__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 30,
+          "cooldownSeconds": 30,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD).",
+          "codexInterpretation": "まひを付与する。 原文証拠: Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "static__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__static",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-pikachu-basic",
+        "name": "Attack - Pikachu",
+        "rawName": "Attack - Pikachu",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+        "translatedDescription": "機械要約: Attack - Pikachu は まひを付与する、通常攻撃速度を上げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "72",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+            "notes": "Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-pikachu-basic__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-pikachu-basic__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-pikachu-basic__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__attack-pikachu-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-pikachu-boosted",
+        "name": "Attack - Pikachu Boosted",
+        "rawName": "Attack - Pikachu",
+        "parentName": "Attack - Pikachu",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack - Pikachu Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "93.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "104",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__attack-pikachu-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "thunder-shock",
+        "name": "Thunder Shock",
+        "rawName": "Thunder Shock",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+        "translatedDescription": "機械要約: Thunder Shock は まひを付与する、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "90",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "240",
+            "trueDescription": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit.",
+            "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunder-shock__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunder-shock__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunder-shock",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "stored-power",
+        "name": "Stored Power",
+        "rawName": "Stored Power",
+        "parentName": "Thunder Shock",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Increases auto attack speed by 35% and empowers the next 6 auto attacks for 5s. Each empowered auto attack also launches a star-shaped electric blast at the target, dealing additional damage. This move goes on cooldown after all 6 electric blasts have been launched or after 5s.",
+        "translatedDescription": "機械要約: Stored Power は 通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Additional",
+            "ratio": "72",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "Increases auto attack speed by 35% and empowers the next 6 auto attacks for 5s.",
+            "notes": "Each empowered auto attack also launches a star-shaped electric blast at the target, dealing additional damage. This move goes on cooldown after all 6 electric blasts have been launched or after 5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "stored-power__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases auto attack speed by 35% and empowers the next 6 auto attacks for 5s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Increases auto attack speed by 35% and empowers the next 6 auto attacks for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__stored-power",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "stored-power-plus",
+        "name": "Stored Power+",
+        "rawName": "Stored Power",
+        "parentName": "Stored Power",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "The electric blasts also decrease the target's Sp. Def by 10% for 3s (up to 3 times; maximum 30%).",
+        "translatedDescription": "機械要約: Stored Power+ は 防御・特防を変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The electric blasts also decrease the target's Sp. Def by 10% for 3s (up to 3 times; maximum 30%).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "stored-power-plus__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "the electric blasts also decrease the target's sp. def by 10% for 3s (up to 3 times; maximum 30%).",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: the electric blasts also decrease the target's sp. def by 10% for 3s (up to 3 times; maximum 30%).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__stored-power-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "electro-ball",
+        "name": "Electro Ball",
+        "rawName": "Electro Ball",
+        "parentName": "Thunder Shock",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Hurls an electric orb toward the designated location, where it remains for up to 30s if it doesn't hit an opposing Pokémon on the way. When an electric orb and an opposing Pokémon touch; the orb releases its electricity and damages nearby opposing Pokémon. A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses. A maximum of 3 orbs can be on the map at a given time.",
+        "translatedDescription": "機械要約: Electro Ball は フィールド・設置範囲を生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "178",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "340",
+            "trueDescription": "Hurls an electric orb toward the designated location, where it remains for up to 30s if it doesn't hit an opposing Pokémon on the way. When an electric orb and an opposing Pokémon touch; the orb releases its electricity and damages nearby opposing Pokémon.",
+            "notes": "A maximum of 2 uses can be kept in reserve, with a 0.5s cooldown between uses. A maximum of 3 orbs can be on the map at a given time."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Activated by Thunderbolt",
+            "ratio": "187",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "356",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball__01__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 30,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurls an electric orb toward the designated location, where it remains for up to 30s if it doesn't hit an opposing Pokémon on the way.",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: Hurls an electric orb toward the designated location, where it remains for up to 30s if it doesn't hit an opposing Pokémon on the way.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__electro-ball",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "electro-ball-plus",
+        "name": "Electro Ball+",
+        "rawName": "Electro Ball",
+        "parentName": "Electro Ball",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+        "translatedDescription": "機械要約: Electro Ball+ は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - DoT (8 Ticks)",
+            "ratio": "7.8",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "18",
+            "trueDescription": "Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball-plus__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "Damage - DoT (8 Ticks)",
+              "ratio": "7.8",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "18",
+              "trueDescription": "Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Deals damage every 0.5s over 3.5s (8 times) to opposing Pokémon hit by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__electro-ball-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "thunder-wave",
+        "name": "Thunder Wave",
+        "rawName": "Thunder Wave",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+        "translatedDescription": "機械要約: Thunder Wave は まひを付与する、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "108",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit.",
+            "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunder-wave__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunder-wave__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunder-wave",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "thunderbolt",
+        "name": "Thunderbolt",
+        "rawName": "Thunderbolt",
+        "parentName": "Thunder Wave",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Channels for 0.5s then releases a strong electric blast in the designated direction, damaging opposing Pokémon in the area of effect, and paralyzing them when it hits. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s. If this move hits an electric orb created by Electro Ball; the orb releases its electricity, dealing increased damage to nearby opposing Pokémon.",
+        "translatedDescription": "機械要約: Thunderbolt は まひを付与する、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "160",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "380",
+            "trueDescription": "Channels for 0.5s then releases a strong electric blast in the designated direction, damaging opposing Pokémon in the area of effect, and paralyzing them when it hits. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+            "notes": "If this move hits an electric orb created by Electro Ball; the orb releases its electricity, dealing increased damage to nearby opposing Pokémon."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderbolt__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Channels for 0.5s then releases a strong electric blast in the designated direction, damaging opposing Pokémon in the area of effect, and paralyzing them when it hits.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Channels for 0.5s then releases a strong electric blast in the designated direction, damaging opposing Pokémon in the area of effect, and paralyzing them when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderbolt__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunderbolt",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "thunderbolt-plus",
+        "name": "Thunderbolt+",
+        "rawName": "Thunderbolt",
+        "parentName": "Thunderbolt",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+        "translatedDescription": "機械要約: Thunderbolt+ は まひを付与する、移動不能を付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderbolt-plus__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderbolt-plus__02__immobilize",
+          "effectType": "immobilize",
+          "summary": "移動不能を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+          "codexInterpretation": "移動不能を付与する。 原文証拠: Immobilizes opposing Pokémon hit for 1s instead of paralyzing them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunderbolt-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "psychic",
+        "name": "Psychic",
+        "rawName": "Psychic",
+        "parentName": "Thunder Wave",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Releases a strong telekinetic force in the designated area, damaging opposing Pokémon in the area of effect and applying a debuff which decreases their movement speed by 23% for 3s when it hits. If the user hits debuffed opposing Pokémon with an auto attack, it deals additional damage. If this move hits an electric orb created by Electro Ball; the orb is pulled to the center of this move's area of effect. This does not extend the duration the electric orb remains.",
+        "translatedDescription": "機械要約: Psychic は 相手を引き寄せる、移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "102.4",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "240",
+            "trueDescription": "Releases a strong telekinetic force in the designated area, damaging opposing Pokémon in the area of effect and applying a debuff which decreases their movement speed by 23% for 3s when it hits. If the user hits debuffed opposing Pokémon with an auto attack, it deals additional damage.",
+            "notes": "If this move hits an electric orb created by Electro Ball; the orb is pulled to the center of this move's area of effect. This does not extend the duration the electric orb remains."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional",
+            "ratio": "16",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "psychic__01__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "the orb is pulled to the center of this move's area of effect.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: the orb is pulled to the center of this move's area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psychic__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Releases a strong telekinetic force in the designated area, damaging opposing Pokémon in the area of effect and applying a debuff which decreases their movement speed by 23% for 3s when it hits.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Releases a strong telekinetic force in the designated area, damaging opposing Pokémon in the area of effect and applying a debuff which decreases their movement speed by 23% for 3s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__psychic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "psychic-plus",
+        "name": "Psychic+",
+        "rawName": "Psychic",
+        "parentName": "Psychic",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+        "translatedDescription": "機械要約: Psychic+ は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "10.24",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "24",
+            "trueDescription": "Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "psychic-plus__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "Damage - DoT (5 Ticks)",
+              "ratio": "10.24",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "24",
+              "trueDescription": "Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Creates a damage-over-time area of effect, damaging opposing Pokémon inside the area every 0.5s over 2s (up to 5 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__psychic-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "thunderstorm-aerial",
+        "name": "Thunderstorm Aerial",
+        "rawName": "Thunderstorm Aerial",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+        "translatedDescription": "機械要約: Thunderstorm Aerial は 次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "168",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone.",
+            "notes": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "33.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderstorm-aerial__01__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderstorm-aerial__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunderstorm-aerial",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "thunderstorm-aerial-unite-buff",
+        "name": "Thunderstorm Aerial Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Thunderstorm Aerial",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Thunderstorm Aerial Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderstorm-aerial-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderstorm-aerial-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "raichu__thunderstorm-aerial-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 24,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

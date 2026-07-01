@@ -1,0 +1,695 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mega-mewtwo-y",
+  "pokemonName": "Mega Mewtwo Y",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "pressure",
+      "name": "Pressure",
+      "originalDescription": "When Mewtwo deals damage to enemy players with a basic attack, the Mega gauge increases up to 12 times. As the Mega gauge increases, Mewtwo's Sp. Atk is increased by 1.5%, and attack speed is increased by 3%, up to 10 times. If Mewtwo is level 5 or higher, and the Mega gauge has increased at least 12 times, Mewtwo Mega Evolves. The Mega Evolution lasts 10s and increases Sp. Atk by an additional 10%, attack speed by an additional 35%, max HP by 10%, and movement speed by 5%. Consumes up to 30 Aeos Energy upon Mega Evolving. Mega Evolution duration is extended by 1 second for every 5 energy consumed. Energy is consumed regardless if you have the next multiple of 5. The Mega gauge does not deplete upon being KO'd.",
+      "summary": "When Mewtwo deals damage to enemy players with a basic attack, the Mega gauge increases up to 12 times. As the Mega gauge increases, Mewtwo's Sp. Atk is increased by 1.5%, and attack speed is increased by 3%, up to 10 times. If Mewtwo is level 5 or higher, and the Mega gauge has increased at least 12 times, Mewtwo Mega",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "ko-or-assist"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "koOrAssistCondition",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, eventHistory, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "When Mewtwo Mega Evolves, attacks have increased range and deal damage in an area-of-effect centered on the target. When an attack deals damage to an enemy, their movement speed is decreased.",
+      "summary": "When Mewtwo Mega Evolves, attacks have increased range and deal damage in an area-of-effect centered on the target. When an attack deals damage to an enemy, their movement speed is decreased.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "43",
+          "damageType": "SpAtk",
+          "levelScaling": "4",
+          "base": "80",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Mega",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "90",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Deal damage to an enemy and leave them unable to act for 1s.",
+      "summary": "Deal damage to an enemy and leave them unable to act for 1s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "14",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "barrier",
+      "name": "Barrier",
+      "originalDescription": "Mewtwo gains a shield for 3s. While the shield effect is active, its movement speed is increased by 20%.",
+      "summary": "Mewtwo gains a shield for 3s. While the shield effect is active, its movement speed is increased by 20%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - Additional",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - Additional",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "infinite-psyburn",
+      "name": "Infinite Psyburn",
+      "originalDescription": "Mewtwo becomes unstoppable while revealing enemy players and channeling a powerful attack on the enemies' current position. After 1s, Mewtwo brings down a powerful psychic beam on their original position, dealing damage to enemies around each point of impact, leaving them unable to act for 0.6s and decreasing their Sp. Defense by 15% for 3s. Each Pokémon can only be hit by 1 psychic beam. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Mewtwo becomes unstoppable while revealing enemy players and channeling a powerful attack on the enemies' current position. After 1s, Mewtwo brings down a powerful psychic beam on their original position, dealing damage to enemies around each point of impact, leaving them unable to act for 0.6s and decreasing their Sp.",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "maxHp",
+    "koAssistEvent",
+    "formOrMode",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "cooldownState"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "eventHistory",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "pressure",
+      "name": "Pressure",
+      "originalDescription": "When Mewtwo deals damage to enemy players with a basic attack, the Mega gauge increases up to 12 times. As the Mega gauge increases, Mewtwo's Sp. Atk is increased by 1.5%, and attack speed is increased by 3%, up to 10 times. If Mewtwo is level 5 or higher, and the Mega gauge has increased at least 12 times, Mewtwo Mega Evolves. The Mega Evolution lasts 10s and increases Sp. Atk by an additional 10%, attack speed by an additional 35%, max HP by 10%, and movement speed by 5%. Consumes up to 30 Aeos Energy upon Mega Evolving. Mega Evolution duration is extended by 1 second for every 5 energy consumed. Energy is consumed regardless if you have the next multiple of 5. The Mega gauge does not deplete upon being KO'd.",
+      "summary": "When Mewtwo deals damage to enemy players with a basic attack, the Mega gauge increases up to 12 times. As the Mega gauge increases, Mewtwo's Sp. Atk is increased by 1.5%, and attack speed is increased by 3%, up to 10 times. If Mewtwo is level 5 or higher, and the Mega gauge has increased at least 12 times, Mewtwo Mega",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "ko-or-assist"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "koOrAssistCondition",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, eventHistory, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "When Mewtwo Mega Evolves, attacks have increased range and deal damage in an area-of-effect centered on the target. When an attack deals damage to an enemy, their movement speed is decreased.",
+      "summary": "When Mewtwo Mega Evolves, attacks have increased range and deal damage in an area-of-effect centered on the target. When an attack deals damage to an enemy, their movement speed is decreased.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "43",
+          "damageType": "SpAtk",
+          "levelScaling": "4",
+          "base": "80",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Mega",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "90",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Deal damage to an enemy and leave them unable to act for 1s.",
+      "summary": "Deal damage to an enemy and leave them unable to act for 1s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "14",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "barrier",
+      "name": "Barrier",
+      "originalDescription": "Mewtwo gains a shield for 3s. While the shield effect is active, its movement speed is increased by 20%.",
+      "summary": "Mewtwo gains a shield for 3s. While the shield effect is active, its movement speed is increased by 20%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - Additional",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield - Additional",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "infinite-psyburn",
+      "name": "Infinite Psyburn",
+      "originalDescription": "Mewtwo becomes unstoppable while revealing enemy players and channeling a powerful attack on the enemies' current position. After 1s, Mewtwo brings down a powerful psychic beam on their original position, dealing damage to enemies around each point of impact, leaving them unable to act for 0.6s and decreasing their Sp. Defense by 15% for 3s. Each Pokémon can only be hit by 1 psychic beam. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Mewtwo becomes unstoppable while revealing enemy players and channeling a powerful attack on the enemies' current position. After 1s, Mewtwo brings down a powerful psychic beam on their original position, dealing damage to enemies around each point of impact, leaving them unable to act for 0.6s and decreasing their Sp.",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "470",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

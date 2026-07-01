@@ -1,0 +1,627 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dragapult",
+  "pokemonName": "Dragapult",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "clear-body",
+        "name": "Clear Body",
+        "parentName": null,
+        "originalDescription": "Reduces the duration of debuffs inflicted on this Pokémon by 50%. Reduces the duration of debuff effects inflicted on Dragapult by 50%",
+        "translatedDescription": "機械要約: Clear Body は 相手を引き寄せる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces the duration of debuffs inflicted on this Pokémon by 50%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "clear-body__01__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "pull",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Reduces the duration of debuff effects inflicted on Dragapult by 50%",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: Reduces the duration of debuff effects inflicted on Dragapult by 50%",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dragapult__clear-body",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered on the opposing Pokémon they hit. Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s. Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+        "translatedDescription": "機械要約: Attack は 継続ダメージを与える、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered on the opposing Pokémon they hit.",
+            "notes": "Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Basic",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered on the opposing Pokémon they hit.",
+              "notes": "Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dragapult__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "astonish",
+        "name": "Astonish",
+        "parentName": null,
+        "originalDescription": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s. Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time",
+        "translatedDescription": "機械要約: Astonish は 移動速度を下げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "122",
+            "damageType": "Atk",
+            "levelScaling": "16",
+            "base": "290",
+            "trueDescription": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "astonish__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "astonish__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dragapult__astonish",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "quick-attack",
+        "name": "Quick Attack",
+        "parentName": null,
+        "originalDescription": "Dashes in the designated direction, increasing basic attack speed by 40% for 2s. Dashes in the designated direction, increasing its basic attack speed for a short time",
+        "translatedDescription": "機械要約: Quick Attack は 通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "quick-attack__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dragapult__quick-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "dreep-and-destroy",
+        "name": "Dreep and Destroy",
+        "parentName": null,
+        "originalDescription": "The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target. If there is only one target in range, the second Dreepy deals 30% of the full damage to the target. A maximum of 2 uses can be kept in reserve for this Unite Move; there is a 2s cooldown between uses for this move. Against wild Pokémon: additional missing HP damage is capped at 1200. Launches two Dreepy and each deals damage to different Pokémon in the area of effect. The lower the opposing Pokémon's remaining HP is, the more damage the Dreepy deal. If there is only one target in the area of effect, both Dreepy target that Pokémon and deal damage to it. A maximum of 2 uses can be kept in reserve for this move. Dreepy may be fired once every 2 seconds. Neither Cooldown Reduction nor gaining Aeos Energy reduce the cooldown of Dreep and Destroy. Buffs: 10% Max HP Shield, 10% Movement Speed for 3s; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+        "translatedDescription": "機械要約: Dreep and Destroy は シールドを付与する、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target. If there is only one target in range, the second Dreepy deals 30% of the full damage to the target. A maximum of 2 uses can be kept in reserve for this Unite Move; there is a 2s cooldown between uses for this move.",
+            "notes": "Against wild Pokémon: additional missing HP damage is capped at 1200."
+          },
+          {
+            "id": "add1",
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "178",
+            "trueDescription": "",
+            "notes": "Also deals 10% of enemy missing HP."
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Additional (Same Target)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of Damage",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dreep-and-destroy__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 10% Max HP Shield, 10% Movement Speed for 3s",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 10% Max HP Shield, 10% Movement Speed for 3s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dreep-and-destroy__02__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target. If there is only one target in range, the second Dreepy deals 30% of the full damage to the target. A maximum of 2 uses can be kept in reserve for this Unite Move; there is a 2s cooldown between uses for this move.",
+              "notes": "Against wild Pokémon: additional missing HP damage is capped at 1200."
+            },
+            {
+              "id": "add1",
+              "label": "Damage",
+              "ratio": "101",
+              "damageType": "Atk",
+              "levelScaling": "4",
+              "base": "178",
+              "trueDescription": "",
+              "notes": "Also deals 10% of enemy missing HP."
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Additional (Same Target)",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "30% of Damage",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        },
+        {
+          "effectId": "dreep-and-destroy__03__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dragapult__dreep-and-destroy",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 10,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

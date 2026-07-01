@@ -1,0 +1,640 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "zacian",
+  "pokemonName": "Zacian",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "intrepid-sword",
+        "name": "Intrepid Sword",
+        "parentName": null,
+        "originalDescription": "If the goal scoring button is held down, Zacian charges its sword with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scoring button is held down, the more Aeos energy is charged into the sword, lengthening the duration of the boost effect on basic attacks and moves. This Ability goes on an 8s cooldown after it’s triggered. Minimum 5 energy is required to charge with a maximum of 10 (except for Unite Move). Duration for buff window is 3s for 5 energy, 6s for 8 energy, 10s for 10 energy. Charging occurs at a rate of 1 energy per 0.1s.",
+        "translatedDescription": "機械要約: Intrepid Sword には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "If the goal scoring button is held down, Zacian charges its sword  with Aeos energy. For a short time, its basic attacks become boosted attacks. In addition, during this time, Zacian can use a boosted version of one of its moves once (this use does not share the same cooldown as the base move). The longer the goal scoring button is held down, the more Aeos energy is charged into the sword, lengthening the duration of the boost effect on basic attacks and moves. This Ability goes on an 8s cooldown after it’s triggered.",
+            "notes": "Minimum 5 energy is required to charge with a maximum of 10 (except for Unite Move). Duration for buff window is 3s for 5 energy, 6s for 8 energy, 10s for 10 energy. Charging occurs at a rate of 1 energy per 0.1s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zacian__intrepid-sword",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP.",
+        "translatedDescription": "機械要約: Attack は フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Stage One",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack. If a Move is used, Intrepid Sword is activated, or Intrepid Sword expires, the time to perform the next consecutive attack is extended. ",
+            "notes": "Boosted attacks have an increased area of effect and deal additional damage proportional to the opposing Pokémon’s HP. "
+          },
+          {
+            "id": "add1",
+            "label": "Stage Two",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Applies 15% Slow for 1s",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Stage Three",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Heals 5% max hp",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Stage Four",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dashes towards the target, reducing all Move cooldowns by 15% of their current cooldown.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: When basic attacks are performed consecutively within 2s, additional effects are applied depending on the stage of the consecutive attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zacian__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "slash",
+        "name": "Slash",
+        "parentName": null,
+        "originalDescription": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+        "translatedDescription": "機械要約: Slash は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "262",
+            "trueDescription": "Slashes target Pokémon and deals a small amount of damage to nearby Pokémon. When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Area of Effect",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "131",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (Boosted)",
+            "ratio": "208",
+            "damageType": "Atk",
+            "levelScaling": "18",
+            "base": "342",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage (Boosted) - Area of Effect",
+            "ratio": "104",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "171",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slash__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: When this move is boosted with Aeos energy, its area of effect is increased, deals increased damage and also slows of Pokémon hit by 60% for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zacian__slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "quick-attack",
+        "name": "Quick Attack",
+        "parentName": null,
+        "originalDescription": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+        "translatedDescription": "機械要約: Quick Attack は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "79",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "130",
+            "trueDescription": "Zacian charges in the designated direction, stopping at the first Pokémon it hits and dealing damage. When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Boosted)",
+            "ratio": "90.85",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "quick-attack__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: When this move is boosted with Aeos energy, it also leaves opposing Pokémon unable to act for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zacian__quick-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "sovereign-sword",
+        "name": "Sovereign Sword",
+        "parentName": null,
+        "originalDescription": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more Aeos energy is charged into the sword, and the more damage this move deals. If a set amount of Aeos energy or more is charged into the sword, the Unite Move becomes boosted, and the slash’s area of effect increases. This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move. This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Sovereign Sword は 移動速度を下げる、妨害無効になる、与ダメージを変化させる、待ち時間を短縮する、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (<=9 Energy Charged)",
+            "ratio": "396",
+            "damageType": "Atk",
+            "levelScaling": "23",
+            "base": "650",
+            "trueDescription": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself. The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance. The longer the user is in this stance, the more Aeos energy is charged into the sword, and the more damage this move deals. If a set amount of Aeos energy or more is charged into the sword, the Unite Move becomes boosted, and the slash’s area of effect increases. This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move.",
+            "notes": "This move deals 15% decreased damage per additional target hit, capping at 30% less damage from hitting 3 targets."
+          },
+          {
+            "id": "add1",
+            "label": "Damage (10-19 Energy Charged)",
+            "ratio": "475.2",
+            "damageType": "Atk",
+            "levelScaling": "29",
+            "base": "780",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (20-29 Energy Charged)",
+            "ratio": "554.4",
+            "damageType": "Atk",
+            "levelScaling": "32",
+            "base": "910",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage (30 Energy Charged - Boosted)",
+            "ratio": "712.80",
+            "damageType": "Atk",
+            "levelScaling": "41",
+            "base": "1170",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add4",
+            "label": "Damage (Additional - Boosted) versus Unite Buffed Pokémon",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "325",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sovereign-sword__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sovereign-sword__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Has the user ready its giant sword, charge the sword with Aeos energy, and then unleashes an Unstoppable slash in front of itself.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sovereign-sword__03__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: This boosted Unite Move deals increased damage to opposing Pokémon it hits who have been buffed by their own Unite Move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sovereign-sword__04__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sovereign-sword__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sovereign-sword__06__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user becomes Hindrance Resistant, applying a 10% self slow while the Unite Move button is held down and the user is in its ready stance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zacian__sovereign-sword",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 9,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

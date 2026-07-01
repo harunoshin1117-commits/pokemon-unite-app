@@ -1,0 +1,722 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dhelmise",
+  "pokemonName": "Dhelmise",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "steelworker",
+        "name": "Steelworker",
+        "parentName": null,
+        "originalDescription": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability expires after 3s, HP proportional to the amount of remaining shields is restored.",
+        "translatedDescription": "機械要約: Steelworker は シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Additional (Basic)",
+            "ratio": "119",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd). Each time this Ability or other effects grant the Pokémon a shield, the Pokémon's next basic attack deals increased damage. This effect can stack up to 3 times. When the shield granted by this ability expires after 3s, HP proportional to the amount of remaining shields is restored.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "240",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% of the remaining shield value granted from Steelworker.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "steelworker__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 5,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd).",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Dhelmise is granted a shield whenever one of the user's moves deals damage to Pokémon from the opposing team (5s cd).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "steelworker__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "This effect can stack up to 3 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: This effect can stack up to 3 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dhelmise__steelworker",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "The user attacks by slamming their body. Dhelmise has no boosted attack.",
+        "translatedDescription": "機械要約: Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "The user attacks by slamming their body.",
+            "notes": "Dhelmise has no boosted attack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dhelmise__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "payback",
+        "name": "Payback",
+        "parentName": null,
+        "originalDescription": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+        "translatedDescription": "機械要約: Payback は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "240",
+            "trueDescription": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit. The user deals increased damage if Dhelmise was hit with an attack while this move is being used.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional (Revenge)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "payback__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Has the user swing their anchor, dealing damage and applying a 30% slow for 2s to opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dhelmise__payback",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "bulldoze",
+        "name": "Bulldoze",
+        "parentName": null,
+        "originalDescription": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+        "translatedDescription": "機械要約: Bulldoze は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "134",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "200",
+            "trueDescription": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bulldoze__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Has the user shake the ground by slamming their anchor, dealing damage to opposing Pokémon and throwing them for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dhelmise__bulldoze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "seaweed-snare",
+        "name": "Seaweed Snare",
+        "parentName": null,
+        "originalDescription": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s. Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Seaweed Snare は 行動不能・スタンを付与する、相手を打ち上げる、相手を押し出す、与ダメージを変化させる、待ち時間を短縮する、HPを回復する、シールドを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s.",
+            "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "114",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "172",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - DoT (9 Ticks)",
+            "ratio": "22",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "34",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "150% of DoT damage",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "seaweed-snare__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.45,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__03__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockBack",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__05__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__06__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__07__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seaweed-snare__08__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - First Hit",
+              "ratio": "114",
+              "damageType": "Atk",
+              "levelScaling": "6",
+              "base": "172",
+              "trueDescription": "Has the user throw their anchor and ensnare a designated Pokémon from the opposing team, dealing damage and leaving the target unable to act for 0.45s. The user then charges at the target, dealing damage and leaving them unable to act for 0.45s. If other Pokémon from the opposing team are hit by the anchor or the charge, they take damage and are shoved for 0.7s.",
+              "notes": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt. The duration of the DoT is refreshed with each hit of the Unite Move."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Second Hit",
+              "ratio": "114",
+              "damageType": "Atk",
+              "levelScaling": "6",
+              "base": "172",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - DoT (9 Ticks)",
+              "ratio": "22",
+              "damageType": "Atk",
+              "levelScaling": "1",
+              "base": "34",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Healing",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "150% of DoT damage",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Applies a cleansable damage over time effect to Pokémon on the opposing team that deals damage on hit and every 0.5s up to 9 times, healing Dhelmise with each tick based on damage dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dhelmise__seaweed-snare",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 12,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

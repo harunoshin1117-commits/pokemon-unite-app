@@ -1,0 +1,610 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "talonflame",
+  "pokemonName": "Talonflame",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gale-wings",
+      "name": "Gale Wings",
+      "originalDescription": "While at high HP, movement speed is increased. While at 85% max HP or above, this Pokémon's movement speed is increased by 15%.",
+      "summary": "While at high HP, movement speed is increased. While at 85% max HP or above, this Pokémon's movement speed is increased by 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time. Becomes a boosted attack with every third attack, creating a fiery whirlwind around the user and damaging opposing Pokémon in the area of effect. This boosted attack remains readied until used. Basic and boosted attacks lunge at the target opposing Pokémon.",
+      "summary": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time. Becomes a boosted attack with every third attack, creating a fiery whirlwind around the user and damag",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Basic and boosted attacks lunge at the target opposing Pokémon."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time.",
+      "summary": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "Fly toward an enemy and attack 3 times. The user dashes at the designated opposing Pokémon then pecks three times, damaging opposing Pokémon hit.",
+      "summary": "Fly toward an enemy and attack 3 times. The user dashes at the designated opposing Pokémon then pecks three times, damaging opposing Pokémon hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (3x)",
+          "ratio": "38",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "acrobatics",
+      "name": "Acrobatics",
+      "originalDescription": "Fly toward the designated area and attack multiple times. Escape in a direction of your choice after using this move. The user dashes toward the designated location then attacks the area around them three times, damaging nearby opposing Pokémon. The user can choose to dash in the direction of movement afterward.",
+      "summary": "Fly toward the designated area and attack multiple times. Escape in a direction of your choice after using this move. The user dashes toward the designated location then attacks the area around them three times, damaging nearby opposing Pokémon. The user can choose to dash in the direction of movement afterward.",
+      "trigger": "after move use",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (3x)",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": "The user can choose to dash in the direction of movement afterward."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flame-sweep",
+      "name": "Flame Sweep",
+      "originalDescription": "Perform an aerial somersault before charging forawrd, dealing damage to enemies in this move's path and shoving them. The user performs an aerial somersault and sweeps forward, becoming unstoppable, receiving 50% reduced damage, damaging opposing Pokémon in their path and shoving them toward the end of the sweep, then damaging opposing Pokémon again. This Unite Move cannot go through walls. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Perform an aerial somersault before charging forawrd, dealing damage to enemies in this move's path and shoving them. The user performs an aerial somersault and sweeps forward, becoming unstoppable, receiving 50% reduced damage, damaging opposing Pokémon in their path and shoving them toward the end of the sweep, then ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "124",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "510",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "124",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "510",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "maxHp",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gale-wings",
+      "name": "Gale Wings",
+      "originalDescription": "While at high HP, movement speed is increased. While at 85% max HP or above, this Pokémon's movement speed is increased by 15%.",
+      "summary": "While at high HP, movement speed is increased. While at 85% max HP or above, this Pokémon's movement speed is increased by 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time. Becomes a boosted attack with every third attack, creating a fiery whirlwind around the user and damaging opposing Pokémon in the area of effect. This boosted attack remains readied until used. Basic and boosted attacks lunge at the target opposing Pokémon.",
+      "summary": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time. Becomes a boosted attack with every third attack, creating a fiery whirlwind around the user and damag",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Basic and boosted attacks lunge at the target opposing Pokémon."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time.",
+      "summary": "Becomes a boosted attack every third attack, creating a fiery whirlwind that deals damage to enemies in the area of effect. This boosted attack remains readied even after leaving combat for a prolonged period of time.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "Fly toward an enemy and attack 3 times. The user dashes at the designated opposing Pokémon then pecks three times, damaging opposing Pokémon hit.",
+      "summary": "Fly toward an enemy and attack 3 times. The user dashes at the designated opposing Pokémon then pecks three times, damaging opposing Pokémon hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (3x)",
+          "ratio": "38",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "70",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "acrobatics",
+      "name": "Acrobatics",
+      "originalDescription": "Fly toward the designated area and attack multiple times. Escape in a direction of your choice after using this move. The user dashes toward the designated location then attacks the area around them three times, damaging nearby opposing Pokémon. The user can choose to dash in the direction of movement afterward.",
+      "summary": "Fly toward the designated area and attack multiple times. Escape in a direction of your choice after using this move. The user dashes toward the designated location then attacks the area around them three times, damaging nearby opposing Pokémon. The user can choose to dash in the direction of movement afterward.",
+      "trigger": "after move use",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (3x)",
+          "ratio": "75",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": "The user can choose to dash in the direction of movement afterward."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flame-sweep",
+      "name": "Flame Sweep",
+      "originalDescription": "Perform an aerial somersault before charging forawrd, dealing damage to enemies in this move's path and shoving them. The user performs an aerial somersault and sweeps forward, becoming unstoppable, receiving 50% reduced damage, damaging opposing Pokémon in their path and shoving them toward the end of the sweep, then damaging opposing Pokémon again. This Unite Move cannot go through walls. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Perform an aerial somersault before charging forawrd, dealing damage to enemies in this move's path and shoving them. The user performs an aerial somersault and sweeps forward, becoming unstoppable, receiving 50% reduced damage, damaging opposing Pokémon in their path and shoving them toward the end of the sweep, then ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "124",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "510",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "124",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "510",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

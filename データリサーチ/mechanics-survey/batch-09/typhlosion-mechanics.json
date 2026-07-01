@@ -1,0 +1,697 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "typhlosion",
+  "pokemonName": "Typhlosion",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+      "summary": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to de",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+      "summary": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "160",
+          "notes": "Basic attacks increase rage by 1, boosted attacks increase rage by 2."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+      "summary": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "2",
+          "base": "450",
+          "notes": "At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+      "summary": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "500",
+          "notes": "At peak rage, this move instead stuns opposing Pokémon for 0.5s."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "500",
+          "notes": "At peak rage, this move instead stuns opposing Pokémon for 0.5s."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "explosive-heat-haze",
+      "name": "Explosive Heat Haze",
+      "originalDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - up to 14x",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "1",
+          "base": "200",
+          "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - up to 14x",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "1",
+          "base": "200",
+          "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "dotTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to deplete at a rate of 1 every 0.5s.",
+      "summary": "The user builds up rage when attacking with basic attacks or moves. Once 14 rage has been reached, the user gains 15% SpAtk for 8s, reduces move cooldowns by 65% of their current cooldown, and empowers move effects for 8s. Afterwards the ability goes on cooldown for 10s. If no rage is gained for 5s, it will begin to de",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+      "summary": "The user shoots a small flame at the designated target. Becomes a boosted attack every third attack, breathing fire and dealing damage in an area. Basic attacks increase rage by 1, boosted attacks increase rage by 2.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "160",
+          "notes": "Basic attacks increase rage by 1, boosted attacks increase rage by 2."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+      "summary": "The user shoots a small flame at up to 2 opposing Pokémon in an area around the user. Increases rage by 2 per hit. At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "2",
+          "base": "450",
+          "notes": "At peak rage, this move will target up to 3 opposing Pokémon and inflicts a burn for 2s, dealing damage once per second up to 3 times."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+      "summary": "The user charges in the designated direction, slamming into opposing Pokémon, slowing them by 30% for 1s, and granting the user a shield for 2s. Afterwards the user readies a boosted attack. Increases rage by 2 when it hits. At peak rage, this move instead stuns opposing Pokémon for 0.5s.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "500",
+          "notes": "At peak rage, this move instead stuns opposing Pokémon for 0.5s."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "500",
+          "notes": "At peak rage, this move instead stuns opposing Pokémon for 0.5s."
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "explosive-heat-haze",
+      "name": "Explosive Heat Haze",
+      "originalDescription": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user momentarily becomes Unstoppable and creates a shockwave, dealing damage 4 times simultaneously, and shoving opposing Pokémon away to the edge of the move's range. Afterwards an area around the user is engulfed in flames for 4.5s, dealing damage every 0.5s up to 10 times. Increases rage by 14. The user becomes ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4.5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - up to 14x",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "1",
+          "base": "200",
+          "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - up to 14x",
+          "ratio": "20",
+          "damageType": "SpAtk",
+          "levelScaling": "1",
+          "base": "200",
+          "notes": "The user becomes camouflaged while the flames are raging, opposing Pokémon outside of the flames are unable to target the user."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,651 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "sableye",
+  "pokemonName": "Sableye",
+  "role": "Supporter",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "prankster",
+      "name": "Prankster",
+      "originalDescription": "When Sableye is outside the visual range of Pokémon from the opposing team, it enters stealth and its movement speed increases. When Sableye enters the visual range of a Pokémon from the opposing team, it does not immediately become visible but instead remains in stealth for a short time. This stealth lasts longer when approaching enemy Pokémon from behind. The Pokémon with this Ability exits stealth when it attacks. When Sableye is outside the visual range of enemy players, Sableye enters stealth and gains 10% increased movement speed. When Sableye enters the visual range of enemy players or enemy goal zones, Sableye does not immediately become visible but instead remains in stealth for 1.7s. Sableye exits stealth when attacking.",
+      "summary": "When Sableye is outside the visual range of Pokémon from the opposing team, it enters stealth and its movement speed increases. When Sableye enters the visual range of a Pokémon from the opposing team, it does not immediately become visible but instead remains in stealth for a short time. This stealth lasts longer when",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.7,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be forced to move away from Sableye. When the user enters stealth, it will charge boosted attack immediately and hold it. Becomes a boosted attack with every third attack, dealing damage to enemies hit and decreasing their movement speed by 20% for 2s. If Sableye is in stealth when hitting an enemy with a boosted attack, Sableye will deal damage and apply a fear effect for 1s. Enemies affected by fear will be forced to move away from Sableye with 40% reduced movement speed. When Sableye enters stealth, they will ready a boosted attack immediately and hold it.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be force",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be forced to move away from Sableye. When the user enters stealth, it will charge boosted attack immediately and hold it.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be force",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "thief",
+      "name": "Thief",
+      "originalDescription": "Dashes in the designated direction, dealing damage to any Pokémon it hits and decreasing their movement speed for a short time. If this move hits an enemy Pokémon, it steals a small amount of their Aeos energy. If those Pokémon do not have any Aeos energy, they will be left unable to act for a short time. Dashes in the designated direction, dealing damage to any Pokémon hit and slowing 20% for 2s. If this move hits an enemy, Sableye receives 5 energy and removes up to 5 energy from the enemies hit. If those enemies did not have any Aeos energy, they will be left unable to act for 0.5s.",
+      "summary": "Dashes in the designated direction, dealing damage to any Pokémon it hits and decreasing their movement speed for a short time. If this move hits an enemy Pokémon, it steals a small amount of their Aeos energy. If those Pokémon do not have any Aeos energy, they will be left unable to act for a short time. Dashes in the",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "45",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Attacks in a cone in front of itself, dealing damage to opposing Pokémon and decreasing their movement speed for a short time. If this move hits opposing Pokémon from behind, it deals increased damage and applies a greater decrease in movement speed. Sableye attacks in a cone in front of themself, dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. If this move hits enemies from behind, this move deals increased damage and applies a greater decrease in movement speed to 60%.",
+      "summary": "Attacks in a cone in front of itself, dealing damage to opposing Pokémon and decreasing their movement speed for a short time. If this move hits opposing Pokémon from behind, it deals increased damage and applies a greater decrease in movement speed. Sableye attacks in a cone in front of themself, dealing damage to ene",
+      "trigger": "move hit",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Front)",
+          "ratio": "81",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Behind)",
+            "ratio": "105.3",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "455",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "chaos-glower",
+      "name": "Chaos Glower",
+      "originalDescription": "Shoot light from both eyes, dealing damage to opposing Pokémon in an cone in front of itself. Pokémon from the opposing team hit by this move who are facing the user are left unable to act and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are left unable to act for a short time. Opposing Pokémon hit by this move who are not facing the user have their movement speed decreased for a short time. Sableye becomes unstoppable for 1.2s and shoots light from both eyes, dealing damage to enemies in a cone in front of themself. Enemy players hit by this move who are facing Sableye are left unable to act for 3s and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are left unable to act for 1.5s. Enemies hit by this move who are not facing Sableye have their movement speed decreased by 50% for 2s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Shoot light from both eyes, dealing damage to opposing Pokémon in an cone in front of itself. Pokémon from the opposing team hit by this move who are facing the user are left unable to act and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are l",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "184",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "790",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "184",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "790",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "stackCount",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "prankster",
+      "name": "Prankster",
+      "originalDescription": "When Sableye is outside the visual range of Pokémon from the opposing team, it enters stealth and its movement speed increases. When Sableye enters the visual range of a Pokémon from the opposing team, it does not immediately become visible but instead remains in stealth for a short time. This stealth lasts longer when approaching enemy Pokémon from behind. The Pokémon with this Ability exits stealth when it attacks. When Sableye is outside the visual range of enemy players, Sableye enters stealth and gains 10% increased movement speed. When Sableye enters the visual range of enemy players or enemy goal zones, Sableye does not immediately become visible but instead remains in stealth for 1.7s. Sableye exits stealth when attacking.",
+      "summary": "When Sableye is outside the visual range of Pokémon from the opposing team, it enters stealth and its movement speed increases. When Sableye enters the visual range of a Pokémon from the opposing team, it does not immediately become visible but instead remains in stealth for a short time. This stealth lasts longer when",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.7,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be forced to move away from Sableye. When the user enters stealth, it will charge boosted attack immediately and hold it. Becomes a boosted attack with every third attack, dealing damage to enemies hit and decreasing their movement speed by 20% for 2s. If Sableye is in stealth when hitting an enemy with a boosted attack, Sableye will deal damage and apply a fear effect for 1s. Enemies affected by fear will be forced to move away from Sableye with 40% reduced movement speed. When Sableye enters stealth, they will ready a boosted attack immediately and hold it.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be force",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be forced to move away from Sableye. When the user enters stealth, it will charge boosted attack immediately and hold it.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to opposing Pokémon it hits and decreasing their movement speed for a short time. If Sableye is in stealth when it hits an opposing Pokémon with a boosted attack, it will deal damage and apply a fear effect. Opposing Pokémon affected by fear will be force",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thief",
+      "name": "Thief",
+      "originalDescription": "Dashes in the designated direction, dealing damage to any Pokémon it hits and decreasing their movement speed for a short time. If this move hits an enemy Pokémon, it steals a small amount of their Aeos energy. If those Pokémon do not have any Aeos energy, they will be left unable to act for a short time. Dashes in the designated direction, dealing damage to any Pokémon hit and slowing 20% for 2s. If this move hits an enemy, Sableye receives 5 energy and removes up to 5 energy from the enemies hit. If those enemies did not have any Aeos energy, they will be left unable to act for 0.5s.",
+      "summary": "Dashes in the designated direction, dealing damage to any Pokémon it hits and decreasing their movement speed for a short time. If this move hits an enemy Pokémon, it steals a small amount of their Aeos energy. If those Pokémon do not have any Aeos energy, they will be left unable to act for a short time. Dashes in the",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "45",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Attacks in a cone in front of itself, dealing damage to opposing Pokémon and decreasing their movement speed for a short time. If this move hits opposing Pokémon from behind, it deals increased damage and applies a greater decrease in movement speed. Sableye attacks in a cone in front of themself, dealing damage to enemies hit and decreasing their movement speed by 30% for 2s. If this move hits enemies from behind, this move deals increased damage and applies a greater decrease in movement speed to 60%.",
+      "summary": "Attacks in a cone in front of itself, dealing damage to opposing Pokémon and decreasing their movement speed for a short time. If this move hits opposing Pokémon from behind, it deals increased damage and applies a greater decrease in movement speed. Sableye attacks in a cone in front of themself, dealing damage to ene",
+      "trigger": "move hit",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Front)",
+          "ratio": "81",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Behind)",
+            "ratio": "105.3",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "455",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "chaos-glower",
+      "name": "Chaos Glower",
+      "originalDescription": "Shoot light from both eyes, dealing damage to opposing Pokémon in an cone in front of itself. Pokémon from the opposing team hit by this move who are facing the user are left unable to act and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are left unable to act for a short time. Opposing Pokémon hit by this move who are not facing the user have their movement speed decreased for a short time. Sableye becomes unstoppable for 1.2s and shoots light from both eyes, dealing damage to enemies in a cone in front of themself. Enemy players hit by this move who are facing Sableye are left unable to act for 3s and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are left unable to act for 1.5s. Enemies hit by this move who are not facing Sableye have their movement speed decreased by 50% for 2s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Shoot light from both eyes, dealing damage to opposing Pokémon in an cone in front of itself. Pokémon from the opposing team hit by this move who are facing the user are left unable to act and start preparing to return to base. If they take damage before returning to base, the return effect is cancelled, and they are l",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "184",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "790",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "184",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "790",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

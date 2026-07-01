@@ -1,0 +1,679 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dodrio",
+  "pokemonName": "Dodrio",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "run-away",
+        "name": "Run Away",
+        "parentName": null,
+        "originalDescription": "This Pokémon receives 10% increased movement speed when within a radius of enemy Pokémon. While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment). At full, Dodrio runs at 20% increased movement speed. If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete. When Doduo scores a goal, it evenly divides its collected Aeos energy into two portions and deposits them into the goal one at a time. As Dodrio, this is split into three portions to deposit in the goal one at a time. Only goals made by a full emptying of the Aeos Ball will count towards stacking items. Movement speed is increased when enemies are nearby. While the Pokémon is moving, their sprint gauge charges. While the sprint gauge is full, movement speed is increased. If the Pokémon's movement speed decreases below a set speed, the sprint gauge will rapidly deplete. When this Pokémon scores a goal, the amount of Aeos energy deposited is evenly divided into equal portions for each head the Pokémon has.",
+        "translatedDescription": "機械要約: Run Away は 移動速度を下げる、移動速度を上げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "This Pokémon receives 10% increased movement speed when within a radius of enemy Pokémon. While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment). At full, Dodrio runs at 20% increased movement speed. If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete. When Doduo scores a goal, it evenly divides its collected Aeos energy into two portions and deposits them into the goal one at a time. As Dodrio, this is split into three portions to deposit in the goal one at a time. Only goals made by a full emptying of the Aeos Ball will count towards stacking items. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "run-away__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "run-away__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Movement speed is increased when enemies are nearby.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Movement speed is increased when enemies are nearby.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "run-away__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dodrio__run-away",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack. Attacking with a full sprint gauge turns the attack into a charge in the facing direction. If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s. Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move cooldowns are reduced.",
+        "translatedDescription": "機械要約: Attack は スタック、マーク、ゲージを扱う、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack. Attacking with a full sprint gauge turns the attack into a charge in the facing direction. If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dodrio__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "peck",
+        "name": "Peck",
+        "parentName": null,
+        "originalDescription": "Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold. When the sprint gauge is full, Doduo charges forward to jab the in the facing direction and fully consumes the sprint gauge. Move forward while jabbing with beaks. When the sprint gauge is full, instead charge forward while jabbing with beaks. Using this move fully consumes the sprint gauge.",
+        "translatedDescription": "機械要約: Peck は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (No Gauge)",
+            "ratio": "111.6",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "216",
+            "trueDescription": "Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold. When the sprint gauge is full, Doduo charges forward to jab the in the facing direction and fully consumes the sprint gauge.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Full Gauge)",
+            "ratio": "186",
+            "damageType": "Atk",
+            "levelScaling": "19",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "peck__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "selfStackOrGauge"
+          ],
+          "sourceEvidence": "When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dodrio__peck",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "quick-attack",
+        "name": "Quick Attack",
+        "parentName": null,
+        "originalDescription": "Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy. Dash forward, increasing the user's movement speed for a short time and deal damage to enemies hit. This move's cooldown is reduced if it hits an enemy.",
+        "translatedDescription": "機械要約: Quick Attack は 待ち時間を短縮する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "83",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "190",
+            "trueDescription": "Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "quick-attack__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move's cooldown is reduced by 1.5s if it hits an enemy.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: This move's cooldown is reduced by 1.5s if it hits an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dodrio__quick-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "triple-trample",
+        "name": "Triple Trample",
+        "parentName": null,
+        "originalDescription": "Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% Sp. Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s. Damage dealt at the designated location is affected by the Attack bonus. Dodrio is unstoppable during this move. Dodrio runs to a designated location. While running, Dodrio is immune to hindrances. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air. When Dodrio arrives at the designated location, Dodrio gains increased Attack for a short time, is granted a shield, and the sprint gauge charges faster for a short time. Buffs: 80% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Triple Trample は 相手を打ち上げる、妨害無効になる、攻撃・特攻などのステータスを変化させる、与ダメージを変化させる、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "173",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "390",
+            "trueDescription": "Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% Sp. Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s. Damage dealt at the designated location is affected by the Attack bonus. Dodrio is unstoppable during this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "triple-trample__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "knockUp",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triple-trample__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Dodrio is unstoppable during this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Dodrio is unstoppable during this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triple-trample__03__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% ",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% ",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triple-trample__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageDealtChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Damage dealt at the designated location is affected by the Attack bonus.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Damage dealt at the designated location is affected by the Attack bonus.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triple-trample__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "triple-trample__06__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "dodrio__triple-trample",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 13,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

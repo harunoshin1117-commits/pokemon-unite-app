@@ -1,0 +1,1971 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "umbreon",
+  "pokemonName": "Umbreon",
+  "role": "A+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Novice",
+    "role": "Defender"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "anticipation",
+      "moveName": "Anticipation",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "10% Missing HP",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "swift",
+      "moveName": "Swift",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "mean-look",
+      "moveName": "Mean Look",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Swift",
+      "isPlus": false,
+      "originalDescription": "Pins an enemy Pokémon with a dark, arresting look, slowing them by 30% for 2s. After a 0.5s delay, the enemy is surrounded by a black zone they cannot leave for 3s. While inside the black zone, Umbreon’s basic attacks become boosted and deal increased damage. The black zone is removed if the target enemy is knocked out. Mean Look is cleansable if the cleanse is used when the laser connects and before the area appears on the ground.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "mean-look-plus",
+      "moveName": "Mean Look+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Mean Look",
+      "isPlus": true,
+      "originalDescription": "Increases the duration of the black zone to 3.5s.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "foul-play",
+      "moveName": "Foul Play",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Swift",
+      "isPlus": false,
+      "originalDescription": "Charges in a direction, dealing damage to Pokémon hit and slowing them by 15% for 2.5s. If the charge hits a Pokémon, this move can be used again within 6s and it will note the highest Attack stat of all enemies hit. If this move is used again, Umbreon sweeps in front of itself with its tail, dealing damage to Pokémon hit, slowing them by 30% for 2.5s and shoving them for 0.6s. If the highest enemy Attack was greater than Umbreon's Attack when the first stage hit, the second stage deals damage using the noted Attack. Otherwise it uses Umbreon's current Attack. 237.6% Attack of Target",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "foul-play-plus",
+      "moveName": "Foul Play+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Foul Play",
+      "isPlus": true,
+      "originalDescription": "Umbreon's next basic attack after using this move becomes a boosted attack.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "fake-tears",
+      "moveName": "Fake Tears",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s. 12% Max HP",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "wish",
+      "moveName": "Wish",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Fake Tears",
+      "isPlus": false,
+      "originalDescription": "Wishes for an ally Pokémon or Umbreon. For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them. If the targeted Pokémon is knocked out before the wish comes true, a different ally Pokémon near them takes the wish instead.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "wish-plus",
+      "moveName": "Wish+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Wish",
+      "isPlus": true,
+      "originalDescription": "Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "snarl",
+      "moveName": "Snarl",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Fake Tears",
+      "isPlus": false,
+      "originalDescription": "Becomes hindrance resistant and begin snarling for 1.5s, dealing damage to enemy Pokémon in the area around Umbreon and decreasing the affected Pokémon's Attack and Sp. Atk stat by 3% for 1.5s and movement speed by 15% for 2s. Also grants the user a shield for 2s. Umbreon is slowed by 30% while snarling. The final shout leaves enemy Pokémon stunned for 0.7s and further decreases their Attack and Sp. Atk by 15% for 3s. The small shout Attack and Sp. Atk decreases can stack up to 6 times and stack with the big shout's Attack and Sp. Atk decreases. 15% Max HP Shield",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "snarl-plus",
+      "moveName": "Snarl+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Snarl",
+      "isPlus": true,
+      "originalDescription": "Increases the stun duration of the final shout to 1s.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "moonlight-prance",
+      "moveName": "Moonlight Prance",
+      "sourceType": "uniteMove",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself. Additionally, after learning this move and while not in combat, Umbreon continually recovers 1% Max HP every second. Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Umbreon",
+      "pokemonId": "umbreon",
+      "sourceId": "moonlight-prance-unite-buff",
+      "moveName": "Moonlight Prance Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": "Moonlight Prance",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Anticipation",
+      "sourceType": "passive",
+      "sourceId": "anticipation",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Swift",
+      "sourceType": "initialMove",
+      "sourceId": "swift",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Mean Look",
+      "sourceType": "moveChoice",
+      "sourceId": "mean-look",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Swift"
+    },
+    {
+      "name": "Mean Look+",
+      "sourceType": "movePlus",
+      "sourceId": "mean-look-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Mean Look"
+    },
+    {
+      "name": "Foul Play",
+      "sourceType": "moveChoice",
+      "sourceId": "foul-play",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Swift"
+    },
+    {
+      "name": "Foul Play+",
+      "sourceType": "movePlus",
+      "sourceId": "foul-play-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Foul Play"
+    },
+    {
+      "name": "Fake Tears",
+      "sourceType": "initialMove",
+      "sourceId": "fake-tears",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Wish",
+      "sourceType": "moveChoice",
+      "sourceId": "wish",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Fake Tears"
+    },
+    {
+      "name": "Wish+",
+      "sourceType": "movePlus",
+      "sourceId": "wish-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Wish"
+    },
+    {
+      "name": "Snarl",
+      "sourceType": "moveChoice",
+      "sourceId": "snarl",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Fake Tears"
+    },
+    {
+      "name": "Snarl+",
+      "sourceType": "movePlus",
+      "sourceId": "snarl-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Snarl"
+    },
+    {
+      "name": "Moonlight Prance",
+      "sourceType": "uniteMove",
+      "sourceId": "moonlight-prance",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Moonlight Prance Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "moonlight-prance-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Moonlight Prance"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "anticipation",
+        "name": "Anticipation",
+        "rawName": "Anticipation",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+        "translatedDescription": "機械要約: Anticipation は 相手を打ち上げる、相手を押し出す。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "anticipation__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: When Eevee would be shoved, thrown or left unabled to act, that effect is negated.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "anticipation__02__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: When Eevee would be shoved, thrown or left unabled to act, that effect is negated.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__anticipation",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+        "translatedDescription": "機械要約: Attack は HPを回復する、通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon  and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "This boosted attack also heals the user's HP.",
+          "codexInterpretation": "HPを回復する。 原文証拠: This boosted attack also heals the user's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Basic",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "0",
+              "trueDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon  and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The lower the user's remaining HP, the more HP is restored.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: The lower the user's remaining HP, the more HP is restored.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "10% Missing HP",
+        "translatedDescription": "機械要約: Attack Boosted は 現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "140",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Missing HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Boosted",
+              "ratio": "140",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "0",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Heal",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "10% Missing HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "10% Missing HP",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 10% Missing HP",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "swift",
+        "name": "Swift",
+        "rawName": "Swift",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+        "translatedDescription": "機械要約: Swift は スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (First Star)",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "100",
+            "trueDescription": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Subsequent Stars)",
+            "ratio": "12",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "swift__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "swift__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__swift",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "mean-look",
+        "name": "Mean Look",
+        "rawName": "Mean Look",
+        "parentName": "Swift",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Pins an enemy Pokémon with a dark, arresting look, slowing them by 30% for 2s. After a 0.5s delay, the enemy is surrounded by a black zone they cannot leave for 3s. While inside the black zone, Umbreon’s basic attacks become boosted and deal increased damage. The black zone is removed if the target enemy is knocked out. Mean Look is cleansable if the cleanse is used when the laser connects and before the area appears on the ground.",
+        "translatedDescription": "機械要約: Mean Look は 移動速度を下げる、状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Boosted)",
+            "ratio": "196",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "180",
+            "trueDescription": "Pins an enemy Pokémon with a dark, arresting look, slowing them by 30% for 2s. After a 0.5s delay, the enemy is surrounded by a black zone they cannot leave for 3s. While inside the black zone, Umbreon’s basic attacks become boosted and deal increased damage. The black zone is removed if the target enemy is knocked out.",
+            "notes": "Mean Look is cleansable if the cleanse is used when the laser connects and before the area appears on the ground."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mean-look__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pins an enemy Pokémon with a dark, arresting look, slowing them by 30% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Pins an enemy Pokémon with a dark, arresting look, slowing them by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mean-look__02__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mean Look is cleansable if the cleanse is used when the laser connects and before the area appears on the ground.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: Mean Look is cleansable if the cleanse is used when the laser connects and before the area appears on the ground.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__mean-look",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "mean-look-plus",
+        "name": "Mean Look+",
+        "rawName": "Mean Look",
+        "parentName": "Mean Look",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Increases the duration of the black zone to 3.5s.",
+        "translatedDescription": "機械要約: Mean Look+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the duration of the black zone to 3.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__mean-look-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "foul-play",
+        "name": "Foul Play",
+        "rawName": "Foul Play",
+        "parentName": "Swift",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Charges in a direction, dealing damage to Pokémon hit and slowing them by 15% for 2.5s. If the charge hits a Pokémon, this move can be used again within 6s and it will note the highest Attack stat of all enemies hit. If this move is used again, Umbreon sweeps in front of itself with its tail, dealing damage to Pokémon hit, slowing them by 30% for 2.5s and shoving them for 0.6s. If the highest enemy Attack was greater than Umbreon's Attack when the first stage hit, the second stage deals damage using the noted Attack. Otherwise it uses Umbreon's current Attack. 237.6% Attack of Target",
+        "translatedDescription": "機械要約: Foul Play は 移動速度を下げる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "58",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "145",
+            "trueDescription": "Charges in a direction, dealing damage to Pokémon hit and slowing them by 15% for 2.5s. If the charge hits a Pokémon, this move can be used again within 6s and it will note the highest Attack stat of all enemies hit. If this move is used again, Umbreon sweeps in front of itself with its tail, dealing damage to Pokémon hit, slowing them by 30% for 2.5s and shoving them for 0.6s. If the highest enemy Attack was greater than Umbreon's Attack when the first stage hit, the second stage deals damage using the noted Attack. Otherwise it uses Umbreon's current Attack.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Second Hit)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "237.6% Attack of Target",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "foul-play__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Charges in a direction, dealing damage to Pokémon hit and slowing them by 15% for 2.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Charges in a direction, dealing damage to Pokémon hit and slowing them by 15% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "foul-play__02__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the charge hits a Pokémon, this move can be used again within 6s and it will note the highest Attack stat of all enemies hit.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If the charge hits a Pokémon, this move can be used again within 6s and it will note the highest Attack stat of all enemies hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__foul-play",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "foul-play-plus",
+        "name": "Foul Play+",
+        "rawName": "Foul Play",
+        "parentName": "Foul Play",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Umbreon's next basic attack after using this move becomes a boosted attack.",
+        "translatedDescription": "機械要約: Foul Play+ は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Umbreon's next basic attack after using this move becomes a boosted attack.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "foul-play-plus__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Umbreon's next basic attack after using this move becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Umbreon's next basic attack after using this move becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__foul-play-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "fake-tears",
+        "name": "Fake Tears",
+        "rawName": "Fake Tears",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s. 12% Max HP",
+        "translatedDescription": "機械要約: Fake Tears は 防御・特防を変化させる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "86",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "240",
+            "trueDescription": "Feigns crying, dealing damage to nearby Pokémon  and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fake-tears__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "feigns crying, dealing damage to nearby pokémon and decreases their defense and sp. def by 20% for 2s. also grants a shield for 4s. 12% max hp",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: feigns crying, dealing damage to nearby pokémon and decreases their defense and sp. def by 20% for 2s. also grants a shield for 4s. 12% max hp",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fake-tears__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also grants a shield for 4s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Also grants a shield for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__fake-tears",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "wish",
+        "name": "Wish",
+        "rawName": "Wish",
+        "parentName": "Fake Tears",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Wishes for an ally Pokémon or Umbreon. For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them. If the targeted Pokémon is knocked out before the wish comes true, a different ally Pokémon near them takes the wish instead.",
+        "translatedDescription": "機械要約: Wish は 受けるダメージを軽減する、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Heal",
+            "ratio": "300",
+            "damageType": "Atk",
+            "levelScaling": "18",
+            "base": "600",
+            "trueDescription": "Wishes for an ally Pokémon or Umbreon. For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them. If the targeted Pokémon is knocked out before the wish comes true, a different ally Pokémon near them takes the wish instead.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "wish__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wish__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them.",
+          "codexInterpretation": "HPを回復する。 原文証拠: For 2s, that Pokémon receives 15% reduced damage, then afterward, the wish comes true and heals them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__wish",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "wish-plus",
+        "name": "Wish+",
+        "rawName": "Wish",
+        "parentName": "Wish",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+        "translatedDescription": "機械要約: Wish+ は 受けるダメージを軽減する、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Heal",
+            "ratio": "380",
+            "damageType": "Atk",
+            "levelScaling": "18",
+            "base": "700",
+            "trueDescription": "Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "wish-plus__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wish-plus__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Increases the damage reduction to 25% and amount of healing when the wish comes true.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__wish-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "snarl",
+        "name": "Snarl",
+        "rawName": "Snarl",
+        "parentName": "Fake Tears",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Becomes hindrance resistant and begin snarling for 1.5s, dealing damage to enemy Pokémon in the area around Umbreon and decreasing the affected Pokémon's Attack and Sp. Atk stat by 3% for 1.5s and movement speed by 15% for 2s. Also grants the user a shield for 2s. Umbreon is slowed by 30% while snarling. The final shout leaves enemy Pokémon stunned for 0.7s and further decreases their Attack and Sp. Atk by 15% for 3s. The small shout Attack and Sp. Atk decreases can stack up to 6 times and stack with the big shout's Attack and Sp. Atk decreases. 15% Max HP Shield",
+        "translatedDescription": "機械要約: Snarl は 行動不能・スタンを付与する、移動速度を下げる、攻撃・特攻などを変化させる、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (8x)",
+            "ratio": "15",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "40",
+            "trueDescription": "Becomes hindrance resistant and begin snarling for 1.5s, dealing damage to enemy Pokémon in the area around Umbreon and decreasing the affected Pokémon's Attack and Sp. Atk stat by 3% for 1.5s and movement speed by 15% for 2s. Also grants the user a shield for 2s. Umbreon is slowed by 30% while snarling. The final shout leaves enemy Pokémon stunned for 0.7s and further decreases their Attack and Sp. Atk by 15% for 3s. The small shout Attack and Sp. Atk decreases can stack up to 6 times and stack with the big shout's Attack and Sp. Atk decreases.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Final Shout)",
+            "ratio": "30",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP Shield",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "snarl__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The final shout leaves enemy Pokémon stunned for 0.7s and further decreases their Attack and Sp.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The final shout leaves enemy Pokémon stunned for 0.7s and further decreases their Attack and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snarl__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Umbreon is slowed by 30% while snarling.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Umbreon is slowed by 30% while snarling.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snarl__03__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "becomes hindrance resistant and begin snarling for 1.5s, dealing damage to enemy pokémon in the area around umbreon and decreasing the affected pokémon's attack and sp. atk stat by 3% for 1.5s and movement speed by 15% for 2s. also grants t",
+          "codexInterpretation": "攻撃・特攻などを変化させる。 原文証拠: becomes hindrance resistant and begin snarling for 1.5s, dealing damage to enemy pokémon in the area around umbreon and decreasing the affected pokémon's attack and sp. atk stat by 3% for 1.5s and movement speed by 15% for 2s. also grants t",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snarl__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also grants the user a shield for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Also grants the user a shield for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snarl__05__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "15% Max HP Shield",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: 15% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__snarl",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "snarl-plus",
+        "name": "Snarl+",
+        "rawName": "Snarl",
+        "parentName": "Snarl",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the stun duration of the final shout to 1s.",
+        "translatedDescription": "機械要約: Snarl+ は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the stun duration of the final shout to 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "snarl-plus__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the stun duration of the final shout to 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Increases the stun duration of the final shout to 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__snarl-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "moonlight-prance",
+        "name": "Moonlight Prance",
+        "rawName": "Moonlight Prance",
+        "parentName": null,
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself. Additionally, after learning this move and while not in combat, Umbreon continually recovers 1% Max HP every second. Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest.",
+        "translatedDescription": "機械要約: Moonlight Prance は 行動不能・スタンを付与する、移動速度を下げる、妨害無効になる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "224",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "630",
+            "trueDescription": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself. Additionally, after learning this move and while not in combat, Umbreon continually recovers 1% Max HP every second.",
+            "notes": "Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "moonlight-prance__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "moonlight-prance__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "moonlight-prance__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "moonlight-prance__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__moonlight-prance",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "moonlight-prance-unite-buff",
+        "name": "Moonlight Prance Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Moonlight Prance",
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Moonlight Prance Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "moonlight-prance-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "moonlight-prance-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 10% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "umbreon__moonlight-prance-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 32,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

@@ -1,0 +1,801 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "metagross",
+  "pokemonName": "Metagross",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "clear-body",
+      "name": "Clear Body",
+      "originalDescription": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+      "summary": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+      "summary": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "iron-defense",
+      "name": "Iron Defense",
+      "originalDescription": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+      "summary": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+      "summary": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "compute-and-crush",
+      "name": "Compute and Crush",
+      "originalDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. Unite buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield",
+      "summary": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 0.8,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2 punches)",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Missing HP",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Wall Creation",
+            "ratio": "228",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Per Enemy",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2 punches)",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Missing HP",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Wall Creation",
+            "ratio": "228",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Per Enemy",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "shieldHp",
+    "stackCount",
+    "maxHp",
+    "currentHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "clear-body",
+      "name": "Clear Body",
+      "originalDescription": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+      "summary": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+      "summary": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "iron-defense",
+      "name": "Iron Defense",
+      "originalDescription": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+      "summary": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+      "summary": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "compute-and-crush",
+      "name": "Compute and Crush",
+      "originalDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. Unite buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield",
+      "summary": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 0.8,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2 punches)",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Missing HP",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Wall Creation",
+            "ratio": "228",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Per Enemy",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2 punches)",
+          "ratio": "134",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Missing HP",
+            "notes": ""
+          },
+          {
+            "label": "Damage - Wall Creation",
+            "ratio": "228",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Per Enemy",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

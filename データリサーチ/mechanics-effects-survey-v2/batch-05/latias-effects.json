@@ -1,0 +1,440 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "latias",
+  "pokemonName": "Latias",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "levitate",
+        "name": "Levitate",
+        "parentName": null,
+        "originalDescription": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s). Increases movement speed by 10% while near an ally Latios. When not in combat, this Ability can be used to fly to an allied Latios. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latios was when this ability was activated. If Latios is at the home base, the cooldown of Levitate goes down twice as fast for Latias.",
+        "translatedDescription": "機械要約: Levitate は 妨害無効になる、移動速度を上げる、次の通常攻撃または強化攻撃を準備する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s).",
+            "notes": "Increases movement speed by 10% while near an ally Latios. When not in combat, this Ability can be used to fly to an allied Latios. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latios was when this ability was activated. If Latios is at the home base, the cooldown of Levitate goes down twice as fast for Latias."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "levitate__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latios was when this ability was activated.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latios was when this ability was activated.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "levitate__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s).",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "levitate__03__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "nextBoostedAttack"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s).",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "latias__levitate",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Shoots a psychic projectile at an opposing Pokémon, damaging them. Latias has no boosted attack.",
+        "translatedDescription": "機械要約: Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "25",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "100",
+            "trueDescription": "Shoots a psychic projectile at an opposing Pokémon, damaging them.",
+            "notes": "Latias has no boosted attack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "latias__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "confusion",
+        "name": "Confusion",
+        "parentName": null,
+        "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+        "translatedDescription": "機械要約: Confusion は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "75",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "200",
+            "trueDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "confusion__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "latias__confusion",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "swift",
+        "name": "Swift",
+        "parentName": null,
+        "originalDescription": "Shoots star-shaped rays in a large area in the designated direction, damaging opposing Pokémon in the area of effect.",
+        "translatedDescription": "機械要約: Swift には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "350",
+            "trueDescription": "Shoots star-shaped rays in a large area in the designated direction, damaging opposing Pokémon in the area of effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "latias__swift",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "mist-blast",
+        "name": "Mist Blast",
+        "parentName": null,
+        "originalDescription": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction by 20% for 9.5s. If Latios is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Mist Blast hits last then the explosion uses Latias' stats. Buffs: 30% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Mist Blast は シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "250",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "460",
+            "trueDescription": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction by 20% for 9.5s.",
+            "notes": "If Latios is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Mist Blast hits last then the explosion uses Latias' stats."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Area (If Mist Blast hit last)",
+            "ratio": "125",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mist-blast__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mist-blast__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "If Latios is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If Latios is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "latias__mist-blast",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 6,
+    "zeroSpecialEffectSourceCount": 2,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

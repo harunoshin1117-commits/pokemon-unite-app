@@ -1,0 +1,1285 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "moltres",
+  "pokemonName": "Moltres",
+  "role": "S",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "flame-body",
+      "moveName": "Flame Body",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Energy Amp and other similar effects.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "wing-attack",
+      "moveName": "Wing Attack",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user dashes in the designated direction, dealing damage along the path.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "sky-attack",
+      "moveName": "Sky Attack",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Wing Attack",
+      "isPlus": false,
+      "originalDescription": "The user dashes in the designated direction, dealing damage along the path. Each hit increases the user's Def and SpDef by 8% for 4s, stacking up to 5 times.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "sky-attack-plus",
+      "moveName": "Sky Attack+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Sky Attack",
+      "isPlus": true,
+      "originalDescription": "Grants a shield on a successful hit for 3s.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "incinerate",
+      "moveName": "Incinerate",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "heat-wave",
+      "moveName": "Heat Wave",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Incinerate",
+      "isPlus": false,
+      "originalDescription": "The user exhales hot breath in the designated direction, dealing damage and granting health regeneration. This health regeneration lasts 2s and ticks every 0.5s. 4% of Max HP",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "heat-wave-plus",
+      "moveName": "Heat Wave+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Heat Wave",
+      "isPlus": true,
+      "originalDescription": "Lowers the cooldown of this move by 1s for each Pokémon from the opposing team hit.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "firebird-inferno",
+      "moveName": "Firebird Inferno",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Moltres",
+      "pokemonId": "moltres",
+      "sourceId": "firebird-inferno-unite-buff",
+      "moveName": "Firebird Inferno Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Firebird Inferno",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Flame Body",
+      "sourceType": "passive",
+      "sourceId": "flame-body",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Wing Attack",
+      "sourceType": "initialMove",
+      "sourceId": "wing-attack",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Sky Attack",
+      "sourceType": "moveChoice",
+      "sourceId": "sky-attack",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Wing Attack"
+    },
+    {
+      "name": "Sky Attack+",
+      "sourceType": "movePlus",
+      "sourceId": "sky-attack-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Sky Attack"
+    },
+    {
+      "name": "Incinerate",
+      "sourceType": "initialMove",
+      "sourceId": "incinerate",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Heat Wave",
+      "sourceType": "moveChoice",
+      "sourceId": "heat-wave",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Incinerate"
+    },
+    {
+      "name": "Heat Wave+",
+      "sourceType": "movePlus",
+      "sourceId": "heat-wave-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Heat Wave"
+    },
+    {
+      "name": "Firebird Inferno",
+      "sourceType": "uniteMove",
+      "sourceId": "firebird-inferno",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Firebird Inferno Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "firebird-inferno-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Firebird Inferno"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "flame-body",
+        "name": "Flame Body",
+        "rawName": "Flame Body",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+        "translatedDescription": "機械要約: Flame Body は やけどを付与する、継続ダメージを与える、スタック、マーク、ゲージを扱う、状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Burn (8x)",
+            "ratio": "14",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "14",
+            "trueDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s.",
+            "notes": "If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flame-body__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-body__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Burn (8x)",
+              "ratio": "14",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "14",
+              "trueDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s.",
+              "notes": "If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The burn and burn counter lasts 4s and deals damage every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The burn and burn counter lasts 4s and deals damage every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-body__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-body__04__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__flame-body",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Energy Amp and other similar effects.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Energy Amp and other similar effects.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack every fourth attack, swiping with their flaming wing.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack every fourth attack, swiping with their flaming wing.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "wing-attack",
+        "name": "Wing Attack",
+        "rawName": "Wing Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user dashes in the designated direction, dealing damage along the path.",
+        "translatedDescription": "機械要約: Wing Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "50",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "400",
+            "trueDescription": "The user dashes in the designated direction, dealing damage along the path.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__wing-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "sky-attack",
+        "name": "Sky Attack",
+        "rawName": "Sky Attack",
+        "parentName": "Wing Attack",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user dashes in the designated direction, dealing damage along the path. Each hit increases the user's Def and SpDef by 8% for 4s, stacking up to 5 times.",
+        "translatedDescription": "機械要約: Sky Attack は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "178.5",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "525",
+            "trueDescription": "The user dashes in the designated direction, dealing damage along the path. Each hit increases the user's Def and SpDef by 8% for 4s, stacking up to 5 times.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sky-attack__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Each hit increases the user's Def and SpDef by 8% for 4s, stacking up to 5 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Each hit increases the user's Def and SpDef by 8% for 4s, stacking up to 5 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__sky-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "sky-attack-plus",
+        "name": "Sky Attack+",
+        "rawName": "Sky Attack",
+        "parentName": "Sky Attack",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Grants a shield on a successful hit for 3s.",
+        "translatedDescription": "機械要約: Sky Attack+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "130",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "Grants a shield on a successful hit for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sky-attack-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Grants a shield on a successful hit for 3s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Grants a shield on a successful hit for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__sky-attack-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "incinerate",
+        "name": "Incinerate",
+        "rawName": "Incinerate",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+        "translatedDescription": "機械要約: Incinerate には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "42",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "350",
+            "trueDescription": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__incinerate",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "heat-wave",
+        "name": "Heat Wave",
+        "rawName": "Heat Wave",
+        "parentName": "Incinerate",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user exhales hot breath in the designated direction, dealing damage and granting health regeneration. This health regeneration lasts 2s and ticks every 0.5s. 4% of Max HP",
+        "translatedDescription": "機械要約: Heat Wave は HPを回復する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "132",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "391",
+            "trueDescription": "The user exhales hot breath in the designated direction, dealing damage and granting health regeneration. This health regeneration lasts 2s and ticks every 0.5s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing (4x)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "4% of Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "heat-wave__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "This health regeneration lasts 2s and ticks every 0.5s.",
+          "codexInterpretation": "HPを回復する。 原文証拠: This health regeneration lasts 2s and ticks every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "heat-wave__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "132",
+              "damageType": "SpAtk",
+              "levelScaling": "7",
+              "base": "391",
+              "trueDescription": "The user exhales hot breath in the designated direction, dealing damage and granting health regeneration. This health regeneration lasts 2s and ticks every 0.5s.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Healing (4x)",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "4% of Max HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This health regeneration lasts 2s and ticks every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: This health regeneration lasts 2s and ticks every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__heat-wave",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "heat-wave-plus",
+        "name": "Heat Wave+",
+        "rawName": "Heat Wave",
+        "parentName": "Heat Wave",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Lowers the cooldown of this move by 1s for each Pokémon from the opposing team hit.",
+        "translatedDescription": "機械要約: Heat Wave+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Lowers the cooldown of this move by 1s for each Pokémon from the opposing team hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__heat-wave-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "firebird-inferno",
+        "name": "Firebird Inferno",
+        "rawName": "Firebird Inferno",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+        "translatedDescription": "機械要約: Firebird Inferno は やけどを付与する、妨害無効になる、スタック、マーク、ゲージを扱う、野生ポケモン限定の処理を持つ、フォーム・モード・構えを変化させる、KOまたはアシストで発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "140",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "700",
+            "trueDescription": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+            "notes": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "firebird-inferno__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno__04__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 20,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: For 20s afterwards, a modest area around the opposing team's goal zones are revealed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno__06__koAssistTrigger",
+          "effectType": "koAssistTrigger",
+          "summary": "KOまたはアシストで発動する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "koAssistEvent"
+          ],
+          "sourceEvidence": "Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+          "codexInterpretation": "KOまたはアシストで発動する。 原文証拠: Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__firebird-inferno",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "firebird-inferno-unite-buff",
+        "name": "Firebird Inferno Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Firebird Inferno",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Firebird Inferno Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "firebird-inferno-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "firebird-inferno-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "moltres__firebird-inferno-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 11,
+    "specialEffectCount": 18,
+    "zeroSpecialEffectSourceCount": 4,
+    "missingSourceCount": 0
+  }
+}

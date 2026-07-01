@@ -1,0 +1,662 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "moltres",
+  "pokemonName": "Moltres",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "flame-body",
+      "name": "Flame Body",
+      "originalDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+      "summary": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consu",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Burn (8x)",
+          "ratio": "14",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "14",
+          "notes": "If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Energy Amp and other similar effects.",
+      "summary": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Ene",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "wing-attack",
+      "name": "Wing Attack",
+      "originalDescription": "The user dashes in the designated direction, dealing damage along the path.",
+      "summary": "The user dashes in the designated direction, dealing damage along the path.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "incinerate",
+      "name": "Incinerate",
+      "originalDescription": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+      "summary": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "42",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "firebird-inferno",
+      "name": "Firebird Inferno",
+      "originalDescription": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gai",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon",
+        "ko-or-assist"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "koOrAssistCondition",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 20,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "700",
+          "notes": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "700",
+          "notes": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, eventHistory, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "dotTimer",
+    "cooldownState",
+    "shieldHp",
+    "maxHp",
+    "koAssistEvent",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder",
+    "eventHistory"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "flame-body",
+      "name": "Flame Body",
+      "originalDescription": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack.",
+      "summary": "Whenever the user deals damage with a Basic Attack, Boosted Attack, Wing Attack, or Sky Attack, the target is left with a burn and a burn counter that caps at 5 stacks. The burn and burn counter lasts 4s and deals damage every 0.5s. If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consu",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Burn (8x)",
+          "ratio": "14",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "14",
+          "notes": "If Incinerate or Heat Wave are used, the burn is cleansed and the burn counter is consumed, increasing the damage of those moves by 10% per burn counter stack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Energy Amp and other similar effects.",
+      "summary": "Moltres strikes opponents with their beak. Becomes a boosted attack every fourth attack, swiping with their flaming wing. Once a boosted attack hits a target, the user gains one free move use for 3s. After this move is used or the duration expires, Moltres gains 600 unite energy. This unite energy can be boosted by Ene",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "wing-attack",
+      "name": "Wing Attack",
+      "originalDescription": "The user dashes in the designated direction, dealing damage along the path.",
+      "summary": "The user dashes in the designated direction, dealing damage along the path.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "incinerate",
+      "name": "Incinerate",
+      "originalDescription": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+      "summary": "The user hurls a fiery orb in the designated direction, dealing damage to all opponents hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "42",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "firebird-inferno",
+      "name": "Firebird Inferno",
+      "originalDescription": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable and soars upwards before unleashing a blazing orb towards the designated area, dealing damage, applying 5 ticks of burn damage instantly, and 5 stacks of burn counter to all enemies hit. For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gai",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon",
+        "ko-or-assist"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "koOrAssistCondition",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 20,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "700",
+          "notes": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "140",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "700",
+          "notes": "For 20s afterwards, a modest area around the opposing team's goal zones are revealed. Moltres cannot gain unite energy from KO'ing wild Pokémon or scoring."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, eventHistory, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

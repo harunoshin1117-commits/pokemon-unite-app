@@ -1,0 +1,685 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "armarouge",
+  "pokemonName": "Armarouge",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "flash-fire",
+      "name": "Flash Fire",
+      "originalDescription": "When this Pokémon takes Sp. Atk-based damage from opposing Pokémon, the damage this Pokémon takes is reduced by 20% for 3s, and their next auto attack deals additional damage. This Ability goes on a 10s cooldown after it ends.",
+      "summary": "When this Pokémon takes Sp. Atk-based damage from opposing Pokémon, the damage this Pokémon takes is reduced by 20% for 3s, and their next auto attack deals additional damage. This Ability goes on a 10s cooldown after it ends.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-charcadet",
+      "name": "Attack - Charcadet",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-charcadet-boosted",
+      "name": "Attack - Charcadet Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "incinerate",
+      "name": "Incinerate",
+      "originalDescription": "Has the user attack the designated opposing Pokémon with a flame, setting them ablaze and dealing damage over time for 4s. When a Pokémon on the opposing team that's ablaze picks up a Berry, the Berry's effects are halved.",
+      "summary": "Has the user attack the designated opposing Pokémon with a flame, setting them ablaze and dealing damage over time for 4s. When a Pokémon on the opposing team that's ablaze picks up a Berry, the Berry's effects are halved.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (x5)",
+            "ratio": "35",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Has the user shoot a flame in the designated direction, dealing damage to opposing Pokémon hit, leaving them burned and decreasing their movement speed by 20% for 2s. After using this move, the user's next auto attack becomes a boosted attack.",
+      "summary": "Has the user shoot a flame in the designated direction, dealing damage to opposing Pokémon hit, leaving them burned and decreasing their movement speed by 20% for 2s. After using this move, the user's next auto attack becomes a boosted attack.",
+      "trigger": "after move use",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (x3)",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "50",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "psykaboom",
+      "name": "Psykaboom",
+      "originalDescription": "Has the user jump up, becoming unstoppable for 1.85s, and charge psychic power for 1s, then create an area that leaves opposing Pokémon unable to act. While the user is charging psychic power, the Unite Move can be used again to adjust the position of the area. The user then fires a ball of flame towards the center of the area, dealing damage to opposing Pokémon and throwing them away from the center of the area. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user jump up, becoming unstoppable for 1.85s, and charge psychic power for 1s, then create an area that leaves opposing Pokémon unable to act. While the user is charging psychic power, the Unite Move can be used again to adjust the position of the area. The user then fires a ball of flame towards the center of ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.85,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "270",
+          "damageType": "SpAtk",
+          "levelScaling": "17",
+          "base": "648",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "270",
+          "damageType": "SpAtk",
+          "levelScaling": "17",
+          "base": "648",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "dotTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "flash-fire",
+      "name": "Flash Fire",
+      "originalDescription": "When this Pokémon takes Sp. Atk-based damage from opposing Pokémon, the damage this Pokémon takes is reduced by 20% for 3s, and their next auto attack deals additional damage. This Ability goes on a 10s cooldown after it ends.",
+      "summary": "When this Pokémon takes Sp. Atk-based damage from opposing Pokémon, the damage this Pokémon takes is reduced by 20% for 3s, and their next auto attack deals additional damage. This Ability goes on a 10s cooldown after it ends.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-charcadet",
+      "name": "Attack - Charcadet",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "30",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-charcadet-boosted",
+      "name": "Attack - Charcadet Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "incinerate",
+      "name": "Incinerate",
+      "originalDescription": "Has the user attack the designated opposing Pokémon with a flame, setting them ablaze and dealing damage over time for 4s. When a Pokémon on the opposing team that's ablaze picks up a Berry, the Berry's effects are halved.",
+      "summary": "Has the user attack the designated opposing Pokémon with a flame, setting them ablaze and dealing damage over time for 4s. When a Pokémon on the opposing team that's ablaze picks up a Berry, the Berry's effects are halved.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (x5)",
+            "ratio": "35",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "60",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Has the user shoot a flame in the designated direction, dealing damage to opposing Pokémon hit, leaving them burned and decreasing their movement speed by 20% for 2s. After using this move, the user's next auto attack becomes a boosted attack.",
+      "summary": "Has the user shoot a flame in the designated direction, dealing damage to opposing Pokémon hit, leaving them burned and decreasing their movement speed by 20% for 2s. After using this move, the user's next auto attack becomes a boosted attack.",
+      "trigger": "after move use",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (x3)",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "50",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "psykaboom",
+      "name": "Psykaboom",
+      "originalDescription": "Has the user jump up, becoming unstoppable for 1.85s, and charge psychic power for 1s, then create an area that leaves opposing Pokémon unable to act. While the user is charging psychic power, the Unite Move can be used again to adjust the position of the area. The user then fires a ball of flame towards the center of the area, dealing damage to opposing Pokémon and throwing them away from the center of the area. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user jump up, becoming unstoppable for 1.85s, and charge psychic power for 1s, then create an area that leaves opposing Pokémon unable to act. While the user is charging psychic power, the Unite Move can be used again to adjust the position of the area. The user then fires a ball of flame towards the center of ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.85,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "270",
+          "damageType": "SpAtk",
+          "levelScaling": "17",
+          "base": "648",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "270",
+          "damageType": "SpAtk",
+          "levelScaling": "17",
+          "base": "648",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

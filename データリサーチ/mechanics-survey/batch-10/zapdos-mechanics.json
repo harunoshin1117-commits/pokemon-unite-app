@@ -1,0 +1,648 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "zapdos",
+  "pokemonName": "Zapdos",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+      "summary": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 15,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Field (5x)",
+          "ratio": "12",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "18",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+      "summary": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+      "summary": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "200",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "discharge",
+      "name": "Discharge",
+      "originalDescription": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+      "summary": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The s",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": 7,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "92",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "138",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "high-voltage-siege",
+      "name": "High-Voltage Siege",
+      "originalDescription": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area, it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act. If lightning bolts hit one of the opposing team's goal zones 5 times, that goal zone will become defenseless (scoring is instant) for 5s or until a goal is scored. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area, it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If light",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (7x)",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (7x)",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "stackCount",
+    "shieldHp",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and slowing opposing Pokémon in it by 30%. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+      "summary": "When the user receives damage from nearby Pokémon from the opposing team, the damaging Pokémon becomes paralyzed. This Ability goes on a 15s cooldown when triggered. When the user hits with a boosted attack, Thunder Shock, or Thunderbolt, they create an electric field. This field will remain for 3s, dealing damage and ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 15,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Field (5x)",
+          "ratio": "12",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "18",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+      "summary": "Gains a Boosted Attack every 8s, launching a powerful electric orb and dealing damage to opposing Pokémon. If any move hits Pokémon from the opposing team, the user's boosted attack cooldown is reduced by 1s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "50",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+      "summary": "Attack with a jolt of electricity. If this move hits an opposing Pokémon, it also zaps a nearby opposing Pokémon, dealing damage to them.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "200",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "discharge",
+      "name": "Discharge",
+      "originalDescription": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The second and third waves deal a stacking 15% increased damage to Pokémon hit by the preceeding waves. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s.",
+      "summary": "Has the user let loose 2 waves of electricity from their feathers, dealing damage to nearby opposing Pokémon and leaving them paralyzed. If there is an electric field within this move's area of effect, the electric field is absorbed, increasing this move's area of effect and releasing a third wave of electricity. The s",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": 7,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Hit",
+          "ratio": "92",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "138",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "high-voltage-siege",
+      "name": "High-Voltage Siege",
+      "originalDescription": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area, it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If lightning bolts hit the same Pokémon 3 consecutive times, that Pokémon will be left unable to act. If lightning bolts hit one of the opposing team's goal zones 5 times, that goal zone will become defenseless (scoring is instant) for 5s or until a goal is scored. The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user continuously drop lightning bolts in the designated area every 1s. If the user moves a certain distance from the area, it will be dragged towards the user's position. Electric fields are created where the lightning strikes. The lightning bolts paralyze and deal damage to opposing Pokémon they hit. If light",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (7x)",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (7x)",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "106",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% and their basic attack speed is decreased by 10% for 2.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

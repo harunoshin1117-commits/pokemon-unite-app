@@ -1,0 +1,682 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "lucario",
+  "pokemonName": "Lucario",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steadfast",
+      "name": "Steadfast",
+      "originalDescription": "While at low HP, gain a shield and increased movement speed. (30s cooldown) If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+      "summary": "While at low HP, gain a shield and increased movement speed. (30s cooldown) If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "250",
+          "damageType": "Atk",
+          "levelScaling": "50",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "250",
+          "damageType": "Atk",
+          "levelScaling": "50",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them. Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s.",
+      "summary": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them. Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "summary": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (2nd Hit)",
+          "ratio": "30",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with. Dashes forward, damaging opposing Pokémon hit.",
+      "summary": "Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with. Dashes forward, damaging opposing Pokémon hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "221",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "meteor-mash",
+      "name": "Meteor Mash",
+      "originalDescription": "Blast forward with a punch like a comet, dealing damage to enemies and shoving them. Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+      "summary": "Blast forward with a punch like a comet, dealing damage to enemies and shoving them. Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.4,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "167",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "aura-cannon",
+      "name": "Aura Cannon",
+      "originalDescription": "Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move. Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere picks up speed as it travels; at close range, a target can be hit up to 4 times, while at max speed a target will only be hit once. If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move. Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere pick",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "174",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "210",
+          "notes": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "174",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "210",
+          "notes": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "currentHp",
+    "normalAttackCycleOrReadyFlag",
+    "formOrMode",
+    "stackCount"
+  ],
+  "specialMechanics": [
+    "form-or-mode",
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steadfast",
+      "name": "Steadfast",
+      "originalDescription": "While at low HP, gain a shield and increased movement speed. (30s cooldown) If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+      "summary": "While at low HP, gain a shield and increased movement speed. (30s cooldown) If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "250",
+          "damageType": "Atk",
+          "levelScaling": "50",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Shield",
+          "ratio": "250",
+          "damageType": "Atk",
+          "levelScaling": "50",
+          "base": "50",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them. Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s.",
+      "summary": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them. Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "summary": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (2nd Hit)",
+          "ratio": "30",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with. Dashes forward, damaging opposing Pokémon hit.",
+      "summary": "Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with. Dashes forward, damaging opposing Pokémon hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "221",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "meteor-mash",
+      "name": "Meteor Mash",
+      "originalDescription": "Blast forward with a punch like a comet, dealing damage to enemies and shoving them. Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+      "summary": "Blast forward with a punch like a comet, dealing damage to enemies and shoving them. Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.4,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "167",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "aura-cannon",
+      "name": "Aura Cannon",
+      "originalDescription": "Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move. Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere picks up speed as it travels; at close range, a target can be hit up to 4 times, while at max speed a target will only be hit once. If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move. Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere pick",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.6,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "174",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "210",
+          "notes": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "174",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "210",
+          "notes": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

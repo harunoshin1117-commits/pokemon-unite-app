@@ -1,0 +1,748 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "umbreon",
+  "pokemonName": "Umbreon",
+  "role": "Defender",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "anticipation",
+      "name": "Anticipation",
+      "originalDescription": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+      "summary": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 40,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+      "summary": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Missing HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+      "summary": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+      "trigger": "Move 1",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (First Star)",
+          "ratio": "40",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Subsequent Stars)",
+            "ratio": "12",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fake-tears",
+      "name": "Fake Tears",
+      "originalDescription": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s.",
+      "summary": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "moonlight-prance",
+      "name": "Moonlight Prance",
+      "originalDescription": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself. Additionally, after learning this move and while not in combat, Umbreon continually recovers 1% Max HP every second. Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest. Unite buffs: 30% Movement Speed, 10% Max HP Shield",
+      "summary": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if a",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "224",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "630",
+          "notes": "Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "224",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "630",
+          "notes": "Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "normalAttackCycleOrReadyFlag",
+    "currentHp",
+    "stackCount",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "anticipation",
+      "name": "Anticipation",
+      "originalDescription": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+      "summary": "When Eevee would be shoved, thrown or left unabled to act, that effect is negated. This effect goes on a 40s cooldown after being triggered and is reset after respawning.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": 40,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+      "summary": "Becomes a boosted attack every third attack, lunging at a Pokémon and dealing damage. This boosted attack also heals the user's HP. The lower the user's remaining HP, the more HP is restored.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Missing HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+      "summary": "Shoot 1 large and 3 small star-shaped rays, dealing damage to Pokémon and applying a mark to them after the fourth star hits that lasts 4s. When near a marked Pokémon, Eevee receives a 15% movement speed increase. When Eevee deals damage to a marked Pokémon, its next basic attack becomes a boosted attack.",
+      "trigger": "Move 1",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (First Star)",
+          "ratio": "40",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Subsequent Stars)",
+            "ratio": "12",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fake-tears",
+      "name": "Fake Tears",
+      "originalDescription": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s.",
+      "summary": "Feigns crying, dealing damage to nearby Pokémon and decreases their Defense and Sp. Def by 20% for 2s. Also grants a shield for 4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "240",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "moonlight-prance",
+      "name": "Moonlight Prance",
+      "originalDescription": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if an enemy Pokémon in that area is granted a shield, Umbreon absorbs 50% of the shield for themself. Additionally, after learning this move and while not in combat, Umbreon continually recovers 1% Max HP every second. Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest. Unite buffs: 30% Movement Speed, 10% Max HP Shield",
+      "summary": "Umbreon briefly becomes unstoppable, leaping up and absorbing 50% of the shields from enemy Pokémon in an area around Umbreon, taking them for the user. Umbreon then lands, dealing damage to Pokémon in an area-of-effect, and stuns them for 1s. For 5s, enemy Pokémon in the area around Umbreon are slowed by 30%, and if a",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "224",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "630",
+          "notes": "Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "224",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "630",
+          "notes": "Note: Umbreon cannot steal shields granted by Rayquaza or Assault Vest."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

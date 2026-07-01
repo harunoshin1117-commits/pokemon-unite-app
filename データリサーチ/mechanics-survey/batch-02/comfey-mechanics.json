@@ -1,0 +1,1234 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "comfey",
+  "pokemonName": "Comfey",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "triage",
+      "name": "Triage",
+      "originalDescription": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP. While attached: becomes untargetable, restores 1% max HP every 1s; takes Aeos energy gained in excess of the maximum the ally can hold, and scores the same amount of Aeos energy into a goal as the ally if not using a move while the ally channels the score. Detaches from the ally in the designated direction when the button to return to base is used (or a separate detach button on mobile). When detaching: removes the Triage shield effect from the ally; becomes invincible for 0.5s, and readies a boosted attack.",
+      "summary": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "210",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "synthesis",
+      "name": "Synthesis",
+      "originalDescription": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect. If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers).",
+      "summary": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect. If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers).",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "vine-whip",
+      "name": "Vine Whip",
+      "originalDescription": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits. While attached to an ally: increases this move's range.",
+      "summary": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits. While attached to an ally: increases this move's range.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "SpAtk",
+          "levelScaling": "14",
+          "base": "450",
+          "notes": "While attached to an ally: increases this move's range."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flowery-fields-forever",
+      "name": "Flowery Fields Forever",
+      "originalDescription": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s. Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s. Gains special flowers from this tall grass, which grant access to",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "currentHp",
+    "dotTimer"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "triage",
+      "name": "Triage",
+      "originalDescription": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to a designated ally Pokémon when using Synthesis, Floral Healing, or Sweet Kiss while detached, granting a Triage shield effect to the ally based on Comfey's max HP. While attached: becomes untargetable, restores 1% max HP every 1s; takes Aeos energy gained in excess of the maximum the ally can hold, and scores the same amount of Aeos energy into a goal as the ally if not using a move while the ally channels the score. Detaches from the ally in the designated direction when the button to return to base is used (or a separate detach button on mobile). When detaching: removes the Triage shield effect from the ally; becomes invincible for 0.5s, and readies a boosted attack.",
+      "summary": "Increases movement speed by 25% when near ally Pokémon at 50% max HP or below. Stores up to 8 flowers; consumes all flowers when using Synthesis, Floral Healing, or Sweet Kiss while attached, boosting their effects. Gains 1 flower every 1.5s. Gains 4 flowers when entering tall grass while detached (5s CD). Attaches to ",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Self Healing - Attached (per second)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Synthesis or Floral Healing)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of Comfey's Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Shield - Attach (Sweet Kiss)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20.9% of Comfey's Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and gaining 2 flowers when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "45",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "210",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "synthesis",
+      "name": "Synthesis",
+      "originalDescription": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect. If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers).",
+      "summary": "If detached attaches to the designated ally Pokémon and grants them a Triage shield effect. If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers).",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Healing",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "140",
+          "notes": "If attached to an ally Pokémon: restores the HP of the ally. Restores additional HP with for each flower that is consumed (up to 8 flowers)."
+        },
+        "additional": [
+          {
+            "label": "Healing - Additional Per Flower",
+            "ratio": "10",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "vine-whip",
+      "name": "Vine Whip",
+      "originalDescription": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits. While attached to an ally: increases this move's range.",
+      "summary": "Strikes out with whiplike vines in the designated direction, damaging opposing Pokémon in the line area of effect and decreasing their movement speed by 40% for 2s when it hits. While attached to an ally: increases this move's range.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "86",
+          "damageType": "SpAtk",
+          "levelScaling": "14",
+          "base": "450",
+          "notes": "While attached to an ally: increases this move's range."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "flowery-fields-forever",
+      "name": "Flowery Fields Forever",
+      "originalDescription": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s. Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Briefly becomes unstoppable and creates a large area of tall grass around their location for 6s. Pokémon in this tall grass cannot be seen, just as with other tall grass on the map. Restores the HP of teammates in this Unite Move's tall grass every 0.5s. Gains special flowers from this tall grass, which grant access to",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 6,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Heal - per tick",
+          "ratio": "22.5",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "Gains special flowers from this tall grass, which grant access to an empowered use of Floral Healing or Sweet Kiss."
+        },
+        "additional": [
+          {
+            "label": "Empowered Floral Healing Healing",
+            "ratio": "126.1",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Healing - Additional Per Flower",
+            "ratio": "19.5",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "59",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield",
+            "ratio": "63.05",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "195",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Floral Healing Overheal Shield - Additional Per Flower",
+            "ratio": "9.75",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Empowered Sweet Kiss",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases infatuation base duration by 1.3s",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

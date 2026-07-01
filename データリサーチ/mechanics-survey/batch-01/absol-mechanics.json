@@ -1,0 +1,701 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "absol",
+  "pokemonName": "Absol",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "super-luck",
+      "name": "Super Luck",
+      "originalDescription": "Increased Critical-Hit rate by 15%. This Pokémon's critical-hit rate is increased by an additional 15%.",
+      "summary": "Increased Critical-Hit rate by 15%. This Pokémon's critical-hit rate is increased by an additional 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage. Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits. If this boosted attack hits only a single target, it deals bonus damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage. Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hit",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "single-target"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "single-target"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "51",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Single Target Bonus",
+            "ratio": "37.5",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "feint",
+      "name": "Feint",
+      "originalDescription": "Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies. The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield effects of Pokémon hit. Each use alternates between a rightward and leftward arc.",
+      "summary": "Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies. The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield ",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "66",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": "Each use alternates between a rightward and leftward arc."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "66",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": "Each use alternates between a rightward and leftward arc."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Slash with sharp claws in front of the user, increasing this move's critical-hit rate. The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%.",
+      "summary": "Slash with sharp claws in front of the user, increasing this move's critical-hit rate. The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "89",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": "This move's critical-hit rate is increased by 15%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "midnight-slash",
+      "name": "Midnight Slash",
+      "originalDescription": "Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them. The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect. The user then becomes unstoppable again and unleashes a final slash in front of them with 3 blades of energy, shoving opposing Pokémon and dealing damage, up to 4 times at close range and down to 1 time at maximum range. The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them. The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.15,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Full (6 Hits)",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "184",
+          "notes": "The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Reduced (up to 3 Hits)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of the full damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Full (6 Hits)",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "184",
+          "notes": "The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Reduced (up to 3 Hits)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of the full damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "super-luck",
+      "name": "Super Luck",
+      "originalDescription": "Increased Critical-Hit rate by 15%. This Pokémon's critical-hit rate is increased by an additional 15%.",
+      "summary": "Increased Critical-Hit rate by 15%. This Pokémon's critical-hit rate is increased by an additional 15%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage. Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits. If this boosted attack hits only a single target, it deals bonus damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage. Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hit",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "single-target"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "single-target"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "51",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Single Target Bonus",
+            "ratio": "37.5",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "feint",
+      "name": "Feint",
+      "originalDescription": "Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies. The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield effects of Pokémon hit. Each use alternates between a rightward and leftward arc.",
+      "summary": "Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies. The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield ",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "66",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": "Each use alternates between a rightward and leftward arc."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "66",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "130",
+          "notes": "Each use alternates between a rightward and leftward arc."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Slash with sharp claws in front of the user, increasing this move's critical-hit rate. The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%.",
+      "summary": "Slash with sharp claws in front of the user, increasing this move's critical-hit rate. The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "89",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "200",
+          "notes": "This move's critical-hit rate is increased by 15%."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "midnight-slash",
+      "name": "Midnight Slash",
+      "originalDescription": "Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them. The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect. The user then becomes unstoppable again and unleashes a final slash in front of them with 3 blades of energy, shoving opposing Pokémon and dealing damage, up to 4 times at close range and down to 1 time at maximum range. The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them. The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.15,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Full (6 Hits)",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "184",
+          "notes": "The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Reduced (up to 3 Hits)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of the full damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Full (6 Hits)",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "184",
+          "notes": "The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Reduced (up to 3 Hits)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of the full damage.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,947 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "aegislash",
+  "pokemonName": "Aegislash",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "no-guard",
+      "name": "No Guard",
+      "originalDescription": "Honedge and Doublade do not gain the stat benefits of Stance Change. However, their boosted attack functions like Aegislash's Sword Stance boosted attack. Honedge and Doublade do not gain the stat benefits of Stance Change; their auto attacks act like Aegislash's Sword Forme auto attacks.",
+      "summary": "Honedge and Doublade do not gain the stat benefits of Stance Change. However, their boosted attack functions like Aegislash's Sword Stance boosted attack. Honedge and Doublade do not gain the stat benefits of Stance Change; their auto attacks act like Aegislash's Sword Forme auto attacks.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and reduce the cooldown of Sacred Sword and Shadow Claw when this attack hits. Every boosted attack consumes one boost count. Up to 4 boosted boosted attacks can be stored. When in Sword Forme: slashes at opposing Pokémon, damaging those hit. When in Shield Forme: rams at opposing Pokémon, damaging those hit. Becomes a boosted attack if the boost count is at 1 or more, consuming 1 boost count; the boosted attack changes based on the current Forme. The boost count caps at 4, and boosted attacks remain readied until used. As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits.",
+      "summary": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and redu",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and reduce the cooldown of Sacred Sword and Shadow Claw when this attack hits. Every boosted attack consumes one boost count. Up to 4 boosted boosted attacks can be stored.",
+      "summary": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and redu",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "shadow-sneak",
+      "name": "Shadow Sneak",
+      "originalDescription": "Cast a shadow in the designated direction, dealing damage to enemies hit. After the shadow hits an enemy or travels its maximum distance, Aegislash warps to the shadow’s location, dealing damage to nearby enemies and increase boost count by 1. Casts a shadow toward the designated location, damaging opposing Pokémon hit. After hitting an opposing Pokémon or traveling maximum distance; warps to the shadow’s location, damaging opposing Pokémon at the location. Increases the boost count by 1 if the warp hits an opposing Pokémon.",
+      "summary": "Cast a shadow in the designated direction, dealing damage to enemies hit. After the shadow hits an enemy or travels its maximum distance, Aegislash warps to the shadow’s location, dealing damage to nearby enemies and increase boost count by 1. Casts a shadow toward the designated location, damaging opposing Pokémon hit",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - 2 Hits",
+          "ratio": "102",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "165",
+          "notes": "Increases the boost count by 1 if the warp hits an opposing Pokémon."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "iron-defense",
+      "name": "Iron Defense",
+      "originalDescription": "Envelops Aegislash in a powerful protective force for 1s. The protection disappears after blocking one attack or after 1s and then increases boost count by 1. Envelops the user in a powerful protective force for up to 3s, blocking the next attack. Increases the boost count by 1 when this move blocks an attack.",
+      "summary": "Envelops Aegislash in a powerful protective force for 1s. The protection disappears after blocking one attack or after 1s and then increases boost count by 1. Envelops the user in a powerful protective force for up to 3s, blocking the next attack. Increases the boost count by 1 when this move blocks an attack.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "coup-de-grace",
+      "name": "Coup de Grace",
+      "originalDescription": "Unleash a ground-splitting slash in the designated direction, dealing damage to enemies hit. The lower their remaining HP, the more damage this move deals. If this slash knocks out an enemy, boost count increases by 1. Becomes unstoppable and unleashes a ground-splitting slash in the designated direction, damaging opposing Pokémon in the line area of effect, dealing additional missing HP damage to those hit. Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Unleash a ground-splitting slash in the designated direction, dealing damage to enemies hit. The lower their remaining HP, the more damage this move deals. If this slash knocks out an enemy, boost count increases by 1. Becomes unstoppable and unleashes a ground-splitting slash in the designated direction, damaging oppo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "282",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "640",
+          "notes": "Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% missing HP as damage.",
+            "notes": "Against Wild Pokémon: The additional damage from missing HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "282",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "640",
+          "notes": "Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% missing HP as damage.",
+            "notes": "Against Wild Pokémon: The additional damage from missing HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "formOrMode",
+    "stackCount",
+    "cooldownState",
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "currentHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode",
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "no-guard",
+      "name": "No Guard",
+      "originalDescription": "Honedge and Doublade do not gain the stat benefits of Stance Change. However, their boosted attack functions like Aegislash's Sword Stance boosted attack. Honedge and Doublade do not gain the stat benefits of Stance Change; their auto attacks act like Aegislash's Sword Forme auto attacks.",
+      "summary": "Honedge and Doublade do not gain the stat benefits of Stance Change. However, their boosted attack functions like Aegislash's Sword Stance boosted attack. Honedge and Doublade do not gain the stat benefits of Stance Change; their auto attacks act like Aegislash's Sword Forme auto attacks.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and reduce the cooldown of Sacred Sword and Shadow Claw when this attack hits. Every boosted attack consumes one boost count. Up to 4 boosted boosted attacks can be stored. When in Sword Forme: slashes at opposing Pokémon, damaging those hit. When in Shield Forme: rams at opposing Pokémon, damaging those hit. Becomes a boosted attack if the boost count is at 1 or more, consuming 1 boost count; the boosted attack changes based on the current Forme. The boost count caps at 4, and boosted attacks remain readied until used. As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits.",
+      "summary": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and redu",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "As a boosted attack in Sword Forme: pierces through the target, damaging opposing Pokémon hit. As a boosted attack in Shield Forme: slams into the target, damaging opposing Pokémon hit and stunning them for 0.1s; restores HP, and reduces the cooldown of Sacred Sword or Shadow Claw by 1s when it hits."
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Shield Stance)",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Healing - Boosted (Shield Stance)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and reduce the cooldown of Sacred Sword and Shadow Claw when this attack hits. Every boosted attack consumes one boost count. Up to 4 boosted boosted attacks can be stored.",
+      "summary": "Slash at enemies in front of Aegislash, dealing damage to them. If the boost count is one or more, basic attacks become a boosted attack. When in Blade Stance: pierce through enemies, dealing damage. When in Shield Stance: ram enemies, dealing damage and leaving them unable to act for a short time, restore HP, and redu",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Boosted (Sword Stance)",
+          "ratio": "135",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Additional) (Sword Stance)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals an additional 8.5% of the enemies Max HP as damage. ",
+            "notes": "Against Wild Pokemon: The additional damage from maximum HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "shadow-sneak",
+      "name": "Shadow Sneak",
+      "originalDescription": "Cast a shadow in the designated direction, dealing damage to enemies hit. After the shadow hits an enemy or travels its maximum distance, Aegislash warps to the shadow’s location, dealing damage to nearby enemies and increase boost count by 1. Casts a shadow toward the designated location, damaging opposing Pokémon hit. After hitting an opposing Pokémon or traveling maximum distance; warps to the shadow’s location, damaging opposing Pokémon at the location. Increases the boost count by 1 if the warp hits an opposing Pokémon.",
+      "summary": "Cast a shadow in the designated direction, dealing damage to enemies hit. After the shadow hits an enemy or travels its maximum distance, Aegislash warps to the shadow’s location, dealing damage to nearby enemies and increase boost count by 1. Casts a shadow toward the designated location, damaging opposing Pokémon hit",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - 2 Hits",
+          "ratio": "102",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "165",
+          "notes": "Increases the boost count by 1 if the warp hits an opposing Pokémon."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "iron-defense",
+      "name": "Iron Defense",
+      "originalDescription": "Envelops Aegislash in a powerful protective force for 1s. The protection disappears after blocking one attack or after 1s and then increases boost count by 1. Envelops the user in a powerful protective force for up to 3s, blocking the next attack. Increases the boost count by 1 when this move blocks an attack.",
+      "summary": "Envelops Aegislash in a powerful protective force for 1s. The protection disappears after blocking one attack or after 1s and then increases boost count by 1. Envelops the user in a powerful protective force for up to 3s, blocking the next attack. Increases the boost count by 1 when this move blocks an attack.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "coup-de-grace",
+      "name": "Coup de Grace",
+      "originalDescription": "Unleash a ground-splitting slash in the designated direction, dealing damage to enemies hit. The lower their remaining HP, the more damage this move deals. If this slash knocks out an enemy, boost count increases by 1. Becomes unstoppable and unleashes a ground-splitting slash in the designated direction, damaging opposing Pokémon in the line area of effect, dealing additional missing HP damage to those hit. Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Unleash a ground-splitting slash in the designated direction, dealing damage to enemies hit. The lower their remaining HP, the more damage this move deals. If this slash knocks out an enemy, boost count increases by 1. Becomes unstoppable and unleashes a ground-splitting slash in the designated direction, damaging oppo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "282",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "640",
+          "notes": "Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% missing HP as damage.",
+            "notes": "Against Wild Pokémon: The additional damage from missing HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "282",
+          "damageType": "Atk",
+          "levelScaling": "13",
+          "base": "640",
+          "notes": "Increases the boost count by 2 if this Unite Move knocks out an opposing Pokémon."
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% missing HP as damage.",
+            "notes": "Against Wild Pokémon: The additional damage from missing HP is capped at 1000."
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,686 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "blastoise",
+  "pokemonName": "Blastoise",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "When the Pokémon is at half HP or less, its Attack and Sp. Attack are increased. While at 50% max HP or below: increases Attack and Sp. Atk by 20%.",
+      "summary": "When the Pokémon is at half HP or less, its Attack and Sp. Attack are increased. While at 50% max HP or below: increases Attack and Sp. Atk by 20%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each. Becomes a boosted attack with every third attack, reducing the cooldowns of the user's moves by 1s; damaging opposing Pokémon 3 times over 0.2s, and decreasing their movement speed by 50% for 1s when hit. Boosted attacks used during Rapid Spin hit 3 times over 0.5s, do not reduce the cooldowns of the user's moves, nor decrease the movement speed of opposing Pokémon hit.",
+      "summary": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each. Becomes a boosted attack with every third attack, reducing the cooldowns of the user's moves by 1s; damaging opposing Pokémon 3 times over 0.2s, and decreasing their ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic/Rapid Spin Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Boosted attacks used during Rapid Spin hit 3 times over 0.5s, do not reduce the cooldowns of the user's moves, nor decrease the movement speed of opposing Pokémon hit."
+        },
+        "additional": [
+          {
+            "label": "Damage - Basic [Fully Evolved] (2x)",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When evolving into Blastoise, basic attacks hit once, but deals damage as 2 instances of 50% Attack.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each.",
+      "summary": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted/Rapid Spin Boosted (3x)",
+          "ratio": "24",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "110",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Attacks with a shot of water, shoving enemies and decreasing their movement speed for a short time. Shoots a jet of water in the designated direction after 0.2s, damaging opposing Pokémon hit, shoving them for 0.6s and decreasing their movement speed by 30% for 1s when hit. Opposing Pokémon hit before the jet of water reaches halfway are shoved the full distance; those hit beyond halfway are shoved a short distance instead.",
+      "summary": "Attacks with a shot of water, shoving enemies and decreasing their movement speed for a short time. Shoots a jet of water in the designated direction after 0.2s, damaging opposing Pokémon hit, shoving them for 0.6s and decreasing their movement speed by 30% for 1s when hit. Opposing Pokémon hit before the jet of water ",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "82",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "475",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "skull-bash",
+      "name": "Skull Bash",
+      "originalDescription": "Fiercely rams an opposing Pokémon and leaves it unable to act. Tucks in their head then dashes forward after 0.5s, damaging opposing Pokémon in the path and stunning them for 0.5s when it hits.",
+      "summary": "Fiercely rams an opposing Pokémon and leaves it unable to act. Tucks in their head then dashes forward after 0.5s, damaging opposing Pokémon in the path and stunning them for 0.5s when it hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "61",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "hydro-typhoon",
+      "name": "Hydro Typhoon",
+      "originalDescription": "Has the user spout water to attack while spinning, throwing enemies in a large area. This also grants the user a shield. Becomes unstoppable for 2s and gains a shield for 4s; shoots immense jets of water in a large circle around themself after 1.1s, damaging opposing Pokémon in the area of effect and throwing them for 1.5s when it hits. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Has the user spout water to attack while spinning, throwing enemies in a large area. This also grants the user a shield. Becomes unstoppable for 2s and gains a shield for 4s; shoots immense jets of water in a large circle around themself after 1.1s, damaging opposing Pokémon in the area of effect and throwing them for ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "164",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "1040",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "360",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "164",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "1040",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "360",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "maxHp",
+    "currentHp",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "When the Pokémon is at half HP or less, its Attack and Sp. Attack are increased. While at 50% max HP or below: increases Attack and Sp. Atk by 20%.",
+      "summary": "When the Pokémon is at half HP or less, its Attack and Sp. Attack are increased. While at 50% max HP or below: increases Attack and Sp. Atk by 20%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each. Becomes a boosted attack with every third attack, reducing the cooldowns of the user's moves by 1s; damaging opposing Pokémon 3 times over 0.2s, and decreasing their movement speed by 50% for 1s when hit. Boosted attacks used during Rapid Spin hit 3 times over 0.5s, do not reduce the cooldowns of the user's moves, nor decrease the movement speed of opposing Pokémon hit.",
+      "summary": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each. Becomes a boosted attack with every third attack, reducing the cooldowns of the user's moves by 1s; damaging opposing Pokémon 3 times over 0.2s, and decreasing their ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic/Rapid Spin Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Boosted attacks used during Rapid Spin hit 3 times over 0.5s, do not reduce the cooldowns of the user's moves, nor decrease the movement speed of opposing Pokémon hit."
+        },
+        "additional": [
+          {
+            "label": "Damage - Basic [Fully Evolved] (2x)",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When evolving into Blastoise, basic attacks hit once, but deals damage as 2 instances of 50% Attack.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each.",
+      "summary": "Blastoise’s third auto attack is empowered - dealing 3 instances of damage, slowing enemies hit and reducing Blastoise’s move cooldowns by 1 second each.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted/Rapid Spin Boosted (3x)",
+          "ratio": "24",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "110",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "Attacks with a shot of water, shoving enemies and decreasing their movement speed for a short time. Shoots a jet of water in the designated direction after 0.2s, damaging opposing Pokémon hit, shoving them for 0.6s and decreasing their movement speed by 30% for 1s when hit. Opposing Pokémon hit before the jet of water reaches halfway are shoved the full distance; those hit beyond halfway are shoved a short distance instead.",
+      "summary": "Attacks with a shot of water, shoving enemies and decreasing their movement speed for a short time. Shoots a jet of water in the designated direction after 0.2s, damaging opposing Pokémon hit, shoving them for 0.6s and decreasing their movement speed by 30% for 1s when hit. Opposing Pokémon hit before the jet of water ",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 0.2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "82",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "475",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "skull-bash",
+      "name": "Skull Bash",
+      "originalDescription": "Fiercely rams an opposing Pokémon and leaves it unable to act. Tucks in their head then dashes forward after 0.5s, damaging opposing Pokémon in the path and stunning them for 0.5s when it hits.",
+      "summary": "Fiercely rams an opposing Pokémon and leaves it unable to act. Tucks in their head then dashes forward after 0.5s, damaging opposing Pokémon in the path and stunning them for 0.5s when it hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "61",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "hydro-typhoon",
+      "name": "Hydro Typhoon",
+      "originalDescription": "Has the user spout water to attack while spinning, throwing enemies in a large area. This also grants the user a shield. Becomes unstoppable for 2s and gains a shield for 4s; shoots immense jets of water in a large circle around themself after 1.1s, damaging opposing Pokémon in the area of effect and throwing them for 1.5s when it hits. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "Has the user spout water to attack while spinning, throwing enemies in a large area. This also grants the user a shield. Becomes unstoppable for 2s and gains a shield for 4s; shoots immense jets of water in a large circle around themself after 1.1s, damaging opposing Pokémon in the area of effect and throwing them for ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "164",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "1040",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "360",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "164",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "1040",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "360",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2042 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "chandelure",
+  "pokemonName": "Chandelure",
+  "role": "C",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Novice",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "infiltrator",
+      "moveName": "Infiltrator",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "ember",
+      "moveName": "Ember",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "flamethrower",
+      "moveName": "Flamethrower",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Ember",
+      "isPlus": false,
+      "originalDescription": "Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s. The end of the blast explodes, dealing increased damage. If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown. Burns tick every 0.5s for 5 damage ticks.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "flamethrower-plus",
+      "moveName": "Flamethrower+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Flamethrower",
+      "isPlus": true,
+      "originalDescription": "If the explosion hits a Pokémon, Chandelure deals 20% increased damage for 3s. This effect also applies to the triggering explosion itself.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "overheat",
+      "moveName": "Overheat",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Ember",
+      "isPlus": false,
+      "originalDescription": "Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down. Pokémon in the area are hit and are left burned. The area may be aimed and changed during the use of this move. When one of the flames hits a Pokémon, the user gains one heat energy. If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned. The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively. After the follow-up attack, the user cannot use basic attacks for a short time. Burns tick every 0.5s for 5 damage ticks.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "overheat-plus",
+      "moveName": "Overheat+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Overheat",
+      "isPlus": true,
+      "originalDescription": "This move's cooldown is reduced by 1s.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "night-shade",
+      "moveName": "Night Shade",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "poltergeist",
+      "moveName": "Poltergeist",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Night Shade",
+      "isPlus": false,
+      "originalDescription": "Create a zone of mysterious power and mirages of floating furniture. Pokémon that come in contact with a mirage take damage. Pokémon that come in contact with a mirage or the edge of the zone are slowed by 65% decaying to a 40% slow over 1s. Then the 40% slow lingers for an additional second.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "poltergeist-plus",
+      "moveName": "Poltergeist+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Poltergeist",
+      "isPlus": true,
+      "originalDescription": "Increases the slow to 80% for 1s decaying to 50% for 1s.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "imprison",
+      "moveName": "Imprison",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Night Shade",
+      "isPlus": false,
+      "originalDescription": "Creates a zone in front of itself lasting 4s. The first enemy caught in the zone will be immobilized for 0.7s. Furthermore, all enemy Pokémon in the zone or enter the zone become imprisoned and cannot use Moves.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "imprison-plus",
+      "moveName": "Imprison+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Imprison",
+      "isPlus": true,
+      "originalDescription": "Changes the Imprison to briefly immobilize all Pokémon caught in the zone on creation.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "ignite-midnight",
+      "moveName": "Ignite Midnight",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled early.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Chandelure",
+      "pokemonId": "chandelure",
+      "sourceId": "ignite-midnight-unite-buff",
+      "moveName": "Ignite Midnight Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Ignite Midnight",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Infiltrator",
+      "sourceType": "passive",
+      "sourceId": "infiltrator",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Ember",
+      "sourceType": "initialMove",
+      "sourceId": "ember",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Flamethrower",
+      "sourceType": "moveChoice",
+      "sourceId": "flamethrower",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Ember"
+    },
+    {
+      "name": "Flamethrower+",
+      "sourceType": "movePlus",
+      "sourceId": "flamethrower-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Flamethrower"
+    },
+    {
+      "name": "Overheat",
+      "sourceType": "moveChoice",
+      "sourceId": "overheat",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Ember"
+    },
+    {
+      "name": "Overheat+",
+      "sourceType": "movePlus",
+      "sourceId": "overheat-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Overheat"
+    },
+    {
+      "name": "Night Shade",
+      "sourceType": "initialMove",
+      "sourceId": "night-shade",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Poltergeist",
+      "sourceType": "moveChoice",
+      "sourceId": "poltergeist",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Night Shade"
+    },
+    {
+      "name": "Poltergeist+",
+      "sourceType": "movePlus",
+      "sourceId": "poltergeist-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Poltergeist"
+    },
+    {
+      "name": "Imprison",
+      "sourceType": "moveChoice",
+      "sourceId": "imprison",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Night Shade"
+    },
+    {
+      "name": "Imprison+",
+      "sourceType": "movePlus",
+      "sourceId": "imprison-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Imprison"
+    },
+    {
+      "name": "Ignite Midnight",
+      "sourceType": "uniteMove",
+      "sourceId": "ignite-midnight",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Ignite Midnight Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "ignite-midnight-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Ignite Midnight"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "infiltrator",
+        "name": "Infiltrator",
+        "rawName": "Infiltrator",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+        "translatedDescription": "機械要約: Infiltrator は 防御・特防を変化させる、与ダメージを変化させる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack. This buff lasts 4s, can stack up to 6 times, and the duration refreshes when gaining a new stack.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "infiltrator__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "infiltrator__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "infiltrator__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When this Pokémon deals damage, receive a stacking buff that makes Special damage dealt by this Pokémon ignore 5% of Special Defense per stack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__infiltrator",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+        "translatedDescription": "機械要約: Attack は やけどを付与する、移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Gains a Boosted Attack every 5s, dealing increased damage, slowing enemies by 30% for 2s and burning enemies hit for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Burns tick every 0.5s and on application for 6 damage ticks. Burns tick every 0.5s for 5 damage ticks.",
+        "translatedDescription": "機械要約: Attack Boosted は やけどを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "140",
+            "trueDescription": "Burns tick every 0.5s and on application for 6 damage ticks.",
+            "notes": "Burns tick every 0.5s for 5 damage ticks."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s and on application for 6 damage ticks.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Burns tick every 0.5s and on application for 6 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Boosted",
+              "ratio": "33",
+              "damageType": "SpAtk",
+              "levelScaling": "13",
+              "base": "140",
+              "trueDescription": "Burns tick every 0.5s and on application for 6 damage ticks.",
+              "notes": "Burns tick every 0.5s for 5 damage ticks."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (5 Ticks)",
+              "ratio": "6",
+              "damageType": "SpAtk",
+              "levelScaling": "2",
+              "base": "20",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s and on application for 6 damage ticks.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Burns tick every 0.5s and on application for 6 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "ember",
+        "name": "Ember",
+        "rawName": "Ember",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown. Burns tick every 0.5s for 5 damage ticks.",
+        "translatedDescription": "機械要約: Ember は やけどを付与する、移動速度を下げる、継続ダメージを与える、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "44",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "290",
+            "trueDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown.",
+            "notes": "Burns tick every 0.5s for 5 damage ticks."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ember__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ember__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ember__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "44",
+              "damageType": "SpAtk",
+              "levelScaling": "13",
+              "base": "290",
+              "trueDescription": "Shoot out a small flame, dealing damage to Pokémon it hits, slowing them by 30% for 2s and leaving them burned for 2.5s. After the first cast, this move may be used again within 5s before going on full cooldown.",
+              "notes": "Burns tick every 0.5s for 5 damage ticks."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (5 Ticks)",
+              "ratio": "6",
+              "damageType": "SpAtk",
+              "levelScaling": "2",
+              "base": "20",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s for 5 damage ticks.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Burns tick every 0.5s for 5 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ember__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After the first cast, this move may be used again within 5s before going on full cooldown.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: After the first cast, this move may be used again within 5s before going on full cooldown.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__ember",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "flamethrower",
+        "name": "Flamethrower",
+        "rawName": "Flamethrower",
+        "parentName": "Ember",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s. The end of the blast explodes, dealing increased damage. If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown. Burns tick every 0.5s for 5 damage ticks.",
+        "translatedDescription": "機械要約: Flamethrower は やけどを付与する、待ち時間を短縮する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "578",
+            "trueDescription": "Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s. The end of the blast explodes, dealing increased damage. If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown.",
+            "notes": "Burns tick every 0.5s for 5 damage ticks."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (Explosion)",
+            "ratio": "160",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "756",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flamethrower__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flamethrower__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flamethrower__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "120",
+              "damageType": "SpAtk",
+              "levelScaling": "8",
+              "base": "578",
+              "trueDescription": "Shoot an intense blast of fire in the designated direction, dealing damage to Pokémon and leaving them burned for 2.5s. The end of the blast explodes, dealing increased damage. If the explosion hits a Pokémon, this move's cooldown is reduced by 65% of its current cooldown.",
+              "notes": "Burns tick every 0.5s for 5 damage ticks."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (5 Ticks)",
+              "ratio": "6",
+              "damageType": "SpAtk",
+              "levelScaling": "2",
+              "base": "20",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage (Explosion)",
+              "ratio": "160",
+              "damageType": "SpAtk",
+              "levelScaling": "26",
+              "base": "756",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s for 5 damage ticks.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Burns tick every 0.5s for 5 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__flamethrower",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "flamethrower-plus",
+        "name": "Flamethrower+",
+        "rawName": "Flamethrower",
+        "parentName": "Flamethrower",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "If the explosion hits a Pokémon, Chandelure deals 20% increased damage for 3s. This effect also applies to the triggering explosion itself.",
+        "translatedDescription": "機械要約: Flamethrower+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "If the explosion hits a Pokémon, Chandelure deals 20% increased damage for 3s. This effect also applies to the triggering explosion itself.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__flamethrower-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "overheat",
+        "name": "Overheat",
+        "rawName": "Overheat",
+        "parentName": "Ember",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down. Pokémon in the area are hit and are left burned. The area may be aimed and changed during the use of this move. When one of the flames hits a Pokémon, the user gains one heat energy. If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned. The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively. After the follow-up attack, the user cannot use basic attacks for a short time. Burns tick every 0.5s for 5 damage ticks.",
+        "translatedDescription": "機械要約: Overheat は やけどを付与する、相手を打ち上げる、待ち時間を短縮する、継続ダメージを与える、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "67",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "280",
+            "trueDescription": "Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down. Pokémon in the area are hit and are left burned. The area may be aimed and changed during the use of this move. When one of the flames hits a Pokémon, the user gains one heat energy. If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned. The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively. After the follow-up attack, the user cannot use basic attacks for a short time.",
+            "notes": "Burns tick every 0.5s for 5 damage ticks."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "6",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Exploding Flame level 0",
+            "ratio": "33",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Exploding Flame level 1",
+            "ratio": "66",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add4",
+            "label": "Exploding Flame level 2",
+            "ratio": "99",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add5",
+            "label": "Exploding Flame level 3",
+            "ratio": "132",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "560",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "overheat__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s for 5 damage ticks.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Burns tick every 0.5s for 5 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "overheat__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "overheat__03__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "overheat__04__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "67",
+              "damageType": "SpAtk",
+              "levelScaling": "29",
+              "base": "280",
+              "trueDescription": "Throws consecutive flames in an arc into designated areas up to 3 times by holding the move input down. Pokémon in the area are hit and are left burned. The area may be aimed and changed during the use of this move. When one of the flames hits a Pokémon, the user gains one heat energy. If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned. The exploding flame hitting with 0, 1 or 2 heat energy reduces the cooldown of this move by 75%, 50% or 30% respectively. After the follow-up attack, the user cannot use basic attacks for a short time.",
+              "notes": "Burns tick every 0.5s for 5 damage ticks."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (5 Ticks)",
+              "ratio": "6",
+              "damageType": "SpAtk",
+              "levelScaling": "2",
+              "base": "20",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Exploding Flame level 0",
+              "ratio": "33",
+              "damageType": "SpAtk",
+              "levelScaling": "13",
+              "base": "140",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Exploding Flame level 1",
+              "ratio": "66",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "280",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add4",
+              "label": "Exploding Flame level 2",
+              "ratio": "99",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "420",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add5",
+              "label": "Exploding Flame level 3",
+              "ratio": "132",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "560",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Burns tick every 0.5s for 5 damage ticks.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Burns tick every 0.5s for 5 damage ticks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "overheat__05__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move is used again, an exploding flame is shot out, dealing damage to Pokémon based on the heat energy and leaves them burned.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__overheat",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "overheat-plus",
+        "name": "Overheat+",
+        "rawName": "Overheat",
+        "parentName": "Overheat",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "This move's cooldown is reduced by 1s.",
+        "translatedDescription": "機械要約: Overheat+ は 待ち時間を短縮する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "This move's cooldown is reduced by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "overheat-plus__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move's cooldown is reduced by 1s.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: This move's cooldown is reduced by 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__overheat-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "night-shade",
+        "name": "Night Shade",
+        "rawName": "Night Shade",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+        "translatedDescription": "機械要約: Night Shade は 行動不能・スタンを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "18",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "120",
+            "trueDescription": "Makes Pokémon in the area of effect see a frightening mirage, dealing damage to them and marking them. When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "night-shade__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-shade__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When Chandelure deals damage again to the marked Pokémon, the marked Pokémon are stunned for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__night-shade",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "poltergeist",
+        "name": "Poltergeist",
+        "rawName": "Poltergeist",
+        "parentName": "Night Shade",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Create a zone of mysterious power and mirages of floating furniture. Pokémon that come in contact with a mirage take damage. Pokémon that come in contact with a mirage or the edge of the zone are slowed by 65% decaying to a 40% slow over 1s. Then the 40% slow lingers for an additional second.",
+        "translatedDescription": "機械要約: Poltergeist は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "39",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "180",
+            "trueDescription": "Create a zone of mysterious power and mirages of floating furniture.  Pokémon that come in contact with a mirage take damage.  Pokémon that come in contact with a mirage or the edge of the zone are slowed by 65% decaying to a 40% slow over 1s. Then the 40% slow lingers for an additional second.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "poltergeist__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pokémon that come in contact with a mirage or the edge of the zone are slowed by 65% decaying to a 40% slow over 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Pokémon that come in contact with a mirage or the edge of the zone are slowed by 65% decaying to a 40% slow over 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__poltergeist",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "poltergeist-plus",
+        "name": "Poltergeist+",
+        "rawName": "Poltergeist",
+        "parentName": "Poltergeist",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the slow to 80% for 1s decaying to 50% for 1s.",
+        "translatedDescription": "機械要約: Poltergeist+ は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the slow to 80% for 1s decaying to 50% for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "poltergeist-plus__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the slow to 80% for 1s decaying to 50% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Increases the slow to 80% for 1s decaying to 50% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__poltergeist-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "imprison",
+        "name": "Imprison",
+        "rawName": "Imprison",
+        "parentName": "Night Shade",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Creates a zone in front of itself lasting 4s. The first enemy caught in the zone will be immobilized for 0.7s. Furthermore, all enemy Pokémon in the zone or enter the zone become imprisoned and cannot use Moves.",
+        "translatedDescription": "機械要約: Imprison は 移動不能を付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Creates a zone in front of itself lasting 4s. The first enemy caught in the zone will be immobilized for 0.7s. Furthermore, all enemy Pokémon in the zone or enter the zone become imprisoned and cannot use Moves. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "imprison__01__immobilize",
+          "effectType": "immobilize",
+          "summary": "移動不能を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The first enemy caught in the zone will be immobilized for 0.7s.",
+          "codexInterpretation": "移動不能を付与する。 原文証拠: The first enemy caught in the zone will be immobilized for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__imprison",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "imprison-plus",
+        "name": "Imprison+",
+        "rawName": "Imprison",
+        "parentName": "Imprison",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Changes the Imprison to briefly immobilize all Pokémon caught in the zone on creation.",
+        "translatedDescription": "機械要約: Imprison+ は 移動不能を付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Changes the Imprison to briefly immobilize all Pokémon caught in the zone on creation.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "imprison-plus__01__immobilize",
+          "effectType": "immobilize",
+          "summary": "移動不能を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Changes the Imprison to briefly immobilize all Pokémon caught in the zone on creation.",
+          "codexInterpretation": "移動不能を付与する。 原文証拠: Changes the Imprison to briefly immobilize all Pokémon caught in the zone on creation.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__imprison-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "ignite-midnight",
+        "name": "Ignite Midnight",
+        "rawName": "Ignite Midnight",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled early.",
+        "translatedDescription": "機械要約: Ignite Midnight は 再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (6x)",
+            "ratio": "56",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "270",
+            "trueDescription": "Reduce the vision of enemies around itself by 30% for 3s. If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits. The beam may be redirected while firing and its final blast deals increased damage. Ignite Midnight can be cancelled early.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Final Blast Damage",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "405",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ignite-midnight__01__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this Unite Move is used again, Chandelure continuously fires a beam of fire in a designated direction, dealing damage to Pokémon it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__ignite-midnight",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "ignite-midnight-unite-buff",
+        "name": "Ignite Midnight Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Ignite Midnight",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Ignite Midnight Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ignite-midnight-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ignite-midnight-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "chandelure__ignite-midnight-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 29,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

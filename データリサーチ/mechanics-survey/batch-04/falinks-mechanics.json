@@ -1,0 +1,617 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "falinks",
+  "pokemonName": "Falinks",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "battle-armor",
+      "name": "Battle Armor",
+      "originalDescription": "The critical-hit modifier of enemies is reduced by 50% when dealing damage to Falinks. Falinks can hold 10 more Aeos Energy than other Pokémon. Falinks is a group comprised of the Brass and five Troopers. Each member of the group has a separate hitbox and counts as a different target. The Brass always takes 10% reduced damage. Troopers will take 90% less damage while attached to the Brass. For attacks or moves that can hit multiple targets, the total damage Falinks can take from a single move or attack is 110% of that move or attack's damage.",
+      "summary": "The critical-hit modifier of enemies is reduced by 50% when dealing damage to Falinks. Falinks can hold 10 more Aeos Energy than other Pokémon. Falinks is a group comprised of the Brass and five Troopers. Each member of the group has a separate hitbox and counts as a different target. The Brass always takes 10% reduced",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, or after the user uses Tackle, Megahorn, or Iron Head. Boosted attacks also apply a 50% slow for 1s to opposing Pokémon they hit. When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s",
+      "summary": "Becomes a boosted attack with every third attack, or after the user uses Tackle, Megahorn, or Iron Head. Boosted attacks also apply a 50% slow for 1s to opposing Pokémon they hit. When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charge in the designated direction, dealing damage to enemies hit and shoving them. The user's next basic attack becomes a boosted attack.",
+      "summary": "Charge in the designated direction, dealing damage to enemies hit and shoving them. The user's next basic attack becomes a boosted attack.",
+      "trigger": "Move 1",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulk-up",
+      "name": "Bulk Up",
+      "originalDescription": "Increases the user's Defense, Special Defense and Attack Speed by 25%, and Attack by 30% for 3s",
+      "summary": "Increases the user's Defense, Special Defense and Attack Speed by 25%, and Attack by 30% for 3s",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dust-devil-formation",
+      "name": "Dust Devil Formation",
+      "originalDescription": "Has the five troopers run continuously around the Brass at great speed for 5s, dealing damage and slowing enemies hit by 20% for 1s. Falinks is unstoppable during the formation change for 0.25s. While this move is being used, damage taken by the troopers is reduced. While in Dust Devil formation the Troopers take 30% less damage making the Trooper's total damage reduction 93%. Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Has the five troopers run continuously around the Brass at great speed for 5s, dealing damage and slowing enemies hit by 20% for 1s. Falinks is unstoppable during the formation change for 0.25s. While this move is being used, damage taken by the troopers is reduced. While in Dust Devil formation the Troopers take 30% l",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Per Hit)",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "110",
+          "notes": "Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Per Hit)",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "110",
+          "notes": "Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "battle-armor",
+      "name": "Battle Armor",
+      "originalDescription": "The critical-hit modifier of enemies is reduced by 50% when dealing damage to Falinks. Falinks can hold 10 more Aeos Energy than other Pokémon. Falinks is a group comprised of the Brass and five Troopers. Each member of the group has a separate hitbox and counts as a different target. The Brass always takes 10% reduced damage. Troopers will take 90% less damage while attached to the Brass. For attacks or moves that can hit multiple targets, the total damage Falinks can take from a single move or attack is 110% of that move or attack's damage.",
+      "summary": "The critical-hit modifier of enemies is reduced by 50% when dealing damage to Falinks. Falinks can hold 10 more Aeos Energy than other Pokémon. Falinks is a group comprised of the Brass and five Troopers. Each member of the group has a separate hitbox and counts as a different target. The Brass always takes 10% reduced",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "criticalRateChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, or after the user uses Tackle, Megahorn, or Iron Head. Boosted attacks also apply a 50% slow for 1s to opposing Pokémon they hit. When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s",
+      "summary": "Becomes a boosted attack with every third attack, or after the user uses Tackle, Megahorn, or Iron Head. Boosted attacks also apply a 50% slow for 1s to opposing Pokémon they hit. When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "When a boosted attack hits, the cooldown of Tackle, Megahorn, or Iron Head is reduced by 2.5s"
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tackle",
+      "name": "Tackle",
+      "originalDescription": "Charge in the designated direction, dealing damage to enemies hit and shoving them. The user's next basic attack becomes a boosted attack.",
+      "summary": "Charge in the designated direction, dealing damage to enemies hit and shoving them. The user's next basic attack becomes a boosted attack.",
+      "trigger": "Move 1",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "200",
+          "damageType": "Atk",
+          "levelScaling": "15",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bulk-up",
+      "name": "Bulk Up",
+      "originalDescription": "Increases the user's Defense, Special Defense and Attack Speed by 25%, and Attack by 30% for 3s",
+      "summary": "Increases the user's Defense, Special Defense and Attack Speed by 25%, and Attack by 30% for 3s",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dust-devil-formation",
+      "name": "Dust Devil Formation",
+      "originalDescription": "Has the five troopers run continuously around the Brass at great speed for 5s, dealing damage and slowing enemies hit by 20% for 1s. Falinks is unstoppable during the formation change for 0.25s. While this move is being used, damage taken by the troopers is reduced. While in Dust Devil formation the Troopers take 30% less damage making the Trooper's total damage reduction 93%. Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits. Unite buffs: 30% Movement Speed, 30% Max HP Shield",
+      "summary": "Has the five troopers run continuously around the Brass at great speed for 5s, dealing damage and slowing enemies hit by 20% for 1s. Falinks is unstoppable during the formation change for 0.25s. While this move is being used, damage taken by the troopers is reduced. While in Dust Devil formation the Troopers take 30% l",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Per Hit)",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "110",
+          "notes": "Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Per Hit)",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "10",
+          "base": "110",
+          "notes": "Moving counter to the rotation of the troopers will grant more hits against that target, and moving along the rotation will reduce the number of hits."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

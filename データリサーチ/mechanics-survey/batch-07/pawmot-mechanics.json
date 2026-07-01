@@ -1,0 +1,707 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "pawmot",
+  "pokemonName": "Pawmot",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "iron-fist",
+      "name": "Iron Fist",
+      "originalDescription": "After this Pokémon hits with a move, the next auto attack will be enhanced, dealing increased damage and restoring the user's HP. Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attack speed by 30% for 8 seconds. This effect can stack up to 2 times and the duration refreshes when gaining another stack.",
+      "summary": "After this Pokémon hits with a move, the next auto attack will be enhanced, dealing increased damage and restoring the user's HP. Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attac",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Enhanced Auto",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attack speed by 30% for 8 seconds. This effect can stack up to 2 times and the duration refreshes when gaining another stack."
+        },
+        "additional": [
+          {
+            "label": "Damage - Enhanced Auto (Fighter Mode)",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Heal",
+            "ratio": "76",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "88",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "nuzzle",
+      "name": "Nuzzle",
+      "originalDescription": "The user nuzzles their electrified cheeks against the designated opposing Pokémon, dealing damage and leaving them paralyzed. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% for 2s and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "The user nuzzles their electrified cheeks against the designated opposing Pokémon, dealing damage and leaving them paralyzed. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% for 2s and their basic attack speed is decreased by 10% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "scratch",
+      "name": "Scratch",
+      "originalDescription": "The user attacks a designated opposing Pokémon with sharp claws, dealing damage.",
+      "summary": "The user attacks a designated opposing Pokémon with sharp claws, dealing damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "18",
+          "base": "250",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "zip-zap-full-charge-spark",
+      "name": "Zip Zap Full-Charge Spark",
+      "originalDescription": "Charge toward the designated Pokémon from the opposing team, dealing damage to the target and nearby opposing Pokémon. After using this move, the user enters Fighter Mode for 8s and resets the cooldown of all other moves. The Unite Move gauge will only charge when the user's basic attacks and moves hit opposing Pokémon. Basic Attacks against Pokémon from the opposing team increase Unite Move gauge by 4% and moves increase the gauge by 8%. Basic Attacks against wild Pokémon increase Unite Move gauge by 1% and moves increase the gauge by 2%. Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active. Unite buffs: 50% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Charge toward the designated Pokémon from the opposing team, dealing damage to the target and nearby opposing Pokémon. After using this move, the user enters Fighter Mode for 8s and resets the cooldown of all other moves. The Unite Move gauge will only charge when the user's basic attacks and moves hit opposing Pokémon",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "302",
+          "damageType": "Atk",
+          "levelScaling": "36",
+          "base": "504",
+          "notes": "Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "302",
+          "damageType": "Atk",
+          "levelScaling": "36",
+          "base": "504",
+          "notes": "Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "formOrMode",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "iron-fist",
+      "name": "Iron Fist",
+      "originalDescription": "After this Pokémon hits with a move, the next auto attack will be enhanced, dealing increased damage and restoring the user's HP. Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attack speed by 30% for 8 seconds. This effect can stack up to 2 times and the duration refreshes when gaining another stack.",
+      "summary": "After this Pokémon hits with a move, the next auto attack will be enhanced, dealing increased damage and restoring the user's HP. Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attac",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Enhanced Auto",
+          "ratio": "160",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "Fighter Mode: After this Pokémon hits with a move, the next auto attack will be enhanced. The user lunges towards the target Pokémon, dealing increased damage and increasing the user's attack speed by 30% for 8 seconds. This effect can stack up to 2 times and the duration refreshes when gaining another stack."
+        },
+        "additional": [
+          {
+            "label": "Damage - Enhanced Auto (Fighter Mode)",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Heal",
+            "ratio": "76",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "88",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, lunging at an opposing Pokémon and dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "nuzzle",
+      "name": "Nuzzle",
+      "originalDescription": "The user nuzzles their electrified cheeks against the designated opposing Pokémon, dealing damage and leaving them paralyzed. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% for 2s and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "The user nuzzles their electrified cheeks against the designated opposing Pokémon, dealing damage and leaving them paralyzed. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% for 2s and their basic attack speed is decreased by 10% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "12",
+          "base": "160",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "scratch",
+      "name": "Scratch",
+      "originalDescription": "The user attacks a designated opposing Pokémon with sharp claws, dealing damage.",
+      "summary": "The user attacks a designated opposing Pokémon with sharp claws, dealing damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "180",
+          "damageType": "Atk",
+          "levelScaling": "18",
+          "base": "250",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "zip-zap-full-charge-spark",
+      "name": "Zip Zap Full-Charge Spark",
+      "originalDescription": "Charge toward the designated Pokémon from the opposing team, dealing damage to the target and nearby opposing Pokémon. After using this move, the user enters Fighter Mode for 8s and resets the cooldown of all other moves. The Unite Move gauge will only charge when the user's basic attacks and moves hit opposing Pokémon. Basic Attacks against Pokémon from the opposing team increase Unite Move gauge by 4% and moves increase the gauge by 8%. Basic Attacks against wild Pokémon increase Unite Move gauge by 1% and moves increase the gauge by 2%. Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active. Unite buffs: 50% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Charge toward the designated Pokémon from the opposing team, dealing damage to the target and nearby opposing Pokémon. After using this move, the user enters Fighter Mode for 8s and resets the cooldown of all other moves. The Unite Move gauge will only charge when the user's basic attacks and moves hit opposing Pokémon",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "302",
+          "damageType": "Atk",
+          "levelScaling": "36",
+          "base": "504",
+          "notes": "Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "302",
+          "damageType": "Atk",
+          "levelScaling": "36",
+          "base": "504",
+          "notes": "Fighter Mode: Basic attacks and move effects change, and the Unite Move gauge does not charge. Gain 30% omni-vamp while Fighter Mode is active."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

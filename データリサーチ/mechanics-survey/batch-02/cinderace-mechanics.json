@@ -1,0 +1,773 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "cinderace",
+  "pokemonName": "Cinderace",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchCinderace"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch",
+      "notes": "Existing local research file used as format and status reference where applicable."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When using a move, the next basic attack becomes a boosted attack. When hitting an enemy with a basic attack or move, a cinder is placed on that enemy. Attacking a cindered enemy a certain number of times will cause the cinder to flare, dealing damage to the enemy. When at half HP or less, critical-hit rate is increased by 10% and basic attack speed is increased by 20% for a short time. When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD). When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target.",
+      "summary": "When using a move, the next basic attack becomes a boosted attack. When hitting an enemy with a basic attack or move, a cinder is placed on that enemy. Attacking a cindered enemy a certain number of times will cause the cinder to flare, dealing damage to the enemy. When at half HP or less, critical-hit rate is increase",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold",
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Flare",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "25",
+          "notes": "When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Flare (Additional)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "0.7% Enemy Max HP x (Level - 1)",
+            "notes": "Against Wild Pokémon: The total damage is capped at 500."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capp",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot out a small flame, dealing damage to enemies, leaving them burned and decreasing their Attack for a short time. Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s.",
+      "summary": "Shoot out a small flame, dealing damage to enemies, leaving them burned and decreasing their Attack for a short time. Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "115",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "155",
+          "notes": "The Attack and Sp. Atk of the burned target are decreased by 5% for 2s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3x)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "low-sweep",
+      "name": "Low Sweep",
+      "originalDescription": "Make a swift low sweep in the designated direction, dealing damage to any enemy it hits. Dashes forward with a low sweep, damaging opposing Pokémon in their path.",
+      "summary": "Make a swift low sweep in the designated direction, dealing damage to any enemy it hits. Dashes forward with a low sweep, damaging opposing Pokémon in their path.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "36",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "blazing-bicycle-kick",
+      "name": "Blazing Bicycle Kick",
+      "originalDescription": "Create a giant ball of flame and kick it toward the designated location. The ball releases a fierce shock wave that deals damage to enemies in the area of effect. Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits. Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon. The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit; and increasing movement speed by 10% for 5s when this Unite Move hits. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Create a giant ball of flame and kick it toward the designated location. The ball releases a fierce shock wave that deals damage to enemies in the area of effect. Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits. Becomes unstoppable and kicks up a giant ball of flame, then kicks it",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "247",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "670",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "247",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "670",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "maxHp",
+    "currentHp",
+    "dotTimer",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When using a move, the next basic attack becomes a boosted attack. When hitting an enemy with a basic attack or move, a cinder is placed on that enemy. Attacking a cindered enemy a certain number of times will cause the cinder to flare, dealing damage to the enemy. When at half HP or less, critical-hit rate is increased by 10% and basic attack speed is increased by 20% for a short time. When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD). When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target.",
+      "summary": "When using a move, the next basic attack becomes a boosted attack. When hitting an enemy with a basic attack or move, a cinder is placed on that enemy. Attacking a cindered enemy a certain number of times will cause the cinder to flare, dealing damage to the enemy. When at half HP or less, critical-hit rate is increase",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold",
+        "next-normal-attack-ready"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Flare",
+          "ratio": "90",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "25",
+          "notes": "When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target."
+        },
+        "additional": [
+          {
+            "label": "Damage - Flare (Additional)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "0.7% Enemy Max HP x (Level - 1)",
+            "notes": "Against Wild Pokémon: The total damage is capped at 500."
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack or after using a move, dealing increased damage. Boosted attacks remain readied until used. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capp",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1300."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "140",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot out a small flame, dealing damage to enemies, leaving them burned and decreasing their Attack for a short time. Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s.",
+      "summary": "Shoot out a small flame, dealing damage to enemies, leaving them burned and decreasing their Attack for a short time. Shoots a small flame at the designated opposing Pokémon, damaging the target and burning them for 3s (dealing damage 3 times). The Attack and Sp. Atk of the burned target are decreased by 5% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "115",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "155",
+          "notes": "The Attack and Sp. Atk of the burned target are decreased by 5% for 2s."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (3x)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "low-sweep",
+      "name": "Low Sweep",
+      "originalDescription": "Make a swift low sweep in the designated direction, dealing damage to any enemy it hits. Dashes forward with a low sweep, damaging opposing Pokémon in their path.",
+      "summary": "Make a swift low sweep in the designated direction, dealing damage to any enemy it hits. Dashes forward with a low sweep, damaging opposing Pokémon in their path.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "36",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "blazing-bicycle-kick",
+      "name": "Blazing Bicycle Kick",
+      "originalDescription": "Create a giant ball of flame and kick it toward the designated location. The ball releases a fierce shock wave that deals damage to enemies in the area of effect. Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits. Becomes unstoppable and kicks up a giant ball of flame, then kicks it toward the location of the designated opposing Pokémon. The ball releases a fierce shock wave upon impact, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage to those hit; and increasing movement speed by 10% for 5s when this Unite Move hits. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Create a giant ball of flame and kick it toward the designated location. The ball releases a fierce shock wave that deals damage to enemies in the area of effect. Also increases movement speed by 10% (stacks with the Unite Buffs) for 5s when it hits. Becomes unstoppable and kicks up a giant ball of flame, then kicks it",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "247",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "670",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "247",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "670",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "14% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchCinderace"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,2190 @@
+{
+  "schemaVersion": "research-1.0",
+  "_labelJa": "エースバーン研究用データ",
+  "researchDate": "2026-06-21",
+  "finalDecisionMade": false,
+  "statusDefinitions": {
+    "candidate": "出典がある採用候補。人間による最終確認前",
+    "confirmed": "公式の具体値またはゲーム内検証で確認済み",
+    "conflict": "複数の候補値が食い違っている",
+    "unknown": "根拠のある値を特定できていない"
+  },
+  "sources": {
+    "officialPokemon": {
+      "_labelJa": "公式エースバーン紹介",
+      "sourceUrl": "https://unite.pokemon.com/en-us/pokemon/cinderace/",
+      "sourceType": "official"
+    },
+    "officialPatch20260305": {
+      "_labelJa": "2026年3月5日公式調整候補",
+      "sourceUrl": "https://wikiwiki.jp/poke-unite/%E3%82%A2%E3%83%83%E3%83%97%E3%83%87%E3%83%BC%E3%83%88%E6%83%85%E5%A0%B1/5%E5%B9%B4%E7%9B%AE",
+      "sourceType": "patchSummaryViaWikiWiki",
+      "notes": "WikiWikiのアップデート履歴から参照。公式ページの個別URLは未整理。"
+    },
+    "uniteDbPokemon": {
+      "_labelJa": "Unite-DB技データ",
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase"
+    },
+    "uniteDbStats": {
+      "_labelJa": "Unite-DBステータスデータ",
+      "sourceUrl": "https://unite-db.com/stats.json",
+      "sourceType": "unofficialDatabase"
+    },
+    "wikiwiki": {
+      "_labelJa": "WikiWikiエースバーン情報",
+      "sourceUrl": "https://wikiwiki.jp/poke-unite/%E3%82%A8%E3%83%BC%E3%82%B9%E3%83%90%E3%83%BC%E3%83%B3",
+      "sourceType": "unofficialWiki"
+    },
+    "fandom": {
+      "_labelJa": "Fandomエースバーン情報",
+      "sourceUrl": "https://pokemonunite.fandom.com/wiki/Cinderace",
+      "sourceType": "unofficialWiki"
+    },
+    "localPokemonData": {
+      "_labelJa": "現在のアプリ内データ",
+      "sourceUrl": "local://js/pokemonData.js",
+      "sourceType": "localData"
+    }
+  },
+  "pokemon": {
+    "id": "cinderace",
+    "_labelJa": "エースバーン",
+    "identity": {
+      "_labelJa": "基本情報",
+      "name": {
+        "value": {
+          "ja": "エースバーン",
+          "en": "Cinderace"
+        },
+        "status": "candidate",
+        "sources": [
+          "officialPokemon",
+          "wikiwiki",
+          "fandom"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": false,
+        "approvedForApp": false
+      },
+      "battleStyle": {
+        "value": {
+          "role": "Attacker",
+          "range": "Ranged",
+          "damageType": "Physical",
+          "difficulty": "Novice"
+        },
+        "status": "candidate",
+        "sources": [
+          "officialPokemon",
+          "uniteDbPokemon",
+          "wikiwiki"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": false,
+        "approvedForApp": false
+      },
+      "evolution": {
+        "value": [
+          {
+            "name": "Scorbunny",
+            "level": 1
+          },
+          {
+            "name": "Raboot",
+            "level": 5
+          },
+          {
+            "name": "Cinderace",
+            "level": 7
+          }
+        ],
+        "status": "candidate",
+        "sources": [
+          "officialPokemon",
+          "uniteDbPokemon",
+          "wikiwiki"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": false,
+        "approvedForApp": false
+      },
+      "sourcePatch": {
+        "value": "unknown",
+        "status": "unknown",
+        "sources": [
+          "uniteDbPokemon",
+          "uniteDbStats",
+          "officialPatch20260305"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": false,
+        "approvedForApp": false,
+        "notes": "Unite-DBのlast_updatedはあるが、各式がどの公式パッチに対応するかは未確定。"
+      }
+    },
+    "statsByLevel": {
+      "_labelJa": "レベル別ステータス",
+      "status": "confirmed",
+      "sources": [
+        "uniteDbStats",
+        "wikiwiki",
+        "localPokemonData"
+      ],
+      "verifiedByHuman": false,
+      "approvedForApp": true,
+      "appMigration": {
+        "status": "partial",
+        "targetFile": "local://js/pokemonData.js",
+        "migratedFields": [
+          "hp",
+          "attack",
+          "defense",
+          "spAttack",
+          "spDefense",
+          "criticalRate"
+        ],
+        "notMigratedFields": [
+          "lifesteal",
+          "attackSpeed",
+          "moveSpeed",
+          "penetration"
+        ],
+        "updatedAt": "2026-06-22",
+        "notes": "現行アプリで使用している基本ステータスのみpokemonData.jsへ移行済み。未使用ステータスは研究データ側に残す。"
+      },
+      "notes": "ステータスはUnite-DB statsを完全に信用してconfirmed扱いにする。ゲーム内検証は行わない。pokemonData.jsへ基本ステータスを移行済み。",
+      "fieldLabels": {
+        "hp": "HP",
+        "attack": "攻撃",
+        "defense": "防御",
+        "spAttack": "特攻",
+        "spDefense": "特防",
+        "criticalRate": "基礎急所率（％）",
+        "lifesteal": "ライフスティール（％）",
+        "attackSpeed": "攻撃速度",
+        "moveSpeed": "移動速度",
+        "penetration": "防御無視"
+      },
+      "values": {
+        "1": {
+          "hp": 3000,
+          "attack": 135,
+          "defense": 50,
+          "spAttack": 20,
+          "spDefense": 30,
+          "criticalRate": 0,
+          "lifesteal": 0,
+          "attackSpeed": 10,
+          "moveSpeed": 3650,
+          "penetration": 0
+        },
+        "2": {
+          "hp": 3043,
+          "attack": 140,
+          "defense": 53,
+          "spAttack": 21,
+          "spDefense": 33,
+          "criticalRate": 0,
+          "lifesteal": 0,
+          "attackSpeed": 11.87,
+          "moveSpeed": 3650,
+          "penetration": 0
+        },
+        "3": {
+          "hp": 3095,
+          "attack": 145,
+          "defense": 57,
+          "spAttack": 23,
+          "spDefense": 36,
+          "criticalRate": 0,
+          "lifesteal": 0,
+          "attackSpeed": 14.11,
+          "moveSpeed": 3650,
+          "penetration": 0
+        },
+        "4": {
+          "hp": 3157,
+          "attack": 151,
+          "defense": 62,
+          "spAttack": 25,
+          "spDefense": 40,
+          "criticalRate": 0,
+          "lifesteal": 0,
+          "attackSpeed": 16.8,
+          "moveSpeed": 3650,
+          "penetration": 0
+        },
+        "5": {
+          "hp": 3382,
+          "attack": 174,
+          "defense": 78,
+          "spAttack": 32,
+          "spDefense": 55,
+          "criticalRate": 15,
+          "lifesteal": 5,
+          "attackSpeed": 26.53,
+          "moveSpeed": 3800,
+          "penetration": 0
+        },
+        "6": {
+          "hp": 3471,
+          "attack": 183,
+          "defense": 84,
+          "spAttack": 35,
+          "spDefense": 61,
+          "criticalRate": 15,
+          "lifesteal": 5,
+          "attackSpeed": 30.4,
+          "moveSpeed": 3800,
+          "penetration": 0
+        },
+        "7": {
+          "hp": 3878,
+          "attack": 221,
+          "defense": 114,
+          "spAttack": 49,
+          "spDefense": 88,
+          "criticalRate": 15,
+          "lifesteal": 5,
+          "attackSpeed": 48.04,
+          "moveSpeed": 3950,
+          "penetration": 0
+        },
+        "8": {
+          "hp": 4007,
+          "attack": 233,
+          "defense": 123,
+          "spAttack": 53,
+          "spDefense": 97,
+          "criticalRate": 15,
+          "lifesteal": 5,
+          "attackSpeed": 53.61,
+          "moveSpeed": 3950,
+          "penetration": 0
+        },
+        "9": {
+          "hp": 4161,
+          "attack": 247,
+          "defense": 134,
+          "spAttack": 58,
+          "spDefense": 107,
+          "criticalRate": 30,
+          "lifesteal": 10,
+          "attackSpeed": 60.3,
+          "moveSpeed": 4100,
+          "penetration": 0
+        },
+        "10": {
+          "hp": 4346,
+          "attack": 264,
+          "defense": 147,
+          "spAttack": 64,
+          "spDefense": 119,
+          "criticalRate": 30,
+          "lifesteal": 10,
+          "attackSpeed": 68.33,
+          "moveSpeed": 4100,
+          "penetration": 0
+        },
+        "11": {
+          "hp": 4568,
+          "attack": 284,
+          "defense": 163,
+          "spAttack": 71,
+          "spDefense": 134,
+          "criticalRate": 30,
+          "lifesteal": 10,
+          "attackSpeed": 77.96,
+          "moveSpeed": 4250,
+          "penetration": 0
+        },
+        "12": {
+          "hp": 4835,
+          "attack": 309,
+          "defense": 182,
+          "spAttack": 80,
+          "spDefense": 152,
+          "criticalRate": 30,
+          "lifesteal": 10,
+          "attackSpeed": 89.52,
+          "moveSpeed": 4250,
+          "penetration": 0
+        },
+        "13": {
+          "hp": 5155,
+          "attack": 339,
+          "defense": 206,
+          "spAttack": 91,
+          "spDefense": 175,
+          "criticalRate": 30,
+          "lifesteal": 15,
+          "attackSpeed": 103.39,
+          "moveSpeed": 4250,
+          "penetration": 0
+        },
+        "14": {
+          "hp": 5539,
+          "attack": 375,
+          "defense": 235,
+          "spAttack": 104,
+          "spDefense": 201,
+          "criticalRate": 30,
+          "lifesteal": 15,
+          "attackSpeed": 120.03,
+          "moveSpeed": 4250,
+          "penetration": 0
+        },
+        "15": {
+          "hp": 6000,
+          "attack": 418,
+          "defense": 268,
+          "spAttack": 119,
+          "spDefense": 232,
+          "criticalRate": 30,
+          "lifesteal": 15,
+          "attackSpeed": 140,
+          "moveSpeed": 4250,
+          "penetration": 0
+        }
+      },
+      "conflicts": [
+        {
+          "_labelJa": "現在のアプリ内ステータスとの差分（localは古い比較情報）",
+          "fields": [
+            "hp",
+            "defense",
+            "spDefense"
+          ],
+          "candidates": [
+            {
+              "summary": "confirmed採用値: Unite-DB/WikiWiki Lv15 HP6000 防御268 特防232",
+              "sourceIds": [
+                "uniteDbStats",
+                "wikiwiki"
+              ]
+            },
+            {
+              "summary": "localPokemonData候補: Lv15 HP5400 防御250 特防149",
+              "sourceIds": [
+                "localPokemonData"
+              ]
+            }
+          ],
+          "notes": "localPokemonDataは古い情報として扱い、ステータスはUnite-DB/WikiWiki値をconfirmedとして採用する。ただしpokemonData.jsへはまだ移行しない。"
+        }
+      ]
+    },
+    "basicAttacks": {
+      "_labelJa": "通常攻撃と強化攻撃",
+      "normal": {
+        "descriptionOriginal": "3回目の通常攻撃は強化攻撃となる。わざ使用後も強化攻撃が準備される。",
+        "activation": {
+          "type": "nonBoostedAttack"
+        },
+        "formula": {
+          "original": "100% Atk",
+          "normalized": {
+            "referenceStat": "attack",
+            "ratio": 1,
+            "levelScaling": 0,
+            "fixedValue": 0
+          }
+        },
+        "damageType": "physical",
+        "defenseReference": "defense",
+        "hitCount": 1,
+        "criticalPossible": true,
+        "status": "candidate",
+        "sources": [
+          "uniteDbPokemon",
+          "wikiwiki"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": true,
+        "approvedForApp": true,
+        "appMigration": {
+          "status": "migrated",
+          "targetFile": "local://js/pokemonData.js",
+          "updatedAt": "2026-06-22",
+          "notes": "normalAttack.basicとして移行済み。"
+        },
+        "notes": "Unite-DBはオート攻撃とブレイズキックのみ急所可と記載。通常攻撃式はpokemonData.jsへ移行済み。",
+        "wildPokemonDamageCap": {
+          "value": 1000,
+          "status": "measured",
+          "verifiedByHuman": true,
+          "approvedForApp": false,
+          "notes": "Game verification showed normal attack cannot exceed this cap against wild Pokemon, including with Groudon buff. Ally damage-up effects are untested."
+        }
+      },
+      "boosted": {
+        "descriptionOriginal": "3回目またはわざ使用後の通常攻撃が強化攻撃になり、ダメージが増加する。",
+        "activation": {
+          "type": "everyNthAttackOrAfterMove",
+          "count": 3
+        },
+        "formula": {
+          "original": "140% Atk + 0 x (Level - 1) + 0",
+          "normalized": {
+            "referenceStat": "attack",
+            "ratio": 1.4,
+            "levelScaling": 0,
+            "fixedValue": 0
+          }
+        },
+        "damageType": "physical",
+        "defenseReference": "defense",
+        "hitCount": 1,
+        "criticalPossible": true,
+        "status": "candidate",
+        "sources": [
+          "wikiwiki",
+          "uniteDbPokemon"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": true,
+        "approvedForApp": true,
+        "appMigration": {
+          "status": "migrated",
+          "targetFile": "local://js/pokemonData.js",
+          "updatedAt": "2026-06-22",
+          "notes": "normalAttack.boostedとして移行済み。"
+        },
+        "wildPokemonDamageCap": {
+          "value": 1300,
+          "status": "measured",
+          "verifiedByHuman": true,
+          "approvedForApp": false,
+          "notes": "Game verification showed boosted normal attack cannot exceed this cap against wild Pokemon, including with Groudon buff. Ally damage-up effects are untested."
+        }
+      }
+    },
+    "moves": [
+      {
+        "id": "cinderace-ember",
+        "_labelJa": "ひのこ",
+        "name": {
+          "ja": "ひのこ",
+          "en": "Ember"
+        },
+        "slot": "initialMove",
+        "learnLevel": {
+          "value": [
+            1,
+            3
+          ],
+          "status": "candidate",
+          "sources": [
+            "wikiwiki"
+          ],
+          "verifiedByHuman": false,
+          "approvedForApp": false
+        },
+        "upgradeLevel": "unknown",
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "115% Atk + 8 x (Level - 1) + 155",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 1.15,
+                "levelScaling": 8,
+                "fixedValue": 155
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "status": "candidate",
+            "sources": [
+              "uniteDbPokemon",
+              "wikiwiki",
+              "localPokemonData"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          },
+          {
+            "id": "burn",
+            "formula": {
+              "original": "20% Atk + 0 x (Level - 1) + 0 (x 3 Hits)",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.2,
+                "levelScaling": 0,
+                "fixedValue": 0
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 3,
+            "status": "candidate",
+            "sources": [
+              "uniteDbPokemon",
+              "wikiwiki"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          }
+        ],
+        "cautions": [
+          "やけど3秒",
+          "攻撃・特攻5%低下候補",
+          "丸め順未確認"
+        ]
+      },
+      {
+        "id": "cinderace-low-sweep",
+        "_labelJa": "ローキック",
+        "name": {
+          "ja": "ローキック",
+          "en": "Low Sweep"
+        },
+        "slot": "initialMove",
+        "learnLevel": {
+          "value": [
+            1,
+            3
+          ],
+          "status": "candidate",
+          "sources": [
+            "wikiwiki"
+          ],
+          "verifiedByHuman": false,
+          "approvedForApp": false
+        },
+        "upgradeLevel": "unknown",
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "36% Atk + 3 x (Level - 1) + 100",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.36,
+                "levelScaling": 3,
+                "fixedValue": 100
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "status": "candidate",
+            "sources": [
+              "uniteDbPokemon",
+              "wikiwiki",
+              "localPokemonData"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          }
+        ],
+        "cautions": [
+          "移動技",
+          "壁抜け条件未確認"
+        ]
+      },
+      {
+        "id": "cinderace-pyro-ball",
+        "_labelJa": "かえんボール",
+        "name": {
+          "ja": "かえんボール",
+          "en": "Pyro Ball"
+        },
+        "slot": "move1",
+        "learnLevel": 7,
+        "upgradeLevel": 11,
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "345% Atk + 32 x (Level - 1) + 840",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 3.45,
+                "levelScaling": 32,
+                "fixedValue": 840
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "status": "conflict",
+            "sources": [
+              "wikiwiki"
+            ],
+            "conflicts": [
+              {
+                "formula": "345% Atk + 32 x (Level - 1) + 820",
+                "sourceIds": [
+                  "localPokemonData"
+                ]
+              },
+              {
+                "formula": "345% Atk + 32 x (Level - 1) + 840",
+                "sourceIds": [
+                  "wikiwiki"
+                ]
+              }
+            ],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          },
+          {
+            "id": "burn",
+            "formula": {
+              "original": "20% Atk + 0 x (Level - 1) + 0 (x 3 Hits)",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.2,
+                "levelScaling": 0,
+                "fixedValue": 0
+              }
+            },
+            "hitCount": 3,
+            "status": "candidate",
+            "sources": [
+              "wikiwiki"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          }
+        ],
+        "plusDamageComponents": "sameAsNormalCandidate",
+        "cautions": [
+          "貫通",
+          "かえんボール+はわざ2待ち時間4秒短縮",
+          "固定値がlocalと食い違う"
+        ]
+      },
+      {
+        "id": "cinderace-blaze-kick",
+        "_labelJa": "ブレイズキック",
+        "name": {
+          "ja": "ブレイズキック",
+          "en": "Blaze Kick"
+        },
+        "slot": "move1",
+        "learnLevel": 7,
+        "upgradeLevel": 11,
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "48% Atk + 4 x (Level - 1) + 120",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.48,
+                "levelScaling": 4,
+                "fixedValue": 120
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "criticalPossible": true,
+            "status": "candidate",
+            "sources": [
+              "wikiwiki",
+              "localPokemonData"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          },
+          {
+            "id": "burn",
+            "formula": {
+              "original": "20% Atk + 0 x (Level - 1) + 0 (x 3 Hits)",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.2,
+                "levelScaling": 0,
+                "fixedValue": 0
+              }
+            },
+            "hitCount": 3,
+            "status": "candidate",
+            "sources": [
+              "wikiwiki"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          }
+        ],
+        "plusDamageComponents": "sameAsNormalCandidate",
+        "cautions": [
+          "命中時確定急所候補",
+          "ブレイズキック+は攻撃速度45%上昇候補"
+        ]
+      },
+      {
+        "id": "cinderace-flame-charge",
+        "_labelJa": "ニトロチャージ",
+        "name": {
+          "ja": "ニトロチャージ",
+          "en": "Flame Charge"
+        },
+        "slot": "move2",
+        "learnLevel": 8,
+        "upgradeLevel": 13,
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "47% Atk + 3 x (Level - 1) + 130",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 0.47,
+                "levelScaling": 3,
+                "fixedValue": 130
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "status": "candidate",
+            "sources": [
+              "wikiwiki",
+              "localPokemonData"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          }
+        ],
+        "plusDamageComponents": "sameAsNormalCandidate",
+        "cautions": [
+          "移動技",
+          "プラス後強化攻撃に2秒減速候補"
+        ]
+      },
+      {
+        "id": "cinderace-feint",
+        "_labelJa": "フェイント",
+        "name": {
+          "ja": "フェイント",
+          "en": "Feint"
+        },
+        "slot": "move2",
+        "learnLevel": 8,
+        "upgradeLevel": 13,
+        "damageComponents": [],
+        "status": "candidate",
+        "sources": [
+          "wikiwiki",
+          "uniteDbPokemon",
+          "localPokemonData"
+        ],
+        "conflicts": [],
+        "verifiedByHuman": false,
+        "approvedForApp": false,
+        "cautions": [
+          "直接ダメージなし候補",
+          "0.73秒まもり状態候補",
+          "フェイント+後の通常攻撃回復は最大3回候補"
+        ]
+      },
+      {
+        "id": "cinderace-blazing-bicycle-kick",
+        "_labelJa": "ブレイズストライク / Blazing Bicycle Kick",
+        "name": {
+          "ja": "ブレイズストライク",
+          "en": "Blazing Bicycle Kick"
+        },
+        "slot": "uniteMove",
+        "learnLevel": 9,
+        "upgradeLevel": "unknown",
+        "damageComponents": [
+          {
+            "id": "main",
+            "formula": {
+              "original": "247% Atk + 14 x (Level - 1) + 670",
+              "normalized": {
+                "referenceStat": "attack",
+                "ratio": 2.47,
+                "levelScaling": 14,
+                "fixedValue": 670
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "defense",
+            "hitCount": 1,
+            "status": "candidate",
+            "sources": [
+              "uniteDbPokemon",
+              "wikiwiki",
+              "localPokemonData"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": false,
+            "approvedForApp": false
+          },
+          {
+            "id": "execute",
+            "formula": {
+              "original": "14% of enemy missing HP",
+              "normalized": {
+                "referenceStat": "targetMissingHp",
+                "ratio": 0.14,
+                "levelScaling": 0,
+                "fixedValue": 0
+              }
+            },
+            "damageType": "physical",
+            "defenseReference": "unknown",
+            "hitCount": 1,
+            "status": "measured",
+            "sources": [
+              "uniteDbPokemon",
+              "wikiwiki"
+            ],
+            "conflicts": [],
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "timingHypothesis": "onHitBeforeMainDamageApplied",
+            "previousTimingHypothesis": "afterMainDamageApplied",
+            "notes": "2026-06-28 measurements support HP-at-hit before main damage is applied. Keep app approval false until rounding/defense modifier order is fully checked."
+          }
+        ],
+        "cautions": [
+          "Measured: missing-HP additional damage uses target HP at hit time before Unite move main damage is applied. Rounding and defense modifier order still need recheck.",
+          "Target selection and area shock wave behavior."
+        ],
+        "unresolved": [
+          {
+            "id": "blazing-bicycle-kick-main-damage-mismatch-2026-06-28",
+            "target": "Blazing Bicycle Kick",
+            "sourceFormula": {
+              "main": "247% Atk + 14 x (Level - 1) + 670",
+              "execute": "14% of enemy missing HP"
+            },
+            "measuredBehavior": {
+              "lv9VsPikachuLv15FullHp": 1093,
+              "lv15VsPikachuLv15FullHp": 1490
+            },
+            "unresolved": [
+              "Current known formula with standard defense correction does not reproduce measured main damage.",
+              "Measured values are approximately 10% higher than expected.",
+              "Cause unknown.",
+              "Do not change source formula yet.",
+              "Prefer measured damage when reproducing in-game behavior."
+            ],
+            "status": "unresolved",
+            "approvedForApp": false,
+            "recordedAt": "2026-06-28"
+          },
+          {
+            "id": "blazing-bicycle-kick-source-formula-conflict-2026-06-28",
+            "target": "Blazing Bicycle Kick",
+            "status": "conflict",
+            "recordedAt": "2026-06-28",
+            "summary": "Current sourceFormula cannot reproduce measured main damage, so it also cannot reproduce later total damage when repeated uses depend on prior HP loss.",
+            "details": [
+              "Current sourceFormula does not reproduce the full-HP measured main damage.",
+              "Therefore, if sourceFormula is used, second and later total damage values are also not reproducible because previous HP loss and missing-HP additional damage become too small.",
+              "When the first measured main damage is used as the base, the increase on later hits is consistent with 14% target missing HP at hit time plus defense modifier.",
+              "Main formula status: conflict / needsCorrection.",
+              "Additional damage formula status: measuredCandidate.",
+              "Additional damage timing status: measuredCandidate.",
+              "In-game reproduction needs measured main damage or a measuredFormulaCandidate."
+            ],
+            "formulaStatus": {
+              "main": "conflict / needsCorrection",
+              "additionalDamage": "measuredCandidate",
+              "additionalDamageTiming": "measuredCandidate",
+              "siteReproduction": "requiresMeasuredMainDamageOrMeasuredFormulaCandidate"
+            },
+            "approvedForApp": false
+          },
+          {
+            "id": "blazing-bicycle-kick-measured-main-defense-check-2026-06-28",
+            "target": "Blazing Bicycle Kick",
+            "status": "measuredCandidate",
+            "recordedAt": "2026-06-28",
+            "measuredMainFinalDamage": [
+              {
+                "attacker": {
+                  "pokemon": "Cinderace",
+                  "level": 15
+                },
+                "defender": {
+                  "pokemon": "Pikachu",
+                  "level": 15,
+                  "defense": 240
+                },
+                "conditions": {
+                  "targetHp": "full",
+                  "heldItems": "none",
+                  "emblems": "none",
+                  "critical": "none/unknown"
+                },
+                "measuredDamage": 1490,
+                "inverseRawUsingStandardDefense": 2086
+              },
+              {
+                "attacker": {
+                  "pokemon": "Cinderace",
+                  "level": 15
+                },
+                "defender": {
+                  "pokemon": "Greninja",
+                  "level": 15,
+                  "defense": 250
+                },
+                "conditions": {
+                  "targetHp": "full",
+                  "heldItems": "none",
+                  "emblems": "none",
+                  "critical": "none/unknown"
+                },
+                "measuredDamage": 1471,
+                "inverseRawUsingStandardDefense": 2083.9166666666665
+              },
+              {
+                "attacker": {
+                  "pokemon": "Cinderace",
+                  "level": 15
+                },
+                "defender": {
+                  "pokemon": "Cinderace",
+                  "level": 15,
+                  "defense": 268
+                },
+                "conditions": {
+                  "targetHp": "full",
+                  "heldItems": "none",
+                  "emblems": "none",
+                  "critical": "none/unknown"
+                },
+                "measuredDamage": 1437,
+                "inverseRawUsingStandardDefense": 2078.86
+              }
+            ],
+            "defenseCheck": {
+              "standardDefenseFormula": "final = floor(raw * 600 / (defense + 600))",
+              "judgment": "The three measured full-HP targets are broadly consistent with standard defense correction and inverse raw around 2079-2086. The main issue is more likely the sourceFormula raw damage than the defense correction.",
+              "estimatedRawRange": {
+                "min": 2078.86,
+                "max": 2086
+              },
+              "sourceFormulaRawAtLevel15": 1898,
+              "sourceFormulaStatus": "conflict / needsCorrection"
+            },
+            "additionalDamageValidation": {
+              "basis": "Use measured main final damage 1490 for Cinderace Lv15 vs Pikachu Lv15.",
+              "checks": [
+                {
+                  "observedTotalDamage": 1632,
+                  "measuredMainFinalDamage": 1490,
+                  "observedAdditionalDamage": 142,
+                  "targetMaxHp": 6300,
+                  "targetHpAtHitBeforeMainDamage": 4873,
+                  "targetMissingHp": 1427,
+                  "expectedAdditionalDamage": 142,
+                  "judgment": "matches"
+                },
+                {
+                  "observedTotalDamage": 1795,
+                  "measuredMainFinalDamage": 1490,
+                  "observedAdditionalDamage": 305,
+                  "targetMaxHp": 6300,
+                  "targetHpAtHitBeforeMainDamage": 3241,
+                  "targetMissingHp": 3059,
+                  "expectedAdditionalDamage": 305,
+                  "judgment": "matches"
+                }
+              ],
+              "judgment": "Additional missing-HP damage and timing are consistent only when measured main final damage is used as the base. Source formula totals remain unreproducible."
+            },
+            "approvedForApp": false,
+            "notes": [
+              "Do not change sourceFormula yet.",
+              "For in-game reproduction, measured main damage or measuredFormulaCandidate is required.",
+              "Rounding order, defense modifier stage, and critical-hit interaction still need recheck."
+            ]
+          }
+        ],
+        "calculationReproductionStatus": "sourceFormulaDoesNotReproduceMeasuredMainOrRepeatedTotals",
+        "implementationNotes": [
+          "Do not change sourceFormula yet.",
+          "For in-game reproduction, measured main damage or measuredFormulaCandidate is required.",
+          "Additional missing-HP damage checks are valid only when measured main damage is used as the base."
+        ],
+        "measuredMainFinalDamage": [
+          {
+            "attacker": {
+              "pokemon": "Cinderace",
+              "level": 15
+            },
+            "defender": {
+              "pokemon": "Pikachu",
+              "level": 15,
+              "defense": 240
+            },
+            "conditions": {
+              "targetHp": "full",
+              "heldItems": "none",
+              "emblems": "none",
+              "critical": "none/unknown"
+            },
+            "measuredDamage": 1490,
+            "inverseRawUsingStandardDefense": 2086
+          },
+          {
+            "attacker": {
+              "pokemon": "Cinderace",
+              "level": 15
+            },
+            "defender": {
+              "pokemon": "Greninja",
+              "level": 15,
+              "defense": 250
+            },
+            "conditions": {
+              "targetHp": "full",
+              "heldItems": "none",
+              "emblems": "none",
+              "critical": "none/unknown"
+            },
+            "measuredDamage": 1471,
+            "inverseRawUsingStandardDefense": 2083.9166666666665
+          },
+          {
+            "attacker": {
+              "pokemon": "Cinderace",
+              "level": 15
+            },
+            "defender": {
+              "pokemon": "Cinderace",
+              "level": 15,
+              "defense": 268
+            },
+            "conditions": {
+              "targetHp": "full",
+              "heldItems": "none",
+              "emblems": "none",
+              "critical": "none/unknown"
+            },
+            "measuredDamage": 1437,
+            "inverseRawUsingStandardDefense": 2078.86
+          }
+        ],
+        "defenseCheck": {
+          "standardDefenseFormula": "final = floor(raw * 600 / (defense + 600))",
+          "judgment": "The three measured full-HP targets are broadly consistent with standard defense correction and inverse raw around 2079-2086. The main issue is more likely the sourceFormula raw damage than the defense correction.",
+          "estimatedRawRange": {
+            "min": 2078.86,
+            "max": 2086
+          },
+          "sourceFormulaRawAtLevel15": 1898,
+          "sourceFormulaStatus": "conflict / needsCorrection"
+        },
+        "additionalDamageValidation": {
+          "basis": "Use measured main final damage 1490 for Cinderace Lv15 vs Pikachu Lv15.",
+          "checks": [
+            {
+              "observedTotalDamage": 1632,
+              "measuredMainFinalDamage": 1490,
+              "observedAdditionalDamage": 142,
+              "targetMaxHp": 6300,
+              "targetHpAtHitBeforeMainDamage": 4873,
+              "targetMissingHp": 1427,
+              "expectedAdditionalDamage": 142,
+              "judgment": "matches"
+            },
+            {
+              "observedTotalDamage": 1795,
+              "measuredMainFinalDamage": 1490,
+              "observedAdditionalDamage": 305,
+              "targetMaxHp": 6300,
+              "targetHpAtHitBeforeMainDamage": 3241,
+              "targetMissingHp": 3059,
+              "expectedAdditionalDamage": 305,
+              "judgment": "matches"
+            }
+          ],
+          "judgment": "Additional missing-HP damage and timing are consistent only when measured main final damage is used as the base. Source formula totals remain unreproducible."
+        }
+      }
+    ],
+    "passiveEffects": [
+      {
+        "id": "cinderace-blaze",
+        "_labelJa": "もうか",
+        "descriptionOriginal": "When at 50% max HP or below, increases critical-hit rate by 10% and auto attack speed by 20% for 5s (30s CD). When hitting an opposing Pokémon with an auto attack or move, places a cinder on the target for 5s; applies 2 cinders with boosted attacks and moves. When placing a 5th cinder on a target, consumes the cinders, dealing additional damage to the target.",
+        "status": "candidate",
+        "sources": [
+          "uniteDbPokemon",
+          "wikiwiki"
+        ],
+        "verifiedByHuman": false,
+        "approvedForApp": false,
+        "appMigration": {
+          "status": "dataOnly",
+          "targetFile": "local://js/pokemonData.js",
+          "updatedAt": "2026-06-23",
+          "notes": "特性データとしてpokemonData.jsへ追加済み。計算処理には未接続。"
+        },
+        "lowHpBuff": {
+          "_labelJa": "HP50%以下時の一時バフ",
+          "trigger": {
+            "type": "selfHpRatioAtOrBelow",
+            "value": 0.5
+          },
+          "durationSeconds": 5,
+          "cooldownSeconds": 30,
+          "effects": {
+            "criticalRateBonus": 10,
+            "autoAttackSpeedBonus": 20
+          },
+          "status": "candidate",
+          "verifiedByHuman": false,
+          "approvedForApp": false,
+          "notes": "現在の単発計算画面では自分の現在HP、時間経過、攻撃速度、クールダウンを扱っていないため計算未接続。"
+        },
+        "cinderStacks": {
+          "_labelJa": "火種スタック",
+          "targetStackId": "cinder",
+          "durationSeconds": 5,
+          "stacksByAttackType": {
+            "normalAttack": 1,
+            "boostedNormalAttack": 2,
+            "move": 2
+          },
+          "triggerStacks": 5,
+          "consumeStacksOnTrigger": true,
+          "status": "candidate",
+          "verifiedByHuman": false,
+          "approvedForApp": false,
+          "notes": "対象ごとのスタック状態が必要。通常攻撃・強化通常攻撃・技を時系列で処理する攻撃順機能で計算接続する想定。ゲーム内検証により、発火時に5個だけ消費し、5個を超えた余剰スタックは残ることを確認済み。",
+          "triggerConsumeCount": 5,
+          "overflowStacksRemain": true,
+          "postTriggerStackCount": "currentStacks - 5",
+          "overflowHandlingStatus": {
+            "status": "measured",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "notes": "ゲーム内検証で、4スタック状態から2スタック付与などにより発火した後、余剰1スタックが残る挙動を確認。発火後に1スタック残った想定で4スタック分の攻撃を行ったところ、再び火種追加ダメージが発動したため、余剰スタック維持を確認済み。"
+          }
+        },
+        "flareDamage": {
+          "_labelJa": "火種5個時の発火追加ダメージ",
+          "formula": {
+            "original": "90% Atk + 0.7% Enemy Max HP x (Level - 1) + 25",
+            "normalized": {
+              "type": "attackAndTargetMaxHpLevelScaling",
+              "referenceStat": "attack",
+              "attackRatio": 0.9,
+              "targetMaxHpLevelScalingRatio": 0.007,
+              "fixedValue": 25
+            }
+          },
+          "damageType": "physical",
+          "defenseReference": "defense",
+          "wildPokemonMaxHpDamageCap": 500,
+          "status": "candidate",
+          "verifiedByHuman": false,
+          "approvedForApp": false,
+          "notes": "最大HP参照部分の野生ポケモン上限は500。防御補正の有無、丸め順、スタック消費とダメージ発生順はゲーム内未確認。",
+          "wildPokemonMaxHpDamageCapStatus": {
+            "value": 500,
+            "status": "measuredCandidate",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "notes": "Displayed wild Pokemon Flare additional damage cap of 500 is measured. Whether this cap applies specifically to the max-HP portion before/after defense correction remains unconfirmed."
+          },
+          "verificationPlanId": "cinderace-flare-wild-cap-verification-plan-2026-06-28",
+          "wildPokemonDisplayedDamageCap": {
+            "value": 500,
+            "status": "measured",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "observedValues": [
+              500,
+              412,
+              429
+            ],
+            "notes": "Game verification showed the displayed Flare additional damage against wild Pokemon did not exceed 500. Cap application stage is still unconfirmed."
+          },
+          "criticalInteraction": {
+            "status": "measuredCandidate",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "summary": "Normal attack body damage can crit, but Flare additional damage did not change when the triggering normal attack crit. Treat Flare additional damage as non-critical candidate.",
+            "evidence": [
+              {
+                "condition": "Cinderace Lv15 vs Pikachu Lv15, 4 cinder stacks, normal attack applies 5th stack",
+                "targetHpBeforeHit": 5287,
+                "bodyDamageDisplay": 597,
+                "bodyCritical": true,
+                "flareDamageDisplay": 726,
+                "hpAfterFlare": 3964,
+                "check": "5287 - 597 - 726 = 3964"
+              },
+              {
+                "condition": "Cinderace Lv15 vs Pikachu Lv15, 4 cinder stacks, normal attack applies 5th stack",
+                "targetHpBeforeHit": 4988,
+                "bodyDamageDisplay": 298,
+                "bodyCritical": false,
+                "flareDamageDisplay": 726,
+                "hpAfterFlare": 3964,
+                "check": "4988 - 298 - 726 = 3964"
+              }
+            ],
+            "remainingQuestions": [
+              "Whether move-triggered Flare behaves the same as normal-attack-triggered Flare.",
+              "Whether guaranteed-critical or damage-up effects can affect Flare additional damage.",
+              "Exact rounding stage for the 726 displayed Flare damage."
+            ]
+          },
+          "playerPokemonDamageValidation": {
+            "status": "measuredCandidate",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "target": "Pikachu Lv15 player Pokemon",
+            "observedFlareDamage": 726,
+            "notes": "Player Pokemon checks show Flare additional damage changes with target defense/max HP. Cinderace and Greninja match candidate formula with standard defense correction; Pikachu has an off-by-one issue that remains unresolved.",
+            "targetComparisons": [
+              {
+                "target": "Pikachu Lv15",
+                "maxHp": 6300,
+                "defense": 240,
+                "observedFlareDamage": 726
+              },
+              {
+                "target": "Cinderace Lv15",
+                "maxHp": 6000,
+                "defense": 268,
+                "observedFlareDamage": 683
+              },
+              {
+                "target": "Greninja Lv15",
+                "maxHp": 6000,
+                "defense": 250,
+                "observedFlareDamage": 698
+              }
+            ]
+          },
+          "processingOrder": {
+            "status": "workingHypothesis",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "currentAssumption": "bodyDamageDisplayThenFlareAdditionalDamageDisplay",
+            "summary": "Training mode HP display subtracts the combined body + Flare damage, so intermediate HP after body damage cannot be confirmed from HP display. Damage number display appears as body damage followed by Flare additional damage. Use body -> Flare as the current working order unless later evidence contradicts it.",
+            "remainingQuestions": [
+              "Whether internal HP is updated after body damage before Flare damage, or both are applied in one HP update.",
+              "Whether move-triggered and boosted-normal-triggered Flare use the same display/order behavior."
+            ]
+          },
+          "triggerActionTypeValidation": {
+            "status": "measuredCandidate",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "summary": "Flare additional damage displayed 726 against Pikachu Lv15 when triggered by normal attack, boosted normal attack, Flame Charge, and Pyro Ball under no held items/emblems. This supports Flare damage being independent from the triggering action type for this target/level condition.",
+            "target": "Pikachu Lv15",
+            "observedFlareDamage": 726,
+            "evidence": [
+              {
+                "triggerAction": "normalAttack",
+                "startingCinderStacks": 4,
+                "addedCinderStacks": 1,
+                "bodyDamageDisplayNonCritical": 298,
+                "bodyDamageDisplayCritical": 597,
+                "flareDamageDisplay": 726,
+                "note": "Previously recorded normal-attack trigger."
+              },
+              {
+                "triggerAction": "Flame Charge",
+                "startingCinderStacks": 4,
+                "addedCinderStacks": 2,
+                "expectedRemainingStacks": 1,
+                "targetHpBeforeHit": 5839,
+                "bodyDamageDisplay": 262,
+                "flareDamageDisplay": 726,
+                "hpAfterFlare": 4851,
+                "check": "5839 - 262 - 726 = 4851"
+              },
+              {
+                "triggerAction": "boostedNormalAttack",
+                "startingCinderStacks": 3,
+                "addedCinderStacks": 2,
+                "expectedRemainingStacks": 0,
+                "targetHpBeforeHit": 5203,
+                "bodyDamageDisplay": 417,
+                "flareDamageDisplay": 726,
+                "hpAfterFlare": 4060,
+                "check": "5203 - 417 - 726 = 4060"
+              },
+              {
+                "triggerAction": "Pyro Ball",
+                "startingCinderStacks": 3,
+                "addedCinderStacks": 2,
+                "expectedRemainingStacks": 0,
+                "targetHpBeforeHit": 5621,
+                "bodyDamageDisplay": 1935,
+                "flareDamageDisplay": 726,
+                "hpAfterFlare": 3023,
+                "check": "5621 - 1935 - 726 = 2960; observed HP 3023 suggests +63 natural recovery before HP read."
+              }
+            ],
+            "correctionsFromMemo": [
+              "Boosted normal attack with 3 starting stacks and +2 stacks should leave 0 stacks after trigger, not 1.",
+              "Pyro Ball record appears to be move-triggered Flare, even though the triggerAction field said boosted normal attack.",
+              "Flame Charge record appears to be move-triggered Flare, even though the triggerAction field was blank."
+            ],
+            "remainingQuestions": [
+              "Whether all move-triggered Flare cases keep the same damage against targets with different defense/max HP.",
+              "Whether the +63 HP discrepancy in the Pyro Ball record is natural recovery timing.",
+              "Exact rounding order and defense modifier stage for Flare damage."
+            ]
+          },
+          "roundingAndDefenseStatus": {
+            "status": "measuredCandidate",
+            "verifiedByHuman": true,
+            "approvedForApp": false,
+            "currentObservation": "Cinderace Lv15 vs Cinderace Lv15 and Greninja Lv15 match the candidate Flare formula with standard defense correction. Pikachu Lv13-Lv15 are consistently 1 lower than straightforward total-before-defense rounding and match component-wise defense correction. Because Greninja Lv15 matches standard defense correction and not component-wise defense correction, the global Flare rounding rule remains unresolved.",
+            "standardDefenseCorrection": "final = floor(rawDamage * 600 / (targetDefense + 600))",
+            "componentWiseDefenseCorrectionCandidate": "final = floor(atkPart * 600 / (targetDefense + 600)) + floor(maxHpPart * 600 / (targetDefense + 600)) + floor(fixedValue * 600 / (targetDefense + 600))",
+            "candidateFormula": "90% Atk + 0.7% Enemy Max HP x (Level - 1) + 25",
+            "evidenceSummary": [
+              {
+                "target": "Pikachu Lv13",
+                "targetMaxHp": 5588,
+                "targetDefense": 192,
+                "observedFlareDamage": 717,
+                "simpleCandidateResult": 718,
+                "componentWiseDefenseResult": 717,
+                "judgment": "componentWiseMatchesStandardOffByOne"
+              },
+              {
+                "target": "Pikachu Lv14",
+                "targetMaxHp": 5927,
+                "targetDefense": 215,
+                "observedFlareDamage": 721,
+                "simpleCandidateResult": 722,
+                "componentWiseDefenseResult": 721,
+                "judgment": "componentWiseMatchesStandardOffByOne"
+              },
+              {
+                "target": "Pikachu Lv15",
+                "targetMaxHp": 6300,
+                "targetDefense": 240,
+                "observedFlareDamage": 726,
+                "simpleCandidateResult": 727,
+                "componentWiseDefenseResult": 726,
+                "judgment": "componentWiseMatchesStandardOffByOne"
+              },
+              {
+                "target": "Cinderace Lv15",
+                "targetMaxHp": 6000,
+                "targetDefense": 268,
+                "observedFlareDamage": 683,
+                "simpleCandidateResult": 683,
+                "componentWiseDefenseResult": 683,
+                "judgment": "matchesBoth"
+              },
+              {
+                "target": "Greninja Lv15",
+                "targetMaxHp": 6000,
+                "targetDefense": 250,
+                "observedFlareDamage": 698,
+                "simpleCandidateResult": 698,
+                "componentWiseDefenseResult": 697,
+                "judgment": "standardMatchesComponentWiseOffByOne"
+              }
+            ],
+            "roundingHypothesisNotes": [
+              "Pikachu Lv13-Lv15: component-wise defense correction matches observed damage, while standard total-before-defense correction is consistently +1.",
+              "Greninja Lv15: standard total-before-defense correction matches observed damage, while component-wise defense correction is -1.",
+              "Do not adopt component-wise defense correction globally yet. Keep this as measuredCandidate / unresolved until more targets or internal stat precision can explain both patterns."
+            ],
+            "remainingQuestions": [
+              "Why Pikachu Lv13-Lv15 observed values are consistently 1 lower than simple candidate calculation.",
+              "Whether component-wise defense correction, internal non-integer stats, or another rounding rule explains Pikachu without breaking Greninja.",
+              "Whether other max HP / defense combinations reveal a consistent rounding rule."
+            ]
+          }
+        }
+      }
+    ],
+    "localComparison": {
+      "_labelJa": "現在のpokemonData.jsとの比較",
+      "matches": [
+        "ひのこ本体",
+        "ローキック",
+        "ブレイズキック",
+        "ニトロチャージ",
+        "ブレイズストライク本体"
+      ],
+      "conflicts": [
+        "かえんボール固定値 local 820 / WikiWiki 840",
+        "やけど・もうか発火・ユナイト追加ダメージがlocalに未実装"
+      ],
+      "missingInLocal": [
+        "通常攻撃・強化攻撃式",
+        "やけど継続ダメージ",
+        "もうか発火追加ダメージ",
+        "ユナイトわざの減少HP追加ダメージ"
+      ]
+    }
+  },
+  "manualVerifications": [
+    {
+      "date": "2026-06-28",
+      "target": "cinderace-blazing-bicycle-kick execute damage",
+      "status": "measured",
+      "summary": "The 14% missing-HP additional damage matches HP at hit time before Unite move main damage is applied.",
+      "previousHypothesis": "afterMainDamageApplied",
+      "currentHypothesis": "onHitBeforeMainDamageApplied",
+      "observations": [
+        {
+          "targetHpBeforeUnite": 6300,
+          "observedDamage": "1490"
+        },
+        {
+          "targetHpBeforeUnite": 4873,
+          "observedDamage": "1632"
+        },
+        {
+          "targetHpBeforeUnite": 3241,
+          "observedDamage": "1795 and 726"
+        }
+      ],
+      "needsRecheck": [
+        "defense modifier stage",
+        "rounding order",
+        "critical-hit interaction"
+      ]
+    },
+    {
+      "id": "blazing-bicycle-kick-main-damage-mismatch-2026-06-28",
+      "target": "Blazing Bicycle Kick",
+      "sourceFormula": {
+        "main": "247% Atk + 14 x (Level - 1) + 670",
+        "execute": "14% of enemy missing HP"
+      },
+      "measuredBehavior": {
+        "lv9VsPikachuLv15FullHp": 1093,
+        "lv15VsPikachuLv15FullHp": 1490
+      },
+      "unresolved": [
+        "Current known formula with standard defense correction does not reproduce measured main damage.",
+        "Measured values are approximately 10% higher than expected.",
+        "Cause unknown.",
+        "Do not change source formula yet.",
+        "Prefer measured damage when reproducing in-game behavior."
+      ],
+      "status": "unresolved",
+      "approvedForApp": false,
+      "recordedAt": "2026-06-28"
+    },
+    {
+      "id": "blazing-bicycle-kick-source-formula-conflict-2026-06-28",
+      "target": "Blazing Bicycle Kick",
+      "status": "conflict",
+      "recordedAt": "2026-06-28",
+      "summary": "Current sourceFormula cannot reproduce measured main damage, so it also cannot reproduce later total damage when repeated uses depend on prior HP loss.",
+      "details": [
+        "Current sourceFormula does not reproduce the full-HP measured main damage.",
+        "Therefore, if sourceFormula is used, second and later total damage values are also not reproducible because previous HP loss and missing-HP additional damage become too small.",
+        "When the first measured main damage is used as the base, the increase on later hits is consistent with 14% target missing HP at hit time plus defense modifier.",
+        "Main formula status: conflict / needsCorrection.",
+        "Additional damage formula status: measuredCandidate.",
+        "Additional damage timing status: measuredCandidate.",
+        "In-game reproduction needs measured main damage or a measuredFormulaCandidate."
+      ],
+      "formulaStatus": {
+        "main": "conflict / needsCorrection",
+        "additionalDamage": "measuredCandidate",
+        "additionalDamageTiming": "measuredCandidate",
+        "siteReproduction": "requiresMeasuredMainDamageOrMeasuredFormulaCandidate"
+      },
+      "approvedForApp": false
+    },
+    {
+      "id": "blazing-bicycle-kick-measured-main-defense-check-2026-06-28",
+      "target": "Blazing Bicycle Kick",
+      "status": "measuredCandidate",
+      "recordedAt": "2026-06-28",
+      "measuredMainFinalDamage": [
+        {
+          "attacker": {
+            "pokemon": "Cinderace",
+            "level": 15
+          },
+          "defender": {
+            "pokemon": "Pikachu",
+            "level": 15,
+            "defense": 240
+          },
+          "conditions": {
+            "targetHp": "full",
+            "heldItems": "none",
+            "emblems": "none",
+            "critical": "none/unknown"
+          },
+          "measuredDamage": 1490,
+          "inverseRawUsingStandardDefense": 2086
+        },
+        {
+          "attacker": {
+            "pokemon": "Cinderace",
+            "level": 15
+          },
+          "defender": {
+            "pokemon": "Greninja",
+            "level": 15,
+            "defense": 250
+          },
+          "conditions": {
+            "targetHp": "full",
+            "heldItems": "none",
+            "emblems": "none",
+            "critical": "none/unknown"
+          },
+          "measuredDamage": 1471,
+          "inverseRawUsingStandardDefense": 2083.9166666666665
+        },
+        {
+          "attacker": {
+            "pokemon": "Cinderace",
+            "level": 15
+          },
+          "defender": {
+            "pokemon": "Cinderace",
+            "level": 15,
+            "defense": 268
+          },
+          "conditions": {
+            "targetHp": "full",
+            "heldItems": "none",
+            "emblems": "none",
+            "critical": "none/unknown"
+          },
+          "measuredDamage": 1437,
+          "inverseRawUsingStandardDefense": 2078.86
+        }
+      ],
+      "defenseCheck": {
+        "standardDefenseFormula": "final = floor(raw * 600 / (defense + 600))",
+        "judgment": "The three measured full-HP targets are broadly consistent with standard defense correction and inverse raw around 2079-2086. The main issue is more likely the sourceFormula raw damage than the defense correction.",
+        "estimatedRawRange": {
+          "min": 2078.86,
+          "max": 2086
+        },
+        "sourceFormulaRawAtLevel15": 1898,
+        "sourceFormulaStatus": "conflict / needsCorrection"
+      },
+      "additionalDamageValidation": {
+        "basis": "Use measured main final damage 1490 for Cinderace Lv15 vs Pikachu Lv15.",
+        "checks": [
+          {
+            "observedTotalDamage": 1632,
+            "measuredMainFinalDamage": 1490,
+            "observedAdditionalDamage": 142,
+            "targetMaxHp": 6300,
+            "targetHpAtHitBeforeMainDamage": 4873,
+            "targetMissingHp": 1427,
+            "expectedAdditionalDamage": 142,
+            "judgment": "matches"
+          },
+          {
+            "observedTotalDamage": 1795,
+            "measuredMainFinalDamage": 1490,
+            "observedAdditionalDamage": 305,
+            "targetMaxHp": 6300,
+            "targetHpAtHitBeforeMainDamage": 3241,
+            "targetMissingHp": 3059,
+            "expectedAdditionalDamage": 305,
+            "judgment": "matches"
+          }
+        ],
+        "judgment": "Additional missing-HP damage and timing are consistent only when measured main final damage is used as the base. Source formula totals remain unreproducible."
+      },
+      "approvedForApp": false,
+      "notes": [
+        "Do not change sourceFormula yet.",
+        "For in-game reproduction, measured main damage or measuredFormulaCandidate is required.",
+        "Rounding order, defense modifier stage, and critical-hit interaction still need recheck."
+      ]
+    },
+    {
+      "id": "cinderace-wild-normal-attack-caps-2026-06-28",
+      "target": "Cinderace normal / boosted normal attack wild Pokemon damage caps",
+      "status": "measured",
+      "recordedAt": "2026-06-28",
+      "summary": "Normal attack and boosted normal attack did not exceed their wild Pokemon damage caps in game verification.",
+      "confirmedValues": {
+        "normalAttackWildPokemonDamageCap": 1000,
+        "boostedNormalAttackWildPokemonDamageCap": 1300,
+        "exceededWithGroudonBuff": false
+      },
+      "conditions": {
+        "targetType": "wildPokemon",
+        "testedBuffs": [
+          "Groudon buff"
+        ],
+        "untestedBuffs": [
+          "ally move damage-up effects"
+        ]
+      },
+      "judgment": "Treat normal attack and boosted normal attack caps as measured for current research data. Ally-provided damage-up interactions remain untested.",
+      "approvedForApp": false,
+      "notes": [
+        "This is a research-data verification note only; calculation logic was not changed.",
+        "If future ally damage-up effects are implemented, cap interaction should be rechecked."
+      ]
+    },
+    {
+      "id": "cinderace-flare-wild-cap-verification-plan-2026-06-28",
+      "target": "Cinderace Blaze / Flare additional damage wild Pokemon cap",
+      "status": "needsGameVerification",
+      "recordedAt": "2026-06-28",
+      "knownSourceCandidate": {
+        "flareDamageFormula": "90% Atk + 0.7% Enemy Max HP x (Level - 1) + 25",
+        "wildPokemonMaxHpDamageCap": 500,
+        "capTarget": "maximum-HP based additional damage part"
+      },
+      "verificationGoal": "Check whether Blaze/Flare additional damage against wild Pokemon is capped, and where the cap is applied.",
+      "questions": [
+        "Does the maximum-HP based portion cap at 500 against wild Pokemon?",
+        "Is the cap applied before or after defense correction?",
+        "Does the attack-scaling portion remain uncapped?",
+        "Does Groudon buff or other damage-up effect change the capped result?",
+        "Does critical-hit behavior affect the additional damage or cap?"
+      ],
+      "recommendedProcedure": [
+        "Use Cinderace against a wild Pokemon with enough HP to survive setup and trigger damage.",
+        "Set up cinder stacks until the 5th cinder triggers Blaze/Flare damage.",
+        "Record the hit damage and the separate Flare additional damage display if shown separately.",
+        "Repeat with a high-HP wild Pokemon and, if possible, with Groudon buff.",
+        "Compare measured Flare damage with uncapped formula and capped max-HP portion formula."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-wild-cap-measured-2026-06-28",
+      "target": "Cinderace Blaze / Flare additional damage wild Pokemon cap",
+      "status": "measured",
+      "recordedAt": "2026-06-28",
+      "conditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "stats": "use local data"
+        },
+        "target": {
+          "type": "wildPokemon",
+          "level": "unknown",
+          "maxHp": "unknown",
+          "currentHp": "unknown"
+        },
+        "heldItems": "none",
+        "emblems": "none",
+        "critical": "unknown"
+      },
+      "observations": [
+        {
+          "trial": 1,
+          "measuredFlareAdditionalDamage": 500
+        },
+        {
+          "trial": 2,
+          "measuredFlareAdditionalDamage": 412
+        },
+        {
+          "trial": 3,
+          "measuredFlareAdditionalDamage": 429
+        }
+      ],
+      "judgment": "Wild Pokemon Flare additional damage did not exceed 500 in game verification. Treat the 500 wild cap as measured for displayed additional damage.",
+      "confirmedValues": {
+        "displayedFlareAdditionalDamageCapAgainstWildPokemon": 500,
+        "exceeded500Observed": false
+      },
+      "stillUnconfirmed": [
+        "Whether the 500 cap applies before or after defense correction.",
+        "Whether only the target-max-HP portion is capped or the displayed total additional damage is capped.",
+        "Whether ally damage-up effects can change the capped result.",
+        "Whether critical-hit behavior can affect the additional damage or cap."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-processing-order-verification-plan-2026-06-30",
+      "target": "Cinderace Blaze / Flare stack consumption and damage processing order",
+      "status": "needsGameVerification",
+      "recordedAt": "2026-06-30",
+      "knownAssumptions": {
+        "cinderDurationSeconds": 5,
+        "normalAttackStacks": 1,
+        "boostedNormalAttackStacks": 2,
+        "moveStacks": 2,
+        "triggerStacks": 5,
+        "triggerConsumeCount": 5,
+        "overflowStacksRemain": true
+      },
+      "verificationGoal": "火種5個到達時に、攻撃本体ダメージと火種追加ダメージがどの順番で発生・表示されるかを確認する。",
+      "recommendedConditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "stats": "use local pokemonData.js stats"
+        },
+        "target": {
+          "pokemon": "Pikachu or another player Pokemon",
+          "level": "prefer 15 first, then repeat if needed",
+          "currentHp": "enough HP to survive body hit and Flare additional damage"
+        },
+        "heldItems": "none",
+        "emblems": "none",
+        "critical": "prefer none if controllable / record if unknown",
+        "wildPokemon": "not used for this processing-order check"
+      },
+      "questions": [
+        "火種5個目を付けた攻撃本体のダメージ表示と、火種追加ダメージ表示は別々に出るか。",
+        "表示順は本体ダメージが先か、火種追加ダメージが先か。",
+        "HP減少順は表示順と一致するか。",
+        "4スタックの状態で技または強化通常攻撃を当てたとき、発火後に余剰1スタックが残るか。",
+        "発火後にすぐ次の通常攻撃を当てた場合、余剰スタックを起点に次の発火へ近づくか。",
+        "火種追加ダメージは攻撃本体の急所と独立しているか。",
+        "火種追加ダメージに防御補正が入っているか、丸め順はどこか。"
+      ],
+      "recommendedProcedure": [
+        "持ち物・メダルなしのエースバーンを使う。",
+        "相手はプレイヤーポケモンを使い、野生ポケモン上限500の影響を避ける。",
+        "まず火種を4個まで付けた状態を作る。例: 強化通常攻撃2回、または技2回など。",
+        "次の通常攻撃または技で5個目を付け、攻撃本体ダメージ表示と火種追加ダメージ表示を記録する。",
+        "可能なら命中直前HP、攻撃本体後HP、火種追加後HPを動画または目視で記録する。",
+        "4スタック状態から2スタック付与技を当て、発火後に余剰1スタックが残るかを次の攻撃で確認する。",
+        "同じ条件で3回以上繰り返し、表示順・表示回数・ダメージ値が安定するか確認する。"
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-processing-order-measured-2026-06-30",
+      "target": "Cinderace Blaze / Flare processing order and critical interaction",
+      "status": "measuredCandidate",
+      "recordedAt": "2026-06-30",
+      "conditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "stats": "use local pokemonData.js stats"
+        },
+        "target": {
+          "pokemon": "Pikachu",
+          "level": 15,
+          "maxHp": 6300
+        },
+        "heldItems": "none",
+        "emblems": "none",
+        "startingCinderStacks": 4,
+        "triggerAction": "normalAttack",
+        "addedCinderStacks": 1,
+        "expectedRemainingStacks": 0
+      },
+      "observations": [
+        {
+          "trial": 1,
+          "targetHpBeforeHit": 5287,
+          "bodyDamageDisplay": 597,
+          "bodyCritical": true,
+          "flareDamageDisplay": 726,
+          "hpAfterFlare": 3964,
+          "totalDamageCheck": "5287 - 597 - 726 = 3964"
+        },
+        {
+          "trial": 2,
+          "targetHpBeforeHit": 4988,
+          "bodyDamageDisplay": 298,
+          "bodyCritical": false,
+          "flareDamageDisplay": 726,
+          "hpAfterFlare": 3964,
+          "totalDamageCheck": "4988 - 298 - 726 = 3964"
+        }
+      ],
+      "judgment": "Triggering normal attack body damage can crit, but Flare additional damage stayed 726 in both critical and non-critical trials. Treat Flare as no-critical measured candidate for this condition. Total HP loss matches body damage plus Flare damage.",
+      "confirmedOrCandidate": {
+        "normalAttackCanCrit": "measuredCandidate",
+        "flareAdditionalDamageCanCrit": "notObserved / measuredCandidate false",
+        "bodyAndFlareAreSeparateDisplays": "measuredCandidate",
+        "hpLossEqualsBodyPlusFlare": "measuredCandidate"
+      },
+      "stillUnconfirmed": [
+        "Exact visual display order was not confirmed.",
+        "HP after body damage before Flare was not recorded.",
+        "Move-triggered and boosted-normal-triggered Flare should be checked separately.",
+        "Rounding order for Flare damage is still unresolved.",
+        "Defense modifier stage for Flare damage is still unresolved."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-overflow-stacks-measured-2026-06-30",
+      "target": "Cinderace Blaze / Flare overflow cinder stack retention",
+      "status": "measured",
+      "recordedAt": "2026-06-30",
+      "summary": "After Flare triggered with an overflow stack expected to remain, applying 4 more cinder stacks triggered Flare again. This confirms overflow cinder stacks are retained after trigger.",
+      "conditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": "not specified in memo / likely same verification context"
+        },
+        "target": {
+          "pokemon": "not specified in memo"
+        },
+        "setup": "Trigger Flare in a state where 1 overflow cinder stack should remain, then apply 4 additional cinder stacks."
+      },
+      "observations": [
+        {
+          "step": 1,
+          "description": "Flare triggered while 1 overflow stack was expected to remain after consuming 5 stacks."
+        },
+        {
+          "step": 2,
+          "description": "After that, attacks worth 4 cinder stacks were applied."
+        },
+        {
+          "step": 3,
+          "description": "Flare additional damage triggered again."
+        }
+      ],
+      "judgment": "Overflow cinder stacks remain after Flare trigger. Flare consumes 5 stacks, not all current stacks.",
+      "confirmedValues": {
+        "overflowStacksRemain": true,
+        "triggerConsumeCount": 5,
+        "postTriggerStackCount": "currentStacks - 5"
+      },
+      "stillUnconfirmed": [
+        "Exact timer refresh/expiration behavior for retained overflow stacks.",
+        "Whether every target tracks overflow stacks independently under multi-target conditions.",
+        "Whether simultaneous multi-hit or multi-target applications can create more than one overflow stack in edge cases."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-display-order-working-hypothesis-2026-06-30",
+      "target": "Cinderace Blaze / Flare display order",
+      "status": "workingHypothesis",
+      "recordedAt": "2026-06-30",
+      "summary": "Training mode HP display shows the combined decrease from body damage and Flare additional damage, so HP display alone cannot determine whether Flare is applied after body damage internally. Damage number display appears as body damage first, then Flare additional damage.",
+      "currentAssumption": "body damage -> Flare additional damage",
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-trigger-action-type-verification-plan-2026-06-30",
+      "target": "Cinderace Blaze / Flare trigger action type comparison",
+      "status": "needsGameVerification",
+      "recordedAt": "2026-06-30",
+      "verificationGoal": "Compare Flare behavior when triggered by boosted normal attack or move against the already checked normal-attack trigger.",
+      "knownNormalAttackReference": {
+        "target": "Pikachu Lv15",
+        "normalAttackNonCriticalBodyDamage": 298,
+        "normalAttackCriticalBodyDamage": 597,
+        "flareDamageDisplay": 726,
+        "note": "Flare damage stayed 726 whether the triggering normal attack crit or not."
+      },
+      "questions": [
+        "Does boosted normal attack trigger Flare with the same separate Flare damage display?",
+        "Does move-triggered Flare show the same Flare damage when attacker/target conditions are the same?",
+        "Does Flare remain non-critical when triggered by boosted normal attack or a move?",
+        "Does the display order remain body damage -> Flare additional damage?",
+        "Does the total HP decrease equal body damage + Flare damage?"
+      ],
+      "recommendedProcedure": [
+        "Use Cinderace Lv15 vs Pikachu Lv15 first, with no held items and no emblems.",
+        "For boosted normal attack trigger: set up 3 cinder stacks, then use boosted normal attack to add 2 stacks and trigger Flare.",
+        "For move trigger: set up 3 cinder stacks, then use a move that adds 2 stacks and trigger Flare.",
+        "Record body damage display, Flare damage display, whether body damage crit, final HP after both, and display order.",
+        "Repeat each trigger type at least 3 times if possible."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-trigger-action-type-measured-2026-06-30",
+      "target": "Cinderace Blaze / Flare trigger action type comparison",
+      "status": "measuredCandidate",
+      "recordedAt": "2026-06-30",
+      "conditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "stats": "use local pokemonData.js stats"
+        },
+        "target": {
+          "pokemon": "Pikachu",
+          "level": 15,
+          "maxHp": 6300
+        },
+        "heldItems": "none",
+        "emblems": "none"
+      },
+      "observations": [
+        {
+          "trial": 1,
+          "triggerAction": "Flame Charge / Nitro Charge",
+          "startingCinderStacks": 4,
+          "addedCinderStacks": 2,
+          "expectedRemainingStacks": 1,
+          "targetHpBeforeHit": 5839,
+          "bodyDamageDisplay": 262,
+          "flareDamageDisplay": 726,
+          "hpAfterFlare": 4851,
+          "check": "5839 - 262 - 726 = 4851",
+          "judgment": "matches"
+        },
+        {
+          "trial": 2,
+          "triggerAction": "boostedNormalAttack",
+          "startingCinderStacks": 3,
+          "addedCinderStacks": 2,
+          "expectedRemainingStacks": 0,
+          "targetHpBeforeHit": 5203,
+          "bodyDamageDisplay": 417,
+          "flareDamageDisplay": 726,
+          "hpAfterFlare": 4060,
+          "check": "5203 - 417 - 726 = 4060",
+          "judgment": "matches; memo expectedRemainingStacks=1 should be corrected to 0"
+        },
+        {
+          "trial": 3,
+          "triggerAction": "Pyro Ball / Kaen Ball",
+          "startingCinderStacks": 3,
+          "addedCinderStacks": 2,
+          "expectedRemainingStacks": 0,
+          "targetHpBeforeHit": 5621,
+          "bodyDamageDisplay": 1935,
+          "flareDamageDisplay": 726,
+          "hpAfterFlare": 3023,
+          "check": "5621 - 1935 - 726 = 2960; observed 3023 equals expected + 63",
+          "judgment": "damage displays match Flare 726; HP reading likely includes one natural recovery tick"
+        }
+      ],
+      "judgment": "For Pikachu Lv15 target with no held items/emblems, Flare additional damage stayed 726 across normal attack, boosted normal attack, and move triggers. HP decrease matched body + Flare in trials 1 and 2; trial 3 likely has a +63 natural recovery tick before HP reading.",
+      "confirmedOrCandidate": {
+        "flareDamageSameAcrossCheckedTriggerActions": "measuredCandidate",
+        "flareDamageAgainstPikachuLv15": 726,
+        "boostedNormalTriggerUsesSameFlareDamage": "measuredCandidate",
+        "moveTriggerUsesSameFlareDamage": "measuredCandidate",
+        "displayOrderBodyThenFlare": "measuredCandidate"
+      },
+      "stillUnconfirmed": [
+        "Natural recovery timing in trial 3 should be explicitly checked if exact HP-after validation is needed.",
+        "Whether body critical from boosted normal or move trigger affects Flare; no direct critical comparison was recorded for these trigger types.",
+        "Rounding order and defense modifier stage for Flare."
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-defense-rounding-verification-plan-2026-06-30",
+      "target": "Cinderace Blaze / Flare defense modifier and rounding order",
+      "status": "needsGameVerification",
+      "recordedAt": "2026-06-30",
+      "background": {
+        "knownCondition": "Cinderace Lv15 vs Pikachu Lv15, no held items/emblems",
+        "observedFlareDamage": 726,
+        "candidateFormula": "90% Atk + 0.7% Enemy Max HP x (Level - 1) + 25",
+        "currentIssue": "Simple candidate formula with standard defense correction tends to produce 727 rather than observed 726. Need more targets to separate formula, defense correction, and rounding order."
+      },
+      "verificationGoal": "Measure Flare additional damage against multiple player Pokemon with different max HP and defense values, then compare candidate formula and rounding hypotheses.",
+      "recommendedTargets": [
+        {
+          "pokemon": "Pikachu",
+          "level": 15,
+          "reason": "Existing baseline: HP 6300, Defense 240, observed Flare 726."
+        },
+        {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "reason": "Known app data has different HP/Defense from Pikachu; useful second point."
+        },
+        {
+          "pokemon": "Greninja",
+          "level": 15,
+          "reason": "Known app data has different HP/Defense from Pikachu and Cinderace; useful third point."
+        }
+      ],
+      "recommendedProcedure": [
+        "Use Cinderace Lv15 with no held items and no emblems.",
+        "Use player Pokemon targets, not wild Pokemon, to avoid the wild cap of 500.",
+        "For each target, trigger Flare with the same setup if possible: 4 stacks + normal attack, or 3 stacks + boosted normal/move.",
+        "Record target max HP, target defense, HP before trigger hit, body damage display, Flare damage display, and final HP after both damages.",
+        "Repeat each target at least 2-3 times if possible, prioritizing non-critical body hits for clean logs.",
+        "If final HP differs by exactly 1% of target max HP, note possible natural recovery timing."
+      ],
+      "dataNeededForAnalysis": [
+        "attacker attack stat",
+        "attacker level",
+        "target max HP",
+        "target defense",
+        "displayed Flare damage",
+        "whether target HP read includes natural recovery"
+      ],
+      "hypothesesToCompare": [
+        "H1: floor((Atk*0.9 + targetMaxHp*0.007*(level-1) + 25) * 600 / (defense + 600))",
+        "H2: floor((floor(Atk*0.9) + floor(targetMaxHp*0.007*(level-1)) + 25) * 600 / (defense + 600))",
+        "H3: floor((floor(Atk*0.9 + targetMaxHp*0.007*(level-1)) + 25) * 600 / (defense + 600))",
+        "H4: candidate formula is slightly different from source text or uses another internal stat/value"
+      ],
+      "approvedForApp": false
+    },
+    {
+      "id": "cinderace-flare-defense-rounding-measured-2026-06-30",
+      "target": "Cinderace Blaze / Flare defense modifier and rounding order",
+      "status": "measuredCandidate",
+      "recordedAt": "2026-06-30",
+      "conditions": {
+        "attacker": {
+          "pokemon": "Cinderace",
+          "level": 15,
+          "attack": 418
+        },
+        "heldItems": "none",
+        "emblems": "none"
+      },
+      "observations": [
+        {
+          "trial": 1,
+          "target": "Cinderace Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 268,
+          "targetHpBeforeHit": 4616,
+          "bodyDamageDisplay": 288,
+          "flareDamageDisplay": 683,
+          "hpAfterFlare": 3645,
+          "check": "4616 - 288 - 683 = 3645",
+          "formulaCheck": "matches standard defense correction"
+        },
+        {
+          "trial": 2,
+          "target": "Cinderace Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 268,
+          "targetHpBeforeHit": 5458,
+          "bodyDamageDisplay": 808,
+          "bodyCritical": true,
+          "flareDamageDisplay": 683,
+          "hpAfterFlare": 3967,
+          "check": "5458 - 808 - 683 = 3967",
+          "formulaCheck": "matches standard defense correction"
+        },
+        {
+          "trial": 3,
+          "target": "Cinderace Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 268,
+          "targetHpBeforeHit": 5492,
+          "bodyDamageDisplay": 254,
+          "flareDamageDisplay": 683,
+          "hpAfterFlare": 4555,
+          "check": "5492 - 254 - 683 = 4555; memo measuredDamage said 693 but HP math confirms 683",
+          "formulaCheck": "matches standard defense correction"
+        },
+        {
+          "trial": 4,
+          "target": "Greninja Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 250,
+          "targetHpBeforeHit": 4998,
+          "bodyDamageDisplay": 590,
+          "bodyCritical": true,
+          "flareDamageDisplay": 698,
+          "hpAfterFlare": 3710,
+          "check": "4998 - 590 - 698 = 3710",
+          "formulaCheck": "matches standard defense correction"
+        },
+        {
+          "trial": 5,
+          "target": "Greninja Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 250,
+          "targetHpBeforeHit": 5542,
+          "bodyDamageDisplay": 412,
+          "flareDamageDisplay": 698,
+          "hpAfterFlare": 4432,
+          "check": "5542 - 412 - 698 = 4432",
+          "formulaCheck": "matches standard defense correction"
+        },
+        {
+          "trial": 6,
+          "target": "Greninja Lv15",
+          "targetMaxHp": 6000,
+          "targetDefense": 250,
+          "targetHpBeforeHit": 5389,
+          "bodyDamageDisplay": 1912,
+          "flareDamageDisplay": 698,
+          "hpAfterFlare": 2779,
+          "check": "5389 - 1912 - 698 = 2779",
+          "formulaCheck": "matches standard defense correction"
+        }
+      ],
+      "judgment": "Flare additional damage is strongly consistent with standard defense correction. Cinderace target observed 683 and Greninja target observed 698 both match the candidate formula. Pikachu remains an off-by-one case and should stay unresolved for exact rounding.",
+      "confirmedOrCandidate": {
+        "defenseCorrectionApplies": "measuredCandidate",
+        "targetDefenseAffectsFlareDamage": "measuredCandidate",
+        "targetMaxHpAffectsFlareDamage": "measuredCandidate",
+        "flareDamageIndependentOfTriggerActionBodyCritical": "measuredCandidate"
+      },
+      "stillUnconfirmed": [
+        "Exact rounding rule that explains Pikachu 726 instead of 727.",
+        "Whether the source formula has a hidden internal rounding or slightly different coefficient.",
+        "More target max HP/defense combinations are needed before marking the exact formula as confirmed."
+      ],
+      "approvedForApp": false
+    }
+  ],
+  "reviewChecklist": {
+    "_labelJa": "人間による確認項目",
+    "priorityA": [
+      "レベル1・5・9・13・15のステータス",
+      "通常攻撃100%Atkと強化攻撃140%Atk",
+      "かえんボール固定値820/840",
+      "ブレイズキック確定急所",
+      "ユナイト追加ダメージ14%の防御補正と参照タイミング"
+    ],
+    "priorityB": [
+      "やけど3Hit",
+      "もうか発火",
+      "丸め位置",
+      "野生ポケモン上限"
+    ],
+    "priorityC": [
+      "フェイント+回復条件",
+      "各効果時間"
+    ]
+  },
+  "audit": {
+    "_labelJa": "調査結果の要約",
+    "confirmedItems": [
+      "エースバーンのレベル別ステータスはUnite-DB statsを信用してconfirmed扱い。localは古い比較情報として扱う。"
+    ],
+    "candidateItems": [
+      "公式上、エースバーンは遠隔アタック型",
+      "ひのこ・ローキック・ブレイズキック・ニトロチャージ・ユナイト本体はlocal式と大きく一致"
+    ],
+    "conflictItems": [
+      "かえんボール固定値"
+    ],
+    "unknownItems": [
+      "丸め順",
+      "追加ダメージの防御補正",
+      "ゲーム内実測値",
+      "Cinderace Unite move additional damage defense modifier and rounding order.",
+      "Cinderace Unite move critical-hit interaction for main/additional damage."
+    ],
+    "humanReviewRequired": [
+      "重要式の実測",
+      "Unite-DBステータスをpokemonData.jsへ移行するタイミング判断",
+      "追加ダメージ系の実装可否判断"
+    ]
+  }
+}

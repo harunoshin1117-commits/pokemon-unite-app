@@ -1,0 +1,678 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dragapult",
+  "pokemonName": "Dragapult",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "clear-body",
+      "name": "Clear Body",
+      "originalDescription": "Reduces the duration of debuff effects inflicted on Dragapult by 50% Reduces the duration of debuffs inflicted on this Pokémon by 50%.",
+      "summary": "Reduces the duration of debuff effects inflicted on Dragapult by 50% Reduces the duration of debuffs inflicted on this Pokémon by 50%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks. Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered on the opposing Pokémon they hit. Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s.",
+      "summary": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks. Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+      "summary": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s.",
+      "summary": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set dist",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "122",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dashes in the designated direction, increasing its basic attack speed for a short time Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+      "summary": "Dashes in the designated direction, increasing its basic attack speed for a short time Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dreep-and-destroy",
+      "name": "Dreep and Destroy",
+      "originalDescription": "Launches two Dreepy and each deals damage to different Pokémon in the area of effect. The lower the opposing Pokémon's remaining HP is, the more damage the Dreepy deal. If there is only one target in the area of effect, both Dreepy target that Pokémon and deal damage to it. A maximum of 2 uses can be kept in reserve for this move. Dreepy may be fired once every 2 seconds. Neither Cooldown Reduction nor gaining Aeos Energy reduce the cooldown of Dreep and Destroy. The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target. If there is only one target in range, the second Dreepy deals 30% of the full damage to the target. A maximum of 2 uses can be kept in reserve for this Unite Move; there is a 2s cooldown between uses for this move. Against wild Pokémon: additional missing HP damage is capped at 1200. Unite buffs: 10% Max HP Shield, 10% Movement Speed for 3s; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+      "summary": "Launches two Dreepy and each deals damage to different Pokémon in the area of effect. The lower the opposing Pokémon's remaining HP is, the more damage the Dreepy deal. If there is only one target in the area of effect, both Dreepy target that Pokémon and deal damage to it. A maximum of 2 uses can be kept in reserve fo",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 10,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "178",
+            "trueDescription": "",
+            "notes": "Also deals 10% of enemy missing HP."
+          },
+          {
+            "label": "Damage - Additional (Same Target)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of Damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "178",
+            "trueDescription": "",
+            "notes": "Also deals 10% of enemy missing HP."
+          },
+          {
+            "label": "Damage - Additional (Same Target)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of Damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "formOrMode",
+    "dotTimer",
+    "cooldownState",
+    "shieldHp",
+    "maxHp",
+    "currentHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "clear-body",
+      "name": "Clear Body",
+      "originalDescription": "Reduces the duration of debuff effects inflicted on Dragapult by 50% Reduces the duration of debuffs inflicted on this Pokémon by 50%.",
+      "summary": "Reduces the duration of debuff effects inflicted on Dragapult by 50% Reduces the duration of debuffs inflicted on this Pokémon by 50%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks. Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered on the opposing Pokémon they hit. Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s.",
+      "summary": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks. Becomes boosted attacks when the boosted attack gauge is full, dealing increased damage in an area of effect centered",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Each time the user deals damage to opposing Pokémon, the boosted attack gauge increases by 1, becoming full when the user deals damage 8 times. After not dealing damage for 3s, the boosted attack gauge decreases by 2 every 0.5s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+      "summary": "Each time damage is dealt to enemies, boosted basic attack gauge increases. When the boosted basic attack gauge is full (after 8 instances of damage), the Pokémon's basic attacks become boosted attacks.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "125",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "astonish",
+      "name": "Astonish",
+      "originalDescription": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in an area and decreasing enemy movement speed by 30% for 2s.",
+      "summary": "Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set distance, dealing damage in the area and decreasing their movement speed for a short time Lets out a sound blast in a forward direction. The shout explodes when it hits an enemy or after traveling a set dist",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "122",
+          "damageType": "Atk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dashes in the designated direction, increasing its basic attack speed for a short time Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+      "summary": "Dashes in the designated direction, increasing its basic attack speed for a short time Dashes in the designated direction, increasing basic attack speed by 40% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "dreep-and-destroy",
+      "name": "Dreep and Destroy",
+      "originalDescription": "Launches two Dreepy and each deals damage to different Pokémon in the area of effect. The lower the opposing Pokémon's remaining HP is, the more damage the Dreepy deal. If there is only one target in the area of effect, both Dreepy target that Pokémon and deal damage to it. A maximum of 2 uses can be kept in reserve for this move. Dreepy may be fired once every 2 seconds. Neither Cooldown Reduction nor gaining Aeos Energy reduce the cooldown of Dreep and Destroy. The user launches two Dreepy at up to 2 different opposing Pokémon in range, damaging them and dealing additional missing HP damage to each target. If there is only one target in range, the second Dreepy deals 30% of the full damage to the target. A maximum of 2 uses can be kept in reserve for this Unite Move; there is a 2s cooldown between uses for this move. Against wild Pokémon: additional missing HP damage is capped at 1200. Unite buffs: 10% Max HP Shield, 10% Movement Speed for 3s; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+      "summary": "Launches two Dreepy and each deals damage to different Pokémon in the area of effect. The lower the opposing Pokémon's remaining HP is, the more damage the Dreepy deal. If there is only one target in the area of effect, both Dreepy target that Pokémon and deal damage to it. A maximum of 2 uses can be kept in reserve fo",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 10,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "178",
+            "trueDescription": "",
+            "notes": "Also deals 10% of enemy missing HP."
+          },
+          {
+            "label": "Damage - Additional (Same Target)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of Damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": null,
+        "additional": [
+          {
+            "label": "Damage",
+            "ratio": "101",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "178",
+            "trueDescription": "",
+            "notes": "Also deals 10% of enemy missing HP."
+          },
+          {
+            "label": "Damage - Additional (Same Target)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of Damage",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,759 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "charizard",
+  "pokemonName": "Charizard",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "While at half HP or less, critical-hit rate is increased. While at 50% max HP or below, this Pokémon's critical-hit rate is increased by 30%.",
+      "summary": "While at half HP or less, critical-hit rate is increased. While at 50% max HP or below, this Pokémon's critical-hit rate is increased by 30%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage benefits from regular lifesteal. Basic attacks gain increased range upon evolving into Charmeleon and into Charizard. Against wild Pokémon: total damage is capped at 250 per hit. CHARIZARD'S BASIC ATTACKS ARE A SET ANIMATION LENGTH. ATTACK SPEED HAS NO EFFECT ON THIS POKÉMON. DO NOT USE RAPID FIRE SCARF ON CHARIZARD.",
+      "summary": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage be",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage  - Basic (4x)",
+          "ratio": "30.8",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: total damage is capped at 250 per hit. CHARIZARD'S BASIC ATTACKS ARE A SET ANIMATION LENGTH. ATTACK SPEED HAS NO EFFECT ON THIS POKÉMON. DO NOT USE RAPID FIRE SCARF ON CHARIZARD."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Lifesteal will account for this damage. Lifesteal will account for this damage.",
+      "summary": "Lifesteal will account for this damage. Lifesteal will account for this damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Additional to Charizard burned targets (4x)",
+          "ratio": "32",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "10",
+          "notes": "Lifesteal will account for this damage."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "flame-burst",
+      "name": "Flame Burst",
+      "originalDescription": "Attack with a bursting flame. When this move hits, it leaves enemies burned and increases the user's movement speed for a short time. The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times). When this move hits, the user's movement speed is increased by 20% for 3s. The Attack of opposing Pokémon burned by this move is decreased by 5%.",
+      "summary": "Attack with a bursting flame. When this move hits, it leaves enemies burned and increases the user's movement speed for a short time. The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect ",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "70",
+          "notes": "The Attack of opposing Pokémon burned by this move is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fire-spin",
+      "name": "Fire Spin",
+      "originalDescription": "Encircles enemies in the area of effect in a vortex of fire. After this move hits, it deals damage over time and decreases the movement speed of enemies for a short time. The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect. The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+      "summary": "Encircles enemies in the area of effect in a vortex of fire. After this move hits, it deals damage over time and decreases the movement speed of enemies for a short time. The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance",
+      "trigger": "after move use",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Area  (10 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "seismic-slam",
+      "name": "Seismic Slam",
+      "originalDescription": "Fly up into the air, allowing the user to move freely over obstacles. While this move is being used, basic attacks deal increased damage and leave enemies burned. In addition, when dealing damage to an enemy, recover HP. Using this move again on an enemy will grab it and slam it onto the ground. The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team. The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit. The user gains hindrance resistance the moment they slam into the ground and fly up into the air for 10s. While flying in the air, the user is able to use basic attacks and move freely over obstacles. Unite Move basic attacks burn opposing Pokémon for 1s (dealing damage 2 times). The user restores HP for 60% of the damage dealt with Unite Move basic attacks (excluding burns or additional damage). Damage dealt by burns from Unite Move basic attacks also benefit from regular lifesteal. The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%. Unite buffs: 50% Movement Speed, 20% Max HP Shield",
+      "summary": "Fly up into the air, allowing the user to move freely over obstacles. While this move is being used, basic attacks deal increased damage and leave enemies burned. In addition, when dealing damage to an enemy, recover HP. Using this move again on an enemy will grab it and slam it onto the ground. The user briefly become",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "maxHp",
+    "currentHp",
+    "dotTimer",
+    "durationTimer",
+    "formOrMode",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "While at half HP or less, critical-hit rate is increased. While at 50% max HP or below, this Pokémon's critical-hit rate is increased by 30%.",
+      "summary": "While at half HP or less, critical-hit rate is increased. While at 50% max HP or below, this Pokémon's critical-hit rate is increased by 30%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "criticalRateChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage benefits from regular lifesteal. Basic attacks gain increased range upon evolving into Charmeleon and into Charizard. Against wild Pokémon: total damage is capped at 250 per hit. CHARIZARD'S BASIC ATTACKS ARE A SET ANIMATION LENGTH. ATTACK SPEED HAS NO EFFECT ON THIS POKÉMON. DO NOT USE RAPID FIRE SCARF ON CHARIZARD.",
+      "summary": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage be",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "criticalRateChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage  - Basic (4x)",
+          "ratio": "30.8",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Against wild Pokémon: total damage is capped at 250 per hit. CHARIZARD'S BASIC ATTACKS ARE A SET ANIMATION LENGTH. ATTACK SPEED HAS NO EFFECT ON THIS POKÉMON. DO NOT USE RAPID FIRE SCARF ON CHARIZARD."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Lifesteal will account for this damage. Lifesteal will account for this damage.",
+      "summary": "Lifesteal will account for this damage. Lifesteal will account for this damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Additional to Charizard burned targets (4x)",
+          "ratio": "32",
+          "damageType": "Atk",
+          "levelScaling": "2",
+          "base": "10",
+          "notes": "Lifesteal will account for this damage."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "flame-burst",
+      "name": "Flame Burst",
+      "originalDescription": "Attack with a bursting flame. When this move hits, it leaves enemies burned and increases the user's movement speed for a short time. The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times). When this move hits, the user's movement speed is increased by 20% for 3s. The Attack of opposing Pokémon burned by this move is decreased by 5%.",
+      "summary": "Attack with a bursting flame. When this move hits, it leaves enemies burned and increases the user's movement speed for a short time. The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect ",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "105",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "70",
+          "notes": "The Attack of opposing Pokémon burned by this move is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "fire-spin",
+      "name": "Fire Spin",
+      "originalDescription": "Encircles enemies in the area of effect in a vortex of fire. After this move hits, it deals damage over time and decreases the movement speed of enemies for a short time. The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect. The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+      "summary": "Encircles enemies in the area of effect in a vortex of fire. After this move hits, it deals damage over time and decreases the movement speed of enemies for a short time. The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance",
+      "trigger": "after move use",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Area  (10 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "seismic-slam",
+      "name": "Seismic Slam",
+      "originalDescription": "Fly up into the air, allowing the user to move freely over obstacles. While this move is being used, basic attacks deal increased damage and leave enemies burned. In addition, when dealing damage to an enemy, recover HP. Using this move again on an enemy will grab it and slam it onto the ground. The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team. The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit. The user gains hindrance resistance the moment they slam into the ground and fly up into the air for 10s. While flying in the air, the user is able to use basic attacks and move freely over obstacles. Unite Move basic attacks burn opposing Pokémon for 1s (dealing damage 2 times). The user restores HP for 60% of the damage dealt with Unite Move basic attacks (excluding burns or additional damage). Damage dealt by burns from Unite Move basic attacks also benefit from regular lifesteal. The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%. Unite buffs: 50% Movement Speed, 20% Max HP Shield",
+      "summary": "Fly up into the air, allowing the user to move freely over obstacles. While this move is being used, basic attacks deal increased damage and leave enemies burned. In addition, when dealing damage to an enemy, recover HP. Using this move again on an enemy will grab it and slam it onto the ground. The user briefly become",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange",
+        "damageOverTime"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 134,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Burning (2x)",
+          "ratio": "20",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "The Attack of opposing Pokémon burned by Unite Move basic attacks is decreased by 5%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "Additional 8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

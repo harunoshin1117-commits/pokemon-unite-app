@@ -1,0 +1,660 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "delphox",
+  "pokemonName": "Delphox",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When using a move while at low remaining HP, deal additional damage with a fireball to enemies. This Ability goes on cooldown after it’s triggered. When using a move when below 50% max HP, that move deals additional damage with a fireball to enemies (15s CD).",
+      "summary": "When using a move while at low remaining HP, deal additional damage with a fireball to enemies. This Ability goes on cooldown after it’s triggered. When using a move when below 50% max HP, that move deals additional damage with a fireball to enemies (15s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 15,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Fireball",
+          "ratio": "81",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "325",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "34",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "140",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot a small flame in front of itself, dealing damage to enemies hit. Shoot a small flame in front of itself, dealing damage to enemies hit.",
+      "summary": "Shoot a small flame in front of itself, dealing damage to enemies hit. Shoot a small flame in front of itself, dealing damage to enemies hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "93",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "540",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Conjure up three sinister flames and launch them toward the designated area. These flames then explode; dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. Conjure up sinister flames and launch them toward the designated area. These flames then explode, dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. An enemy will only be counted as being hit by one flame and one explosion, even if all 3 flames visually hit.",
+      "summary": "Conjure up three sinister flames and launch them toward the designated area. These flames then explode; dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. Conjure up sinister flames and launch them toward the designated area. These flames then explode, dealing damage to en",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Flames",
+          "ratio": "52",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "26",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fanciful-fireworks",
+      "name": "Fanciful Fireworks",
+      "originalDescription": "Deals damage-over-time to enemies in the designated area-of-effect. Enemies that are hit have decreased movement speed and weakened HP recovery effects for a short time. Deals damage-over-time to enemies in the designated area for 8s. Enemies that are hit have 50% decreased movement speed and 50% reduced HP recovery effects for 1.75s. Recovery effects are weakened within the zone and cannot be cleansed while in the zone. Leaving the zone will have the weakened HP recovery effects linger for 1.75s and may be cleansed after leaving the zone. 8s duration (ticks at 0.5s intervals). Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Deals damage-over-time to enemies in the designated area-of-effect. Enemies that are hit have decreased movement speed and weakened HP recovery effects for a short time. Deals damage-over-time to enemies in the designated area for 8s. Enemies that are hit have 50% decreased movement speed and 50% reduced HP recovery ef",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": 84,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "maxHp",
+    "currentHp",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When using a move while at low remaining HP, deal additional damage with a fireball to enemies. This Ability goes on cooldown after it’s triggered. When using a move when below 50% max HP, that move deals additional damage with a fireball to enemies (15s CD).",
+      "summary": "When using a move while at low remaining HP, deal additional damage with a fireball to enemies. This Ability goes on cooldown after it’s triggered. When using a move when below 50% max HP, that move deals additional damage with a fireball to enemies (15s CD).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 15,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Fireball",
+          "ratio": "81",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "325",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits. Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "34",
+          "damageType": "SpAtk",
+          "levelScaling": "8",
+          "base": "140",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Shoot a small flame in front of itself, dealing damage to enemies hit. Shoot a small flame in front of itself, dealing damage to enemies hit.",
+      "summary": "Shoot a small flame in front of itself, dealing damage to enemies hit. Shoot a small flame in front of itself, dealing damage to enemies hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "93",
+          "damageType": "SpAtk",
+          "levelScaling": "29",
+          "base": "540",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "will-o-wisp",
+      "name": "Will-o-Wisp",
+      "originalDescription": "Conjure up three sinister flames and launch them toward the designated area. These flames then explode; dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. Conjure up sinister flames and launch them toward the designated area. These flames then explode, dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. An enemy will only be counted as being hit by one flame and one explosion, even if all 3 flames visually hit.",
+      "summary": "Conjure up three sinister flames and launch them toward the designated area. These flames then explode; dealing damage to enemies hit by the explosion and decreasing their movement speed by 30% for 2s. Conjure up sinister flames and launch them toward the designated area. These flames then explode, dealing damage to en",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Flames",
+          "ratio": "52",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "26",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fanciful-fireworks",
+      "name": "Fanciful Fireworks",
+      "originalDescription": "Deals damage-over-time to enemies in the designated area-of-effect. Enemies that are hit have decreased movement speed and weakened HP recovery effects for a short time. Deals damage-over-time to enemies in the designated area for 8s. Enemies that are hit have 50% decreased movement speed and 50% reduced HP recovery effects for 1.75s. Recovery effects are weakened within the zone and cannot be cleansed while in the zone. Leaving the zone will have the weakened HP recovery effects linger for 1.75s and may be cleansed after leaving the zone. 8s duration (ticks at 0.5s intervals). Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Deals damage-over-time to enemies in the designated area-of-effect. Enemies that are hit have decreased movement speed and weakened HP recovery effects for a short time. Deals damage-over-time to enemies in the designated area for 8s. Enemies that are hit have 50% decreased movement speed and 50% reduced HP recovery ef",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": 84,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Tick",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "3",
+          "base": "150",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

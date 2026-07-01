@@ -1,0 +1,634 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "greninja",
+  "pokemonName": "Greninja",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchGreninja"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch",
+      "notes": "Existing local research file used as format and status reference where applicable."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "While HP is at 50% or less, Attack and movement speed are increased. While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+      "summary": "While HP is at 50% or less, Attack and movement speed are increased. While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is. Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage. Auto attacks used at long range reduce the cooldown of Bubble, Water Shuriken, or Surf by 0.5s when they hit. Boosted attacks used at long range also decrease the movement speed of the opposing Pokémon hit by 25% for 0.5s. Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500.",
+      "summary": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is. Auto attacks differ depending on range, and become boosted at",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is.",
+      "summary": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Attack with a spray of bubbles, decreasing the movement speed of enemies when it hits. Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+      "summary": "Attack with a spray of bubbles, decreasing the movement speed of enemies when it hits. Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit (2 Hits)",
+          "ratio": "113",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "208",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "substitute",
+      "name": "Substitute",
+      "originalDescription": "Leaves behind a substitute doll for the user while it's moving forward. Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take.",
+      "summary": "Leaves behind a substitute doll for the user while it's moving forward. Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take.",
+      "trigger": "Move 2",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "waterburst-shuriken",
+      "name": "Waterburst Shuriken",
+      "originalDescription": "Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits. The water shuriken then immediately explodes, dealing damage to enemies in the area of effect and throws them. Once this move ends, the user may jump in a designated direction. Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s. The user then suddenly appears on top of the water shuriken which immediately bursts, damaging opposing Pokémon in the circular area of effect again and throwing them. Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits. The water shuriken then immediately explodes, dealing damage to enemies in the area of effect and throws them. Once this move ends, the user ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "220",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "420",
+          "notes": "Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "220",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "420",
+          "notes": "Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "maxHp",
+    "currentHp",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "durationTimer",
+    "shieldHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "attackOrder",
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "While HP is at 50% or less, Attack and movement speed are increased. While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+      "summary": "While HP is at 50% or less, Attack and movement speed are increased. While at 50% max HP or below, increases Attack by 5% and movement speed by 12%.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "hp-threshold"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is. Auto attacks differ depending on range, and become boosted attacks with every third attack, dealing increased damage. Auto attacks used at long range reduce the cooldown of Bubble, Water Shuriken, or Surf by 0.5s when they hit. Boosted attacks used at long range also decrease the movement speed of the opposing Pokémon hit by 25% for 0.5s. Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500.",
+      "summary": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is. Auto attacks differ depending on range, and become boosted at",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle",
+        "wild-pokemon"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "cooldownChange",
+        "movementSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "Auto attacks used in close range instead deal a bonus 5% missing HP damage to opposing Pokémon hit. Boosted attacks used in close range dash through the target, dealing a bonus 10% missing HP damage to opposing Pokémon hit instead. Against wild Pokémon: the total damage of auto attacks used in close range is capped at 500."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is.",
+      "summary": "Becomes a boosted attack with every third attack. At long range, a boosted attack deals increased damage to enemies and decreases their movement speed for a short time. At close range, a boosted attack deals more damage the lower the enemies remaining HP is.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "bubble",
+      "name": "Bubble",
+      "originalDescription": "Attack with a spray of bubbles, decreasing the movement speed of enemies when it hits. Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+      "summary": "Attack with a spray of bubbles, decreasing the movement speed of enemies when it hits. Sprays 2 bubbles in the designated direction which pop when they hit an opposing Pokémon, damaging opposing Pokémon and decreasing their movement speed by 25% for 1s when each bubble hits.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit (2 Hits)",
+          "ratio": "113",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "208",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "substitute",
+      "name": "Substitute",
+      "originalDescription": "Leaves behind a substitute doll for the user while it's moving forward. Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take.",
+      "summary": "Leaves behind a substitute doll for the user while it's moving forward. Becomes invincible and dashes forward, leaving behind a Substitute doll in their place which lasts for 3s. The Substitute doll has the same HP, Defense and Sp. Def as the user; the Substitute doll receives 500% of the damage the user would take.",
+      "trigger": "Move 2",
+      "conditions": [
+        "position/back-hit"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "defenseOrSpDefenseChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "waterburst-shuriken",
+      "name": "Waterburst Shuriken",
+      "originalDescription": "Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits. The water shuriken then immediately explodes, dealing damage to enemies in the area of effect and throws them. Once this move ends, the user may jump in a designated direction. Becomes unstoppable and leaps up to throw a giant water shuriken toward the designated circular location, damaging opposing Pokémon it hits on the way to the circular area of effect (from beyond the range of the user's close range auto attacks) and decreasing the movement speed of those hit by 50% for 2s. The user then suddenly appears on top of the water shuriken which immediately bursts, damaging opposing Pokémon in the circular area of effect again and throwing them. Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Throw a giant water shuriken toward the designated area, dealing damage to enemies in the area of effect and decreasing their movement speed for a short time when this move hits. The water shuriken then immediately explodes, dealing damage to enemies in the area of effect and throws them. Once this move ends, the user ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "220",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "420",
+          "notes": "Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "220",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "420",
+          "notes": "Leaps off the burst water shuriken and becomes vulnerable to hindrances again as they jump down to the ground in the direction of their choosing."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchGreninja"
+      ]
+    }
+  ]
+}

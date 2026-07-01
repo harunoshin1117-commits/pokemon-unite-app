@@ -1,0 +1,646 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "sirfetch-d",
+  "pokemonName": "Sirfetch'd",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steadfast",
+      "name": "Steadfast",
+      "originalDescription": "Tenacity is increased by 50% while the user has a shield. When the user hits an opposing Pokémon with a basic attack or move, the user's critical-hit rate increases by 5% up to 5 times for a maximum of 25%. This enhanced critical-hit rate remains for up to 8s after the user last dealt damage with a basic attack or move. As a Farfetch'd, the user will gain 10 Exp. Points when landing critical hits. This Exp. can trigger evolution. Critical hits deal 160% damage rather than 200%.",
+      "summary": "Tenacity is increased by 50% while the user has a shield. When the user hits an opposing Pokémon with a basic attack or move, the user's critical-hit rate increases by 5% up to 5 times for a maximum of 25%. This enhanced critical-hit rate remains for up to 8s after the user last dealt damage with a basic attack or move",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user attacks by slashing with a leek. This Pokémon has no boosted attack.",
+      "summary": "The user attacks by slashing with a leek. This Pokémon has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "This Pokémon has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "dual-wingbeat",
+      "name": "Dual Wingbeat",
+      "originalDescription": "The user slashes in the designated direction, if the first hit lands then the user can use this move again within 5s to slam the leek in the designated spot.",
+      "summary": "The user slashes in the designated direction, if the first hit lands then the user can use this move again within 5s to slam the leek in the designated spot.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Slash",
+          "ratio": "84",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "360",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "The user dashes towards the designated Pokémon, dealing damage and gaining a shield for 3s.",
+      "summary": "The user dashes towards the designated Pokémon, dealing damage and gaining a shield for 3s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "lunging-leek-nova-blast",
+      "name": "Lunging Leek Nova Blast",
+      "originalDescription": "The user becomes Unstoppable, as well as maxing out the Steadfast gauge, and charges in the designated direction, shoving any opposing Pokémon along the way for up to 1s, dealing damage to them up to 5 times. If this move does damage near the end of the dash an explosion occurs dealing double damage and stunning opponents in the area for 0.4s. This move can go through walls if there is enough distance left. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable, as well as maxing out the Steadfast gauge, and charges in the designated direction, shoving any opposing Pokémon along the way for up to 1s, dealing damage to them up to 5 times. If this move does damage near the end of the dash an explosion occurs dealing double damage and stunning oppone",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 89,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Charge (5x)",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "200",
+          "notes": "This move can go through walls if there is enough distance left."
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Charge (5x)",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "200",
+          "notes": "This move can go through walls if there is enough distance left."
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "shieldHp",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "stackCount",
+    "cooldownState",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "actionOrder",
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "steadfast",
+      "name": "Steadfast",
+      "originalDescription": "Tenacity is increased by 50% while the user has a shield. When the user hits an opposing Pokémon with a basic attack or move, the user's critical-hit rate increases by 5% up to 5 times for a maximum of 25%. This enhanced critical-hit rate remains for up to 8s after the user last dealt damage with a basic attack or move. As a Farfetch'd, the user will gain 10 Exp. Points when landing critical hits. This Exp. can trigger evolution. Critical hits deal 160% damage rather than 200%.",
+      "summary": "Tenacity is increased by 50% while the user has a shield. When the user hits an opposing Pokémon with a basic attack or move, the user's critical-hit rate increases by 5% up to 5 times for a maximum of 25%. This enhanced critical-hit rate remains for up to 8s after the user last dealt damage with a basic attack or move",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "criticalRateChange"
+      ],
+      "durationSeconds": 8,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user attacks by slashing with a leek. This Pokémon has no boosted attack.",
+      "summary": "The user attacks by slashing with a leek. This Pokémon has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "This Pokémon has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "dual-wingbeat",
+      "name": "Dual Wingbeat",
+      "originalDescription": "The user slashes in the designated direction, if the first hit lands then the user can use this move again within 5s to slam the leek in the designated spot.",
+      "summary": "The user slashes in the designated direction, if the first hit lands then the user can use this move again within 5s to slam the leek in the designated spot.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Slash",
+          "ratio": "84",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "360",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Slam",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "The user dashes towards the designated Pokémon, dealing damage and gaining a shield for 3s.",
+      "summary": "The user dashes towards the designated Pokémon, dealing damage and gaining a shield for 3s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "shield"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Shield",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "lunging-leek-nova-blast",
+      "name": "Lunging Leek Nova Blast",
+      "originalDescription": "The user becomes Unstoppable, as well as maxing out the Steadfast gauge, and charges in the designated direction, shoving any opposing Pokémon along the way for up to 1s, dealing damage to them up to 5 times. If this move does damage near the end of the dash an explosion occurs dealing double damage and stunning opponents in the area for 0.4s. This move can go through walls if there is enough distance left. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user becomes Unstoppable, as well as maxing out the Steadfast gauge, and charges in the designated direction, shoving any opposing Pokémon along the way for up to 1s, dealing damage to them up to 5 times. If this move does damage near the end of the dash an explosion occurs dealing double damage and stunning oppone",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 89,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Charge (5x)",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "200",
+          "notes": "This move can go through walls if there is enough distance left."
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Charge (5x)",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "200",
+          "notes": "This move can go through walls if there is enough distance left."
+        },
+        "additional": [
+          {
+            "label": "Damage - Explosion",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

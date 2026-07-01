@@ -1,0 +1,775 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "blaziken",
+  "pokemonName": "Blaziken",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's HP is at half or lower, more HP is restored.",
+      "summary": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's H",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Healing (at or below 50% HP)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Healing (at or below 50% HP)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%. For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles.",
+      "summary": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%. For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, th",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Punch Style",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kick Style",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "aerial-ace",
+      "name": "Aerial Ace",
+      "originalDescription": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+      "summary": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+      "summary": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "spinning-flame-fist",
+      "name": "Spinning Flame Fist",
+      "originalDescription": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+      "summary": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 4.7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "spinning-flame-kick",
+      "name": "Spinning Flame Kick",
+      "originalDescription": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier",
+      "summary": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 4.7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "formOrMode",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "blaze",
+      "name": "Blaze",
+      "originalDescription": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's HP is at half or lower, more HP is restored.",
+      "summary": "When this Pokémon hits an enemy with an auto attack or move, that enemy receives a fire fragment for 4s and the duration of all other fire fragments on that enemy are refreshed. When an enemy has 5 fire fragments, all 5 are consumed to deal additional damage to the enemy and restore the user's HP. When this Pokémon's H",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "healing"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Healing (at or below 50% HP)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Healing",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% Max HP",
+            "notes": ""
+          },
+          {
+            "label": "Healing (at or below 50% HP)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%. For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles.",
+      "summary": "Deals damage to nearby enemies. While in Kick Style, basic attacks have a higher area-of-effect and reach. While in Punch Style, attack speed is increased by 40%. For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, th",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Punch Style",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": "For the purpose of auto attacks, Torchic is treated as punch style while Combusken is treated as kick style. Once Blaziken has access to their Unite move, they can swap between styles."
+        },
+        "additional": [
+          {
+            "label": "Damage - Kick Style",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "aerial-ace",
+      "name": "Aerial Ace",
+      "originalDescription": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+      "summary": "Dash in a designated direction, dealing damage to enemies that come in contact with the dash. If this move hits an enemy, this move may be used again once within 4 seconds before being put on cooldown.",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ember",
+      "name": "Ember",
+      "originalDescription": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+      "summary": "Release a small ball of fire in the designated direction, dealing damage in a small area around the first enemy hit and decreases their movement speed by 50% for 1s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "9",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "spinning-flame-fist",
+      "name": "Spinning Flame Fist",
+      "originalDescription": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier;",
+      "summary": "Perform a flaming punch around itself, dealing damage to nearby enemies hit and increase the user's movement speed by 20% for 4s. After using this move, the user switches to Punch Style and all Punch Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 4.7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (2x)",
+          "ratio": "50",
+          "damageType": "Atk",
+          "levelScaling": "4",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "spinning-flame-kick",
+      "name": "Spinning Flame Kick",
+      "originalDescription": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has an internal cooldown of 60s to activate Buddy Barrier",
+      "summary": "Perform a flaming kick around itself, dealing damage to nearby enemies hit and increase the user's Attack stat by 30% for a 4s. After using this move, the user switches to Kick Style and all Kick Style cooldowns are reset. Unite buffs: 9% Max HP Shield; Has an internal cooldown of 30s to activate Energy Amplifier; Has ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "self",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 4.7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

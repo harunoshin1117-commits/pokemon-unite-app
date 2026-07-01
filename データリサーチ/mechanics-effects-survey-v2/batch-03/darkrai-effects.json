@@ -1,0 +1,815 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "darkrai",
+  "pokemonName": "Darkrai",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "bad-dreams",
+        "name": "Bad Dreams",
+        "parentName": null,
+        "originalDescription": "When an enemy is forcibly put to sleep near Darkrai, Darkrai deals damage to the target and gains a boosted attack. When Darkrai uses this boosted, every enemy that has been marked with bad dreams in the last 2.7s is attacked simultaneously. Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep. Damage from this Ability doesn't wake up sleeping enemies.",
+        "translatedDescription": "機械要約: Bad Dreams は ねむりを付与する、継続ダメージを与える、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "50",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "When an enemy is forcibly put to sleep near Darkrai, Darkrai deals damage to the target and gains a boosted attack. When Darkrai uses this boosted, every enemy that has been marked with bad dreams in the last 2.7s is attacked simultaneously.  Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep. Damage from this Ability doesn't wake up sleeping enemies.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - DoT",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "2% max HP every 0.5s",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bad-dreams__01__sleep",
+          "effectType": "sleep",
+          "summary": "ねむりを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "sleep",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep.",
+          "codexInterpretation": "ねむりを付与する。 原文証拠: Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bad-dreams__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "50",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "0",
+              "trueDescription": "When an enemy is forcibly put to sleep near Darkrai, Darkrai deals damage to the target and gains a boosted attack. When Darkrai uses this boosted, every enemy that has been marked with bad dreams in the last 2.7s is attacked simultaneously.  Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep. Damage from this Ability doesn't wake up sleeping enemies.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - DoT",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "2% max HP every 0.5s",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Sleeping enemies near Darkrai take damage over time, and Darkrai deals 10% more damage to them while they remain asleep.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bad-dreams__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "When Darkrai uses this boosted, every enemy that has been marked with bad dreams in the last 2.7s is attacked simultaneously.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: When Darkrai uses this boosted, every enemy that has been marked with bad dreams in the last 2.7s is attacked simultaneously.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "darkrai__bad-dreams",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Basic attacks made against sleeping enemies will become boosted attacks with greatly increased range. Boosted attacks deal damage to enemies with an attack from a void and restore Darkrai's HP. Darkrai does not require vision to perform a boosted attack against a sleeping target.",
+        "translatedDescription": "機械要約: Attack は ねむりを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0 ",
+            "base": "0",
+            "trueDescription": "Basic attacks made against sleeping enemies will become boosted attacks with greatly increased range. Boosted attacks deal damage to enemies with an attack from a void and restore Darkrai's HP. Darkrai does not require vision to perform a boosted attack against a sleeping target.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__sleep",
+          "effectType": "sleep",
+          "summary": "ねむりを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "sleep",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Basic attacks made against sleeping enemies will become boosted attacks with greatly increased range.",
+          "codexInterpretation": "ねむりを付与する。 原文証拠: Basic attacks made against sleeping enemies will become boosted attacks with greatly increased range.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Darkrai does not require vision to perform a boosted attack against a sleeping target.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Darkrai does not require vision to perform a boosted attack against a sleeping target.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "darkrai__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "hypnosis",
+        "name": "Hypnosis",
+        "parentName": null,
+        "originalDescription": "Send a hypnotic suggestion in the designated direction, dealing damage to the first enemy it hits. After 1s, the enemy will fall asleep for 2s.",
+        "translatedDescription": "機械要約: Hypnosis は ねむりを付与する、遅延または時間差でダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "80",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "300",
+            "trueDescription": "Send a hypnotic suggestion in the designated direction, dealing damage to the first enemy it hits. After 1s, the enemy will fall asleep for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "hypnosis__01__sleep",
+          "effectType": "sleep",
+          "summary": "ねむりを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "sleep",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After 1s, the enemy will fall asleep for 2s.",
+          "codexInterpretation": "ねむりを付与する。 原文証拠: After 1s, the enemy will fall asleep for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "hypnosis__02__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "delayedDamage"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After 1s, the enemy will fall asleep for 2s.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: After 1s, the enemy will fall asleep for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "darkrai__hypnosis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "calm-mind",
+        "name": "Calm Mind",
+        "parentName": null,
+        "originalDescription": "The user focuses their mind, increasing their Special Attack and Special Defense by 30% for 3s and Movement Speed by 50% for 3s, decaying by 10% every 0.5 seconds to a minimum of 10%.",
+        "translatedDescription": "機械要約: Calm Mind は 防御・特防を変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user focuses their mind, increasing their Special Attack and Special Defense by 30% for 3s and Movement Speed by 50% for 3s, decaying by 10% every 0.5 seconds to a minimum of 10%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "calm-mind__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "defenseOrSpDefenseChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user focuses their mind, increasing their Special Attack and Special Defense by 30% for 3s and Movement Speed by 50% for 3s, decaying by 10% every 0.5 seconds to a minimum of 10%.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: The user focuses their mind, increasing their Special Attack and Special Defense by 30% for 3s and Movement Speed by 50% for 3s, decaying by 10% every 0.5 seconds to a minimum of 10%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "darkrai__calm-mind",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "worst-nightmare",
+        "name": "Worst Nightmare",
+        "parentName": null,
+        "originalDescription": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times; maximum 63% max HP damage as Sp. Atk-based damage), and the user sends that target into a nightmare realm centered on their initial location for up to 8s. The user follows the target into the nightmare realm. While inside the nightmare realm, Darkrai and the target are unaffected by goal zones, jump pads, and Berries. Other Pokémon outside of the nightmare realm cannot target Darkrai or their target while they're inside. If the designated Pokémon from the opposing team cannot be put to sleep, this Unite Move is canceled and 90% of the Unite Move gauge is refunded. This energy regeneration is affected by Energy Amplifier. Buffs: 80% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Worst Nightmare は ねむりを付与する、妨害無効になる、攻撃・特攻などのステータスを変化させる、シールドを付与する、継続ダメージを与える、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times; maximum 63% max HP damage as Sp. Atk-based damage), and the user sends that target into a nightmare realm centered on their initial location for up to 8s. The user follows the target into the nightmare realm. While inside the nightmare realm, Darkrai and the target are unaffected by goal zones, jump pads, and Berries. Other Pokémon outside of the nightmare realm cannot target Darkrai or their target while they're inside.",
+            "notes": "If the designated Pokémon from the opposing team cannot be put to sleep, this Unite Move is canceled and 90% of the Unite Move gauge is refunded. This energy regeneration is affected by Energy Amplifier."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - DoT (21 Ticks)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "3% max HP every 0.5s",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "worst-nightmare__01__sleep",
+          "effectType": "sleep",
+          "summary": "ねむりを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "sleep",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "codexInterpretation": "ねむりを付与する。 原文証拠: If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__03__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などのステータスを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "attackOrSpAttackChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage ov",
+          "codexInterpretation": "攻撃・特攻などのステータスを変化させる。 原文証拠: The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage ov",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__05__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times; maximum 63% max HP damage as Sp. Atk-based damage), and the user sends that target into a nightmare realm centered on their initial location for up to 8s. The user follows the target into the nightmare realm. While inside the nightmare realm, Darkrai and the target are unaffected by goal zones, jump pads, and Berries. Other Pokémon outside of the nightmare realm cannot target Darkrai or their target while they're inside.",
+              "notes": "If the designated Pokémon from the opposing team cannot be put to sleep, this Unite Move is canceled and 90% of the Unite Move gauge is refunded. This energy regeneration is affected by Energy Amplifier."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - DoT (21 Ticks)",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "3% max HP every 0.5s",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__06__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "worst-nightmare__07__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "The user becomes unstoppable and casts a sleeping spell on the designated Pokémon from the opposing team. If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times; maximum 63% max HP damage as Sp. Atk-based damage), and the user sends that target into a nightmare realm centered on their initial location for up to 8s. The user follows the target into the nightmare realm. While inside the nightmare realm, Darkrai and the target are unaffected by goal zones, jump pads, and Berries. Other Pokémon outside of the nightmare realm cannot target Darkrai or their target while they're inside.",
+              "notes": "If the designated Pokémon from the opposing team cannot be put to sleep, this Unite Move is canceled and 90% of the Unite Move gauge is refunded. This energy regeneration is affected by Energy Amplifier."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - DoT (21 Ticks)",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "3% max HP every 0.5s",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: If the target is successfully put to sleep, the user's moves' cooldowns are reset, the target is marked to receive 3% max HP damage over time every 0.5s over 10s (up to 21 times",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "darkrai__worst-nightmare",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 15,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

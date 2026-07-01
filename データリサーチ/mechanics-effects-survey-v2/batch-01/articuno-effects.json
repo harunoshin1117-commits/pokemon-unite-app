@@ -1,0 +1,720 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "articuno",
+  "pokemonName": "Articuno",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "snow-cloak",
+        "name": "Snow Cloak",
+        "parentName": null,
+        "originalDescription": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards the ability goes on cooldown for 10s. Icy Wind, Blizzard, and Ice Wing Whiteout apply a freeze counter on opposing Pokémon when they hit. This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter. Once the freeze counter reaches 5 stacks, that Pokémon gets frozen for 1.1s.",
+        "translatedDescription": "機械要約: Snow Cloak は こおり・凍結を付与する、移動速度を下げる、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards the ability goes on cooldown for 10s.",
+            "notes": "Icy Wind, Blizzard, and Ice Wing Whiteout apply a freeze counter on opposing Pokémon when they hit. This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter. Once the freeze counter reaches 5 stacks, that Pokémon gets frozen for 1.1s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "snow-cloak__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "freeze",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snow-cloak__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "snow-cloak__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        },
+        {
+          "effectId": "snow-cloak__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "articuno__snow-cloak",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s. Articuno has no boosted attack.",
+        "translatedDescription": "機械要約: Attack は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "40",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "160",
+            "trueDescription": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s.",
+            "notes": "Articuno has no boosted attack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "articuno__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "icy-wind",
+        "name": "Icy Wind",
+        "parentName": null,
+        "originalDescription": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while. Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+        "translatedDescription": "機械要約: Icy Wind は こおり・凍結を付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "90",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "350",
+            "trueDescription": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while.",
+            "notes": "Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "icy-wind__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "freeze",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "icy-wind__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "articuno__icy-wind",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "ice-shard",
+        "name": "Ice Shard",
+        "parentName": null,
+        "originalDescription": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s. If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage.",
+        "translatedDescription": "機械要約: Ice Shard は こおり・凍結を付与する、移動速度を下げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "48",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "240",
+            "trueDescription": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s.",
+            "notes": "If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Frozen Target",
+            "ratio": "72",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-shard__01__freeze",
+          "effectType": "freeze",
+          "summary": "こおり・凍結を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "freeze",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter.",
+          "codexInterpretation": "こおり・凍結を付与する。 原文証拠: If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-shard__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-shard__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "stackOrMark"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetStackOrMark"
+          ],
+          "sourceEvidence": "If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "スタック余剰、更新、個別タイマーか共有タイマーかは未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "articuno__ice-shard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "ice-wing-whiteout",
+        "name": "Ice Wing Whiteout",
+        "parentName": null,
+        "originalDescription": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage. If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed. Buffs: 30% Movement Speed, 40% Max HP Shield",
+        "translatedDescription": "機械要約: Ice Wing Whiteout は 妨害無効になる、HPを回復する、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Wave",
+            "ratio": "68",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "340",
+            "trueDescription": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage.",
+            "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+          },
+          {
+            "id": "add1",
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ice-wing-whiteout__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-wing-whiteout__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The goal zone still provides healing and shielding by standing at the edge of it.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The goal zone still provides healing and shielding by standing at the edge of it.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-wing-whiteout__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ice-wing-whiteout__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "articuno__ice-wing-whiteout",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 14,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

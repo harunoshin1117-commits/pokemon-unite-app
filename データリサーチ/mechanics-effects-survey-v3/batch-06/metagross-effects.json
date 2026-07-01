@@ -1,0 +1,1803 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "metagross",
+  "pokemonName": "Metagross",
+  "role": "B+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "clear-body",
+      "moveName": "Clear Body",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "iron-defense",
+      "moveName": "Iron Defense",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "meteor-mash",
+      "moveName": "Meteor Mash",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Iron Defense",
+      "isPlus": false,
+      "originalDescription": "The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s. Enemies may dodge the charging damage by moving out of the area. The more enemies that this move hits, the more shield the user gains (stacking up to 8 times) and the more damage is dealt with the next basic attack. The next basic attack hits with a hard punch fired like a meteor, dealing damage to enemies in an area of effect. The level of charge depends on how many hits were made during the charging.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "meteor-mash-plus",
+      "moveName": "Meteor Mash+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Meteor Mash",
+      "isPlus": true,
+      "originalDescription": "Restores HP when the punch hits enemies. 9% Max HP 10% Max HP 11% Max HP 12% Max HP",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "gyro-ball",
+      "moveName": "Gyro Ball",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Iron Defense",
+      "isPlus": false,
+      "originalDescription": "Spin rapidly, dealing damage to nearby enemies. Hitting enemies with the outer edge of the spin grants a shield to the user for 4s. The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "gyro-ball-plus",
+      "moveName": "Gyro Ball+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Gyro Ball",
+      "isPlus": true,
+      "originalDescription": "On expiration of shield duration, converts 30% of the remaining shield to healing.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "tackle",
+      "moveName": "Tackle",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "zen-headbutt",
+      "moveName": "Zen Headbutt",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Tackle",
+      "isPlus": false,
+      "originalDescription": "Fires a psychic wave in a designated direction. If the move hits an enemy, the user then charges toward the enemy hit, dealing damage and throwing them for 0.8s.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "zen-headbutt-plus",
+      "moveName": "Zen Headbutt+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Zen Headbutt",
+      "isPlus": true,
+      "originalDescription": "After dealing damage with Zen Headbutt, reduce incoming damage by 20% for 2s.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "magnet-rise",
+      "moveName": "Magnet Rise",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Tackle",
+      "isPlus": false,
+      "originalDescription": "Levitates for up to 4s using electrically-generated magnetism, increasing the user's movement speed by 60% diminishing by 15% every second. If a basic attack is made while levitating, the user will fall to the ground forcefully, dealing damage to nearby enemies and knocking them up for 0.6s. This basic attack can lunge at a target crossing terrain and obstacles.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "magnet-rise-plus",
+      "moveName": "Magnet Rise+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Magnet Rise",
+      "isPlus": true,
+      "originalDescription": "While levitating, reduce incoming damage by 30%.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "compute-and-crush",
+      "moveName": "Compute and Crush",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. 20% Missing HP",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Metagross",
+      "pokemonId": "metagross",
+      "sourceId": "compute-and-crush-unite-buff",
+      "moveName": "Compute and Crush Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Compute and Crush",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Clear Body",
+      "sourceType": "passive",
+      "sourceId": "clear-body",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Iron Defense",
+      "sourceType": "initialMove",
+      "sourceId": "iron-defense",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Meteor Mash",
+      "sourceType": "moveChoice",
+      "sourceId": "meteor-mash",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Iron Defense"
+    },
+    {
+      "name": "Meteor Mash+",
+      "sourceType": "movePlus",
+      "sourceId": "meteor-mash-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Meteor Mash"
+    },
+    {
+      "name": "Gyro Ball",
+      "sourceType": "moveChoice",
+      "sourceId": "gyro-ball",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Iron Defense"
+    },
+    {
+      "name": "Gyro Ball+",
+      "sourceType": "movePlus",
+      "sourceId": "gyro-ball-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Gyro Ball"
+    },
+    {
+      "name": "Tackle",
+      "sourceType": "initialMove",
+      "sourceId": "tackle",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Zen Headbutt",
+      "sourceType": "moveChoice",
+      "sourceId": "zen-headbutt",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Tackle"
+    },
+    {
+      "name": "Zen Headbutt+",
+      "sourceType": "movePlus",
+      "sourceId": "zen-headbutt-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Zen Headbutt"
+    },
+    {
+      "name": "Magnet Rise",
+      "sourceType": "moveChoice",
+      "sourceId": "magnet-rise",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Tackle"
+    },
+    {
+      "name": "Magnet Rise+",
+      "sourceType": "movePlus",
+      "sourceId": "magnet-rise-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Magnet Rise"
+    },
+    {
+      "name": "Compute and Crush",
+      "sourceType": "uniteMove",
+      "sourceId": "compute-and-crush",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Compute and Crush Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "compute-and-crush-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Compute and Crush"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "clear-body",
+        "name": "Clear Body",
+        "rawName": "Clear Body",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+        "translatedDescription": "機械要約: Clear Body には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces the duration of hindrance effects by 10% when enemy players are nearby. The more enemy players there are, the more the hindrance effects are reduced, up to a maximum of 5 enemy players (50% max).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__clear-body",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Becomes a boosted attack with every third attack, striking with an increased area of attack. When a boosted attack hits, the cooldown of Iron Defense, Meteor Mash or Gyro Ball is reduced by 10%. If multiple targets are hit, the cooldown is instead reduced by 20%. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, striking with an increased area of attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, striking with an increased area of attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "140",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "iron-defense",
+        "name": "Iron Defense",
+        "rawName": "Iron Defense",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+        "translatedDescription": "機械要約: Iron Defense は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "400",
+            "trueDescription": "Gain a shield lasting 5s and gain a boosted attack. That boosted attack deals additional damage.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Additional Damage",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "iron-defense__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Gain a shield lasting 5s and gain a boosted attack.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Gain a shield lasting 5s and gain a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__iron-defense",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "meteor-mash",
+        "name": "Meteor Mash",
+        "rawName": "Meteor Mash",
+        "parentName": "Iron Defense",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s. Enemies may dodge the charging damage by moving out of the area. The more enemies that this move hits, the more shield the user gains (stacking up to 8 times) and the more damage is dealt with the next basic attack. The next basic attack hits with a hard punch fired like a meteor, dealing damage to enemies in an area of effect. The level of charge depends on how many hits were made during the charging.",
+        "translatedDescription": "機械要約: Meteor Mash は 移動速度を下げる、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield (per charge stack)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "115",
+            "trueDescription": "The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s. Enemies may dodge the charging damage by moving out of the area. The more enemies that this move hits, the more shield the user gains (stacking up to 8 times) and the more damage is dealt with the next basic attack. The next basic attack hits with a hard punch fired like a meteor, dealing damage to enemies in an area of effect. The level of charge depends on how many hits were made during the charging.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Charging Damage",
+            "ratio": "55",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "100",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Punch Damage (1-2 Charges)",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Punch Damage (3-4 Charges)",
+            "ratio": "175",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "430",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add4",
+            "label": "Punch Damage (5-6 Charges)",
+            "ratio": "200",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add5",
+            "label": "Punch Damage (7-8 Charges)",
+            "ratio": "225",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "500",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "meteor-mash__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "meteor-mash__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user charges power in their fist, dealing damage to enemies in an area up to 4x and slowing them by 20% for 3s while granting the user a shield for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "meteor-mash__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The more enemies that this move hits, the more shield the user gains (stacking up to 8 times) and the more damage is dealt with the next basic attack.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The more enemies that this move hits, the more shield the user gains (stacking up to 8 times) and the more damage is dealt with the next basic attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__meteor-mash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "meteor-mash-plus",
+        "name": "Meteor Mash+",
+        "rawName": "Meteor Mash",
+        "parentName": "Meteor Mash",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Restores HP when the punch hits enemies. 9% Max HP 10% Max HP 11% Max HP 12% Max HP",
+        "translatedDescription": "機械要約: Meteor Mash+ は HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Punch Healing (1-2 Charges)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Restores HP when the punch hits enemies.",
+            "notes": "9% Max HP"
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Punch Healing (3-4 Charges)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "10% Max HP"
+          },
+          {
+            "id": "enhancedAdd2",
+            "label": "Punch Healing (5-6 Charges)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "11% Max HP"
+          },
+          {
+            "id": "enhancedAdd3",
+            "label": "Punch Healing (7-8 Charges)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "",
+            "notes": "12% Max HP"
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "meteor-mash-plus__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restores HP when the punch hits enemies.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Restores HP when the punch hits enemies.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__meteor-mash-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "gyro-ball",
+        "name": "Gyro Ball",
+        "rawName": "Gyro Ball",
+        "parentName": "Iron Defense",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Spin rapidly, dealing damage to nearby enemies. Hitting enemies with the outer edge of the spin grants a shield to the user for 4s. The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+        "translatedDescription": "機械要約: Gyro Ball は シールドを付与する、スタック、マーク、ゲージを扱う、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "261",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "676",
+            "trueDescription": "Spin rapidly, dealing damage to nearby enemies. Hitting enemies with the outer edge of the spin grants a shield to the user for 4s. The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield - per stack",
+            "ratio": "78",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gyro-ball__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hitting enemies with the outer edge of the spin grants a shield to the user for 4s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Hitting enemies with the outer edge of the spin grants a shield to the user for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gyro-ball__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gyro-ball__03__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: The shield stacks based on the number of targets hit up to a maximum of 6 times, with wild Pokémon granting 1 stack and enemy players granting 3 stacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__gyro-ball",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "gyro-ball-plus",
+        "name": "Gyro Ball+",
+        "rawName": "Gyro Ball",
+        "parentName": "Gyro Ball",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "On expiration of shield duration, converts 30% of the remaining shield to healing.",
+        "translatedDescription": "機械要約: Gyro Ball+ は HPを回復する、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "On expiration of shield duration, converts 30% of the remaining shield to healing.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gyro-ball-plus__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "On expiration of shield duration, converts 30% of the remaining shield to healing.",
+          "codexInterpretation": "HPを回復する。 原文証拠: On expiration of shield duration, converts 30% of the remaining shield to healing.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gyro-ball-plus__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "On expiration of shield duration, converts 30% of the remaining shield to healing.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: On expiration of shield duration, converts 30% of the remaining shield to healing.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__gyro-ball-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "tackle",
+        "name": "Tackle",
+        "rawName": "Tackle",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+        "translatedDescription": "機械要約: Tackle には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "200",
+            "trueDescription": "Scan in a designated direction. If the scan hits an enemy, the user then charges toward the enemy hit, dealing damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__tackle",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "zen-headbutt",
+        "name": "Zen Headbutt",
+        "rawName": "Zen Headbutt",
+        "parentName": "Tackle",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Fires a psychic wave in a designated direction. If the move hits an enemy, the user then charges toward the enemy hit, dealing damage and throwing them for 0.8s.",
+        "translatedDescription": "機械要約: Zen Headbutt は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "189",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "248",
+            "trueDescription": "Fires a psychic wave in a designated direction. If the move hits an enemy, the user then charges toward the enemy hit, dealing damage and throwing them for 0.8s. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "zen-headbutt__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the move hits an enemy, the user then charges toward the enemy hit, dealing damage and throwing them for 0.8s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If the move hits an enemy, the user then charges toward the enemy hit, dealing damage and throwing them for 0.8s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__zen-headbutt",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "zen-headbutt-plus",
+        "name": "Zen Headbutt+",
+        "rawName": "Zen Headbutt",
+        "parentName": "Zen Headbutt",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "After dealing damage with Zen Headbutt, reduce incoming damage by 20% for 2s.",
+        "translatedDescription": "機械要約: Zen Headbutt+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "After dealing damage with Zen Headbutt, reduce incoming damage by 20% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__zen-headbutt-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "magnet-rise",
+        "name": "Magnet Rise",
+        "rawName": "Magnet Rise",
+        "parentName": "Tackle",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Levitates for up to 4s using electrically-generated magnetism, increasing the user's movement speed by 60% diminishing by 15% every second. If a basic attack is made while levitating, the user will fall to the ground forcefully, dealing damage to nearby enemies and knocking them up for 0.6s. This basic attack can lunge at a target crossing terrain and obstacles.",
+        "translatedDescription": "機械要約: Magnet Rise は 壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Grounding",
+            "ratio": "140",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "250",
+            "trueDescription": "Levitates for up to 4s using electrically-generated magnetism, increasing the user's movement speed by 60% diminishing by 15% every second. If a basic attack is made while levitating, the user will fall to the ground forcefully, dealing damage to nearby enemies and knocking them up for 0.6s. This basic attack can lunge at a target crossing terrain and obstacles.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "magnet-rise__01__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "This basic attack can lunge at a target crossing terrain and obstacles.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: This basic attack can lunge at a target crossing terrain and obstacles.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__magnet-rise",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "magnet-rise-plus",
+        "name": "Magnet Rise+",
+        "rawName": "Magnet Rise",
+        "parentName": "Magnet Rise",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "While levitating, reduce incoming damage by 30%.",
+        "translatedDescription": "機械要約: Magnet Rise+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "While levitating, reduce incoming damage by 30%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__magnet-rise-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "compute-and-crush",
+        "name": "Compute and Crush",
+        "rawName": "Compute and Crush",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. 20% Missing HP",
+        "translatedDescription": "機械要約: Compute and Crush は 行動不能・スタンを付与する、妨害無効になる、シールドを付与する、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する、再使用・派生・2段目を持つ、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (2 punches)",
+            "ratio": "134",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "400",
+            "trueDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. ",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Missing HP",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Wall Creation",
+            "ratio": "228",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "460",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Shield - Per Enemy",
+            "ratio": "60",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "compute-and-crush__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__05__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (2 punches)",
+              "ratio": "134",
+              "damageType": "Atk",
+              "levelScaling": "2",
+              "base": "400",
+              "trueDescription": "Quickly analyzes the position of nearby enemies, granting a shield based on the number of enemies analyzed and become unstoppable. When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP. If an enemy is knocked out by this move, the user recovers 30% of its Unite Move gauge. If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user. If a wall is created, Compute and Crash may be used again to take down the wall. ",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "20% Missing HP",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Wall Creation",
+              "ratio": "228",
+              "damageType": "Atk",
+              "levelScaling": "7",
+              "base": "460",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Shield - Per Enemy",
+              "ratio": "60",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "150",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: When 2 or fewer enemies are analyzed, lunge towards the enemy with the lowest HP, leaving it unable to act for 0.8s and dealing damage to it thrice, with the third hit dealing damage based on the target's missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__06__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If a wall is created, Compute and Crash may be used again to take down the wall.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If a wall is created, Compute and Crash may be used again to take down the wall.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush__07__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: If there are three or more analyzed, lunge toward the enemy with the lowest HP, dealing damage to nearby enemies and creating a wall around the user.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__compute-and-crush",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "compute-and-crush-unite-buff",
+        "name": "Compute and Crush Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Compute and Crush",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Compute and Crush Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "compute-and-crush-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "compute-and-crush-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "metagross__compute-and-crush-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 23,
+    "zeroSpecialEffectSourceCount": 5,
+    "missingSourceCount": 0
+  }
+}

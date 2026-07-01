@@ -1,0 +1,2189 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "buzzwole",
+  "pokemonName": "Buzzwole",
+  "role": "A",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "beast-boost",
+      "moveName": "Beast Boost",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s. When Buzzwole assists in knocking out an enemy player, movement speed is increased by 50% and basic attack speed increased by 25% for 3s. Each time Buzzwole hits an enemy with basic attacks, Mega Punch, Lunge, or Smack Down - muscle gauge increases. Conversely, when Buzzwole has been out of combat for 10s, muscle gauge depletes by 1 increment every 5s. Up to 6 muscle gauge increments can be stored.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Each time a basic attack hits an enemy, increase muscle gauge by 1 increment. Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "mega-punch",
+      "moveName": "Mega Punch",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Jump in the designated direction before slamming the ground with a powerful punch. The shock from the punch deals damage to enemies in the area. Muscle gauge increases by 1 increment for each target hit.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "lunge",
+      "moveName": "Lunge",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Mega Punch",
+      "isPlus": false,
+      "originalDescription": "Lunge in the designated direction, dealing damage to enemies, decreasing their Attack by 30% for 2.5s and slowing them by 30% for 1s. If this move deals damage, muscle gauge increases by 1 increment for each enemy hit. After this move is used, Buzzwole's basic attack speed is increased by 30% for 2s. Holds 2 uses in reserve and cannot be used more than once every 1s.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "lunge-plus",
+      "moveName": "Lunge+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Lunge",
+      "isPlus": true,
+      "originalDescription": "Whenever this move hits enemy players, Buzzwole's Attack increases by 10% for 2s for each player hit (up to a max of 5 stacks).",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "smack-down",
+      "moveName": "Smack Down",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Mega Punch",
+      "isPlus": false,
+      "originalDescription": "Deliver an uppercut punch in the designated direction. The first Pokémon hit takes damage and is thrown into the air, ending with a slam on the ground that deals damage to all enemies in an area centered on the previously airborne enemy. Muscle gauge increases by 1 increment for each enemy damaged by the initial hit and slam. For a time after the initial hit, buzzwole can activate this move again to teleport to the target and slam them into the ground at their current position, ending the airborne travel instantly.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "smack-down-plus",
+      "moveName": "Smack Down+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Smack Down",
+      "isPlus": true,
+      "originalDescription": "Widens the area-of-effect in which damage is dealt when the grappled enemy slams the ground. Additionally, muscle gauge will now increase by 2 increments for each enemy player hit from the slam.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "fell-stinger",
+      "moveName": "Fell Stinger",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s. The damage dealt by this move increases for each muscle gauge increment consumed at a rate of 12.5% per increment. If this move knocks out any Pokémon, the user recovers 10% of maximum HP. 10% of Max HP",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "leech-life",
+      "moveName": "Leech Life",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Fell Stinger",
+      "isPlus": false,
+      "originalDescription": "Grab and restrain an enemy in the designated direction, becoming unstoppable and dealing damage-over-time while restoring Buzzwole's HP. When this move is used, consume the user's entire muscle gauge. The number of hits and the amount of damage dealt per hit increases for each muscle gauge increment consumed. Number of hits starts at 4 and increases by 1 per 2 increments of muscle gauge consumed. Initial damage increases by 1.5% per muscle gauge increment. This move ends if Buzzwole becomes unable to act for any reason or if the restrained enemy escapes by using an Eject Button or through some other means. Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur. 1.5% x Muscle Gauge",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "leech-life-plus",
+      "moveName": "Leech Life+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Leech Life",
+      "isPlus": true,
+      "originalDescription": "Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "superpower",
+      "moveName": "Superpower",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Fell Stinger",
+      "isPlus": false,
+      "originalDescription": "Consumes the entire muscle gauge and has the user run in the designated direction and grab an enemy. The user then slams the target down on the ground at full strength, dealing damage to all enemies in the area. If Buzzwole is successful in grabbing a target, Buzzwole receives a shield that lasts for 2s. Buzzwole is unstoppable during this move. The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment. 20% Max HP + 2% Max HP * Muscle Gauge",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "superpower-plus",
+      "moveName": "Superpower+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Superpower",
+      "isPlus": true,
+      "originalDescription": "Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "ultra-swole-slam",
+      "moveName": "Ultra Swole Slam",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Buzzwole flies at high speed, dealing damage to enemies in the area-of-effect. Afterward, the user targets the enemy with the lowest percentage of HP remaining among those hit and charges down at them from the sky, dealing area damage once again and additional damage to the targeted enemy based on their missing HP. Buzzwole is Unstoppable during this move. Against Wild Pokemon: Missing HP damage is not dealt. 50% of enemy missing HP",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Buzzwole",
+      "pokemonId": "buzzwole",
+      "sourceId": "ultra-swole-slam-unite-buff",
+      "moveName": "Ultra Swole Slam Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Ultra Swole Slam",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Beast Boost",
+      "sourceType": "passive",
+      "sourceId": "beast-boost",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Mega Punch",
+      "sourceType": "initialMove",
+      "sourceId": "mega-punch",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Lunge",
+      "sourceType": "moveChoice",
+      "sourceId": "lunge",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Mega Punch"
+    },
+    {
+      "name": "Lunge+",
+      "sourceType": "movePlus",
+      "sourceId": "lunge-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Lunge"
+    },
+    {
+      "name": "Smack Down",
+      "sourceType": "moveChoice",
+      "sourceId": "smack-down",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Mega Punch"
+    },
+    {
+      "name": "Smack Down+",
+      "sourceType": "movePlus",
+      "sourceId": "smack-down-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Smack Down"
+    },
+    {
+      "name": "Fell Stinger",
+      "sourceType": "initialMove",
+      "sourceId": "fell-stinger",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Leech Life",
+      "sourceType": "moveChoice",
+      "sourceId": "leech-life",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Fell Stinger"
+    },
+    {
+      "name": "Leech Life+",
+      "sourceType": "movePlus",
+      "sourceId": "leech-life-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Leech Life"
+    },
+    {
+      "name": "Superpower",
+      "sourceType": "moveChoice",
+      "sourceId": "superpower",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Fell Stinger"
+    },
+    {
+      "name": "Superpower+",
+      "sourceType": "movePlus",
+      "sourceId": "superpower-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Superpower"
+    },
+    {
+      "name": "Ultra Swole Slam",
+      "sourceType": "uniteMove",
+      "sourceId": "ultra-swole-slam",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Ultra Swole Slam Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "ultra-swole-slam-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Ultra Swole Slam"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "beast-boost",
+        "name": "Beast Boost",
+        "rawName": "Beast Boost",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s. When Buzzwole assists in knocking out an enemy player, movement speed is increased by 50% and basic attack speed increased by 25% for 3s. Each time Buzzwole hits an enemy with basic attacks, Mega Punch, Lunge, or Smack Down - muscle gauge increases. Conversely, when Buzzwole has been out of combat for 10s, muscle gauge depletes by 1 increment every 5s. Up to 6 muscle gauge increments can be stored.",
+        "translatedDescription": "機械要約: Beast Boost は 移動速度を上げる、スタック、マーク、ゲージを扱う、KOまたはアシストで発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s. When Buzzwole assists in knocking out an enemy player, movement speed is increased by 50% and basic attack speed increased by 25% for 3s. Each time Buzzwole hits an enemy with basic attacks, Mega Punch, Lunge, or Smack Down - muscle gauge increases. Conversely, when Buzzwole has been out of combat for 10s, muscle gauge depletes by 1 increment every 5s. Up to 6 muscle gauge increments can be stored.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "beast-boost__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "beast-boost__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 10,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Conversely, when Buzzwole has been out of combat for 10s, muscle gauge depletes by 1 increment every 5s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Conversely, when Buzzwole has been out of combat for 10s, muscle gauge depletes by 1 increment every 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "beast-boost__03__koAssistTrigger",
+          "effectType": "koAssistTrigger",
+          "summary": "KOまたはアシストで発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "koAssistEvent"
+          ],
+          "sourceEvidence": "When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s.",
+          "codexInterpretation": "KOまたはアシストで発動する。 原文証拠: When Buzzwole knocks out an enemy player, movement speed is increased by 100% and basic attack speed increased by 50% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__beast-boost",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Each time a basic attack hits an enemy, increase muscle gauge by 1 increment. Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+        "translatedDescription": "機械要約: Attack は 相手を打ち上げる、スタック、マーク、ゲージを扱う、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Each time a basic attack hits an enemy, increase muscle gauge by 1 increment. Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Each time a basic attack hits an enemy, increase muscle gauge by 1 increment.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Each time a basic attack hits an enemy, increase muscle gauge by 1 increment.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, throwing two consecutive punches while restoring Buzzwole's HP and increasing muscle gauge by 1 increment for each hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted (per Hit - 2 Hits)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing - Boosted (per Hit - 2 Hits)",
+            "ratio": "78",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "mega-punch",
+        "name": "Mega Punch",
+        "rawName": "Mega Punch",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Jump in the designated direction before slamming the ground with a powerful punch. The shock from the punch deals damage to enemies in the area. Muscle gauge increases by 1 increment for each target hit.",
+        "translatedDescription": "機械要約: Mega Punch は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "108",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "180",
+            "trueDescription": "Jump in the designated direction before slamming the ground with a powerful punch. The shock from the punch deals damage to enemies in the area. Muscle gauge increases by 1 increment for each target hit. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mega-punch__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Muscle gauge increases by 1 increment for each target hit.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Muscle gauge increases by 1 increment for each target hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__mega-punch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "lunge",
+        "name": "Lunge",
+        "rawName": "Lunge",
+        "parentName": "Mega Punch",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Lunge in the designated direction, dealing damage to enemies, decreasing their Attack by 30% for 2.5s and slowing them by 30% for 1s. If this move deals damage, muscle gauge increases by 1 increment for each enemy hit. After this move is used, Buzzwole's basic attack speed is increased by 30% for 2s. Holds 2 uses in reserve and cannot be used more than once every 1s.",
+        "translatedDescription": "機械要約: Lunge は 移動速度を下げる、通常攻撃速度を上げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "89",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "150",
+            "trueDescription": "Lunge in the designated direction, dealing damage to enemies, decreasing their Attack by 30% for 2.5s and slowing them by 30% for 1s. If this move deals damage, muscle gauge increases by 1 increment for each enemy hit. After this move is used, Buzzwole's basic attack speed is increased by 30% for 2s. Holds 2 uses in reserve and cannot be used more than once every 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "lunge__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Lunge in the designated direction, dealing damage to enemies, decreasing their Attack by 30% for 2.5s and slowing them by 30% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Lunge in the designated direction, dealing damage to enemies, decreasing their Attack by 30% for 2.5s and slowing them by 30% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "lunge__02__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After this move is used, Buzzwole's basic attack speed is increased by 30% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: After this move is used, Buzzwole's basic attack speed is increased by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "lunge__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If this move deals damage, muscle gauge increases by 1 increment for each enemy hit.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If this move deals damage, muscle gauge increases by 1 increment for each enemy hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__lunge",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "lunge-plus",
+        "name": "Lunge+",
+        "rawName": "Lunge",
+        "parentName": "Lunge",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Whenever this move hits enemy players, Buzzwole's Attack increases by 10% for 2s for each player hit (up to a max of 5 stacks).",
+        "translatedDescription": "機械要約: Lunge+ は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Whenever this move hits enemy players, Buzzwole's Attack increases by 10% for 2s for each player hit (up to a max of 5 stacks).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "lunge-plus__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Whenever this move hits enemy players, Buzzwole's Attack increases by 10% for 2s for each player hit (up to a max of 5 stacks).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Whenever this move hits enemy players, Buzzwole's Attack increases by 10% for 2s for each player hit (up to a max of 5 stacks).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__lunge-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "smack-down",
+        "name": "Smack Down",
+        "rawName": "Smack Down",
+        "parentName": "Mega Punch",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Deliver an uppercut punch in the designated direction. The first Pokémon hit takes damage and is thrown into the air, ending with a slam on the ground that deals damage to all enemies in an area centered on the previously airborne enemy. Muscle gauge increases by 1 increment for each enemy damaged by the initial hit and slam. For a time after the initial hit, buzzwole can activate this move again to teleport to the target and slam them into the ground at their current position, ending the airborne travel instantly.",
+        "translatedDescription": "機械要約: Smack Down は 相手を打ち上げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial Hit",
+            "ratio": "74",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "140",
+            "trueDescription": "Deliver an uppercut punch in the designated direction. The first Pokémon hit takes damage and is thrown into the air, ending with a slam on the ground that deals damage to all enemies in an area centered on the previously airborne enemy. Muscle gauge increases by 1 increment for each enemy damaged by the initial hit and slam.",
+            "notes": "For a time after the initial hit, buzzwole can activate this move again to teleport to the target and slam them into the ground at their current position, ending the airborne travel instantly."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Slam",
+            "ratio": "178.2",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "336",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "teleportOrWarp",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "smack-down__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The first Pokémon hit takes damage and is thrown into the air, ending with a slam on the ground that deals damage to all enemies in an area centered on the previously airborne enemy.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The first Pokémon hit takes damage and is thrown into the air, ending with a slam on the ground that deals damage to all enemies in an area centered on the previously airborne enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "smack-down__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Muscle gauge increases by 1 increment for each enemy damaged by the initial hit and slam.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Muscle gauge increases by 1 increment for each enemy damaged by the initial hit and slam.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__smack-down",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "smack-down-plus",
+        "name": "Smack Down+",
+        "rawName": "Smack Down",
+        "parentName": "Smack Down",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Widens the area-of-effect in which damage is dealt when the grappled enemy slams the ground. Additionally, muscle gauge will now increase by 2 increments for each enemy player hit from the slam.",
+        "translatedDescription": "機械要約: Smack Down+ は スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Widens the area-of-effect in which damage is dealt when the grappled enemy slams the ground. Additionally, muscle gauge will now increase by 2 increments for each enemy player hit from the slam. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "smack-down-plus__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Additionally, muscle gauge will now increase by 2 increments for each enemy player hit from the slam.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Additionally, muscle gauge will now increase by 2 increments for each enemy player hit from the slam.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__smack-down-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "fell-stinger",
+        "name": "Fell Stinger",
+        "rawName": "Fell Stinger",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s. The damage dealt by this move increases for each muscle gauge increment consumed at a rate of 12.5% per increment. If this move knocks out any Pokémon, the user recovers 10% of maximum HP. 10% of Max HP",
+        "translatedDescription": "機械要約: Fell Stinger は 行動不能・スタンを付与する、与ダメージを変化させる、スタック、マーク、ゲージを扱う、KOまたはアシストで発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "167",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "310",
+            "trueDescription": "Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s. The damage dealt by this move increases for each muscle gauge increment consumed at a rate of 12.5% per increment. If this move knocks out any Pokémon, the user recovers 10% of maximum HP. ",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "10% of Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fell-stinger__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fell-stinger__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The damage dealt by this move increases for each muscle gauge increment consumed at a rate of 12.5% per increment.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: The damage dealt by this move increases for each muscle gauge increment consumed at a rate of 12.5% per increment.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fell-stinger__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Consumes the entire muscle gauge and has the user deal damage to an enemy in the designated direction, briefly shoving and stunning them for .2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fell-stinger__04__koAssistTrigger",
+          "effectType": "koAssistTrigger",
+          "summary": "KOまたはアシストで発動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "koAssistEvent"
+          ],
+          "sourceEvidence": "If this move knocks out any Pokémon, the user recovers 10% of maximum HP.",
+          "codexInterpretation": "KOまたはアシストで発動する。 原文証拠: If this move knocks out any Pokémon, the user recovers 10% of maximum HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__fell-stinger",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "leech-life",
+        "name": "Leech Life",
+        "rawName": "Leech Life",
+        "parentName": "Fell Stinger",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Grab and restrain an enemy in the designated direction, becoming unstoppable and dealing damage-over-time while restoring Buzzwole's HP. When this move is used, consume the user's entire muscle gauge. The number of hits and the amount of damage dealt per hit increases for each muscle gauge increment consumed. Number of hits starts at 4 and increases by 1 per 2 increments of muscle gauge consumed. Initial damage increases by 1.5% per muscle gauge increment. This move ends if Buzzwole becomes unable to act for any reason or if the restrained enemy escapes by using an Eject Button or through some other means. Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur. 1.5% x Muscle Gauge",
+        "translatedDescription": "機械要約: Leech Life は 行動不能・スタンを付与する、妨害無効になる、与ダメージを変化させる、HPを回復する、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Tick",
+            "ratio": "76",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "120",
+            "trueDescription": "Grab and restrain an enemy in the designated direction, becoming unstoppable and dealing damage-over-time while restoring Buzzwole's HP. When this move is used, consume the user's entire muscle gauge. The number of hits and the amount of damage dealt per hit increases for each muscle gauge increment consumed. Number of hits starts at 4 and increases by 1 per 2 increments of muscle gauge consumed. Initial damage increases by 1.5% per muscle gauge increment. This move ends if Buzzwole becomes unable to act for any reason or if the restrained enemy escapes by using an Eject Button or through some other means. ",
+            "notes": "Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Unstoppable Target",
+            "ratio": "380",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Healing - Percentage of Damage Dealt (per hit) ",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "40",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage Boost",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "1.5% x Muscle Gauge",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leech-life__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This move ends if Buzzwole becomes unable to act for any reason or if the restrained enemy escapes by using an Eject Button or through some other means.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: This move ends if Buzzwole becomes unable to act for any reason or if the restrained enemy escapes by using an Eject Button or through some other means.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life__03__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The number of hits and the amount of damage dealt per hit increases for each muscle gauge increment consumed.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: The number of hits and the amount of damage dealt per hit increases for each muscle gauge increment consumed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life__04__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life__05__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Number of hits starts at 4 and increases by 1 per 2 increments of muscle gauge consumed.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Number of hits starts at 4 and increases by 1 per 2 increments of muscle gauge consumed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life__06__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Against Unstoppable Targets: Only 1 instance of increased damage and healing will occur.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__leech-life",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "leech-life-plus",
+        "name": "Leech Life+",
+        "rawName": "Leech Life",
+        "parentName": "Leech Life",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+        "translatedDescription": "機械要約: Leech Life+ は 与ダメージを変化させる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leech-life-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leech-life-plus__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Also causes each instance of damage dealt by this move to be stronger than the last by 5% additively.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__leech-life-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "superpower",
+        "name": "Superpower",
+        "rawName": "Superpower",
+        "parentName": "Fell Stinger",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Consumes the entire muscle gauge and has the user run in the designated direction and grab an enemy. The user then slams the target down on the ground at full strength, dealing damage to all enemies in the area. If Buzzwole is successful in grabbing a target, Buzzwole receives a shield that lasts for 2s. Buzzwole is unstoppable during this move. The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment. 20% Max HP + 2% Max HP * Muscle Gauge",
+        "translatedDescription": "機械要約: Superpower は 妨害無効になる、与ダメージを変化させる、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial",
+            "ratio": "69",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "105",
+            "trueDescription": "Consumes the entire muscle gauge and has the user run in the designated direction and grab an enemy. The user then slams the target down on the ground at full strength, dealing damage to all enemies in the area. If Buzzwole is successful in grabbing a target, Buzzwole receives a shield that lasts for 2s. Buzzwole is unstoppable during this move.",
+            "notes": "The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Slam",
+            "ratio": "230",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "350",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "20% Max HP + 2% Max HP * Muscle Gauge",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "superpower__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buzzwole is unstoppable during this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Buzzwole is unstoppable during this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "superpower__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "superpower__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If Buzzwole is successful in grabbing a target, Buzzwole receives a shield that lasts for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If Buzzwole is successful in grabbing a target, Buzzwole receives a shield that lasts for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "superpower__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The damage dealt by this move is increased at a rate of 12.5% per muscle gauge increment.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__superpower",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "superpower-plus",
+        "name": "Superpower+",
+        "rawName": "Superpower",
+        "parentName": "Superpower",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+        "translatedDescription": "機械要約: Superpower+ は 待ち時間を短縮する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "superpower-plus__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "superpower-plus__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Reduces the cooldown of this move by 3s when the user's muscle gauge reaches maximum.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__superpower-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "ultra-swole-slam",
+        "name": "Ultra Swole Slam",
+        "rawName": "Ultra Swole Slam",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buzzwole flies at high speed, dealing damage to enemies in the area-of-effect. Afterward, the user targets the enemy with the lowest percentage of HP remaining among those hit and charges down at them from the sky, dealing area damage once again and additional damage to the targeted enemy based on their missing HP. Buzzwole is Unstoppable during this move. Against Wild Pokemon: Missing HP damage is not dealt. 50% of enemy missing HP",
+        "translatedDescription": "機械要約: Ultra Swole Slam は 妨害無効になる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Sweep",
+            "ratio": "213",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "210",
+            "trueDescription": "Buzzwole flies at high speed, dealing damage to enemies in the area-of-effect. Afterward, the user targets the enemy with the lowest percentage of HP remaining among those hit and charges down at them from the sky, dealing area damage once again and additional damage to the targeted enemy based on their missing HP. Buzzwole is Unstoppable during this move.",
+            "notes": "Against Wild Pokemon: Missing HP damage is not dealt."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Seek",
+            "ratio": "213",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "210",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "50% of enemy missing HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ultra-swole-slam__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buzzwole is Unstoppable during this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Buzzwole is Unstoppable during this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ultra-swole-slam__02__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Sweep",
+              "ratio": "213",
+              "damageType": "Atk",
+              "levelScaling": "4",
+              "base": "210",
+              "trueDescription": "Buzzwole flies at high speed, dealing damage to enemies in the area-of-effect. Afterward, the user targets the enemy with the lowest percentage of HP remaining among those hit and charges down at them from the sky, dealing area damage once again and additional damage to the targeted enemy based on their missing HP. Buzzwole is Unstoppable during this move.",
+              "notes": "Against Wild Pokemon: Missing HP damage is not dealt."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Seek",
+              "ratio": "213",
+              "damageType": "Atk",
+              "levelScaling": "4",
+              "base": "210",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "50% of enemy missing HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "50% of enemy missing HP",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 50% of enemy missing HP",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ultra-swole-slam__03__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against Wild Pokemon: Missing HP damage is not dealt.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against Wild Pokemon: Missing HP damage is not dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__ultra-swole-slam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "ultra-swole-slam-unite-buff",
+        "name": "Ultra Swole Slam Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Ultra Swole Slam",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Ultra Swole Slam Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "ultra-swole-slam-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ultra-swole-slam-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "ultra-swole-slam-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "buzzwole__ultra-swole-slam-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 38,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

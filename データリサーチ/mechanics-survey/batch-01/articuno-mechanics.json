@@ -1,0 +1,715 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "articuno",
+  "pokemonName": "Articuno",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "snow-cloak",
+      "name": "Snow Cloak",
+      "originalDescription": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards the ability goes on cooldown for 10s. Icy Wind, Blizzard, and Ice Wing Whiteout apply a freeze counter on opposing Pokémon when they hit. This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter. Once the freeze counter reaches 5 stacks, that Pokémon gets frozen for 1.1s.",
+      "summary": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards t",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s. Articuno has no boosted attack.",
+      "summary": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s. Articuno has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "160",
+          "notes": "Articuno has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "icy-wind",
+      "name": "Icy Wind",
+      "originalDescription": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while. Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+      "summary": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while. Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "350",
+          "notes": "Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ice-shard",
+      "name": "Ice Shard",
+      "originalDescription": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s. If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage.",
+      "summary": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s. If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "48",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": "If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage - Frozen Target",
+            "ratio": "72",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ice-wing-whiteout",
+      "name": "Ice Wing Whiteout",
+      "originalDescription": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage. If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage. If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "cooldownState",
+    "durationTimer",
+    "formOrMode",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "snow-cloak",
+      "name": "Snow Cloak",
+      "originalDescription": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards the ability goes on cooldown for 10s. Icy Wind, Blizzard, and Ice Wing Whiteout apply a freeze counter on opposing Pokémon when they hit. This freeze counter goes up to 5 stacks, lasts for 3s and refreshes when another stack is applied, and applies a stacking 12% slow based on the amount of stacks of the freeze counter. Once the freeze counter reaches 5 stacks, that Pokémon gets frozen for 1.1s.",
+      "summary": "After Ice Shard or Ice Beam is used, the user gains 10% damage resistance for 4s; after Icy Wind, Blizzard, or Unite Move is used the user gains 20% damage resistance for 5s. If move 1 or Unite Move is used after move 2 activated the ability, then the effect is dynamically upgraded to the improved version. Afterwards t",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "movementSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s. Articuno has no boosted attack.",
+      "summary": "The user hurls a shard of ice at the designated target, applying a 30% slow for 0.3s. Articuno has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 0.3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "40",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "160",
+          "notes": "Articuno has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "icy-wind",
+      "name": "Icy Wind",
+      "originalDescription": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while. Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+      "summary": "The user blasts a gust of chilled air in a cone, in the designated direction dealing damage and freezing the ground for a short while. Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "350",
+          "notes": "Opposing Pokémon standing on the frozen ground will have their freeze counter increased over time."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "ice-shard",
+      "name": "Ice Shard",
+      "originalDescription": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s. If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage.",
+      "summary": "The user hurls a chunk of ice in the designated direction, dealing damage to opposing Pokémon hit and slowing them by 40% for 2.5s. If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "48",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": "If the target has at least 1 stack of the freeze counter, they will become frozen consuming the counter. If the target is already frozen the move instead deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage - Frozen Target",
+            "ratio": "72",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "ice-wing-whiteout",
+      "name": "Ice Wing Whiteout",
+      "originalDescription": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage. If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed. Unite buffs: 30% Movement Speed, 40% Max HP Shield",
+      "summary": "The user becomes Unstoppable and immobile, summoning a raging blizzard centered on themself, dealing damage in 5 waves. The second wave deals 5% more damage, third 10%, fourth 15%, and the fifth deals 100% more damage. If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Wave",
+          "ratio": "68",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "340",
+          "notes": "If the move hits an ally goal zone, a chunk of ice forms on the zone, blocking movement and scoring. The goal zone still provides healing and shielding by standing at the edge of it. This chunk of ice will remain until it is destroyed."
+        },
+        "additional": [
+          {
+            "label": "Ice Chunk",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9000 HP, 0 Def and SpDef. Unaffected by some status effects and damage over time.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

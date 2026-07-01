@@ -1,0 +1,407 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "meganium",
+  "pokemonName": "Meganium",
+  "role": "Supporter",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "overgrow",
+        "name": "Overgrow",
+        "parentName": null,
+        "originalDescription": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+        "translatedDescription": "機械要約: Overgrow は HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "overgrow__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The user heals an additional 10% of the healing value to allies or themself while that target is at or below 30% HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meganium__overgrow",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon. This Pokémon has no boosted attack.",
+        "translatedDescription": "機械要約: Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "45",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "The user whips their vines about in a headbutt, dealing damage to opposing Pokémon.",
+            "notes": "This Pokémon has no boosted attack."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meganium__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "magical-leaf",
+        "name": "Magical Leaf",
+        "parentName": null,
+        "originalDescription": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+        "translatedDescription": "機械要約: Magical Leaf は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "140",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "560",
+            "trueDescription": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "magical-leaf__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user scatters curious leaves at a designated target, dealing damage and slowing opposing Pokémon by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meganium__magical-leaf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "synthesis",
+        "name": "Synthesis",
+        "parentName": null,
+        "originalDescription": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+        "translatedDescription": "機械要約: Synthesis は HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing",
+            "ratio": "180",
+            "damageType": "SpAtk",
+            "levelScaling": "60",
+            "base": "50",
+            "trueDescription": "The user photosynthesizes and produces energy around the designated ally and the user for 1s. Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synthesis__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "healing"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Allies in the area of effect get healed, if within both circles of energy the second circle's healing is halved, while opposing Pokémon have their damage lowered by 15% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meganium__synthesis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "full-bloom-aroma",
+        "name": "Full Bloom Aroma",
+        "parentName": null,
+        "originalDescription": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects. Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy. Buffs: 10% Movement Speed, 10% Max HP Shield",
+        "translatedDescription": "機械要約: Full Bloom Aroma は シールドを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per tick (x10)",
+            "ratio": "20",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "106",
+            "trueDescription": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects.",
+            "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "full-bloom-aroma__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 10% Movement Speed, 10% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 10% Movement Speed, 10% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "full-bloom-aroma__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - per tick (x10)",
+              "ratio": "20",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "106",
+              "trueDescription": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times. Opposing Pokémon hit by this move have their damage reduced by 10% for 3s, the duration is refreshed on each hit. For up to 5s, the user's next move will be in full bloom, granting extra effects.",
+              "notes": "Meganium gains 2700 energy per second instead of the usual 900. Hitting with moves grants 4500 energy."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The user emits a sweet aroma around themselves dealing damage to opposing Pokémon every 0.5s up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meganium__full-bloom-aroma",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 5,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

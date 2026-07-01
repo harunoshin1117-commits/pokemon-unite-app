@@ -1,0 +1,607 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "miraidon",
+  "pokemonName": "Miraidon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "hadron-engine",
+      "name": "Hadron Engine",
+      "originalDescription": "Create Electric Terrain around Miraidon for 10s when hitting an enemy player with a Move. If Miraidon has Aeos Energy, up to 40 energy (in multiples of 10) will be consumed when the Electric Terrain is created, increasing the size of the Electric Terrain. Miraidon and Pokémon cannot be put to sleep on Electric Terrain. Miraidon on the Electric Terrain deals 30% additional Move damage while allies will deal 10% additional Move damage. Electric Terrain also strengthens ally team goals' healing and shielding by 30% and weakens enemy team goals' healing and shielding by 30%. This ability goes on a 30s cooldown after it's triggered.",
+      "summary": "Create Electric Terrain around Miraidon for 10s when hitting an enemy player with a Move. If Miraidon has Aeos Energy, up to 40 energy (in multiples of 10) will be consumed when the Electric Terrain is created, increasing the size of the Electric Terrain. Miraidon and Pokémon cannot be put to sleep on Electric Terrain.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Miraidon does not have a boosted attack.",
+      "summary": "Miraidon does not have a boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Fire a jolt of electricity in a line in the designated direction, dealing damage to enemies hit.",
+      "summary": "Fire a jolt of electricity in a line in the designated direction, dealing damage to enemies hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-wave",
+      "name": "Thunder Wave",
+      "originalDescription": "Discharges electricity at a designated enemy, dealing damage and leaving them paralyzed, decreasing attack speed by 10% and movement speed by 30% for 2s.",
+      "summary": "Discharges electricity at a designated enemy, dealing damage and leaving them paralyzed, decreasing attack speed by 10% and movement speed by 30% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "bright-future-meteor-storm",
+      "name": "Bright Future Meteor Storm",
+      "originalDescription": "The user gains hindrance resistance and calls down up to 5 meteorites in a row, each at a designated area, damaging opposing Pokémon hit by each meteorite. If a meteorite hits an opposing Pokémon, it increases the damage of subsequent meteorites that hit by an additional 20% (up to 80% additional increased damage for the final meteorite if all preceding meteorites hit). The final meteorite damages opposing Pokémon in a wider area of effect and throws them for 1s when it hits. All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user gains hindrance resistance and calls down up to 5 meteorites in a row, each at a designated area, damaging opposing Pokémon hit by each meteorite. If a meteorite hits an opposing Pokémon, it increases the damage of subsequent meteorites that hit by an additional 20% (up to 80% additional increased damage for t",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Base per meteorite",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": "All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Base per meteorite",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": "All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "cooldownState",
+    "durationTimer",
+    "shieldHp",
+    "normalAttackCycleOrReadyFlag",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "hadron-engine",
+      "name": "Hadron Engine",
+      "originalDescription": "Create Electric Terrain around Miraidon for 10s when hitting an enemy player with a Move. If Miraidon has Aeos Energy, up to 40 energy (in multiples of 10) will be consumed when the Electric Terrain is created, increasing the size of the Electric Terrain. Miraidon and Pokémon cannot be put to sleep on Electric Terrain. Miraidon on the Electric Terrain deals 30% additional Move damage while allies will deal 10% additional Move damage. Electric Terrain also strengthens ally team goals' healing and shielding by 30% and weakens enemy team goals' healing and shielding by 30%. This ability goes on a 30s cooldown after it's triggered.",
+      "summary": "Create Electric Terrain around Miraidon for 10s when hitting an enemy player with a Move. If Miraidon has Aeos Energy, up to 40 energy (in multiples of 10) will be consumed when the Electric Terrain is created, increasing the size of the Electric Terrain. Miraidon and Pokémon cannot be put to sleep on Electric Terrain.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Miraidon does not have a boosted attack.",
+      "summary": "Miraidon does not have a boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "100",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Fire a jolt of electricity in a line in the designated direction, dealing damage to enemies hit.",
+      "summary": "Fire a jolt of electricity in a line in the designated direction, dealing damage to enemies hit.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "120",
+          "damageType": "SpAtk",
+          "levelScaling": "20",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-wave",
+      "name": "Thunder Wave",
+      "originalDescription": "Discharges electricity at a designated enemy, dealing damage and leaving them paralyzed, decreasing attack speed by 10% and movement speed by 30% for 2s.",
+      "summary": "Discharges electricity at a designated enemy, dealing damage and leaving them paralyzed, decreasing attack speed by 10% and movement speed by 30% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "bright-future-meteor-storm",
+      "name": "Bright Future Meteor Storm",
+      "originalDescription": "The user gains hindrance resistance and calls down up to 5 meteorites in a row, each at a designated area, damaging opposing Pokémon hit by each meteorite. If a meteorite hits an opposing Pokémon, it increases the damage of subsequent meteorites that hit by an additional 20% (up to 80% additional increased damage for the final meteorite if all preceding meteorites hit). The final meteorite damages opposing Pokémon in a wider area of effect and throws them for 1s when it hits. All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "The user gains hindrance resistance and calls down up to 5 meteorites in a row, each at a designated area, damaging opposing Pokémon hit by each meteorite. If a meteorite hits an opposing Pokémon, it increases the damage of subsequent meteorites that hit by an additional 20% (up to 80% additional increased damage for t",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Base per meteorite",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": "All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Base per meteorite",
+          "ratio": "70",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "400",
+          "notes": "All effects related to Unite Move use activate when the first meteorite is called down. This Unite Move ends when released, consuming 10% of the Unite Move gauge. Each meteorite called down consumes at most 30% of the Unite Move gauge."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

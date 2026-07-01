@@ -1,0 +1,2251 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "garchomp",
+  "pokemonName": "Garchomp",
+  "role": "A",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "rough-skin",
+      "moveName": "Rough Skin",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD). When struck by a melee attack, a portion of the damage received is reflected back at the attacker.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350. Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "sand-attack",
+      "moveName": "Sand Attack",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits. Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dig",
+      "moveName": "Dig",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Sand Attack",
+      "isPlus": false,
+      "originalDescription": "The user digs underground, becoming untargetable while underground, and dashes quickly forward. The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp. Def for 4s, dealing damage to nearby opposing Pokémon and throwing them for 0.6s. Burrow underground and move quickly in the designated direction, jumping out when coming in contact with an enemy or when traveling the maximum distance. This jump deals damage to enemies in the area of effect and throws them.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dig-plus",
+      "moveName": "Dig+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Dig",
+      "isPlus": true,
+      "originalDescription": "Strengthens the duration of the throw to 1s. Damage received is reduced for a short time after jumping out of the ground.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dragon-rush",
+      "moveName": "Dragon Rush",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Sand Attack",
+      "isPlus": false,
+      "originalDescription": "The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward. The user can use Dragon Claw during the first half of the channel to add the Dragon Claw hits as a combo attack. This combo attack scoops up opposing Pokémon, dealing damage with both Dragon Rush and Dragon Claw's first attack and stunning them. If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow. Back up to create distance before diving to attack in the designated direction, shoving enemies. The user can use Dragon Claw while creating distance at the start of this move to create a combo attack. (This move can crit)",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dragon-rush-plus",
+      "moveName": "Dragon Rush+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Dragon Rush",
+      "isPlus": true,
+      "originalDescription": "Becomes unstoppable during this move; this includes the combo attack with Dragon Claw. Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "bulldoze",
+      "moveName": "Bulldoze",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user stomps down on the ground, damaging opposing Pokémon in the area of effect. Stomp down on the ground, dealing damage to enemies in the area of effect.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "earthquake",
+      "moveName": "Earthquake",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Bulldoze",
+      "isPlus": false,
+      "originalDescription": "The user jumps up and crashes forcefully to the ground, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 20% for 2s. Two aftershocks follow the initial crash, dealing less damage to opposing Pokémon in the area of effect. Jump high into the air and crash forcefully to the ground, dealing damage to enemies in the area of effect.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "earthquake-plus",
+      "moveName": "Earthquake+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Earthquake",
+      "isPlus": true,
+      "originalDescription": "Strengthens the movement speed decrease of opposing Pokémon near the center of the crash to 40%. Decrease the movement speed of enemies for a short time if they are in this move's area of effect.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dragon-claw",
+      "moveName": "Dragon Claw",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Bulldoze",
+      "isPlus": false,
+      "originalDescription": "The user charges in the designated direction viciously and attacks with two claw swipes. The first attack damages opposing Pokémon and shoves them in the designated direction. The second attack deals more damage to opposing Pokémon and decreases their movement speed by 45% for 2s. When this move is used in a combo attack with Dragon Rush, the movement speed decrease on the second attack is strengthened to 60% for 2s. Attack twice in front of itself using its claws. The first attack deals damage to enemies and throws them. The second attack deals increased damage. After the move ends, basic attack speed is increased for a short time. (This move can crit)",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "dragon-claw-plus",
+      "moveName": "Dragon Claw+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Dragon Claw",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of both attacks. Increase damage dealt.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "livid-outrage",
+      "moveName": "Livid Outrage",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and damages opposing Pokémon in a unique designated area with each attack, taking a brief moment after each attack to aim the next dash. Every attack more damage than the last. The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s. The user is left confused for 0.5s afterward. Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Garchomp",
+      "pokemonId": "garchomp",
+      "sourceId": "livid-outrage-unite-buff",
+      "moveName": "Livid Outrage Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Livid Outrage",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Rough Skin",
+      "sourceType": "passive",
+      "sourceId": "rough-skin",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Sand Attack",
+      "sourceType": "initialMove",
+      "sourceId": "sand-attack",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Dig",
+      "sourceType": "moveChoice",
+      "sourceId": "dig",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Sand Attack"
+    },
+    {
+      "name": "Dig+",
+      "sourceType": "movePlus",
+      "sourceId": "dig-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Dig"
+    },
+    {
+      "name": "Dragon Rush",
+      "sourceType": "moveChoice",
+      "sourceId": "dragon-rush",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Sand Attack"
+    },
+    {
+      "name": "Dragon Rush+",
+      "sourceType": "movePlus",
+      "sourceId": "dragon-rush-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Dragon Rush"
+    },
+    {
+      "name": "Bulldoze",
+      "sourceType": "initialMove",
+      "sourceId": "bulldoze",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Earthquake",
+      "sourceType": "moveChoice",
+      "sourceId": "earthquake",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Bulldoze"
+    },
+    {
+      "name": "Earthquake+",
+      "sourceType": "movePlus",
+      "sourceId": "earthquake-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Earthquake"
+    },
+    {
+      "name": "Dragon Claw",
+      "sourceType": "moveChoice",
+      "sourceId": "dragon-claw",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Bulldoze"
+    },
+    {
+      "name": "Dragon Claw+",
+      "sourceType": "movePlus",
+      "sourceId": "dragon-claw-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Dragon Claw"
+    },
+    {
+      "name": "Livid Outrage",
+      "sourceType": "uniteMove",
+      "sourceId": "livid-outrage",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Livid Outrage Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "livid-outrage-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Livid Outrage"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "rough-skin",
+        "name": "Rough Skin",
+        "rawName": "Rough Skin",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD). When struck by a melee attack, a portion of the damage received is reflected back at the attacker.",
+        "translatedDescription": "機械要約: Rough Skin は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rough-skin__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": 0.6,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: When damaged by a nearby opposing Melee Pokémon, reflects 12.5% of the damage received back to that opposing Pokémon as Attack-based damage (0.6s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__rough-skin",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move. Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350. Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃速度を上げる、スタック、マーク、ゲージを扱う、通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ、与ダメージに応じて回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move.",
+            "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__04__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Basic",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Gains 1 stack toward boosted attacks after hitting an auto attack or move, stacking up to 5 times. At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them. All stacks decay after 4s of not hitting an auto attack or move.",
+              "notes": "Against wild Pokémon: basic attack damage is capped at 1000; boosted attack damage is capped at 1100; additional remaining HP damage is capped at 350."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__05__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: basic attack damage is capped at 1000",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: basic attack damage is capped at 1000",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__06__lifestealOrDamageHeal",
+          "effectType": "lifestealOrDamageHeal",
+          "summary": "与ダメージに応じて回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them.",
+          "codexInterpretation": "与ダメージに応じて回復する。 原文証拠: At 5 stacks, all basic attacks become boosted attacks with increased attack speed and additional 30% lifesteal, dealing increased damage to opposing Pokémon, and dealing an additional 10% remaining HP damage to them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP. Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃速度を上げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Attack Speed - % Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "28",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Every time a basic attack or move hits an enemy, basic attack speed is increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every fifth attack, dealing increased damage and restoring the user's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "sand-attack",
+        "name": "Sand Attack",
+        "rawName": "Sand Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits. Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time. Also increases movement speed and basic attack speed.",
+        "translatedDescription": "機械要約: Sand Attack は 移動速度を下げる、移動速度を上げる、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The user hurls sand in the designated direction, reducing the field of vision of opposing Pokémon by 50% and decreasing their movement speed by 20% for 2s; increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sand-attack__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Hurls sand, narrowing the field of vision of enemies and decreases their movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sand-attack__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increases movement speed and basic attack speed.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Also increases movement speed and basic attack speed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sand-attack__03__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: increasing the user's movement speed by 30% for 2s and auto attack speed by 30% for 3s when this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__sand-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dig",
+        "name": "Dig",
+        "rawName": "Dig",
+        "parentName": "Sand Attack",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user digs underground, becoming untargetable while underground, and dashes quickly forward. The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp. Def for 4s, dealing damage to nearby opposing Pokémon and throwing them for 0.6s. Burrow underground and move quickly in the designated direction, jumping out when coming in contact with an enemy or when traveling the maximum distance. This jump deals damage to enemies in the area of effect and throws them.",
+        "translatedDescription": "機械要約: Dig は 相手を打ち上げる、対象指定されない、またはステルス状態になる、防御・特防を変化させる、フォーム・モード・構えを変化させる、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "240",
+            "trueDescription": "The user digs underground, becoming untargetable while underground, and dashes quickly forward. The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp. Def for 4s, dealing damage to nearby opposing Pokémon and throwing them for 0.6s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Defenses - Increase",
+            "ratio": "0",
+            "damageType": "Atk",
+            "levelScaling": "25",
+            "base": "25",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dig__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Def for 4s, dealing damage to nearby opposing Pokémon and throwing them for 0.6s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Def for 4s, dealing damage to nearby opposing Pokémon and throwing them for 0.6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dig__02__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user digs underground, becoming untargetable while underground, and dashes quickly forward.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: The user digs underground, becoming untargetable while underground, and dashes quickly forward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dig__03__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "the user digs underground, becoming untargetable while underground, and dashes quickly forward. the user then jumps out from underground beneath the first opposing pokémon hit, after traveling max distance, or when coming into contact with ",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: the user digs underground, becoming untargetable while underground, and dashes quickly forward. the user then jumps out from underground beneath the first opposing pokémon hit, after traveling max distance, or when coming into contact with ",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dig__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dig__05__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: The user then jumps out from underground beneath the first opposing Pokémon hit, after traveling max distance, or when coming into contact with an unpassable wall, increasing the user's Defense and Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dig",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dig-plus",
+        "name": "Dig+",
+        "rawName": "Dig",
+        "parentName": "Dig",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Strengthens the duration of the throw to 1s. Damage received is reduced for a short time after jumping out of the ground.",
+        "translatedDescription": "機械要約: Dig+ は 相手を打ち上げる、受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Strengthens the duration of the throw to 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dig-plus__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Strengthens the duration of the throw to 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Strengthens the duration of the throw to 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dig-plus__02__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Damage received is reduced for a short time after jumping out of the ground.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Damage received is reduced for a short time after jumping out of the ground.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dig-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dragon-rush",
+        "name": "Dragon Rush",
+        "rawName": "Dragon Rush",
+        "parentName": "Sand Attack",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward. The user can use Dragon Claw during the first half of the channel to add the Dragon Claw hits as a combo attack. This combo attack scoops up opposing Pokémon, dealing damage with both Dragon Rush and Dragon Claw's first attack and stunning them. If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow. Back up to create distance before diving to attack in the designated direction, shoving enemies. The user can use Dragon Claw while creating distance at the start of this move to create a combo attack. (This move can crit)",
+        "translatedDescription": "機械要約: Dragon Rush は 行動不能・スタンを付与する、相手を打ち上げる、相手を引き寄せる、移動速度を下げる、受けるダメージを軽減する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "121",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "200",
+            "trueDescription": "The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward.",
+            "notes": "The user can use Dragon Claw during the first half of the channel to add the Dragon Claw hits as a combo attack. This combo attack scoops up opposing Pokémon, dealing damage with both Dragon Rush and Dragon Claw's first attack and stunning them. If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-rush__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This combo attack scoops up opposing Pokémon, dealing damage with both Dragon Rush and Dragon Claw's first attack and stunning them.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: This combo attack scoops up opposing Pokémon, dealing damage with both Dragon Rush and Dragon Claw's first attack and stunning them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush__03__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.9,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush__04__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: If the combo attack hits, the user then throws opposing Pokémon back down with the second Dragon Claw attack, dealing damage with a strengthened slow.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush__05__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.9,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: The user jumps back and briefly channels, reducing damage received by 45% for 0.9s, and dives forward, dragging all enemies within a small radius to the designated location, then damaging nearby opposing Pokémon afterward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush__06__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Back up to create distance before diving to attack in the designated direction, shoving enemies.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Back up to create distance before diving to attack in the designated direction, shoving enemies.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dragon-rush",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dragon-rush-plus",
+        "name": "Dragon Rush+",
+        "rawName": "Dragon Rush",
+        "parentName": "Dragon Rush",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Becomes unstoppable during this move; this includes the combo attack with Dragon Claw. Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+        "translatedDescription": "機械要約: Dragon Rush+ は 相手を押し出す、相手を引き寄せる、妨害無効になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes unstoppable during this move; this includes the combo attack with Dragon Claw.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-rush-plus__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush-plus__02__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "this includes the combo attack with Dragon Claw.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: this includes the combo attack with Dragon Claw.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush-plus__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable during this move",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable during this move",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-rush-plus__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Decreases the movement speed of enemies for a short time when they are shoved the maximum distance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dragon-rush-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "bulldoze",
+        "name": "Bulldoze",
+        "rawName": "Bulldoze",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user stomps down on the ground, damaging opposing Pokémon in the area of effect. Stomp down on the ground, dealing damage to enemies in the area of effect.",
+        "translatedDescription": "機械要約: Bulldoze には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "145",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "200",
+            "trueDescription": "The user stomps down on the ground, damaging opposing Pokémon in the area of effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__bulldoze",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "earthquake",
+        "name": "Earthquake",
+        "rawName": "Earthquake",
+        "parentName": "Bulldoze",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user jumps up and crashes forcefully to the ground, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 20% for 2s. Two aftershocks follow the initial crash, dealing less damage to opposing Pokémon in the area of effect. Jump high into the air and crash forcefully to the ground, dealing damage to enemies in the area of effect.",
+        "translatedDescription": "機械要約: Earthquake には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial",
+            "ratio": "113",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "175",
+            "trueDescription": "The user jumps up and crashes forcefully to the ground, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 20% for 2s. Two aftershocks follow the initial crash, dealing less damage to opposing Pokémon in the area of effect.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Aftershock (2x)",
+            "ratio": "58",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "88",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__earthquake",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "earthquake-plus",
+        "name": "Earthquake+",
+        "rawName": "Earthquake",
+        "parentName": "Earthquake",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Strengthens the movement speed decrease of opposing Pokémon near the center of the crash to 40%. Decrease the movement speed of enemies for a short time if they are in this move's area of effect.",
+        "translatedDescription": "機械要約: Earthquake+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Strengthens the movement speed decrease of opposing Pokémon near the center of the crash to 40%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__earthquake-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dragon-claw",
+        "name": "Dragon Claw",
+        "rawName": "Dragon Claw",
+        "parentName": "Bulldoze",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user charges in the designated direction viciously and attacks with two claw swipes. The first attack damages opposing Pokémon and shoves them in the designated direction. The second attack deals more damage to opposing Pokémon and decreases their movement speed by 45% for 2s. When this move is used in a combo attack with Dragon Rush, the movement speed decrease on the second attack is strengthened to 60% for 2s. Attack twice in front of itself using its claws. The first attack deals damage to enemies and throws them. The second attack deals increased damage. After the move ends, basic attack speed is increased for a short time. (This move can crit)",
+        "translatedDescription": "機械要約: Dragon Claw は 相手を打ち上げる、相手を押し出す、相手を引き寄せる、移動速度を下げる、通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "140",
+            "trueDescription": "The user charges in the designated direction viciously and attacks with two claw swipes. The first attack damages opposing Pokémon and shoves them in the designated direction. The second attack deals more damage to opposing Pokémon and decreases their movement speed by 45% for 2s.",
+            "notes": "When this move is used in a combo attack with Dragon Rush, the movement speed decrease on the second attack is strengthened to 60% for 2s."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "98",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "170",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-claw__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The first attack deals damage to enemies and throws them.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The first attack deals damage to enemies and throws them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-claw__02__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The first attack damages opposing Pokémon and shoves them in the designated direction.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: The first attack damages opposing Pokémon and shoves them in the designated direction.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-claw__03__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When this move is used in a combo attack with Dragon Rush, the movement speed decrease on the second attack is strengthened to 60% for 2s.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: When this move is used in a combo attack with Dragon Rush, the movement speed decrease on the second attack is strengthened to 60% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-claw__04__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The second attack deals more damage to opposing Pokémon and decreases their movement speed by 45% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The second attack deals more damage to opposing Pokémon and decreases their movement speed by 45% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-claw__05__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After the move ends, basic attack speed is increased for a short time.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: After the move ends, basic attack speed is increased for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dragon-claw",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dragon-claw-plus",
+        "name": "Dragon Claw+",
+        "rawName": "Dragon Claw",
+        "parentName": "Dragon Claw",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of both attacks. Increase damage dealt.",
+        "translatedDescription": "機械要約: Dragon Claw+ は 与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - Initial",
+            "ratio": "96",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "153",
+            "trueDescription": "Increases the damage of both attacks.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Damage - Second Hit",
+            "ratio": "115",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "184",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-claw-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increase damage dealt.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Increase damage dealt.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__dragon-claw-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "livid-outrage",
+        "name": "Livid Outrage",
+        "rawName": "Livid Outrage",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and damages opposing Pokémon in a unique designated area with each attack, taking a brief moment after each attack to aim the next dash. Every attack more damage than the last. The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s. The user is left confused for 0.5s afterward. Has the user unleash a powerful chain attack while dashing forward. The final attack throws enemies but also leaves the user unable to act for a short time.",
+        "translatedDescription": "機械要約: Livid Outrage は 行動不能・スタンを付与する、相手を打ち上げる、移動速度を下げる、妨害無効になる、受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "245",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "356",
+            "trueDescription": "The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row. The user dashes forward and damages opposing Pokémon in a unique designated area with each attack, taking a brief moment after each attack to aim the next dash. Every attack more damage than the last. The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s. The user is left confused for 0.5s afterward.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "288",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "486",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Third Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "615",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage - Fourth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "994",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add4",
+            "label": "Damage - Fifth Hit",
+            "ratio": "332",
+            "damageType": "Atk",
+            "levelScaling": "15",
+            "base": "1372",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "livid-outrage__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The final attack throws enemies but also leaves the user unable to act for a short time.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The final attack throws enemies but also leaves the user unable to act for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "livid-outrage__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "livid-outrage__03__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The fifth attack throws opposing Pokémon hit and decreases their movement speed by 30% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "livid-outrage__04__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "livid-outrage__05__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: The user goes berserk, becoming unstoppable and receiving 30% reduced damage for 5s while unleashing five powerful attacks in a row.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__livid-outrage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "livid-outrage-unite-buff",
+        "name": "Livid Outrage Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Livid Outrage",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Livid Outrage Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "livid-outrage-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "livid-outrage-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "garchomp__livid-outrage-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 42,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

@@ -1,0 +1,2134 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "slowbro",
+  "pokemonName": "Slowbro",
+  "role": "A",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Novice",
+    "role": "Defender"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "oblivious",
+      "moveName": "Oblivious",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. When dealing damage to an enemy with Water Gun, Scald, Surf, or Slowbeam - decrease their Sp. Def by 4% for 5s, stacking up to 5 times. When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "water-gun",
+      "moveName": "Water Gun",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's movement speed is reduced by 30% while channeling. Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy. Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "scald",
+      "moveName": "Scald",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Water Gun",
+      "isPlus": false,
+      "originalDescription": "Slowbro fires a stream of boiling water; damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside. This burn reduces Attack by 60% for 3s. Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times). Deal damage to opposing Pokémon and create steam when it hits. Opposing Pokémon inside the steam's area are left burned and have their movement speed decreased.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "scald-plus",
+      "moveName": "Scald+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Scald",
+      "isPlus": true,
+      "originalDescription": "Increases the size of the steam cloud. Increased area of effect.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "surf",
+      "moveName": "Surf",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Water Gun",
+      "isPlus": false,
+      "originalDescription": "Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s. Two more waves follow after the first, damaging and slowing enemies by 30% for 1s. Restore 10% of Slowbro's Oblivious health (blue HP) per wave, when hitting at least one enemy (maximum 3 times). Charge forward on a wave, dealing damage in an area and knock opponents back. This is followed by two more waves that deal damage and decrease enemy movement speed.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "surf-plus",
+      "moveName": "Surf+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Surf",
+      "isPlus": true,
+      "originalDescription": "The second and third waves will now also throw enemies in the air for .75s, and the second wave will knock them back. The second and third waves become larger and also knock enemies back like the first wave.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "slack-off",
+      "moveName": "Slack Off",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap. Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "amnesia",
+      "moveName": "Amnesia",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Slack Off",
+      "isPlus": false,
+      "originalDescription": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s. Nullify some damage before it takes effect. For a short time after using this move, become immune to hindrances and gain increased defense. Also increase the damage dealt by the next use of Scald or Surf.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "amnesia-plus",
+      "moveName": "Amnesia+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Amnesia",
+      "isPlus": true,
+      "originalDescription": "Also increases Slowbro's Sp. Defense by 125. Increases Sp. Attack.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "telekinesis",
+      "moveName": "Telekinesis",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Slack Off",
+      "isPlus": false,
+      "originalDescription": "Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s. Slowbro can reactivate the ability to pull the enemy to themself, but otherwise cannot act for the duration. Make opposing Pokémon float with psychic power. If used again, pull the opposing Pokémon toward the user.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "telekinesis-plus",
+      "moveName": "Telekinesis+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Telekinesis",
+      "isPlus": true,
+      "originalDescription": "Increases the range and speed of the beam. Increased range and firing speed.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "slowbeam",
+      "moveName": "Slowbeam",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move. Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Slowbro",
+      "pokemonId": "slowbro",
+      "sourceId": "slowbeam-unite-buff",
+      "moveName": "Slowbeam Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Slowbeam",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Oblivious",
+      "sourceType": "passive",
+      "sourceId": "oblivious",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Water Gun",
+      "sourceType": "initialMove",
+      "sourceId": "water-gun",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Scald",
+      "sourceType": "moveChoice",
+      "sourceId": "scald",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Water Gun"
+    },
+    {
+      "name": "Scald+",
+      "sourceType": "movePlus",
+      "sourceId": "scald-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Scald"
+    },
+    {
+      "name": "Surf",
+      "sourceType": "moveChoice",
+      "sourceId": "surf",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Water Gun"
+    },
+    {
+      "name": "Surf+",
+      "sourceType": "movePlus",
+      "sourceId": "surf-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Surf"
+    },
+    {
+      "name": "Slack Off",
+      "sourceType": "initialMove",
+      "sourceId": "slack-off",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Amnesia",
+      "sourceType": "moveChoice",
+      "sourceId": "amnesia",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Slack Off"
+    },
+    {
+      "name": "Amnesia+",
+      "sourceType": "movePlus",
+      "sourceId": "amnesia-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Amnesia"
+    },
+    {
+      "name": "Telekinesis",
+      "sourceType": "moveChoice",
+      "sourceId": "telekinesis",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Slack Off"
+    },
+    {
+      "name": "Telekinesis+",
+      "sourceType": "movePlus",
+      "sourceId": "telekinesis-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Telekinesis"
+    },
+    {
+      "name": "Slowbeam",
+      "sourceType": "uniteMove",
+      "sourceId": "slowbeam",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Slowbeam Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "slowbeam-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Slowbeam"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "oblivious",
+        "name": "Oblivious",
+        "rawName": "Oblivious",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. When dealing damage to an enemy with Water Gun, Scald, Surf, or Slowbeam - decrease their Sp. Def by 4% for 5s, stacking up to 5 times. When Slowbro receives damage, the HP loss is gradual. When damaging an opponent with a move, restore some of the remaining gradual HP loss and decrease the target's Sp. Defense.",
+        "translatedDescription": "機械要約: Oblivious は 移動速度を下げる、防御・特防を変化させる、HPを回復する、フィールド・設置範囲を生成する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slowbro stores up lost HP for a short time (blue HP). Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second. When dealing damage to an enemy with Water Gun, Scald, Surf, or Slowbeam - decrease their Sp. Def by 4% for 5s, stacking up to 5 times.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "oblivious__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "oblivious__02__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "slowbro stores up lost hp for a short time (blue hp). slowbro's oblivious health remains for 6s and then decreases by 3% max hp every second. when dealing damage to an enemy with water gun, scald, surf, or slowbeam - decrease their sp. def ",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: slowbro stores up lost hp for a short time (blue hp). slowbro's oblivious health remains for 6s and then decreases by 3% max hp every second. when dealing damage to an enemy with water gun, scald, surf, or slowbeam - decrease their sp. def ",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "oblivious__03__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "oblivious__04__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: Slowbro's Oblivious health remains for 6s and then decreases by 3% max HP every second.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "oblivious__05__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Def by 4% for 5s, stacking up to 5 times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Def by 4% for 5s, stacking up to 5 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__oblivious",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s. Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby enemies and decrease their movement speed by 30% for 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack. When this boosted attack hits, deal damage to nearby opposing Pokémon and decrease their movement speed.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "110",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "180",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "water-gun",
+        "name": "Water Gun",
+        "rawName": "Water Gun",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's movement speed is reduced by 30% while channeling. Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy. Slowbro channels a fierce stream of water which deals damage and lowers movement speed. Increase the area of effect and damage the longer this move is channeled.",
+        "translatedDescription": "機械要約: Water Gun は 移動速度を下げる、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Uncharged",
+            "ratio": "147",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "240",
+            "trueDescription": "Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s. This move can be channeled to increase its range and damage. Slowbro's movement speed is reduced by 30% while channeling. Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Low Charge",
+            "ratio": "196",
+            "damageType": "SpAtk",
+            "levelScaling": "17",
+            "base": "320",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Mid Charge",
+            "ratio": "245",
+            "damageType": "SpAtk",
+            "levelScaling": "22",
+            "base": "400",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage - High Charge",
+            "ratio": "294",
+            "damageType": "SpAtk",
+            "levelScaling": "26",
+            "base": "480",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "water-gun__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro fires a stream of water, damaging and slowing enemies hit by 35% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "water-gun__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Restore 10% of Slowbro's Oblivious health (blue HP) once, after hitting an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__water-gun",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "scald",
+        "name": "Scald",
+        "rawName": "Scald",
+        "parentName": "Water Gun",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Slowbro fires a stream of boiling water; damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside. This burn reduces Attack by 60% for 3s. Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times). Deal damage to opposing Pokémon and create steam when it hits. Opposing Pokémon inside the steam's area are left burned and have their movement speed decreased.",
+        "translatedDescription": "機械要約: Scald は やけどを付与する、移動速度を下げる、HPを回復する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (3 Hits)",
+            "ratio": "97",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "150",
+            "trueDescription": "Slowbro fires a stream of boiling water; damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside. This burn reduces Attack by 60% for 3s. Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times).",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "17",
+            "damageType": "SpAtk",
+            "levelScaling": "1",
+            "base": "28",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "scald__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "scald__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: damaging enemies hit, slowing them by 80% for 0.5s and creating a cloud of steam centered on the first enemy hit, which slows by 30% for 3s and applies a burn to all enemies inside.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "scald__03__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times).",
+          "codexInterpretation": "HPを回復する。 原文証拠: Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "scald__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times).",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Restore 10% of Slowbro's Oblivious health (blue HP) once per stream instance after hitting an enemy (maximum 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__scald",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "scald-plus",
+        "name": "Scald+",
+        "rawName": "Scald",
+        "parentName": "Scald",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the size of the steam cloud. Increased area of effect.",
+        "translatedDescription": "機械要約: Scald+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the size of the steam cloud.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__scald-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "surf",
+        "name": "Surf",
+        "rawName": "Surf",
+        "parentName": "Water Gun",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s. Two more waves follow after the first, damaging and slowing enemies by 30% for 1s. Restore 10% of Slowbro's Oblivious health (blue HP) per wave, when hitting at least one enemy (maximum 3 times). Charge forward on a wave, dealing damage in an area and knock opponents back. This is followed by two more waves that deal damage and decrease enemy movement speed.",
+        "translatedDescription": "機械要約: Surf は 相手を打ち上げる、移動速度を下げる、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Wave (3 Waves)",
+            "ratio": "103",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "210",
+            "trueDescription": "Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s. Two more waves follow after the first, damaging and slowing enemies by 30% for 1s. Restore 10% of Slowbro's Oblivious health (blue HP) per wave, when hitting at least one enemy (maximum 3 times).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro rides on a wave, damaging, knocking enemies back, and throwing them in the air for .4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__03__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restore 10% of Slowbro's Oblivious health (blue HP) per wave, when hitting at least one enemy (maximum 3 times).",
+          "codexInterpretation": "HPを回復する。 原文証拠: Restore 10% of Slowbro's Oblivious health (blue HP) per wave, when hitting at least one enemy (maximum 3 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__surf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "surf-plus",
+        "name": "Surf+",
+        "rawName": "Surf",
+        "parentName": "Surf",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "The second and third waves will now also throw enemies in the air for .75s, and the second wave will knock them back. The second and third waves become larger and also knock enemies back like the first wave.",
+        "translatedDescription": "機械要約: Surf+ は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "The second and third waves will now also throw enemies in the air for .75s, and the second wave will knock them back.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf-plus__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 75,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The second and third waves will now also throw enemies in the air for .75s, and the second wave will knock them back.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The second and third waves will now also throw enemies in the air for .75s, and the second wave will knock them back.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__surf-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "slack-off",
+        "name": "Slack Off",
+        "rawName": "Slack Off",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap. Lay down and take a rest, continuously regaining health. Damage taken will reduce the recovery effect.",
+        "translatedDescription": "機械要約: Slack Off は 移動速度を下げる、HPを回復する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slack-off__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slack-off__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slack-off__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s. While Slowbro remains channeling its nap, all self-healing is doubled (including Slack Off healing). Slowbro can be manually or forcibly woken up from their nap.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Slowbro begins channeling a nap and gains a heal over time, healing 2% max HP every 0.5s for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__slack-off",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "amnesia",
+        "name": "Amnesia",
+        "rawName": "Amnesia",
+        "parentName": "Slack Off",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s. Nullify some damage before it takes effect. For a short time after using this move, become immune to hindrances and gain increased defense. Also increase the damage dealt by the next use of Scald or Surf.",
+        "translatedDescription": "機械要約: Amnesia は 移動速度を下げる、妨害無効になる、妨害耐性を得る、与ダメージを変化させる、HPを回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s. ",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "amnesia__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia__03__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "For a short time after using this move, become immune to hindrances and gain increased defense.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: For a short time after using this move, become immune to hindrances and gain increased defense.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increase the damage dealt by the next use of Scald or Surf.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Also increase the damage dealt by the next use of Scald or Surf.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia__05__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Slowbro briefly becomes unstoppable, gaining +250 Defense for 4s and restoring 17.5% of Slowbro's Oblivious health (blue HP) every second for 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__amnesia",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "amnesia-plus",
+        "name": "Amnesia+",
+        "rawName": "Amnesia",
+        "parentName": "Amnesia",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Also increases Slowbro's Sp. Defense by 125. Increases Sp. Attack.",
+        "translatedDescription": "機械要約: Amnesia+ は 移動速度を下げる、攻撃・特攻などを変化させる、防御・特防を変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Also increases Slowbro's Sp. Defense by 125.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "amnesia-plus__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increases Slowbro's Sp.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Also increases Slowbro's Sp.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia-plus__02__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "also increases slowbro's sp. defense by 125. increases sp. attack.",
+          "codexInterpretation": "攻撃・特攻などを変化させる。 原文証拠: also increases slowbro's sp. defense by 125. increases sp. attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "amnesia-plus__03__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Defense by 125.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Defense by 125.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__amnesia-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "telekinesis",
+        "name": "Telekinesis",
+        "rawName": "Telekinesis",
+        "parentName": "Slack Off",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s. Slowbro can reactivate the ability to pull the enemy to themself, but otherwise cannot act for the duration. Make opposing Pokémon float with psychic power. If used again, pull the opposing Pokémon toward the user.",
+        "translatedDescription": "機械要約: Telekinesis は 相手を引き寄せる、移動速度を下げる、HPを回復する、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s. Slowbro can reactivate the ability to pull the enemy to themself, but otherwise cannot act for the duration.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "telekinesis__01__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Slowbro can reactivate the ability to pull the enemy to themself, but otherwise cannot act for the duration.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: Slowbro can reactivate the ability to pull the enemy to themself, but otherwise cannot act for the duration.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "telekinesis__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "telekinesis__03__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2.3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Slowbro shoots a beam, causing the first enemy hit to float in the air for 2.3s, restoring 15% of Slowbro's Oblivious health (blue HP) every second for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "telekinesis__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again, pull the opposing Pokémon toward the user.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again, pull the opposing Pokémon toward the user.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__telekinesis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "telekinesis-plus",
+        "name": "Telekinesis+",
+        "rawName": "Telekinesis",
+        "parentName": "Telekinesis",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the range and speed of the beam. Increased range and firing speed.",
+        "translatedDescription": "機械要約: Telekinesis+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the range and speed of the beam.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__telekinesis-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "slowbeam",
+        "name": "Slowbeam",
+        "rawName": "Slowbeam",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move. Stare at an enemy and attack continually, dealing damage and rooting them. Grants a shield and makes the user immune to hindrances while using this move.",
+        "translatedDescription": "機械要約: Slowbeam は 移動速度を下げる、妨害無効になる、妨害耐性を得る、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (x6)",
+            "ratio": "80",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "170",
+            "trueDescription": "Stare at an enemy and attack continually, dealing damage every .5 seconds for 3s and applying 'Bound' to them. This ability counters Unstoppable. Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slowbeam__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slowbeam__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slowbeam__03__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Grants a shield and makes the user immune to hindrances while using this move.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Grants a shield and makes the user immune to hindrances while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slowbeam__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Grants a shield (10% max HP) and makes Slowbro unstoppable while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slowbeam__05__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "This ability counters Unstoppable.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: This ability counters Unstoppable.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__slowbeam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "slowbeam-unite-buff",
+        "name": "Slowbeam Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Slowbeam",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Slowbeam Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slowbeam-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "slowbeam-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 40% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "slowbro__slowbeam-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 39,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

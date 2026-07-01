@@ -1,0 +1,737 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "leafeon",
+  "pokemonName": "Leafeon",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "run-away",
+      "name": "Run Away",
+      "originalDescription": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+      "summary": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-eevee",
+      "name": "Attack - Eevee",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-eevee-boosted",
+      "name": "Attack - Eevee Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage (Boosted by Chlorophyll)",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "This damage cannot crit.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+      "summary": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Star",
+          "ratio": "92",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dash in a direction, dealing damage to enemies hit.",
+      "summary": "Dash in a direction, dealing damage to enemies hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "65",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "emerald-two-step",
+      "name": "Emerald Two-Step",
+      "originalDescription": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this area. Leafeon is unstoppable during this move. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this ar",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Initial leap)",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Second Leap - Closest)",
+            "ratio": "252",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Mid range)",
+            "ratio": "192",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Furthest range)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Initial leap)",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Second Leap - Closest)",
+            "ratio": "252",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Mid range)",
+            "ratio": "192",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Furthest range)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "actionOrder",
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "run-away",
+      "name": "Run Away",
+      "originalDescription": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+      "summary": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-eevee",
+      "name": "Attack - Eevee",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-eevee-boosted",
+      "name": "Attack - Eevee Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Additional Damage (Boosted by Chlorophyll)",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "This damage cannot crit.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+      "summary": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - First Star",
+          "ratio": "92",
+          "damageType": "Atk",
+          "levelScaling": "14",
+          "base": "270",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dash in a direction, dealing damage to enemies hit.",
+      "summary": "Dash in a direction, dealing damage to enemies hit.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "unconfirmed",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "65",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "220",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "emerald-two-step",
+      "name": "Emerald Two-Step",
+      "originalDescription": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this area. Leafeon is unstoppable during this move. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this ar",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (Initial leap)",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Second Leap - Closest)",
+            "ratio": "252",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Mid range)",
+            "ratio": "192",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Furthest range)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (Initial leap)",
+          "ratio": "126",
+          "damageType": "Atk",
+          "levelScaling": "7",
+          "base": "300",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Second Leap - Closest)",
+            "ratio": "252",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Mid range)",
+            "ratio": "192",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage (Second Leap - Furthest range)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

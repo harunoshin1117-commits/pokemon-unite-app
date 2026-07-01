@@ -1,0 +1,656 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "pikachu",
+  "pokemonName": "Pikachu",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchPikachu"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch",
+      "notes": "Existing local research file used as format and status reference where applicable."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered. When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered. When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed b",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time. Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time. Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decre",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "21",
+          "base": "390",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s."
+        },
+        "additional": [
+          {
+            "label": "Debuff – Paralysis",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slows enemies briefly.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "electroweb",
+      "name": "Electroweb",
+      "originalDescription": "Attacks and captures enemies using an electric net, leaving them unable to move. Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+      "summary": "Attacks and captures enemies using an electric net, leaving them unable to move. Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "36",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm",
+      "name": "Thunderstorm",
+      "originalDescription": "Attacks enemies near the user with tremendous bolts of lightning. Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The following 3 casts target up to 2 random Pokémon from the opposing team in range; these following bolts deal damage to opposing Pokémon in a small area around them, but targets can only be damaged once for each of the following 3 casts. Pikachu can act freely once the first bolts of lightning are cast down. Unite buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield",
+      "summary": "Attacks enemies near the user with tremendous bolts of lightning. Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The foll",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Bolt",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "486",
+          "notes": "Pikachu can act freely once the first bolts of lightning are cast down."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Bolt",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "486",
+          "notes": "Pikachu can act freely once the first bolts of lightning are cast down."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered. When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered. When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed b",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "38",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time. Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+      "summary": "Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time. Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decre",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "21",
+          "base": "390",
+          "notes": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s."
+        },
+        "additional": [
+          {
+            "label": "Debuff – Paralysis",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slows enemies briefly.",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "electroweb",
+      "name": "Electroweb",
+      "originalDescription": "Attacks and captures enemies using an electric net, leaving them unable to move. Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+      "summary": "Attacks and captures enemies using an electric net, leaving them unable to move. Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "36",
+          "damageType": "SpAtk",
+          "levelScaling": "11",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm",
+      "name": "Thunderstorm",
+      "originalDescription": "Attacks enemies near the user with tremendous bolts of lightning. Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The following 3 casts target up to 2 random Pokémon from the opposing team in range; these following bolts deal damage to opposing Pokémon in a small area around them, but targets can only be damaged once for each of the following 3 casts. Pikachu can act freely once the first bolts of lightning are cast down. Unite buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield",
+      "summary": "Attacks enemies near the user with tremendous bolts of lightning. Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The foll",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 89,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Bolt",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "486",
+          "notes": "Pikachu can act freely once the first bolts of lightning are cast down."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - per Bolt",
+          "ratio": "49",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "486",
+          "notes": "Pikachu can act freely once the first bolts of lightning are cast down."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon",
+        "existingResearchPikachu"
+      ]
+    }
+  ]
+}

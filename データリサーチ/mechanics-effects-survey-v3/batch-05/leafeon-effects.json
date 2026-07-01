@@ -1,0 +1,1611 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "leafeon",
+  "pokemonName": "Leafeon",
+  "role": "A+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "Speedster"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "run-away",
+      "moveName": "Run Away",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "attack-eevee-basic",
+      "moveName": "Attack - Eevee",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "attack-eevee-boosted",
+      "moveName": "Attack - Eevee Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack - Eevee",
+      "isPlus": false,
+      "originalDescription": "This damage cannot crit. Becomes a boosted attack with every third attack, dealing additional damage.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "swift",
+      "moveName": "Swift",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "razor-leaf",
+      "moveName": "Razor Leaf",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Swift",
+      "isPlus": false,
+      "originalDescription": "Launches a fan of five sharp-edged leaves in the designated direction in a cone, dealing damage to enemies hit before sticking into the ground for 2.5s. If this move is activated again, the leaves return, dealing damage to Pokémon they hit along the way. If the reactivation time is 1s or longer, the leaves will return and deal increased damage. If the move is not reactivated, the leaves will automatically return dealing increased damage. If five leaves hit the same Pokémon (outgoing or incoming) within 0.5s, Leafeon is granted a shield lasting 1.5s. Leafeon also receives 20% increased movement speed for up to 3s while the leaves are out. Each fan, the first leaf that hits applies a debuff that lasts 1s and causes subsequent leaves within the same fan (outgoing or incoming) to deal 70% reduced damage.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "razor-leaf-plus",
+      "moveName": "Razor Leaf+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Razor Leaf",
+      "isPlus": true,
+      "originalDescription": "Increase the strength of the shield when five leaves hit.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "solar-blade",
+      "moveName": "Solar Blade",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Swift",
+      "isPlus": false,
+      "originalDescription": "Start gathering light and filling a blade with the light's energy. If this move is used again after light has been gathered, Leafeon brings the blade down in the designated direction, dealing damage to Pokémon it hits. The longer the blade is filled with light energy, the more damage is dealt. If this move is used when the Chlorophyll gauge is full, the blade is brought down immediately, dealing maximum damage and the cooldown for the next use of this move is reduced by 50%. The cooldown of this move is also reduced by 50% upon the Chlorophyll gauge being filled.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "solar-blade-plus",
+      "moveName": "Solar Blade+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Solar Blade",
+      "isPlus": true,
+      "originalDescription": "While charging, Leafeon receives 50% damage reduction.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "quick-attack",
+      "moveName": "Quick Attack",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Dash in a direction, dealing damage to enemies hit.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "aerial-ace",
+      "moveName": "Aerial Ace",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Quick Attack",
+      "isPlus": false,
+      "originalDescription": "Dash in a direction, dealing damage to enemies hit. The next attack is a boosted attack non-Chlorophyll empowered. A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "aerial-ace-plus",
+      "moveName": "Aerial Ace+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Aerial Ace",
+      "isPlus": true,
+      "originalDescription": "Reduces the cooldown for charges by 0.5s.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "leaf-blade",
+      "moveName": "Leaf Blade",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Quick Attack",
+      "isPlus": false,
+      "originalDescription": "Dash and spin in a direction, slashing around itself and with a ring of sharp leaves, dealing damage three times. Enemies caught by the outside edge of the ring of sharp leaves take increased damage and are slowed by 40% for 2s. Enemies damaged by the outside edge also charge the Chlorophyll gauge by 1.2s per hit.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "leaf-blade-plus",
+      "moveName": "Leaf Blade+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Leaf Blade",
+      "isPlus": true,
+      "originalDescription": "Reduces this move's cooldown by 1.2s for each hit dealing damage to more than one enemy on the outer ring",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "emerald-two-step",
+      "moveName": "Emerald Two-Step",
+      "sourceType": "uniteMove",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this area. Leafeon is unstoppable during this move.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Leafeon",
+      "pokemonId": "leafeon",
+      "sourceId": "emerald-two-step-unite-buff",
+      "moveName": "Emerald Two-Step Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": "Emerald Two-Step",
+      "isPlus": false,
+      "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Run Away",
+      "sourceType": "passive",
+      "sourceId": "run-away",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack - Eevee",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-eevee-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack - Eevee Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-eevee-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack - Eevee"
+    },
+    {
+      "name": "Swift",
+      "sourceType": "initialMove",
+      "sourceId": "swift",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Razor Leaf",
+      "sourceType": "moveChoice",
+      "sourceId": "razor-leaf",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Swift"
+    },
+    {
+      "name": "Razor Leaf+",
+      "sourceType": "movePlus",
+      "sourceId": "razor-leaf-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Razor Leaf"
+    },
+    {
+      "name": "Solar Blade",
+      "sourceType": "moveChoice",
+      "sourceId": "solar-blade",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Swift"
+    },
+    {
+      "name": "Solar Blade+",
+      "sourceType": "movePlus",
+      "sourceId": "solar-blade-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Solar Blade"
+    },
+    {
+      "name": "Quick Attack",
+      "sourceType": "initialMove",
+      "sourceId": "quick-attack",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Aerial Ace",
+      "sourceType": "moveChoice",
+      "sourceId": "aerial-ace",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Quick Attack"
+    },
+    {
+      "name": "Aerial Ace+",
+      "sourceType": "movePlus",
+      "sourceId": "aerial-ace-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Aerial Ace"
+    },
+    {
+      "name": "Leaf Blade",
+      "sourceType": "moveChoice",
+      "sourceId": "leaf-blade",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Quick Attack"
+    },
+    {
+      "name": "Leaf Blade+",
+      "sourceType": "movePlus",
+      "sourceId": "leaf-blade-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Leaf Blade"
+    },
+    {
+      "name": "Emerald Two-Step",
+      "sourceType": "uniteMove",
+      "sourceId": "emerald-two-step",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Emerald Two-Step Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "emerald-two-step-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Emerald Two-Step"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "run-away",
+        "name": "Run Away",
+        "rawName": "Run Away",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Eevee has 10% increased movement speed when out of combat. (5s after leaving combat)",
+        "translatedDescription": "機械要約: Run Away には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__run-away",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-eevee-basic",
+        "name": "Attack - Eevee",
+        "rawName": "Attack - Eevee",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing additional damage.",
+        "translatedDescription": "機械要約: Attack - Eevee は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-eevee-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing additional damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing additional damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__attack-eevee-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-eevee-boosted",
+        "name": "Attack - Eevee Boosted",
+        "rawName": "Attack - Eevee",
+        "parentName": "Attack - Eevee",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "This damage cannot crit. Becomes a boosted attack with every third attack, dealing additional damage.",
+        "translatedDescription": "機械要約: Attack - Eevee Boosted は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Additional Damage (Boosted by Chlorophyll)",
+            "ratio": "40",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "This damage cannot crit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-eevee-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing additional damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing additional damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__attack-eevee-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "swift",
+        "name": "Swift",
+        "rawName": "Swift",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+        "translatedDescription": "機械要約: Swift は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Star",
+            "ratio": "92",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "270",
+            "trueDescription": "Launches three stars in the designated direction in a cone, dealing damage to enemies hit. The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "swift__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: The first star that hits applies a debuff that lasts 1 second that causes subsequent stars to deal 70% reduced damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__swift",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "razor-leaf",
+        "name": "Razor Leaf",
+        "rawName": "Razor Leaf",
+        "parentName": "Swift",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Launches a fan of five sharp-edged leaves in the designated direction in a cone, dealing damage to enemies hit before sticking into the ground for 2.5s. If this move is activated again, the leaves return, dealing damage to Pokémon they hit along the way. If the reactivation time is 1s or longer, the leaves will return and deal increased damage. If the move is not reactivated, the leaves will automatically return dealing increased damage. If five leaves hit the same Pokémon (outgoing or incoming) within 0.5s, Leafeon is granted a shield lasting 1.5s. Leafeon also receives 20% increased movement speed for up to 3s while the leaves are out. Each fan, the first leaf that hits applies a debuff that lasts 1s and causes subsequent leaves within the same fan (outgoing or incoming) to deal 70% reduced damage.",
+        "translatedDescription": "機械要約: Razor Leaf は 受けるダメージを軽減する、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Outgoing - First Leaf)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "Launches a fan of five sharp-edged leaves in the designated direction in a cone, dealing damage to enemies hit before sticking into the ground for 2.5s. If this move is activated again, the leaves return, dealing damage to Pokémon they hit along the way. If the reactivation time is 1s or longer, the leaves will return and deal increased damage. If the move is not reactivated, the leaves will automatically return dealing increased damage. If five leaves hit the same Pokémon (outgoing or incoming) within 0.5s, Leafeon is granted a shield lasting 1.5s. Leafeon also receives 20% increased movement speed for up to 3s while the leaves are out. Each fan, the first leaf that hits applies a debuff that lasts 1s and causes subsequent leaves within the same fan (outgoing or incoming) to deal 70% reduced damage. ",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Manual return first Leaf if <1s)",
+            "ratio": "80",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (Automatic return first Leaf or Manual return first Leaf if after 1s)",
+            "ratio": "132",
+            "damageType": "Atk",
+            "levelScaling": "13",
+            "base": "315",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Shield ",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "razor-leaf__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Each fan, the first leaf that hits applies a debuff that lasts 1s and causes subsequent leaves within the same fan (outgoing or incoming) to deal 70% reduced damage.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Each fan, the first leaf that hits applies a debuff that lasts 1s and causes subsequent leaves within the same fan (outgoing or incoming) to deal 70% reduced damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "razor-leaf__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If five leaves hit the same Pokémon (outgoing or incoming) within 0.5s, Leafeon is granted a shield lasting 1.5s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If five leaves hit the same Pokémon (outgoing or incoming) within 0.5s, Leafeon is granted a shield lasting 1.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__razor-leaf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "razor-leaf-plus",
+        "name": "Razor Leaf+",
+        "rawName": "Razor Leaf",
+        "parentName": "Razor Leaf",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Increase the strength of the shield when five leaves hit.",
+        "translatedDescription": "機械要約: Razor Leaf+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield ",
+            "ratio": "150",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "450",
+            "trueDescription": "Increase the strength of the shield when five leaves hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "razor-leaf-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increase the strength of the shield when five leaves hit.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Increase the strength of the shield when five leaves hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__razor-leaf-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "solar-blade",
+        "name": "Solar Blade",
+        "rawName": "Solar Blade",
+        "parentName": "Swift",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Start gathering light and filling a blade with the light's energy. If this move is used again after light has been gathered, Leafeon brings the blade down in the designated direction, dealing damage to Pokémon it hits. The longer the blade is filled with light energy, the more damage is dealt. If this move is used when the Chlorophyll gauge is full, the blade is brought down immediately, dealing maximum damage and the cooldown for the next use of this move is reduced by 50%. The cooldown of this move is also reduced by 50% upon the Chlorophyll gauge being filled.",
+        "translatedDescription": "機械要約: Solar Blade は スタック、マーク、ゲージを扱う、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (1st Level Charge)",
+            "ratio": "220",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "462",
+            "trueDescription": "Start gathering light and filling a blade with the light's energy. If this move is used again after light has been gathered, Leafeon brings the blade down in the designated direction, dealing damage to Pokémon it hits. The longer the blade is filled with light energy, the more damage is dealt. If this move is used when the Chlorophyll gauge is full, the blade is brought down immediately, dealing maximum damage and the cooldown for the next use of this move is reduced by 50%. The cooldown of this move is also reduced by 50% upon the Chlorophyll gauge being filled.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (2nd Level Charge)",
+            "ratio": "254",
+            "damageType": "Atk",
+            "levelScaling": "12",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (3rd Level Charge)",
+            "ratio": "287",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage (Max Charge)",
+            "ratio": "320",
+            "damageType": "Atk",
+            "levelScaling": "16",
+            "base": "672",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "solar-blade__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If this move is used when the Chlorophyll gauge is full, the blade is brought down immediately, dealing maximum damage and the cooldown for the next use of this move is reduced by 50%.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If this move is used when the Chlorophyll gauge is full, the blade is brought down immediately, dealing maximum damage and the cooldown for the next use of this move is reduced by 50%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "solar-blade__02__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used again after light has been gathered, Leafeon brings the blade down in the designated direction, dealing damage to Pokémon it hits.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move is used again after light has been gathered, Leafeon brings the blade down in the designated direction, dealing damage to Pokémon it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__solar-blade",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "solar-blade-plus",
+        "name": "Solar Blade+",
+        "rawName": "Solar Blade",
+        "parentName": "Solar Blade",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "While charging, Leafeon receives 50% damage reduction.",
+        "translatedDescription": "機械要約: Solar Blade+ は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "While charging, Leafeon receives 50% damage reduction.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "solar-blade-plus__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While charging, Leafeon receives 50% damage reduction.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: While charging, Leafeon receives 50% damage reduction.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__solar-blade-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "quick-attack",
+        "name": "Quick Attack",
+        "rawName": "Quick Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Dash in a direction, dealing damage to enemies hit.",
+        "translatedDescription": "機械要約: Quick Attack には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "65",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "220",
+            "trueDescription": "Dash in a direction, dealing damage to enemies hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__quick-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "aerial-ace",
+        "name": "Aerial Ace",
+        "rawName": "Aerial Ace",
+        "parentName": "Quick Attack",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Dash in a direction, dealing damage to enemies hit. The next attack is a boosted attack non-Chlorophyll empowered. A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+        "translatedDescription": "機械要約: Aerial Ace は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "132",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "360",
+            "trueDescription": "Dash in a direction, dealing damage to enemies hit. The next attack is a boosted attack non-Chlorophyll empowered. A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "aerial-ace__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "132",
+              "damageType": "Atk",
+              "levelScaling": "9",
+              "base": "360",
+              "trueDescription": "Dash in a direction, dealing damage to enemies hit. The next attack is a boosted attack non-Chlorophyll empowered. A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: A maximum of two uses may be kept in reserve for this move and cannot be used more than once every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__aerial-ace",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "aerial-ace-plus",
+        "name": "Aerial Ace+",
+        "rawName": "Aerial Ace",
+        "parentName": "Aerial Ace",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Reduces the cooldown for charges by 0.5s.",
+        "translatedDescription": "機械要約: Aerial Ace+ は 待ち時間を短縮する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces the cooldown for charges by 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "aerial-ace-plus__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Reduces the cooldown for charges by 0.5s.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Reduces the cooldown for charges by 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__aerial-ace-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "leaf-blade",
+        "name": "Leaf Blade",
+        "rawName": "Leaf Blade",
+        "parentName": "Quick Attack",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Dash and spin in a direction, slashing around itself and with a ring of sharp leaves, dealing damage three times. Enemies caught by the outside edge of the ring of sharp leaves take increased damage and are slowed by 40% for 2s. Enemies damaged by the outside edge also charge the Chlorophyll gauge by 1.2s per hit.",
+        "translatedDescription": "機械要約: Leaf Blade は 移動速度を下げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Inner Ring x3)",
+            "ratio": "18.5",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "125",
+            "trueDescription": "Dash and spin in a direction, slashing around itself and with a ring of sharp leaves, dealing damage three times. Enemies caught by the outside edge of the ring of sharp leaves take increased damage and are slowed by 40% for 2s. Enemies damaged by the outside edge also charge the Chlorophyll gauge by 1.2s per hit.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Outer Ring x3)",
+            "ratio": "37",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "250",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leaf-blade__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Enemies caught by the outside edge of the ring of sharp leaves take increased damage and are slowed by 40% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Enemies caught by the outside edge of the ring of sharp leaves take increased damage and are slowed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leaf-blade__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1.2,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Enemies damaged by the outside edge also charge the Chlorophyll gauge by 1.2s per hit.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Enemies damaged by the outside edge also charge the Chlorophyll gauge by 1.2s per hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__leaf-blade",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "leaf-blade-plus",
+        "name": "Leaf Blade+",
+        "rawName": "Leaf Blade",
+        "parentName": "Leaf Blade",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Reduces this move's cooldown by 1.2s for each hit dealing damage to more than one enemy on the outer ring",
+        "translatedDescription": "機械要約: Leaf Blade+ は フィールド・設置範囲を生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this move's cooldown by 1.2s for each hit dealing damage to more than one enemy on the outer ring",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leaf-blade-plus__01__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Reduces this move's cooldown by 1.2s for each hit dealing damage to more than one enemy on the outer ring",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: Reduces this move's cooldown by 1.2s for each hit dealing damage to more than one enemy on the outer ring",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__leaf-blade-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "emerald-two-step",
+        "name": "Emerald Two-Step",
+        "rawName": "Emerald Two-Step",
+        "parentName": null,
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this area. Leafeon is unstoppable during this move.",
+        "translatedDescription": "機械要約: Emerald Two-Step は 移動速度を下げる、妨害無効になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Initial leap)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "Leaps at a designated enemy, dealing damage to them and all enemies around them. These Pokémon are additionally slowed by 50% for 2s. After the initial leap, Leafeon leaps up and lands with force dealing damage to enemies in an area. Enemies hit by this area take more damage the closer they are to the center of this area. Leafeon is unstoppable during this move.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Second Leap - Closest)",
+            "ratio": "252",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "600",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage (Second Leap - Mid range)",
+            "ratio": "192",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Damage (Second Leap - Furthest range)",
+            "ratio": "126",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "300",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "emerald-two-step__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "These Pokémon are additionally slowed by 50% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: These Pokémon are additionally slowed by 50% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "emerald-two-step__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Leafeon is unstoppable during this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Leafeon is unstoppable during this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__emerald-two-step",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "emerald-two-step-unite-buff",
+        "name": "Emerald Two-Step Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Emerald Two-Step",
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Emerald Two-Step Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "emerald-two-step-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "emerald-two-step-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "leafeon__emerald-two-step-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 18,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

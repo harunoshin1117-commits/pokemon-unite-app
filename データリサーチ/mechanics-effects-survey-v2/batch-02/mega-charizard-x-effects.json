@@ -1,0 +1,1035 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "mega-charizard-x",
+  "pokemonName": "Mega Charizard X",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "solar-power",
+        "name": "Solar Power",
+        "parentName": null,
+        "originalDescription": "When the user uses a move, it deals additional damage but loses 5% of its current HP. This Ability's effect does not trigger when the user is in tall grass. When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+        "translatedDescription": "機械要約: Solar Power は やけどを付与する、現在HP・最大HP・減少HPなどを参照する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Added to Move",
+            "ratio": "85",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "96",
+            "trueDescription": "When the user uses a move, it deals additional damage but loses 5% of its current HP. This Ability's effect does not trigger when the user is in tall grass. When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "solar-power__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "solar-power__02__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Added to Move",
+              "ratio": "85",
+              "damageType": "Atk",
+              "levelScaling": "3",
+              "base": "96",
+              "trueDescription": "When the user uses a move, it deals additional damage but loses 5% of its current HP. This Ability's effect does not trigger when the user is in tall grass. When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: When the user deals damage with a basic attack to opposing Pokémon that have been burned by its moves, the user restores 2% of its missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        },
+        {
+          "effectId": "solar-power__03__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "terrainOrWall"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "This Ability's effect does not trigger when the user is in tall grass.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: This Ability's effect does not trigger when the user is in tall grass.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-charizard-x__solar-power",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage benefits from regular lifesteal. Basic attacks gain increased range upon evolving into Charmeleon and into Charizard. When mega evolving into Mega Charizard X, basic attack range is decreased but width is increased.",
+        "translatedDescription": "機械要約: Attack は やけどを付与する、移動速度を下げる、急所確定または急所不可などを持つ、与ダメージに応じて回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage  - Basic (4x)",
+            "ratio": "30.8",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Breathes fire at opposing Pokémon, dealing damage 4 times per basic attack. Charizard may move while attacking but is slowed by 5% while breathing fire. Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves. This additional damage cannot land critical hits; additional damage benefits from regular lifesteal. Basic attacks gain increased range upon evolving into Charmeleon and into Charizard. When mega evolving into Mega Charizard X, basic attack range is decreased but width is increased.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves.",
+          "codexInterpretation": "やけどを付与する。 原文証拠: Charizard deals additional damage to opposing Pokémon that have been burned by the user's moves.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Charizard may move while attacking but is slowed by 5% while breathing fire.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Charizard may move while attacking but is slowed by 5% while breathing fire.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__03__criticalGuaranteedOrDisabled",
+          "effectType": "criticalGuaranteedOrDisabled",
+          "summary": "急所確定または急所不可などを持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "criticalRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "This additional damage cannot land critical hits",
+          "codexInterpretation": "急所確定または急所不可などを持つ。 原文証拠: This additional damage cannot land critical hits",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__04__lifestealOrDamageHeal",
+          "effectType": "lifestealOrDamageHeal",
+          "summary": "与ダメージに応じて回復する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "lifestealOrDamageHeal"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "additional damage benefits from regular lifesteal.",
+          "codexInterpretation": "与ダメージに応じて回復する。 原文証拠: additional damage benefits from regular lifesteal.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-charizard-x__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "flame-burst",
+        "name": "Flame Burst",
+        "parentName": null,
+        "originalDescription": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times). When this move hits, the user's movement speed is increased by 20% for 3s. The Attack of opposing Pokémon burned by this move is decreased by 5%. Attack with a bursting flame. When this move hits, it leaves enemies burned and increases the user's movement speed for a short time.",
+        "translatedDescription": "機械要約: Flame Burst は やけどを付与する、移動速度を上げる、継続ダメージを与える、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "105",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "70",
+            "trueDescription": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times). When this move hits, the user's movement speed is increased by 20% for 3s.",
+            "notes": "The Attack of opposing Pokémon burned by this move is decreased by 5%."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Burn (5 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "flame-burst__01__burn",
+          "effectType": "burn",
+          "summary": "やけどを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "burn",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "codexInterpretation": "やけどを付与する。 原文証拠: The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-burst__02__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedUp"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this move hits, the user's movement speed is increased by 20% for 3s.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: When this move hits, the user's movement speed is increased by 20% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-burst__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "105",
+              "damageType": "Atk",
+              "levelScaling": "4",
+              "base": "70",
+              "trueDescription": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times). When this move hits, the user's movement speed is increased by 20% for 3s.",
+              "notes": "The Attack of opposing Pokémon burned by this move is decreased by 5%."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Burn (5 Ticks)",
+              "ratio": "20",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "0",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "flame-burst__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user attacks with a flame in the designated direction which bursts on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and burning them for 4s (dealing damage 5 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-charizard-x__flame-burst",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "fire-spin",
+        "name": "Fire Spin",
+        "parentName": null,
+        "originalDescription": "The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect. The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit. Encircles enemies in the area of effect in a vortex of fire. After this move hits, it deals damage over time and decreases the movement speed of enemies for a short time.",
+        "translatedDescription": "機械要約: Fire Spin は 移動速度を下げる、継続ダメージを与える、フィールド・設置範囲を生成する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "150",
+            "trueDescription": "The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect. The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Area  (10 Ticks)",
+            "ratio": "20",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fire-spin__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fire-spin__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "5",
+              "base": "150",
+              "trueDescription": "The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect. The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Area  (10 Ticks)",
+              "ratio": "20",
+              "damageType": "Atk",
+              "levelScaling": "1",
+              "base": "30",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fire-spin__03__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "fieldArea"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: The vortex of fire remains for 5s, dealing damage over time to opposing Pokémon in the area of effect every 0.5s (up to 10 times) and decreasing their movement speed by 25% for 1s when hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fire-spin__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user shoots fire in the designated direction which bursts into a vortex of fire on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-charizard-x__fire-spin",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "seismic-slam",
+        "name": "Seismic Slam",
+        "parentName": null,
+        "originalDescription": "The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team. The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit. The user then mega evolves into Mega Charizard X for 20 seconds. During Mega evolution, Mega Charizard X receives 50% movement speed increase. Buffs: 20% Max HP Shield",
+        "translatedDescription": "機械要約: Seismic Slam は バインドを付与する、妨害無効になる、無敵になる、シールドを付与する、現在HP・最大HP・減少HPなどを参照する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Slam",
+            "ratio": "307",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "380",
+            "trueDescription": "The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team. The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit. The user then mega evolves into Mega Charizard X for 20 seconds. During Mega evolution, Mega Charizard X receives 50% movement speed increase.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "8% of enemy max HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "seismic-slam__01__bind",
+          "effectType": "bind",
+          "summary": "バインドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "bind",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "codexInterpretation": "バインドを付与する。 原文証拠: The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seismic-slam__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seismic-slam__03__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "codexInterpretation": "無敵になる。 原文証拠: The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seismic-slam__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "seismic-slam__05__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hpReferenceDamage"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Slam",
+              "ratio": "307",
+              "damageType": "Atk",
+              "levelScaling": "8",
+              "base": "380",
+              "trueDescription": "The user briefly becomes unstoppable and grabs the designated Pokémon from the opposing team. The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit. The user then mega evolves into Mega Charizard X for 20 seconds. During Mega evolution, Mega Charizard X receives 50% movement speed increase.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Additional",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "8% of enemy max HP.",
+              "notes": ""
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: The target is bound, and the user and the target become invincible as the user flies up then slams them onto the ground, damaging the target and nearby opposing Pokémon, dealing an additional 8% max HP damage to each opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。",
+            "HP参照タイミング、防御補正の有無、上限適用範囲は未確認。"
+          ]
+        },
+        {
+          "effectId": "seismic-slam__06__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user then mega evolves into Mega Charizard X for 20 seconds.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user then mega evolves into Mega Charizard X for 20 seconds.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mega-charizard-x__seismic-slam",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 21,
+    "zeroSpecialEffectSourceCount": 0,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

@@ -1,0 +1,2122 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "absol",
+  "pokemonName": "Absol",
+  "role": "A+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Expert",
+    "role": "Speedster"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "super-luck",
+      "moveName": "Super Luck",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "This Pokémon's critical-hit rate is increased by an additional 15%. Increased Critical-Hit rate by 15%.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits. If this boosted attack hits only a single target, it deals bonus damage. Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "feint",
+      "moveName": "Feint",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield effects of Pokémon hit. Each use alternates between a rightward and leftward arc. Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "night-slash",
+      "moveName": "Night Slash",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Feint",
+      "isPlus": false,
+      "originalDescription": "The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits. If this dash hits, the move can be used again within 6s. This second use has the user dash straight ahead, repeating the effects of the first dash when it hits. The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more. The first use is a rightward arc forward from the perspective of the orange team (right-side team, which has the map flipped horizontally when in battle). Dash in an outward arc, dealing damage to enemies. If this first attack hits, a second attack can also be performed. The second attack has the user dash straight ahead, dealing damage to enemies and increasing the user's critical-hit rate. The lower the enemies HP, the more the user's critical-hit rate is increased.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "night-slash-plus",
+      "moveName": "Night Slash+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Night Slash",
+      "isPlus": true,
+      "originalDescription": "Restores the user's HP for 50% of damage dealt with the second dash hit. Using this move again will restore the user's HP.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "pursuit",
+      "moveName": "Pursuit",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Feint",
+      "isPlus": false,
+      "originalDescription": "The user dashes forward, empowering the next auto attack for 3s. With this empowered attack, the user leaps to a non-allied Pokémon and attacks. This damage is increased against targets hit in the back. If this empowered attack hits any target in the back, this move's cooldown is reduced by 70%. When the user has an empowered attack readied, nearby non-allied Pokémon have their backs highlighted. Dash to the designated location and quickly charge an enemy with the next basic attack. (Basic attack range is doubled while this effect is active). If the basic attack lands from behind, its damage is increased and this move's cooldown is reduced.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "pursuit-plus",
+      "moveName": "Pursuit+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Pursuit",
+      "isPlus": true,
+      "originalDescription": "Increases the user's movement speed by 35% for 2s after using this move and before using the empowered attack. Increased movement speed.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "slash",
+      "moveName": "Slash",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%. Slash with sharp claws in front of the user, increasing this move's critical-hit rate.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "psycho-cut",
+      "moveName": "Psycho Cut",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Slash",
+      "isPlus": false,
+      "originalDescription": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s). 3 marks are applied to opposing Pokémon hit by the psychic slash for 5s. When the user deals damage to a marked target, 1 mark is consumed, dealing additional damage. The third mark deals increased damage when consumed. The critical-hit rate of the psychic slash and consumed marks is increased by 15%. The marks can be cleansed. Attack with blades formed by psychic power that decrease the movement speed of enemies for a short time when this move hits. Also increases basic attack damage dealt to the affected enemy for up to 3 attacks after this move hits.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "psycho-cut-plus",
+      "moveName": "Psycho Cut+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Psycho Cut",
+      "isPlus": true,
+      "originalDescription": "Increases the user's movement speed by 20% when an opposing Pokémon is marked by this move. Also increases movement speed for a short time when the user gets close to the enemy that this move hit.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "sucker-punch",
+      "moveName": "Sucker Punch",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Slash",
+      "isPlus": false,
+      "originalDescription": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration. After 1s, the user leaves the counter stance to counterattack, charging behind the target and damaging the target and other opposing Pokémon. If the user is attacked or the target attacks during the counter stance, however, the user dodges the damage and effects of the first hit and immediately counterattacks, shoving the target and dealing increased damage to the target and other opposing Pokémon. Look for an opening to attack an enemy, decreasing the movement speed of the user and the target enemy for the duration. After a short time, charge forward to attack the enemy. However, if the user receives damage or gets attacked before it charges, attack immediately and shove the enemy.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "sucker-punch-plus",
+      "moveName": "Sucker Punch+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Sucker Punch",
+      "isPlus": true,
+      "originalDescription": "Increases the user's basic attack speed by 40% for 3s after using this move. Increases basic attack speed for a short time when this move hits.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "midnight-slash",
+      "moveName": "Midnight Slash",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect. The user then becomes unstoppable again and unleashes a final slash in front of them with 3 blades of energy, shoving opposing Pokémon and dealing damage, up to 4 times at close range and down to 1 time at maximum range. The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target. 30% of the full damage. Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Absol",
+      "pokemonId": "absol",
+      "sourceId": "midnight-slash-unite-buff",
+      "moveName": "Midnight Slash Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Midnight Slash",
+      "isPlus": false,
+      "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Super Luck",
+      "sourceType": "passive",
+      "sourceId": "super-luck",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Feint",
+      "sourceType": "initialMove",
+      "sourceId": "feint",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Night Slash",
+      "sourceType": "moveChoice",
+      "sourceId": "night-slash",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Feint"
+    },
+    {
+      "name": "Night Slash+",
+      "sourceType": "movePlus",
+      "sourceId": "night-slash-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Night Slash"
+    },
+    {
+      "name": "Pursuit",
+      "sourceType": "moveChoice",
+      "sourceId": "pursuit",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Feint"
+    },
+    {
+      "name": "Pursuit+",
+      "sourceType": "movePlus",
+      "sourceId": "pursuit-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Pursuit"
+    },
+    {
+      "name": "Slash",
+      "sourceType": "initialMove",
+      "sourceId": "slash",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Psycho Cut",
+      "sourceType": "moveChoice",
+      "sourceId": "psycho-cut",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Slash"
+    },
+    {
+      "name": "Psycho Cut+",
+      "sourceType": "movePlus",
+      "sourceId": "psycho-cut-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Psycho Cut"
+    },
+    {
+      "name": "Sucker Punch",
+      "sourceType": "moveChoice",
+      "sourceId": "sucker-punch",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Slash"
+    },
+    {
+      "name": "Sucker Punch+",
+      "sourceType": "movePlus",
+      "sourceId": "sucker-punch-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Sucker Punch"
+    },
+    {
+      "name": "Midnight Slash",
+      "sourceType": "uniteMove",
+      "sourceId": "midnight-slash",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Midnight Slash Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "midnight-slash-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Midnight Slash"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "super-luck",
+        "name": "Super Luck",
+        "rawName": "Super Luck",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "This Pokémon's critical-hit rate is increased by an additional 15%. Increased Critical-Hit rate by 15%.",
+        "translatedDescription": "機械要約: Super Luck は 急所率を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "This Pokémon's critical-hit rate is increased by an additional 15%.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "super-luck__01__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This Pokémon's critical-hit rate is increased by an additional 15%.",
+          "codexInterpretation": "急所率を上げる。 原文証拠: This Pokémon's critical-hit rate is increased by an additional 15%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__super-luck",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits. If this boosted attack hits only a single target, it deals bonus damage. Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+        "translatedDescription": "機械要約: Attack は 防御・特防を変化させる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits. If this boosted attack hits only a single target, it deals bonus damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, and decreasing their Defense by 15% for 2s when the attack hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits. If this boosted attack hits only a single target, it deals increased damage.",
+        "translatedDescription": "機械要約: Attack Boosted は 防御・特防を変化させる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "51",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "100",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Single Target Bonus",
+            "ratio": "37.5",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "20",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing damage to enemies and lowering their Defense by 15% for 2s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "feint",
+        "name": "Feint",
+        "rawName": "Feint",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield effects of Pokémon hit. Each use alternates between a rightward and leftward arc. Dash in an arc, attacking enemies that come in contact with Absol. This move ignores the defense stat and shield effects of enemies.",
+        "translatedDescription": "機械要約: Feint は 通常攻撃速度を上げる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "66",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "130",
+            "trueDescription": "The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits. This move ignores the Defense and shield effects of Pokémon hit.",
+            "notes": "Each use alternates between a rightward and leftward arc."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "feint__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: The user dashes in an arc forward, damaging Pokémon in the path and increasing the user's basic attack speed by 60% for 0.5s when this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "feint__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This move ignores the Defense and shield effects of Pokémon hit.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: This move ignores the Defense and shield effects of Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__feint",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "night-slash",
+        "name": "Night Slash",
+        "rawName": "Night Slash",
+        "parentName": "Feint",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits. If this dash hits, the move can be used again within 6s. This second use has the user dash straight ahead, repeating the effects of the first dash when it hits. The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more. The first use is a rightward arc forward from the perspective of the orange team (right-side team, which has the map flipped horizontally when in battle). Dash in an outward arc, dealing damage to enemies. If this first attack hits, a second attack can also be performed. The second attack has the user dash straight ahead, dealing damage to enemies and increasing the user's critical-hit rate. The lower the enemies HP, the more the user's critical-hit rate is increased.",
+        "translatedDescription": "機械要約: Night Slash は 通常攻撃速度を上げる、急所率を上げる、現在HP・最大HP・減少HPなどを参照する、フォーム・モード・構えを変化させる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "69",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "140",
+            "trueDescription": "The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits. If this dash hits, the move can be used again within 6s. This second use has the user dash straight ahead, repeating the effects of the first dash when it hits. The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more.",
+            "notes": "The first use is a rightward arc forward from the perspective of the orange team (right-side team, which has the map flipped horizontally when in battle)."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "103.5",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "210",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "night-slash__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-slash__02__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The lower the enemies HP, the more the user's critical-hit rate is increased.",
+          "codexInterpretation": "急所率を上げる。 原文証拠: The lower the enemies HP, the more the user's critical-hit rate is increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-slash__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - First Hit",
+              "ratio": "69",
+              "damageType": "Atk",
+              "levelScaling": "6",
+              "base": "140",
+              "trueDescription": "The user dashes in a leftward arc forward, damaging non-allied Pokémon in its path and increasing the user's basic attack speed by 60% for 0.5s when this dash hits. If this dash hits, the move can be used again within 6s. This second use has the user dash straight ahead, repeating the effects of the first dash when it hits. The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more.",
+              "notes": "The first use is a rightward arc forward from the perspective of the orange team (right-side team, which has the map flipped horizontally when in battle)."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Second Hit",
+              "ratio": "103.5",
+              "damageType": "Atk",
+              "levelScaling": "9",
+              "base": "210",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: The critical-hit rate of this move is increased by 0.8% for every 1% missing HP of opposing Pokémon hit, up to 30% increased critical-hit rate at 38% missing HP or more.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-slash__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If this first attack hits, a second attack can also be performed.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If this first attack hits, a second attack can also be performed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-slash__05__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this dash hits, the move can be used again within 6s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this dash hits, the move can be used again within 6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__night-slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "night-slash-plus",
+        "name": "Night Slash+",
+        "rawName": "Night Slash",
+        "parentName": "Night Slash",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Restores the user's HP for 50% of damage dealt with the second dash hit. Using this move again will restore the user's HP.",
+        "translatedDescription": "機械要約: Night Slash+ は 与ダメージを変化させる、与ダメージに応じて回復する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Restores the user's HP for 50% of damage dealt with the second dash hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "night-slash-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Restores the user's HP for 50% of damage dealt with the second dash hit.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Restores the user's HP for 50% of damage dealt with the second dash hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "night-slash-plus__02__lifestealOrDamageHeal",
+          "effectType": "lifestealOrDamageHeal",
+          "summary": "与ダメージに応じて回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restores the user's HP for 50% of damage dealt with the second dash hit.",
+          "codexInterpretation": "与ダメージに応じて回復する。 原文証拠: Restores the user's HP for 50% of damage dealt with the second dash hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__night-slash-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "pursuit",
+        "name": "Pursuit",
+        "rawName": "Pursuit",
+        "parentName": "Feint",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user dashes forward, empowering the next auto attack for 3s. With this empowered attack, the user leaps to a non-allied Pokémon and attacks. This damage is increased against targets hit in the back. If this empowered attack hits any target in the back, this move's cooldown is reduced by 70%. When the user has an empowered attack readied, nearby non-allied Pokémon have their backs highlighted. Dash to the designated location and quickly charge an enemy with the next basic attack. (Basic attack range is doubled while this effect is active). If the basic attack lands from behind, its damage is increased and this move's cooldown is reduced.",
+        "translatedDescription": "機械要約: Pursuit は 待ち時間を短縮する、次の通常攻撃または強化攻撃を準備する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "143",
+            "damageType": "Atk",
+            "levelScaling": "14",
+            "base": "173",
+            "trueDescription": "The user dashes forward, empowering the next auto attack for 3s. With this empowered attack, the user leaps to a non-allied Pokémon and attacks. This damage is increased against targets hit in the back. If this empowered attack hits any target in the back, this move's cooldown is reduced by 70%.",
+            "notes": "When the user has an empowered attack readied, nearby non-allied Pokémon have their backs highlighted."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Backstab",
+            "ratio": "214",
+            "damageType": "Atk",
+            "levelScaling": "21",
+            "base": "259",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pursuit__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this empowered attack hits any target in the back, this move's cooldown is reduced by 70%.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: If this empowered attack hits any target in the back, this move's cooldown is reduced by 70%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pursuit__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The user dashes forward, empowering the next auto attack for 3s.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: The user dashes forward, empowering the next auto attack for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__pursuit",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "pursuit-plus",
+        "name": "Pursuit+",
+        "rawName": "Pursuit",
+        "parentName": "Pursuit",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the user's movement speed by 35% for 2s after using this move and before using the empowered attack. Increased movement speed.",
+        "translatedDescription": "機械要約: Pursuit+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's movement speed by 35% for 2s after using this move and before using the empowered attack.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__pursuit-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "slash",
+        "name": "Slash",
+        "rawName": "Slash",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user slashes in the designated direction, damaging opposing Pokémon hit. This move's critical-hit rate is increased by 15%. Slash with sharp claws in front of the user, increasing this move's critical-hit rate.",
+        "translatedDescription": "機械要約: Slash は 急所率を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "89",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "200",
+            "trueDescription": "The user slashes in the designated direction, damaging opposing Pokémon hit.",
+            "notes": "This move's critical-hit rate is increased by 15%."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slash__01__criticalRateUp",
+          "effectType": "criticalRateUp",
+          "summary": "急所率を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This move's critical-hit rate is increased by 15%.",
+          "codexInterpretation": "急所率を上げる。 原文証拠: This move's critical-hit rate is increased by 15%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "psycho-cut",
+        "name": "Psycho Cut",
+        "rawName": "Psycho Cut",
+        "parentName": "Slash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s). 3 marks are applied to opposing Pokémon hit by the psychic slash for 5s. When the user deals damage to a marked target, 1 mark is consumed, dealing additional damage. The third mark deals increased damage when consumed. The critical-hit rate of the psychic slash and consumed marks is increased by 15%. The marks can be cleansed. Attack with blades formed by psychic power that decrease the movement speed of enemies for a short time when this move hits. Also increases basic attack damage dealt to the affected enemy for up to 3 attacks after this move hits.",
+        "translatedDescription": "機械要約: Psycho Cut は 相手を打ち上げる、与ダメージを変化させる、継続ダメージを与える、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる、状態異常や低下効果を解除する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial Hit",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "65",
+            "trueDescription": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s). 3 marks are applied to opposing Pokémon hit by the psychic slash for 5s. When the user deals damage to a marked target, 1 mark is consumed, dealing additional damage. The third mark deals increased damage when consumed.",
+            "notes": "The critical-hit rate of the psychic slash and consumed marks is increased by 15%. The marks can be cleansed."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - First 2 markers",
+            "ratio": "72",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "48",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Last Marker",
+            "ratio": "108",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "psycho-cut__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s).",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increases basic attack damage dealt to the affected enemy for up to 3 attacks after this move hits.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Also increases basic attack damage dealt to the affected enemy for up to 3 attacks after this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Initial Hit",
+              "ratio": "50",
+              "damageType": "Atk",
+              "levelScaling": "1",
+              "base": "65",
+              "trueDescription": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s). 3 marks are applied to opposing Pokémon hit by the psychic slash for 5s. When the user deals damage to a marked target, 1 mark is consumed, dealing additional damage. The third mark deals increased damage when consumed.",
+              "notes": "The critical-hit rate of the psychic slash and consumed marks is increased by 15%. The marks can be cleansed."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - First 2 markers",
+              "ratio": "72",
+              "damageType": "Atk",
+              "levelScaling": "5",
+              "base": "48",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Last Marker",
+              "ratio": "108",
+              "damageType": "Atk",
+              "levelScaling": "7",
+              "base": "72",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: The user throws a psychic slash in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 90% for 2s (decaying by 25% every 0.5s).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "3 marks are applied to opposing Pokémon hit by the psychic slash for 5s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: 3 marks are applied to opposing Pokémon hit by the psychic slash for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Attack with blades formed by psychic power that decrease the movement speed of enemies for a short time when this move hits.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Attack with blades formed by psychic power that decrease the movement speed of enemies for a short time when this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut__06__cleanse",
+          "effectType": "cleanse",
+          "summary": "状態異常や低下効果を解除する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The marks can be cleansed.",
+          "codexInterpretation": "状態異常や低下効果を解除する。 原文証拠: The marks can be cleansed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__psycho-cut",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "psycho-cut-plus",
+        "name": "Psycho Cut+",
+        "rawName": "Psycho Cut",
+        "parentName": "Psycho Cut",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the user's movement speed by 20% when an opposing Pokémon is marked by this move. Also increases movement speed for a short time when the user gets close to the enemy that this move hit.",
+        "translatedDescription": "機械要約: Psycho Cut+ は 移動速度を上げる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's movement speed by 20% when an opposing Pokémon is marked by this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "psycho-cut-plus__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Also increases movement speed for a short time when the user gets close to the enemy that this move hit.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Also increases movement speed for a short time when the user gets close to the enemy that this move hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "psycho-cut-plus__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Increases the user's movement speed by 20% when an opposing Pokémon is marked by this move.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Increases the user's movement speed by 20% when an opposing Pokémon is marked by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__psycho-cut-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "sucker-punch",
+        "name": "Sucker Punch",
+        "rawName": "Sucker Punch",
+        "parentName": "Slash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration. After 1s, the user leaves the counter stance to counterattack, charging behind the target and damaging the target and other opposing Pokémon. If the user is attacked or the target attacks during the counter stance, however, the user dodges the damage and effects of the first hit and immediately counterattacks, shoving the target and dealing increased damage to the target and other opposing Pokémon. Look for an opening to attack an enemy, decreasing the movement speed of the user and the target enemy for the duration. After a short time, charge forward to attack the enemy. However, if the user receives damage or gets attacked before it charges, attack immediately and shove the enemy.",
+        "translatedDescription": "機械要約: Sucker Punch は 相手を押し出す、妨害無効になる、遅延または時間差でダメージを与える、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "105",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "165",
+            "trueDescription": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration. After 1s, the user leaves the counter stance to counterattack, charging behind the target and damaging the target and other opposing Pokémon. If the user is attacked or the target attacks during the counter stance, however, the user dodges the damage and effects of the first hit and immediately counterattacks, shoving the target and dealing increased damage to the target and other opposing Pokémon.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Interrupted Attack",
+            "ratio": "156",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "250",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sucker-punch__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "However, if the user receives damage or gets attacked before it charges, attack immediately and shove the enemy.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: However, if the user receives damage or gets attacked before it charges, attack immediately and shove the enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sucker-punch__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sucker-punch__03__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "After 1s, the user leaves the counter stance to counterattack, charging behind the target and damaging the target and other opposing Pokémon.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: After 1s, the user leaves the counter stance to counterattack, charging behind the target and damaging the target and other opposing Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sucker-punch__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "sucker-punch__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user becomes unstoppable and targets an opposing Pokémon and enters a counter stance for 1s, decreasing the movement speed of the user and the target by 50% for the duration.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__sucker-punch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "sucker-punch-plus",
+        "name": "Sucker Punch+",
+        "rawName": "Sucker Punch",
+        "parentName": "Sucker Punch",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the user's basic attack speed by 40% for 3s after using this move. Increases basic attack speed for a short time when this move hits.",
+        "translatedDescription": "機械要約: Sucker Punch+ は 通常攻撃速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's basic attack speed by 40% for 3s after using this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "sucker-punch-plus__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the user's basic attack speed by 40% for 3s after using this move.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Increases the user's basic attack speed by 40% for 3s after using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__sucker-punch-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "midnight-slash",
+        "name": "Midnight Slash",
+        "rawName": "Midnight Slash",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect. The user then becomes unstoppable again and unleashes a final slash in front of them with 3 blades of energy, shoving opposing Pokémon and dealing damage, up to 4 times at close range and down to 1 time at maximum range. The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target. 30% of the full damage. Unleashes a flurry of slashes in front of the user. This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them.",
+        "translatedDescription": "機械要約: Midnight Slash は 相手を押し出す、妨害無効になる、対象指定されない、またはステルス状態になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Full (6 Hits)",
+            "ratio": "83",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "184",
+            "trueDescription": "The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect. The user then becomes unstoppable again and unleashes a final slash in front of them with 3 blades of energy, shoving opposing Pokémon and dealing damage, up to 4 times at close range and down to 1 time at maximum range.",
+            "notes": "The damage of the flurry of 5 slashes is divided by the number of targets hit. The first hit from the final slash deals full damage to each target hit; subsequent hits deal 30% of the full damage to the same target."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Reduced (up to 3 Hits)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "30% of the full damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "midnight-slash__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: This move ends by unleashing powerful blades of energy, dealing increased damage to enemies and shoves them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "midnight-slash__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 1.15,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "midnight-slash__03__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.15,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: The user briefly becomes unstoppable before becoming untargetable and invulnerable for 1.15s while unleashing a flurry of 5 slashes in front of themself in the designated area, damaging opposing Pokémon in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__midnight-slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "midnight-slash-unite-buff",
+        "name": "Midnight Slash Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Midnight Slash",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Midnight Slash Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "midnight-slash-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "midnight-slash-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "absol__midnight-slash-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 36,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

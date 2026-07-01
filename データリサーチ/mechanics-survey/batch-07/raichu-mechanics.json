@@ -1,0 +1,662 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "raichu",
+  "pokemonName": "Raichu",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-pikachu",
+      "name": "Attack - Pikachu",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "72",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "80",
+          "notes": "Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-pikachu-boosted",
+      "name": "Attack - Pikachu Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "93.6",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "104",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-wave",
+      "name": "Thunder Wave",
+      "originalDescription": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm-aerial",
+      "name": "Thunderstorm Aerial",
+      "originalDescription": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an a",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "168",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack."
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "33.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "168",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack."
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "33.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "static",
+      "name": "Static",
+      "originalDescription": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Upon receiving damage: paralyzes all nearby opposing Pokémon (30s CD). Paralysis from Static decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 30,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-pikachu",
+      "name": "Attack - Pikachu",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "72",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "80",
+          "notes": "Paralysis from Pikachu's boosted attacks decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-pikachu-boosted",
+      "name": "Attack - Pikachu Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "93.6",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "104",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-shock",
+      "name": "Thunder Shock",
+      "originalDescription": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Releases electricity at the designated opposing Pokémon; damaging opposing Pokémon in the area of effect and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "240",
+          "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "thunder-wave",
+      "name": "Thunder Wave",
+      "originalDescription": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "summary": "Discharges a weak jolt of electricity in the designated direction; damaging nearby opposing Pokémon and paralyzing those hit. Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 9,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "108",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "300",
+          "notes": "Paralysis from this move decreases opposing Pokémon movement speed by 30% and reduces auto attack speed by a flat 10% for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm-aerial",
+      "name": "Thunderstorm Aerial",
+      "originalDescription": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack. Unite buffs: 30% Movement Speed, 35% Attack Speed, 20% Max HP Shield",
+      "summary": "Creates a star-shaped zone of electricity in the designated area for 4s, damaging opposing Pokémon in the area of effect when created, then damaging opposing Pokémon over time (up to 5 times) and decreasing their movement speed by 60% while in the zone. If the user hits an opposing Pokémon that is in the zone with an a",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "next-normal-attack-ready"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "168",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack."
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "33.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "168",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "400",
+          "notes": "If the user hits an opposing Pokémon that is in the zone with an auto attack, the next basic attack becomes a boosted attack."
+        },
+        "additional": [
+          {
+            "label": "Damage - DoT (5 Ticks)",
+            "ratio": "33.6",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "80",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "attackOrder, time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

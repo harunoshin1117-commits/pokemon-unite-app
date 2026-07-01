@@ -1,0 +1,570 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "hoopa",
+  "pokemonName": "Hoopa",
+  "role": "Supporter",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "magician",
+        "name": "Magician",
+        "parentName": null,
+        "originalDescription": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa (40s cooldown). If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced to 20s. Berries last 30 seconds and take 2 seconds to appear after magician's activation. In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa. If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced.",
+        "translatedDescription": "機械要約: Magician には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "In battles where the map is divided into an ally team side and an opposing team side, this ability creates a hole under one of the berries on the opposing team's side (chosen at random) and warps it in front of Hoopa (40s cooldown). If there are no berries, but there is Aeos Energy on the ground, then some energy is warped in front of Hoopa instead. In the event that no berries from the opposing team's side are warped, the cooldown of this ability is reduced to 20s. Berries last 30 seconds and take 2 seconds to appear after magician's activation.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "teleportOrWarp",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "hoopa__magician",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light. When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+        "translatedDescription": "機械要約: Attack は バインドを付与する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing damage to enemies by unleashing a beam of light.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__bind",
+          "effectType": "bind",
+          "summary": "バインドを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "bind",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+          "codexInterpretation": "バインドを付与する。 原文証拠: When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: When Hoopa is unbound, every attack becomes a boosted attack and deals damage to up to 2 additional nearby enemies.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "hoopa__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "astonish",
+        "name": "Astonish",
+        "parentName": null,
+        "originalDescription": "Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s. Deals damage to enemies in the designated area of effect, leaving them unable to act for a short time.",
+        "translatedDescription": "機械要約: Astonish は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "116",
+            "damageType": "SpAtk",
+            "levelScaling": "18",
+            "base": "340",
+            "trueDescription": "Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "astonish__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 75,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "stun",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Deals damage to enemies in the designated area of effect, leaving them unable to act for .75s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "hoopa__astonish",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "confusion",
+        "name": "Confusion",
+        "parentName": null,
+        "originalDescription": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s. Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed for a short time.",
+        "translatedDescription": "機械要約: Confusion は 移動速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial",
+            "ratio": "56",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "190",
+            "trueDescription": "Unleash a telekinetic force in the designated direction, dealing damage to the first enemy hit. The telekinetic force clings to that enemy and then causes a delayed explosion. The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Explosion",
+            "ratio": "112",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "380",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "confusion__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The explosion deals damage to enemies in the area of effect and decreases their movement speed by 50% for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "hoopa__confusion",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "rings-unbound",
+        "name": "Rings Unbound",
+        "parentName": null,
+        "originalDescription": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location. Hoopa Unbound lasts for 15s, increasing max HP by 40% and changes Hoopa's regular moves to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. The portal ring created stays open for 10s, and allies can warp to that location once within the duration of the ring. This portal is indicated on the mini map where all players may see where it is. Transforms Hoopa into Hoopa Unbound for a short time, increasing max HP and creating a ring at the designated location. Each ally can warp to the ring's location one time. As Hoopa Unbound, moves change to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability. Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Rings Unbound は バインドを付与する、妨害無効になる、無敵になる、待ち時間を短縮する、シールドを付与する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location. Hoopa Unbound lasts for 15s, increasing max HP by 40% and changes Hoopa's regular moves to Hyperspace Fury and Psybeam. Hoopa Unbound cannot score goals or activate the Magician ability.",
+            "notes": "The portal ring created stays open for 10s, and allies can warp to that location once within the duration of the ring. This portal is indicated on the mini map where all players may see where it is."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "teleportOrWarp",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "rings-unbound__01__bind",
+          "effectType": "bind",
+          "summary": "バインドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": "bind",
+          "statChanges": [],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "codexInterpretation": "バインドを付与する。 原文証拠: Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rings-unbound__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rings-unbound__03__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "invincible"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "codexInterpretation": "無敵になる。 原文証拠: Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rings-unbound__04__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cooldownReduction"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rings-unbound__05__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "rings-unbound__06__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "formChange"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Hoopa becomes invincible for 0.6s while transforming into Hoopa Unbound, then becomes unstoppable for 0.3s as it opens a large portal ring at a designated location.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "hoopa__rings-unbound",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 10,
+    "zeroSpecialEffectSourceCount": 1,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

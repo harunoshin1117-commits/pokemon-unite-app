@@ -1,0 +1,645 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "sylveon",
+  "pokemonName": "Sylveon",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "adaptability",
+      "name": "Adaptability",
+      "originalDescription": "Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times. Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times.",
+      "summary": "Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times. Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-eevee",
+      "name": "Attack - Eevee",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-eevee-boosted",
+      "name": "Attack - Eevee Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "35",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoots star-shaped rays at enemies, dealing damage to them. Shoots 4 star-shaped rays at enemies, dealing damage to them.",
+      "summary": "Shoots star-shaped rays at enemies, dealing damage to them. Shoots 4 star-shaped rays at enemies, dealing damage to them.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Star",
+          "ratio": "32",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "baby-doll-eyes",
+      "name": "Baby-Doll Eyes",
+      "originalDescription": "Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack and movement speed for a short time when this move hits. Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack by 15% for 1s and decreasing their movement speed by 60% for 1s for a short time when this move hits.",
+      "summary": "Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack and movement speed for a short time when this move hits. Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack by 15% for 1s and decreasing their movement speed by 60% for 1s for a short time when this move hit",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "63",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "330",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fairy-frolic",
+      "name": "Fairy Frolic",
+      "originalDescription": "Jump into the air and become briefly invincible. The moment Sylveon lands, deal damage to enemies in the area of effect and restore Sylveon's HP. For 10s afterward, 50% of damage dealt by Sylveon is converted into HP (basic attacks are excluded). Jump into the air, removing most statuses and becoming invincible. The moment Sylveon lands, lose invincibility and immediately gain Fairy Frolic buff, while dealing damage to enemies in the area of effect and healing for 60% of the damage dealt. Fairy Frolic buff: for 10s, 50% of the damage dealt by Sylveon is converted into HP. No HP is recovered if the damage is dealt to shields. Against Wild Pokémon: Damage is capped at 2000. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Jump into the air and become briefly invincible. The moment Sylveon lands, deal damage to enemies in the area of effect and restore Sylveon's HP. For 10s afterward, 50% of damage dealt by Sylveon is converted into HP (basic attacks are excluded). Jump into the air, removing most statuses and becoming invincible. The mo",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "adaptability",
+      "name": "Adaptability",
+      "originalDescription": "Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times. Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times.",
+      "summary": "Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times. Every time Eevee deals or receives damage, increase Sp. Attack by 5% for 1.5s, stacking up to 4 times.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": 1.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack-eevee",
+      "name": "Attack - Eevee",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-eevee-boosted",
+      "name": "Attack - Eevee Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "35",
+          "damageType": "SpAtk",
+          "levelScaling": "10",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoots star-shaped rays at enemies, dealing damage to them. Shoots 4 star-shaped rays at enemies, dealing damage to them.",
+      "summary": "Shoots star-shaped rays at enemies, dealing damage to them. Shoots 4 star-shaped rays at enemies, dealing damage to them.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 7,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Star",
+          "ratio": "32",
+          "damageType": "SpAtk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "baby-doll-eyes",
+      "name": "Baby-Doll Eyes",
+      "originalDescription": "Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack and movement speed for a short time when this move hits. Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack by 15% for 1s and decreasing their movement speed by 60% for 1s for a short time when this move hits.",
+      "summary": "Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack and movement speed for a short time when this move hits. Stare at an enemy with baby-doll eyes, dealing damage and decreasing their Attack by 15% for 1s and decreasing their movement speed by 60% for 1s for a short time when this move hit",
+      "trigger": "move hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "63",
+          "damageType": "SpAtk",
+          "levelScaling": "18",
+          "base": "330",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "fairy-frolic",
+      "name": "Fairy Frolic",
+      "originalDescription": "Jump into the air and become briefly invincible. The moment Sylveon lands, deal damage to enemies in the area of effect and restore Sylveon's HP. For 10s afterward, 50% of damage dealt by Sylveon is converted into HP (basic attacks are excluded). Jump into the air, removing most statuses and becoming invincible. The moment Sylveon lands, lose invincibility and immediately gain Fairy Frolic buff, while dealing damage to enemies in the area of effect and healing for 60% of the damage dealt. Fairy Frolic buff: for 10s, 50% of the damage dealt by Sylveon is converted into HP. No HP is recovered if the damage is dealt to shields. Against Wild Pokémon: Damage is capped at 2000. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Jump into the air and become briefly invincible. The moment Sylveon lands, deal damage to enemies in the area of effect and restore Sylveon's HP. For 10s afterward, 50% of damage dealt by Sylveon is converted into HP (basic attacks are excluded). Jump into the air, removing most statuses and becoming invincible. The mo",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "unconfirmed",
+      "target": "area",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 10,
+      "cooldownSeconds": 112,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "750",
+          "notes": "Against Wild Pokémon: Damage is capped at 2000."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "8",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

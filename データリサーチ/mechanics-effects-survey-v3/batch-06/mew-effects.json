@@ -1,0 +1,2131 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "mew",
+  "pokemonName": "Mew",
+  "role": "A+",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Expert",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "synchronize",
+      "moveName": "Synchronize",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "electro-ball",
+      "moveName": "Electro Ball",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased. 9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "solar-beam",
+      "moveName": "Solar Beam",
+      "sourceType": "moveChoice",
+      "learnLevel": "1",
+      "upgradeLevel": "10",
+      "parentName": "Electro Ball",
+      "isPlus": false,
+      "originalDescription": "Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect. If this move hits an enemy, Mew gains an additional boost counter. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "solar-beam-plus",
+      "moveName": "Solar Beam+",
+      "sourceType": "movePlus",
+      "learnLevel": "1",
+      "upgradeLevel": "10",
+      "parentName": "Solar Beam",
+      "isPlus": true,
+      "originalDescription": "Reduce this move's cooldown by 0.5s for each enemy hit.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "surf",
+      "moveName": "Surf",
+      "sourceType": "moveChoice",
+      "learnLevel": "1",
+      "upgradeLevel": "10",
+      "parentName": "Electro Ball",
+      "isPlus": false,
+      "originalDescription": "Charge forward on a wave, shoving enemies for 0.5s and leaving them unable to act for 0.5s. Mew gains a shield for 3s and becomes immune to hindrances while using this move. At the end of this move, Mew can jump in a designated direction and becomes immune to hindrances for a short time. If this move hits an enemy, Mew gains an additional boost counter. Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "surf-plus",
+      "moveName": "Surf+",
+      "sourceType": "movePlus",
+      "learnLevel": "1",
+      "upgradeLevel": "10",
+      "parentName": "Surf",
+      "isPlus": true,
+      "originalDescription": "Strengthens the shield effect of this move.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "coaching",
+      "moveName": "Coaching",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "light-screen",
+      "moveName": "Light Screen",
+      "sourceType": "moveChoice",
+      "learnLevel": "3",
+      "upgradeLevel": "12",
+      "parentName": "Coaching",
+      "isPlus": false,
+      "originalDescription": "Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall. If Mew's Electro Ball, Solar Beam, or Surf passes through the wall, the effects of those moves will be enhanced (such as increased damage, range, and area-of-effect). If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s. While the wall moves with Mew, enemy attacks that pass through it will deal 25% reduced damage but will not prevent enemies from passing and does not shove them anymore.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "light-screen-plus",
+      "moveName": "Light Screen+",
+      "sourceType": "movePlus",
+      "learnLevel": "3",
+      "upgradeLevel": "12",
+      "parentName": "Light Screen",
+      "isPlus": true,
+      "originalDescription": "Increases the size of the wall.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "agility",
+      "moveName": "Agility",
+      "sourceType": "moveChoice",
+      "learnLevel": "3",
+      "upgradeLevel": "12",
+      "parentName": "Coaching",
+      "isPlus": false,
+      "originalDescription": "Move quickly in a designated direction, increasing Mew's movement speed by 5% for 2s. Holds 2 uses in reserve and cannot be used more than once every 2s.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "agility-plus",
+      "moveName": "Agility+",
+      "sourceType": "movePlus",
+      "learnLevel": "3",
+      "upgradeLevel": "12",
+      "parentName": "Agility",
+      "isPlus": true,
+      "originalDescription": "Increases the distance Mew moves in the designated direction.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "mystical-mirage",
+      "moveName": "Mystical Mirage",
+      "sourceType": "uniteMove",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Mew",
+      "pokemonId": "mew",
+      "sourceId": "mystical-mirage-unite-buff",
+      "moveName": "Mystical Mirage Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "8",
+      "upgradeLevel": null,
+      "parentName": "Mystical Mirage",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Synchronize",
+      "sourceType": "passive",
+      "sourceId": "synchronize",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Electro Ball",
+      "sourceType": "initialMove",
+      "sourceId": "electro-ball",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Solar Beam",
+      "sourceType": "moveChoice",
+      "sourceId": "solar-beam",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Electro Ball"
+    },
+    {
+      "name": "Solar Beam+",
+      "sourceType": "movePlus",
+      "sourceId": "solar-beam-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Solar Beam"
+    },
+    {
+      "name": "Surf",
+      "sourceType": "moveChoice",
+      "sourceId": "surf",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Electro Ball"
+    },
+    {
+      "name": "Surf+",
+      "sourceType": "movePlus",
+      "sourceId": "surf-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Surf"
+    },
+    {
+      "name": "Coaching",
+      "sourceType": "initialMove",
+      "sourceId": "coaching",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Light Screen",
+      "sourceType": "moveChoice",
+      "sourceId": "light-screen",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Coaching"
+    },
+    {
+      "name": "Light Screen+",
+      "sourceType": "movePlus",
+      "sourceId": "light-screen-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Light Screen"
+    },
+    {
+      "name": "Agility",
+      "sourceType": "moveChoice",
+      "sourceId": "agility",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Coaching"
+    },
+    {
+      "name": "Agility+",
+      "sourceType": "movePlus",
+      "sourceId": "agility-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Agility"
+    },
+    {
+      "name": "Mystical Mirage",
+      "sourceType": "uniteMove",
+      "sourceId": "mystical-mirage",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Mystical Mirage Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "mystical-mirage-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Mystical Mirage"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "synchronize",
+        "name": "Synchronize",
+        "rawName": "Synchronize",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+        "translatedDescription": "機械要約: Synchronize は 移動速度を上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synchronize__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Each time Mew uses a move, Mew and nearby allies have their movement speed increased by 15% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__synchronize",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+        "translatedDescription": "機械要約: Attack は スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "70",
+            "trueDescription": "Each time Mew uses a move, they gain a boost counter. A maximum of 3 boost counters can be stored. After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy. During the lock-on animation Mew can use moves. The further the ball travels, the more damage it deals (4% more damage per threshold, stacking additively). This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "A maximum of 3 boost counters can be stored.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: A maximum of 3 boost counters can be stored.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: After 3 counters are stored (they have to be consumed within 8s or they disappear), Mew's next basic attack becomes a boosted attack that consumes all counters and launches a ball of psychic energy at an enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__04__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: This ball pierces through wild Pokémon, but will stop traveling upon contact with the first enemy player.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "160",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "280",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "electro-ball",
+        "name": "Electro Ball",
+        "rawName": "Electro Ball",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is. Through Light Screen: Damage dealt and area-of-effect radius are increased. 9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+        "translatedDescription": "機械要約: Electro Ball は まひを付与する、移動速度を下げる、通常攻撃速度を下げる、与ダメージを変化させる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (No Light Screen Boost)",
+            "ratio": "114",
+            "damageType": "SpAtk",
+            "levelScaling": "12",
+            "base": "260",
+            "trueDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is.",
+            "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Light Screen Boost)",
+            "ratio": "149",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "340",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__03__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__05__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (No Light Screen Boost)",
+              "ratio": "114",
+              "damageType": "SpAtk",
+              "levelScaling": "12",
+              "base": "260",
+              "trueDescription": "Hurl an electric orb, dealing damage to enemies in the area-of-effect and leaving them paralyzed (40% slow, 10% attack speed reduction) for 2s. This move deals more damage the lower the enemies' remaining HP is.",
+              "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+            },
+            {
+              "id": "add1",
+              "label": "Damage (Light Screen Boost)",
+              "ratio": "149",
+              "damageType": "SpAtk",
+              "levelScaling": "15",
+              "base": "340",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "9.5% of enemy missing HP. Against Wild Pokemon: The execute damage is capped at 1200.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "9.5% of enemy missing HP.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 9.5% of enemy missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__06__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against Wild Pokemon: The execute damage is capped at 1200.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against Wild Pokemon: The execute damage is capped at 1200.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__electro-ball",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "solar-beam",
+        "name": "Solar Beam",
+        "rawName": "Solar Beam",
+        "parentName": "Electro Ball",
+        "learnLevel": "1",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect. If this move hits an enemy, Mew gains an additional boost counter. Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+        "translatedDescription": "機械要約: Solar Beam は 与ダメージを変化させる、継続ダメージを与える、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Tick",
+            "ratio": "70",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "100",
+            "trueDescription": "Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect. If this move hits an enemy, Mew gains an additional boost counter. ",
+            "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - per Tick (Light Screen Boost)",
+            "ratio": "91",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "130",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "solar-beam__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Through Light Screen: Damage dealt and area-of-effect radius are increased.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "solar-beam__02__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - per Tick",
+              "ratio": "70",
+              "damageType": "SpAtk",
+              "levelScaling": "3",
+              "base": "100",
+              "trueDescription": "Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect. If this move hits an enemy, Mew gains an additional boost counter. ",
+              "notes": "Through Light Screen: Damage dealt and area-of-effect radius are increased."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - per Tick (Light Screen Boost)",
+              "ratio": "91",
+              "damageType": "SpAtk",
+              "levelScaling": "4",
+              "base": "130",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Blast a bundled beam of light, dealing damage 3 times to enemies in the area-of-effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "solar-beam__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If this move hits an enemy, Mew gains an additional boost counter.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If this move hits an enemy, Mew gains an additional boost counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__solar-beam",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "solar-beam-plus",
+        "name": "Solar Beam+",
+        "rawName": "Solar Beam",
+        "parentName": "Solar Beam",
+        "learnLevel": "1",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Reduce this move's cooldown by 0.5s for each enemy hit.",
+        "translatedDescription": "機械要約: Solar Beam+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduce this move's cooldown by 0.5s for each enemy hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__solar-beam-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "surf",
+        "name": "Surf",
+        "rawName": "Surf",
+        "parentName": "Electro Ball",
+        "learnLevel": "1",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "Charge forward on a wave, shoving enemies for 0.5s and leaving them unable to act for 0.5s. Mew gains a shield for 3s and becomes immune to hindrances while using this move. At the end of this move, Mew can jump in a designated direction and becomes immune to hindrances for a short time. If this move hits an enemy, Mew gains an additional boost counter. Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+        "translatedDescription": "機械要約: Surf は 行動不能・スタンを付与する、妨害耐性を得る、シールドを付与する、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "220",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "280",
+            "trueDescription": "Charge forward on a wave, shoving enemies for 0.5s and leaving them unable to act for 0.5s. Mew gains a shield for 3s and becomes immune to hindrances while using this move. At the end of this move, Mew can jump in a designated direction and becomes immune to hindrances for a short time. If this move hits an enemy, Mew gains an additional boost counter. ",
+            "notes": "Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew."
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "70",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Charge forward on a wave, shoving enemies for 0.5s and leaving them unable to act for 0.5s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Charge forward on a wave, shoving enemies for 0.5s and leaving them unable to act for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__02__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew gains a shield for 3s and becomes immune to hindrances while using this move.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Mew gains a shield for 3s and becomes immune to hindrances while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew gains a shield for 3s and becomes immune to hindrances while using this move.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Mew gains a shield for 3s and becomes immune to hindrances while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If this move hits an enemy, Mew gains an additional boost counter.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If this move hits an enemy, Mew gains an additional boost counter.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "surf__06__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Through Light Screen: Distance the wave travels is increased and Light Screen attaches to Mew.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__surf",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "surf-plus",
+        "name": "Surf+",
+        "rawName": "Surf",
+        "parentName": "Surf",
+        "learnLevel": "1",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Strengthens the shield effect of this move.",
+        "translatedDescription": "機械要約: Surf+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "Strengthens the shield effect of this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "surf-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Strengthens the shield effect of this move.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Strengthens the shield effect of this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__surf-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "coaching",
+        "name": "Coaching",
+        "rawName": "Coaching",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+        "translatedDescription": "機械要約: Coaching は 通常攻撃速度を上げる、待ち時間を短縮する、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "300",
+            "trueDescription": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s. If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%. If this move is used on an ally who has been recently coached, this move goes on cooldown. The cooldown of Electro Ball, Solar Beam, and Surf is reduced by 1s each time this move is used.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "teleportOrWarp",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "coaching__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "coaching__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 7,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: If this move is used on an ally who hasn't been coached within 7s, the cooldown of this move is reduced by 90%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "coaching__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Teleport to an ally, granting them a shield for 3s and increasing basic attack speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__coaching",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "light-screen",
+        "name": "Light Screen",
+        "rawName": "Light Screen",
+        "parentName": "Coaching",
+        "learnLevel": "3",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall. If Mew's Electro Ball, Solar Beam, or Surf passes through the wall, the effects of those moves will be enhanced (such as increased damage, range, and area-of-effect). If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s. While the wall moves with Mew, enemy attacks that pass through it will deal 25% reduced damage but will not prevent enemies from passing and does not shove them anymore.",
+        "translatedDescription": "機械要約: Light Screen は 相手を押し出す、相手を引き寄せる、受けるダメージを軽減する、再使用・派生・2段目を持つ、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall. If Mew's Electro Ball, Solar Beam, or Surf passes through the wall, the effects of those moves will be enhanced (such as increased damage, range, and area-of-effect). If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s. While the wall moves with Mew, enemy attacks that pass through it will deal 25% reduced damage but will not prevent enemies from passing and does not shove them anymore.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "light-screen__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "light-screen__02__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "light-screen__03__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While the wall moves with Mew, enemy attacks that pass through it will deal 25% reduced damage but will not prevent enemies from passing and does not shove them anymore.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: While the wall moves with Mew, enemy attacks that pass through it will deal 25% reduced damage but will not prevent enemies from passing and does not shove them anymore.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "light-screen__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move is used again within 4s, the wall is pulled towards Mew and follows them as they move for an additional 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "light-screen__05__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: Create a translucent wall in the designated location for 4s that prevents enemies from passing and shoves them for 0.5s if they make contact with the wall.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__light-screen",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "light-screen-plus",
+        "name": "Light Screen+",
+        "rawName": "Light Screen",
+        "parentName": "Light Screen",
+        "learnLevel": "3",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the size of the wall.",
+        "translatedDescription": "機械要約: Light Screen+ は 壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the size of the wall.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "light-screen-plus__01__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Increases the size of the wall.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: Increases the size of the wall.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__light-screen-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "agility",
+        "name": "Agility",
+        "rawName": "Agility",
+        "parentName": "Coaching",
+        "learnLevel": "3",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "Move quickly in a designated direction, increasing Mew's movement speed by 5% for 2s. Holds 2 uses in reserve and cannot be used more than once every 2s.",
+        "translatedDescription": "機械要約: Agility には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Move quickly in a designated direction, increasing Mew's movement speed by 5% for 2s. Holds 2 uses in reserve and cannot be used more than once every 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__agility",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "agility-plus",
+        "name": "Agility+",
+        "rawName": "Agility",
+        "parentName": "Agility",
+        "learnLevel": "3",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the distance Mew moves in the designated direction.",
+        "translatedDescription": "機械要約: Agility+ は フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the distance Mew moves in the designated direction.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "agility-plus__01__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Increases the distance Mew moves in the designated direction.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Increases the distance Mew moves in the designated direction.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__agility-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "mystical-mirage",
+        "name": "Mystical Mirage",
+        "rawName": "Mystical Mirage",
+        "parentName": null,
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect.",
+        "translatedDescription": "機械要約: Mystical Mirage は 妨害無効になる、無敵になる、対象指定されない、またはステルス状態になる、フィールド・設置範囲を生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "120",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "340",
+            "trueDescription": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move. A field is created around Mew for 5s This field travels with Mew. Mew and all allies within the area become stealthed for 4s. After the field expires, this move deals damage to enemies within the area-of-effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mystical-mirage__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__02__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "無敵になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__03__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: Mew becomes unstoppable and floats in the air for 1s, then becoming invincible and invisible for up to 6s until using an attack or move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage__04__fieldArea",
+          "effectType": "fieldArea",
+          "summary": "フィールド・設置範囲を生成する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "A field is created around Mew for 5s This field travels with Mew.",
+          "codexInterpretation": "フィールド・設置範囲を生成する。 原文証拠: A field is created around Mew for 5s This field travels with Mew.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__mystical-mirage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "mystical-mirage-unite-buff",
+        "name": "Mystical Mirage Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Mystical Mirage",
+        "learnLevel": "8",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Mystical Mirage Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "mystical-mirage-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "mystical-mirage-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "mew__mystical-mirage-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 38,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

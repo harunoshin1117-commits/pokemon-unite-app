@@ -1,0 +1,1730 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "meowth",
+  "pokemonName": "Meowth",
+  "role": "A",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "Speedster"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "pickup",
+      "moveName": "Pickup",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s. Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "No English description available in Unite-DB JSON.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "scratch",
+      "moveName": "Scratch",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "pay-day",
+      "moveName": "Pay Day",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Scratch",
+      "isPlus": false,
+      "originalDescription": "The user hurls a gold coin at the designated Pokémon, dealing damage, slowing down the target by 30% for 1.5s, and dropping a gold coin. 2 uses can be kept in reserve, picking up a gold coin reduces the cooldown of a use by 4s.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "pay-day-plus",
+      "moveName": "Pay Day+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Pay Day",
+      "isPlus": true,
+      "originalDescription": "Increases the damage dealt by this move.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "fury-swipes",
+      "moveName": "Fury Swipes",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Scratch",
+      "isPlus": false,
+      "originalDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user swipes twice with its sharp claws at the designated Pokémon, dealing damage, and granting the user a shield for 5s, and an additional shield per hit (up to 5x) for 5s. The number of swipes can be increased up to 5 if the coin mark is at 3 stacks or higher. Subsequent swipes deal half of the damage of the first hit. This attack will stun opposing Pokémon that have 1/2/3+ coin mark stacks for 0.3/0.5/0.8s respectively. If the maximum number of swipes hit, the cooldowns for Feint, Feint Attack, and Assurance are reduced by 7.5% of the max cooldown per hit, the 5th hit will fully reset the cooldown. If the coin mark is filled up, this move will consume and reset the mark.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "fury-swipes-plus",
+      "moveName": "Fury Swipes+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Fury Swipes",
+      "isPlus": true,
+      "originalDescription": "Increases the damage dealt by this move.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "feint",
+      "moveName": "Feint",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "feint-attack",
+      "moveName": "Feint Attack",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Feint",
+      "isPlus": false,
+      "originalDescription": "The user pounces at the designated Pokémon and scratches them with their claws, dealing damage and stunning the target for 0.6s. When this move hits the user is granted a shield for 3s and can quickly move in a chosen direction. The user's next basic attack becomes a boosted attack. If the coin mark is filled up, this move will consume and reset the mark (although this move does not benefit from the coin mark in any fashion).",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "feint-attack-plus",
+      "moveName": "Feint Attack+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Feint Attack",
+      "isPlus": true,
+      "originalDescription": "Improves the strength of the shield.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "assurance",
+      "moveName": "Assurance",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Feint",
+      "isPlus": false,
+      "originalDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user charges in the designated direction, dealing damage to opposing Pokémon hit and restoring the user's HP, furthermore the move will restore additional HP if the targets have a coin mark. The more stacks the coin mark has the more potent the heal. When this move is used on a Pokémon with a coin mark that has 5 stacks, the damage is doubled. If the coin mark is filled up, this move will consume and reset the mark.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "assurance-plus",
+      "moveName": "Assurance+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Assurance",
+      "isPlus": true,
+      "originalDescription": "Reduces this moves cooldown by 1s.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "gold-coin-barrage",
+      "moveName": "Gold Coin Barrage",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early. Meowth can move while using this move, but is slowed by 110%.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Meowth",
+      "pokemonId": "meowth",
+      "sourceId": "gold-coin-barrage-unite-buff",
+      "moveName": "Gold Coin Barrage Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Gold Coin Barrage",
+      "isPlus": false,
+      "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Pickup",
+      "sourceType": "passive",
+      "sourceId": "pickup",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Scratch",
+      "sourceType": "initialMove",
+      "sourceId": "scratch",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Pay Day",
+      "sourceType": "moveChoice",
+      "sourceId": "pay-day",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Scratch"
+    },
+    {
+      "name": "Pay Day+",
+      "sourceType": "movePlus",
+      "sourceId": "pay-day-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Pay Day"
+    },
+    {
+      "name": "Fury Swipes",
+      "sourceType": "moveChoice",
+      "sourceId": "fury-swipes",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Scratch"
+    },
+    {
+      "name": "Fury Swipes+",
+      "sourceType": "movePlus",
+      "sourceId": "fury-swipes-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Fury Swipes"
+    },
+    {
+      "name": "Feint",
+      "sourceType": "initialMove",
+      "sourceId": "feint",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Feint Attack",
+      "sourceType": "moveChoice",
+      "sourceId": "feint-attack",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Feint"
+    },
+    {
+      "name": "Feint Attack+",
+      "sourceType": "movePlus",
+      "sourceId": "feint-attack-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Feint Attack"
+    },
+    {
+      "name": "Assurance",
+      "sourceType": "moveChoice",
+      "sourceId": "assurance",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Feint"
+    },
+    {
+      "name": "Assurance+",
+      "sourceType": "movePlus",
+      "sourceId": "assurance-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Assurance"
+    },
+    {
+      "name": "Gold Coin Barrage",
+      "sourceType": "uniteMove",
+      "sourceId": "gold-coin-barrage",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Gold Coin Barrage Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "gold-coin-barrage-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Gold Coin Barrage"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "pickup",
+        "name": "Pickup",
+        "rawName": "Pickup",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s. Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own.",
+        "translatedDescription": "機械要約: Pickup は 継続ダメージを与える、野生ポケモン限定の処理を持つ、分身、コピー、身代わりなどを生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s.",
+            "notes": "Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pickup__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s.",
+              "notes": "Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pickup__02__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 30,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Defeating a wild Pokémon instead copies a random battle item for 30s.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Defeating a wild Pokémon instead copies a random battle item for 30s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pickup__03__cloneOrDecoy",
+          "effectType": "cloneOrDecoy",
+          "summary": "分身、コピー、身代わりなどを生成する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 30,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Attacking Pokémon from the opposing team copies their battle item for 30s.",
+          "codexInterpretation": "分身、コピー、身代わりなどを生成する。 原文証拠: Attacking Pokémon from the opposing team copies their battle item for 30s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__pickup",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "No English description available in Unite-DB JSON.",
+        "translatedDescription": "機械要約: Attack Boosted には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "130",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "scratch",
+        "name": "Scratch",
+        "rawName": "Scratch",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+        "translatedDescription": "機械要約: Scratch には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "180",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "450",
+            "trueDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__scratch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "pay-day",
+        "name": "Pay Day",
+        "rawName": "Pay Day",
+        "parentName": "Scratch",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user hurls a gold coin at the designated Pokémon, dealing damage, slowing down the target by 30% for 1.5s, and dropping a gold coin. 2 uses can be kept in reserve, picking up a gold coin reduces the cooldown of a use by 4s.",
+        "translatedDescription": "機械要約: Pay Day は 移動速度を下げる、待ち時間を短縮する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "195",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "292",
+            "trueDescription": "The user hurls a gold coin at the designated Pokémon, dealing damage, slowing down the target by 30% for 1.5s, and dropping a gold coin.",
+            "notes": "2 uses can be kept in reserve, picking up a gold coin reduces the cooldown of a use by 4s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pay-day__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user hurls a gold coin at the designated Pokémon, dealing damage, slowing down the target by 30% for 1.5s, and dropping a gold coin.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The user hurls a gold coin at the designated Pokémon, dealing damage, slowing down the target by 30% for 1.5s, and dropping a gold coin.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pay-day__02__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "2 uses can be kept in reserve, picking up a gold coin reduces the cooldown of a use by 4s.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: 2 uses can be kept in reserve, picking up a gold coin reduces the cooldown of a use by 4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__pay-day",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "pay-day-plus",
+        "name": "Pay Day+",
+        "rawName": "Pay Day",
+        "parentName": "Pay Day",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the damage dealt by this move.",
+        "translatedDescription": "機械要約: Pay Day+ は 与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage",
+            "ratio": "234",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "351",
+            "trueDescription": "Increases the damage dealt by this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pay-day-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the damage dealt by this move.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Increases the damage dealt by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__pay-day-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "fury-swipes",
+        "name": "Fury Swipes",
+        "rawName": "Fury Swipes",
+        "parentName": "Scratch",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user swipes twice with its sharp claws at the designated Pokémon, dealing damage, and granting the user a shield for 5s, and an additional shield per hit (up to 5x) for 5s. The number of swipes can be increased up to 5 if the coin mark is at 3 stacks or higher. Subsequent swipes deal half of the damage of the first hit. This attack will stun opposing Pokémon that have 1/2/3+ coin mark stacks for 0.3/0.5/0.8s respectively. If the maximum number of swipes hit, the cooldowns for Feint, Feint Attack, and Assurance are reduced by 7.5% of the max cooldown per hit, the 5th hit will fully reset the cooldown. If the coin mark is filled up, this move will consume and reset the mark.",
+        "translatedDescription": "機械要約: Fury Swipes は 行動不能・スタンを付与する、シールドを付与する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user swipes twice with its sharp claws at the designated Pokémon, dealing damage, and granting the user a shield for 5s, and an additional shield per hit (up to 5x) for 5s. The number of swipes can be increased up to 5 if the coin mark is at 3 stacks or higher. Subsequent swipes deal half of the damage of the first hit. This attack will stun opposing Pokémon that have 1/2/3+ coin mark stacks for 0.3/0.5/0.8s respectively.",
+            "notes": "If the maximum number of swipes hit, the cooldowns for Feint, Feint Attack, and Assurance are reduced by 7.5% of the max cooldown per hit, the 5th hit will fully reset the cooldown. If the coin mark is filled up, this move will consume and reset the mark."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Subsequent Hits",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "75",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Shield",
+            "ratio": "36",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "54",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Shield - Additional (Per Hit)",
+            "ratio": "12",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "18",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fury-swipes__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.8,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This attack will stun opposing Pokémon that have 1/2/3+ coin mark stacks for 0.3/0.5/0.8s respectively.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: This attack will stun opposing Pokémon that have 1/2/3+ coin mark stacks for 0.3/0.5/0.8s respectively.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fury-swipes__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user swipes twice with its sharp claws at the designated Pokémon, dealing damage, and granting the user a shield for 5s, and an additional shield per hit (up to 5x) for 5s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user swipes twice with its sharp claws at the designated Pokémon, dealing damage, and granting the user a shield for 5s, and an additional shield per hit (up to 5x) for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "fury-swipes__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__fury-swipes",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "fury-swipes-plus",
+        "name": "Fury Swipes+",
+        "rawName": "Fury Swipes",
+        "parentName": "Fury Swipes",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the damage dealt by this move.",
+        "translatedDescription": "機械要約: Fury Swipes+ は 与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - First Hit",
+            "ratio": "118",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "180",
+            "trueDescription": "Increases the damage dealt by this move.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Damage - Subsequent Hits",
+            "ratio": "59",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "90",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "fury-swipes-plus__01__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the damage dealt by this move.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Increases the damage dealt by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__fury-swipes-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "feint",
+        "name": "Feint",
+        "rawName": "Feint",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+        "translatedDescription": "機械要約: Feint には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "162",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "405",
+            "trueDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__feint",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "feint-attack",
+        "name": "Feint Attack",
+        "rawName": "Feint Attack",
+        "parentName": "Feint",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user pounces at the designated Pokémon and scratches them with their claws, dealing damage and stunning the target for 0.6s. When this move hits the user is granted a shield for 3s and can quickly move in a chosen direction. The user's next basic attack becomes a boosted attack. If the coin mark is filled up, this move will consume and reset the mark (although this move does not benefit from the coin mark in any fashion).",
+        "translatedDescription": "機械要約: Feint Attack は 行動不能・スタンを付与する、シールドを付与する、スタック、マーク、ゲージを扱う、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "160",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "390",
+            "trueDescription": "The user pounces at the designated Pokémon and scratches them with their claws, dealing damage and stunning the target for 0.6s. When this move hits the user is granted a shield for 3s and can quickly move in a chosen direction.",
+            "notes": "The user's next basic attack becomes a boosted attack. If the coin mark is filled up, this move will consume and reset the mark (although this move does not benefit from the coin mark in any fashion)."
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "119",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "244",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "feint-attack__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user pounces at the designated Pokémon and scratches them with their claws, dealing damage and stunning the target for 0.6s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: The user pounces at the designated Pokémon and scratches them with their claws, dealing damage and stunning the target for 0.6s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "feint-attack__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When this move hits the user is granted a shield for 3s and can quickly move in a chosen direction.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: When this move hits the user is granted a shield for 3s and can quickly move in a chosen direction.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "feint-attack__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": "consumes described resource",
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If the coin mark is filled up, this move will consume and reset the mark (although this move does not benefit from the coin mark in any fashion).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If the coin mark is filled up, this move will consume and reset the mark (although this move does not benefit from the coin mark in any fashion).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "feint-attack__04__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The user's next basic attack becomes a boosted attack.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: The user's next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "feint-attack__05__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The user's next basic attack becomes a boosted attack.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The user's next basic attack becomes a boosted attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__feint-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "feint-attack-plus",
+        "name": "Feint Attack+",
+        "rawName": "Feint Attack",
+        "parentName": "Feint Attack",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Improves the strength of the shield.",
+        "translatedDescription": "機械要約: Feint Attack+ は シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Shield",
+            "ratio": "142",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "294",
+            "trueDescription": "Improves the strength of the shield.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "feint-attack-plus__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Improves the strength of the shield.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Improves the strength of the shield.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__feint-attack-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "assurance",
+        "name": "Assurance",
+        "rawName": "Assurance",
+        "parentName": "Feint",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user charges in the designated direction, dealing damage to opposing Pokémon hit and restoring the user's HP, furthermore the move will restore additional HP if the targets have a coin mark. The more stacks the coin mark has the more potent the heal. When this move is used on a Pokémon with a coin mark that has 5 stacks, the damage is doubled. If the coin mark is filled up, this move will consume and reset the mark.",
+        "translatedDescription": "機械要約: Assurance は HPを回復する、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Less Than 5 Coin Marks)",
+            "ratio": "140",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "210",
+            "trueDescription": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s. The user charges in the designated direction, dealing damage to opposing Pokémon hit and restoring the user's HP, furthermore the move will restore additional HP if the targets have a coin mark. The more stacks the coin mark has the more potent the heal.",
+            "notes": "When this move is used on a Pokémon with a coin mark that has 5 stacks, the damage is doubled. If the coin mark is filled up, this move will consume and reset the mark."
+          },
+          {
+            "id": "add1",
+            "label": "Damage (5 Coin Marks)",
+            "ratio": "280",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "420",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Heal",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "52",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Heal - Additional (Per Coin Mark)",
+            "ratio": "35",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "52",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "assurance__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The more stacks the coin mark has the more potent the heal.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The more stacks the coin mark has the more potent the heal.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "assurance__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The user applies a coin mark on opposing Pokémon they hit, the coin mark has up to 5 stacks and lasts for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__assurance",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "assurance-plus",
+        "name": "Assurance+",
+        "rawName": "Assurance",
+        "parentName": "Assurance",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Reduces this moves cooldown by 1s.",
+        "translatedDescription": "機械要約: Assurance+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this moves cooldown by 1s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__assurance-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "gold-coin-barrage",
+        "name": "Gold Coin Barrage",
+        "rawName": "Gold Coin Barrage",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early. Meowth can move while using this move, but is slowed by 110%.",
+        "translatedDescription": "機械要約: Gold Coin Barrage は 移動速度を下げる、妨害無効になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Per Coin (10x)",
+            "ratio": "82",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "123",
+            "trueDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early.",
+            "notes": "Meowth can move while using this move, but is slowed by 110%."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gold-coin-barrage__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Meowth can move while using this move, but is slowed by 110%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Meowth can move while using this move, but is slowed by 110%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gold-coin-barrage__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__gold-coin-barrage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "gold-coin-barrage-unite-buff",
+        "name": "Gold Coin Barrage Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Gold Coin Barrage",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Gold Coin Barrage Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gold-coin-barrage-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gold-coin-barrage-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__gold-coin-barrage-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 23,
+    "zeroSpecialEffectSourceCount": 4,
+    "missingSourceCount": 0
+  }
+}

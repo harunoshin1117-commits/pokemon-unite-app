@@ -1,0 +1,519 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v2.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "meowth",
+  "pokemonName": "Meowth",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Descriptions, true_desc, notes, buffs, cooldowns, levels, and RSB formula fields were read from this public JSON."
+    }
+  },
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "pickup",
+        "name": "Pickup",
+        "parentName": null,
+        "originalDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s. Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own.",
+        "translatedDescription": "機械要約: Pickup は 継続ダメージを与える、野生ポケモン限定の処理を持つ、分身、コピー、身代わりなどを生成する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s.",
+            "notes": "Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pickup__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Attacking Pokémon from the opposing team copies their battle item for 30s. Defeating a wild Pokémon instead copies a random battle item for 30s. The copied item temporarily functions as the user’s battle item, without replacing or affecting the user’s original item. Once an item is copied, this ability will go on cooldown for 30s.",
+              "notes": "Moving towards Aeos energy or gold coins increases the user's movement speed by 20%. Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up. Gold coins will stay on the field for 7s. The user can pick up an opposing Meowth's gold coins as if they were their own."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Picking up gold coins increases the user's movement speed for 3s by 40% decaying by 5% every 0.5s to a minimum of 20%, and speeds up the rate at which Pickup's cooldown goes down by 13.5% for each gold coin picked up.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pickup__02__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 30,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "wildPokemonRule"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Defeating a wild Pokémon instead copies a random battle item for 30s.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Defeating a wild Pokémon instead copies a random battle item for 30s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pickup__03__cloneOrDecoy",
+          "effectType": "cloneOrDecoy",
+          "summary": "分身、コピー、身代わりなどを生成する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 30,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "cloneOrDecoy"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Attacking Pokémon from the opposing team copies their battle item for 30s.",
+          "codexInterpretation": "分身、コピー、身代わりなどを生成する。 原文証拠: Attacking Pokémon from the opposing team copies their battle item for 30s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__pickup",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack",
+        "name": "Attack",
+        "parentName": null,
+        "originalDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+        "translatedDescription": "機械要約: Attack は 通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "boostedAttackCycle"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Scratches at opposing Pokémon becoming a boosted attack with every third attack dealing increased damage and dropping a gold coin.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "scratch",
+        "name": "Scratch",
+        "parentName": null,
+        "originalDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+        "translatedDescription": "機械要約: Scratch には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "180",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "450",
+            "trueDescription": "The user scratches a designated Pokémon with its sharp claws, dealing damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__scratch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "move",
+        "sourceId": "feint",
+        "name": "Feint",
+        "parentName": null,
+        "originalDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+        "translatedDescription": "機械要約: Feint には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "162",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "405",
+            "trueDescription": "The user dashes at the designated Pokémon, dealing damage to opponents hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__feint",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "gold-coin-barrage",
+        "name": "Gold Coin Barrage",
+        "parentName": null,
+        "originalDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early. Meowth can move while using this move, but is slowed by 110%. Buffs: 80% Movement Speed, 20% Max HP Shield",
+        "translatedDescription": "機械要約: Gold Coin Barrage は 移動速度を下げる、妨害無効になる、シールドを付与する、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ]
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Per Coin (10x)",
+            "ratio": "82",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "123",
+            "trueDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early.",
+            "notes": "Meowth can move while using this move, but is slowed by 110%."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gold-coin-barrage__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "movementSpeedDown"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Meowth can move while using this move, but is slowed by 110%.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Meowth can move while using this move, but is slowed by 110%.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gold-coin-barrage__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "hindranceImmunity"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gold-coin-barrage__03__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "shield"
+          ],
+          "damageFormula": null,
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 80% Movement Speed, 20% Max HP Shield",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gold-coin-barrage__04__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "statusCondition": null,
+          "statChanges": [
+            "damageOverTime"
+          ],
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Per Coin (10x)",
+              "ratio": "82",
+              "damageType": "Atk",
+              "levelScaling": "0",
+              "base": "123",
+              "trueDescription": "The user becomes unstoppable and unleashes a barrage of gold coins toward the designated Pokémon from the opposing team, dealing damage in a small area up to 10 times. If another Pokémon on the opposing team stands in the way, they will be hit instead. During the attack, up to 4 coins will periodically drop near Pokémon hit by this move. This move can be cancelled early.",
+              "notes": "Meowth can move while using this move, but is slowed by 110%."
+            }
+          ],
+          "healingFormula": null,
+          "shieldFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "During the attack, up to 4 coins will periodically drop near Pokémon hit by this move.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: During the attack, up to 4 coins will periodically drop near Pokémon hit by this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "meowth__gold-coin-barrage",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceEntryCount": 5,
+    "specialEffectCount": 8,
+    "zeroSpecialEffectSourceCount": 2,
+    "unconfirmedPoints": [
+      "説明文から抽出したドラフト。実装前に人間確認が必要。",
+      "処理順、丸め順、スタック余剰、個別タイマー、HP参照タイミングは原文で明示されない限り未確認。"
+    ]
+  }
+}

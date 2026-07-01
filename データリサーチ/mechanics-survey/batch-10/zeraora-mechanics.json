@@ -1,0 +1,642 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "zeraora",
+  "pokemonName": "Zeraora",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "volt-absorb",
+      "name": "Volt Absorb",
+      "originalDescription": "Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack. Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+      "summary": "Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack. Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of par",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "agility",
+      "name": "Agility",
+      "originalDescription": "Perform a quick dash and increase basic attack speed for a short time afterward. Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+      "summary": "Perform a quick dash and increase basic attack speed for a short time afterward. Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies. Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+      "summary": "Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies. Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit (3 Hits)",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "plasma-gale",
+      "name": "Plasma Gale",
+      "originalDescription": "Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone. Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging opposing Pokémon in its path toward the target and throwing them for 0.5s. Once the bolt reaches the target; damages opposing Pokémon in an area of effect and throws them once again. Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%. Unite buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield",
+      "summary": "Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone. Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging oppo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Trail",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "270",
+          "notes": "Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Trail",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "270",
+          "notes": "Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "currentHp",
+    "formOrMode",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "volt-absorb",
+      "name": "Volt Absorb",
+      "originalDescription": "Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack. Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+      "summary": "Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack. Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of par",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "hpConditionOrHpReference"
+      ],
+      "durationSeconds": 2.5,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": "The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "summary": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "110",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "agility",
+      "name": "Agility",
+      "originalDescription": "Perform a quick dash and increase basic attack speed for a short time afterward. Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+      "summary": "Perform a quick dash and increase basic attack speed for a short time afterward. Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "slash",
+      "name": "Slash",
+      "originalDescription": "Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies. Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+      "summary": "Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies. Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 8.5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - per Hit (3 Hits)",
+          "ratio": "70",
+          "damageType": "Atk",
+          "levelScaling": "5",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "plasma-gale",
+      "name": "Plasma Gale",
+      "originalDescription": "Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone. Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging opposing Pokémon in its path toward the target and throwing them for 0.5s. Once the bolt reaches the target; damages opposing Pokémon in an area of effect and throws them once again. Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%. Unite buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield",
+      "summary": "Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone. Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging oppo",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 0.5,
+      "cooldownSeconds": 100,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Trail",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "270",
+          "notes": "Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage - Trail",
+          "ratio": "99",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "270",
+          "notes": "Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

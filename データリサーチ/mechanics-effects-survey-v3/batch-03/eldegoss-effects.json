@@ -1,0 +1,1952 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "eldegoss",
+  "pokemonName": "Eldegoss",
+  "role": "A+",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Novice",
+    "role": "Supporter"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-down",
+      "moveName": "Cotton Down",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD). Damages an enemy and decreases its movement speed for a short time after receiving a certain amount of damage. When that happens, also recover HP and gain increased movement speed for a short time.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage and decrease their movement speed by 20% for 1s. Each teammate uses their own Sp. Atk to deal additional damage on targets with cotton fluff. This additional damage has an internal cooldown of 0.35s for each teammate. Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy. The user's basic attacks against an enemy with cotton fluff on it deal increased damage and decreases the enemies movement speed for a short time.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy. The user's basic attacks against an enemy with cotton fluff on it deal increased damage and decreases the enemies movement speed for a short time.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "leafage",
+      "moveName": "Leafage",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Pelt the target with leaves, decreasing the movement speed of enemies for a short time when it hits.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "pollen-puff",
+      "moveName": "Pollen Puff",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Leafage",
+      "isPlus": false,
+      "originalDescription": "The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s. The Pollen Puff explodes 2s after attaching to a Pokémon, restoring the HP of the user's teammates and damaging opposing Pokémon in the area of effect. The Pollen Puff explodes on its own after 1s with the same effects if it doesn't attach to any Pokémon within the first 0.5s of landing. Throws a Pollen Puff, which attaches to an enemy. The Pollen Puff restores HP for allies and deals damage to enemies.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "pollen-puff-plus",
+      "moveName": "Pollen Puff+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Pollen Puff",
+      "isPlus": true,
+      "originalDescription": "If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes. If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes. If a Pollen Puff attaches to enemies, it also deals them damage over time. If a Pollen Puff attaches to an ally, it also reduces the damage they receive.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "leaf-tornado",
+      "moveName": "Leaf Tornado",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Leafage",
+      "isPlus": false,
+      "originalDescription": "The user launches a tornado of sharp leaves in the designated direction, damaging opposing Pokémon hit by the tornado and creating a path in its wake that lasts for 4s. Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path. When the tornado reaches max distance, the tornado damages opposing Pokémon a second time. 25% of the damage of the first hit. Attack with a tornado of sharp leaves, leaving a path in its wake that increases ally movement speed for a short time.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "leaf-tornado-plus",
+      "moveName": "Leaf Tornado+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "10",
+      "parentName": "Leaf Tornado",
+      "isPlus": true,
+      "originalDescription": "Applies a debuff to opposing Pokémon hit by the tornado that causes auto attacks to deal no damage for 2.5s. Effects that only depend on auto attacks hitting and not on auto attacks dealing damage still occur. Also decreases the accuracy of enemies for a short time when this move hits.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "synthesis",
+      "moveName": "Synthesis",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user uses sunlight to heal themself and teammates in the area of effect. Restores the HP of the user and nearby allies.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-guard",
+      "moveName": "Cotton Guard",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Synthesis",
+      "isPlus": false,
+      "originalDescription": "The user grants teammates in the area of effect cotton shields for 3s. After 3s, any cotton leftover is used to restore the HP of teammates with cotton shields for 15% of the remaining shield value. Protects the user and nearby allies with cotton. The cotton absorbs damage and when the move ends, the cotton restores some HP.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-guard-plus",
+      "moveName": "Cotton Guard+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Cotton Guard",
+      "isPlus": true,
+      "originalDescription": "Increases the movement speed of teammates in the area of effect by 30% for 2s. Also increases the user's movement speed while using this move.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-spore",
+      "moveName": "Cotton Spore",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Synthesis",
+      "isPlus": false,
+      "originalDescription": "The user gathers spores around them for 2s, increasing their movement speed by 40% for 2s. The spores burst at the end, damaging opposing Pokémon in the area of effect, throwing them for 0.5s and decreasing their movement speed by 40% for 2s when it hits. Cotton Cloud Crash can be used during this move, ending the move early and making the spores burst immediately. Gathers spores around the user, increasing the user's movement speed while this move is in effect. The spores burst after a short time, dealing damage to enemies in the area of effect, throwing them, and decreasing their movement speed for a short time.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-spore-plus",
+      "moveName": "Cotton Spore+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "12",
+      "parentName": "Cotton Spore",
+      "isPlus": true,
+      "originalDescription": "Increases the user's Defense and Sp. Def by 50% for 2s. Reduced damage taken while using this move.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-cloud-crash",
+      "moveName": "Cotton Cloud Crash",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air. If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s. Float into the air and become invincible. If used again, pound the ground, attacking and shoving enemies and restoring HP to allies in the area of effect.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Eldegoss",
+      "pokemonId": "eldegoss",
+      "sourceId": "cotton-cloud-crash-unite-buff",
+      "moveName": "Cotton Cloud Crash Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Cotton Cloud Crash",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Cotton Down",
+      "sourceType": "passive",
+      "sourceId": "cotton-down",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Leafage",
+      "sourceType": "initialMove",
+      "sourceId": "leafage",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Pollen Puff",
+      "sourceType": "moveChoice",
+      "sourceId": "pollen-puff",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Leafage"
+    },
+    {
+      "name": "Pollen Puff+",
+      "sourceType": "movePlus",
+      "sourceId": "pollen-puff-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Pollen Puff"
+    },
+    {
+      "name": "Leaf Tornado",
+      "sourceType": "moveChoice",
+      "sourceId": "leaf-tornado",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Leafage"
+    },
+    {
+      "name": "Leaf Tornado+",
+      "sourceType": "movePlus",
+      "sourceId": "leaf-tornado-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Leaf Tornado"
+    },
+    {
+      "name": "Synthesis",
+      "sourceType": "initialMove",
+      "sourceId": "synthesis",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Cotton Guard",
+      "sourceType": "moveChoice",
+      "sourceId": "cotton-guard",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Synthesis"
+    },
+    {
+      "name": "Cotton Guard+",
+      "sourceType": "movePlus",
+      "sourceId": "cotton-guard-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Cotton Guard"
+    },
+    {
+      "name": "Cotton Spore",
+      "sourceType": "moveChoice",
+      "sourceId": "cotton-spore",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Synthesis"
+    },
+    {
+      "name": "Cotton Spore+",
+      "sourceType": "movePlus",
+      "sourceId": "cotton-spore-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Cotton Spore"
+    },
+    {
+      "name": "Cotton Cloud Crash",
+      "sourceType": "uniteMove",
+      "sourceId": "cotton-cloud-crash",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Cotton Cloud Crash Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "cotton-cloud-crash-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Cotton Cloud Crash"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "cotton-down",
+        "name": "Cotton Down",
+        "rawName": "Cotton Down",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD). Damages an enemy and decreases its movement speed for a short time after receiving a certain amount of damage. When that happens, also recover HP and gain increased movement speed for a short time.",
+        "translatedDescription": "機械要約: Cotton Down は 移動速度を下げる、HPを回復する、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Revenge",
+            "ratio": "35",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "150",
+            "trueDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing - Revenge",
+            "ratio": "65",
+            "damageType": "SpAtk",
+            "levelScaling": "0",
+            "base": "165",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-down__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": 10,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-down__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When that happens, also recover HP and gain increased movement speed for a short time.",
+          "codexInterpretation": "HPを回復する。 原文証拠: When that happens, also recover HP and gain increased movement speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-down__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Revenge",
+              "ratio": "35",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "150",
+              "trueDescription": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s; deals revenge damage to nearby opposing Pokémon and decreases their movement speed by 30% for 1.5s (10s CD).",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Healing - Revenge",
+              "ratio": "65",
+              "damageType": "SpAtk",
+              "levelScaling": "0",
+              "base": "165",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: When at least 5% max HP damage is received in a single attack, restores this Pokémon's HP and increases their movement speed by 15% for 1.5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-down",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage and decrease their movement speed by 20% for 1s. Each teammate uses their own Sp. Atk to deal additional damage on targets with cotton fluff. This additional damage has an internal cooldown of 0.35s for each teammate. Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy. The user's basic attacks against an enemy with cotton fluff on it deal increased damage and decreases the enemies movement speed for a short time.",
+        "translatedDescription": "機械要約: Attack は 攻撃・特攻などを変化させる、通常攻撃回数により強化攻撃になる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them. The user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage and decrease their movement speed by 20% for 1s.",
+            "notes": "Each teammate uses their own Sp. Atk to deal additional damage on targets with cotton fluff. This additional damage has an internal cooldown of 0.35s for each teammate."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__attackStatChange",
+          "effectType": "attackStatChange",
+          "summary": "攻撃・特攻などを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing pokémon for 3s and then damaging them. the user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage",
+          "codexInterpretation": "攻撃・特攻などを変化させる。 原文証拠: becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing pokémon for 3s and then damaging them. the user and their teammates' auto attacks against targets with cotton fluff on them deal additional damage",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to opposing Pokémon for 3s and then damaging them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy. The user's basic attacks against an enemy with cotton fluff on it deal increased damage and decreases the enemies movement speed for a short time.",
+        "translatedDescription": "機械要約: Attack Boosted は 通常攻撃回数により強化攻撃になる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "73",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Bonus",
+            "ratio": "18.25",
+            "damageType": "SpAtk",
+            "levelScaling": "2",
+            "base": "30",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Becomes a boosted attack with every third attack, attaching a bit of cotton fluff to the enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "leafage",
+        "name": "Leafage",
+        "rawName": "Leafage",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s. Pelt the target with leaves, decreasing the movement speed of enemies for a short time when it hits.",
+        "translatedDescription": "機械要約: Leafage は フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "129",
+            "damageType": "SpAtk",
+            "levelScaling": "11",
+            "base": "210",
+            "trueDescription": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leafage__01__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: The user shoots a bundle of leaves in the designated direction which explodes on the first opposing Pokémon hit or after traveling max distance, damaging opposing Pokémon in the area of effect and decreasing their movement speed by 40% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__leafage",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "pollen-puff",
+        "name": "Pollen Puff",
+        "rawName": "Pollen Puff",
+        "parentName": "Leafage",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s. The Pollen Puff explodes 2s after attaching to a Pokémon, restoring the HP of the user's teammates and damaging opposing Pokémon in the area of effect. The Pollen Puff explodes on its own after 1s with the same effects if it doesn't attach to any Pokémon within the first 0.5s of landing. Throws a Pollen Puff, which attaches to an enemy. The Pollen Puff restores HP for allies and deals damage to enemies.",
+        "translatedDescription": "機械要約: Pollen Puff は 相手を打ち上げる、HPを回復する、遅延または時間差でダメージを与える、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "80",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "155",
+            "trueDescription": "The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s. The Pollen Puff explodes 2s after attaching to a Pokémon, restoring the HP of the user's teammates and damaging opposing Pokémon in the area of effect.",
+            "notes": "The Pollen Puff explodes on its own after 1s with the same effects if it doesn't attach to any Pokémon within the first 0.5s of landing."
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "165",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "330",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pollen-puff__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pollen-puff__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The Pollen Puff restores HP for allies and deals damage to enemies.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The Pollen Puff restores HP for allies and deals damage to enemies.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pollen-puff__03__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The Pollen Puff explodes on its own after 1s with the same effects if it doesn't attach to any Pokémon within the first 0.5s of landing.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: The Pollen Puff explodes on its own after 1s with the same effects if it doesn't attach to any Pokémon within the first 0.5s of landing.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pollen-puff__04__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user throws a Pollen Puff at the designated location which attaches to the nearest Pokémon within 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__pollen-puff",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "pollen-puff-plus",
+        "name": "Pollen Puff+",
+        "rawName": "Pollen Puff",
+        "parentName": "Pollen Puff",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes. If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes. If a Pollen Puff attaches to enemies, it also deals them damage over time. If a Pollen Puff attaches to an ally, it also reduces the damage they receive.",
+        "translatedDescription": "機械要約: Pollen Puff+ は 継続ダメージを与える、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - DoT (every 0.5s, up to 4 times)",
+            "ratio": "9",
+            "damageType": "SpAtk",
+            "levelScaling": "1",
+            "base": "18",
+            "trueDescription": "If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes. If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "pollen-puff-plus__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "Damage - DoT (every 0.5s, up to 4 times)",
+              "ratio": "9",
+              "damageType": "SpAtk",
+              "levelScaling": "1",
+              "base": "18",
+              "trueDescription": "If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes. If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: If the Pollen Puff attaches to any Pokémon, opposing Pokémon that come in contact with the target receive damage over time every 0.5s before the Pollen Puff explodes.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "pollen-puff-plus__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: If the Pollen Puff attaches to a teammate, it reduces the damage that teammate receives by 20% for 2s before it explodes.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__pollen-puff-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "leaf-tornado",
+        "name": "Leaf Tornado",
+        "rawName": "Leaf Tornado",
+        "parentName": "Leafage",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": false,
+        "originalDescription": "The user launches a tornado of sharp leaves in the designated direction, damaging opposing Pokémon hit by the tornado and creating a path in its wake that lasts for 4s. Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path. When the tornado reaches max distance, the tornado damages opposing Pokémon a second time. 25% of the damage of the first hit. Attack with a tornado of sharp leaves, leaving a path in its wake that increases ally movement speed for a short time.",
+        "translatedDescription": "機械要約: Leaf Tornado は 移動速度を上げる、フォーム・モード・構えを変化させる、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - First Hit",
+            "ratio": "106",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "240",
+            "trueDescription": "The user launches a tornado of sharp leaves in the designated direction, damaging opposing Pokémon hit by the tornado and creating a path in its wake that lasts for 4s. Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path. When the tornado reaches max distance, the tornado damages opposing Pokémon a second time.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Second Hit",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "25% of the damage of the first hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "leaf-tornado__01__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path.",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leaf-tornado__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "When the tornado reaches max distance, the tornado damages opposing Pokémon a second time.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: When the tornado reaches max distance, the tornado damages opposing Pokémon a second time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "leaf-tornado__03__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Teammates on the path have their movement speed increased by 60%, lingering for 2s after leaving the path.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__leaf-tornado",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "leaf-tornado-plus",
+        "name": "Leaf Tornado+",
+        "rawName": "Leaf Tornado",
+        "parentName": "Leaf Tornado",
+        "learnLevel": "4",
+        "upgradeLevel": "10",
+        "isPlus": true,
+        "originalDescription": "Applies a debuff to opposing Pokémon hit by the tornado that causes auto attacks to deal no damage for 2.5s. Effects that only depend on auto attacks hitting and not on auto attacks dealing damage still occur. Also decreases the accuracy of enemies for a short time when this move hits.",
+        "translatedDescription": "機械要約: Leaf Tornado+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Applies a debuff to opposing Pokémon hit by the tornado that causes auto attacks to deal no damage for 2.5s.",
+            "notes": "Effects that only depend on auto attacks hitting and not on auto attacks dealing damage still occur."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__leaf-tornado-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "synthesis",
+        "name": "Synthesis",
+        "rawName": "Synthesis",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user uses sunlight to heal themself and teammates in the area of effect. Restores the HP of the user and nearby allies.",
+        "translatedDescription": "機械要約: Synthesis は HPを回復する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing",
+            "ratio": "100",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "350",
+            "trueDescription": "The user uses sunlight to heal themself and teammates in the area of effect.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "synthesis__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "The user uses sunlight to heal themself and teammates in the area of effect.",
+          "codexInterpretation": "HPを回復する。 原文証拠: The user uses sunlight to heal themself and teammates in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "synthesis__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user uses sunlight to heal themself and teammates in the area of effect.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user uses sunlight to heal themself and teammates in the area of effect.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__synthesis",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "cotton-guard",
+        "name": "Cotton Guard",
+        "rawName": "Cotton Guard",
+        "parentName": "Synthesis",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "The user grants teammates in the area of effect cotton shields for 3s. After 3s, any cotton leftover is used to restore the HP of teammates with cotton shields for 15% of the remaining shield value. Protects the user and nearby allies with cotton. The cotton absorbs damage and when the move ends, the cotton restores some HP.",
+        "translatedDescription": "機械要約: Cotton Guard は シールドを付与する、味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "172.5",
+            "damageType": "SpAtk",
+            "levelScaling": "23",
+            "base": "290",
+            "trueDescription": "The user grants teammates in the area of effect cotton shields for 3s. After 3s, any cotton leftover is used to restore the HP of teammates with cotton shields for 15% of the remaining shield value.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-guard__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user grants teammates in the area of effect cotton shields for 3s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: The user grants teammates in the area of effect cotton shields for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-guard__02__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user grants teammates in the area of effect cotton shields for 3s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: The user grants teammates in the area of effect cotton shields for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-guard",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "cotton-guard-plus",
+        "name": "Cotton Guard+",
+        "rawName": "Cotton Guard",
+        "parentName": "Cotton Guard",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the movement speed of teammates in the area of effect by 30% for 2s. Also increases the user's movement speed while using this move.",
+        "translatedDescription": "機械要約: Cotton Guard+ は 味方へ付着または移動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the movement speed of teammates in the area of effect by 30% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-guard-plus__01__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Increases the movement speed of teammates in the area of effect by 30% for 2s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: Increases the movement speed of teammates in the area of effect by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-guard-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "cotton-spore",
+        "name": "Cotton Spore",
+        "rawName": "Cotton Spore",
+        "parentName": "Synthesis",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": false,
+        "originalDescription": "The user gathers spores around them for 2s, increasing their movement speed by 40% for 2s. The spores burst at the end, damaging opposing Pokémon in the area of effect, throwing them for 0.5s and decreasing their movement speed by 40% for 2s when it hits. Cotton Cloud Crash can be used during this move, ending the move early and making the spores burst immediately. Gathers spores around the user, increasing the user's movement speed while this move is in effect. The spores burst after a short time, dealing damage to enemies in the area of effect, throwing them, and decreasing their movement speed for a short time.",
+        "translatedDescription": "機械要約: Cotton Spore は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "148",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "350",
+            "trueDescription": "The user gathers spores around them for 2s, increasing their movement speed by 40% for 2s. The spores burst at the end, damaging opposing Pokémon in the area of effect, throwing them for 0.5s and decreasing their movement speed by 40% for 2s when it hits.",
+            "notes": "Cotton Cloud Crash can be used during this move, ending the move early and making the spores burst immediately."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-spore__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The spores burst at the end, damaging opposing Pokémon in the area of effect, throwing them for 0.5s and decreasing their movement speed by 40% for 2s when it hits.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: The spores burst at the end, damaging opposing Pokémon in the area of effect, throwing them for 0.5s and decreasing their movement speed by 40% for 2s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-spore",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "cotton-spore-plus",
+        "name": "Cotton Spore+",
+        "rawName": "Cotton Spore",
+        "parentName": "Cotton Spore",
+        "learnLevel": "6",
+        "upgradeLevel": "12",
+        "isPlus": true,
+        "originalDescription": "Increases the user's Defense and Sp. Def by 50% for 2s. Reduced damage taken while using this move.",
+        "translatedDescription": "機械要約: Cotton Spore+ は 防御・特防を変化させる、受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's Defense and Sp. Def by 50% for 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-spore-plus__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "increases the user's defense and sp. def by 50% for 2s. reduced damage taken while using this move.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: increases the user's defense and sp. def by 50% for 2s. reduced damage taken while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-spore-plus__02__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Reduced damage taken while using this move.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Reduced damage taken while using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-spore-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "cotton-cloud-crash",
+        "name": "Cotton Cloud Crash",
+        "rawName": "Cotton Cloud Crash",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air. If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s. Float into the air and become invincible. If used again, pound the ground, attacking and shoving enemies and restoring HP to allies in the area of effect.",
+        "translatedDescription": "機械要約: Cotton Cloud Crash は 無敵になる、再使用・派生・2段目を持つ、味方へ付着または移動する、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "200",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "530",
+            "trueDescription": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air. If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "337",
+            "damageType": "SpAtk",
+            "levelScaling": "14",
+            "base": "700",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-cloud-crash__01__invincible",
+          "effectType": "invincible",
+          "summary": "無敵になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "codexInterpretation": "無敵になる。 原文証拠: The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__02__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__03__attachToAlly",
+          "effectType": "attachToAlly",
+          "summary": "味方へ付着または移動する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "codexInterpretation": "味方へ付着または移動する。 原文証拠: If used again or after 3s, the user pounds the ground, restoring the HP of the user and teammates in the area of effect, damaging opposing Pokémon in the area of effect and shoving opposing Pokémon hit for 0.7s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash__04__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "field",
+          "target": "area",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: The user becomes invincible as they float into the air for up to 3s, moving freely over obstacles and increasing their movement speed by 10% while in the air.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-cloud-crash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "cotton-cloud-crash-unite-buff",
+        "name": "Cotton Cloud Crash Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Cotton Cloud Crash",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Cotton Cloud Crash Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "cotton-cloud-crash-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "cotton-cloud-crash-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "eldegoss__cotton-cloud-crash-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 32,
+    "zeroSpecialEffectSourceCount": 1,
+    "missingSourceCount": 0
+  }
+}

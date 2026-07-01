@@ -1,0 +1,2094 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "zeraora",
+  "pokemonName": "Zeraora",
+  "role": "B+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "Speedster"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "volt-absorb",
+      "moveName": "Volt Absorb",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received). Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "agility",
+      "moveName": "Agility",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Quickly dashes forward, and increases auto attack speed by 45% for 3s. Perform a quick dash and increase basic attack speed for a short time afterward.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "volt-switch",
+      "moveName": "Volt Switch",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Agility",
+      "isPlus": false,
+      "originalDescription": "Dashes forward at high speed, damaging opposing Pokémon in their path; and increasing auto attack speed by 45% for 3s. Also marks the starting location of this dash for 3s. This move can be used again within 3s to dash back to the starting location, dealing increased damage to opposing Pokémon in their path; and refreshing the auto attack speed buff duration. Perform a high-speed dash, dealing damage to enemies hit and increase basic attack speed for a short time. Using this move again within a set period of time will allow the user to immediately dash back to the original position.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "volt-switch-plus",
+      "moveName": "Volt Switch+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Volt Switch",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of both dashes. Strengthens the auto attack speed increase to 60% for 3s. Increased damage and basic attack speed buff duration.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "spark",
+      "moveName": "Spark",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Agility",
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable for 0.2s and dashes forward with an electrically charged leap, damaging opposing Pokémon in their path. If an auto attack is used before the leap ends; leaps to an opposing Pokémon, dealing increased damage to the target. This move can be used again within 4s of the last use, repeating the effects of the first use (up to 3 total uses). If an auto attack is used before the leap ends, deal 110% Atk as damage instead. Leap at an enemy dealing damage to them. If using your basic attack before reaching the targeted enemy, instead leap at the closest enemy and deal damage to it. This move can be used 3 times before going on cooldown.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "spark-plus",
+      "moveName": "Spark+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Spark",
+      "isPlus": true,
+      "originalDescription": "Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash. Also restore HP if performing a basic attack before reaching the targeted enemy.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "slash",
+      "moveName": "Slash",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s. Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "discharge",
+      "moveName": "Discharge",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Slash",
+      "isPlus": false,
+      "originalDescription": "Discharges electricity around themself for 1.5s, damaging opposing Pokémon in the area of effect every 0.3s (up to 6 times), followed by a final discharge after 0.4s; granting a shield for 3s when this move hits. Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull; and dealing extra damage to them. Release an electrical discharge, dealing damage to nearby enemies and grant the user a shield when it hits. If this move hits enemies that are paralyzed, it pulls them in toward the user once the move ends, dealing damage to them once again and leaving them unable to act.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "discharge-plus",
+      "moveName": "Discharge+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Discharge",
+      "isPlus": true,
+      "originalDescription": "Decreases the movement speed of opposing Pokémon by 25% for 1s when hit. Decreases movement speed of enemies for a short time when this move hits.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "wild-charge",
+      "moveName": "Wild Charge",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Slash",
+      "isPlus": false,
+      "originalDescription": "Dashes forward. If this move hits an opposing Pokémon; latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack). Receives 1% remaining HP recoil damage per attack; the initial hit deals 2 instances of recoil damage. Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s. Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks); each stack of the buff adds 1 additional attack to the next use of Wild Charge (for up to 6 total hits). Zeraora is untargetable while attacking; for 1.2s at 0 stacks, 1.5s at 1 stack, 1.8s at 2 stacks and 2s at 3 stacks from this buff. Deals half damage. Charge in the designated direction. If this move hits an enemy, unleash a combo attack that also deals a set amount of damage to itself. If the user hit an enemy with Volt Switch, Spark, or a boosted attack before using this move, the number of attacks in the combo is increased.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "wild-charge-plus",
+      "moveName": "Wild Charge+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Wild Charge",
+      "isPlus": true,
+      "originalDescription": "Deals 50% reduced damage to other nearby opposing Pokémon with each attack. Also deals damage to nearby enemies when this hits.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "plasma-gale",
+      "moveName": "Plasma Gale",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging opposing Pokémon in its path toward the target and throwing them for 0.5s. Once the bolt reaches the target; damages opposing Pokémon in an area of effect and throws them once again. Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%. Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Zeraora",
+      "pokemonId": "zeraora",
+      "sourceId": "plasma-gale-unite-buff",
+      "moveName": "Plasma Gale Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Plasma Gale",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Volt Absorb",
+      "sourceType": "passive",
+      "sourceId": "volt-absorb",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Agility",
+      "sourceType": "initialMove",
+      "sourceId": "agility",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Volt Switch",
+      "sourceType": "moveChoice",
+      "sourceId": "volt-switch",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Agility"
+    },
+    {
+      "name": "Volt Switch+",
+      "sourceType": "movePlus",
+      "sourceId": "volt-switch-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Volt Switch"
+    },
+    {
+      "name": "Spark",
+      "sourceType": "moveChoice",
+      "sourceId": "spark",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Agility"
+    },
+    {
+      "name": "Spark+",
+      "sourceType": "movePlus",
+      "sourceId": "spark-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Spark"
+    },
+    {
+      "name": "Slash",
+      "sourceType": "initialMove",
+      "sourceId": "slash",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Discharge",
+      "sourceType": "moveChoice",
+      "sourceId": "discharge",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Slash"
+    },
+    {
+      "name": "Discharge+",
+      "sourceType": "movePlus",
+      "sourceId": "discharge-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Discharge"
+    },
+    {
+      "name": "Wild Charge",
+      "sourceType": "moveChoice",
+      "sourceId": "wild-charge",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Slash"
+    },
+    {
+      "name": "Wild Charge+",
+      "sourceType": "movePlus",
+      "sourceId": "wild-charge-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Wild Charge"
+    },
+    {
+      "name": "Plasma Gale",
+      "sourceType": "uniteMove",
+      "sourceId": "plasma-gale",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Plasma Gale Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "plasma-gale-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Plasma Gale"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "volt-absorb",
+        "name": "Volt Absorb",
+        "rawName": "Volt Absorb",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received). Gain an electric charge when receiving damage, converting a portion of that damage into additional Attack.",
+        "translatedDescription": "機械要約: Volt Absorb は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "volt-absorb__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Gains 8% of damage received as bonus Attack for 4s (maximum 200 bonus Attack from 2,500 damage received).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__volt-absorb",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit. The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s. Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+        "translatedDescription": "機械要約: Attack は まひを付与する、通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+            "notes": "The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Basic",
+              "ratio": "100",
+              "damageType": "Atk",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+              "notes": "The movement speed of paralyzed targets is decreased by 15% for 2.5s and their auto attack speed is decreased by 25% for 1s."
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing opposing Pokémon hit, and restoring 10% missing HP per target hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+        "translatedDescription": "機械要約: Attack Boosted は まひを付与する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "110",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+          "codexInterpretation": "まひを付与する。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the enemy while restoring some of Zeraora's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "agility",
+        "name": "Agility",
+        "rawName": "Agility",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Quickly dashes forward, and increases auto attack speed by 45% for 3s. Perform a quick dash and increase basic attack speed for a short time afterward.",
+        "translatedDescription": "機械要約: Agility は 通常攻撃速度を上げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "agility__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: Quickly dashes forward, and increases auto attack speed by 45% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "agility__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Perform a quick dash and increase basic attack speed for a short time afterward.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Perform a quick dash and increase basic attack speed for a short time afterward.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__agility",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "volt-switch",
+        "name": "Volt Switch",
+        "rawName": "Volt Switch",
+        "parentName": "Agility",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Dashes forward at high speed, damaging opposing Pokémon in their path; and increasing auto attack speed by 45% for 3s. Also marks the starting location of this dash for 3s. This move can be used again within 3s to dash back to the starting location, dealing increased damage to opposing Pokémon in their path; and refreshing the auto attack speed buff duration. Perform a high-speed dash, dealing damage to enemies hit and increase basic attack speed for a short time. Using this move again within a set period of time will allow the user to immediately dash back to the original position.",
+        "translatedDescription": "機械要約: Volt Switch は 通常攻撃速度を上げる、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial Dash",
+            "ratio": "81",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "255",
+            "trueDescription": "Dashes forward at high speed, damaging opposing Pokémon in their path; and increasing auto attack speed by 45% for 3s. Also marks the starting location of this dash for 3s.",
+            "notes": "This move can be used again within 3s to dash back to the starting location, dealing increased damage to opposing Pokémon in their path; and refreshing the auto attack speed buff duration."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Return Dash",
+            "ratio": "120",
+            "damageType": "Atk",
+            "levelScaling": "7",
+            "base": "383",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "volt-switch__01__attackSpeedUp",
+          "effectType": "attackSpeedUp",
+          "summary": "通常攻撃速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "and increasing auto attack speed by 45% for 3s.",
+          "codexInterpretation": "通常攻撃速度を上げる。 原文証拠: and increasing auto attack speed by 45% for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-switch__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Also marks the starting location of this dash for 3s.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Also marks the starting location of this dash for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-switch__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Perform a high-speed dash, dealing damage to enemies hit and increase basic attack speed for a short time.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Perform a high-speed dash, dealing damage to enemies hit and increase basic attack speed for a short time.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-switch__04__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move can be used again within 3s to dash back to the starting location, dealing increased damage to opposing Pokémon in their path",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: This move can be used again within 3s to dash back to the starting location, dealing increased damage to opposing Pokémon in their path",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__volt-switch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "volt-switch-plus",
+        "name": "Volt Switch+",
+        "rawName": "Volt Switch",
+        "parentName": "Volt Switch",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of both dashes. Strengthens the auto attack speed increase to 60% for 3s. Increased damage and basic attack speed buff duration.",
+        "translatedDescription": "機械要約: Volt Switch+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - Initial Dash",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "297",
+            "trueDescription": "Increases the damage of both dashes. Strengthens the auto attack speed increase to 60% for 3s.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Damage - Return Dash",
+            "ratio": "147",
+            "damageType": "Atk",
+            "levelScaling": "9",
+            "base": "444",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__volt-switch-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "spark",
+        "name": "Spark",
+        "rawName": "Spark",
+        "parentName": "Agility",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable for 0.2s and dashes forward with an electrically charged leap, damaging opposing Pokémon in their path. If an auto attack is used before the leap ends; leaps to an opposing Pokémon, dealing increased damage to the target. This move can be used again within 4s of the last use, repeating the effects of the first use (up to 3 total uses). If an auto attack is used before the leap ends, deal 110% Atk as damage instead. Leap at an enemy dealing damage to them. If using your basic attack before reaching the targeted enemy, instead leap at the closest enemy and deal damage to it. This move can be used 3 times before going on cooldown.",
+        "translatedDescription": "機械要約: Spark は 妨害無効になる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Jump",
+            "ratio": "45",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "90",
+            "trueDescription": "Becomes unstoppable for 0.2s and dashes forward with an electrically charged leap, damaging opposing Pokémon in their path. If an auto attack is used before the leap ends; leaps to an opposing Pokémon, dealing increased damage to the target.",
+            "notes": "This move can be used again within 4s of the last use, repeating the effects of the first use (up to 3 total uses)."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional",
+            "ratio": "110",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "If an auto attack is used before the leap ends, deal 110% Atk as damage instead.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "spark__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 0.2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable for 0.2s and dashes forward with an electrically charged leap, damaging opposing Pokémon in their path.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable for 0.2s and dashes forward with an electrically charged leap, damaging opposing Pokémon in their path.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "spark__02__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move can be used again within 4s of the last use, repeating the effects of the first use (up to 3 total uses).",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: This move can be used again within 4s of the last use, repeating the effects of the first use (up to 3 total uses).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__spark",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "spark-plus",
+        "name": "Spark+",
+        "rawName": "Spark",
+        "parentName": "Spark",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash. Also restore HP if performing a basic attack before reaching the targeted enemy.",
+        "translatedDescription": "機械要約: Spark+ は HPを回復する、現在HP・最大HP・減少HPなどを参照する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "spark-plus__01__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Also restore HP if performing a basic attack before reaching the targeted enemy.",
+          "codexInterpretation": "HPを回復する。 原文証拠: Also restore HP if performing a basic attack before reaching the targeted enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "spark-plus__02__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Restores 15% missing HP if leaping to an opposing Pokémon with an auto attack before reaching them with the dash.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "spark-plus__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Also restore HP if performing a basic attack before reaching the targeted enemy.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Also restore HP if performing a basic attack before reaching the targeted enemy.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__spark-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "slash",
+        "name": "Slash",
+        "rawName": "Slash",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s. Pounce at an enemy and attack with sharp claws. This move's final attack throws enemies.",
+        "translatedDescription": "機械要約: Slash は 相手を打ち上げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (3 Hits)",
+            "ratio": "70",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "190",
+            "trueDescription": "Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "slash__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Pounces toward the designated opposing Pokémon's location and attacks with 3 sharp claw swipes, damaging opposing Pokémon in the area of effect and throwing those hit by the last swipe for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__slash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "discharge",
+        "name": "Discharge",
+        "rawName": "Discharge",
+        "parentName": "Slash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Discharges electricity around themself for 1.5s, damaging opposing Pokémon in the area of effect every 0.3s (up to 6 times), followed by a final discharge after 0.4s; granting a shield for 3s when this move hits. Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull; and dealing extra damage to them. Release an electrical discharge, dealing damage to nearby enemies and grant the user a shield when it hits. If this move hits enemies that are paralyzed, it pulls them in toward the user once the move ends, dealing damage to them once again and leaving them unable to act.",
+        "translatedDescription": "機械要約: Discharge は まひを付与する、行動不能・スタンを付与する、相手を引き寄せる、シールドを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Tick (6 Ticks)",
+            "ratio": "41",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "70",
+            "trueDescription": "Discharges electricity around themself for 1.5s, damaging opposing Pokémon in the area of effect every 0.3s (up to 6 times), followed by a final discharge after 0.4s; granting a shield for 3s when this move hits.",
+            "notes": "Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull; and dealing extra damage to them."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Aura (Final Tick)",
+            "ratio": "82",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "140",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Pull",
+            "ratio": "41",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "70",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Shield",
+            "ratio": "105",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "discharge__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "codexInterpretation": "まひを付与する。 原文証拠: Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "discharge__02__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "discharge__03__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: Pulls opposing Pokémon paralyzed by the user hit by the final discharge in toward Zeraora's position over 1s, stunning them for 1s during the pull",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "discharge__04__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "granting a shield for 3s when this move hits.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: granting a shield for 3s when this move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__discharge",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "discharge-plus",
+        "name": "Discharge+",
+        "rawName": "Discharge",
+        "parentName": "Discharge",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Decreases the movement speed of opposing Pokémon by 25% for 1s when hit. Decreases movement speed of enemies for a short time when this move hits.",
+        "translatedDescription": "機械要約: Discharge+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Decreases the movement speed of opposing Pokémon by 25% for 1s when hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__discharge-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "wild-charge",
+        "name": "Wild Charge",
+        "rawName": "Wild Charge",
+        "parentName": "Slash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Dashes forward. If this move hits an opposing Pokémon; latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack). Receives 1% remaining HP recoil damage per attack; the initial hit deals 2 instances of recoil damage. Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s. Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks); each stack of the buff adds 1 additional attack to the next use of Wild Charge (for up to 6 total hits). Zeraora is untargetable while attacking; for 1.2s at 0 stacks, 1.5s at 1 stack, 1.8s at 2 stacks and 2s at 3 stacks from this buff. Deals half damage. Charge in the designated direction. If this move hits an enemy, unleash a combo attack that also deals a set amount of damage to itself. If the user hit an enemy with Volt Switch, Spark, or a boosted attack before using this move, the number of attacks in the combo is increased.",
+        "translatedDescription": "機械要約: Wild Charge は 対象指定されない、またはステルス状態になる、受けるダメージを軽減する、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Initial Hit",
+            "ratio": "178",
+            "damageType": "Atk",
+            "levelScaling": "10",
+            "base": "572",
+            "trueDescription": "Dashes forward. If this move hits an opposing Pokémon; latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack). Receives 1% remaining HP recoil damage per attack; the initial hit deals 2 instances of recoil damage. Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s.",
+            "notes": "Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks); each stack of the buff adds 1 additional attack to the next use of Wild Charge (for up to 6 total hits). Zeraora is untargetable while attacking; for 1.2s at 0 stacks, 1.5s at 1 stack, 1.8s at 2 stacks and 2s at 3 stacks from this buff."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Subsequent Hits",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals half damage.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "wild-charge__01__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack).",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wild-charge__02__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wild-charge__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks)",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks)",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wild-charge__04__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Initial Hit",
+              "ratio": "178",
+              "damageType": "Atk",
+              "levelScaling": "10",
+              "base": "572",
+              "trueDescription": "Dashes forward. If this move hits an opposing Pokémon; latches onto the target, and becomes untargetable to unleash a combo of at least 3 attacks, damaging the target with each attack (switching to the closest opposing Pokémon if the target is out of range or unable to be attacked for the next attack). Receives 1% remaining HP recoil damage per attack; the initial hit deals 2 instances of recoil damage. Opposing Pokémon hit by one of these attacks receive 50% reduced damage from subsequent attacks from Wild Charge for 5s.",
+              "notes": "Hitting an opposing Pokémon with boosted attacks, Volt Switch, or Spark applies 1 stack of a Wild Charge buff for 5s (up to 3 stacks); each stack of the buff adds 1 additional attack to the next use of Wild Charge (for up to 6 total hits). Zeraora is untargetable while attacking; for 1.2s at 0 stacks, 1.5s at 1 stack, 1.8s at 2 stacks and 2s at 3 stacks from this buff."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Subsequent Hits",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Deals half damage.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Receives 1% remaining HP recoil damage per attack",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Receives 1% remaining HP recoil damage per attack",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "wild-charge__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "the initial hit deals 2 instances of recoil damage.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: the initial hit deals 2 instances of recoil damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__wild-charge",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "wild-charge-plus",
+        "name": "Wild Charge+",
+        "rawName": "Wild Charge",
+        "parentName": "Wild Charge",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Deals 50% reduced damage to other nearby opposing Pokémon with each attack. Also deals damage to nearby enemies when this hits.",
+        "translatedDescription": "機械要約: Wild Charge+ は 受けるダメージを軽減する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals 50% reduced damage to other nearby opposing Pokémon with each attack.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "wild-charge-plus__01__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Deals 50% reduced damage to other nearby opposing Pokémon with each attack.",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: Deals 50% reduced damage to other nearby opposing Pokémon with each attack.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__wild-charge-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "plasma-gale",
+        "name": "Plasma Gale",
+        "rawName": "Plasma Gale",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging opposing Pokémon in its path toward the target and throwing them for 0.5s. Once the bolt reaches the target; damages opposing Pokémon in an area of effect and throws them once again. Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%. Unleash a blast of lightning, dealing damage to enemies in the area of effect and throw them. This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone.",
+        "translatedDescription": "機械要約: Plasma Gale は まひを付与する、相手を打ち上げる、妨害無効になる、与ダメージを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Trail",
+            "ratio": "99",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "270",
+            "trueDescription": "Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target; damaging opposing Pokémon in its path toward the target and throwing them for 0.5s. Once the bolt reaches the target; damages opposing Pokémon in an area of effect and throws them once again.",
+            "notes": "Creates a circular zone of plasma centered on the target's location for 5s when it hits; paralyzing opposing Pokémon inside it for 3s. While in the zone, also increases the user's auto attack range, and auto attack damage by 20%."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Area",
+            "ratio": "198",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "540",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "plasma-gale__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "paralyzing opposing Pokémon inside it for 3s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: paralyzing opposing Pokémon inside it for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "plasma-gale__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "damaging opposing Pokémon in its path toward the target and throwing them for 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: damaging opposing Pokémon in its path toward the target and throwing them for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "plasma-gale__03__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable for 0.5s and launches a bolt of lightning toward the designated target",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "plasma-gale__04__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: This also creates a zone of plasma that increases the user's basic attack range and damage dealt while inside this zone.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__plasma-gale",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "plasma-gale-unite-buff",
+        "name": "Plasma Gale Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Plasma Gale",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Plasma Gale Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "plasma-gale-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "plasma-gale-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "plasma-gale-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 20% Attack Speed, 15% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "zeraora__plasma-gale-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 35,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

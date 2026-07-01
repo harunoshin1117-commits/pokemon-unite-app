@@ -1,0 +1,647 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "cramorant",
+  "pokemonName": "Cramorant",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gulp-missile",
+      "name": "Gulp Missile",
+      "originalDescription": "When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP. This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive. When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp. Def by 5% for 3s. When below 50% max HP, instead catches Pikachu as prey, which decrease opposing Pokémon's movement speed by 50% and attack speed by 10% for 1s.",
+      "summary": "When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP. This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf,",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits. Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+      "summary": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits. Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "summary": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "76",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "whirlpool",
+      "name": "Whirlpool",
+      "originalDescription": "Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by entering the whirlpool. The user creates a whirlpool at a designated location, damaging opposing Pokémon in the area of effect over 1.8s (up to 10 times). The area of effect shrinks in size over the duration; opposing Pokémon standing at the outer edge of the whirlpool are hit only up to 3 times. The movement speed of opposing Pokémon in the area of effect is decreased by 50% for 0.2s when hit. The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times).",
+      "summary": "Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by ent",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.8,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial (2 Ticks)",
+          "ratio": "24",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times)."
+        },
+        "additional": [
+          {
+            "label": "Damage - Middle (2 Ticks)",
+            "ratio": "27",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "110",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - End (6 Ticks)",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "feather-dance",
+      "name": "Feather Dance",
+      "originalDescription": "Decreases the Attack and movement speed of enemies for a short time. The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+      "summary": "Decreases the Attack and movement speed of enemies for a short time. The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "gatling-gulp-missile",
+      "name": "Gatling Gulp Missile",
+      "originalDescription": "Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect. The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times. The user cannot move or use moves while using Gatling Gulp Missile. The user can use this Unite Move again to cancel it early. The prey caught for each Gatling Gulp Missile attack depends on the user's current HP. If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey. Unite buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret",
+      "summary": "Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect. The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6.5,
+      "cooldownSeconds": 123,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (10x)",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "370",
+          "notes": "If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (10x)",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "370",
+          "notes": "If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "maxHp",
+    "formOrMode",
+    "normalAttackCycleOrReadyFlag",
+    "shieldHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "gulp-missile",
+      "name": "Gulp Missile",
+      "originalDescription": "When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP. This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf, or Dive. When receiving damage, counterattacks by spitting the prey in their mouth at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby. When above 50% max HP, catches Arrokuda as prey, which also decrease opposing Pokémon's Defense by 20% and Sp. Def by 5% for 3s. When below 50% max HP, instead catches Pikachu as prey, which decrease opposing Pokémon's movement speed by 50% and attack speed by 10% for 1s.",
+      "summary": "When Cramorant uses a move, it catches some form of prey in its mouth. Afterward, when Cramorant receives damage, it spits the prey out as a counterattack at an enemy. The type of prey and effect differ based on the user's HP. This Pokémon can catch some form of prey in their mouth while moving through Whirlpool, Surf,",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange",
+        "attackSpeedChange",
+        "defenseOrSpDefenseChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits. Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and bouncing to 1 other opposing Pokémon nearby.",
+      "summary": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits. Becomes a boosted attack with every fourth attack, catching some form of prey. This boosted attack spits prey at an opposing Pokémon, damaging them and ",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl",
+        "formOrModeChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "summary": "Becomes a boosted attack with every fourth attack. This boosted attack spits Arrokuda or other Pokémon at the enemy and deals area damage near the target when it hits.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "76",
+          "damageType": "SpAtk",
+          "levelScaling": "16",
+          "base": "290",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "whirlpool",
+      "name": "Whirlpool",
+      "originalDescription": "Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by entering the whirlpool. The user creates a whirlpool at a designated location, damaging opposing Pokémon in the area of effect over 1.8s (up to 10 times). The area of effect shrinks in size over the duration; opposing Pokémon standing at the outer edge of the whirlpool are hit only up to 3 times. The movement speed of opposing Pokémon in the area of effect is decreased by 50% for 0.2s when hit. The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times).",
+      "summary": "Creates a whirlpool that deals damage to enemies in the area of effect. The area of effect slowly shrinks, but the damage dealt slowly increases. Just before the whirlpool disappears, it decreases the movement speed of enemies in the area of effect for a short time. The user can also catch Arrokuda or other prey by ent",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 1.8,
+      "cooldownSeconds": 5,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Initial (2 Ticks)",
+          "ratio": "24",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "The user can enter the whirlpool to catch prey for Gulp Missile (up to 2 times)."
+        },
+        "additional": [
+          {
+            "label": "Damage - Middle (2 Ticks)",
+            "ratio": "27",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "110",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "label": "Damage - End (6 Ticks)",
+            "ratio": "30",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "120",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "feather-dance",
+      "name": "Feather Dance",
+      "originalDescription": "Decreases the Attack and movement speed of enemies for a short time. The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+      "summary": "Decreases the Attack and movement speed of enemies for a short time. The user throws a circle of feathers at the designated area, decreasing the Attack of opposing Pokémon in the area of effect by 30% and their movement speed by 20% for 4s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 4,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "gatling-gulp-missile",
+      "name": "Gatling Gulp Missile",
+      "originalDescription": "Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect. The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at the nearest Pokémon from the opposing team or wild Pokémon up to 10 times. The user cannot move or use moves while using Gatling Gulp Missile. The user can use this Unite Move again to cancel it early. The prey caught for each Gatling Gulp Missile attack depends on the user's current HP. If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey. Unite buffs: 30% Max HP Shield granted at the start of the Move, 30% Movement Speed granted at the end of the turret",
+      "summary": "Creates a puddle at the user's current location. The user continuously uses its mouth to grab Arrokuda from the puddle and spits them out to attack the nearest enemy. The user cannot move or use other moves while this move is in effect. The user becomes unstoppable for up to 6.5s and catches a series of prey to spit at",
+      "trigger": "unite move use or hit",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 6.5,
+      "cooldownSeconds": 123,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage (10x)",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "370",
+          "notes": "If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage (10x)",
+          "ratio": "95",
+          "damageType": "SpAtk",
+          "levelScaling": "9",
+          "base": "370",
+          "notes": "If a boosted attack is readied when this Unite Move is used, the user spits this prey out first as a regular boosted attack before catching and spitting out up to 10 Gatling Gulp Missile prey."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "attackOrder, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

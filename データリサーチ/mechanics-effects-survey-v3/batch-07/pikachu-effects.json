@@ -1,0 +1,1900 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "pikachu",
+  "pokemonName": "Pikachu",
+  "role": "B",
+  "range": {
+    "range": "Ranged",
+    "difficulty": "Novice",
+    "role": "Attacker"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon",
+    "existingResearchPikachu"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "static",
+      "moveName": "Static",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s. Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered.",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s. Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunder-shock",
+      "moveName": "Thunder Shock",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s. Slows enemies briefly. Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "electro-ball",
+      "moveName": "Electro Ball",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Thunder Shock",
+      "isPlus": false,
+      "originalDescription": "Hurls an electric orb at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage, and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s. Against wild Pokémon: additional missing HP damage is capped at 1200. 6% of enemy missing HP. Hurl an electric orb, dealing damage to enemies in the area of effect and leaving them paralyzed for a short time. This move's damage increases the lower the enemies remaining HP is.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "electro-ball-plus",
+      "moveName": "Electro Ball+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Electro Ball",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of this move. 8% of enemy missing HP. Increased damage.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunder",
+      "moveName": "Thunder",
+      "sourceType": "moveChoice",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Thunder Shock",
+      "isPlus": false,
+      "originalDescription": "Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times). Drop wicked thunderbolts, dealing damage to enemies in the area of effect.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunder-plus",
+      "moveName": "Thunder+",
+      "sourceType": "movePlus",
+      "learnLevel": "4",
+      "upgradeLevel": "11",
+      "parentName": "Thunder",
+      "isPlus": true,
+      "originalDescription": "Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s. Increases the number of times this move attacks.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "electroweb",
+      "moveName": "Electroweb",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them. Attacks and captures enemies using an electric net, leaving them unable to move.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "volt-tackle",
+      "moveName": "Volt Tackle",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Electroweb",
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s; then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s; minimum 30% for 0.5s) after the leap. Has the user electrify itself and charge ahead, throwing opposing Pokémon.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "volt-tackle-plus",
+      "moveName": "Volt Tackle+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Volt Tackle",
+      "isPlus": true,
+      "originalDescription": "Reduces this move's cooldown by 2s. Reduced cooldown.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunderbolt",
+      "moveName": "Thunderbolt",
+      "sourceType": "moveChoice",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Electroweb",
+      "isPlus": false,
+      "originalDescription": "Strikes with a strong electric blast at the designated area, damaging opposing Pokémon in the area of effect and stunning them for 1.25s when it hits. Attack with a strong electric blast, dealing damage to enemies in the area of effect and leaving them unable to act.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunderbolt-plus",
+      "moveName": "Thunderbolt+",
+      "sourceType": "movePlus",
+      "learnLevel": "6",
+      "upgradeLevel": "13",
+      "parentName": "Thunderbolt",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of this move. Increased damage.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunderstorm",
+      "moveName": "Thunderstorm",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The following 3 casts target up to 2 random Pokémon from the opposing team in range; these following bolts deal damage to opposing Pokémon in a small area around them, but targets can only be damaged once for each of the following 3 casts. Pikachu can act freely once the first bolts of lightning are cast down. Attacks enemies near the user with tremendous bolts of lightning.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Pikachu",
+      "pokemonId": "pikachu",
+      "sourceId": "thunderstorm-unite-buff",
+      "moveName": "Thunderstorm Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Thunderstorm",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Static",
+      "sourceType": "passive",
+      "sourceId": "static",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Thunder Shock",
+      "sourceType": "initialMove",
+      "sourceId": "thunder-shock",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Electro Ball",
+      "sourceType": "moveChoice",
+      "sourceId": "electro-ball",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Thunder Shock"
+    },
+    {
+      "name": "Electro Ball+",
+      "sourceType": "movePlus",
+      "sourceId": "electro-ball-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Electro Ball"
+    },
+    {
+      "name": "Thunder",
+      "sourceType": "moveChoice",
+      "sourceId": "thunder",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Thunder Shock"
+    },
+    {
+      "name": "Thunder+",
+      "sourceType": "movePlus",
+      "sourceId": "thunder-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Thunder"
+    },
+    {
+      "name": "Electroweb",
+      "sourceType": "initialMove",
+      "sourceId": "electroweb",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Volt Tackle",
+      "sourceType": "moveChoice",
+      "sourceId": "volt-tackle",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Electroweb"
+    },
+    {
+      "name": "Volt Tackle+",
+      "sourceType": "movePlus",
+      "sourceId": "volt-tackle-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Volt Tackle"
+    },
+    {
+      "name": "Thunderbolt",
+      "sourceType": "moveChoice",
+      "sourceId": "thunderbolt",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Electroweb"
+    },
+    {
+      "name": "Thunderbolt+",
+      "sourceType": "movePlus",
+      "sourceId": "thunderbolt-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Thunderbolt"
+    },
+    {
+      "name": "Thunderstorm",
+      "sourceType": "uniteMove",
+      "sourceId": "thunderstorm",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Thunderstorm Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "thunderstorm-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Thunderstorm"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "static",
+        "name": "Static",
+        "rawName": "Static",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When damaged, paralyzes nearby opposing Pokémon (30s CD). The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s. Paralyzes all enemies nearby for a short time when receiving damage. This ability goes on cooldown after it's triggered.",
+        "translatedDescription": "機械要約: Static は まひを付与する、通常攻撃速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "When damaged, paralyzes nearby opposing Pokémon (30s CD).",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "static__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 30,
+          "cooldownSeconds": 30,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When damaged, paralyzes nearby opposing Pokémon (30s CD).",
+          "codexInterpretation": "まひを付与する。 原文証拠: When damaged, paralyzes nearby opposing Pokémon (30s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "static__02__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this Ability is decreased by 30% for 2.5s and their basic attack speed is decreased by 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__static",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit. The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s. Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+        "translatedDescription": "機械要約: Attack は まひを付与する、通常攻撃速度を下げる、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+            "notes": "The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of the opposing Pokémon paralyzed by boosted attacks is decreased by 30% and their basic attack speed is decreased by 10% for 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage and paralyzing the opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. This boosted attack also paralyzes enemies for a short time when it hits.",
+        "translatedDescription": "機械要約: Attack Boosted は まひを付与する、通常攻撃回数により強化攻撃になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "38",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "200",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "This boosted attack also paralyzes enemies for a short time when it hits.",
+          "codexInterpretation": "まひを付与する。 原文証拠: This boosted attack also paralyzes enemies for a short time when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "thunder-shock",
+        "name": "Thunder Shock",
+        "rawName": "Thunder Shock",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s. Slows enemies briefly. Release electricity, dealing damage to enemies in the area of effect. Also paralyzes enemies for a short time.",
+        "translatedDescription": "機械要約: Thunder Shock は まひを付与する、移動速度を下げる、通常攻撃速度を下げる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "75",
+            "damageType": "SpAtk",
+            "levelScaling": "21",
+            "base": "390",
+            "trueDescription": "Releases electricity at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect and paralyzing them when it hits.",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s."
+          },
+          {
+            "id": "add1",
+            "label": "Debuff – Paralysis",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Slows enemies briefly.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunder-shock__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunder-shock__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Slows enemies briefly.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Slows enemies briefly.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunder-shock__03__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this move is decreased by 30% and their basic attack speed is decreased by 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunder-shock",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "electro-ball",
+        "name": "Electro Ball",
+        "rawName": "Electro Ball",
+        "parentName": "Thunder Shock",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Hurls an electric orb at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage, and paralyzing them when it hits. The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s. Against wild Pokémon: additional missing HP damage is capped at 1200. 6% of enemy missing HP. Hurl an electric orb, dealing damage to enemies in the area of effect and leaving them paralyzed for a short time. This move's damage increases the lower the enemies remaining HP is.",
+        "translatedDescription": "機械要約: Electro Ball は まひを付与する、通常攻撃速度を下げる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Area",
+            "ratio": "84",
+            "damageType": "SpAtk",
+            "levelScaling": "25",
+            "base": "441",
+            "trueDescription": "Hurls an electric orb at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage, and paralyzing them when it hits.",
+            "notes": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s. Against wild Pokémon: additional missing HP damage is capped at 1200."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "6% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball__01__paralysis",
+          "effectType": "paralysis",
+          "summary": "まひを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s.",
+          "codexInterpretation": "まひを付与する。 原文証拠: The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__02__attackSpeedDown",
+          "effectType": "attackSpeedDown",
+          "summary": "通常攻撃速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s.",
+          "codexInterpretation": "通常攻撃速度を下げる。 原文証拠: The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Area",
+              "ratio": "84",
+              "damageType": "SpAtk",
+              "levelScaling": "25",
+              "base": "441",
+              "trueDescription": "Hurls an electric orb at the designated opposing Pokémon, damaging opposing Pokémon in the area of effect, dealing additional missing HP damage, and paralyzing them when it hits.",
+              "notes": "The movement speed of opposing Pokémon paralyzed by this move is decreased by 50% and their basic attack speed is decreased by 10% for 2s. Against wild Pokémon: additional missing HP damage is capped at 1200."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "6% of enemy missing HP.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "electro-ball__04__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: additional missing HP damage is capped at 1200.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__electro-ball",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "electro-ball-plus",
+        "name": "Electro Ball+",
+        "rawName": "Electro Ball",
+        "parentName": "Electro Ball",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of this move. 8% of enemy missing HP. Increased damage.",
+        "translatedDescription": "機械要約: Electro Ball+ は 現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - Area",
+            "ratio": "90",
+            "damageType": "SpAtk",
+            "levelScaling": "29",
+            "base": "504",
+            "trueDescription": "Increases the damage of this move.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "8% of enemy missing HP.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electro-ball-plus__01__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "Damage - Area",
+              "ratio": "90",
+              "damageType": "SpAtk",
+              "levelScaling": "29",
+              "base": "504",
+              "trueDescription": "Increases the damage of this move.",
+              "notes": ""
+            },
+            {
+              "id": "enhancedAdd1",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "8% of enemy missing HP.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "8% of enemy missing HP.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 8% of enemy missing HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__electro-ball-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "thunder",
+        "name": "Thunder",
+        "rawName": "Thunder",
+        "parentName": "Thunder Shock",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times). Drop wicked thunderbolts, dealing damage to enemies in the area of effect.",
+        "translatedDescription": "機械要約: Thunder は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Area (5x)",
+            "ratio": "20.9",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "218",
+            "trueDescription": "Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunder__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Area (5x)",
+              "ratio": "20.9",
+              "damageType": "SpAtk",
+              "levelScaling": "5",
+              "base": "218",
+              "trueDescription": "Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times).",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times).",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Drops wicked thunderbolts at the designated area, dealing damage to opposing Pokémon in the area of effect every 0.5s over 2.5s (up to 5 times).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunder",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "thunder-plus",
+        "name": "Thunder+",
+        "rawName": "Thunder",
+        "parentName": "Thunder",
+        "learnLevel": "4",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s. Increases the number of times this move attacks.",
+        "translatedDescription": "機械要約: Thunder+ は 継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunder-plus__01__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Deals damage over time more frequently, hitting opposing Pokémon in the area of effect up to 7 times over 2.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunder-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "electroweb",
+        "name": "Electroweb",
+        "rawName": "Electroweb",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them. Attacks and captures enemies using an electric net, leaving them unable to move.",
+        "translatedDescription": "機械要約: Electroweb は 移動不能を付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "36",
+            "damageType": "SpAtk",
+            "levelScaling": "11",
+            "base": "350",
+            "trueDescription": "Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "electroweb__01__immobilize",
+          "effectType": "immobilize",
+          "summary": "移動不能を付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+          "codexInterpretation": "移動不能を付与する。 原文証拠: Launches an electric net at the designated opposing Pokémon, damaging the target and immobilizing them for 1.5s when the net captures them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__electroweb",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "volt-tackle",
+        "name": "Volt Tackle",
+        "rawName": "Volt Tackle",
+        "parentName": "Electroweb",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s; then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s; minimum 30% for 0.5s) after the leap. Has the user electrify itself and charge ahead, throwing opposing Pokémon.",
+        "translatedDescription": "機械要約: Volt Tackle は 相手を打ち上げる、妨害無効になる、移動速度を上げる、継続ダメージを与える、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (5x)",
+            "ratio": "16",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "162",
+            "trueDescription": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s; then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s; minimum 30% for 0.5s) after the leap.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "volt-tackle__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-tackle__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-tackle__03__movementSpeedUp",
+          "effectType": "movementSpeedUp",
+          "summary": "移動速度を上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "codexInterpretation": "移動速度を上げる。 原文証拠: then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-tackle__04__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (5x)",
+              "ratio": "16",
+              "damageType": "SpAtk",
+              "levelScaling": "3",
+              "base": "162",
+              "trueDescription": "Becomes unstoppable and dashes at the designated opposing Pokémon, damaging the target 5 times and throwing them in the air for 1.4s; then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s; minimum 30% for 0.5s) after the leap.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "volt-tackle__05__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: then leaps a set distance back, becoming vulnerable to hindrances and increasing movement speed by 60% for 2s (decaying by 10% every 0.5s",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__volt-tackle",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "volt-tackle-plus",
+        "name": "Volt Tackle+",
+        "rawName": "Volt Tackle",
+        "parentName": "Volt Tackle",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Reduces this move's cooldown by 2s. Reduced cooldown.",
+        "translatedDescription": "機械要約: Volt Tackle+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Reduces this move's cooldown by 2s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__volt-tackle-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "thunderbolt",
+        "name": "Thunderbolt",
+        "rawName": "Thunderbolt",
+        "parentName": "Electroweb",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Strikes with a strong electric blast at the designated area, damaging opposing Pokémon in the area of effect and stunning them for 1.25s when it hits. Attack with a strong electric blast, dealing damage to enemies in the area of effect and leaving them unable to act.",
+        "translatedDescription": "機械要約: Thunderbolt は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Area",
+            "ratio": "55",
+            "damageType": "SpAtk",
+            "levelScaling": "13",
+            "base": "550",
+            "trueDescription": "Strikes with a strong electric blast at the designated area, damaging opposing Pokémon in the area of effect and stunning them for 1.25s when it hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderbolt__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 1.25,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Strikes with a strong electric blast at the designated area, damaging opposing Pokémon in the area of effect and stunning them for 1.25s when it hits.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Strikes with a strong electric blast at the designated area, damaging opposing Pokémon in the area of effect and stunning them for 1.25s when it hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunderbolt",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "thunderbolt-plus",
+        "name": "Thunderbolt+",
+        "rawName": "Thunderbolt",
+        "parentName": "Thunderbolt",
+        "learnLevel": "6",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of this move. Increased damage.",
+        "translatedDescription": "機械要約: Thunderbolt+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - Area",
+            "ratio": "65",
+            "damageType": "SpAtk",
+            "levelScaling": "15",
+            "base": "660",
+            "trueDescription": "Increases the damage of this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunderbolt-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "thunderstorm",
+        "name": "Thunderstorm",
+        "rawName": "Thunderstorm",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The following 3 casts target up to 2 random Pokémon from the opposing team in range; these following bolts deal damage to opposing Pokémon in a small area around them, but targets can only be damaged once for each of the following 3 casts. Pikachu can act freely once the first bolts of lightning are cast down. Attacks enemies near the user with tremendous bolts of lightning.",
+        "translatedDescription": "機械要約: Thunderstorm は 妨害無効になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Bolt",
+            "ratio": "49",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "486",
+            "trueDescription": "Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu. The first cast targets all Pokémon on the opposing team in range with 1 bolt each; these bolts damage up to 1 target each. The following 3 casts target up to 2 random Pokémon from the opposing team in range; these following bolts deal damage to opposing Pokémon in a small area around them, but targets can only be damaged once for each of the following 3 casts.",
+            "notes": "Pikachu can act freely once the first bolts of lightning are cast down."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "jumpOrLeap",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderstorm__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable and jumps into the air, then casts down bolts of lightning 4 times over 3s in a radius around Pikachu.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunderstorm",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "thunderstorm-unite-buff",
+        "name": "Thunderstorm Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Thunderstorm",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Thunderstorm Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon",
+          "existingResearchPikachu"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "thunderstorm-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderstorm-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "thunderstorm-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 30% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "pikachu__thunderstorm-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 28,
+    "zeroSpecialEffectSourceCount": 2,
+    "missingSourceCount": 0
+  }
+}

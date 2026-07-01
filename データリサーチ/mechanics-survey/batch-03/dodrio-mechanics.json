@@ -1,0 +1,692 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "dodrio",
+  "pokemonName": "Dodrio",
+  "role": "Speedster",
+  "range": "Melee",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "run-away",
+      "name": "Run Away",
+      "originalDescription": "Movement speed is increased when enemies are nearby. While the Pokémon is moving, their sprint gauge charges. While the sprint gauge is full, movement speed is increased. If the Pokémon's movement speed decreases below a set speed, the sprint gauge will rapidly deplete. When this Pokémon scores a goal, the amount of Aeos energy deposited is evenly divided into equal portions for each head the Pokémon has. This Pokémon receives 10% increased movement speed when within a radius of enemy Pokémon. While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment). At full, Dodrio runs at 20% increased movement speed. If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete. When Doduo scores a goal, it evenly divides its collected Aeos energy into two portions and deposits them into the goal one at a time. As Dodrio, this is split into three portions to deposit in the goal one at a time. Only goals made by a full emptying of the Aeos Ball will count towards stacking items.",
+      "summary": "Movement speed is increased when enemies are nearby. While the Pokémon is moving, their sprint gauge charges. While the sprint gauge is full, movement speed is increased. If the Pokémon's movement speed decreases below a set speed, the sprint gauge will rapidly deplete. When this Pokémon scores a goal, the amount of Ae",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move cooldowns are reduced. Becomes a boosted attack with every third attack. Attacking with a full sprint gauge turns the attack into a charge in the facing direction. If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move coo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move cooldowns are reduced.",
+      "summary": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move coo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (No Gauge)",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Full Gauge)",
+            "ratio": "189",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "110",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "Move forward while jabbing with beaks. When the sprint gauge is full, instead charge forward while jabbing with beaks. Using this move fully consumes the sprint gauge. Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold. When the sprint gauge is full, Doduo charges forward to jab the in the facing direction and fully consumes the sprint gauge.",
+      "summary": "Move forward while jabbing with beaks. When the sprint gauge is full, instead charge forward while jabbing with beaks. Using this move fully consumes the sprint gauge. Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage (No Gauge)",
+          "ratio": "111.6",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "216",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Full Gauge)",
+            "ratio": "186",
+            "damageType": "Atk",
+            "levelScaling": "19",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dash forward, increasing the user's movement speed for a short time and deal damage to enemies hit. This move's cooldown is reduced if it hits an enemy. Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy.",
+      "summary": "Dash forward, increasing the user's movement speed for a short time and deal damage to enemies hit. This move's cooldown is reduced if it hits an enemy. Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "triple-trample",
+      "name": "Triple Trample",
+      "originalDescription": "Dodrio runs to a designated location. While running, Dodrio is immune to hindrances. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air. When Dodrio arrives at the designated location, Dodrio gains increased Attack for a short time, is granted a shield, and the sprint gauge charges faster for a short time. Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% Sp. Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s. Damage dealt at the designated location is affected by the Attack bonus. Dodrio is unstoppable during this move. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Dodrio runs to a designated location. While running, Dodrio is immune to hindrances. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air. When Dodrio arrives at the designated location, Dodrio gains increased Attack for a short time, is granted a shield, and the sprint gau",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "173",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "390",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "173",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "390",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "cooldownState",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "run-away",
+      "name": "Run Away",
+      "originalDescription": "Movement speed is increased when enemies are nearby. While the Pokémon is moving, their sprint gauge charges. While the sprint gauge is full, movement speed is increased. If the Pokémon's movement speed decreases below a set speed, the sprint gauge will rapidly deplete. When this Pokémon scores a goal, the amount of Aeos energy deposited is evenly divided into equal portions for each head the Pokémon has. This Pokémon receives 10% increased movement speed when within a radius of enemy Pokémon. While moving, the sprint gauge charges from 0 to 10 (2% increased movement speed per increment). At full, Dodrio runs at 20% increased movement speed. If movement speed is decreased below a threshold, the sprint gauge will rapidly deplete. When Doduo scores a goal, it evenly divides its collected Aeos energy into two portions and deposits them into the goal one at a time. As Dodrio, this is split into three portions to deposit in the goal one at a time. Only goals made by a full emptying of the Aeos Ball will count towards stacking items.",
+      "summary": "Movement speed is increased when enemies are nearby. While the Pokémon is moving, their sprint gauge charges. While the sprint gauge is full, movement speed is increased. If the Pokémon's movement speed decreases below a set speed, the sprint gauge will rapidly deplete. When this Pokémon scores a goal, the amount of Ae",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move cooldowns are reduced. Becomes a boosted attack with every third attack. Attacking with a full sprint gauge turns the attack into a charge in the facing direction. If the sprint gauged attack hits an enemy, all cooldowns are reduced by 1s.",
+      "summary": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move coo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move cooldowns are reduced.",
+      "summary": "Becomes a boosted attack with every third attack, dealing consecutive blows with each of the user's heads. When the sprint gauage is full, basic attacks will cause the Pokémon to charge in the direction they're facing and consume all of the sprint gauge. If this charging attack hits an enemy, all of the user's move coo",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "cooldownChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted (No Gauge)",
+          "ratio": "130",
+          "damageType": "Atk",
+          "levelScaling": "0",
+          "base": "0",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage - Boosted (Full Gauge)",
+            "ratio": "189",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "110",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "Move forward while jabbing with beaks. When the sprint gauge is full, instead charge forward while jabbing with beaks. Using this move fully consumes the sprint gauge. Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold. When the sprint gauge is full, Doduo charges forward to jab the in the facing direction and fully consumes the sprint gauge.",
+      "summary": "Move forward while jabbing with beaks. When the sprint gauge is full, instead charge forward while jabbing with beaks. Using this move fully consumes the sprint gauge. Jabs forward with Doduo's beaks. When using the move, Doduo stops moving and loses sprint gauge due to dropping below the sprint gauge gaining threshold",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": {
+        "main": {
+          "label": "Damage (No Gauge)",
+          "ratio": "111.6",
+          "damageType": "Atk",
+          "levelScaling": "11",
+          "base": "216",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Damage (Full Gauge)",
+            "ratio": "186",
+            "damageType": "Atk",
+            "levelScaling": "19",
+            "base": "360",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "quick-attack",
+      "name": "Quick Attack",
+      "originalDescription": "Dash forward, increasing the user's movement speed for a short time and deal damage to enemies hit. This move's cooldown is reduced if it hits an enemy. Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy.",
+      "summary": "Dash forward, increasing the user's movement speed for a short time and deal damage to enemies hit. This move's cooldown is reduced if it hits an enemy. Dash forward, increasing the user's movement speed by 30% for 2s and dealing damage to enemies hit. This move's cooldown is reduced by 1.5s if it hits an enemy.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 10,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "83",
+          "damageType": "Atk",
+          "levelScaling": "6",
+          "base": "190",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "triple-trample",
+      "name": "Triple Trample",
+      "originalDescription": "Dodrio runs to a designated location. While running, Dodrio is immune to hindrances. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air. When Dodrio arrives at the designated location, Dodrio gains increased Attack for a short time, is granted a shield, and the sprint gauge charges faster for a short time. Dodrio runs to a designated location. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air for 1s. When Dodrio arrives at the designated location, Dodrio gains 25% increased Attack and loses 5% Sp. Attack for 3s, is granted a 10% Max HP shield for 3s, and the sprint gauge charges faster for 6s. Damage dealt at the designated location is affected by the Attack bonus. Dodrio is unstoppable during this move. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "Dodrio runs to a designated location. While running, Dodrio is immune to hindrances. If Dodrio makes contact with an enemy while running, they are dealt damage and thrown into the air. When Dodrio arrives at the designated location, Dodrio gains increased Attack for a short time, is granted a shield, and the sprint gau",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 134,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "173",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "390",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "173",
+          "damageType": "Atk",
+          "levelScaling": "8",
+          "base": "390",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

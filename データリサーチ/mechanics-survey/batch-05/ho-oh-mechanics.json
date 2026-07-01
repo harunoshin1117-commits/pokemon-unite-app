@@ -1,0 +1,603 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "ho-oh",
+  "pokemonName": "Ho-Oh",
+  "role": "Defender",
+  "range": "Ranged",
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "regenerator",
+      "name": "Regenerator",
+      "originalDescription": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+      "summary": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+      "summary": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "4% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "safeguard",
+      "name": "Safeguard",
+      "originalDescription": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+      "summary": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tailwind",
+      "name": "Tailwind",
+      "originalDescription": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Opposing Pokémon moving against the whirlwind have their movement speed decreased by 30% lasting for 0.5s after stepping out of the field.",
+      "summary": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Oppo",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "93",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rekindling-flame",
+      "name": "Rekindling Flame",
+      "originalDescription": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there are feathers nearby. The number of available revivals are based on how much Aeos energy is consumed. One ally may be always revived. Up to two allies are revivable if at least 9 energy is consumed. Up to three allies are revivable if at least 17 Aeos energy is consumed. Up to four allies are revivable if at least 25 Aeos energy is consumed. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "durationTimer",
+    "shieldHp",
+    "maxHp",
+    "normalAttackCycleOrReadyFlag",
+    "stackCount"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "attackOrder",
+    "actionOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [
+    "wildPokemonSpecificRule"
+  ],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "description contains uncertain wording",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "regenerator",
+      "name": "Regenerator",
+      "originalDescription": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+      "summary": "If this Pokémon doesn't take damage from enemy Pokémon (Wild Pokémon do not count) for 3s, it will recover 3% max HP every 2 seconds. Damage to shields will not deactivate Regenerator. Ho-oh additionally recovers 0.3% max HP every 2 seconds.",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [
+        "wild-pokemon"
+      ],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "shield",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+      "summary": "Becomes a boosted attack with every third attack, shooting out a sweeping flame that deals increased damage and restores HP per enemy Pokémon hit. While firing the sweeping flame Ho-Oh's movement speed is decreased by 30%.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl",
+        "healing",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "100",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "150",
+          "damageType": "Atk",
+          "levelScaling": "",
+          "base": "",
+          "notes": ""
+        },
+        "additional": [
+          {
+            "label": "Heal",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "4% Max HP",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "safeguard",
+      "name": "Safeguard",
+      "originalDescription": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+      "summary": "Create a protective field around the user that reduces the next incoming source of damage by 50%. When this field reduces damage from an attack, the user's movement speed is increased by 40% for 3s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 3,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "tailwind",
+      "name": "Tailwind",
+      "originalDescription": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Opposing Pokémon moving against the whirlwind have their movement speed decreased by 30% lasting for 0.5s after stepping out of the field.",
+      "summary": "Whip up a whirlwind in designated direction, dealing damage to opposing Pokémon hit. The whirlwind then remains on the field for 5s. Allies moving in the same direction as the whirlwind have their movement speed increased by 30% as long as they are in the field and lasting for 0.5s after stepping out of the field. Oppo",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "target",
+      "target": "ally",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 5,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "93",
+          "damageType": "Atk",
+          "levelScaling": "3",
+          "base": "340",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "rekindling-flame",
+      "name": "Rekindling Flame",
+      "originalDescription": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there are feathers nearby. The number of available revivals are based on how much Aeos energy is consumed. One ally may be always revived. Up to two allies are revivable if at least 9 energy is consumed. Up to three allies are revivable if at least 17 Aeos energy is consumed. Up to four allies are revivable if at least 25 Aeos energy is consumed. Unite buffs: 80% Movement Speed, 20% Max HP Shield",
+      "summary": "When a nearby ally is knocked out, a feather is left in their place until they respawn at base. When Rekindling Flame is used, Ho-oh spreads their wings and consumes all of the Aeos energy held to revive knocked-out allies where their feathers are for 60% of their maximum HP. Rekindling Flame may only be used if there ",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "description contains uncertain wording",
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

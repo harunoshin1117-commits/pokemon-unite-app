@@ -1,0 +1,2158 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "goodra",
+  "pokemonName": "Goodra",
+  "role": "F",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Intermediate",
+    "role": "Defender"
+  },
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "gooey",
+      "moveName": "Gooey",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered. Additional 1.2% Missing HP per tick",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "bubble",
+      "moveName": "Bubble",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s. 15% Max HP",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "muddy-water",
+      "moveName": "Muddy Water",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Bubble",
+      "isPlus": false,
+      "originalDescription": "Splashes muddy water around itself, dealing damage to opposing Pokémon in the area of effect and applying an effect to them that decreases the amount of damage they deal by 20% for 3s. If the user deals damage to opposing Pokémon with this move, the user’s Defense and Sp. Def are increased for 2s. If Muddy Water is used within 6 seconds, the defense bonus effect is increased in intensity. The defenses bonus effect can stack up to four times.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "muddy-water-plus",
+      "moveName": "Muddy Water+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Muddy Water",
+      "isPlus": true,
+      "originalDescription": "Further increases the user’s Defense and Sp. Def when this move deals damage to opposing Pokémon.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "dragon-pulse",
+      "moveName": "Dragon Pulse",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Bubble",
+      "isPlus": false,
+      "originalDescription": "Unleashes a shock wave in the designated direction, dealing damage to Pokémon it hits up to 4 times. If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP. More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them. The fourth tick of damage can be animation cancelled by inputs (attack or movement). It is undetermined if this is a bug or not. 10% Missing HP 11% Missing HP",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "dragon-pulse-plus",
+      "moveName": "Dragon Pulse+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Dragon Pulse",
+      "isPlus": true,
+      "originalDescription": "Restores more HP if the center of the shock wave hits Pokémon, and even more on Pokémon that have a Gooey debuff applied to them. 12% Missing HP 13% Missing HP",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "tackle",
+      "moveName": "Tackle",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "power-whip",
+      "moveName": "Power Whip",
+      "sourceType": "moveChoice",
+      "learnLevel": "8",
+      "upgradeLevel": "13",
+      "parentName": "Tackle",
+      "isPlus": false,
+      "originalDescription": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "power-whip-plus",
+      "moveName": "Power Whip+",
+      "sourceType": "movePlus",
+      "learnLevel": "8",
+      "upgradeLevel": "13",
+      "parentName": "Power Whip",
+      "isPlus": true,
+      "originalDescription": "Also applies a Gooey effect when this move hits.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "acid-spray",
+      "moveName": "Acid Spray",
+      "sourceType": "moveChoice",
+      "learnLevel": "8",
+      "upgradeLevel": "13",
+      "parentName": "Tackle",
+      "isPlus": false,
+      "originalDescription": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit. If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "acid-spray-plus",
+      "moveName": "Acid Spray+",
+      "sourceType": "movePlus",
+      "learnLevel": "8",
+      "upgradeLevel": "13",
+      "parentName": "Acid Spray",
+      "isPlus": true,
+      "originalDescription": "Also applies a Gooey effect to opposing Pokémon that receive damage from either the acidic fluid or the charge.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "right-as-rain",
+      "moveName": "Right as Rain",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. 4.6% Max HP",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Goodra",
+      "pokemonId": "goodra",
+      "sourceId": "right-as-rain-unite-buff",
+      "moveName": "Right as Rain Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Right as Rain",
+      "isPlus": false,
+      "originalDescription": "Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Gooey",
+      "sourceType": "passive",
+      "sourceId": "gooey",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Bubble",
+      "sourceType": "initialMove",
+      "sourceId": "bubble",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Muddy Water",
+      "sourceType": "moveChoice",
+      "sourceId": "muddy-water",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Bubble"
+    },
+    {
+      "name": "Muddy Water+",
+      "sourceType": "movePlus",
+      "sourceId": "muddy-water-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Muddy Water"
+    },
+    {
+      "name": "Dragon Pulse",
+      "sourceType": "moveChoice",
+      "sourceId": "dragon-pulse",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Bubble"
+    },
+    {
+      "name": "Dragon Pulse+",
+      "sourceType": "movePlus",
+      "sourceId": "dragon-pulse-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Dragon Pulse"
+    },
+    {
+      "name": "Tackle",
+      "sourceType": "initialMove",
+      "sourceId": "tackle",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Power Whip",
+      "sourceType": "moveChoice",
+      "sourceId": "power-whip",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Tackle"
+    },
+    {
+      "name": "Power Whip+",
+      "sourceType": "movePlus",
+      "sourceId": "power-whip-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Power Whip"
+    },
+    {
+      "name": "Acid Spray",
+      "sourceType": "moveChoice",
+      "sourceId": "acid-spray",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Tackle"
+    },
+    {
+      "name": "Acid Spray+",
+      "sourceType": "movePlus",
+      "sourceId": "acid-spray-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Acid Spray"
+    },
+    {
+      "name": "Right as Rain",
+      "sourceType": "uniteMove",
+      "sourceId": "right-as-rain",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Right as Rain Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "right-as-rain-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Right as Rain"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "gooey",
+        "name": "Gooey",
+        "rawName": "Gooey",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered. Additional 1.2% Missing HP per tick",
+        "translatedDescription": "機械要約: Gooey は 移動速度を下げる、HPを回復する、スタック、マーク、ゲージを扱う、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ、壁・地形・草むらなどと相互作用する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Slime)",
+            "ratio": "60",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "120",
+            "trueDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. ",
+            "notes": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered."
+          },
+          {
+            "id": "add1",
+            "label": "Healing (Per Tick)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "50",
+            "trueDescription": "Additional 1.2% Missing HP per tick",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "gooey__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gooey__02__healing",
+          "effectType": "healing",
+          "summary": "HPを回復する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks.",
+          "codexInterpretation": "HPを回復する。 原文証拠: When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gooey__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 6,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gooey__04__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (Slime)",
+              "ratio": "60",
+              "damageType": "SpAtk",
+              "levelScaling": "6",
+              "base": "120",
+              "trueDescription": "When this Pokémon is hit by an attack, there is a chance it will spread slime around itself. The slime deals damage to Pokémon, Decreases their attack speed by 50% for 2s and applies a Gooey debuff. The Gooey debuff slows Pokémon by 10% for 6s and can stack up to 4 times per Pokémon. Gooey is a debuff that is applicable to Wild Pokémon and enemy players only. ",
+              "notes": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks. When this Pokémon recovers HP due to Gooey, its attack gauge is progressed towards a boosted attack. This HP recovery goes on a 10s cooldown after being triggered."
+            },
+            {
+              "id": "add1",
+              "label": "Healing (Per Tick)",
+              "ratio": "0",
+              "damageType": "SpAtk",
+              "levelScaling": "3",
+              "base": "50",
+              "trueDescription": "Additional 1.2% Missing HP per tick",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Additional 1.2% Missing HP per tick",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: Additional 1.2% Missing HP per tick",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gooey__05__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Gooey is a debuff that is applicable to Wild Pokémon and enemy players only.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Gooey is a debuff that is applicable to Wild Pokémon and enemy players only.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "gooey__06__wallOrTerrain",
+          "effectType": "wallOrTerrain",
+          "summary": "壁・地形・草むらなどと相互作用する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "ally",
+          "target": "ally",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks.",
+          "codexInterpretation": "壁・地形・草むらなどと相互作用する。 原文証拠: When this Pokémon enters tall grass, it continually recovers HP for up to 3s, until it leaves the tall grass, uses a move, or attacks.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__gooey",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s. Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage.",
+        "translatedDescription": "機械要約: Attack は 移動速度を下げる、通常攻撃回数により強化攻撃になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "Becomes a boosted attack with every third attack, dealing increased damage. Hitting a Pokémon afflicted with a Gooey effect with a basic attack reduces all of this Pokémon's move cooldowns by 1.5s.",
+            "notes": "Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s. If the boosted attack is used on a Pokémon in regular attack melee range, the attack deals increased damage. "
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, dealing increased damage.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, dealing increased damage.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Boosted attacks spew slime and if the slime hits Pokémon from a distance, a Gooey debuff is applied to those Pokémon and slows by 50% for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+        "translatedDescription": "機械要約: Attack Boosted は 現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted",
+            "ratio": "57",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "190",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Additional (Melee)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Boosted",
+              "ratio": "57",
+              "damageType": "SpAtk",
+              "levelScaling": "6",
+              "base": "190",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Additional (Melee)",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 3% Max HP damage (Capped at 500 on Wild Pokémon)",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "3% Max HP damage (Capped at 500 on Wild Pokémon)",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: 3% Max HP damage (Capped at 500 on Wild Pokémon)",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "bubble",
+        "name": "Bubble",
+        "rawName": "Bubble",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s. 15% Max HP",
+        "translatedDescription": "機械要約: Bubble は 移動速度を下げる、シールドを付与する、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "128",
+            "damageType": "SpAtk",
+            "levelScaling": "20",
+            "base": "380",
+            "trueDescription": "Cover itself in a bubble, granting it a shield for 3s. When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Shield",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "15% Max HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bubble__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bubble__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Cover itself in a bubble, granting it a shield for 3s.",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Cover itself in a bubble, granting it a shield for 3s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bubble__03__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 2,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: When the shield’s effect duration ends or if this move is used again, the bubble shield pops, dealing damage to nearby opposing Pokémon and slowing them by 30% for 2s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__bubble",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "muddy-water",
+        "name": "Muddy Water",
+        "rawName": "Muddy Water",
+        "parentName": "Bubble",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Splashes muddy water around itself, dealing damage to opposing Pokémon in the area of effect and applying an effect to them that decreases the amount of damage they deal by 20% for 3s. If the user deals damage to opposing Pokémon with this move, the user’s Defense and Sp. Def are increased for 2s. If Muddy Water is used within 6 seconds, the defense bonus effect is increased in intensity. The defenses bonus effect can stack up to four times.",
+        "translatedDescription": "機械要約: Muddy Water は 防御・特防を変化させる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "132",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "250",
+            "trueDescription": "Splashes muddy water around itself, dealing damage to opposing Pokémon in the area of effect and applying an effect to them that decreases the amount of damage they deal by 20% for 3s. If the user deals damage to opposing Pokémon with this move, the user’s Defense and Sp. Def are increased for 2s. If Muddy Water is used within 6 seconds, the defense bonus effect is increased in intensity. The defenses bonus effect can stack up to four times.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Defense & Sp. Defense per Stack",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "6",
+            "base": "72",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "muddy-water__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "splashes muddy water around itself, dealing damage to opposing pokémon in the area of effect and applying an effect to them that decreases the amount of damage they deal by 20% for 3s. if the user deals damage to opposing pokémon with this ",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: splashes muddy water around itself, dealing damage to opposing pokémon in the area of effect and applying an effect to them that decreases the amount of damage they deal by 20% for 3s. if the user deals damage to opposing pokémon with this ",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "muddy-water__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "The defenses bonus effect can stack up to four times.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: The defenses bonus effect can stack up to four times.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__muddy-water",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "muddy-water-plus",
+        "name": "Muddy Water+",
+        "rawName": "Muddy Water",
+        "parentName": "Muddy Water",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Further increases the user’s Defense and Sp. Def when this move deals damage to opposing Pokémon.",
+        "translatedDescription": "機械要約: Muddy Water+ は 防御・特防を変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Defense & Sp. Defense per Stack",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "10",
+            "base": "108",
+            "trueDescription": "Further increases the user’s Defense and Sp. Def when this move deals damage to opposing Pokémon.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "muddy-water-plus__01__defenseStatChange",
+          "effectType": "defenseStatChange",
+          "summary": "防御・特防を変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "further increases the user’s defense and sp. def when this move deals damage to opposing pokémon.",
+          "codexInterpretation": "防御・特防を変化させる。 原文証拠: further increases the user’s defense and sp. def when this move deals damage to opposing pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__muddy-water-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "dragon-pulse",
+        "name": "Dragon Pulse",
+        "rawName": "Dragon Pulse",
+        "parentName": "Bubble",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Unleashes a shock wave in the designated direction, dealing damage to Pokémon it hits up to 4 times. If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP. More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them. The fourth tick of damage can be animation cancelled by inputs (attack or movement). It is undetermined if this is a bug or not. 10% Missing HP 11% Missing HP",
+        "translatedDescription": "機械要約: Dragon Pulse は 移動速度を下げる、与ダメージを変化させる、現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Center - per hit up to 4 hits)",
+            "ratio": "68",
+            "damageType": "SpAtk",
+            "levelScaling": "5",
+            "base": "230",
+            "trueDescription": "Unleashes a shock wave in the designated direction, dealing damage to Pokémon it hits up to 4 times. If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP. More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them.",
+            "notes": "The fourth tick of damage can be animation cancelled by inputs (attack or movement). It is undetermined if this is a bug or not. "
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Side - per hit up to 4 hits)",
+            "ratio": "40.8",
+            "damageType": "SpAtk",
+            "levelScaling": "3",
+            "base": "138",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Healing (Per hit up to 4x based on number of Center hits)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "30",
+            "trueDescription": "10% Missing HP",
+            "notes": ""
+          },
+          {
+            "id": "add3",
+            "label": "Healing (Gooey Center- Per hit up to 4x based on number of Center hits)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "30",
+            "trueDescription": "11% Missing HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-pulse__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-pulse__02__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "dragon-pulse__03__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (Center - per hit up to 4 hits)",
+              "ratio": "68",
+              "damageType": "SpAtk",
+              "levelScaling": "5",
+              "base": "230",
+              "trueDescription": "Unleashes a shock wave in the designated direction, dealing damage to Pokémon it hits up to 4 times. If the center of the shock wave hits enemy Pokémon, it deals increased damage to them and restores the user’s HP. More HP is restored when the center of the pulse deals damage to enemy Pokémon that have a Gooey slowing effect applied to them.",
+              "notes": "The fourth tick of damage can be animation cancelled by inputs (attack or movement). It is undetermined if this is a bug or not. "
+            },
+            {
+              "id": "add1",
+              "label": "Damage (Side - per hit up to 4 hits)",
+              "ratio": "40.8",
+              "damageType": "SpAtk",
+              "levelScaling": "3",
+              "base": "138",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Healing (Per hit up to 4x based on number of Center hits)",
+              "ratio": "0",
+              "damageType": "SpAtk",
+              "levelScaling": "8",
+              "base": "30",
+              "trueDescription": "10% Missing HP",
+              "notes": ""
+            },
+            {
+              "id": "add3",
+              "label": "Healing (Gooey Center- Per hit up to 4x based on number of Center hits)",
+              "ratio": "0",
+              "damageType": "SpAtk",
+              "levelScaling": "8",
+              "base": "30",
+              "trueDescription": "11% Missing HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "10% Missing HP 11% Missing HP",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 10% Missing HP 11% Missing HP",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__dragon-pulse",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "dragon-pulse-plus",
+        "name": "Dragon Pulse+",
+        "rawName": "Dragon Pulse",
+        "parentName": "Dragon Pulse",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Restores more HP if the center of the shock wave hits Pokémon, and even more on Pokémon that have a Gooey debuff applied to them. 12% Missing HP 13% Missing HP",
+        "translatedDescription": "機械要約: Dragon Pulse+ は 現在HP・最大HP・減少HPなどを参照する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Restores more HP if the center of the shock wave hits Pokémon, and even more on Pokémon that have a Gooey debuff applied to them.",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd1",
+            "label": "Healing (Per hit up to 4x based on number of Center hits)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "30",
+            "trueDescription": "12% Missing HP",
+            "notes": ""
+          },
+          {
+            "id": "enhancedAdd2",
+            "label": "Healing (Gooey Center- Per hit up to 4x based on number of Center hits)",
+            "ratio": "0",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "30",
+            "trueDescription": "13% Missing HP",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "dragon-pulse-plus__01__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "enhanced",
+              "label": "",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "Restores more HP if the center of the shock wave hits Pokémon, and even more on Pokémon that have a Gooey debuff applied to them.",
+              "notes": ""
+            },
+            {
+              "id": "enhancedAdd1",
+              "label": "Healing (Per hit up to 4x based on number of Center hits)",
+              "ratio": "0",
+              "damageType": "SpAtk",
+              "levelScaling": "8",
+              "base": "30",
+              "trueDescription": "12% Missing HP",
+              "notes": ""
+            },
+            {
+              "id": "enhancedAdd2",
+              "label": "Healing (Gooey Center- Per hit up to 4x based on number of Center hits)",
+              "ratio": "0",
+              "damageType": "SpAtk",
+              "levelScaling": "8",
+              "base": "30",
+              "trueDescription": "13% Missing HP",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "12% Missing HP 13% Missing HP",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: 12% Missing HP 13% Missing HP",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__dragon-pulse-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "tackle",
+        "name": "Tackle",
+        "rawName": "Tackle",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+        "translatedDescription": "機械要約: Tackle は 相手を打ち上げる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "80",
+            "damageType": "SpAtk",
+            "levelScaling": "8",
+            "base": "270",
+            "trueDescription": "Charges at a Pokémon, dealing damage and throwing it. If this move hits, the user bounces back a short distance.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "tackle__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Charges at a Pokémon, dealing damage and throwing it.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Charges at a Pokémon, dealing damage and throwing it.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "tackle__02__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "If this move hits, the user bounces back a short distance.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: If this move hits, the user bounces back a short distance.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__tackle",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "power-whip",
+        "name": "Power Whip",
+        "rawName": "Power Whip",
+        "parentName": "Tackle",
+        "learnLevel": "8",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+        "translatedDescription": "機械要約: Power Whip は 相手を引き寄せる、移動速度を下げる、継続ダメージを与える。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "111",
+            "damageType": "SpAtk",
+            "levelScaling": "9",
+            "base": "370",
+            "trueDescription": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "power-whip__01__pull",
+          "effectType": "pull",
+          "summary": "相手を引き寄せる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+          "codexInterpretation": "相手を引き寄せる。 原文証拠: If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-whip__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-whip__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage",
+              "ratio": "111",
+              "damageType": "SpAtk",
+              "levelScaling": "9",
+              "base": "370",
+              "trueDescription": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move hits distant Pokémon, those Pokémon are pulled toward Goodra.",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Lashes out with its horns in the designated direction, dealing damage to Pokémon in the area of effect and slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__power-whip",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "power-whip-plus",
+        "name": "Power Whip+",
+        "rawName": "Power Whip",
+        "parentName": "Power Whip",
+        "learnLevel": "8",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Also applies a Gooey effect when this move hits.",
+        "translatedDescription": "機械要約: Power Whip+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Also applies a Gooey effect when this move hits.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__power-whip-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "acid-spray",
+        "name": "Acid Spray",
+        "rawName": "Acid Spray",
+        "parentName": "Tackle",
+        "learnLevel": "8",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit. If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+        "translatedDescription": "機械要約: Acid Spray は 相手を打ち上げる、移動速度を下げる、継続ダメージを与える、スタック、マーク、ゲージを扱う、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage (Initial)",
+            "ratio": "46",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "150",
+            "trueDescription": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit. If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+            "notes": ""
+          },
+          {
+            "id": "add1",
+            "label": "Damage (Dash 2x hits)",
+            "ratio": "46",
+            "damageType": "SpAtk",
+            "levelScaling": "4",
+            "base": "150",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "acid-spray__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.75,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "acid-spray__02__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "acid-spray__03__damageOverTime",
+          "effectType": "damageOverTime",
+          "summary": "継続ダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage (Initial)",
+              "ratio": "46",
+              "damageType": "SpAtk",
+              "levelScaling": "4",
+              "base": "150",
+              "trueDescription": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s. If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit. If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+              "notes": ""
+            },
+            {
+              "id": "add1",
+              "label": "Damage (Dash 2x hits)",
+              "ratio": "46",
+              "damageType": "SpAtk",
+              "levelScaling": "4",
+              "base": "150",
+              "trueDescription": "",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "codexInterpretation": "継続ダメージを与える。 原文証拠: Spits acidic fluid at target Pokémon, dealing damage to Pokémon in an area of effect centered on the target slowing them by 80% for 3s, decaying by 15% every 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "acid-spray__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.75,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If this charge hits a Pokémon that has been marked by acidic fluid, that Pokémon is thrown for 0.75s, and damage is also dealt to nearby opposing Pokémon.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "acid-spray__05__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If this move is used again within 5s, Goodra charges in the designated direction and deals damage to opposing Pokémon hit.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__acid-spray",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "acid-spray-plus",
+        "name": "Acid Spray+",
+        "rawName": "Acid Spray",
+        "parentName": "Acid Spray",
+        "learnLevel": "8",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Also applies a Gooey effect to opposing Pokémon that receive damage from either the acidic fluid or the charge.",
+        "translatedDescription": "機械要約: Acid Spray+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Also applies a Gooey effect to opposing Pokémon that receive damage from either the acidic fluid or the charge.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__acid-spray-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "right-as-rain",
+        "name": "Right as Rain",
+        "rawName": "Right as Rain",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks. 4.6% Max HP",
+        "translatedDescription": "機械要約: Right as Rain には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Healing (13 ticks)",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Causes rain to fall around the user, gradually restoring the user’s HP over 6s. While this move is active, all of the user’s basic attacks become boosted attacks.",
+            "notes": "4.6% Max HP"
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__right-as-rain",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "right-as-rain-unite-buff",
+        "name": "Right as Rain Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Right as Rain",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+        "translatedDescription": "機械要約: Right as Rain Unite Buff は シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "right-as-rain-unite-buff__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "right-as-rain-unite-buff__02__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 40% Max HP Shield, 50% Movement Speed Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "goodra__right-as-rain-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 33,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

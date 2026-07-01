@@ -1,0 +1,2049 @@
+{
+  "schemaVersion": "mechanics-effects-survey-v3.0",
+  "researchDate": "2026-06-25",
+  "pokemonId": "lucario",
+  "pokemonName": "Lucario",
+  "role": "B+",
+  "range": {
+    "range": "Melee",
+    "difficulty": "Expert",
+    "role": "All-Rounder"
+  },
+  "damageType": "Physical",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Unite-DB public pokemon.json. v3 enumerates skills, boosted basic attacks, nested upgrade choices, Plus/enhanced effects, Unite Moves, and Unite Buffs."
+    },
+    "existingResearchPikachu": {
+      "sourceUrl": "local://../データリサーチ/pikachu-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchCinderace": {
+      "sourceUrl": "local://../データリサーチ/cinderace-researchData.json",
+      "sourceType": "localResearch"
+    },
+    "existingResearchGreninja": {
+      "sourceUrl": "local://../データリサーチ/greninja-researchData.json",
+      "sourceType": "localResearch"
+    }
+  },
+  "sourceList": [
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "steadfast",
+      "moveName": "Steadfast",
+      "sourceType": "passive",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD). While at low HP, gain a shield and increased movement speed. (30s cooldown)",
+      "jsonPath": "skills[0]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "attack-basic",
+      "moveName": "Attack",
+      "sourceType": "normalAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s. Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "jsonPath": "skills[1]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "attack-boosted",
+      "moveName": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": "Attack",
+      "isPlus": false,
+      "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+      "jsonPath": "skills[1].boosted_rsb"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "quick-attack",
+      "moveName": "Quick Attack",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Dashes forward, damaging opposing Pokémon hit. Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with.",
+      "jsonPath": "skills[2]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "extreme-speed",
+      "moveName": "Extreme Speed",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Quick Attack",
+      "isPlus": false,
+      "originalDescription": "Dashes forward, damaging opposing Pokémon hit; restoring HP for each opposing Pokémon hit. If an auto attack is used at the end of the dash (0.2s after the move is used): attacks in a circle around them, dealing damage to opposing Pokémon in the area of effect with a unique auto attack. After learning this move: nearby opposing Pokémon have an Extreme Speed marker automatically applied to them. If this move's dash hits an opposing Pokémon: resets this move's cooldown; and removes the marker from the first target hit for 10s (or until applied by other moves). Charge forward with breathtaking speed. If this move hits an enemy from point-blank range, its cooldown is reset and it restores the user's HP. However, the cooldown cannot be continually reset by using this move on the same enemy multiple times in succession.",
+      "jsonPath": "skills[2].upgrades[0]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "extreme-speed-plus",
+      "moveName": "Extreme Speed+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Extreme Speed",
+      "isPlus": true,
+      "originalDescription": "Increases the user's Attack by 7.5% for 2s when this move is used. Increases Attack for a short time when this move is used.",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "power-up-punch",
+      "moveName": "Power-Up Punch",
+      "sourceType": "moveChoice",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Quick Attack",
+      "isPlus": false,
+      "originalDescription": "While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%; reaches maximum charge after 1s. When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s. Readies a boosted attack if this move hits. Reduces this move's cooldown by 1s each time one of their moves lands a hit. If not released after 4s or canceled, this move goes on a 1.4s cooldown. Against wild Pokémon: additional missing HP damage is capped at 1000. 12% of Enemy Missing HP (caps at 1000 dmg). Charges power before unleashing a powerful attack. While the user is charging power, its movement speed is decreased but its Attack slowly increases and the damage it receives is reduced. The user then charges in the designated direction and releases this move, dealing more damage the lower the enemies remaining HP is. The next basic attack becomes a boosted attack if the move hits. This move's cooldown is reduced every time one of the user's moves hits.",
+      "jsonPath": "skills[2].upgrades[1]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "power-up-punch-plus",
+      "moveName": "Power-Up Punch+",
+      "sourceType": "movePlus",
+      "learnLevel": "5",
+      "upgradeLevel": "11",
+      "parentName": "Power-Up Punch",
+      "isPlus": true,
+      "originalDescription": "Becomes unstoppable while charging this move. Become immune to hindrances while charging power.",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "meteor-mash",
+      "moveName": "Meteor Mash",
+      "sourceType": "initialMove",
+      "learnLevel": null,
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s. Blast forward with a punch like a comet, dealing damage to enemies and shoving them.",
+      "jsonPath": "skills[3]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "bone-rush",
+      "moveName": "Bone Rush",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Meteor Mash",
+      "isPlus": false,
+      "originalDescription": "Rapidly strikes with a bone in the designated direction 3 times over 0.33s, damaging opposing Pokémon within melee range around Lucario, and in the area of the bone strikes in front; opposing Pokémon can be damaged twice per hit by being in the area where the bone strikes overlap with the attacks within melee range. Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s. Cooldown starts upon first use. If used again within 3s of throwing the bone: dashes to the bone, then catches it, damaging nearby opposing Pokémon if the bone is grabbed. Landing one of the three initial strikes on opposing Pokémon applies an Extreme Speed marker to them. Performs a combo attack with a bone, dealing multiple damaging blows to enemies and shoving them. The final attack sends the bone flying. If used again while the bone is traveling, the user rushes to the location of the bone, dealing damage to nearby enemies.",
+      "jsonPath": "skills[3].upgrades[0]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "bone-rush-plus",
+      "moveName": "Bone Rush+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Bone Rush",
+      "isPlus": true,
+      "originalDescription": "Catching the bone with the second use resets the cooldown of Extreme Speed or Power-Up Punch. Using this move again will reset the cooldown for Extreme Speed or Power-Up Punch.",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "close-combat",
+      "moveName": "Close Combat",
+      "sourceType": "moveChoice",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Meteor Mash",
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable for 1.4s, and rapidly punches in the designated direction 11 times, damaging opposing Pokémon in the area in front of them with each hit; restoring HP each time this move hits. The rapid punches start 0.4s after the move is used, with the last punch hitting 1.2s after the start of the move. Changes the next basic attack used within 5s after using this move. This auto attack gains increased range and lunges at an opposing Pokémon with a kick, dealing damage. Unleash a combo attack, dealing multiple blows to enemies and shoving them.",
+      "jsonPath": "skills[3].upgrades[1]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "close-combat-plus",
+      "moveName": "Close Combat+",
+      "sourceType": "movePlus",
+      "learnLevel": "7",
+      "upgradeLevel": "13",
+      "parentName": "Close Combat",
+      "isPlus": true,
+      "originalDescription": "Increases the damage of this move. Increased damage.",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "aura-cannon",
+      "moveName": "Aura Cannon",
+      "sourceType": "uniteMove",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": null,
+      "isPlus": false,
+      "originalDescription": "Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere picks up speed as it travels; at close range, a target can be hit up to 4 times, while at max speed a target will only be hit once. If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released. Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move.",
+      "jsonPath": "skills[4]"
+    },
+    {
+      "pokemonName": "Lucario",
+      "pokemonId": "lucario",
+      "sourceId": "aura-cannon-unite-buff",
+      "moveName": "Aura Cannon Unite Buff",
+      "sourceType": "uniteBuff",
+      "learnLevel": "9",
+      "upgradeLevel": null,
+      "parentName": "Aura Cannon",
+      "isPlus": false,
+      "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+      "jsonPath": "skills[4].buffs"
+    }
+  ],
+  "expectedSourceList": [
+    {
+      "name": "Steadfast",
+      "sourceType": "passive",
+      "sourceId": "steadfast",
+      "jsonPath": "skills[0]",
+      "parentName": null
+    },
+    {
+      "name": "Attack",
+      "sourceType": "normalAttack",
+      "sourceId": "attack-basic",
+      "jsonPath": "skills[1]",
+      "parentName": null
+    },
+    {
+      "name": "Attack Boosted",
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "jsonPath": "skills[1].boosted_rsb",
+      "parentName": "Attack"
+    },
+    {
+      "name": "Quick Attack",
+      "sourceType": "initialMove",
+      "sourceId": "quick-attack",
+      "jsonPath": "skills[2]",
+      "parentName": null
+    },
+    {
+      "name": "Extreme Speed",
+      "sourceType": "moveChoice",
+      "sourceId": "extreme-speed",
+      "jsonPath": "skills[2].upgrades[0]",
+      "parentName": "Quick Attack"
+    },
+    {
+      "name": "Extreme Speed+",
+      "sourceType": "movePlus",
+      "sourceId": "extreme-speed-plus",
+      "jsonPath": "skills[2].upgrades[0].description2/enhanced",
+      "parentName": "Extreme Speed"
+    },
+    {
+      "name": "Power-Up Punch",
+      "sourceType": "moveChoice",
+      "sourceId": "power-up-punch",
+      "jsonPath": "skills[2].upgrades[1]",
+      "parentName": "Quick Attack"
+    },
+    {
+      "name": "Power-Up Punch+",
+      "sourceType": "movePlus",
+      "sourceId": "power-up-punch-plus",
+      "jsonPath": "skills[2].upgrades[1].description2/enhanced",
+      "parentName": "Power-Up Punch"
+    },
+    {
+      "name": "Meteor Mash",
+      "sourceType": "initialMove",
+      "sourceId": "meteor-mash",
+      "jsonPath": "skills[3]",
+      "parentName": null
+    },
+    {
+      "name": "Bone Rush",
+      "sourceType": "moveChoice",
+      "sourceId": "bone-rush",
+      "jsonPath": "skills[3].upgrades[0]",
+      "parentName": "Meteor Mash"
+    },
+    {
+      "name": "Bone Rush+",
+      "sourceType": "movePlus",
+      "sourceId": "bone-rush-plus",
+      "jsonPath": "skills[3].upgrades[0].description2/enhanced",
+      "parentName": "Bone Rush"
+    },
+    {
+      "name": "Close Combat",
+      "sourceType": "moveChoice",
+      "sourceId": "close-combat",
+      "jsonPath": "skills[3].upgrades[1]",
+      "parentName": "Meteor Mash"
+    },
+    {
+      "name": "Close Combat+",
+      "sourceType": "movePlus",
+      "sourceId": "close-combat-plus",
+      "jsonPath": "skills[3].upgrades[1].description2/enhanced",
+      "parentName": "Close Combat"
+    },
+    {
+      "name": "Aura Cannon",
+      "sourceType": "uniteMove",
+      "sourceId": "aura-cannon",
+      "jsonPath": "skills[4]",
+      "parentName": null
+    },
+    {
+      "name": "Aura Cannon Unite Buff",
+      "sourceType": "uniteBuff",
+      "sourceId": "aura-cannon-unite-buff",
+      "jsonPath": "skills[4].buffs",
+      "parentName": "Aura Cannon"
+    }
+  ],
+  "missingSources": [],
+  "sourceEntries": [
+    {
+      "source": {
+        "sourceType": "passive",
+        "sourceId": "steadfast",
+        "name": "Steadfast",
+        "rawName": "Steadfast",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD). While at low HP, gain a shield and increased movement speed. (30s cooldown)",
+        "translatedDescription": "機械要約: Steadfast は シールドを付与する、HP割合条件で発動する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Shield",
+            "ratio": "250",
+            "damageType": "Atk",
+            "levelScaling": "50",
+            "base": "50",
+            "trueDescription": "If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "steadfast__01__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 45,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+          "codexInterpretation": "シールドを付与する。 原文証拠: If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "steadfast__02__hpThreshold",
+          "effectType": "hpThreshold",
+          "summary": "HP割合条件で発動する。",
+          "trigger": "passive condition",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 5,
+          "cooldownSeconds": 45,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+          "codexInterpretation": "HP割合条件で発動する。 原文証拠: If at 50% max HP or below: grants this Pokémon a shield and increases their movement speed by 20% for 5s (45s CD).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__steadfast",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "normalAttack",
+        "sourceId": "attack-basic",
+        "name": "Attack",
+        "rawName": "Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s. Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+        "translatedDescription": "機械要約: Attack は 相手を打ち上げる、通常攻撃回数により強化攻撃になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Basic",
+            "ratio": "100",
+            "damageType": "Atk",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes a boosted attack with increased range every third attack, hitting twice. The first hit damages opposing Pokémon with a normal basic attack; the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-basic__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: the second hit is a follow-up attack with a bone, damaging opposing Pokémon in the area a second time and throwing them for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with increased range every third attack, hitting twice.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with increased range every third attack, hitting twice.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-basic__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__attack-basic",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "boostedAttack",
+        "sourceId": "attack-boosted",
+        "name": "Attack Boosted",
+        "rawName": "Attack",
+        "parentName": "Attack",
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes a boosted attack with every third attack, performing a combo attack with a bone. Deals damage to enemies in the area of effect and throws them.",
+        "translatedDescription": "機械要約: Attack Boosted は 相手を打ち上げる、通常攻撃回数により強化攻撃になる、フォーム・モード・構えを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[1].boosted_rsb"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Boosted (2nd Hit)",
+            "ratio": "30",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "attack-boosted__01__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Deals damage to enemies in the area of effect and throws them.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Deals damage to enemies in the area of effect and throws them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__02__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "attack-boosted__03__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "normal attack or boosted attack",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Becomes a boosted attack with every third attack, performing a combo attack with a bone.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__attack-boosted",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "quick-attack",
+        "name": "Quick Attack",
+        "rawName": "Quick Attack",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Dashes forward, damaging opposing Pokémon hit. Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with.",
+        "translatedDescription": "機械要約: Quick Attack は 対象指定されない、またはステルス状態になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "221",
+            "damageType": "Atk",
+            "levelScaling": "11",
+            "base": "240",
+            "trueDescription": "Dashes forward, damaging opposing Pokémon hit.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "quick-attack__01__untargetableOrStealth",
+          "effectType": "untargetableOrStealth",
+          "summary": "対象指定されない、またはステルス状態になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "enemy",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with.",
+          "codexInterpretation": "対象指定されない、またはステルス状態になる。 原文証拠: Has the user lunge forward at a speed that makes it almost invisible, dealing damage to enemies it comes in contact with.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__quick-attack",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "extreme-speed",
+        "name": "Extreme Speed",
+        "rawName": "Extreme Speed",
+        "parentName": "Quick Attack",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "Dashes forward, damaging opposing Pokémon hit; restoring HP for each opposing Pokémon hit. If an auto attack is used at the end of the dash (0.2s after the move is used): attacks in a circle around them, dealing damage to opposing Pokémon in the area of effect with a unique auto attack. After learning this move: nearby opposing Pokémon have an Extreme Speed marker automatically applied to them. If this move's dash hits an opposing Pokémon: resets this move's cooldown; and removes the marker from the first target hit for 10s (or until applied by other moves). Charge forward with breathtaking speed. If this move hits an enemy from point-blank range, its cooldown is reset and it restores the user's HP. However, the cooldown cannot be continually reset by using this move on the same enemy multiple times in succession.",
+        "translatedDescription": "機械要約: Extreme Speed は 待ち時間をリセットする、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "208",
+            "damageType": "Atk",
+            "levelScaling": "6",
+            "base": "280",
+            "trueDescription": "Dashes forward, damaging opposing Pokémon hit; restoring HP for each opposing Pokémon hit. If an auto attack is used at the end of the dash (0.2s after the move is used): attacks in a circle around them, dealing damage to opposing Pokémon in the area of effect with a unique auto attack.",
+            "notes": "After learning this move: nearby opposing Pokémon have an Extreme Speed marker automatically applied to them. If this move's dash hits an opposing Pokémon: resets this move's cooldown; and removes the marker from the first target hit for 10s (or until applied by other moves)."
+          },
+          {
+            "id": "add1",
+            "label": "Healing",
+            "ratio": "33.75",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "42",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Unique Attack",
+            "ratio": "75",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "0",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "extreme-speed__01__cooldownReset",
+          "effectType": "cooldownReset",
+          "summary": "待ち時間をリセットする。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If this move hits an enemy from point-blank range, its cooldown is reset and it restores the user's HP.",
+          "codexInterpretation": "待ち時間をリセットする。 原文証拠: If this move hits an enemy from point-blank range, its cooldown is reset and it restores the user's HP.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "extreme-speed__02__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 10,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "and removes the marker from the first target hit for 10s (or until applied by other moves).",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: and removes the marker from the first target hit for 10s (or until applied by other moves).",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__extreme-speed",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "extreme-speed-plus",
+        "name": "Extreme Speed+",
+        "rawName": "Extreme Speed",
+        "parentName": "Extreme Speed",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Increases the user's Attack by 7.5% for 2s when this move is used. Increases Attack for a short time when this move is used.",
+        "translatedDescription": "機械要約: Extreme Speed+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Increases the user's Attack by 7.5% for 2s when this move is used.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__extreme-speed-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "power-up-punch",
+        "name": "Power-Up Punch",
+        "rawName": "Power-Up Punch",
+        "parentName": "Quick Attack",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": false,
+        "originalDescription": "While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%; reaches maximum charge after 1s. When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s. Readies a boosted attack if this move hits. Reduces this move's cooldown by 1s each time one of their moves lands a hit. If not released after 4s or canceled, this move goes on a 1.4s cooldown. Against wild Pokémon: additional missing HP damage is capped at 1000. 12% of Enemy Missing HP (caps at 1000 dmg). Charges power before unleashing a powerful attack. While the user is charging power, its movement speed is decreased but its Attack slowly increases and the damage it receives is reduced. The user then charges in the designated direction and releases this move, dealing more damage the lower the enemies remaining HP is. The next basic attack becomes a boosted attack if the move hits. This move's cooldown is reduced every time one of the user's moves hits.",
+        "translatedDescription": "機械要約: Power-Up Punch は 移動速度を下げる、受けるダメージを軽減する、待ち時間を短縮する、遅延または時間差でダメージを与える、次の通常攻撃または強化攻撃を準備する、通常攻撃回数により強化攻撃になる、現在HP・最大HP・減少HPなどを参照する、野生ポケモン限定の処理を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - Uncharged",
+            "ratio": "209.16",
+            "damageType": "Atk",
+            "levelScaling": "3",
+            "base": "88",
+            "trueDescription": "While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%; reaches maximum charge after 1s. When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s. Readies a boosted attack if this move hits. Reduces this move's cooldown by 1s each time one of their moves lands a hit. If not released after 4s or canceled, this move goes on a 1.4s cooldown.",
+            "notes": "Against wild Pokémon: additional missing HP damage is capped at 1000."
+          },
+          {
+            "id": "add1",
+            "label": "Damage - Fully Charged",
+            "ratio": "381.8",
+            "damageType": "Atk",
+            "levelScaling": "5",
+            "base": "161",
+            "trueDescription": "",
+            "notes": ""
+          },
+          {
+            "id": "add2",
+            "label": "Damage - Execute",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "12% of Enemy Missing HP (caps at 1000 dmg).",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "power-up-punch__01__slow",
+          "effectType": "slow",
+          "summary": "移動速度を下げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While the user is charging power, its movement speed is decreased but its Attack slowly increases and the damage it receives is reduced.",
+          "codexInterpretation": "移動速度を下げる。 原文証拠: While the user is charging power, its movement speed is decreased but its Attack slowly increases and the damage it receives is reduced.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__02__damageReduction",
+          "effectType": "damageReduction",
+          "summary": "受けるダメージを軽減する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%",
+          "codexInterpretation": "受けるダメージを軽減する。 原文証拠: While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__03__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "This move's cooldown is reduced every time one of the user's moves hits.",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: This move's cooldown is reduced every time one of the user's moves hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__04__delayedDamage",
+          "effectType": "delayedDamage",
+          "summary": "遅延または時間差でダメージを与える。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "reaches maximum charge after 1s.",
+          "codexInterpretation": "遅延または時間差でダメージを与える。 原文証拠: reaches maximum charge after 1s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__05__nextBoostedAttack",
+          "effectType": "nextBoostedAttack",
+          "summary": "次の通常攻撃または強化攻撃を準備する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack becomes a boosted attack if the move hits.",
+          "codexInterpretation": "次の通常攻撃または強化攻撃を準備する。 原文証拠: The next basic attack becomes a boosted attack if the move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__06__boostedAttackCycle",
+          "effectType": "boostedAttackCycle",
+          "summary": "通常攻撃回数により強化攻撃になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "The next basic attack becomes a boosted attack if the move hits.",
+          "codexInterpretation": "通常攻撃回数により強化攻撃になる。 原文証拠: The next basic attack becomes a boosted attack if the move hits.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__07__hpReferenceDamage",
+          "effectType": "hpReferenceDamage",
+          "summary": "現在HP・最大HP・減少HPなどを参照する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.5,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": [
+            {
+              "id": "main",
+              "label": "Damage - Uncharged",
+              "ratio": "209.16",
+              "damageType": "Atk",
+              "levelScaling": "3",
+              "base": "88",
+              "trueDescription": "While held down: charges up power for up to 4s, reducing damage received by 30% and decreasing movement speed by 15%; reaches maximum charge after 1s. When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s. Readies a boosted attack if this move hits. Reduces this move's cooldown by 1s each time one of their moves lands a hit. If not released after 4s or canceled, this move goes on a 1.4s cooldown.",
+              "notes": "Against wild Pokémon: additional missing HP damage is capped at 1000."
+            },
+            {
+              "id": "add1",
+              "label": "Damage - Fully Charged",
+              "ratio": "381.8",
+              "damageType": "Atk",
+              "levelScaling": "5",
+              "base": "161",
+              "trueDescription": "",
+              "notes": ""
+            },
+            {
+              "id": "add2",
+              "label": "Damage - Execute",
+              "ratio": "",
+              "damageType": "",
+              "levelScaling": "",
+              "base": "",
+              "trueDescription": "12% of Enemy Missing HP (caps at 1000 dmg).",
+              "notes": ""
+            }
+          ],
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s.",
+          "codexInterpretation": "現在HP・最大HP・減少HPなどを参照する。 原文証拠: When released: dashes forward with a devastating punch, damaging the first opposing Pokémon hit, dealing additional missing HP damage to the target, and shoving them for 0.5s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch__08__wildPokemonRule",
+          "effectType": "wildPokemonRule",
+          "summary": "野生ポケモン限定の処理を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetType"
+          ],
+          "sourceEvidence": "Against wild Pokémon: additional missing HP damage is capped at 1000.",
+          "codexInterpretation": "野生ポケモン限定の処理を持つ。 原文証拠: Against wild Pokémon: additional missing HP damage is capped at 1000.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__power-up-punch",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "power-up-punch-plus",
+        "name": "Power-Up Punch+",
+        "rawName": "Power-Up Punch",
+        "parentName": "Power-Up Punch",
+        "learnLevel": "5",
+        "upgradeLevel": "11",
+        "isPlus": true,
+        "originalDescription": "Becomes unstoppable while charging this move. Become immune to hindrances while charging power.",
+        "translatedDescription": "機械要約: Power-Up Punch+ は 妨害無効になる、妨害耐性を得る。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[2].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Becomes unstoppable while charging this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "power-up-punch-plus__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable while charging this move.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable while charging this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "power-up-punch-plus__02__hindranceResistance",
+          "effectType": "hindranceResistance",
+          "summary": "妨害耐性を得る。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Become immune to hindrances while charging power.",
+          "codexInterpretation": "妨害耐性を得る。 原文証拠: Become immune to hindrances while charging power.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__power-up-punch-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "initialMove",
+        "sourceId": "meteor-mash",
+        "name": "Meteor Mash",
+        "rawName": "Meteor Mash",
+        "parentName": null,
+        "learnLevel": null,
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s. Blast forward with a punch like a comet, dealing damage to enemies and shoving them.",
+        "translatedDescription": "機械要約: Meteor Mash は 行動不能・スタンを付与する。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage",
+            "ratio": "167",
+            "damageType": "Atk",
+            "levelScaling": "8",
+            "base": "180",
+            "trueDescription": "Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "meteor-mash__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Punches with the force of a meteor in the designated direction after 0.4s, damaging opposing Pokémon hit and shoving them in the designated direction, stunning those hit for 0.4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__meteor-mash",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "bone-rush",
+        "name": "Bone Rush",
+        "rawName": "Bone Rush",
+        "parentName": "Meteor Mash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Rapidly strikes with a bone in the designated direction 3 times over 0.33s, damaging opposing Pokémon within melee range around Lucario, and in the area of the bone strikes in front; opposing Pokémon can be damaged twice per hit by being in the area where the bone strikes overlap with the attacks within melee range. Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s. Cooldown starts upon first use. If used again within 3s of throwing the bone: dashes to the bone, then catches it, damaging nearby opposing Pokémon if the bone is grabbed. Landing one of the three initial strikes on opposing Pokémon applies an Extreme Speed marker to them. Performs a combo attack with a bone, dealing multiple damaging blows to enemies and shoving them. The final attack sends the bone flying. If used again while the bone is traveling, the user rushes to the location of the bone, dealing damage to nearby enemies.",
+        "translatedDescription": "機械要約: Bone Rush は 行動不能・スタンを付与する、相手を打ち上げる、スタック、マーク、ゲージを扱う、フォーム・モード・構えを変化させる、再使用・派生・2段目を持つ。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (4-7 Hits)",
+            "ratio": "62.5",
+            "damageType": "Atk",
+            "levelScaling": "1",
+            "base": "50",
+            "trueDescription": "Rapidly strikes with a bone in the designated direction 3 times over 0.33s, damaging opposing Pokémon within melee range around Lucario, and in the area of the bone strikes in front; opposing Pokémon can be damaged twice per hit by being in the area where the bone strikes overlap with the attacks within melee range. Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s. Cooldown starts upon first use. If used again within 3s of throwing the bone: dashes to the bone, then catches it, damaging nearby opposing Pokémon if the bone is grabbed.",
+            "notes": "Landing one of the three initial strikes on opposing Pokémon applies an Extreme Speed marker to them."
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "bone-rush__01__stun",
+          "effectType": "stun",
+          "summary": "行動不能・スタンを付与する。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "codexInterpretation": "行動不能・スタンを付与する。 原文証拠: Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bone-rush__02__knockUp",
+          "effectType": "knockUp",
+          "summary": "相手を打ち上げる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "codexInterpretation": "相手を打ち上げる。 原文証拠: Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bone-rush__03__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "Landing one of the three initial strikes on opposing Pokémon applies an Extreme Speed marker to them.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: Landing one of the three initial strikes on opposing Pokémon applies an Extreme Speed marker to them.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bone-rush__04__formChange",
+          "effectType": "formChange",
+          "summary": "フォーム・モード・構えを変化させる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 0.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "formOrMode"
+          ],
+          "sourceEvidence": "Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "codexInterpretation": "フォーム・モード・構えを変化させる。 原文証拠: Immediately after, throws the bone flying to land a short distance away, shoving opposing Pokémon in the way and stunning them for 0.4s.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "bone-rush__05__reuseOrSecondActivation",
+          "effectType": "reuseOrSecondActivation",
+          "summary": "再使用・派生・2段目を持つ。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": 3,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "If used again within 3s of throwing the bone: dashes to the bone, then catches it, damaging nearby opposing Pokémon if the bone is grabbed.",
+          "codexInterpretation": "再使用・派生・2段目を持つ。 原文証拠: If used again within 3s of throwing the bone: dashes to the bone, then catches it, damaging nearby opposing Pokémon if the bone is grabbed.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__bone-rush",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "bone-rush-plus",
+        "name": "Bone Rush+",
+        "rawName": "Bone Rush",
+        "parentName": "Bone Rush",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Catching the bone with the second use resets the cooldown of Extreme Speed or Power-Up Punch. Using this move again will reset the cooldown for Extreme Speed or Power-Up Punch.",
+        "translatedDescription": "機械要約: Bone Rush+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[0].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "",
+            "ratio": "",
+            "damageType": "",
+            "levelScaling": "",
+            "base": "",
+            "trueDescription": "Catching the bone with the second use resets the cooldown of Extreme Speed or Power-Up Punch.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__bone-rush-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "moveChoice",
+        "sourceId": "close-combat",
+        "name": "Close Combat",
+        "rawName": "Close Combat",
+        "parentName": "Meteor Mash",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable for 1.4s, and rapidly punches in the designated direction 11 times, damaging opposing Pokémon in the area in front of them with each hit; restoring HP each time this move hits. The rapid punches start 0.4s after the move is used, with the last punch hitting 1.2s after the start of the move. Changes the next basic attack used within 5s after using this move. This auto attack gains increased range and lunges at an opposing Pokémon with a kick, dealing damage. Unleash a combo attack, dealing multiple blows to enemies and shoving them.",
+        "translatedDescription": "機械要約: Close Combat は 妨害無効になる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Hit (11 Hits)",
+            "ratio": "50",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "60",
+            "trueDescription": "Becomes unstoppable for 1.4s, and rapidly punches in the designated direction 11 times, damaging opposing Pokémon in the area in front of them with each hit; restoring HP each time this move hits. The rapid punches start 0.4s after the move is used, with the last punch hitting 1.2s after the start of the move.",
+            "notes": "Changes the next basic attack used within 5s after using this move. This auto attack gains increased range and lunges at an opposing Pokémon with a kick, dealing damage."
+          },
+          {
+            "id": "add1",
+            "label": "Heal - per Hit",
+            "ratio": "11.5",
+            "damageType": "Atk",
+            "levelScaling": "0",
+            "base": "23",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "hasMovement": true,
+        "movementType": "dash",
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "close-combat__01__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 1.4,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable for 1.4s, and rapidly punches in the designated direction 11 times, damaging opposing Pokémon in the area in front of them with each hit",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable for 1.4s, and rapidly punches in the designated direction 11 times, damaging opposing Pokémon in the area in front of them with each hit",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__close-combat",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "movePlus",
+        "sourceId": "close-combat-plus",
+        "name": "Close Combat+",
+        "rawName": "Close Combat",
+        "parentName": "Close Combat",
+        "learnLevel": "7",
+        "upgradeLevel": "13",
+        "isPlus": true,
+        "originalDescription": "Increases the damage of this move. Increased damage.",
+        "translatedDescription": "機械要約: Close Combat+ には、直接ダメージや単純移動以外の特殊効果を検出していません。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[3].upgrades[1].description2/enhanced"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "enhanced",
+            "label": "Damage - per Hit (11 Hits)",
+            "ratio": "56",
+            "damageType": "Atk",
+            "levelScaling": "2",
+            "base": "69",
+            "trueDescription": "Increases the damage of this move.",
+            "notes": ""
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__close-combat-plus",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteMove",
+        "sourceId": "aura-cannon",
+        "name": "Aura Cannon",
+        "rawName": "Aura Cannon",
+        "parentName": null,
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere picks up speed as it travels; at close range, a target can be hit up to 4 times, while at max speed a target will only be hit once. If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released. Deals damage to enemies in the area of effect. Increases the damage dealt by the user's next Power-Up Punch after using this move.",
+        "translatedDescription": "機械要約: Aura Cannon は 相手を押し出す、妨害無効になる、与ダメージを変化させる、スタック、マーク、ゲージを扱う。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4]"
+      },
+      "baseAction": {
+        "hasDirectDamage": true,
+        "damageFormula": [
+          {
+            "id": "main",
+            "label": "Damage - per Tick",
+            "ratio": "174",
+            "damageType": "Atk",
+            "levelScaling": "4",
+            "base": "210",
+            "trueDescription": "Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path. The aura sphere picks up speed as it travels; at close range, a target can be hit up to 4 times, while at max speed a target will only be hit once.",
+            "notes": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move. If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released."
+          }
+        ],
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "aura-cannon__01__knockBack",
+          "effectType": "knockBack",
+          "summary": "相手を押し出す。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": 1,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": false,
+          "battleStateReasons": [],
+          "sourceEvidence": "If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released.",
+          "codexInterpretation": "相手を押し出す。 原文証拠: If the user learned Power-Up Punch: strengthens the damage of the next attack of Power-Up Punch by roughly 20% and the shove duration to 1s when Power-Up Punch is released.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "aura-cannon__02__unstoppable",
+          "effectType": "unstoppable",
+          "summary": "妨害無効になる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "self",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": 0.6,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "fullBattleSimulation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path.",
+          "codexInterpretation": "妨害無効になる。 原文証拠: Becomes unstoppable for 0.6s and channels aura into a huge sphere, then launches the sphere in the designated direction, dealing damage to opposing Pokémon in its path.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "aura-cannon__03__damageDealtChange",
+          "effectType": "damageDealtChange",
+          "summary": "与ダメージを変化させる。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Increases the damage dealt by the user's next Power-Up Punch after using this move.",
+          "codexInterpretation": "与ダメージを変化させる。 原文証拠: Increases the damage dealt by the user's next Power-Up Punch after using this move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "aura-cannon__04__stackOrMark",
+          "effectType": "stackOrMark",
+          "summary": "スタック、マーク、ゲージを扱う。",
+          "trigger": "unite move use or hit",
+          "conditions": [],
+          "holder": "target",
+          "target": "enemy",
+          "perTarget": true,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": "stack/mark details require human review",
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "targetOrSelfStack"
+          ],
+          "sourceEvidence": "If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move.",
+          "codexInterpretation": "スタック、マーク、ゲージを扱う。 原文証拠: If the user learned Extreme Speed: applies an Extreme Speed marker to targets hit by this Unite Move.",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__aura-cannon",
+        "correctionNotes": ""
+      }
+    },
+    {
+      "source": {
+        "sourceType": "uniteBuff",
+        "sourceId": "aura-cannon-unite-buff",
+        "name": "Aura Cannon Unite Buff",
+        "rawName": "Unite Buff",
+        "parentName": "Aura Cannon",
+        "learnLevel": "9",
+        "upgradeLevel": null,
+        "isPlus": false,
+        "originalDescription": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+        "translatedDescription": "機械要約: Aura Cannon Unite Buff は 待ち時間を短縮する、シールドを付与する、最大HPを変化させる。",
+        "confirmationStatus": "unconfirmed",
+        "sourceIds": [
+          "uniteDbPokemon"
+        ],
+        "jsonPath": "skills[4].buffs"
+      },
+      "baseAction": {
+        "hasDirectDamage": false,
+        "damageFormula": null,
+        "hasMovement": false,
+        "movementType": null,
+        "notes": "直接ダメージと単純移動はbaseActionへ保存し、特殊効果件数には含めない。"
+      },
+      "specialEffects": [
+        {
+          "effectId": "aura-cannon-unite-buff__01__cooldownReduction",
+          "effectType": "cooldownReduction",
+          "summary": "待ち時間を短縮する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": true,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "actionOrderOrCooldown"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "待ち時間を短縮する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "aura-cannon-unite-buff__02__shield",
+          "effectType": "shield",
+          "summary": "シールドを付与する。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "self",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": true,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "durationOrBuffDebuff"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "シールドを付与する。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        },
+        {
+          "effectId": "aura-cannon-unite-buff__03__maxHpChange",
+          "effectType": "maxHpChange",
+          "summary": "最大HPを変化させる。",
+          "trigger": "unite buff active",
+          "conditions": [],
+          "holder": "unconfirmed",
+          "target": "unconfirmed",
+          "perTarget": false,
+          "durationSeconds": null,
+          "cooldownSeconds": null,
+          "stacking": null,
+          "consumption": null,
+          "damageFormula": null,
+          "calculationRelevance": "futureActionOrderCalculation",
+          "requiresActionOrder": false,
+          "requiresTimeTracking": false,
+          "requiresBattleState": true,
+          "battleStateReasons": [
+            "hpState"
+          ],
+          "sourceEvidence": "Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "codexInterpretation": "最大HPを変化させる。 原文証拠: Buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield Buff duration: 6",
+          "confirmationStatus": "unconfirmed",
+          "unconfirmedPoints": [
+            "原文だけでは発動順、同時発動順、丸め順は未確認。"
+          ]
+        }
+      ],
+      "humanReview": {
+        "reviewStatus": "notReviewed",
+        "reviewMemoId": "lucario__aura-cannon-unite-buff",
+        "correctionNotes": ""
+      }
+    }
+  ],
+  "summary": {
+    "sourceCount": 15,
+    "specialEffectCount": 35,
+    "zeroSpecialEffectSourceCount": 3,
+    "missingSourceCount": 0
+  }
+}

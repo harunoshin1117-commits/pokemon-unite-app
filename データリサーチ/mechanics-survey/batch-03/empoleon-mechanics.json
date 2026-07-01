@@ -1,0 +1,694 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "empoleon",
+  "pokemonName": "Empoleon",
+  "role": "All-Rounder",
+  "range": "Melee",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "When this Pokémon deals damage to opposing Pokémon, or as time passes, the Torrent gauge increases to a max of 100. If a move is used when the Torrent gauge exceeds 50, 50 points of the gauge is consumed and the move becomes boosted. The rate at which the Torrent gauge increases depends on your current HP with thresholds at: above 66% HP, below 66% HP, and below 33% HP. Every second gain 1/2/3 Torrent gauge.",
+      "summary": "When this Pokémon deals damage to opposing Pokémon, or as time passes, the Torrent gauge increases to a max of 100. If a move is used when the Torrent gauge exceeds 50, 50 points of the gauge is consumed and the move becomes boosted. The rate at which the Torrent gauge increases depends on your current HP with threshol",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Piplup shoots a blast of water, becoming a boosted attack with every third attack dealing increased damage. Basic and Boosted attacks increase Torrent gauge by 2/3/4. When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks.",
+      "summary": "Piplup shoots a blast of water, becoming a boosted attack with every third attack dealing increased damage. Basic and Boosted attacks increase Torrent gauge by 2/3/4. When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third a",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "healing"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "The user blasts a forceful shot of water in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move deals increased damage.",
+      "summary": "The user blasts a forceful shot of water in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move deals increased damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "143",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "358",
+          "notes": "When empowered by Torrent, this move deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage (Torrent)",
+            "ratio": "214",
+            "damageType": "SpAtk",
+            "levelScaling": "20",
+            "base": "536",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "The user jabs its sharply pointed beak in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move applies a 40% slow for 2s.",
+      "summary": "The user jabs its sharply pointed beak in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move applies a 40% slow for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "When empowered by Torrent, this move applies a 40% slow for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "sovereign-slide",
+      "name": "Sovereign Slide",
+      "originalDescription": "Has the user slide at high speed in the designated direction and form a whirlpool on impact, or when the maximum distance is reached, dealing damage to opposing Pokémon it hits and throwing them for 1s. The whirlpool remains centered on the user for 7s and applies a 50% slow to opposing Pokémon in the area. The slow lasts 1s when opposing Pokémon leave the area. Empoleon is unstoppable throughout this move. The longer the user slides, the faster the recovery to perform other actions. Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user slide at high speed in the designated direction and form a whirlpool on impact, or when the maximum distance is reached, dealing damage to opposing Pokémon it hits and throwing them for 1s. The whirlpool remains centered on the user for 7s and applies a 50% slow to opposing Pokémon in the area. The slow la",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "352",
+          "damageType": "SpAtk",
+          "levelScaling": "19",
+          "base": "528",
+          "notes": "Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "352",
+          "damageType": "SpAtk",
+          "levelScaling": "19",
+          "base": "528",
+          "notes": "Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "stackCount",
+    "normalAttackCycleOrReadyFlag",
+    "durationTimer",
+    "cooldownState",
+    "shieldHp",
+    "maxHp",
+    "formOrMode"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge",
+    "form-or-mode"
+  ],
+  "timingDependencies": [
+    "attackOrder",
+    "time"
+  ],
+  "targetDependencies": [],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "torrent",
+      "name": "Torrent",
+      "originalDescription": "When this Pokémon deals damage to opposing Pokémon, or as time passes, the Torrent gauge increases to a max of 100. If a move is used when the Torrent gauge exceeds 50, 50 points of the gauge is consumed and the move becomes boosted. The rate at which the Torrent gauge increases depends on your current HP with thresholds at: above 66% HP, below 66% HP, and below 33% HP. Every second gain 1/2/3 Torrent gauge.",
+      "summary": "When this Pokémon deals damage to opposing Pokémon, or as time passes, the Torrent gauge increases to a max of 100. If a move is used when the Torrent gauge exceeds 50, 50 points of the gauge is consumed and the move becomes boosted. The rate at which the Torrent gauge increases depends on your current HP with threshol",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": "consumes-described-resource",
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Piplup shoots a blast of water, becoming a boosted attack with every third attack dealing increased damage. Basic and Boosted attacks increase Torrent gauge by 2/3/4. When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks.",
+      "summary": "Piplup shoots a blast of water, becoming a boosted attack with every third attack dealing increased damage. Basic and Boosted attacks increase Torrent gauge by 2/3/4. When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third a",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [
+        "normal-attack-cycle"
+      ],
+      "holder": "self",
+      "target": "self",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "healing"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "60",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "120",
+          "notes": "When evolved into Prinplup or Empoleon, basic attacks become melee ranged. The user slices with their wings, becoming a boosted attack with every third attack dealing increased damage. Boosted attack increases Torrent gauge by 10/15/20. This Pokémon heals 15% of damage dealt with basic and boosted attacks."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Boosted",
+          "ratio": "90",
+          "damageType": "SpAtk",
+          "levelScaling": "0",
+          "base": "180",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "water-gun",
+      "name": "Water Gun",
+      "originalDescription": "The user blasts a forceful shot of water in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move deals increased damage.",
+      "summary": "The user blasts a forceful shot of water in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move deals increased damage.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 5,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "143",
+          "damageType": "SpAtk",
+          "levelScaling": "13",
+          "base": "358",
+          "notes": "When empowered by Torrent, this move deals increased damage."
+        },
+        "additional": [
+          {
+            "label": "Damage (Torrent)",
+            "ratio": "214",
+            "damageType": "SpAtk",
+            "levelScaling": "20",
+            "base": "536",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "peck",
+      "name": "Peck",
+      "originalDescription": "The user jabs its sharply pointed beak in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move applies a 40% slow for 2s.",
+      "summary": "The user jabs its sharply pointed beak in the designated direction, dealing damage to opposing Pokémon it hits. Increases Torrent gauge by 10/15/20 when under 50 Torrent gauge. When empowered by Torrent, this move applies a 40% slow for 2s.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "boostedAttackControl",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 6,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "130",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "325",
+          "notes": "When empowered by Torrent, this move applies a 40% slow for 2s."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder, time",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "sovereign-slide",
+      "name": "Sovereign Slide",
+      "originalDescription": "Has the user slide at high speed in the designated direction and form a whirlpool on impact, or when the maximum distance is reached, dealing damage to opposing Pokémon it hits and throwing them for 1s. The whirlpool remains centered on the user for 7s and applies a 50% slow to opposing Pokémon in the area. The slow lasts 1s when opposing Pokémon leave the area. Empoleon is unstoppable throughout this move. The longer the user slides, the faster the recovery to perform other actions. Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Has the user slide at high speed in the designated direction and form a whirlpool on impact, or when the maximum distance is reached, dealing damage to opposing Pokémon it hits and throwing them for 1s. The whirlpool remains centered on the user for 7s and applies a 50% slow to opposing Pokémon in the area. The slow la",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "self",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "healing",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange",
+        "formOrModeChange"
+      ],
+      "durationSeconds": 1,
+      "cooldownSeconds": 112,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "352",
+          "damageType": "SpAtk",
+          "levelScaling": "19",
+          "base": "528",
+          "notes": "Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "352",
+          "damageType": "SpAtk",
+          "levelScaling": "19",
+          "base": "528",
+          "notes": "Increases Torrent gauge by 10/15/20 when the move connects. While the whirlpool is active the amount of Torrent gauge gained per second is increased to 12/18/24."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}

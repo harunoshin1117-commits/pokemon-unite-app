@@ -1,0 +1,631 @@
+{
+  "schemaVersion": "mechanics-survey-1.0",
+  "researchDate": "2026-06-23",
+  "pokemonId": "latios",
+  "pokemonName": "Latios",
+  "role": "Attacker",
+  "range": "Ranged",
+  "damageType": "Special",
+  "researchStatus": "draft",
+  "confirmationStatus": "unconfirmed",
+  "sourceIds": [
+    "uniteDbPokemon"
+  ],
+  "sources": {
+    "uniteDbPokemon": {
+      "sourceUrl": "https://unite-db.com/pokemon.json",
+      "sourceType": "unofficialDatabase",
+      "notes": "Batch-01 mechanics survey used descriptions, true_desc, notes, buffs, cooldowns, levels, and formulas from this public JSON."
+    }
+  },
+  "passiveEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "levitate",
+      "name": "Levitate",
+      "originalDescription": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s). Increases movement speed by 10% while near an ally Latias. When not in combat, this Ability can be used to fly to an allied Latias. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latias was when this ability was activated. If Latias is at home base, the cooldown of Levitate will go down twice as fast for Latios.",
+      "summary": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s). Increases movement speed by 10% while near an ally Latias. When not in combat, this Ability can be used to fly to an allied Latias. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channe",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "normalAttackEffects": [
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Shoots a psychic projectile at an opposing Pokémon, damaging them. Latios has no boosted attack.",
+      "summary": "Shoots a psychic projectile at an opposing Pokémon, damaging them. Latios has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "Latios has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "boostedAttackEffects": [
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "moveEffects": [
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+      "summary": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoots star-shaped rays in the designated direction, damaging opposing Pokémon in the area of effect.",
+      "summary": "Shoots star-shaped rays in the designated direction, damaging opposing Pokémon in the area of effect.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "uniteMoveEffects": [
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "eon-blast",
+      "name": "Eon Blast",
+      "originalDescription": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction to 60% for 9.5s. If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction to 60% for 9.5s. If Latias is also aiming its Unite Move at the designated Pokémon f",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.8,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "250",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "460",
+          "notes": "If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area (If Eon Blast hit last)",
+            "ratio": "125",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "250",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "460",
+          "notes": "If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area (If Eon Blast hit last)",
+            "ratio": "125",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ],
+  "stateRequirements": [
+    "cooldownState",
+    "durationTimer",
+    "normalAttackCycleOrReadyFlag",
+    "stackCount",
+    "shieldHp",
+    "maxHp"
+  ],
+  "specialMechanics": [
+    "stack-or-gauge"
+  ],
+  "timingDependencies": [
+    "time",
+    "actionOrder",
+    "attackOrder"
+  ],
+  "targetDependencies": [
+    "targetSpecificOrHitCount"
+  ],
+  "wildPokemonRules": [],
+  "unconfirmedPoints": [
+    "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated",
+    "This is a cross-sectional draft. Human review required before app implementation."
+  ],
+  "allEffects": [
+    {
+      "sourceType": "passive",
+      "sourceId": "levitate",
+      "name": "Levitate",
+      "originalDescription": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s). Increases movement speed by 10% while near an ally Latias. When not in combat, this Ability can be used to fly to an allied Latias. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channeling this ability the user can move around, once the 2s channel is completed the user becomes unstoppable and flies to where Latias was when this ability was activated. If Latias is at home base, the cooldown of Levitate will go down twice as fast for Latios.",
+      "summary": "After using a move: increases movement speed by 50% for 2s (decaying by 5% every 0.25s). Increases movement speed by 10% while near an ally Latias. When not in combat, this Ability can be used to fly to an allied Latias. This Ability goes on cooldown for 90s after it's triggered for both Latios and Latias. While channe",
+      "trigger": "passive condition or always-on effect",
+      "conditions": [],
+      "holder": "self",
+      "target": "ally",
+      "perTarget": false,
+      "effects": [
+        "cooldownChange",
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "normalAttack",
+      "sourceId": "attack",
+      "name": "Attack",
+      "originalDescription": "Shoots a psychic projectile at an opposing Pokémon, damaging them. Latios has no boosted attack.",
+      "summary": "Shoots a psychic projectile at an opposing Pokémon, damaging them. Latios has no boosted attack.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": null,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage - Basic",
+          "ratio": "25",
+          "damageType": "SpAtk",
+          "levelScaling": "5",
+          "base": "100",
+          "notes": "Latios has no boosted attack."
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "boostedAttack",
+      "sourceId": "attack-boosted",
+      "name": "Attack Boosted",
+      "originalDescription": "Boosted attack damage/effect data.",
+      "summary": "Boosted attack damage/effect data.",
+      "trigger": "basic attack hit / boosted attack cycle",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "unconfirmed",
+      "perTarget": false,
+      "effects": [
+        "boostedAttackControl"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 0,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": null,
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "attackOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "confusion",
+      "name": "Confusion",
+      "originalDescription": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+      "summary": "Releases a weak telekinetic force in the designated direction, damaging opposing Pokémon hit and decreasing their movement speed by 20% for 2s.",
+      "trigger": "Move 1",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "movementSpeedChange"
+      ],
+      "durationSeconds": 2,
+      "cooldownSeconds": 8,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "75",
+          "damageType": "SpAtk",
+          "levelScaling": "12",
+          "base": "200",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "time",
+      "requiresActionOrder": false,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "move",
+      "sourceId": "swift",
+      "name": "Swift",
+      "originalDescription": "Shoots star-shaped rays in the designated direction, damaging opposing Pokémon in the area of effect.",
+      "summary": "Shoots star-shaped rays in the designated direction, damaging opposing Pokémon in the area of effect.",
+      "trigger": "Move 2",
+      "conditions": [],
+      "holder": "unconfirmed",
+      "target": "enemy",
+      "perTarget": false,
+      "effects": [
+        "plainDamageOrSimpleEffect"
+      ],
+      "durationSeconds": null,
+      "cooldownSeconds": 6,
+      "stackOrGauge": null,
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "100",
+          "damageType": "SpAtk",
+          "levelScaling": "22",
+          "base": "350",
+          "notes": ""
+        },
+        "additional": [],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": null,
+      "timing": "",
+      "requiresActionOrder": false,
+      "requiresBattleState": false,
+      "requiresTimeTracking": false,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": null,
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    },
+    {
+      "sourceType": "uniteMove",
+      "sourceId": "eon-blast",
+      "name": "Eon Blast",
+      "originalDescription": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction to 60% for 9.5s. If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats. Unite buffs: 30% Movement Speed, 30% CDR, 20% Max HP Shield",
+      "summary": "Aims at the designated Pokémon from the opposing team and charges power for 1.8s before releasing a pulse, damaging all opposing Pokémon hit. Resets move cooldowns immediately after releasing the pulse, and increases cooldown reduction to 60% for 9.5s. If Latias is also aiming its Unite Move at the designated Pokémon f",
+      "trigger": "unite move use or hit",
+      "conditions": [],
+      "holder": "target",
+      "target": "enemy",
+      "perTarget": true,
+      "effects": [
+        "stackOrGauge",
+        "cooldownChange",
+        "shield",
+        "movementSpeedChange",
+        "maxHpReferenceOrChange"
+      ],
+      "durationSeconds": 1.8,
+      "cooldownSeconds": 100,
+      "stackOrGauge": {
+        "status": "presentInDescription",
+        "details": "Exact cap/refresh/overflow may be unconfirmed; inspect originalDescription."
+      },
+      "consumption": null,
+      "damageFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "250",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "460",
+          "notes": "If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area (If Eon Blast hit last)",
+            "ratio": "125",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "healingFormula": null,
+      "shieldFormula": {
+        "main": {
+          "label": "Damage",
+          "ratio": "250",
+          "damageType": "SpAtk",
+          "levelScaling": "15",
+          "base": "460",
+          "notes": "If Latias is also aiming its Unite Move at the designated Pokémon from the opposing team, the pulses stack and explode, dealing damage around the target as well. If Eon Blast hits last then the explosion uses Latios' stats."
+        },
+        "additional": [
+          {
+            "label": "Damage - Area (If Eon Blast hit last)",
+            "ratio": "125",
+            "damageType": "SpAtk",
+            "levelScaling": "7",
+            "base": "230",
+            "trueDescription": "",
+            "notes": ""
+          }
+        ],
+        "enhanced": null
+      },
+      "timing": "time, actionOrder",
+      "requiresActionOrder": true,
+      "requiresBattleState": true,
+      "requiresTimeTracking": true,
+      "confirmationStatus": "unconfirmed",
+      "notes": [
+        "timing, stacking overflow, refresh behavior, and rounding are unconfirmed unless explicitly stated"
+      ],
+      "level": "9",
+      "sourceIds": [
+        "uniteDbPokemon"
+      ]
+    }
+  ]
+}
