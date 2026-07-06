@@ -73,6 +73,7 @@ npm run stats -- Greninja 15
 - スマホ向け下部タブUI
 - PC、タブレット、スマホ向けの一部レスポンシブ調整
 - `battleState.lastCalculation` による直近計算結果の保存
+- `battleState.attacker.currentHp` / `battleState.defender.currentHp` の保存土台
 
 ## 現在のUI方針
 
@@ -88,14 +89,15 @@ npm run stats -- Greninja 15
 
 ## battleStateの現在地
 
-`ポケモンユナイト/js/battleState.js` を追加し、現在は直近の計算結果 `lastCalculation` だけを管理しています。
+`ポケモンユナイト/js/battleState.js` を追加し、現在は直近の計算結果 `lastCalculation` と攻撃側・防御側の `currentHp` だけを管理しています。
 
 - 攻撃後、通常攻撃・技1・技2・ユナイト技の計算済みデータを保存する。
 - 全リセット時に `lastCalculation` を `null` へ戻す。
+- 攻撃側・防御側 `currentHp` を保存・取得・リセットできる。
 - DOM、ポケモン固定データ、持ち物固定データは持たない。
 - `damageCalculator.js` からは参照しない。
 
-まだ attacker / defender の現在HP、火種スタック、シールド、攻撃順は移行していません。
+まだ攻撃側HPバーや防御側HP入力、計算処理、保存ビルド形式には接続していません。火種スタック、シールド、攻撃順も未移行です。
 
 ## データ駆動化の状況
 

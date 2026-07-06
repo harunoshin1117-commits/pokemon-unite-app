@@ -40,7 +40,7 @@
 | 追加ダメージ効果を増やす | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/tests/damageCalculator.test.js`, `ポケモンユナイト/js/resultRenderer.js` |
 | エレキボールを確認する | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `データリサーチ/pikachu-researchData.json`, `ポケモンユナイト/tests/damageCalculator.test.js` |
 | 攻撃順・コンボ機能を考える | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/js/resultRenderer.js`, `ポケモンユナイト/docs/project-overview.md` |
-| 直近の計算結果状態を確認する | `ポケモンユナイト/js/battleState.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/tests/battleState.test.js`, `ポケモンユナイト/docs/project-overview.md` |
+| 戦闘状態の土台を確認する | `ポケモンユナイト/js/battleState.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/tests/battleState.test.js`, `ポケモンユナイト/docs/project-overview.md` |
 | 全ポケモンの特殊効果を横断調査する | `データリサーチ/mechanics-effects-survey-v3/batch-*`, `ポケモンユナイト/docs/special-mechanics-inventory-v3.json` | `ポケモンユナイト/docs/special-mechanics-matrix-v3.md`, `ポケモンユナイト/docs/special-mechanics-design-notes-v3.md`, 旧調査の `データリサーチ/mechanics-effects-survey-v2/batch-*`, `データリサーチ/mechanics-survey/batch-*`, 既存の `データリサーチ/*-researchData.json` |
 | 持ち物データを直す | `ポケモンユナイト/js/helditemData.js` | `ポケモンユナイト/js/heldItemService.js` |
 | 持ち物効果計算を直す | `ポケモンユナイト/js/heldItemService.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
@@ -97,7 +97,7 @@
 
 - `ポケモンユナイト/js/app.js`: 画面全体の接続役。DOMイベント、状態取得、計算呼び出し、描画呼び出しをつなぐ。
 - `ポケモンユナイト/js/appSelectors.js`: app内で使う選択・判定系の補助。
-- `ポケモンユナイト/js/battleState.js`: 将来の詳細モードや攻撃順機能に向けた戦闘状態の置き場。現時点では直近の計算結果 `lastCalculation` だけを管理する。
+- `ポケモンユナイト/js/battleState.js`: 将来の詳細モードや攻撃順機能に向けた戦闘状態の置き場。現時点では直近の計算結果 `lastCalculation` と攻撃側・防御側の `currentHp` だけを管理する。
 - `ポケモンユナイト/js/damageCalculator.js`: ダメージ計算の中心。DOMを直接参照しない方針。
 - `ポケモンユナイト/js/domElements.js`: DOM取得の集約場所。
 - `ポケモンユナイト/js/helditemData.js`: 持ち物データ。
@@ -119,7 +119,7 @@
 ### tests
 
 - `ポケモンユナイト/tests/damageCalculator.test.js`: ダメージ計算、通常攻撃、追加ダメージ、HP引き継ぎ。
-- `ポケモンユナイト/tests/battleState.test.js`: `battleState.js` の直近計算結果の保存・取得・リセット。
+- `ポケモンユナイト/tests/battleState.test.js`: `battleState.js` の直近計算結果と攻撃側・防御側 `currentHp` の保存・取得・リセット。
 - `ポケモンユナイト/tests/buildState.test.js`: 保存データの検証・補正。
 - `ポケモンユナイト/tests/buildStorage.test.js`: localStorage保存処理。
 - `ポケモンユナイト/tests/buildRenderer.test.js`: 保存一覧の表示。
