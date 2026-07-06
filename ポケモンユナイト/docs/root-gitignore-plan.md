@@ -1,10 +1,10 @@
 # Root Gitignore Plan
 
-最終更新日: 2026-07-01
+最終更新日: 2026-07-02
 
-このファイルは、将来 Git 管理ルートを `C:\Projects\pokemon-unite-app` へ広げるときに使う、外側ルート用 `.gitignore` の設計案です。
+このファイルは、Git 管理ルートを `C:\Projects\pokemon-unite-app` へ広げたあとに使っている、外側ルート用 `.gitignore` の方針メモです。
 
-まだ実際の `.gitignore` は外側に作りません。まずはこのファイルで内容を確認し、外側ルート化の直前に `C:\Projects\pokemon-unite-app\.gitignore` として作成します。
+外側の `.gitignore` は `C:\Projects\pokemon-unite-app\.gitignore` として作成済みです。このファイルは、除外理由と今後の判断基準を確認するために残します。
 
 ## 目的
 
@@ -72,9 +72,9 @@ output系フォルダ
 一時ファイル、ログ
 ```
 
-## 外側用 .gitignore 案
+## 外側用 .gitignore の内容
 
-外側ルート化するときは、まず以下の内容を `C:\Projects\pokemon-unite-app\.gitignore` に置く候補とします。
+現在の `C:\Projects\pokemon-unite-app\.gitignore` は、以下の方針を基本にしています。
 
 ```gitignore
 # Dependencies / virtual environments
@@ -222,7 +222,7 @@ Thumbs.db
 
 以下は除外しすぎないように注意します。
 
-- `docs/*.json`
+- `ポケモンユナイト/docs/*.json`
   - 特殊効果調査の一覧JSONは大きくても価値があるため、基本的にGit管理候補です。
 
 - `データリサーチ/*.json`
@@ -238,9 +238,9 @@ Thumbs.db
   - フォルダ全体を除外しません。
   - ただし `tools/damage-video-review/` は除外します。
 
-## 実施前チェック
+## 実施済みチェック
 
-外側 `.gitignore` を作る前に確認します。
+外側 `.gitignore` 作成時に確認したこと:
 
 1. `tools/damage-video-review/` をGitに入れない方針でよい。
 2. `検証動画/` をGitに入れない方針でよい。
@@ -250,12 +250,11 @@ Thumbs.db
 6. `tools/` は軽量スクリプトだけGitに入れる。
 7. 外側に `.gitignore` を作った後、`git status` で大容量ファイルが出てこないことを確認する。
 
-## 次にやること
+## 今後確認すること
 
-この案を確認したあと、外側ルート化の直前に以下を行います。
+今後 `.gitignore` を見直す場合は、以下を確認します。
 
-1. `C:\Projects\pokemon-unite-app\.gitignore` を作る。
-2. このファイルの `.gitignore` 案を貼る。
-3. `.git` を外側へ移す。
-4. `git status` で除外が効いているか確認する。
-5. 大容量ファイルが出てきた場合は、`.gitignore` を調整する。
+1. `git status --short` に動画、zip、仮想環境、生成出力が出ていないか確認する。
+2. 新しい補助ツールを追加する場合、Git管理する軽量ファイルとローカル専用ファイルを分ける。
+3. 大容量ファイルが出てきた場合は、`.gitignore` を調整する。
+4. 調査JSONや人間確認用HTMLを誤って除外していないか確認する。

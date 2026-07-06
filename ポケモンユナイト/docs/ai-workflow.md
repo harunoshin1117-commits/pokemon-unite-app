@@ -6,19 +6,19 @@
 ## 最初に読む順番
 
 1. `README.md`
-2. `docs/project-map.md`
-3. `docs/current-status.md`
-4. 必要になった場合だけ `docs/project-overview.md`
-5. アイデア確認が目的なら `docs/roadmap.md`
-6. Git管理ルートや外側フォルダの扱いを確認する場合は `docs/repository-layout-plan.md`
-7. 外側ルート用 `.gitignore` の方針を確認する場合は `docs/root-gitignore-plan.md`
+2. `ポケモンユナイト/docs/project-map.md`
+3. `ポケモンユナイト/docs/current-status.md`
+4. 必要になった場合だけ `ポケモンユナイト/docs/project-overview.md`
+5. アイデア確認が目的なら `ポケモンユナイト/docs/roadmap.md`
+6. Git管理ルートや外側フォルダの扱いを確認する場合は `ポケモンユナイト/docs/repository-layout-plan.md`
+7. `.gitignore` の方針を確認する場合は `ポケモンユナイト/docs/root-gitignore-plan.md`
 
-`docs/project-overview.md` は詳しい履歴と構造メモです。長いため、通常は `project-map` と `current-status` を読んでから、必要な章だけ参照してください。
+`ポケモンユナイト/docs/project-overview.md` は詳しい履歴と構造メモです。長いため、通常は `project-map` と `current-status` を読んでから、必要な章だけ参照してください。
 
 ## 作業前の基本ルール
 
 - 最初からリポジトリ全体を再帰的に読まない。
-- 目的別の入口は `docs/project-map.md` で確認する。
+- 目的別の入口は `ポケモンユナイト/docs/project-map.md` で確認する。
 - 実装前に、変更箇所、理由、影響範囲、リスクを簡潔に整理する。
 - 変更は小さく進める。
 - UI変更、計算変更、保存形式変更を無関係に混ぜない。
@@ -30,19 +30,19 @@
 
 このプロジェクトでは、調査データとアプリ実装データを分けて扱います。
 
-- `js/pokemonData.js`
+- `ポケモンユナイト/js/pokemonData.js`
   - アプリが実際に参照するデータ。
   - 原則として、確認済みまたは採用判断済みの値だけを入れる。
 
-- `../データリサーチ/`
+- `データリサーチ/`
   - 調査、候補、実測、矛盾、不明点を残す場所。
   - `candidate` や `unresolved` を確定値として扱わない。
 
-- `../人間確認用/`
+- `人間確認用/`
   - ゲーム内検証メモや、人間が確認した実測値を記録する場所。
 
-現時点では Git 管理ルートが `ポケモンユナイト/` のため、GitHub からは外側の `データリサーチ/` や `人間確認用/` が見えない場合があります。GitHub 上だけでレビューする場合は、この点に注意してください。
-Git管理ルートを外側へ広げる案は `docs/repository-layout-plan.md` にまとめています。
+現在のGit管理ルートは `pokemon-unite-app/` です。GitHubからも `データリサーチ/` や `人間確認用/` を参照できます。
+外側ルート化の判断理由は `ポケモンユナイト/docs/repository-layout-plan.md` に残しています。
 動画解析ツール関連は今回のGitHubリポジトリには含めない方針です。動画、切り抜き画像、仮想環境、`tools/damage-video-review/` は原則としてGit管理対象から外します。
 `tools/` は、軽量な補助スクリプトや説明ファイルだけをGit管理候補にします。動画解析ツールや生成物を含む重いフォルダは含めません。
 
@@ -66,10 +66,10 @@ Git管理ルートを外側へ広げる案は `docs/repository-layout-plan.md` �
 
 主に確認するファイル:
 
-- `js/damageCalculator.js`
-- `js/pokemonData.js`
-- `js/resultRenderer.js`
-- `tests/damageCalculator.test.js`
+- `ポケモンユナイト/js/damageCalculator.js`
+- `ポケモンユナイト/js/pokemonData.js`
+- `ポケモンユナイト/js/resultRenderer.js`
+- `ポケモンユナイト/tests/damageCalculator.test.js`
 - 関連する調査JSON
 
 注意点:
@@ -92,13 +92,13 @@ npm run stats -- Greninja 15
 
 主に確認するファイル:
 
-- `index.html`
-- `style.css`
-- `js/domElements.js`
-- `js/app.js`
-- `js/ui.js`
-- `js/uiEvents.js`
-- `js/mobileTabs.js`
+- `ポケモンユナイト/index.html`
+- `ポケモンユナイト/style.css`
+- `ポケモンユナイト/js/domElements.js`
+- `ポケモンユナイト/js/app.js`
+- `ポケモンユナイト/js/ui.js`
+- `ポケモンユナイト/js/uiEvents.js`
+- `ポケモンユナイト/js/mobileTabs.js`
 
 注意点:
 
@@ -106,18 +106,18 @@ npm run stats -- Greninja 15
 - PC、タブレット、スマホの表示を分けて確認する。
 - スマホ表示では横はみ出しを特に確認する。
 - 表示だけの変更と計算ロジック変更を混ぜない。
-- DOM取得を追加する場合は、原則 `js/domElements.js` に集約する。
+- DOM取得を追加する場合は、原則 `ポケモンユナイト/js/domElements.js` に集約する。
 
 ## 保存機能を触るとき
 
 主に確認するファイル:
 
-- `js/build/buildState.js`
-- `js/build/buildStorage.js`
-- `js/build/buildRenderer.js`
-- `js/build/buildController.js`
-- `js/app.js`
-- `tests/build*.test.js`
+- `ポケモンユナイト/js/build/buildState.js`
+- `ポケモンユナイト/js/build/buildStorage.js`
+- `ポケモンユナイト/js/build/buildRenderer.js`
+- `ポケモンユナイト/js/build/buildController.js`
+- `ポケモンユナイト/js/app.js`
+- `ポケモンユナイト/tests/build*.test.js`
 
 注意点:
 
@@ -130,10 +130,10 @@ npm run stats -- Greninja 15
 
 主に確認する場所:
 
-- `../データリサーチ/*.json`
-- `../データリサーチ/human-reviews/`
-- `docs/special-mechanics-*.md`
-- `docs/special-mechanics-*.json`
+- `データリサーチ/*.json`
+- `データリサーチ/human-reviews/`
+- `ポケモンユナイト/docs/special-mechanics-*.md`
+- `ポケモンユナイト/docs/special-mechanics-*.json`
 
 注意点:
 
@@ -152,9 +152,11 @@ node --check js/*.js
 npm run stats -- Pikachu 13
 ```
 
-計算処理を変えた場合は、最低限 `tests/damageCalculator.test.js` を確認してください。
-保存機能を変えた場合は `tests/build*.test.js` を確認してください。
-スマホタブを変えた場合は `tests/mobileTabs.test.js` を確認してください。
+コマンドは基本的に `ポケモンユナイト/` へ移動してから実行します。
+
+計算処理を変えた場合は、最低限 `ポケモンユナイト/tests/damageCalculator.test.js` を確認してください。
+保存機能を変えた場合は `ポケモンユナイト/tests/build*.test.js` を確認してください。
+スマホタブを変えた場合は `ポケモンユナイト/tests/mobileTabs.test.js` を確認してください。
 
 ## レビュー時に見る観点
 

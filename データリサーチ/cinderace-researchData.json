@@ -1347,10 +1347,10 @@
             ]
           },
           "roundingAndDefenseStatus": {
-            "status": "measuredCandidate",
+            "status": "strongMeasuredCandidate",
             "verifiedByHuman": true,
             "approvedForApp": false,
-            "currentObservation": "Cinderace Lv15 vs Cinderace Lv15 and Greninja Lv15 match the candidate Flare formula with standard defense correction. Pikachu Lv13-Lv15 are consistently 1 lower than straightforward total-before-defense rounding and match component-wise defense correction. Because Greninja Lv15 matches standard defense correction and not component-wise defense correction, the global Flare rounding rule remains unresolved.",
+            "currentObservation": "追加検証により、火種追加ダメージは一括防御補正よりも、式の各パーツに防御補正をかけてそれぞれfloorし、最後に合計する component-wise floor が最有力になった。攻撃側エースバーンLv13/Lv14/Lv15 vs ピカチュウLv15では、パーツ別防御補正が 612/667/726 とすべて一致し、一括防御補正はすべて+1ずれた。ゲッコウガLv15やエースバーン一部Lvでは±1程度のズレが残るため、内部ステータス小数または表示丸め差の可能性を残す。",
             "standardDefenseCorrection": "final = floor(rawDamage * 600 / (targetDefense + 600))",
             "componentWiseDefenseCorrectionCandidate": "final = floor(atkPart * 600 / (targetDefense + 600)) + floor(maxHpPart * 600 / (targetDefense + 600)) + floor(fixedValue * 600 / (targetDefense + 600))",
             "candidateFormula": "90% Atk + 0.7% Enemy Max HP x (Level - 1) + 25",
@@ -1401,16 +1401,50 @@
                 "judgment": "standardMatchesComponentWiseOffByOne"
               }
             ],
+            "attackerLevelEvidence": [
+              {
+                "attackerLevel": 13,
+                "target": "Pikachu Lv15",
+                "observedFlareDamage": 612,
+                "simpleCandidateResult": 613,
+                "componentWiseDefenseResult": 612,
+                "judgment": "componentWiseMatches"
+              },
+              {
+                "attackerLevel": 14,
+                "target": "Pikachu Lv15",
+                "observedFlareDamage": 667,
+                "simpleCandidateResult": 668,
+                "componentWiseDefenseResult": 667,
+                "judgment": "componentWiseMatches"
+              },
+              {
+                "attackerLevel": 15,
+                "target": "Pikachu Lv15",
+                "observedFlareDamage": 726,
+                "simpleCandidateResult": 727,
+                "componentWiseDefenseResult": 726,
+                "judgment": "componentWiseMatches"
+              }
+            ],
             "roundingHypothesisNotes": [
-              "Pikachu Lv13-Lv15: component-wise defense correction matches observed damage, while standard total-before-defense correction is consistently +1.",
-              "Greninja Lv15: standard total-before-defense correction matches observed damage, while component-wise defense correction is -1.",
-              "Do not adopt component-wise defense correction globally yet. Keep this as measuredCandidate / unresolved until more targets or internal stat precision can explain both patterns."
+              "Most likely formula: floor((Atk * 0.9) * 600 / (Defense + 600)) + floor((EnemyMaxHP * 0.007 * (AttackerLevel - 1)) * 600 / (Defense + 600)) + floor(25 * 600 / (Defense + 600)).",
+              "Attacker Lv13/Lv14/Lv15 vs Pikachu Lv15 measured Flare damage 612/667/726 matched component-wise floor exactly; total-before-defense rounding was +1 in all three cases.",
+              "Remaining +/-1 cases are compatible with internal non-integer stats or displayed stat rounding, but fully proving that would require very heavy verification.",
+              "Project decision: do not overfit the app formula to every +/-1 case yet. Treat component-wise floor as the best measured candidate and plan to show a future note that tiny damage differences may remain for unresolved internal precision."
             ],
             "remainingQuestions": [
-              "Why Pikachu Lv13-Lv15 observed values are consistently 1 lower than simple candidate calculation.",
-              "Whether component-wise defense correction, internal non-integer stats, or another rounding rule explains Pikachu without breaking Greninja.",
-              "Whether other max HP / defense combinations reveal a consistent rounding rule."
-            ]
+              "Exact source of remaining +/-1 differences for Greninja Lv15 and some Cinderace levels.",
+              "Whether game calculation uses non-integer internal defense/HP values while displayed data is rounded.",
+              "Whether all Pokemon beyond the currently verified three follow the same component-wise floor behavior.",
+              "Exact interaction with wild Pokemon cap stage remains separate and unresolved."
+            ],
+            "adoptionForApp": {
+              "approvedForImmediateFormulaReplacement": false,
+              "recommendedCalculationCandidate": "componentWiseDefenseFloor",
+              "expectedResidualDifference": "likely within 1-2 damage for some unresolved stat/rounding cases",
+              "futureUiNote": "未確定の内部ステータス・丸め仕様により、実ゲームと1〜2程度ずれる可能性があります。"
+            }
           }
         }
       }

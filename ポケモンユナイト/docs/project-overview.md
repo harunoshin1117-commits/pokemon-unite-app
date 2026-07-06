@@ -52,6 +52,7 @@
 ├─ js/
 │  ├─ app.js
 │  ├─ appSelectors.js
+│  ├─ battleState.js
 │  ├─ build/
 │  │  ├─ buildController.js
 │  │  ├─ buildRenderer.js
@@ -72,6 +73,7 @@
 │  ├─ buildRenderer.test.js
 │  ├─ buildState.test.js
 │  ├─ buildStorage.test.js
+│  ├─ battleState.test.js
 │  ├─ damageCalculator.test.js
 │  └─ mobileTabs.test.js
 ├─ index.html
@@ -137,6 +139,7 @@ JavaScriptはES Modulesとして読み込まれます。
   - `build/buildRenderer.js`
   - `build/buildState.js`
   - `build/buildStorage.js`
+  - `battleState.js`
   - `pokemonData.js`
   - `helditemData.js`
   - `damageCalculator.js`
@@ -193,6 +196,7 @@ JavaScriptはES Modulesとして読み込まれます。
 - `pikachu-image.png`: ピカチュウ画像
 - `Greninja-image.png`: ゲッコウガ画像
 - `Cinderace-image.png`: エースバーン画像
+- `cinderace-license-card.png`: 共通背景化候補のエースバーンカード画像
 - `scope-lens.png`: ピントレンズ画像
 - `muscle-band.png`: 力のハチマキ画像
 - `wise-glasses.png`: 物知り眼鏡画像
@@ -600,6 +604,8 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 
 - `app.js`
   - ユーザー操作、状態更新、再計算入口を担当します。
+- `battleState.js`
+  - 将来の詳細モード・攻撃順機能に向けた状態置き場です。現時点ではDOMや固定データを持たず、直近の計算結果 `lastCalculation` だけを管理します。
 - `appSelectors.js`
   - DOMに依存せず、渡されたデータから技、ステータス、HP、ポケモンを取得する補助関数を担当します。
 - `domElements.js`
@@ -624,6 +630,8 @@ ES Modulesの入口です。データ、計算、持ち物処理、表示関数�
 PCでは `damage-result` を常時表示します。スマホでは「結果」タブを選んだときだけ `damage-result` を表示します。
 
 攻撃後は、PC/スマホともJSが数値とHPバーを更新します。スマホでは自動的に「結果」タブへ切り替えます。
+
+攻撃後に作成した通常攻撃・技1・技2・ユナイト技の計算済みデータは、表示へ渡すのと同時に `battleState.lastCalculation` へ保存します。これは将来の詳細表示や検証向け表示で直近結果を再利用するための土台であり、現時点では計算式、保存ビルド形式、UI表示には接続していません。全リセット時は `lastCalculation` も `null` に戻します。
 
 - 計算結果ヘッダー
   - 左: `計算結果`
@@ -890,6 +898,8 @@ Node標準のテスト機能を使うため、外部ライブラリは追加し�
 `tests/buildState.test.js` では現在状態から保存形式への変換、データ複製、整数補正、通常攻撃データ検証、保存データ全体の必須構造検証を確認します。
 
 `tests/mobileTabs.test.js` ではスマホ幅でのタブ・パネル・共有カードの切り替えと、PC幅で状態を変更しないことを確認します。
+
+`tests/battleState.test.js` では `lastCalculation` の初期状態、保存、取得、リセットを確認します。
 
 2026-06-04のマージ前レビューで、未使用だった `itemModal`、`currentSelectedMove`、旧急所ポップアップ関数を削除しました。その後、未使用だったHTMLの `critical-popup` とCSSの旧急所ポップアップ表示・アニメーションも削除しました。現在使っている通常攻撃詳細表示の `critical-color` は残しています。
 

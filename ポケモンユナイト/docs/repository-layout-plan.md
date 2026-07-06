@@ -1,26 +1,26 @@
 # Repository Layout Plan
 
-最終更新日: 2026-07-01
+最終更新日: 2026-07-02
 
-このファイルは、現在 `ポケモンユナイト/` の中だけが Git 管理されている状態から、将来的に `pokemon-unite-app/` 全体を GitHub で読める構成へ広げるための計画メモです。
+このファイルは、`ポケモンユナイト/` の中だけが Git 管理されていた状態から、`pokemon-unite-app/` 全体を GitHub で読める構成へ広げたときの判断メモです。
 
-まだ実行手順ではなく、実施前に確認するための設計メモです。実際に `.git` の移動、ファイル移動、削除、Git ルート変更を行う前には必ず確認します。
+外側ルート化は完了済みです。今後は履歴・判断理由・除外方針を確認するための記録として扱います。
 
 ## 目的
 
 ChatGPT や Codex に GitHub リポジトリを読ませたとき、アプリ本体だけでなく、調査データ、検証メモ、補助ツールも同じ文脈で確認できるようにします。
 
-現在は Git 管理ルートが以下です。
+現在の Git 管理ルートは以下です。
 
 ```text
-C:\Projects\pokemon-unite-app\ポケモンユナイト
+C:\Projects\pokemon-unite-app
 ```
 
-そのため、GitHub から見ると、外側にある `データリサーチ/` や `人間確認用/` が見えない可能性があります。
+そのため、GitHub からも `ポケモンユナイト/`、`データリサーチ/`、`人間確認用/`、軽量な `tools/` を同じ文脈で確認できます。
 
 ## 現時点の確定方針
 
-Git管理ルートを外側へ広げる場合、GitHubに含める対象は以下を基本方針とします。
+GitHubに含める対象は以下を基本方針とします。
 
 ```text
 含める:
@@ -48,7 +48,10 @@ Git管理ルートを外側へ広げる場合、GitHubに含める対象は以�
 
 ```text
 C:\Projects\pokemon-unite-app\
-├─ ポケモンユナイト\        # 現在のGitリポジトリ本体
+├─ README.md                 # GitHub表示用の入口
+├─ .gitignore
+├─ .gitattributes
+├─ ポケモンユナイト\        # アプリ本体
 ├─ データリサーチ\          # 調査JSON、特殊効果調査、人間確認結果
 ├─ 人間確認用\              # 検証メモサイト、テンプレート
 ├─ tools\                   # 補助ツール
@@ -57,9 +60,9 @@ C:\Projects\pokemon-unite-app\
 └─ ポケモンユナイト.zip     # zip。基本的にGit管理しない候補
 ```
 
-## 現在GitHubから見えにくい重要データ
+## GitHubから読めるようになった重要データ
 
-GitHub連携のChatGPTに読ませたい可能性が高いもの:
+GitHub連携のChatGPTに読ませたい可能性が高いため、現在は以下もリポジトリ内で管理しています。
 
 - `データリサーチ/`
   - `pikachu-researchData.json`
@@ -90,7 +93,7 @@ GitHub連携のChatGPTに読ませたい可能性が高いもの:
 - ダメージ計算サイト本体、調査JSON、人間確認メモとは役割が違う。
 - ChatGPT にGitHubリポジトリを読ませるとき、動画解析ツール一式はノイズになりやすい。
 
-そのため、Gitルートを外側へ広げる場合も、以下は除外候補とします。
+そのため、外側ルート化後も以下は除外します。
 
 ```gitignore
 tools/damage-video-review/
@@ -109,9 +112,9 @@ damage-video-review/
 
 将来、動画解析ツールを再開する場合は、別リポジトリに分けるか、ローカル専用ツールとして扱う方針を優先します。
 
-## 目標構成の最小案
+## 採用した最小構成
 
-最初の段階では、ファイル移動をせず、Git 管理ルートだけを外側へ広げる案が安全です。
+ファイル移動をせず、Git 管理ルートだけを外側へ広げる案を採用しました。
 
 ```text
 C:\Projects\pokemon-unite-app\
@@ -168,7 +171,7 @@ pokemon-unite-app/
 含めたいもの:
 
 - アプリ本体
-- `docs/`
+- `ポケモンユナイト/docs/`
 - 調査JSON
 - 人間確認結果JSON
 - 検証メモHTML
@@ -196,10 +199,10 @@ pokemon-unite-app/
 - 一時ファイル
 - zipバックアップ
 
-## .gitignore に入れる候補
+## .gitignore に入れた方針
 
-Gitルートを外側へ広げる前に、外側用 `.gitignore` を確認します。
-具体的な候補と各項目の説明は [root-gitignore-plan.md](root-gitignore-plan.md) にまとめます。
+外側用 `.gitignore` は作成済みです。
+具体的な項目と各項目の説明は [root-gitignore-plan.md](root-gitignore-plan.md) にまとめています。
 
 候補:
 
@@ -231,9 +234,9 @@ Thumbs.db
 - `images/` はアプリに必要な素材があるため、まとめて除外しない。
 - 動画解析ツールの `input/` と `output/` は、原則除外候補。
 
-## 実施前チェックリスト
+## 実施済みチェックリスト
 
-実施前に確認すること:
+外側ルート化時に確認したこと:
 
 1. 現在の `git status` が把握できている。
 2. 未コミット変更をどう扱うか決めている。
@@ -244,9 +247,9 @@ Thumbs.db
 7. GitHubに上げたくないファイルがないか確認済み。
 8. Codex / ChatGPT に読ませたいファイルが整理されている。
 
-## 実施手順の候補
+## 実施手順の記録
 
-実際に行う場合の最小手順です。まだ実行しません。
+実施時の最小手順候補として残していた内容です。現在は完了済みです。
 
 ```powershell
 cd C:\Projects\pokemon-unite-app\ポケモンユナイト
@@ -285,19 +288,19 @@ git status
 git commit -m "Expand repository root to include research files"
 ```
 
-## 実施後に更新するもの
+## 実施後に更新したもの
 
-Gitルートを外側へ広げたら、以下を更新します。
+Gitルートを外側へ広げたため、以下を更新対象にしました。
 
 - `README.md`
-- `docs/project-map.md`
-- `docs/project-overview.md`
-- `docs/ai-workflow.md`
-- `docs/current-status.md`
-- `docs/repository-layout-plan.md`
+- `ポケモンユナイト/docs/project-map.md`
+- `ポケモンユナイト/docs/project-overview.md`
+- `ポケモンユナイト/docs/ai-workflow.md`
+- `ポケモンユナイト/docs/current-status.md`
+- `ポケモンユナイト/docs/repository-layout-plan.md`
 - GitHub Pages 設定に関係する説明
 
-特に `docs/current-status.md` の「Git管理上の注意」は必ず更新します。
+特に `ポケモンユナイト/docs/current-status.md` の「Git管理上の注意」は必ず更新します。
 
 ## 主なリスク
 
@@ -310,12 +313,12 @@ Gitルートを外側へ広げたら、以下を更新します。
 
 ## 現時点の推奨判断
 
-すぐにファイル移動までは行わず、まずはこの計画をもとに以下を確認します。
+今後も、すぐに `app/ research/ verification/` への大規模ファイル移動までは行わず、現在の構成を維持します。
 
 1. GitHubに見せたい調査ファイルを確定する。
 2. GitHubに上げない動画・出力ファイルを洗い出す。
 3. `.gitignore` を先に設計する。
 4. GitHub Pages の公開方法を確認する。
-5. 問題なければ、最小案として `.git` を外側へ移す。
+5. GitHub Pages の公開設定やREADMEリンクを必要に応じて見直す。
 
-今の段階では、`app/ research/ verification/` への大規模整理より、Gitルートだけを外側へ広げる最小案が安全です。
+今の段階では、`app/ research/ verification/` への大規模整理より、外側ルート化済みの現在構成を保つ方が安全です。

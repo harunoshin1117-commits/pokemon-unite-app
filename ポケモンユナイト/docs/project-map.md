@@ -4,6 +4,8 @@
 詳細な仕様・履歴・実装メモは [docs/project-overview.md](project-overview.md) を参照してください。
 アイデア置き場は [docs/roadmap.md](roadmap.md) です。
 
+パスは、特に断りがない限りリポジトリルート `pokemon-unite-app/` から見た相対パスです。
+
 ## 現在の大方針
 
 1. 計算処理は、できる限り実戦に近い順序を再現する。
@@ -24,102 +26,105 @@
 
 | 目的 | 最初に見るファイル | 必要なら見るファイル |
 | --- | --- | --- |
-| 現在の構造を把握する | `docs/project-map.md` | `docs/project-overview.md` |
-| 今後のアイデアを確認する | `docs/roadmap.md` | `docs/project-overview.md` |
-| 新しいポケモンを追加する | `..\データリサーチ\*.json`, `js/pokemonData.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js` |
-| ポケモンのステータスを直す | `..\データリサーチ\*.json`, `js/pokemonData.js` | `tests/damageCalculator.test.js` |
-| 技データを直す | `js/pokemonData.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js` |
-| ピカチュウの研究データを見る | `..\データリサーチ\pikachu-researchData.json` | `docs/project-overview.md` |
-| 通常攻撃の計算を直す | `js/damageCalculator.js` | `js/pokemonData.js`, `tests/damageCalculator.test.js` |
-| 通常攻撃データ形式を増やす | `js/pokemonData.js`, `js/damageCalculator.js` | `tests/damageCalculator.test.js` |
-| 急所固定を直す | `js/app.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js`, `tests/buildState.test.js` |
-| 技ダメージ計算を直す | `js/damageCalculator.js` | `js/pokemonData.js`, `tests/damageCalculator.test.js` |
-| `damageComponents` を使う技を増やす | `js/pokemonData.js`, `js/damageCalculator.js` | `tests/damageCalculator.test.js` |
-| 追加ダメージ効果を増やす | `js/pokemonData.js`, `js/damageCalculator.js` | `tests/damageCalculator.test.js`, `js/resultRenderer.js` |
-| エレキボールを確認する | `js/pokemonData.js`, `js/damageCalculator.js` | `..\データリサーチ\pikachu-researchData.json`, `tests/damageCalculator.test.js` |
-| 攻撃順・コンボ機能を考える | `js/damageCalculator.js`, `js/app.js` | `js/resultRenderer.js`, `docs/project-overview.md` |
-| 全ポケモンの特殊効果を横断調査する | `..\データリサーチ\mechanics-effects-survey-v3\batch-*`, `docs/special-mechanics-inventory-v3.json` | `docs/special-mechanics-matrix-v3.md`, `docs/special-mechanics-design-notes-v3.md`, 旧調査の `..\データリサーチ\mechanics-effects-survey-v2\batch-*`, `..\データリサーチ\mechanics-survey\batch-*`, 既存の `..\データリサーチ\*-researchData.json` |
-| 持ち物データを直す | `js/helditemData.js` | `js/heldItemService.js` |
-| 持ち物効果計算を直す | `js/heldItemService.js` | `js/damageCalculator.js`, `tests/damageCalculator.test.js` |
-| 保存ビルド機能を直す | `js/build/` | `js/app.js`, `tests/build*.test.js` |
-| 保存データの検証を直す | `js/build/buildState.js` | `tests/buildState.test.js` |
-| 保存一覧の表示を直す | `js/build/buildRenderer.js` | `tests/buildRenderer.test.js` |
-| 保存ボタンや保存イベントを直す | `js/build/buildController.js` | `tests/buildController.test.js`, `js/app.js` |
-| localStorage処理を直す | `js/build/buildStorage.js` | `tests/buildStorage.test.js` |
-| 結果表示を直す | `js/resultRenderer.js` | `js/app.js`, `style.css` |
-| HP表示を直す | `js/resultRenderer.js` | `js/app.js`, `style.css` |
-| DOM取得を追加する | `js/domElements.js` | `index.html`, `js/app.js`, `js/ui.js`, `js/uiEvents.js` |
-| UI開閉イベントを直す | `js/uiEvents.js` | `js/domElements.js`, `js/app.js` |
-| スマホタブを直す | `js/mobileTabs.js` | `tests/mobileTabs.test.js`, `index.html`, `style.css` |
-| スマホ表示CSSを直す | `style.css` | `index.html`, `js/mobileTabs.js`, `js/resultRenderer.js` |
-| セレクト候補を直す | `js/selectOptions.js` | `js/pokemonData.js`, `js/app.js` |
-| app全体の接続を確認する | `js/app.js` | 必要な担当ファイルだけ |
-| JS構文チェックをする | `js/*.js` | `node --check js/*.js` |
-| 自動テストを確認する | `tests/*.test.js` | `package.json` |
+| 現在の構造を把握する | `ポケモンユナイト/docs/project-map.md` | `ポケモンユナイト/docs/project-overview.md` |
+| 今後のアイデアを確認する | `ポケモンユナイト/docs/roadmap.md` | `ポケモンユナイト/docs/project-overview.md` |
+| 新しいポケモンを追加する | `データリサーチ/*.json`, `ポケモンユナイト/js/pokemonData.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| ポケモンのステータスを直す | `データリサーチ/*.json`, `ポケモンユナイト/js/pokemonData.js` | `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 技データを直す | `ポケモンユナイト/js/pokemonData.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| ピカチュウの研究データを見る | `データリサーチ/pikachu-researchData.json` | `ポケモンユナイト/docs/project-overview.md` |
+| 通常攻撃の計算を直す | `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 通常攻撃データ形式を増やす | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 急所固定を直す | `ポケモンユナイト/js/app.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js`, `ポケモンユナイト/tests/buildState.test.js` |
+| 技ダメージ計算を直す | `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| `damageComponents` を使う技を増やす | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 追加ダメージ効果を増やす | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `ポケモンユナイト/tests/damageCalculator.test.js`, `ポケモンユナイト/js/resultRenderer.js` |
+| エレキボールを確認する | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js` | `データリサーチ/pikachu-researchData.json`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 攻撃順・コンボ機能を考える | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/js/resultRenderer.js`, `ポケモンユナイト/docs/project-overview.md` |
+| 直近の計算結果状態を確認する | `ポケモンユナイト/js/battleState.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/tests/battleState.test.js`, `ポケモンユナイト/docs/project-overview.md` |
+| 全ポケモンの特殊効果を横断調査する | `データリサーチ/mechanics-effects-survey-v3/batch-*`, `ポケモンユナイト/docs/special-mechanics-inventory-v3.json` | `ポケモンユナイト/docs/special-mechanics-matrix-v3.md`, `ポケモンユナイト/docs/special-mechanics-design-notes-v3.md`, 旧調査の `データリサーチ/mechanics-effects-survey-v2/batch-*`, `データリサーチ/mechanics-survey/batch-*`, 既存の `データリサーチ/*-researchData.json` |
+| 持ち物データを直す | `ポケモンユナイト/js/helditemData.js` | `ポケモンユナイト/js/heldItemService.js` |
+| 持ち物効果計算を直す | `ポケモンユナイト/js/heldItemService.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
+| 保存ビルド機能を直す | `ポケモンユナイト/js/build/` | `ポケモンユナイト/js/app.js`, `ポケモンユナイト/tests/build*.test.js` |
+| 保存データの検証を直す | `ポケモンユナイト/js/build/buildState.js` | `ポケモンユナイト/tests/buildState.test.js` |
+| 保存一覧の表示を直す | `ポケモンユナイト/js/build/buildRenderer.js` | `ポケモンユナイト/tests/buildRenderer.test.js` |
+| 保存ボタンや保存イベントを直す | `ポケモンユナイト/js/build/buildController.js` | `ポケモンユナイト/tests/buildController.test.js`, `ポケモンユナイト/js/app.js` |
+| localStorage処理を直す | `ポケモンユナイト/js/build/buildStorage.js` | `ポケモンユナイト/tests/buildStorage.test.js` |
+| 結果表示を直す | `ポケモンユナイト/js/resultRenderer.js` | `ポケモンユナイト/js/app.js`, `ポケモンユナイト/style.css` |
+| HP表示を直す | `ポケモンユナイト/js/resultRenderer.js` | `ポケモンユナイト/js/app.js`, `ポケモンユナイト/style.css` |
+| DOM取得を追加する | `ポケモンユナイト/js/domElements.js` | `ポケモンユナイト/index.html`, `ポケモンユナイト/js/app.js`, `ポケモンユナイト/js/ui.js`, `ポケモンユナイト/js/uiEvents.js` |
+| UI開閉イベントを直す | `ポケモンユナイト/js/uiEvents.js` | `ポケモンユナイト/js/domElements.js`, `ポケモンユナイト/js/app.js` |
+| スマホタブを直す | `ポケモンユナイト/js/mobileTabs.js` | `ポケモンユナイト/tests/mobileTabs.test.js`, `ポケモンユナイト/index.html`, `ポケモンユナイト/style.css` |
+| スマホ表示CSSを直す | `ポケモンユナイト/style.css` | `ポケモンユナイト/index.html`, `ポケモンユナイト/js/mobileTabs.js`, `ポケモンユナイト/js/resultRenderer.js` |
+| セレクト候補を直す | `ポケモンユナイト/js/selectOptions.js` | `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/app.js` |
+| app全体の接続を確認する | `ポケモンユナイト/js/app.js` | 必要な担当ファイルだけ |
+| JS構文チェックをする | `ポケモンユナイト/js/*.js` | `node --check js/*.js` |
+| 自動テストを確認する | `ポケモンユナイト/tests/*.test.js` | `ポケモンユナイト/package.json` |
 
 ## 主要ファイル
 
 ### ルート
 
-- `index.html`: 既存DOMの置き場所。id/class変更は影響が大きい。
-- `style.css`: PC/スマホ共通の見た目。スマホタブや折りたたみ表示もここ。
-- `package.json`: テスト実行設定。
-- `README.md`: 外向け説明。
+- `README.md`: GitHub表示用の外向け入口。
+- `ポケモンユナイト/index.html`: 既存DOMの置き場所。id/class変更は影響が大きい。
+- `ポケモンユナイト/style.css`: PC/スマホ共通の見た目。スマホタブや折りたたみ表示もここ。
+- `ポケモンユナイト/package.json`: テスト実行設定。
 
 ### docs
 
-- `docs/project-map.md`: 作業入口の地図。最初に読む。
-- `docs/project-overview.md`: 現在の構成、主要関数、設計メモ、再開メモ。
-- `docs/roadmap.md`: 思いついたアイデアの保管場所。優先順位や実装決定ではない。
-- `docs/pr-description.md`: PR本文のコピー用メモがある場合に使う。
+- `ポケモンユナイト/docs/project-map.md`: 作業入口の地図。最初に読む。
+- `ポケモンユナイト/docs/project-overview.md`: 現在の構成、主要関数、設計メモ、再開メモ。
+- `ポケモンユナイト/docs/roadmap.md`: 思いついたアイデアの保管場所。優先順位や実装決定ではない。
+- `ポケモンユナイト/docs/pr-description.md`: PR本文のコピー用メモがある場合に使う。
 
 ### data research
 
-- `..\データリサーチ\README.md`: 研究データ置き場の説明。
-- `..\データリサーチ\pikachu-researchData.json`: ピカチュウの検証候補、出典、確定状況、矛盾点。
-- `..\データリサーチ\mechanics-survey\batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技の特殊効果をバッチ単位で横断調査するドラフト。
-- `..\データリサーチ\mechanics-effects-survey-v2\batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技を、ソース単位ではなく効果単位で分解したv2ドラフト。直接ダメージと単純移動は `baseAction` に分ける。
-- `..\データリサーチ\mechanics-effects-survey-v3\batch-*`: v2で漏れていた派生技、上位技、Plus効果、強化通常攻撃、Unite Buffを含め、調査対象ソース一覧を作ってから効果単位で分解したv3ドラフト。
-- `docs/special-mechanics-inventory.json`: 特殊効果の横断一覧。攻撃順依存、時間管理、相手ごとの状態管理などを機械処理しやすい形で確認する。
-- `docs/special-mechanics-matrix.md`: 特殊効果の横断表。人間がざっと比較するためのMarkdown一覧。
-- `docs/special-mechanics-design-notes.md`: 横断調査から見える共通設計案と未確認リスクのメモ。
-- `docs/special-mechanics-inventory-v2.json`: v2特殊効果の横断一覧。特殊効果0件のソースも残し、効果ごとに `battleState` 必要理由を確認する。
-- `docs/special-mechanics-matrix-v2.md`: v2特殊効果の横断表。効果単位で人間レビューしやすくしたMarkdown一覧。
-- `docs/special-mechanics-design-notes-v2.md`: v2調査から見える共通設計案と未確認リスクのメモ。
-- `docs/special-mechanics-inventory-v3.json`: v3特殊効果の横断一覧。全技ソース、Plus効果、強化通常攻撃、Unite Buff、v2との差分、未取得技チェック結果を含む。
-- `docs/special-mechanics-matrix-v3.md`: v3特殊効果の横断表。ポケモンごとのソース数と効果一覧をMarkdownで確認する。
-- `docs/special-mechanics-design-notes-v3.md`: v3調査から見えるデータ列挙・Plus効果・強化通常攻撃分離の設計メモ。
+- `データリサーチ/README.md`: 研究データ置き場の説明。
+- `データリサーチ/pikachu-researchData.json`: ピカチュウの検証候補、出典、確定状況、矛盾点。
+- `データリサーチ/mechanics-survey/batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技の特殊効果をバッチ単位で横断調査するドラフト。
+- `データリサーチ/mechanics-effects-survey-v2/batch-*`: 全ポケモンの特性・通常攻撃・技・ユナイト技を、ソース単位ではなく効果単位で分解したv2ドラフト。直接ダメージと単純移動は `baseAction` に分ける。
+- `データリサーチ/mechanics-effects-survey-v3/batch-*`: v2で漏れていた派生技、上位技、Plus効果、強化通常攻撃、Unite Buffを含め、調査対象ソース一覧を作ってから効果単位で分解したv3ドラフト。
+- `ポケモンユナイト/docs/special-mechanics-inventory.json`: 特殊効果の横断一覧。攻撃順依存、時間管理、相手ごとの状態管理などを機械処理しやすい形で確認する。
+- `ポケモンユナイト/docs/special-mechanics-matrix.md`: 特殊効果の横断表。人間がざっと比較するためのMarkdown一覧。
+- `ポケモンユナイト/docs/special-mechanics-design-notes.md`: 横断調査から見える共通設計案と未確認リスクのメモ。
+- `ポケモンユナイト/docs/special-mechanics-inventory-v2.json`: v2特殊効果の横断一覧。特殊効果0件のソースも残し、効果ごとに `battleState` 必要理由を確認する。
+- `ポケモンユナイト/docs/special-mechanics-matrix-v2.md`: v2特殊効果の横断表。効果単位で人間レビューしやすくしたMarkdown一覧。
+- `ポケモンユナイト/docs/special-mechanics-design-notes-v2.md`: v2調査から見える共通設計案と未確認リスクのメモ。
+- `ポケモンユナイト/docs/special-mechanics-inventory-v3.json`: v3特殊効果の横断一覧。全技ソース、Plus効果、強化通常攻撃、Unite Buff、v2との差分、未取得技チェック結果を含む。
+- `ポケモンユナイト/docs/special-mechanics-matrix-v3.md`: v3特殊効果の横断表。ポケモンごとのソース数と効果一覧をMarkdownで確認する。
+- `ポケモンユナイト/docs/special-mechanics-design-notes-v3.md`: v3調査から見えるデータ列挙・Plus効果・強化通常攻撃分離の設計メモ。
 
 ### js
 
-- `js/app.js`: 画面全体の接続役。DOMイベント、状態取得、計算呼び出し、描画呼び出しをつなぐ。
-- `js/appSelectors.js`: app内で使う選択・判定系の補助。
-- `js/damageCalculator.js`: ダメージ計算の中心。DOMを直接参照しない方針。
-- `js/domElements.js`: DOM取得の集約場所。
-- `js/helditemData.js`: 持ち物データ。
-- `js/heldItemService.js`: 持ち物補正の計算・集計。
-- `js/mobileTabs.js`: スマホ下部タブの表示切り替え。
-- `js/pokemonData.js`: ポケモン、ステータス、技、通常攻撃、計算用データ。
-- `js/resultRenderer.js`: 計算結果の画面表示。
-- `js/selectOptions.js`: セレクトボックス候補の生成・更新。
-- `js/ui.js`: UI表示補助。
-- `js/uiEvents.js`: 状態更新を伴わないUI開閉イベント。
+- `ポケモンユナイト/js/app.js`: 画面全体の接続役。DOMイベント、状態取得、計算呼び出し、描画呼び出しをつなぐ。
+- `ポケモンユナイト/js/appSelectors.js`: app内で使う選択・判定系の補助。
+- `ポケモンユナイト/js/battleState.js`: 将来の詳細モードや攻撃順機能に向けた戦闘状態の置き場。現時点では直近の計算結果 `lastCalculation` だけを管理する。
+- `ポケモンユナイト/js/damageCalculator.js`: ダメージ計算の中心。DOMを直接参照しない方針。
+- `ポケモンユナイト/js/domElements.js`: DOM取得の集約場所。
+- `ポケモンユナイト/js/helditemData.js`: 持ち物データ。
+- `ポケモンユナイト/js/heldItemService.js`: 持ち物補正の計算・集計。
+- `ポケモンユナイト/js/mobileTabs.js`: スマホ下部タブの表示切り替え。
+- `ポケモンユナイト/js/pokemonData.js`: ポケモン、ステータス、技、通常攻撃、計算用データ。
+- `ポケモンユナイト/js/resultRenderer.js`: 計算結果の画面表示。
+- `ポケモンユナイト/js/selectOptions.js`: セレクトボックス候補の生成・更新。
+- `ポケモンユナイト/js/ui.js`: UI表示補助。
+- `ポケモンユナイト/js/uiEvents.js`: 状態更新を伴わないUI開閉イベント。
 
 ### js/build
 
-- `js/build/buildController.js`: 保存機能のイベント接続。
-- `js/build/buildRenderer.js`: 保存一覧・保存内容表示。
-- `js/build/buildState.js`: 保存するビルド状態の検証・補正。
-- `js/build/buildStorage.js`: localStorageへの保存・取得・削除。
+- `ポケモンユナイト/js/build/buildController.js`: 保存機能のイベント接続。
+- `ポケモンユナイト/js/build/buildRenderer.js`: 保存一覧・保存内容表示。
+- `ポケモンユナイト/js/build/buildState.js`: 保存するビルド状態の検証・補正。
+- `ポケモンユナイト/js/build/buildStorage.js`: localStorageへの保存・取得・削除。
 
 ### tests
 
-- `tests/damageCalculator.test.js`: ダメージ計算、通常攻撃、追加ダメージ、HP引き継ぎ。
-- `tests/buildState.test.js`: 保存データの検証・補正。
-- `tests/buildStorage.test.js`: localStorage保存処理。
-- `tests/buildRenderer.test.js`: 保存一覧の表示。
-- `tests/buildController.test.js`: 保存UIイベント。
-- `tests/mobileTabs.test.js`: スマホタブ切り替え。
+- `ポケモンユナイト/tests/damageCalculator.test.js`: ダメージ計算、通常攻撃、追加ダメージ、HP引き継ぎ。
+- `ポケモンユナイト/tests/battleState.test.js`: `battleState.js` の直近計算結果の保存・取得・リセット。
+- `ポケモンユナイト/tests/buildState.test.js`: 保存データの検証・補正。
+- `ポケモンユナイト/tests/buildStorage.test.js`: localStorage保存処理。
+- `ポケモンユナイト/tests/buildRenderer.test.js`: 保存一覧の表示。
+- `ポケモンユナイト/tests/buildController.test.js`: 保存UIイベント。
+- `ポケモンユナイト/tests/mobileTabs.test.js`: スマホタブ切り替え。
 
 ## 計算データを見るときの注意
 
@@ -133,12 +138,12 @@
 
 ## 最小確認範囲
 
-- 計算式を変える: `js/pokemonData.js`, `js/damageCalculator.js`, `tests/damageCalculator.test.js`
-- 表示だけ変える: `js/resultRenderer.js`, `style.css`, 必要なら `index.html`
-- DOM取得を増やす: `index.html`, `js/domElements.js`, 呼び出し元1つ
-- 保存機能を変える: `js/build/` と対応する `tests/build*.test.js`
-- スマホタブを変える: `js/mobileTabs.js`, `style.css`, `tests/mobileTabs.test.js`
-- ドキュメントだけ変える: `docs/project-map.md`, `docs/project-overview.md`, `docs/roadmap.md`
+- 計算式を変える: `ポケモンユナイト/js/pokemonData.js`, `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js`
+- 表示だけ変える: `ポケモンユナイト/js/resultRenderer.js`, `ポケモンユナイト/style.css`, 必要なら `ポケモンユナイト/index.html`
+- DOM取得を増やす: `ポケモンユナイト/index.html`, `ポケモンユナイト/js/domElements.js`, 呼び出し元1つ
+- 保存機能を変える: `ポケモンユナイト/js/build/` と対応する `ポケモンユナイト/tests/build*.test.js`
+- スマホタブを変える: `ポケモンユナイト/js/mobileTabs.js`, `ポケモンユナイト/style.css`, `ポケモンユナイト/tests/mobileTabs.test.js`
+- ドキュメントだけ変える: `ポケモンユナイト/docs/project-map.md`, `ポケモンユナイト/docs/project-overview.md`, `ポケモンユナイト/docs/roadmap.md`
 
 ## テストの目安
 
@@ -153,7 +158,7 @@
 - `damageCalculator.js` はDOMやUI入力欄を直接参照しない。
 - `resultRenderer.js` は表示担当。計算式を持たせない。
 - `pokemonData.js` の数値は、出典や人間の検証状態を確認してから変える。
-- `index.html` のid/class変更は、DOM取得・CSS・テストへ影響しやすい。
+- `ポケモンユナイト/index.html` のid/class変更は、DOM取得・CSS・テストへ影響しやすい。
 - 保存データ形式を変える場合は、古いlocalStorageデータの扱いを決める。
 - 攻撃順機能は将来予定。現時点の技使用回数とは責務を混ぜすぎない。
 

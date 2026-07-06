@@ -666,7 +666,7 @@ export const pokemonsList = [
     {
         id:"Cinderace",
         name:"エースバーン",
-        Image:"./images/Cinderace-image.png",
+        Image:"./images/cinderace-license-card.png",
         abilityDisplayData: {
             name: "もうか",
             shortDescription:

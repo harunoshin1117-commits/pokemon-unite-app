@@ -2,7 +2,7 @@
 
 調査日: 2026-06-23
 
-このメモは `docs/special-mechanics-inventory.json` と `../データリサーチ/mechanics-survey/` 配下に生成した調査ファイルをもとにしたドラフトです。
+このメモは `ポケモンユナイト/docs/special-mechanics-inventory.json` と `データリサーチ/mechanics-survey/` 配下に生成した調査ファイルをもとにしたドラフトです。
 まだ実装方針として確定したものではありません。
 
 ## 調査範囲

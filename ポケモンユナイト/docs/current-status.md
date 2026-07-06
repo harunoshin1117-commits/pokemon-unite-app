@@ -1,9 +1,9 @@
 # Current Status
 
-最終更新日: 2026-07-01
+最終更新日: 2026-07-02
 
 このファイルは、現在の実装状況と調査状況を短く確認するためのメモです。
-詳しい履歴や設計メモは `docs/project-overview.md`、作業入口は `docs/project-map.md` を参照してください。
+詳しい履歴や設計メモは `ポケモンユナイト/docs/project-overview.md`、作業入口は `ポケモンユナイト/docs/project-map.md` を参照してください。
 
 ## プロジェクトの現在地
 
@@ -18,30 +18,32 @@
 
 ## Git管理上の注意
 
-現在のGit管理ルートは `C:\Projects\pokemon-unite-app\ポケモンユナイト` です。
+現在のGit管理ルートは `C:\Projects\pokemon-unite-app` です。
 
-一方で、重要な調査データや検証メモは外側にもあります。
+GitHubから読む場合も、アプリ本体、調査データ、人間確認用ファイルを同じリポジトリ内で確認できます。
 
 ```text
 C:\Projects\pokemon-unite-app\
-├─ ポケモンユナイト\      # 現在のGitリポジトリ本体
+├─ README.md               # GitHub表示用の入口
+├─ .gitignore              # 大容量・ローカル専用ファイルの除外
+├─ .gitattributes          # テキスト改行をLFへ統一
+├─ ポケモンユナイト\      # アプリ本体
 ├─ データリサーチ\        # 調査JSON、特殊効果調査、人間確認結果
 ├─ 人間確認用\            # 検証メモサイト、テンプレート
 └─ tools\                 # 動画確認などの補助ツール
 ```
 
-GitHub 上でリポジトリだけを読む場合、外側の調査ファイルが見えない可能性があります。
-将来的にはリポジトリルートを `pokemon-unite-app` へ広げる案がありますが、まだ実施していません。
-具体的な案、含めるファイル、除外するファイル、実施前チェックリストは `docs/repository-layout-plan.md` にまとめています。
-外側ルート化用の `.gitignore` 案は `docs/root-gitignore-plan.md` にまとめています。
+外側ルート化は完了済みです。
+過去の計画や判断理由は `ポケモンユナイト/docs/repository-layout-plan.md`、除外方針は `ポケモンユナイト/docs/root-gitignore-plan.md` に残しています。
 
 動画解析ツール関連は、今回のGitHubリポジトリには含めない方針です。`tools/damage-video-review/`、検証動画、動画処理の出力画像や仮想環境は、Git管理対象から外します。
 
-現時点の方針では、GitHubに含める候補は `ポケモンユナイト/`、`データリサーチ/`、`人間確認用/`、`tools/` 内の軽量な補助スクリプトだけです。`tools/` 全体を無条件に追加しないよう注意します。
+現在GitHubに含める対象は `ポケモンユナイト/`、`データリサーチ/`、`人間確認用/`、`tools/` 内の軽量な補助スクリプトです。
+`tools/` 全体を無条件に追加せず、動画解析ツールや生成物は除外します。
 
 ## 現在登録されているポケモン
 
-`js/pokemonData.js` には以下が登録されています。
+`ポケモンユナイト/js/pokemonData.js` には以下が登録されています。
 
 - ピカチュウ
 - ゲッコウガ
@@ -70,6 +72,7 @@ npm run stats -- Greninja 15
 - 攻撃側現在HPの手入力
 - スマホ向け下部タブUI
 - PC、タブレット、スマホ向けの一部レスポンシブ調整
+- `battleState.lastCalculation` による直近計算結果の保存
 
 ## 現在のUI方針
 
@@ -82,6 +85,17 @@ npm run stats -- Greninja 15
 - 現在HPは保存ビルドへ含める。
 - ただし、現在HPはまだ計算関数へ本格接続しない。
 - スマホでは横はみ出しを優先して潰す。
+
+## battleStateの現在地
+
+`ポケモンユナイト/js/battleState.js` を追加し、現在は直近の計算結果 `lastCalculation` だけを管理しています。
+
+- 攻撃後、通常攻撃・技1・技2・ユナイト技の計算済みデータを保存する。
+- 全リセット時に `lastCalculation` を `null` へ戻す。
+- DOM、ポケモン固定データ、持ち物固定データは持たない。
+- `damageCalculator.js` からは参照しない。
+
+まだ attacker / defender の現在HP、火種スタック、シールド、攻撃順は移行していません。
 
 ## データ駆動化の状況
 
@@ -169,7 +183,7 @@ npm run stats -- Greninja 15
 measuredCandidate / unresolved
 ```
 
-この内容は `../データリサーチ/cinderace-researchData.json` に記録済みです。
+この内容は `データリサーチ/cinderace-researchData.json` に記録済みです。
 
 ### ユナイト技
 
@@ -208,7 +222,7 @@ measuredCandidate / unresolved
 2. 火種の未確認点を減らす。
 3. エースバーンのユナイト技本体ダメージの謎を継続調査する。
 4. 調査データとアプリ実装データの差分を整理する。
-5. 必要に応じて、Git管理ルートを外側へ広げる準備をする。
+5. GitHub上で読みやすいように、案内ドキュメントと調査データのリンクを必要に応じて更新する。
 
 今すぐ避けたいこと:
 
@@ -219,8 +233,8 @@ measuredCandidate / unresolved
 
 ## AIに読ませるときの注意
 
-- `docs/ai-workflow.md` を先に読む。
-- 調査JSONが GitHub 上に見えない場合があることを明示する。
+- `ポケモンユナイト/docs/ai-workflow.md` を先に読む。
+- 調査JSONは `データリサーチ/` にあるため、アプリ本体の `ポケモンユナイト/` だけを読んで判断しない。
 - `candidate`、`measuredCandidate`、`unresolved` を確定扱いしない。
 - アプリ本体に反映済みの情報と、調査中の情報を分ける。
 - 計算結果を変える提案では、どの実測値と照合したかを必ず確認する。

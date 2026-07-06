@@ -40,6 +40,10 @@ import {
 import { bindUiEvents } from "./uiEvents.js";
 import { bindMobileTabs } from "./mobileTabs.js";
 import {
+    resetLastCalculation,
+    setLastCalculation
+} from "./battleState.js";
+import {
     deleteBuild,
     getSavedBuilds,
     loadBuild,
@@ -258,6 +262,7 @@ pokemonSelect.addEventListener("change", () => {
     selectedSkillTwo = null;
     selectedSkillThird = null;
     hasAttacked = false;
+    resetLastCalculation();
     resultPopup.style.display = "none";
     resetDamageResultVisibility();
     detailDamageResult.classList.remove("is-open");
@@ -525,6 +530,7 @@ function resetDamageResultVisibility(){
 
 function resetAppState(){
     hasAttacked = false;
+    resetLastCalculation();
     lockedNormalAttackCriticalPattern = null;
 
     currentPokemon = pokemonsList[0];
@@ -851,14 +857,19 @@ function attackNormalAttack(){
         hpFillUnite,
         uniteDamageData
     );
-    renderTotalDamageResult(
-        finalDamageData,
-        {
-            skillOne: skillOneDamageData,
-            skillTwo: skillTwoDamageData,
-            unite: uniteDamageData
-        }
-    );
+    const moveDamageData = {
+        skillOne: skillOneDamageData,
+        skillTwo: skillTwoDamageData,
+        unite: uniteDamageData
+    };
+
+    setLastCalculation({
+        normalAttack: finalDamageData,
+        moveDamageData,
+        enemyHp: getEnemyHp()
+    });
+
+    renderTotalDamageResult(finalDamageData, moveDamageData);
 
 }
 

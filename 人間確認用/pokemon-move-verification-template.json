@@ -1,202 +1,176 @@
-{
-  "templateName": "cinderace-blaze-flare-defense-rounding-check",
-  "title": "エースバーン・もうか火種 防御補正・丸め順検証",
-  "fields": [
-    {
-      "id": "pokemon",
-      "label": "ポケモン",
-      "type": "input",
-      "placeholder": "例: エースバーン",
-      "defaultValue": "エースバーン"
-    },
-    {
-      "id": "move",
-      "label": "検証対象",
-      "type": "input",
-      "placeholder": "例: 特性「もうか」火種 防御補正・丸め順",
-      "defaultValue": "特性「もうか」火種 防御補正・丸め順"
-    },
-    {
-      "id": "attackerLevel",
-      "label": "攻撃側レベル",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 15",
-      "defaultValue": "15"
-    },
-    {
-      "id": "attackerStats",
-      "label": "攻撃側ステータス",
-      "type": "textarea",
-      "className": "full",
-      "placeholder": "例: 攻撃418 / 持ち物なし / メダルなし",
-      "defaultValue": "攻撃418 / 持ち物なし / メダルなし"
-    },
-    {
-      "id": "targetPokemon",
-      "label": "相手ポケモン",
-      "type": "input",
-      "placeholder": "例: ピカチュウ / エースバーン / ゲッコウガ",
-      "defaultValue": "ピカチュウ"
-    },
-    {
-      "id": "targetLevel",
-      "label": "相手レベル",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 15",
-      "defaultValue": "15"
-    },
-    {
-      "id": "targetMaxHp",
-      "label": "相手最大HP",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 6300",
-      "defaultValue": ""
-    },
-    {
-      "id": "targetDefense",
-      "label": "相手防御",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 240",
-      "defaultValue": ""
-    },
-    {
-      "id": "targetCurrentHp",
-      "label": "命中直前の相手HP",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 発火攻撃が当たる直前のHP",
-      "defaultValue": ""
-    },
-    {
-      "id": "heldItems",
-      "label": "持ち物",
-      "type": "input",
-      "placeholder": "例: なし",
-      "defaultValue": "なし"
-    },
-    {
-      "id": "emblems",
-      "label": "メダル",
-      "type": "input",
-      "placeholder": "例: なし",
-      "defaultValue": "なし"
-    },
-    {
-      "id": "critical",
-      "label": "本体急所",
-      "type": "choice",
-      "className": "full",
-      "defaultValue": "なし / 不明",
-      "options": [
-        "なし",
-        "あり",
-        "不明",
-        "なし / 不明",
-        "混在"
-      ]
-    },
-    {
-      "id": "startingCinderStacks",
-      "label": "発火前の火種数",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 4 または 3",
-      "defaultValue": "4"
-    },
-    {
-      "id": "triggerAction",
-      "label": "発火させた攻撃",
-      "type": "choice",
-      "className": "full",
-      "defaultValue": "通常攻撃",
-      "options": [
-        "通常攻撃",
-        "強化通常攻撃",
-        "技",
-        "その他"
-      ]
-    },
-    {
-      "id": "triggerMoveName",
-      "label": "技名・攻撃名",
-      "type": "input",
-      "placeholder": "例: 通常攻撃 / 強化通常攻撃 / ニトロチャージ",
-      "defaultValue": "通常攻撃"
-    },
-    {
-      "id": "bodyDamageDisplay",
-      "label": "攻撃本体ダメージ表示",
-      "type": "input",
-      "placeholder": "例: 298",
-      "defaultValue": ""
-    },
-    {
-      "id": "flareDamageDisplay",
-      "label": "火種追加ダメージ表示",
-      "type": "input",
-      "placeholder": "例: 726",
-      "defaultValue": ""
-    },
-    {
-      "id": "hpAfterFlare",
-      "label": "本体+火種後の相手HP",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 最終HP。自然回復が入ったら補足へ",
-      "defaultValue": ""
-    },
-    {
-      "id": "naturalRecoveryObserved",
-      "label": "自然回復らしきズレ",
-      "type": "choice",
-      "className": "full",
-      "defaultValue": "不明",
-      "options": [
-        "なし",
-        "あり",
-        "不明"
-      ]
-    },
-    {
-      "id": "measuredDamage1",
-      "label": "実測ダメージ 1回目",
-      "type": "input",
-      "placeholder": "例: 本体298 / 火種726",
-      "defaultValue": ""
-    },
-    {
-      "id": "measuredDamage2",
-      "label": "実測ダメージ 2回目",
-      "type": "input",
-      "placeholder": "例: 同条件2回目",
-      "defaultValue": ""
-    },
-    {
-      "id": "measuredDamage3",
-      "label": "実測ダメージ 3回目",
-      "type": "input",
-      "placeholder": "例: 同条件3回目",
-      "defaultValue": ""
-    },
-    {
-      "id": "displayCount",
-      "label": "表示回数",
-      "type": "input",
-      "inputmode": "numeric",
-      "placeholder": "例: 本体と火種で2回",
-      "defaultValue": ""
-    },
-    {
-      "id": "notes",
-      "label": "補足",
-      "type": "textarea",
-      "className": "full",
-      "placeholder": "例: 相手を変えて火種追加ダメージを測る。自然回復が入った場合は+値を記録。",
-      "defaultValue": "火種追加ダメージ726の丸め順と防御補正を切り分ける検証。相手ポケモンを変えて、最大HP・防御・火種追加ダメージを記録する。野生ポケモンは上限500が混ざるため使わない。最終HPが計算とずれる場合、最大HPの1%自然回復が入った可能性を確認する。"
-    }
-  ]
+﻿{
+    "templateName":  "cinderace-blaze-flare-level-sweep-check",
+    "title":  "エースバーン・もうか火種 Lv1〜15横断検証",
+    "fields":  [
+                   {
+                       "id":  "pokemon",
+                       "label":  "ポケモン",
+                       "type":  "input",
+                       "placeholder":  "例: エースバーン",
+                       "defaultValue":  "エースバーン"
+                   },
+                   {
+                       "id":  "move",
+                       "label":  "検証対象",
+                       "type":  "input",
+                       "placeholder":  "例: 特性「もうか」火種 Lv1〜15横断検証",
+                       "defaultValue":  "特性「もうか」火種 Lv1〜15横断検証"
+                   },
+                   {
+                       "id":  "attackerLevel",
+                       "label":  "攻撃側レベル",
+                       "type":  "input",
+                       "inputmode":  "numeric",
+                       "placeholder":  "例: 15",
+                       "defaultValue":  "15"
+                   },
+                   {
+                       "id":  "attackerStats",
+                       "label":  "攻撃側ステータス",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: 攻撃418 / 持ち物なし / メダルなし",
+                       "defaultValue":  "攻撃418 / 持ち物なし / メダルなし"
+                   },
+                   {
+                       "id":  "targetPokemonGroup",
+                       "label":  "検証する相手ポケモン",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: ピカチュウ / ゲッコウガ / エースバーン",
+                       "defaultValue":  "ピカチュウ / ゲッコウガ / エースバーン"
+                   },
+                   {
+                       "id":  "targetLevelRange",
+                       "label":  "相手レベル範囲",
+                       "type":  "input",
+                       "placeholder":  "例: Lv1〜15",
+                       "defaultValue":  "Lv1〜15"
+                   },
+                   {
+                       "id":  "targetMaxHpAndDefenseSource",
+                       "label":  "相手最大HP・防御の参照元",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: pokemonData.js / show-pokemon-stats.jsで確認",
+                       "defaultValue":  "pokemonData.js のステータスを参照。相手ポケモンとLvごとに最大HP・防御を記録する。"
+                   },
+                   {
+                       "id":  "heldItems",
+                       "label":  "持ち物",
+                       "type":  "input",
+                       "placeholder":  "例: なし",
+                       "defaultValue":  "なし"
+                   },
+                   {
+                       "id":  "emblems",
+                       "label":  "メダル",
+                       "type":  "input",
+                       "placeholder":  "例: なし",
+                       "defaultValue":  "なし"
+                   },
+                   {
+                       "id":  "critical",
+                       "label":  "本体急所",
+                       "type":  "choice",
+                       "className":  "full",
+                       "defaultValue":  "記録する",
+                       "options":  [
+                                       "なし",
+                                       "あり",
+                                       "不明",
+                                       "記録する",
+                                       "混在"
+                                   ]
+                   },
+                   {
+                       "id":  "startingCinderStacks",
+                       "label":  "発火前の火種数",
+                       "type":  "input",
+                       "inputmode":  "numeric",
+                       "placeholder":  "例: 4",
+                       "defaultValue":  "4"
+                   },
+                   {
+                       "id":  "triggerAction",
+                       "label":  "発火させた攻撃",
+                       "type":  "choice",
+                       "className":  "full",
+                       "defaultValue":  "通常攻撃",
+                       "options":  [
+                                       "通常攻撃",
+                                       "強化通常攻撃",
+                                       "技",
+                                       "その他"
+                                   ]
+                   },
+                   {
+                       "id":  "triggerMoveName",
+                       "label":  "技名・攻撃名",
+                       "type":  "input",
+                       "placeholder":  "例: 通常攻撃",
+                       "defaultValue":  "通常攻撃"
+                   },
+                   {
+                       "id":  "recordingRule",
+                       "label":  "記録ルール",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: 火種追加ダメージ表示を必ず記録。自然回復が入ったらメモする。",
+                       "defaultValue":  "攻撃側はエースバーンLv15で固定。相手をピカチュウ・ゲッコウガ・エースバーンの各Lv1〜15に変え、火種追加ダメージ表示を記録する。本体ダメージ・本体急所・最終HP・自然回復らしきズレも分かる範囲で記録する。"
+                   },
+                   {
+                       "id":  "validationPlan",
+                       "label":  "追加検証方針",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "どの仮説を確認するための検証かを書く",
+                       "defaultValue":  "追加検証の順番: 1. 低信頼行を再測定してミスを減らす。2. ピカチュウ/ゲッコウガ/エースバーンのLv13〜15を各3回測り、同じ値が再現するか見る。3. 攻撃側エースバーンLv13〜15でも同じ相手Lv15へ発火させ、攻撃値違い説とHP係数違い説を切り分ける。4. 攻撃前HPと攻撃後HPを必ず残し、自然回復が混ざった行は再検証にする。"
+                   },
+                   {
+                       "id":  "levelSweepTable",
+                       "label":  "Lv1〜15 横断記録表",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "相手 / Lv / 最大HP / 防御 / 攻撃前HP / 本体 / 火種 / 攻撃後HP / 急所 / メモ / 再検証",
+                       "defaultValue":  "相手ポケモン,相手Lv,最大HP,防御,攻撃前HP,本体ダメージ,本体急所,火種追加ダメージ,攻撃後HP,自然回復,メモ\nピカチュウ,1,,,,,,,,,\nピカチュウ,2,,,,,,,,,\nピカチュウ,3,,,,,,,,,\nピカチュウ,4,,,,,,,,,\nピカチュウ,5,,,,,,,,,\nピカチュウ,6,,,,,,,,,\nピカチュウ,7,,,,,,,,,\nピカチュウ,8,,,,,,,,,\nピカチュウ,9,,,,,,,,,\nピカチュウ,10,,,,,,,,,\nピカチュウ,11,,,,,,,,,\nピカチュウ,12,,,,,,,,,\nピカチュウ,13,,,,,,,,,\nピカチュウ,14,,,,,,,,,\nピカチュウ,15,,,,,,,,,\nゲッコウガ,1,,,,,,,,,\nゲッコウガ,2,,,,,,,,,\nゲッコウガ,3,,,,,,,,,\nゲッコウガ,4,,,,,,,,,\nゲッコウガ,5,,,,,,,,,\nゲッコウガ,6,,,,,,,,,\nゲッコウガ,7,,,,,,,,,\nゲッコウガ,8,,,,,,,,,\nゲッコウガ,9,,,,,,,,,\nゲッコウガ,10,,,,,,,,,\nゲッコウガ,11,,,,,,,,,\nゲッコウガ,12,,,,,,,,,\nゲッコウガ,13,,,,,,,,,\nゲッコウガ,14,,,,,,,,,\nゲッコウガ,15,,,,,,,,,\nエースバーン,1,,,,,,,,,\nエースバーン,2,,,,,,,,,\nエースバーン,3,,,,,,,,,\nエースバーン,4,,,,,,,,,\nエースバーン,5,,,,,,,,,\nエースバーン,6,,,,,,,,,\nエースバーン,7,,,,,,,,,\nエースバーン,8,,,,,,,,,\nエースバーン,9,,,,,,,,,\nエースバーン,10,,,,,,,,,\nエースバーン,11,,,,,,,,,\nエースバーン,12,,,,,,,,,\nエースバーン,13,,,,,,,,,\nエースバーン,14,,,,,,,,,\nエースバーン,15,,,,,,,,,"
+                   },
+                   {
+                       "id":  "calculationComparison",
+                       "label":  "後で比較する計算候補",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: 一括補正 / パーツ別補正 / 防御補正前floor など",
+                       "defaultValue":  "後で比較する候補: 1. 一括防御補正 floor((Atk部分 + HP部分 + 固定値) * 600 / (Defense + 600)) / 2. パーツ別防御補正 floor(Atk部分補正) + floor(HP部分補正) + floor(固定値補正) / 3. 防御補正前に一部floor / 4. 内部ステータス小数仮説。"
+                   },
+                   {
+                       "id":  "measuredDamage1",
+                       "label":  "実測ダメージ 1回目",
+                       "type":  "input",
+                       "placeholder":  "例: 横断表に記録する場合は空欄でOK",
+                       "defaultValue":  ""
+                   },
+                   {
+                       "id":  "measuredDamage2",
+                       "label":  "実測ダメージ 2回目",
+                       "type":  "input",
+                       "placeholder":  "例: 同条件2回目",
+                       "defaultValue":  ""
+                   },
+                   {
+                       "id":  "measuredDamage3",
+                       "label":  "実測ダメージ 3回目",
+                       "type":  "input",
+                       "placeholder":  "例: 同条件3回目",
+                       "defaultValue":  ""
+                   },
+                   {
+                       "id":  "notes",
+                       "label":  "補足",
+                       "type":  "textarea",
+                       "className":  "full",
+                       "placeholder":  "例: どのレベルで1ずれが起きたか、自然回復が混ざったかなど",
+                       "defaultValue":  "目的: 火種追加ダメージの1ずれ原因を探す。3体それぞれLv1〜15で実測し、一括防御補正・パーツ別防御補正・その他丸め候補のどれが一致するか後で比較する。"
+                   }
+               ]
 }
