@@ -40,6 +40,11 @@
 ポケモンユナイト/
 ├─ .git/
 ├─ docs/
+│  ├─ ai-review/
+│  │  ├─ generated/
+│  │  ├─ README.md
+│  │  ├─ claude-review-context.md
+│  │  └─ claude-review-request-template.md
 │  ├─ project-overview.md
 │  └─ roadmap.md
 ├─ images/
@@ -76,6 +81,8 @@
 │  ├─ battleState.test.js
 │  ├─ damageCalculator.test.js
 │  └─ mobileTabs.test.js
+├─ scripts/
+│  └─ create-claude-review-pack.js
 ├─ index.html
 ├─ package.json
 ├─ README.md
@@ -85,6 +92,8 @@
 `.git/` はGit管理用フォルダです。アプリ本体は `index.html`、`style.css`、`js/`、`images/` で構成されています。`package.json` と `tests/` はNode標準テストの設定とテストコードです。
 
 `docs/roadmap.md` は、思いついた機能や改善案を忘れないように保管するファイルです。記載内容は実装予定や確定仕様を意味しません。
+
+`docs/ai-review/` は、Codexが作った設計案や差分をClaude無料版へ貼って外部レビューしてもらうための半自動ワークフローです。`scripts/create-claude-review-pack.js` は、現在のgit diffまたは指定ブランチとの差分要約をもとに `docs/ai-review/generated/claude-review-request.md` を生成します。Claudeには実装ではなく、設計レビュー、責務分離レビュー、やりすぎチェック、UI/UXレビューを依頼する前提です。
 
 ---
 

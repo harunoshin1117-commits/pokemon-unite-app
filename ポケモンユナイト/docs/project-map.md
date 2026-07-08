@@ -42,6 +42,7 @@
 | 攻撃順・コンボ機能を考える | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/js/resultRenderer.js`, `ポケモンユナイト/docs/project-overview.md` |
 | 戦闘状態の土台を確認する | `ポケモンユナイト/js/battleState.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/tests/battleState.test.js`, `ポケモンユナイト/docs/project-overview.md` |
 | 全ポケモンの特殊効果を横断調査する | `データリサーチ/mechanics-effects-survey-v3/batch-*`, `ポケモンユナイト/docs/special-mechanics-inventory-v3.json` | `ポケモンユナイト/docs/special-mechanics-matrix-v3.md`, `ポケモンユナイト/docs/special-mechanics-design-notes-v3.md`, 旧調査の `データリサーチ/mechanics-effects-survey-v2/batch-*`, `データリサーチ/mechanics-survey/batch-*`, 既存の `データリサーチ/*-researchData.json` |
+| Claude無料版へレビュー依頼を作る | `ポケモンユナイト/docs/ai-review/README.md`, `ポケモンユナイト/scripts/create-claude-review-pack.js` | `ポケモンユナイト/docs/ai-review/claude-review-context.md`, `ポケモンユナイト/docs/ai-review/claude-review-request-template.md` |
 | 持ち物データを直す | `ポケモンユナイト/js/helditemData.js` | `ポケモンユナイト/js/heldItemService.js` |
 | 持ち物効果計算を直す | `ポケモンユナイト/js/heldItemService.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
 | 保存ビルド機能を直す | `ポケモンユナイト/js/build/` | `ポケモンユナイト/js/app.js`, `ポケモンユナイト/tests/build*.test.js` |
@@ -75,6 +76,7 @@
 - `ポケモンユナイト/docs/project-overview.md`: 現在の構成、主要関数、設計メモ、再開メモ。
 - `ポケモンユナイト/docs/roadmap.md`: 思いついたアイデアの保管場所。優先順位や実装決定ではない。
 - `ポケモンユナイト/docs/pr-description.md`: PR本文のコピー用メモがある場合に使う。
+- `ポケモンユナイト/docs/ai-review/`: Claude無料版へ貼るレビュー依頼文の共通コンテキスト、用途別テンプレート、生成物の置き場所。
 
 ### data research
 
@@ -108,6 +110,10 @@
 - `ポケモンユナイト/js/selectOptions.js`: セレクトボックス候補の生成・更新。
 - `ポケモンユナイト/js/ui.js`: UI表示補助。
 - `ポケモンユナイト/js/uiEvents.js`: 状態更新を伴わないUI開閉イベント。
+
+### scripts
+
+- `ポケモンユナイト/scripts/create-claude-review-pack.js`: git diff要約とClaude向けテンプレートをまとめ、`docs/ai-review/generated/claude-review-request.md` を生成する。
 
 ### js/build
 
