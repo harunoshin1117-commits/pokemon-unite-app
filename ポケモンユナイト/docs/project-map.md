@@ -43,6 +43,7 @@
 | 戦闘状態の土台を確認する | `ポケモンユナイト/js/battleState.js`, `ポケモンユナイト/js/app.js` | `ポケモンユナイト/tests/battleState.test.js`, `ポケモンユナイト/docs/project-overview.md` |
 | 全ポケモンの特殊効果を横断調査する | `データリサーチ/mechanics-effects-survey-v3/batch-*`, `ポケモンユナイト/docs/special-mechanics-inventory-v3.json` | `ポケモンユナイト/docs/special-mechanics-matrix-v3.md`, `ポケモンユナイト/docs/special-mechanics-design-notes-v3.md`, 旧調査の `データリサーチ/mechanics-effects-survey-v2/batch-*`, `データリサーチ/mechanics-survey/batch-*`, 既存の `データリサーチ/*-researchData.json` |
 | Claude無料版へレビュー依頼を作る | `ポケモンユナイト/docs/ai-review/README.md`, `ポケモンユナイト/scripts/create-claude-review-pack.js` | `ポケモンユナイト/docs/ai-review/claude-review-context.md`, `ポケモンユナイト/docs/ai-review/claude-review-request-template.md` |
+| 日報・作業まとめを作る | `ポケモンユナイト/docs/ai-workflow.md`, `人間確認用/daily-work-summary/` | `git status`, `git diff`, 変更された主要ファイル |
 | 持ち物データを直す | `ポケモンユナイト/js/helditemData.js` | `ポケモンユナイト/js/heldItemService.js` |
 | 持ち物効果計算を直す | `ポケモンユナイト/js/heldItemService.js` | `ポケモンユナイト/js/damageCalculator.js`, `ポケモンユナイト/tests/damageCalculator.test.js` |
 | 保存ビルド機能を直す | `ポケモンユナイト/js/build/` | `ポケモンユナイト/js/app.js`, `ポケモンユナイト/tests/build*.test.js` |
