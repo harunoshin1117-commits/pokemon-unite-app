@@ -41,6 +41,7 @@ import { bindUiEvents } from "./uiEvents.js";
 import { bindMobileTabs } from "./mobileTabs.js";
 import {
     resetLastCalculation,
+    setAttackerCurrentHp,
     setLastCalculation
 } from "./battleState.js";
 import {
@@ -1190,6 +1191,7 @@ function updateAttackerSummaryCard(){
         selectedPokemon.abilityDisplayData?.name || "特性情報準備中";
 
     attackerCurrentHp = currentHp;
+    setAttackerCurrentHp(currentHp);
 
     attackerSummaryImage.src = selectedPokemon.Image || "";
     attackerSummaryImage.alt = `${selectedPokemon.name || selectedPokemon.id}の画像`;
