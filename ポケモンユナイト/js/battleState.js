@@ -14,6 +14,24 @@ function normalizeCurrentHp(currentHp){
         : null;
 }
 
+export function normalizeCurrentHpForMax(currentHp, maxHp){
+    const safeMaxHp = Number.isFinite(maxHp) && maxHp > 0
+        ? Math.floor(maxHp)
+        : 0;
+
+    if(currentHp === null){
+        return safeMaxHp;
+    }
+
+    const number = Number(currentHp);
+
+    if(!Number.isFinite(number)){
+        return safeMaxHp;
+    }
+
+    return Math.max(0, Math.min(safeMaxHp, Math.floor(number)));
+}
+
 export function getBattleState(){
     return battleState;
 }

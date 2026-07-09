@@ -41,6 +41,7 @@ import { bindUiEvents } from "./uiEvents.js";
 import { bindMobileTabs } from "./mobileTabs.js";
 import {
     getAttackerCurrentHp,
+    normalizeCurrentHpForMax,
     resetLastCalculation,
     setAttackerCurrentHp,
     setLastCalculation
@@ -220,12 +221,7 @@ Object.values(hitCountSelects).forEach(select => {
 attackerSummaryHpRange.addEventListener("input", () => {
     const maxHp = getAttackerMaxHp();
     setAttackerCurrentHp(
-        normalizeInteger(
-            attackerSummaryHpRange.value,
-            0,
-            maxHp,
-            maxHp
-        )
+        normalizeCurrentHpForMax(attackerSummaryHpRange.value, maxHp)
     );
     updateAttackerSummaryCard();
 });
@@ -233,10 +229,8 @@ attackerSummaryHpRange.addEventListener("input", () => {
 attackerSummaryCurrentHpInput.addEventListener("input", () => {
     const maxHp = getAttackerMaxHp();
     setAttackerCurrentHp(
-        normalizeInteger(
+        normalizeCurrentHpForMax(
             attackerSummaryCurrentHpInput.value,
-            0,
-            maxHp,
             maxHp
         )
     );
@@ -723,10 +717,8 @@ export function applyBuildState(build){
     currentHeldItems = [...restoredHeldItemIds];
     currentSelectedSlot = null;
     setAttackerCurrentHp(
-        normalizeInteger(
+        normalizeCurrentHpForMax(
             build.attacker?.currentHp,
-            0,
-            getAttackerMaxHp(),
             getAttackerMaxHp()
         )
     );
@@ -1171,11 +1163,7 @@ function getCurrentAttackerHpForSave(){
     const maxHp = getAttackerMaxHp();
     const currentHp = getAttackerCurrentHp();
 
-    if(currentHp === null){
-        return maxHp;
-    }
-
-    return normalizeInteger(currentHp, 0, maxHp, maxHp);
+    return normalizeCurrentHpForMax(currentHp, maxHp);
 }
 
 function updateAttackerSummaryCard(){
@@ -1189,9 +1177,7 @@ function updateAttackerSummaryCard(){
         ? maxHp
         : 0;
     const savedCurrentHp = getAttackerCurrentHp();
-    const currentHp = savedCurrentHp === null
-        ? safeMaxHp
-        : normalizeInteger(savedCurrentHp, 0, safeMaxHp, safeMaxHp);
+    const currentHp = normalizeCurrentHpForMax(savedCurrentHp, safeMaxHp);
     const hpPercent = safeMaxHp > 0
         ? Math.max(0, Math.min(100, Math.floor((currentHp / safeMaxHp) * 100)))
         : 0;

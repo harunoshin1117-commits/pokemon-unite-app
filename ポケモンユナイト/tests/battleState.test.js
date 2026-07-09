@@ -6,6 +6,7 @@ import {
     getBattleState,
     getDefenderCurrentHp,
     getLastCalculation,
+    normalizeCurrentHpForMax,
     resetAttackerCurrentHp,
     resetCurrentHpState,
     resetDefenderCurrentHp,
@@ -107,4 +108,13 @@ test("currentHpをまとめてnullへリセットできる", () => {
 
     assert.equal(getAttackerCurrentHp(), null);
     assert.equal(getDefenderCurrentHp(), null);
+});
+
+test("currentHpを最大HP基準で正規化できる", () => {
+    assert.equal(normalizeCurrentHpForMax(null, 5000), 5000);
+    assert.equal(normalizeCurrentHpForMax("bad", 5000), 5000);
+    assert.equal(normalizeCurrentHpForMax(6000, 5000), 5000);
+    assert.equal(normalizeCurrentHpForMax(-1, 5000), 0);
+    assert.equal(normalizeCurrentHpForMax(1234.8, 5000), 1234);
+    assert.equal(normalizeCurrentHpForMax("3456", 5000), 3456);
 });
