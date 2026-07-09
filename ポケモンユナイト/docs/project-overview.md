@@ -642,7 +642,7 @@ PCでは `damage-result` を常時表示します。スマホでは「結果」�
 
 攻撃後に作成した通常攻撃・技1・技2・ユナイト技の計算済みデータは、表示へ渡すのと同時に `battleState.lastCalculation` へ保存します。これは将来の詳細表示や検証向け表示で直近結果を再利用するための土台であり、現時点では計算式、保存ビルド形式、UI表示には接続していません。全リセット時は `lastCalculation` も `null` に戻します。
 
-`battleState` には、将来のHP参照技・特性条件・詳細モード用に `attacker.currentHp` と `defender.currentHp` も用意しています。攻撃側の `attacker.currentHp` は、攻撃側要約カードのHPバー・手入力・レベル変更・リセット・保存ビルド読み込みで確定した現在HPと同期します。現時点では既存計算処理、保存ビルド形式、防御側HP入力には接続していません。
+`battleState` には、将来のHP参照技・特性条件・詳細モード用に `attacker.currentHp` と `defender.currentHp` も用意しています。攻撃側の `attacker.currentHp` は、攻撃側要約カードのHPバー・手入力・レベル変更・リセット・保存ビルド読み込みで使う現在HPの正本です。`app.js` は `getAttackerCurrentHp()` / `setAttackerCurrentHp()` 経由で読み書きします。現時点では既存計算処理、防御側HP入力には接続していません。
 
 - 計算結果ヘッダー
   - 左: `計算結果`
@@ -1232,4 +1232,3 @@ js/build/
 15. 攻撃側タブ内の通常攻撃優先、技セット別の縦カード配置
 
 今後の改善候補は履歴には追加せず、`5. 改善点` と「推奨する次の実装順」で管理します。
-

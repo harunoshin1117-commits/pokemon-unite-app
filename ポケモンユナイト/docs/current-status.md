@@ -73,8 +73,8 @@ npm run stats -- Greninja 15
 - スマホ向け下部タブUI
 - PC、タブレット、スマホ向けの一部レスポンシブ調整
 - `battleState.lastCalculation` による直近計算結果の保存
-- `battleState.attacker.currentHp` / `battleState.defender.currentHp` の保存土台
-- 攻撃側HPバーと `battleState.attacker.currentHp` の同期
+- `battleState.attacker.currentHp` を攻撃側現在HPの正本として使用
+- `battleState.defender.currentHp` の保存土台
 
 ## 現在のUI方針
 
@@ -94,7 +94,7 @@ npm run stats -- Greninja 15
 
 - 攻撃後、通常攻撃・技1・技2・ユナイト技の計算済みデータを保存する。
 - 全リセット時に `lastCalculation` を `null` へ戻す。
-- 攻撃側 `currentHp` は攻撃側HPバー・手入力・レベル変更・リセット・保存ビルド読み込み時の表示値と同期する。
+- 攻撃側 `currentHp` は攻撃側HPバー・手入力・レベル変更・リセット・保存ビルド読み込みで使う現在HPの正本になっている。
 - 防御側 `currentHp` は保存・取得・リセット関数だけ用意している。
 - DOM、ポケモン固定データ、持ち物固定データは持たない。
 - `damageCalculator.js` からは参照しない。

@@ -40,6 +40,7 @@ import {
 import { bindUiEvents } from "./uiEvents.js";
 import { bindMobileTabs } from "./mobileTabs.js";
 import {
+    getAttackerCurrentHp,
     resetLastCalculation,
     setAttackerCurrentHp,
     setLastCalculation
@@ -181,7 +182,6 @@ let selectedSkillThird = null;
 let currentNormalAttackData = null;
 let currentHeldItems = [];
 let currentSelectedSlot = null;
-let attackerCurrentHp = null;
 let hasAttacked = false;
 let lockedNormalAttackCriticalPattern = null;
 const mobileQuery = window.matchMedia("(max-width: 768px)");
@@ -219,22 +219,26 @@ Object.values(hitCountSelects).forEach(select => {
 
 attackerSummaryHpRange.addEventListener("input", () => {
     const maxHp = getAttackerMaxHp();
-    attackerCurrentHp = normalizeInteger(
-        attackerSummaryHpRange.value,
-        0,
-        maxHp,
-        maxHp
+    setAttackerCurrentHp(
+        normalizeInteger(
+            attackerSummaryHpRange.value,
+            0,
+            maxHp,
+            maxHp
+        )
     );
     updateAttackerSummaryCard();
 });
 
 attackerSummaryCurrentHpInput.addEventListener("input", () => {
     const maxHp = getAttackerMaxHp();
-    attackerCurrentHp = normalizeInteger(
-        attackerSummaryCurrentHpInput.value,
-        0,
-        maxHp,
-        maxHp
+    setAttackerCurrentHp(
+        normalizeInteger(
+            attackerSummaryCurrentHpInput.value,
+            0,
+            maxHp,
+            maxHp
+        )
     );
     updateAttackerSummaryCard();
 });
@@ -244,7 +248,7 @@ attackerSummaryCurrentHpInput.addEventListener("input", () => {
 // =========================
 
 levelSelect.addEventListener("change", () => {
-    attackerCurrentHp = null;
+    setAttackerCurrentHp(null);
 
     updatePlayerUI();
     updateAttackerSummaryCard();
@@ -257,7 +261,7 @@ levelSelect.addEventListener("change", () => {
 
 pokemonSelect.addEventListener("change", () => {
     releaseNormalAttackCriticalLock();
-    attackerCurrentHp = null;
+    setAttackerCurrentHp(null);
    
     selectedSkillOne = null;
     selectedSkillTwo = null;
@@ -542,7 +546,7 @@ function resetAppState(){
     currentNormalAttackData = null;
     currentHeldItems = [];
     currentSelectedSlot = null;
-    attackerCurrentHp = null;
+    setAttackerCurrentHp(null);
 
     pokemonSelect.value = currentPokemon.id;
     pokemonSelectTwo.value = enemyPokemon.id;
@@ -718,11 +722,13 @@ export function applyBuildState(build){
 
     currentHeldItems = [...restoredHeldItemIds];
     currentSelectedSlot = null;
-    attackerCurrentHp = normalizeInteger(
-        build.attacker?.currentHp,
-        0,
-        getAttackerMaxHp(),
-        getAttackerMaxHp()
+    setAttackerCurrentHp(
+        normalizeInteger(
+            build.attacker?.currentHp,
+            0,
+            getAttackerMaxHp(),
+            getAttackerMaxHp()
+        )
     );
 
     enemyName.textContent = enemyPokemon.id;
@@ -1163,12 +1169,13 @@ function getAttackerMaxHp(){
 
 function getCurrentAttackerHpForSave(){
     const maxHp = getAttackerMaxHp();
+    const currentHp = getAttackerCurrentHp();
 
-    if(attackerCurrentHp === null){
+    if(currentHp === null){
         return maxHp;
     }
 
-    return normalizeInteger(attackerCurrentHp, 0, maxHp, maxHp);
+    return normalizeInteger(currentHp, 0, maxHp, maxHp);
 }
 
 function updateAttackerSummaryCard(){
@@ -1181,16 +1188,16 @@ function updateAttackerSummaryCard(){
     const safeMaxHp = Number.isFinite(maxHp) && maxHp > 0
         ? maxHp
         : 0;
-    const currentHp = attackerCurrentHp === null
+    const savedCurrentHp = getAttackerCurrentHp();
+    const currentHp = savedCurrentHp === null
         ? safeMaxHp
-        : normalizeInteger(attackerCurrentHp, 0, safeMaxHp, safeMaxHp);
+        : normalizeInteger(savedCurrentHp, 0, safeMaxHp, safeMaxHp);
     const hpPercent = safeMaxHp > 0
         ? Math.max(0, Math.min(100, Math.floor((currentHp / safeMaxHp) * 100)))
         : 0;
     const abilityNameText =
         selectedPokemon.abilityDisplayData?.name || "特性情報準備中";
 
-    attackerCurrentHp = currentHp;
     setAttackerCurrentHp(currentHp);
 
     attackerSummaryImage.src = selectedPokemon.Image || "";
